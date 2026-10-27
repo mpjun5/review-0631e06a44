@@ -9,12 +9,6 @@
           "slug": "h2-math-summary-vectors-draft",
           "updated": "27 Oct 2026, 10:03 PM SGT",
           "size_kb": 151
-        },
-        {
-          "title": "Syllabus 9758 Statistics Summary",
-          "slug": "syllabus-9758-statistics-summary",
-          "updated": "28 Oct 2026, 12:17 AM SGT",
-          "size_kb": 212
         }
       ]
     },
@@ -75,6 +69,18 @@
           "slug": "syllabus-9758-pure-math-example-questions",
           "updated": "28 Oct 2026, 12:06 AM SGT",
           "size_kb": 13982
+        }
+      ]
+    },
+    {
+      "name": "Syllabus 9758 Statistics",
+      "slug": "syllabus-9758-statistics",
+      "docs": [
+        {
+          "title": "Syllabus 9758 Statistics Summary",
+          "slug": "syllabus-9758-statistics-summary",
+          "updated": "28 Oct 2026, 12:38 AM SGT",
+          "size_kb": 238
         }
       ]
     }
