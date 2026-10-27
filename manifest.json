@@ -5,18 +5,6 @@
       "slug": "h2-math-summary",
       "docs": [
         {
-          "title": "H2 Math Summary Notes",
-          "slug": "h2-math-summary-notes",
-          "updated": "27 Oct 2026, 11:44 PM SGT",
-          "size_kb": 11910
-        },
-        {
-          "title": "H2 Math Summary Example Questions",
-          "slug": "h2-math-summary-example-questions",
-          "updated": "27 Oct 2026, 11:44 PM SGT",
-          "size_kb": 16524
-        },
-        {
           "title": "H2 Math Summary - Vectors Draft",
           "slug": "h2-math-summary-vectors-draft",
           "updated": "27 Oct 2026, 10:03 PM SGT",
@@ -63,6 +51,24 @@
           "slug": "ch9-candidate-questions",
           "updated": "23 Oct 2026, 01:56 PM SGT",
           "size_kb": 92
+        }
+      ]
+    },
+    {
+      "name": "Syllabus 9758 Pure Math",
+      "slug": "syllabus-9758-pure-math",
+      "docs": [
+        {
+          "title": "Syllabus 9758 Pure Math Summary",
+          "slug": "syllabus-9758-pure-math-summary",
+          "updated": "28 Oct 2026, 12:06 AM SGT",
+          "size_kb": 9906
+        },
+        {
+          "title": "Syllabus 9758 Pure Math Example Questions",
+          "slug": "syllabus-9758-pure-math-example-questions",
+          "updated": "28 Oct 2026, 12:06 AM SGT",
+          "size_kb": 13982
         }
       ]
     }
