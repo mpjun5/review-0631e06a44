@@ -28,10 +28,10 @@
 \newlength{\cellh}\setlength{\cellh}{3.2cm}
 \newcommand{\cvv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
 % 3D oblique projection: x toward viewer (down-left), y right, z up. No grids.
-\tikzset{td/.style={x={(0.62cm,-0.42cm)},y={(-1cm,0cm)},z={(0cm,1cm)}}}
+\tikzset{td/.style={x={(1cm,0cm)},y={(0.45cm,0.35cm)},z={(0cm,1cm)}}}
 % \axt{xmax}{ymin}{ymax}{zmax}: axes only
-\newcommand{\axt}[4]{\draw[ax](0,0,0)--(#1+0.6,0,0) node[below right,L]{$x$};
- \draw[ax](0,#2,0)--(0,#3+0.6,0) node[left,L]{$y$};
+\newcommand{\axt}[4]{\draw[ax](0,0,0)--(#1+0.6,0,0) node[right,L]{$x$};
+ \draw[ax](0,#2,0)--(0,#3+0.6,0) node[above right,L]{$y$};
  \draw[ax](0,0,0)--(0,0,#4+0.6) node[above,L]{$z$};}
 % \pj{x}{y}{z}: dotted guides from the point down to the xy-plane and onto the axes
 \newcommand{\pj}[3]{\draw[comp](#1,#2,#3)--(#1,#2,0)--(#1,0,0);\draw[comp](#1,#2,0)--(0,#2,0);}
@@ -173,15 +173,15 @@ In H2 Mathematics, we extend vectors to three dimensions.
 \]
 
 \begin{center}\begin{tikzpicture}[td,scale=0.8]
-\axt{4}{-4}{4}{3.6}
-\node[dot,label=below left:$O$] at (0,0,0){};
+\axt{4}{-3}{3}{3.6}
+\node[dot,label=below right:$O$] at (0,0,0){};
 \pj{2}{1}{3}\pj{3}{-2}{2}
 \draw[vA](0,0,0)--(2,1,3);
-\node[dot,blue!70!black,label={[blue!70!black]above right:$(2,1,3)$}] at (2,1,3){};
-\node[blue!70!black,left] at (1,0.9,1.8){$\mathbf a=\cvv{2}{1}{3}$};
+\node[dot,blue!70!black,label={[blue!70!black]right:$(2,1,3)$}] at (2,1,3){};
+\node[blue!70!black,left] at (1,0.5,1.7){$\mathbf a=\cvv{2}{1}{3}$};
 \draw[vB](0,0,0)--(3,-2,2);
-\node[dot,red!70!black,label={[red!70!black]right:$(3,-2,2)$}] at (3,-2,2){};
-\node[red!70!black,above] at (2.6,-1.6,2.6){$\mathbf b=\cvv{3}{-2}{2}$};
+\node[dot,red!70!black,label={[red!70!black]above right:$(3,-2,2)$}] at (3,-2,2){};
+\node[red!70!black,right] at (4.6,-2,1.6){$\mathbf b=\cvv{3}{-2}{2}$};
 \end{tikzpicture}\end{center}
 
 \begin{center}
@@ -197,7 +197,7 @@ In H2 Mathematics, we extend vectors to three dimensions.
 \node[dot,label={[L]right:$(2,1,3)$}] at (2,1,3){};
 \node[dot,label={[L]left:$(-2,-1,-3)$}] at (-2,-1,-3){};
 \node[L,blue!70!black,left] at (1,0.5,1.5){$\mathbf a$};
-\node[L,red!70!black,left] at (-1,-0.5,-1.5){$-\mathbf a$};}\\\hline
+\node[L,red!70!black,right] at (-1,-0.5,-1.5){$-\mathbf a$};}\\\hline
 \N{$2\mathbf a$}&
 \E{k\cvv{x}{y}{z}&=\cvv{kx}{ky}{kz}\\ \g{2\mathbf a}&\g{{}=2\cvv{2}{1}{3}=\cvv{4}{2}{6}}}&
 \DT{0.34}{4}{-3}{3}{6}{
@@ -209,37 +209,37 @@ In H2 Mathematics, we extend vectors to three dimensions.
 \E{\left|\cvv{x}{y}{z}\right|&=\sqrt{x^2+y^2+z^2}\\ \g{|\mathbf a|}&\g{{}=\sqrt{2^2+1^2+3^2}}\\&\g{{}=\sqrt{14}}}&
 \DT{0.48}{3}{-3}{3}{3}{\pj{2}{1}{3}
 \draw[vA](0,0,0)--(2,1,3);
-\node[dot,label={[L]above:$(2,1,3)$}] at (2,1,3){};
-\node[L,above right] at (1,0,0){$2$};\node[L,below] at (2,0.5,0){$1$};\node[L,right] at (2,1,1.5){$3$};
+\node[dot,label={[L]right:$(2,1,3)$}] at (2,1,3){};
+\node[L,below] at (1,0,0){$2$};\node[L,below right] at (2,0.5,0){$1$};\node[L,right] at (2,1,1.3){$3$};
 \node[L,blue!70!black,left] at (1,0.5,1.6){$\sqrt{14}$};}\\\hline
 \N{Triangle law}&
 \E{\vv{OA}+\vv{AB}&=\vv{OB}\\ \g{\vv{OB}}&\g{{}=\cvv{2}{1}{3}+\cvv{3}{-2}{2}}\\&\g{{}=\cvv{5}{-1}{5}}}&
 \DT{0.36}{5}{-3}{3}{5}{
 \draw[vA](0,0,0)--(2,1,3);\draw[vB](2,1,3)--(5,-1,5);\draw[vR](0,0,0)--(5,-1,5);
 \node[L,blue!70!black,left] at (1,0.5,1.5){$\vv{OA}$};
-\node[L,red!70!black,above] at (3.5,0,4){$\vv{AB}$};
+\node[L,red!70!black,above left] at (3.5,0,4){$\vv{AB}$};
 \node[L,green!45!black,below right] at (2.5,-0.5,2.5){$\vv{OB}$};
-\node[dot,label={[L]below left:$O$}] at (0,0,0){};
-\node[dot,label={[L]left:$A$}] at (2,1,3){};
+\node[dot,label={[L]below right:$O$}] at (0,0,0){};
+\node[dot,label={[L]above left:$A$}] at (2,1,3){};
 \node[dot,label={[L]right:$B(5,-1,5)$}] at (5,-1,5){};}\\\hline
 \N{$\vv{AB}$}&
 \E{\vv{AB}&=\vv{OB}-\vv{OA}\\ \g{\vv{AB}}&\g{{}=\cvv{3}{-2}{2}-\cvv{2}{1}{3}}\\&\g{{}=\cvv{1}{-3}{-1}}}&
 \DT{0.42}{3}{-3}{3}{3}{
 \draw[vA](2,1,3)--(0,0,0);\draw[vB](0,0,0)--(3,-2,2);\draw[vR](2,1,3)--(3,-2,2);
-\node[dot,label={[L]below left:$O$}] at (0,0,0){};
-\node[dot,label={[L]left:$A(2,1,3)$}] at (2,1,3){};
+\node[dot,label={[L]below right:$O$}] at (0,0,0){};
+\node[dot,label={[L]above:$A(2,1,3)$}] at (2,1,3){};
 \node[dot,label={[L]right:$B(3,-2,2)$}] at (3,-2,2){};
-\node[L,green!45!black,above right] at (2.5,-0.5,2.5){$\vv{AB}$};}\\\hline
+\node[L,green!45!black,right] at (2.5,-0.5,2.5){$\vv{AB}$};}\\\hline
 \N{Parallelogram law\newline $\mathbf a+\mathbf b$}&
 \E{\vv{OA}+\vv{OB}&=\vv{OC}\\ \g{\mathbf a+\mathbf b}&\g{{}=\cvv{2}{1}{3}+\cvv{3}{-2}{2}}\\&\g{{}=\cvv{5}{-1}{5}}}&
 \DT{0.36}{5}{-3}{3}{5}{
 \draw[vA](0,0,0)--(2,1,3);\draw[vB](0,0,0)--(3,-2,2);\draw[vR](0,0,0)--(5,-1,5);
-\node[dot,label={[L]below left:$O$}] at (0,0,0){};
-\node[dot,label={[L]left:$A$}] at (2,1,3){};
+\node[dot,label={[L]below right:$O$}] at (0,0,0){};
+\node[dot,label={[L]above left:$A$}] at (2,1,3){};
 \node[dot,label={[L]right:$B$}] at (3,-2,2){};
 \node[dot,label={[L]right:$C(5,-1,5)$}] at (5,-1,5){};
 \node[L,blue!70!black,left] at (1,0.5,1.5){$\mathbf a$};
-\node[L,red!70!black,below] at (1.5,-1,1){$\mathbf b$};}\\\hline
+\node[L,red!70!black,below right] at (1.5,-1,1){$\mathbf b$};}\\\hline
 \N{Linear combination}&
 \E{\lambda\mathbf a+\mu\mathbf b&=\cvv{\lambda a_1+\mu b_1}{\lambda a_2+\mu b_2}{\lambda a_3+\mu b_3}\\ \g{3\mathbf a-2\mathbf b}&\g{{}=\cvv{6}{3}{9}-\cvv{6}{-4}{4}}\\&\g{{}=\cvv{0}{7}{5}}}&
 \DT{0.27}{6}{-3}{7}{9}{
@@ -247,25 +247,25 @@ In H2 Mathematics, we extend vectors to three dimensions.
 \node[dot,label={[L]left:$(0,7,5)$}] at (0,7,5){};
 \node[L,blue!70!black,right] at (3,1.5,4.5){$3\mathbf a$};
 \node[L,red!70!black,above] at (3,5,7.2){$-2\mathbf b$};
-\node[L,green!45!black,below left] at (0,4,2.6){$3\mathbf a-2\mathbf b$};}\\\hline
+\node[L,green!45!black,left] at (0,3.5,2.5){$3\mathbf a-2\mathbf b$};}\\\hline
 \N{Equal vectors}&
 \E{\vv{OA}&=\vv{CD}\\ \g{\vv{OA}}&\g{{}=\cvv{2}{1}{3}}\\ \g{\vv{CD}}&\g{{}=\cvv{3-1}{4-3}{4-1}=\cvv{2}{1}{3}}}&
 \DT{0.42}{3}{-3}{4}{4}{
 \draw[vA](0,0,0)--(2,1,3);\draw[vA](1,3,1)--(3,4,4);
-\node[dot,label={[L]below left:$O$}] at (0,0,0){};
-\node[dot,label={[L]right:$A$}] at (2,1,3){};
-\node[dot,label={[L]left:$C(1,3,1)$}] at (1,3,1){};
-\node[dot,label={[L]above:$D(3,4,4)$}] at (3,4,4){};}\\\hline
+\node[dot,label={[L]below right:$O$}] at (0,0,0){};
+\node[dot,label={[L]left:$A$}] at (2,1,3){};
+\node[dot,label={[L]right:$C(1,3,1)$}] at (1,3,1){};
+\node[dot,label={[L]right:$D(3,4,4)$}] at (3,4,4){};}\\\hline
 \N{Collinear vectors}&
 \E{\vv{AB}&=k\,\vv{BC}\\&\Rightarrow A,B,C\text{ collinear}\\ \g{\vv{AB}}&\g{{}=\cvv{2-1}{3-2}{3-1}=\cvv{1}{1}{2}}\\ \g{\vv{BC}}&\g{{}=\cvv{4-2}{5-3}{7-3}=\cvv{2}{2}{4}}\\&\g{{}=2\,\vv{AB}}}&
 \DT{0.3}{4}{-3}{6}{7}{
 \draw[vA](1,2,1)--(2,3,3);\draw[vB](2,3,3)--(4,5,7);
-\node[dot,label={[L]left:$A(1,2,1)$}] at (1,2,1){};
-\node[dot,label={[L]left:$B(2,3,3)$}] at (2,3,3){};
-\node[dot,label={[L]left:$C(4,5,7)$}] at (4,5,7){};
+\node[dot,label={[L]right:$A(1,2,1)$}] at (1,2,1){};
+\node[dot,label={[L]right:$B(2,3,3)$}] at (2,3,3){};
+\node[dot,label={[L]right:$C(4,5,7)$}] at (4,5,7){};
 \node[dot,label={[L]below right:$O$}] at (0,0,0){};
-\node[L,blue!70!black,right] at (1.5,2.5,2){$\vv{AB}$};
-\node[L,red!70!black,right] at (3,4,5){$\vv{BC}$};}\\\hline
+\node[L,blue!70!black,left] at (1.5,2.5,2){$\vv{AB}$};
+\node[L,red!70!black,left] at (3,4,5){$\vv{BC}$};}\\\hline
 \end{longtable}}
 \end{center}
 
@@ -286,10 +286,10 @@ Any vector can be written in terms of $\mathbf i$, $\mathbf j$, $\mathbf k$:
 \begin{minipage}[c]{0.38\linewidth}\centering
 \begin{tikzpicture}[td,scale=1.25]
 \axt{1.6}{-0.3}{1.8}{1.6}
-\node[dot,label={[L]below left:$O$}] at (0,0,0){};
-\draw[vA](0,0,0)--(1,0,0) node[midway,above right,L]{$\mathbf i$};
-\draw[vB](0,0,0)--(0,1,0) node[midway,above,L]{$\mathbf j$};
-\draw[vR](0,0,0)--(0,0,1) node[midway,right,L]{$\mathbf k$};
+\node[dot,label={[L]below right:$O$}] at (0,0,0){};
+\draw[vA](0,0,0)--(1,0,0) node[midway,below,L]{$\mathbf i$};
+\draw[vB](0,0,0)--(0,1,0) node[midway,below right,L]{$\mathbf j$};
+\draw[vR](0,0,0)--(0,0,1) node[midway,left,L]{$\mathbf k$};
 \end{tikzpicture}
 \end{minipage}
 \end{definition}
@@ -330,17 +330,18 @@ Find $|2\mathbf i+3\mathbf j-4\mathbf k|$.
 \begin{tikzpicture}[td,scale=0.42]
 \axt{3}{-1}{4}{1.5}
 \draw[ax](0,0,0)--(0,0,-4.6);
-\node[dot,label={[L]above right:$O$}] at (0,0,0){};
+\node[dot,label={[L]below right:$O$}] at (0,0,0){};
 \draw[comp](2,3,-4)--(2,3,0);
 \draw[vA](0,0,0)--(2,3,-4);
-\node[dot,label={[L]left:$(2,3,-4)$}] at (2,3,-4){};
-\node[L,blue!70!black,left] at (1,1.5,-2){$\sqrt{29}$};
+\node[dot,label={[L]right:$(2,3,-4)$}] at (2,3,-4){};
+\node[L,blue!70!black,below left] at (1,1.5,-2){$\sqrt{29}$};
 \end{tikzpicture}
 \end{minipage}}
 
 \begin{theorem}{Parallel vectors}
 \[
 \mathbf a\parallel\mathbf b\iff\mathbf a=\lambda\mathbf b\ \text{ for some scalar }\lambda\neq0
+\quad(\text{alternatively, }\mathbf a\times\mathbf b=\mathbf 0)
 \]
 $\lambda>0$: same direction; \quad $\lambda<0$: opposite directions.
 \end{theorem}
@@ -363,10 +364,10 @@ $\lambda>0$: same direction; \quad $\lambda<0$: opposite directions.
 \begin{tikzpicture}[td,scale=0.3]
 \axt{3}{-4}{4}{6}
 \draw[ax](0,0,0)--(0,0,-3.6);
-\node[dot,label={[L]above right:$O$}] at (0,0,0){};
+\node[dot,label={[L]below right:$O$}] at (0,0,0){};
 \draw[vA](0,0,0)--(2,-4,6);\draw[vB](0,0,0)--(-1,2,-3);
 \node[dot,label={[L]right:$(2,-4,6)$}] at (2,-4,6){};
-\node[dot,label={[L]left:$(-1,2,-3)$}] at (-1,2,-3){};
+\node[dot,label={[L]right:$(-1,2,-3)$}] at (-1,2,-3){};
 \end{tikzpicture}
 \end{minipage}}
 
@@ -390,14 +391,13 @@ Let $\mathbf a=2\mathbf i-\mathbf j+2\mathbf k$. Find (a) the unit vector in the
 \]
 \end{minipage}\hfill
 \begin{minipage}[c]{0.34\linewidth}\centering
-\begin{tikzpicture}[td,scale=0.75]
-\axt{2.5}{-2}{1}{2.6}
-\node[dot,label={[L]below left:$O$}] at (0,0,0){};
-\draw[vR](0,0,0)--(4/3*0.75,-2/3*0.75,4/3*0.75);
+\begin{tikzpicture}[td,scale=0.9]
+\draw[ax](0,0,0)--(3.1,0,0) node[right,L]{$x$};\draw[ax](0,0,0)--(0,0,3.2) node[above,L]{$z$};\draw[black!70](0,-1.5,0)--(0,2.4,0) node[above right,L]{$y$};
+\node[dot,label={[L]below right:$O$}] at (0,0,0){};
 \draw[vA](0,0,0)--(2,-1,2);
-\draw[vR,line width=1.6pt](0,0,0)--(2/3,-1/3,2/3);
-\node[L,blue!70!black,right] at (1.5,-0.75,1.6){$\mathbf a$};
-\node[L,green!45!black,above left] at (1/3,-1/6,1/3){$\hat{\mathbf a}$};
+\draw[vR,line width=2.2pt](0,0,0)--(2/3,-1/3,2/3);
+\node[L,blue!70!black,above left] at (1.5,-0.75,1.5){$\mathbf a$};
+\node[green!45!black,below right] at (2/3,-1/3,2/3){$\hat{\mathbf a}$};
 \node[dot,label={[L]right:$(2,-1,2)$}] at (2,-1,2){};
 \end{tikzpicture}
 \end{minipage}}
