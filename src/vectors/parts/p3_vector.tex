@@ -1,0 +1,229 @@
+% =====================================================================
+% Section 3 of Maximus's notes: The Vector Product (Cross Product)
+% 3.1 properties, 3.2 resultant perpendicular to both, 3.3 parallel,
+% 3.4 |a x b| = |a||b| sin, 3.5 perpendicular distance (+ practice),
+% 3.6 areas.
+% =====================================================================
+\clearpage
+\section{The Vector Product (Cross Product)}
+% =====================================================================
+\subsection{Definition and Properties of the Vector Product}
+% ---------------------------------------------------------------------
+\begin{definition}{{Vector (cross) product, in MF27}}
+Given $\mathbf{a} = a_1\mathbf{i} + a_2\mathbf{j} + a_3\mathbf{k}$ and $\mathbf{b} = b_1\mathbf{i} + b_2\mathbf{j} + b_3\mathbf{k}$, the \textbf{vector product} of $\mathbf{a}$ and $\mathbf{b}$ is
+\[
+\mathbf{a}\times\mathbf{b} = \col{a_1}{a_2}{a_3}\times\col{b_1}{b_2}{b_3}
+  = \col{a_2 b_3 - a_3 b_2}{-(a_1 b_3 - a_3 b_1)}{a_1 b_2 - a_2 b_1}.
+\]
+The answer is a \textbf{vector}.
+\end{definition}
+\textbf{How to remember it.} For each row, cover that row and take the ``cross'' of the two rows left, top-left times bottom-right minus top-right times bottom-left. Then put a minus sign in front of the \emph{middle} row only. The middle component is the one most often written with the wrong sign.
+
+\begin{definition}{Properties of the vector product}
+Let $\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$ be vectors and $\lambda$ a scalar.
+\begin{itemize}
+  \item $\mathbf{a}\times\mathbf{b} = -\,\mathbf{b}\times\mathbf{a}$ \quad (it is \emph{not} commutative)
+  \item $\mathbf{a}\times(\mathbf{b}+\mathbf{c}) = \mathbf{a}\times\mathbf{b} + \mathbf{a}\times\mathbf{c}$
+  \item $\lambda(\mathbf{a}\times\mathbf{b}) = (\lambda\mathbf{a})\times\mathbf{b} = \mathbf{a}\times(\lambda\mathbf{b})$
+  \item $\mathbf{a}\times\mathbf{a} = \mathbf{0}$
+\end{itemize}
+As with the dot product, the \textbf{cancellation law does not hold}: $\mathbf{a}\times\mathbf{b} = \mathbf{a}\times\mathbf{c}$ does not give $\mathbf{b} = \mathbf{c}$.
+\end{definition}
+
+\begin{definition}{What the vector product tells you}
+Let $\mathbf{a}$ and $\mathbf{b}$ be non-zero vectors, and $\theta$ the non-reflex angle between them.
+\begin{itemize}
+  \item $\mathbf{a}\times\mathbf{b}$ is \textbf{perpendicular to both} $\mathbf{a}$ and $\mathbf{b}$.
+  \item $\mathbf{a}\times\mathbf{b} = \mathbf{0} \iff \mathbf{a}\parallel\mathbf{b}$. \ (Section \chapnum.1.2 gives the other test, $\mathbf{a} = k\mathbf{b}$.)
+  \item $|\mathbf{a}\times\mathbf{b}| = |\mathbf{a}|\,|\mathbf{b}|\sin\theta$.
+\end{itemize}
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[threeD, scale=0.9]
+  \place{O}{0}{0}{0}
+  \place{I}{2.2}{0}{0}
+  \place{J}{0}{2.2}{0}
+  \place{K}{0}{0}{2.2}
+  \draw[plane] (O) -- (I) -- (2.2,2.2,0) -- (J) -- cycle;
+  \draw[varr, blue!70!black, very thick] (O) -- (I) node[below right] {$\mathbf{i}$};
+  \draw[varr, teal!55!black, very thick] (O) -- (J) node[above right] {$\mathbf{j}$};
+  \draw[varr, orange!85!black, very thick] (O) -- (K) node[above] {$\mathbf{i}\times\mathbf{j}=\mathbf{k}$};
+  \node at (1.15,1.15,0) {\small area $1$};
+\end{tikzpicture}
+\end{center}
+The direction is given by the right-hand rule: fingers from $\mathbf{a}$ towards $\mathbf{b}$, thumb along $\mathbf{a}\times\mathbf{b}$. Swapping the order flips the direction but not the length, so an area does not care about the order, and $\mathbf{n}$ and $-\mathbf{n}$ are normals to the same plane.
+
+\begin{question}
+$|\mathbf{a}\times\mathbf{b}| = |\mathbf{a}|\,|\mathbf{b}|\sin\theta$ can also be used to find the angle between two vectors, but it is usually undesirable. If $\sin\theta = \dfrac{1}{2}$, what are the two possible values of $\theta$? Which formula, the dot or the cross, can tell them apart?
+\end{question}
+
+% EXAMPLE: kept from the draft
+\begin{example}[label=ex:3.1]
+\begin{enumerate}[(a)]
+  \item Find $\mathbf{a}\times\mathbf{b}$ for $\mathbf{a} = \col{1}{2}{2}$ and $\mathbf{b} = \col{2}{-2}{1}$, and check it is perpendicular to both.
+  \item Use the vector product to show that $\col{2}{-1}{3}$ and $\col{-4}{2}{-6}$ are parallel.
+\end{enumerate}
+\end{example}
+\solution{
+(a)\quad $\mathbf{a}\times\mathbf{b} = \col{2\cdot 1 - 2\cdot(-2)}{-(1\cdot 1 - 2\cdot 2)}{1\cdot(-2) - 2\cdot 2} = \ans{ex1331}{\col{6}{3}{-6}}$.
+Check: $(\mathbf{a}\times\mathbf{b})\cdot\mathbf{a} = 6+6-12 = 0$ and $(\mathbf{a}\times\mathbf{b})\cdot\mathbf{b} = 12-6-6 = 0$.
+
+(b)\quad $\col{2}{-1}{3}\times\col{-4}{2}{-6} = \col{6-6}{-(-12+12)}{4-4} = \ans{ex1331b}{\col{0}{0}{0}}$, so the vectors are parallel.
+}
+
+\begin{mistake}
+\textbf{Common mistake:} forgetting the minus sign on the middle component. In (a):
+\begin{align*}
+\mathbf{a}\times\mathbf{b} = \col{2\cdot 1 - 2\cdot(-2)}{1\cdot 1 - 2\cdot 2}{1\cdot(-2) - 2\cdot 2} = \col{6}{-3}{-6} & & \wrong \\
+\mathbf{a}\times\mathbf{b} = \col{2\cdot 1 - 2\cdot(-2)}{-(1\cdot 1 - 2\cdot 2)}{1\cdot(-2) - 2\cdot 2} = \col{6}{3}{-6} & & \cmark
+\end{align*}
+The perpendicularity check catches it: $\col{6}{-3}{-6}\cdot\col{1}{2}{2} = -12 \neq 0$.
+\end{mistake}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Perpendicular Distance}
+% ---------------------------------------------------------------------
+\begin{definition}{Perpendicular distance from a point to a line through $O$}
+Let $\mathbf{a}$ and $\mathbf{b}$ be the position vectors of $A$ and $B$. The perpendicular distance from $A$ to the line through $O$ and $B$ is
+\[
+\text{Perpendicular distance} = |\mathbf{a}\times\hat{\mathbf{b}}|,
+\]
+and the associated vector (from the foot of the perpendicular to $A$) is
+\[
+\mathbf{v} = \mathbf{a} - (\mathbf{a}\cdot\hat{\mathbf{b}})\,\hat{\mathbf{b}}.
+\]
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.08]
+  \draw[black!60, thick] (-0.3,0) -- (6.4,0);
+  \draw[varr, black!70, thick] (0,0) -- (5.2,0) node[below] {$B$};
+  \node[below] at (2.6,-0.05) {$\mathbf{b}$};
+  \coordinate (A) at (1.9,2.4);
+  \draw[varr, teal!55!black, very thick] (0,0) -- (A) node[above] {$A$};
+  \node[teal!55!black] at (0.65,1.3) {$\mathbf{a}$};
+  \draw[varr, red!70!black, very thick] (1.9,0) -- (A);
+  \node[red!70!black, right] at (1.95,1.2) {$\mathbf{v}$, length $|\mathbf{a}\times\hat{\mathbf{b}}|$};
+  \draw[red!70!black] (1.9,0.25) -- (2.15,0.25) -- (2.15,0);
+  \draw[orange!85!black, very thick] (0,0) -- (1.9,0);
+  \node[orange!85!black, below] at (1.05,-0.45) {$(\mathbf{a}\cdot\hat{\mathbf{b}})\hat{\mathbf{b}}$};
+  \node[pt, label=below left:{$O$}] at (0,0) {};
+  \draw (0.55,0) arc (0:51.6:0.55);
+  \node at (0.78,0.33) {$\theta$};
+\end{tikzpicture}
+\end{center}
+In the right-angled triangle, $|\mathbf{a}|$ is the hypotenuse and $\theta$ is the angle at $O$. The side \emph{along} $\mathbf{b}$ is $|\mathbf{a}|\cos\theta = |\mathbf{a}\cdot\hat{\mathbf{b}}|$ (the projection), and the side \emph{perpendicular} to $\mathbf{b}$ is $|\mathbf{a}|\sin\theta = |\mathbf{a}\times\hat{\mathbf{b}}|$. The vector $\mathbf{v}$ is $\mathbf{a}$ minus its projection.
+
+\begin{caution}
+This is not the same as the perpendicular distance from $B$ to the line joining $O$ and $A$. The point goes in the first slot, and the \textbf{line's direction} is the one made a unit vector. If the line does not pass through $O$, replace $\mathbf{a}$ by a vector from any point on the line to the point (Section \chapnum.4.4).
+\end{caution}
+
+% EXAMPLE: from Maximus's notes, 3.5.1 Practice Problems for Perpendicular Distance
+% (his working has AC x AB = (0,-4,6); the correct value is (0,4,-6))
+\begin{example}[label=ex:3.2]
+With reference to the origin $O$, the points $A$, $B$ and $C$ have position vectors
+\[
+\mathbf{a} = \mathbf{i} + 2\mathbf{j} + 3\mathbf{k}, \qquad \mathbf{b} = \mathbf{i} - \mathbf{j} + \mathbf{k}, \qquad \mathbf{c} = 3\mathbf{i} - \mathbf{j} + \mathbf{k}.
+\]
+Find the shortest distance from $C$ to the line joining $A$ and $B$.
+\end{example}
+\solution{
+Take $A$ as the point on the line. Then $\overrightarrow{AC}$ plays the role of $\mathbf{a}$ and $\overrightarrow{AB}$ the role of $\mathbf{b}$:
+\[
+\overrightarrow{AB} = \col{0}{-3}{-2}, \qquad \overrightarrow{AC} = \col{2}{-3}{-2}, \qquad |\overrightarrow{AB}| = \sqrt{13}.
+\]
+\[
+\overrightarrow{AC}\times\overrightarrow{AB} = \col{(-3)(-2) - (-2)(-3)}{-\big(2(-2) - (-2)(0)\big)}{2(-3) - (-3)(0)} = \col{0}{4}{-6}.
+\]
+\[
+\text{Distance} = \left|\overrightarrow{AC}\times\widehat{\overrightarrow{AB}}\right| = \dfrac{\sqrt{0+16+36}}{\sqrt{13}} = \dfrac{\sqrt{52}}{\sqrt{13}} = \ans{ex1332}{2}\ \text{units}.
+\]
+Check: $\overrightarrow{BC} = \col{2}{0}{0}$ and $\overrightarrow{BC}\cdot\overrightarrow{AB} = 0$, so the foot of the perpendicular is $B$ itself, and $BC = 2$.
+}
+
+\begin{mistake}
+\textbf{Common mistake:} using $\overrightarrow{AB}$ instead of the \emph{unit} vector, so the answer is stretched by $|\overrightarrow{AB}|$.
+\begin{align*}
+\text{Distance} = \left|\overrightarrow{AC}\times\overrightarrow{AB}\right| = \sqrt{52} = 2\sqrt{13} & & \wrong \\
+\text{Distance} = \left|\overrightarrow{AC}\times\widehat{\overrightarrow{AB}}\right| = \dfrac{\sqrt{52}}{\sqrt{13}} = 2 & & \cmark
+\end{align*}
+$2\sqrt{13}$ is the \emph{area of the parallelogram} on $\overrightarrow{AB}$ and $\overrightarrow{AC}$ (Section \chapnum.3.3), not a length.
+\end{mistake}
+
+% EXAMPLE: kept from the draft (the syllabus's "geometrical meaning")
+\begin{example}[label=ex:3.3]
+Let $\mathbf{p} = \col{3}{0}{6}$ and $\hat{\mathbf{n}} = \col{\dfrac{2}{3}}{\dfrac{2}{3}}{\dfrac{1}{3}}$, a unit vector. Find $\mathbf{p}\cdot\hat{\mathbf{n}}$ and $|\mathbf{p}\times\hat{\mathbf{n}}|$, say what each measures, and check Pythagoras with $|\mathbf{p}|$.
+\end{example}
+\solution{
+$\mathbf{p}\cdot\hat{\mathbf{n}} = \dfrac{1}{3}(6 + 0 + 6) = \ans{ex1333a}{4}$: the length of the projection of $\mathbf{p}$ along $\hat{\mathbf{n}}$.
+
+$\mathbf{p}\times\hat{\mathbf{n}} = \dfrac{1}{3}\col{0 - 12}{-(3 - 12)}{6 - 0} = \col{-4}{3}{2}$, so $|\mathbf{p}\times\hat{\mathbf{n}}| = \ans{ex1333b}{\sqrt{29}}$: the perpendicular distance from $P$ to the line through $O$ in the direction $\hat{\mathbf{n}}$.
+
+Check: $4^{2} + 29 = 45 = 3^{2} + 0^{2} + 6^{2} = |\mathbf{p}|^{2}$.
+}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Areas of Triangles and Parallelograms}
+% ---------------------------------------------------------------------
+\begin{definition}{Areas}
+Let $\mathbf{a}$ and $\mathbf{b}$ be the position vectors of $A$ and $B$ relative to $O$. Then
+\[
+\text{Area of }\triangle OAB = \dfrac{1}{2}|\mathbf{a}\times\mathbf{b}|,
+\qquad
+\text{Area of parallelogram with sides $\mathbf{a}$ and $\mathbf{b}$} = |\mathbf{a}\times\mathbf{b}|.
+\]
+For a triangle without the origin as a vertex, use two sides from one vertex: \ Area of $\triangle ABC = \dfrac{1}{2}|\overrightarrow{AB}\times\overrightarrow{AC}|$.
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (4.4,0);
+  \coordinate (B) at (1.6,2.3);
+  \fill[blue!8] (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
+  \fill[orange!25] (O) -- (A) -- (B) -- cycle;
+  \draw[hid] (A) -- ($(A)+(B)$) -- (B);
+  \draw[thick] (A) -- (B);
+  \draw[varr, blue!70!black, very thick] (O) -- (A) node[midway, below] {$\mathbf{a}$};
+  \draw[varr, teal!55!black, very thick] (O) -- (B) node[midway, left] {$\mathbf{b}$};
+  \draw[red!70!black, thick, dashed] (B) -- (1.6,0);
+  \node[red!70!black, right, fill=white, inner sep=1pt] at (1.62,0.95) {$|\mathbf{b}|\sin\theta$};
+  \draw (0.5,0) arc (0:55.2:0.5);
+  \node at (0.68,0.3) {$\theta$};
+  \node[pt, label=below left:{$O$}] at (O) {};
+  \node at (2.85,0.3) {\small$\triangle OAB$};
+\end{tikzpicture}
+\end{center}
+Base $|\mathbf{a}|$ times height $|\mathbf{b}|\sin\theta$ is $|\mathbf{a}|\,|\mathbf{b}|\sin\theta = |\mathbf{a}\times\mathbf{b}|$: the whole parallelogram. The triangle is half of it.
+
+% EXAMPLE: draft example (a), plus his 3.5.1 points for (b)
+\begin{example}[label=ex:3.4]
+\begin{enumerate}[(a)]
+  \item Find the area of the parallelogram with adjacent sides $\mathbf{a} = \col{1}{2}{2}$ and $\mathbf{b} = \col{2}{-2}{1}$, and the area of triangle $OAB$.
+  \item Using the points $A(1,2,3)$, $B(1,-1,1)$ and $C(3,-1,1)$ of Example \ref{ex:3.2}, find the area of triangle $ABC$, and check it against $\dfrac{1}{2}\times\text{base}\times\text{height}$.
+\end{enumerate}
+\end{example}
+\solution{
+\enlargethispage{2\baselineskip}(a)\quad From Example \ref{ex:3.1}, $\mathbf{a}\times\mathbf{b} = 6\mathbf{i} + 3\mathbf{j} - 6\mathbf{k}$, so the parallelogram has area $\sqrt{36+9+36} = \ans{ex1334a}{9}$ and the triangle has area $\ans{ex1334b}{\dfrac{9}{2}}$.
+
+(b)\quad $\overrightarrow{AB} = \col{0}{-3}{-2}$ and $\overrightarrow{AC} = \col{2}{-3}{-2}$, so
+$\overrightarrow{AB}\times\overrightarrow{AC} = \col{6-6}{-(0+4)}{0+6} = \col{0}{-4}{6}$ and
+\[
+\text{Area of }\triangle ABC = \dfrac{1}{2}\sqrt{0+16+36} = \dfrac{1}{2}\sqrt{52} = \ans{ex1334c}{\sqrt{13}}.
+\]
+Check: with base $AB = \sqrt{13}$, the height is the distance from $C$ to line $AB$, which is $2$ (Example \ref{ex:3.2}). $\dfrac{1}{2}\times\sqrt{13}\times 2 = \sqrt{13}$.
+}
+
+
+
+\begin{mistake}
+\textbf{Common mistake:} using position vectors for a triangle that does not have $O$ as a vertex.
+\begin{align*}
+\text{Area of }\triangle ABC = \dfrac{1}{2}\left|\overrightarrow{OA}\times\overrightarrow{OB}\right| = \dfrac{1}{2}\left|\col{5}{2}{-3}\right| = \dfrac{\sqrt{38}}{2} & & \wrong \\
+\text{Area of }\triangle ABC = \dfrac{1}{2}\left|\overrightarrow{AB}\times\overrightarrow{AC}\right| = \sqrt{13} & & \cmark
+\end{align*}
+$\dfrac{1}{2}|\overrightarrow{OA}\times\overrightarrow{OB}|$ is the area of triangle $OAB$, a different triangle.
+\end{mistake}

@@ -8,7 +8,10 @@
           "title": "H2 Math Summary - Vectors Draft",
           "slug": "h2-math-summary-vectors-draft",
           "updated": "27 Oct 2026, 10:03 PM SGT",
-          "size_kb": 151
+          "size_kb": 151,
+          "status": "in progress",
+          "type": "Summary",
+          "deleted": null
         }
       ]
     },
@@ -20,25 +23,39 @@
           "title": "DI Examples Worksheet",
           "slug": "di-examples-worksheet",
           "updated": "22 Oct 2026, 09:17 PM SGT",
-          "size_kb": 62
+          "size_kb": 62,
+          "status": "completed",
+          "source": "src/definite-integrals/DI_examples_worksheet.tex",
+          "type": "Worksheet",
+          "deleted": null
         },
         {
           "title": "DI Examples Worksheet Solutions",
           "slug": "di-examples-worksheet-solutions",
           "updated": "22 Oct 2026, 09:17 PM SGT",
-          "size_kb": 524
+          "size_kb": 524,
+          "status": "completed",
+          "source": "src/definite-integrals/DI_examples_worksheet_solutions.tex",
+          "type": "Solutions",
+          "deleted": null
         },
         {
           "title": "Definite Integrals Test",
           "slug": "definite-integrals-test",
           "updated": "22 Oct 2026, 10:55 PM SGT",
-          "size_kb": 135
+          "size_kb": 135,
+          "status": "completed",
+          "type": "Test",
+          "deleted": null
         },
         {
           "title": "Definite Integrals Test solutions",
           "slug": "definite-integrals-test-solutions",
           "updated": "22 Oct 2026, 10:56 PM SGT",
-          "size_kb": 194
+          "size_kb": 194,
+          "status": "completed",
+          "type": "Solutions",
+          "deleted": null
         }
       ]
     },
@@ -50,7 +67,10 @@
           "title": "ch9-candidate-questions",
           "slug": "ch9-candidate-questions",
           "updated": "23 Oct 2026, 01:56 PM SGT",
-          "size_kb": 92
+          "size_kb": 92,
+          "status": "in progress",
+          "type": "Questions",
+          "deleted": null
         }
       ]
     },
@@ -62,13 +82,19 @@
           "title": "Syllabus 9758 Pure Math Summary",
           "slug": "syllabus-9758-pure-math-summary",
           "updated": "28 Oct 2026, 09:08 PM SGT",
-          "size_kb": 9910
+          "size_kb": 9910,
+          "status": "completed",
+          "type": "Summary",
+          "deleted": null
         },
         {
           "title": "Syllabus 9758 Pure Math Example Questions",
           "slug": "syllabus-9758-pure-math-example-questions",
           "updated": "28 Oct 2026, 09:08 PM SGT",
-          "size_kb": 14001
+          "size_kb": 14001,
+          "status": "completed",
+          "type": "Example Questions",
+          "deleted": null
         }
       ]
     },
@@ -80,13 +106,55 @@
           "title": "Syllabus 9758 Statistics Summary",
           "slug": "syllabus-9758-statistics-summary",
           "updated": "03 Nov 2026, 03:12 PM SGT",
-          "size_kb": 312
+          "size_kb": 312,
+          "status": "completed",
+          "type": "Summary",
+          "deleted": null
         },
         {
           "title": "Syllabus 9758 Statistics Example Questions",
           "slug": "syllabus-9758-statistics-example-questions",
           "updated": "04 Nov 2026, 01:36 PM SGT",
-          "size_kb": 8230
+          "size_kb": 8230,
+          "status": "completed",
+          "type": "Example Questions",
+          "deleted": null
+        }
+      ]
+    },
+    {
+      "name": "Vectors",
+      "slug": "vectors",
+      "docs": [
+        {
+          "title": "Vectors I Notes",
+          "slug": "vectors-i-notes",
+          "updated": "04 Nov 2026, 06:02 PM SGT",
+          "size_kb": 184,
+          "status": "in progress",
+          "source": "src/vectors/Vectors_I_Notes.tex",
+          "type": "Notes",
+          "deleted": null
+        },
+        {
+          "title": "Vectors II Notes",
+          "slug": "vectors-ii-notes",
+          "updated": "04 Nov 2026, 06:02 PM SGT",
+          "size_kb": 257,
+          "status": "in progress",
+          "source": "src/vectors/Vectors_II_Notes.tex",
+          "type": "Notes",
+          "deleted": null
+        },
+        {
+          "title": "Vectors Slides Draft",
+          "slug": "vectors-slides-draft",
+          "updated": "04 Nov 2026, 06:02 PM SGT",
+          "size_kb": 46,
+          "status": "in progress",
+          "source": "src/vectors/Vectors_Slides_Draft.tex",
+          "type": "Slides",
+          "deleted": null
         }
       ]
     }

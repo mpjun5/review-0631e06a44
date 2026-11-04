@@ -1,0 +1,210 @@
+% ===== Vectors I visual atlas: basics (diagram per concept) =====
+\clearpage
+\subsection{Visual Atlas: Basic Formulas}
+\subsubsection*{V1.1 \ Unit vectors $\mathbf{i}$, $\mathbf{j}$, $\mathbf{k}$}
+\begin{vis}
+\begin{tikzpicture}[v3=1.5]
+\vaxes{2.2}{2.2}{2}
+\draw[va] (0,0,0)--(1,0,0) node[pos=0.6,below]{$\mathbf{i}$};
+\draw[vb] (0,0,0)--(0,1,0) node[pos=0.7,below]{$\mathbf{j}$};
+\draw[vc] (0,0,0)--(0,0,1) node[pos=0.6,left]{$\mathbf{k}$};
+\draw[dsh] (1,0,0)--(1,1,0)--(0,1,0) (1,0,0)--(1,0,1)--(0,0,1)--(0,1,1)--(0,1,0) (1,1,0)--(1,1,1)--(1,0,1) (1,1,1)--(0,1,1);
+\end{tikzpicture}
+\end{vis}
+\[
+\mathbf{i}=\col{1}{0}{0},\quad \mathbf{j}=\col{0}{1}{0},\quad \mathbf{k}=\col{0}{0}{1},\qquad x\mathbf{i}+y\mathbf{j}+z\mathbf{k}=\col{x}{y}{z}
+\]
+
+\subsubsection*{V1.2 \ Position vector of $P(3,4,2)$}
+\begin{vis}
+\begin{tikzpicture}[v3=1.15]
+\vaxes{4.5}{5.2}{3.2}
+\draw[dsh] (3,0,0)--(3,4,0)--(0,4,0) (3,4,0)--(3,4,2) (0,0,2)--(3,0,2)--(3,4,2)--(0,4,2)--(0,0,2) (3,0,0)--(3,0,2) (0,4,0)--(0,4,2);
+\draw[va] (0,0,0)--(3,4,2) node[dot]{} node[above right]{$P(3,4,2)$};
+\draw[vb, thick] (0,0,0)--(3,0,0) node[below]{$3\mathbf{i}$};
+\draw[vb, thick] (3,0,0)--(3,4,0) node[pos=0.5,below right]{$4\mathbf{j}$};
+\draw[vb, thick] (3,4,0)--(3,4,2) node[pos=0.5,right]{$2\mathbf{k}$};
+\end{tikzpicture}
+\end{vis}
+\[
+\overrightarrow{OP}=3\mathbf{i}+4\mathbf{j}+2\mathbf{k}=\col{3}{4}{2}
+\]
+
+\subsubsection*{V1.3 \ Magnitude: Pythagoras twice}
+\begin{vis}
+\begin{tikzpicture}[v3=1.15]
+\vaxes{4.5}{5.2}{3.2}
+\draw[dsh] (3,0,0)--(3,4,0) (3,4,0)--(3,4,2);
+\draw[vc] (0,0,0)--(3,4,0) node[pos=0.55,below]{$\sqrt{x^2+y^2}$};
+\draw[va] (0,0,0)--(3,4,2) node[dot]{} node[above]{$P(x,y,z)$};
+\draw[thick, vB] (3,4,0)--(3,4,2) node[pos=0.5,right]{$z$};
+\rtang{3,4,0}{0,0,0}{3,4,2}
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+|\overrightarrow{OP}|^2 &= \left(\sqrt{x^2+y^2}\right)^2+z^2\\
+|\overrightarrow{OP}| &= \sqrt{x^2+y^2+z^2}
+\end{align*}
+
+\subsubsection*{V1.4 \ Addition: triangle law and parallelogram law}
+\begin{vis}
+\begin{tikzpicture}[v3=1.3]
+\vaxes{3.6}{3.6}{3}
+\coordinate (A) at (2,0.5,0.5); \coordinate (B) at (0.5,2,1.5); \coordinate (S) at (2.5,2.5,2);
+\draw[va] (0,0,0)--(A) node[pos=0.5,below]{$\mathbf{a}$};
+\draw[vb] (A)--(S) node[pos=0.5,right]{$\mathbf{b}$};
+\draw[vb, dashed] (0,0,0)--(B) node[pos=0.5,left]{$\mathbf{b}$};
+\draw[va, dashed] (B)--(S) node[pos=0.5,above]{$\mathbf{a}$};
+\draw[vc] (0,0,0)--(S) node[pos=0.65,above left]{$\mathbf{a}+\mathbf{b}$};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[v3=1.3]
+\vaxes{3.6}{3.6}{3}
+\coordinate (A) at (2,0.5,0.5); \coordinate (B) at (0.5,2,1.5);
+\draw[va] (0,0,0)--(A) node[pos=0.5,below]{$\mathbf{a}$};
+\draw[vb] (0,0,0)--(B) node[pos=0.5,left]{$\mathbf{b}$};
+\draw[vc] (B)--(A) node[pos=0.5,above right]{$\mathbf{a}-\mathbf{b}$};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+\mathbf{a}+\mathbf{b} &= \mathbf{b}+\mathbf{a}\\
+\overrightarrow{BA} &= \mathbf{a}-\mathbf{b}
+\end{align*}
+
+\subsubsection*{V1.5 \ Scalar multiples}
+\begin{vis}
+\begin{tikzpicture}[v3=1.3]
+\vaxes{3.5}{3}{3}
+\coordinate (A) at (1,0.6,0.6);
+\draw[vc] (0,0,0)--(2,1.2,1.2) node[above]{$2\mathbf{a}$};
+\draw[va] (0,0,0)--(A) node[pos=0.6,above left]{$\mathbf{a}$};
+\draw[vb] (0,0,0)--(-1,-0.6,-0.6) node[below]{$-\mathbf{a}$};
+\end{tikzpicture}
+\end{vis}
+\[
+|k\mathbf{a}| = |k|\,|\mathbf{a}|
+\]
+
+\subsubsection*{V1.6 \ Displacement $\overrightarrow{AB}=\mathbf{b}-\mathbf{a}$}
+\begin{vis}
+\begin{tikzpicture}[v3=1.4]
+\vaxes{5}{3.5}{4}
+\coordinate (A) at (1,2,0); \coordinate (B) at (4,2,3);
+\draw[va] (0,0,0)--(A) node[pos=0.5,below]{$\mathbf{a}$};
+\draw[vb] (0,0,0)--(B) node[pos=0.5,above left]{$\mathbf{b}$};
+\draw[vc] (A)--(B) node[pos=0.5,right]{$\overrightarrow{AB}$};
+\node[dot,label=below:{$A(1,2,0)$}] at (A){}; \node[dot,label=right:{$B(4,2,3)$}] at (B){};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+\overrightarrow{AB} &= \overrightarrow{OB}-\overrightarrow{OA}\\
+&= \col{4}{2}{3}-\col{1}{2}{0}\\
+&= \col{3}{0}{3}\\
+AB &= \sqrt{3^2+0^2+3^2}\\
+&= 3\sqrt{2}
+\end{align*}
+
+\subsubsection*{V1.7 \ Unit vector}
+\begin{vis}
+\begin{tikzpicture}[v3=1.4]
+\vaxes{3}{3}{3}
+\draw[va] (0,0,0)--(1,2,2) node[above]{$\mathbf{a}=\col{1}{2}{2}$};
+\draw[vc, line width=2pt] (0,0,0)--(1/3,2/3,2/3) node[left]{$\hat{\mathbf{a}}$};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+|\mathbf{a}| &= \sqrt{1+4+4}\\
+&= 3\\
+\hat{\mathbf{a}} &= \frac{1}{3}\col{1}{2}{2}
+\end{align*}
+
+\subsubsection*{V1.8 \ Parallel vectors and collinear points}
+\begin{vis}
+\begin{tikzpicture}[v3=1.15]
+\vaxes{4}{4}{3.5}
+\draw[va] (0.5,0,0.5)--(1.5,1,1) node[pos=0.5,below right]{$\mathbf{b}$};
+\draw[vb] (0,1.5,1)--(2,3.5,2) node[pos=0.5,above left]{$\mathbf{a}=2\mathbf{b}$};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[v3=1.15]
+\vaxes{4}{4}{3.5}
+\coordinate (A) at (0.5,0.5,0.5); \coordinate (B) at (1.5,1.5,1.5); \coordinate (C) at (3,3,3);
+\draw[ln, black!60] (A)--(C);
+\draw[va] (A)--(B) node[pos=0.5,below right]{$\overrightarrow{AB}$};
+\draw[vb] (B)--(C) node[pos=0.5,below right]{$\overrightarrow{BC}$};
+\node[dot,label=left:$A$] at (A){};\node[dot,label=left:$B$] at (B){};\node[dot,label=left:$C$] at (C){};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+\mathbf{a}=k\mathbf{b} &\iff \mathbf{a}\parallel\mathbf{b}\\
+\overrightarrow{AB}=k\overrightarrow{BC} \ \text{and}\ B \text{ common} &\Rightarrow A,B,C \text{ collinear}
+\end{align*}
+
+\subsubsection*{V1.9 \ Parallelogram $ABCD$}
+\begin{vis}
+\begin{tikzpicture}[v3=1.15]
+\vaxes{4.5}{4}{3}
+\coordinate (A) at (1,0,0.5); \coordinate (B) at (4,0.5,0.5); \coordinate (D) at (1.5,2.5,2); \coordinate (C) at (4.5,3,2);
+\fill[vP, opacity=0.5] (A)--(B)--(C)--(D)--cycle;
+\draw[va] (A)--(B); \draw[va] (D)--(C);
+\draw[vb] (A)--(D); \draw[vb] (B)--(C);
+\node[dot,label=below:$A$] at (A){};\node[dot,label=below:$B$] at (B){};\node[dot,label=above:$C$] at (C){};\node[dot,label=above:$D$] at (D){};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+\overrightarrow{AB} &= \overrightarrow{DC}\\
+\overrightarrow{AD} &= \overrightarrow{BC}\\
+\mathbf{d} &= \mathbf{a}+\mathbf{c}-\mathbf{b}
+\end{align*}
+
+\subsubsection*{V1.10 \ Ratio theorem}
+\begin{vis}
+\begin{tikzpicture}[v3=1.15]
+\vaxes{5}{4}{4}
+\coordinate (A) at (1,2,0); \coordinate (B) at (4,0.5,3);
+\coordinate (C) at ($(A)!0.4!(B)$);
+\draw[ln, black!60] (A)--(B);
+\draw[va] (0,0,0)--(A) node[pos=0.5,left]{$\mathbf{a}$};
+\draw[vb] (0,0,0)--(B) node[pos=0.5,below right]{$\mathbf{b}$};
+\draw[vc] (0,0,0)--(C) node[pos=0.6,above]{$\mathbf{c}$};
+\node[dot,label=left:$A$] at (A){};\node[dot,label=right:$B$] at (B){};\node[dot,label=above:$C$] at (C){};
+\path (A)--(C) node[midway,above]{$\mu$}; \path (C)--(B) node[midway,above]{$\lambda$};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[v3=1.15]
+\coordinate (D) at (0,3,3.5); \coordinate (A) at (1,2,0); \coordinate (B) at (4,0.5,3);
+\coordinate (C) at ($(A)!0.4!(B)$);
+\draw[ln, black!60] (A)--(B);
+\draw[va] (D)--(A); \draw[vb] (D)--(B); \draw[vc] (D)--(C);
+\node[dot,label=above:$D$] at (D){};\node[dot,label=left:$A$] at (A){};\node[dot,label=right:$B$] at (B){};\node[dot,label=below:$C$] at (C){};
+\path (A)--(C) node[midway,below]{$\mu$}; \path (C)--(B) node[midway,below]{$\lambda$};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+AC:CB &= \mu:\lambda\\
+\mathbf{c} &= \frac{\lambda\mathbf{a}+\mu\mathbf{b}}{\lambda+\mu}\\
+\overrightarrow{DC} &= \frac{\lambda\overrightarrow{DA}+\mu\overrightarrow{DB}}{\lambda+\mu}\\
+\text{midpoint: } \mathbf{m} &= \frac{\mathbf{a}+\mathbf{b}}{2}
+\end{align*}
+
+\begin{example}
+$A(1,2,3)$, $B(7,-1,6)$. $C$ on $AB$, $AC:CB=1:2$. Find $\overrightarrow{OC}$.
+\end{example}
+\begin{vis}
+\begin{tikzpicture}[v3=0.75]
+\vaxes{8}{4}{7}
+\coordinate (A) at (1,2,3); \coordinate (B) at (7,-1,6); \coordinate (C) at (3,1,4);
+\draw[ln, black!60] (A)--(B);
+\draw[va] (0,0,0)--(A); \draw[vb] (0,0,0)--(B); \draw[vc] (0,0,0)--(C);
+\node[dot,label=above:{$A(1,2,3)$}] at (A){};\node[dot,label=right:{$B(7,-1,6)$}] at (B){};\node[dot,label=below right:{$C$}] at (C){};
+\path (A)--(C) node[midway,above]{$1$}; \path (C)--(B) node[midway,above]{$2$};
+\end{tikzpicture}
+\end{vis}
+\solution{
+\begin{align*}
+\overrightarrow{OC} &= \frac{2\overrightarrow{OA}+\overrightarrow{OB}}{1+2}\\
+&= \frac{1}{3}\left[2\col{1}{2}{3}+\col{7}{-1}{6}\right]\\
+&= \frac{1}{3}\col{9}{3}{12}\\
+&= \col{3}{1}{4}
+\end{align*}
+}

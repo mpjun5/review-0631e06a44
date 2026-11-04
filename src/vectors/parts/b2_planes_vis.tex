@@ -1,0 +1,270 @@
+% ===== Vectors II visual atlas: planes =====
+\clearpage
+\subsection{Visual Atlas: Planes}
+\subsubsection*{W2.1 \ Scalar product form: point and normal}
+\begin{vis}
+\begin{tikzpicture}[v3=1.2]
+\fill[pp] (-1,-1,0)--(3,-1,0)--(3,3,0)--(-1,3,0)--cycle;
+\coordinate (A) at (0.5,0.5,0); \coordinate (R) at (2.3,2,0);
+\draw[vn] (A)--(0.5,0.5,1.8) node[above]{$\mathbf{n}$};
+\draw[vc] (A)--(R) node[pos=0.5,below right]{$\mathbf{r}-\mathbf{a}$};
+\node[dot,label=left:$A$] at (A){}; \node[dot,label=right:$R$] at (R){};
+\rtang{0.5,0.5,0}{0.5,0.5,1.8}{2.3,2,0}
+\node at (2.6,-0.6,0.15){$\pi$};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+(\mathbf{r}-\mathbf{a})\cdot\mathbf{n} &= 0\\
+\mathbf{r}\cdot\mathbf{n} &= \mathbf{a}\cdot\mathbf{n}\\
+\mathbf{r}\cdot\col{n_1}{n_2}{n_3} = d \iff n_1x+n_2y+n_3z &= d
+\end{align*}
+
+\subsubsection*{W2.2 \ Parametric form: point and two directions}
+\begin{vis}
+\begin{tikzpicture}[v3=1.2]
+\fill[pp] (-1,-1,0)--(3,-1,0)--(3,3,0)--(-1,3,0)--cycle;
+\coordinate (A) at (0,0,0);
+\draw[va] (A)--(1.6,0,0) node[below]{$\mathbf{b}$};
+\draw[vb] (A)--(0.4,1.5,0) node[left]{$\mathbf{c}$};
+\draw[dsh] (1.6,0,0)--(2.4,3,0) (0.4,1.5,0)--(2.8,1.5,0);
+\node[dot,label=below:{$A$}] at (A){};
+\node[dot,label=right:{$\mathbf{a}+\lambda\mathbf{b}+\mu\mathbf{c}$}] at (2.8,1.5,0){};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+\mathbf{r} &= \mathbf{a}+\lambda\mathbf{b}+\mu\mathbf{c}, \ \lambda,\mu\in\RR\\
+\mathbf{n} &= \mathbf{b}\times\mathbf{c}
+\end{align*}
+
+\subsubsection*{W2.3 \ Cartesian form and intercepts: $2x+3y+6z=12$}
+\begin{vis}
+\begin{tikzpicture}[v3=0.9]
+\vaxes{7}{5.5}{3.2}
+\fill[pp] (6,0,0)--(0,4,0)--(0,0,2)--cycle;
+\node[dot,label=below:{$(6,0,0)$}] at (6,0,0){};
+\node[dot,label=right:{$(0,4,0)$}] at (0,4,0){};
+\node[dot,label=left:{$(0,0,2)$}] at (0,0,2){};
+\draw[vn] (2,4/3,2/3)--(2+2*0.35,4/3+3*0.35,2/3+6*0.35) node[above]{$\mathbf{n}=\col{2}{3}{6}$};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+y=z=0 &\Rightarrow x = 6\\
+x=z=0 &\Rightarrow y = 4\\
+x=y=0 &\Rightarrow z = 2
+\end{align*}
+
+\subsubsection*{W2.4 \ Plane through three points}
+\begin{vis}
+\begin{tikzpicture}[v3=1.1]
+\coordinate (A) at (0,0,0.5); \coordinate (B) at (3,0.5,1); \coordinate (C) at (1,2.5,1.5);
+\fill[pp] ($(A)!-0.3!(B)$)--($(B)!-0.3!(C)$)--($(C)!-0.3!(A)$)--cycle;
+\draw[va] (A)--(B) node[pos=0.6,below]{$\overrightarrow{AB}$};
+\draw[vb] (A)--(C) node[pos=0.5,left]{$\overrightarrow{AC}$};
+\draw[vn] (A)--(-0.3,-0.6,2.6) node[above]{$\overrightarrow{AB}\times\overrightarrow{AC}$};
+\node[dot,label=below:$A$] at (A){}; \node[dot,label=right:$B$] at (B){}; \node[dot,label=above:$C$] at (C){};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+\mathbf{n} &= \overrightarrow{AB}\times\overrightarrow{AC}\\
+\mathbf{r}\cdot\mathbf{n} &= \overrightarrow{OA}\cdot\mathbf{n}
+\end{align*}
+
+\subsubsection*{W2.5 \ Line--plane: three cases}
+\begin{vis}
+\begin{tikzpicture}[v3=0.85]
+\fill[pp] (-1,-1,0)--(3,-1,0)--(3,3,0)--(-1,3,0)--cycle;
+\draw[vn] (2.4,-0.4,0)--(2.4,-0.4,1.2) node[above]{$\mathbf{n}$};
+\draw[ln,vB] (-0.5,0,1.5)--(2.5,2.5,1.5) node[right]{$l$};
+\node[dot,label=left:$A$] at (-0.5,0,1.5){};
+\node[below=2pt] at (current bounding box.south){$\mathbf{b}\cdot\mathbf{n}=0$, $\mathbf{a}\cdot\mathbf{n}\neq d$};
+\end{tikzpicture}\quad
+\begin{tikzpicture}[v3=0.85]
+\fill[pp] (-1,-1,0)--(3,-1,0)--(3,3,0)--(-1,3,0)--cycle;
+\draw[vn] (2.4,-0.4,0)--(2.4,-0.4,1.2) node[above]{$\mathbf{n}$};
+\draw[ln,vB] (-0.5,0,0)--(2.5,2.5,0) node[right]{$l$};
+\node[dot,label=left:$A$] at (-0.5,0,0){};
+\node[below=2pt] at (current bounding box.south){$\mathbf{b}\cdot\mathbf{n}=0$, $\mathbf{a}\cdot\mathbf{n}= d$};
+\end{tikzpicture}\quad
+\begin{tikzpicture}[v3=0.85]
+\draw[ln,vB] (1,1,0)--(0.2,0.2,-1);
+\fill[pp] (-1,-1,0)--(3,-1,0)--(3,3,0)--(-1,3,0)--cycle;
+\draw[vn] (2.4,-0.4,0)--(2.4,-0.4,1.2) node[above]{$\mathbf{n}$};
+\draw[ln,vB] (1,1,0)--(2.2,2.2,1.5) node[right]{$l$};
+\node[dot] at (1,1,0){};
+\node[below=2pt] at (current bounding box.south){$\mathbf{b}\cdot\mathbf{n}\neq0$: one point};
+\end{tikzpicture}
+\end{vis}
+
+\begin{example}
+$l:\mathbf{r}=\col{1}{0}{2}+\lambda\col{1}{2}{1}$, $p: \mathbf{r}\cdot\col{1}{1}{1}=10$. Find the point of intersection and the acute angle between $l$ and $p$.
+\end{example}
+\begin{vis}
+\begin{tikzpicture}[v3=0.8]
+\vaxes{5}{5}{5}
+\fill[pp] (10,0,0)--(0,10,0)--(0,0,10)--cycle;
+\draw[ln,vB] (1,0,2)--(11/4,7/2,15/4);
+\draw[ln,vB,dashed] (11/4,7/2,15/4)--(3.5,5,4.5) node[right]{$l$};
+\node[dot,label=left:{$\left(\frac{11}{4},\frac72,\frac{15}{4}\right)$}] at (11/4,7/2,15/4){};
+\node[dot,label=below:{$(1,0,2)$}] at (1,0,2){};
+\end{tikzpicture}
+\end{vis}
+\solution{
+\begin{align*}
+\col{1+\lambda}{2\lambda}{2+\lambda}\cdot\col{1}{1}{1} &= 10\\
+3+4\lambda &= 10\\
+\lambda &= \frac74\\
+\therefore \text{point } &\left(\frac{11}{4},\frac72,\frac{15}{4}\right)\\
+\sin\phi &= \frac{\left|\col{1}{2}{1}\cdot\col{1}{1}{1}\right|}{\sqrt6\sqrt3}\\
+&= \frac{4}{\sqrt{18}}\\
+\phi &= 70.5^\circ \ (1\text{ d.p.})
+\end{align*}
+}
+
+\subsubsection*{W2.6 \ Angle between line and plane: $\sin$, not $\cos$}
+\begin{vis}
+\begin{tikzpicture}[v3=1.2]
+\fill[pp] (-1,-1,0)--(3,-1,0)--(3,3,0)--(-1,3,0)--cycle;
+\coordinate (X) at (0.5,0.5,0); \coordinate (T) at (2.3,1.6,1.6); \coordinate (S) at (2.3,1.6,0);
+\draw[ln,vB] (X)--(T) node[right]{$l$};
+\draw[dsh] (X)--(S) (T)--(S);
+\draw[vn] (X)--(0.5,0.5,1.7) node[above]{$\mathbf{n}$};
+\vang{X}{S}{T}{$\phi$}
+\end{tikzpicture}
+\end{vis}
+\[
+\sin\phi = \frac{|\mathbf{b}\cdot\mathbf{n}|}{|\mathbf{b}||\mathbf{n}|}
+\]
+
+\subsubsection*{W2.7 \ Foot of perpendicular and reflection: point and plane}
+\begin{vis}
+\begin{tikzpicture}[v3=0.8]
+\fill[pp] (2,-5,2)--(8,-5,-1)--(8,1,-4)--(2,1,-1)--cycle;
+\coordinate (P) at (7,0,3); \coordinate (F) at (5,-2,-1); \coordinate (Pp) at (3,-4,-5);
+\draw[vB, very thick] (P)--(F);
+\draw[dsh] (F)--(Pp);
+\draw[vn] (F)--(5.6,-1.4,0.2) node[right]{$\mathbf{n}$};
+\node[dot,label=right:{$P(7,0,3)$}] at (P){};
+\node[dot,label=left:{$F(5,-2,-1)$}] at (F){};
+\node[dot,label=left:{$P'(3,-4,-5)$}] at (Pp){};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+l_{PF}: \mathbf{r} &= \col{7}{0}{3}+\lambda\col{1}{1}{2}, \ \lambda\in\RR\\
+\left(\col{7}{0}{3}+\lambda\col{1}{1}{2}\right)\cdot\col{1}{1}{2} &= 1\\
+13+6\lambda &= 1\\
+\lambda &= -2\\
+\therefore F &= (5,-2,-1)\\
+\overrightarrow{OF} &= \frac{\overrightarrow{OP}+\overrightarrow{OP'}}{2}\\
+\overrightarrow{OP'} &= 2\overrightarrow{OF}-\overrightarrow{OP}\\
+&= 2\col{5}{-2}{-1}-\col{7}{0}{3}\\
+&= \col{3}{-4}{-5}
+\end{align*}
+
+\subsubsection*{W2.8 \ Distance from point to plane}
+\begin{vis}
+\begin{tikzpicture}[v3=1.2]
+\fill[pp] (-1,-1,0)--(3,-1,0)--(3,3,0)--(-1,3,0)--cycle;
+\coordinate (A) at (0,0,0); \coordinate (P) at (1.8,1.6,1.8); \coordinate (F) at (1.8,1.6,0);
+\draw[vb] (A)--(P) node[pos=0.5,above left]{$\overrightarrow{AP}$};
+\draw[vB, very thick] (P)--(F) node[midway,right]{$|\overrightarrow{AP}\cdot\hat{\mathbf{n}}|$};
+\draw[vn] (A)--(0,0,1.4) node[above]{$\mathbf{n}$};
+\node[dot,label=left:$A$] at (A){}; \node[dot,label=above:$P$] at (P){}; \node[dot,label=below:$F$] at (F){};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+PF &= |\overrightarrow{AP}\cdot\hat{\mathbf{n}}|\\
+A(1,0,0)\in p, \ \overrightarrow{AP} &= \col{6}{0}{3}\\
+PF &= \frac{\left|\col{6}{0}{3}\cdot\col{1}{1}{2}\right|}{\sqrt6}\\
+&= \frac{12}{\sqrt6}\\
+&= 2\sqrt6
+\end{align*}
+
+\subsubsection*{W2.9 \ Reflection of a line in a plane}
+\begin{vis}
+\begin{tikzpicture}[v3=1.1]
+\fill[pp] (-1,-1,0)--(4,-1,0)--(4,3,0)--(-1,3,0)--cycle;
+\coordinate (X) at (0.5,0.5,0); \coordinate (A) at (2.5,2,1.8); \coordinate (F) at (2.5,2,0); \coordinate (Ap) at (2.5,2,-1.8);
+\draw[ln,vB] (X)--(A) node[above]{$l$};
+\draw[dsh] (A)--(Ap);
+\draw[ln,vC,dashed] (X)--(Ap) node[below]{$l'$};
+\node[dot,label=left:$X$] at (X){}; \node[dot,label=right:$A$] at (A){}; \node[dot,label=right:$F$] at (F){}; \node[dot,label=right:$A'$] at (Ap){};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+&X = l\cap p\\
+&A\in l \Rightarrow F \Rightarrow \overrightarrow{OA'} = 2\overrightarrow{OF}-\overrightarrow{OA}\\
+&l': \mathbf{r} = \overrightarrow{OX}+\mu\overrightarrow{XA'}\\
+&\mathbf{b}\cdot\mathbf{n} = 0 \ (l\parallel p): \ l': \mathbf{r} = \overrightarrow{OA'}+\mu\mathbf{b}
+\end{align*}
+
+\subsubsection*{W2.10 \ Plane--plane: intersecting, parallel, same plane}
+\begin{vis}
+\begin{tikzpicture}[v3=0.85]
+\fill[pp] (-1,-1,0)--(3,-1,0)--(3,3,0)--(-1,3,0)--cycle;
+\fill[pq] (1,-1,-1.2)--(1,3,-1.2)--(1,3,1.6)--(1,-1,1.6)--cycle;
+\draw[ln,vC] (1,-1,0)--(1,3,0) node[right]{$\mathbf{n}_1\times\mathbf{n}_2$};
+\node[below=2pt] at (current bounding box.south){intersect in a line};
+\end{tikzpicture}\quad
+\begin{tikzpicture}[v3=0.85]
+\fill[pp] (-1,-1,0)--(3,-1,0)--(3,3,0)--(-1,3,0)--cycle;
+\fill[pq] (-1,-1,1.2)--(3,-1,1.2)--(3,3,1.2)--(-1,3,1.2)--cycle;
+\draw[vn] (2.5,-0.5,0)--(2.5,-0.5,0.9);
+\node[below=2pt] at (current bounding box.south){$\mathbf{n}_1\parallel\mathbf{n}_2$, parallel};
+\end{tikzpicture}\quad
+\begin{tikzpicture}[v3=0.85]
+\fill[pp] (-1,-1,0)--(3,-1,0)--(3,3,0)--(-1,3,0)--cycle;
+\fill[pq, fill opacity=0.4] (-1,-1,0)--(3,-1,0)--(3,3,0)--(-1,3,0)--cycle;
+\node[below=2pt] at (current bounding box.south){same plane};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+\mathbf{n}_1 \neq k\mathbf{n}_2 &\Rightarrow \text{line, direction } \mathbf{n}_1\times\mathbf{n}_2\\
+\mathbf{n}_1 = k\mathbf{n}_2, \ d_1 \neq kd_2 &\Rightarrow \text{parallel}\\
+\mathbf{n}_1 = k\mathbf{n}_2, \ d_1 = kd_2 &\Rightarrow \text{same plane}
+\end{align*}
+
+\begin{example}
+$p_1: x+y+z=6$, $p_2: x-y+2z=2$. Find the line of intersection and the acute angle between $p_1$ and $p_2$.
+\end{example}
+\begin{vis}
+\begin{tikzpicture}[v3=0.6]
+\vaxes{7}{7}{7}
+\fill[pp] (6,0,0)--(0,6,0)--(0,0,6)--cycle;
+\fill[pq] (2,0,0)--(8,0,-3)--(6,4,0)--(0,4,3)--cycle;
+\draw[ln,vC] (1,3,2)--(7,1,-2) node[right]{$l$};
+\node[dot,label=above right:{$(4,2,0)$}] at (4,2,0){};
+\end{tikzpicture}
+\end{vis}
+\solution{
+\begin{align*}
+\mathbf{n}_1\times\mathbf{n}_2 &= \col{1}{1}{1}\times\col{1}{-1}{2}\\
+&= \col{1(2)-1(-1)}{-(1(2)-1(1))}{1(-1)-1(1)}\\
+&= \col{3}{-1}{-2}\\
+\text{Let } z &= 0\\
+x+y &= 6\\
+x-y &= 2\\
+\therefore x &= 4, \ y = 2\\
+l: \mathbf{r} &= \col{4}{2}{0}+\lambda\col{3}{-1}{-2}, \ \lambda\in\RR\\
+\cos\theta &= \frac{\left|\col{1}{1}{1}\cdot\col{1}{-1}{2}\right|}{\sqrt3\sqrt6}\\
+&= \frac{2}{\sqrt{18}}\\
+\theta &= 61.9^\circ \ (1\text{ d.p.})
+\end{align*}
+}
+
+\subsubsection*{W2.11 \ Distance between parallel planes}
+\begin{vis}
+\begin{tikzpicture}[v3=1.1]
+\fill[pp] (-1,-1,0)--(3,-1,0)--(3,3,0)--(-1,3,0)--cycle;
+\fill[pq] (-1,-1,1.8)--(3,-1,1.8)--(3,3,1.8)--(-1,3,1.8)--cycle;
+\coordinate (A) at (0,0,0); \coordinate (B) at (1.8,1.6,1.8);
+\draw[vb] (A)--(B) node[pos=0.5,left]{$\overrightarrow{AB}$};
+\draw[vB, very thick] (B)--(1.8,1.6,0);
+\node[dot,label=left:$A$] at (A){}; \node[dot,label=above:$B$] at (B){};
+\node at (3.2,3.2,0.1){$p_1$}; \node at (3.2,3.2,1.9){$p_2$};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+\text{distance} &= |\overrightarrow{AB}\cdot\hat{\mathbf{n}}|\\
+&= \frac{|d_2-d_1|}{|\mathbf{n}|} \quad (\text{same } \mathbf{n})\\
+p_1: \mathbf{r}\cdot\col{1}{1}{2}=1, \ p_2: \mathbf{r}\cdot\col{1}{1}{2}=13 &\Rightarrow \frac{|13-1|}{\sqrt6} = 2\sqrt6
+\end{align*}

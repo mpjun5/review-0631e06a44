@@ -1,0 +1,329 @@
+% =====================================================================
+% Section 1 of Maximus's Vectors Summary Notes: Basic Formulas
+% (1.1 magnitude, 1.2 parallel, 1.3 collinearity, 1.4 parallelograms,
+%  1.5 unit vectors, 1.6 ratio theorem + practice problems).
+% Examples marked "from Maximus's notes" are his practice problems,
+% solved by his handwritten method. Others are kept from the draft.
+% =====================================================================
+\clearpage
+\section{Basic Formulas}
+% =====================================================================
+A displacement of $3\,\mathrm{km}$ east is not the same object as the number $3$. The number is a \textbf{scalar}: it has size only. The displacement is a \textbf{vector}: it has size and direction. Force, velocity and momentum are vectors. Distance, speed, mass and temperature are scalars.
+
+\begin{info}
+\textbf{What MF27 gives you.} The formula list has exactly two vector results: the \textbf{ratio theorem} (Section \chapnum.1.4), and the \textbf{vector product in components} (Section \chapnum.3). The scalar product, the equations of a line and of a plane, and every distance and angle formula in this chapter are \emph{not} in MF27. They have to be remembered.
+\end{info}
+
+% ---------------------------------------------------------------------
+\subsection{Notation and the Magnitude of a Vector}
+% ---------------------------------------------------------------------
+An arrow from $P$ to $Q$ is written $\overrightarrow{PQ}$. In print a vector is a bold letter, $\mathbf{a}$; in handwriting it is $\underline{a}$. The \textbf{zero vector} $\mathbf{0}$ has length $0$ and no direction. The vector $-\mathbf{a}$ has the same length as $\mathbf{a}$ and the opposite direction.
+
+The unit vectors along the three axes are $\mathbf{i} = \col{1}{0}{0}$, \ $\mathbf{j} = \col{0}{1}{0}$ and $\mathbf{k} = \col{0}{0}{1}$, so $\col{x}{y}{z}$ and $x\mathbf{i} + y\mathbf{j} + z\mathbf{k}$ are the same vector. We use both.
+
+Fix an origin $O$. The \textbf{position vector} of a point $A$ is $\overrightarrow{OA}$: it says \emph{where $A$ is}. A \textbf{displacement vector} such as $\overrightarrow{AB}$ says how to get from $A$ to $B$, and it does not care where it is drawn. If $A$ and $B$ have position vectors $\mathbf{a}$ and $\mathbf{b}$, then
+\[
+\overrightarrow{AB} = \overrightarrow{OB} - \overrightarrow{OA} = \mathbf{b} - \mathbf{a}.
+\]
+
+\begin{definition}{Magnitude of a vector}
+Given a vector $\mathbf{a} = \col{x}{y}{z}$, its \textbf{magnitude} (length) is
+\[
+|\mathbf{a}| = \sqrt{x^{2} + y^{2} + z^{2}}.
+\]
+The distance between $A$ and $B$ is $|\overrightarrow{AB}| = |\mathbf{b}-\mathbf{a}|$.
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[threeD, scale=1.1]
+  \place{O}{0}{0}{0}
+  \place{A}{1}{2}{0}
+  \place{B}{4}{2}{3}
+  \draw[varr, black!45] (O) -- (2.4,0,0) node[right] {$x$};
+  \draw[varr, black!45] (O) -- (0,2.6,0) node[above right] {$y$};
+  \draw[varr, black!45] (O) -- (0,0,3.4) node[above] {$z$};
+  \draw[varr, blue!70!black, very thick] (O) -- (A) node[midway, below] {$\mathbf{a}$};
+  \draw[varr, teal!60!black, very thick] (A) -- (B) node[midway, below right] {$\overrightarrow{AB}$};
+  \draw[varr, orange!80!black, thick] (O) -- (B) node[midway, above left] {$\mathbf{b}$};
+  \node[pt, label=below left:{$O$}] at (O) {};
+  \node[pt, label=below right:{$A$}] at (A) {};
+  \node[pt, label=right:{$B$}] at (B) {};
+\end{tikzpicture}
+\end{center}
+The picture uses $A(1,2,0)$ and $B(4,2,3)$ from the next example. The orange arrow is the position of $B$; the teal arrow is the displacement from $A$ to $B$. They are different vectors, even though both end at $B$: $\overrightarrow{OA} + \overrightarrow{AB} = \overrightarrow{OB}$.
+
+% EXAMPLE: kept from the draft (his notes have no magnitude example)
+\begin{example}[label=ex:1.1]
+Relative to an origin $O$, the points $A$ and $B$ have coordinates $(1,2,0)$ and $(4,2,3)$.
+\begin{enumerate}[(a)]
+  \item Write $\overrightarrow{OA}$ and $\overrightarrow{AB}$ as column vectors.
+  \item Find $|\overrightarrow{OB}|$ and the distance $AB$.
+\end{enumerate}
+\end{example}
+\solution{
+(a)\quad $\overrightarrow{OA} = \ans{ex1311a}{\col{1}{2}{0}}$, \quad
+$\overrightarrow{AB} = \col{4}{2}{3} - \col{1}{2}{0} = \ans{ex1311b}{\col{3}{0}{3}}$.
+
+(b)\quad $|\overrightarrow{OB}| = \sqrt{4^{2}+2^{2}+3^{2}} = \ans{ex1311c}{\sqrt{29}}$, \quad
+$AB = \sqrt{3^{2}+0^{2}+3^{2}} = \sqrt{18} = \ans{ex1311d}{3\sqrt{2}}$.
+}
+
+\begin{mistake}
+\textbf{Common mistake:} taking the distance $AB$ as the difference of the two magnitudes. With $A(1,2,0)$ and $B(4,2,3)$:
+\begin{align*}
+AB = |\overrightarrow{OB}| - |\overrightarrow{OA}| = \sqrt{29} - \sqrt{5} & & \wrong \\
+AB = |\overrightarrow{OB} - \overrightarrow{OA}| = \left|\col{3}{0}{3}\right| = 3\sqrt{2} & & \cmark
+\end{align*}
+Subtract the vectors first, then take the magnitude.
+\end{mistake}
+
+% EXAMPLE: new
+\begin{example}[label=ex:1.2]
+The point $P(2,k,-1)$ is at a distance of $3$ units from $A(1,2,1)$. Find the possible values of $k$.
+\end{example}
+\solution{
+$\overrightarrow{AP} = \col{1}{k-2}{-2}$, so $1 + (k-2)^{2} + 4 = 9$, \ $(k-2)^{2} = 4$, \ $k - 2 = \pm 2$, and $k = \ans{ex1312}{0\text{ or }4}$.
+}
+
+\begin{caution}
+$\overrightarrow{AB}$ and $\overrightarrow{BA}$ are not equal: $\overrightarrow{BA} = -\overrightarrow{AB}$. Always write ``head minus tail'': $\overrightarrow{AB} = \overrightarrow{OB} - \overrightarrow{OA}$, never the other way round.
+\end{caution}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Parallel Vectors and Proof of Collinearity}
+% ---------------------------------------------------------------------
+\begin{definition}{Parallel vectors}
+If $\mathbf{a}$ and $\mathbf{b}$ are non-zero parallel vectors, written $\mathbf{a}\parallel\mathbf{b}$, then
+\begin{itemize}
+  \item $\mathbf{a} = k\mathbf{b}$, where $k$ is a scalar constant, and
+  \item $\mathbf{a}\times\mathbf{b} = \mathbf{0}$, where $\mathbf{0}$ is the zero vector (the vector product is in Section \chapnum.3).
+\end{itemize}
+They point the same way if $k > 0$, and opposite ways if $k < 0$.
+\end{definition}
+
+\begin{definition}{Proof of collinearity}
+To show that three points $A$, $B$ and $C$ are \textbf{collinear} (on one straight line), show any one of
+\[
+\overrightarrow{AB}\parallel\overrightarrow{BC}, \quad
+\overrightarrow{AB}\parallel\overrightarrow{AC}, \quad
+\overrightarrow{BC}\parallel\overrightarrow{AC}, \quad
+\overrightarrow{BA}\parallel\overrightarrow{CB}, \quad
+\overrightarrow{BA}\parallel\overrightarrow{CA}, \quad
+\overrightarrow{CB}\parallel\overrightarrow{CA}.
+\]
+\end{definition}
+\textbf{Tip.} Draw the diagram and take \emph{any} two of the vectors that share a point. Two vectors that are parallel \emph{and} share a point must lie on the same line.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  \draw[black!40, thick] (-0.6,-0.3) -- (8.6,4.0);
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (2.6,1.217);
+  \coordinate (C) at (7.8,3.65);
+  \draw[varr, blue!70!black, very thick] (A) -- (B) node[midway, above left] {$\overrightarrow{AB}$};
+  \draw[varr, teal!55!black, very thick] (B) -- (C) node[midway, above left] {$\overrightarrow{BC} = 2\overrightarrow{AB}$};
+  \node[pt, label=below right:{$A(1,0,2)$}] at (A) {};
+  \node[pt, label=below right:{$B(3,1,6)$}] at (B) {};
+  \node[pt, label=below right:{$C(7,3,14)$}] at (C) {};
+\end{tikzpicture}
+\end{center}
+
+\begin{mistake}
+\textbf{Common mistake:} showing that two vectors are parallel when they do \emph{not} share a point, and concluding that $A$, $B$, $C$, $D$ are collinear. With $A(0,0,0)$, $B(1,1,0)$, $C(0,1,0)$, $D(1,2,0)$:
+\begin{align*}
+\overrightarrow{AB} = \col{1}{1}{0} = \overrightarrow{CD},\ \text{so } A, B, C, D \text{ are collinear} & & \wrong \\
+\overrightarrow{AB} = \overrightarrow{CD}\text{ only says }AB\parallel CD\text{ (they are opposite sides of a parallelogram)} & & \cmark
+\end{align*}
+For collinearity, the two vectors must share a point, as in each pair of the box above.
+\end{mistake}
+
+% EXAMPLE: kept from the draft
+\begin{example}[label=ex:1.3]
+Let $\mathbf{u} = \col{2}{-1}{2}$.
+\begin{enumerate}[(a)]
+  \item Show that $\mathbf{v} = \col{-6}{3}{-6}$ is parallel to $\mathbf{u}$, and find $k$ such that $\mathbf{v} = k\mathbf{u}$. Explain why $\mathbf{w} = \col{2}{-1}{1}$ is not parallel to $\mathbf{u}$.
+  \item Show that $A(1,0,2)$, $B(3,1,6)$ and $C(7,3,14)$ are collinear.
+\end{enumerate}
+\end{example}
+\solution{
+(a)\quad $-3\mathbf{u} = \col{-6}{3}{-6} = \mathbf{v}$, so $\mathbf{v}\parallel\mathbf{u}$ with $k = \ans{ex1312k}{-3}$. The two point opposite ways.
+If $\mathbf{w} = k\mathbf{u}$, the first component gives $k = 1$ and the third gives $k = \dfrac{1}{2}$. No single $k$ works, so $\mathbf{w}\not\parallel\mathbf{u}$.
+
+(b)\quad $\overrightarrow{AB} = \col{2}{1}{4}$ and $\overrightarrow{BC} = \col{4}{2}{8} = \ans{ex1312m}{2}\,\overrightarrow{AB}$.
+So $\overrightarrow{AB}\parallel\overrightarrow{BC}$, and they share the point $B$. Hence $A$, $B$ and $C$ are collinear.
+}
+
+% EXAMPLE: kept from the draft
+\begin{example}[label=ex:1.4]
+The points $P(1,2,3)$, $Q(2,4,1)$ and $R(k,8,m)$ are collinear. Find $k$ and $m$.
+\end{example}
+\solution{
+$\overrightarrow{PQ} = \col{1}{2}{-2}$ and $\overrightarrow{PR} = \col{k-1}{6}{m-3}$. Collinear, so $\overrightarrow{PR} = t\,\overrightarrow{PQ}$ for some $t$.
+The $y$-components give $6 = 2t$, so $t = 3$. Then $k - 1 = 3$ and $m - 3 = -6$, so $k = \ans{ex1313k}{4}$ and $m = \ans{ex1313m}{-3}$.
+}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Parallelograms and Unit Vectors}
+% ---------------------------------------------------------------------
+\begin{definition}{Properties of parallelograms}
+If $ABCD$ is a parallelogram (vertices in that order around it), then
+\[
+\overrightarrow{AB} = \overrightarrow{DC}, \qquad \overrightarrow{AD} = \overrightarrow{BC}.
+\]
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (4.2,0);
+  \coordinate (C) at (5.6,2.2);
+  \coordinate (D) at (1.4,2.2);
+  \fill[blue!8] (A) -- (B) -- (C) -- (D) -- cycle;
+  \draw[varr, blue!70!black, very thick] (A) -- (B) node[midway, below] {$\overrightarrow{AB}$};
+  \draw[varr, blue!70!black, very thick] (D) -- (C) node[midway, above] {$\overrightarrow{DC}$};
+  \draw[varr, teal!55!black, very thick] (A) -- (D) node[midway, left] {$\overrightarrow{AD}$};
+  \draw[varr, teal!55!black, very thick] (B) -- (C) node[midway, right] {$\overrightarrow{BC}$};
+  \node[below left] at (A) {$A$};
+  \node[below right] at (B) {$B$};
+  \node[above right] at (C) {$C$};
+  \node[above left] at (D) {$D$};
+\end{tikzpicture}
+\end{center}
+Both arrows of each pair must point the same way. $\overrightarrow{AB} = \overrightarrow{CD}$ is false: it is $-\overrightarrow{DC}$.
+
+\begin{definition}{Unit vector}
+Let $\mathbf{a}$ be a non-zero vector. The \textbf{unit vector} of $\mathbf{a}$, written $\hat{\mathbf{a}}$, has magnitude $1$ and the same direction as $\mathbf{a}$:
+\[
+\hat{\mathbf{a}} = \dfrac{\mathbf{a}}{|\mathbf{a}|}.
+\]
+\end{definition}
+A vector of length $L$ in the direction of $\mathbf{a}$ is $L\hat{\mathbf{a}}$. The unit vector is the tool that turns ``direction'' into ``direction of length $1$'', which is exactly what the projection and distance formulas in Sections \chapnum.2 and \chapnum.3 need.
+
+% EXAMPLE: new (his notes state 1.4 without an example)
+\begin{example}[label=ex:1.5]
+$ABCD$ is a parallelogram with $A(1,2,0)$, $B(4,2,3)$ and $C(5,4,1)$. Find the coordinates of $D$.
+\end{example}
+\solution{
+$\overrightarrow{AD} = \overrightarrow{BC}$, so $\overrightarrow{OD} = \overrightarrow{OA} + \overrightarrow{BC}$:
+\[
+\overrightarrow{BC} = \col{5}{4}{1} - \col{4}{2}{3} = \col{1}{2}{-2}, \qquad
+\overrightarrow{OD} = \col{1}{2}{0} + \col{1}{2}{-2} = \col{2}{4}{-2}.
+\]
+$D$ is $\ans{ex1314D}{\col{2}{4}{-2}}$, that is $D(2,4,-2)$. Check: $\overrightarrow{DC} = \col{3}{0}{3} = \overrightarrow{AB}$.
+}
+
+\begin{mistake}
+\textbf{Common mistake:} using $\overrightarrow{AB} = \overrightarrow{CD}$, with the arrows the wrong way round.
+\begin{align*}
+\overrightarrow{OD} = \overrightarrow{OC} + \overrightarrow{AB} = \col{5}{4}{1} + \col{3}{0}{3} = \col{8}{4}{4} & & \wrong \\
+\overrightarrow{OD} = \overrightarrow{OC} - \overrightarrow{AB} = \col{5}{4}{1} - \col{3}{0}{3} = \col{2}{4}{-2} & & \cmark
+\end{align*}
+$(8,4,4)$ makes $ABDC$ a parallelogram, with the vertices in the wrong order. Draw the diagram first.
+\end{mistake}
+
+% EXAMPLE: kept from the draft
+\begin{example}[label=ex:1.6]
+Let $\mathbf{a} = 2\mathbf{i} + \mathbf{j} + 2\mathbf{k}$. Find $\hat{\mathbf{a}}$, and the vector of magnitude $6$ in the opposite direction to $\mathbf{a}$.
+\end{example}
+\solution{
+$|\mathbf{a}| = \sqrt{4+1+4} = 3$, so
+$\hat{\mathbf{a}} = \dfrac{1}{3}\col{2}{1}{2} = \ans{ex1315u}{\col{\dfrac{2}{3}}{\dfrac{1}{3}}{\dfrac{2}{3}}}$.
+The required vector is $-6\hat{\mathbf{a}} = \ans{ex1315v}{\col{-4}{-2}{-4}}$. Check: $\sqrt{16+4+16} = 6$.
+}
+
+\begin{mistake}
+\textbf{Common mistake:} dividing by $|\mathbf{a}|^{2}$ (forgetting the square root) when making a unit vector.
+\begin{align*}
+\hat{\mathbf{a}} = \dfrac{1}{4+1+4}\col{2}{1}{2} = \col{\dfrac{2}{9}}{\dfrac{1}{9}}{\dfrac{2}{9}} & & \wrong \\
+\hat{\mathbf{a}} = \dfrac{1}{\sqrt{4+1+4}}\col{2}{1}{2} = \col{\dfrac{2}{3}}{\dfrac{1}{3}}{\dfrac{2}{3}} & & \cmark
+\end{align*}
+Check that the answer has length $1$: \ $\dfrac{4+1+4}{81}\neq 1$, but $\dfrac{4+1+4}{9} = 1$.
+\end{mistake}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{The Ratio Theorem}
+% ---------------------------------------------------------------------
+\begin{definition}{The ratio theorem (in MF27)}
+Let the points $A$, $B$ and $C$ have position vectors $\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$, and suppose that $\mu\,AC = \lambda\,CB$, that is, $C$ divides $AB$ in the ratio $AC:CB = \lambda:\mu$. Then
+\[
+\mathbf{c} = \dfrac{\mu\mathbf{a} + \lambda\mathbf{b}}{\mu + \lambda}.
+\]
+\end{definition}
+Each end is weighted by the part of the ratio \emph{next to the other end}: the point closer to $A$ gets more of $\mathbf{a}$. The midpoint ($\lambda = \mu = 1$) is $\dfrac{\mathbf{a}+\mathbf{b}}{2}$.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (1.0,2.6);
+  \coordinate (B) at (6.4,2.0);
+  \coordinate (C) at (2.8,2.4);
+  \draw[black!70, thick] (A) -- (B);
+  \draw[varr, blue!70!black, thick] (O) -- (A) node[midway, left] {$\mathbf{a}$};
+  \draw[varr, teal!55!black, thick] (O) -- (B) node[midway, below right] {$\mathbf{b}$};
+  \draw[varr, orange!85!black, very thick] (O) -- (C) node[pos=0.6, right] {$\mathbf{c}$};
+  \node[pt, label=below left:{$O$}] at (O) {};
+  \node[pt, label=above:{$A$}] at (A) {};
+  \node[pt, label=above:{$C$}] at (C) {};
+  \node[pt, label=above:{$B$}] at (B) {};
+  \node[above] at ($(A)!0.5!(C)+(0,0.12)$) {$\lambda$};
+  \node[above] at ($(C)!0.5!(B)+(0,0.12)$) {$\mu$};
+\end{tikzpicture}
+\end{center}
+
+\begin{caution}
+\textbf{Read the ratio first, and draw the line.} The question may give $AB:CB$, or $3AC = 2CB$, or say ``$C$ lies on $AB$ \emph{produced}''. Turn it into the form $AC:CB$ along the segment before you substitute. If $C$ lies on $AB$ produced, $C$ is outside the segment: then $B$ lies between $A$ and $C$, and you apply the theorem with $B$ as the dividing point and solve for $\mathbf{c}$.
+\end{caution}
+
+% EXAMPLE: from Maximus's notes, 1.6.1 Practice Problems for Ratio Theorem
+\begin{example}[label=ex:1.7]
+Let $\overrightarrow{OA} = \mathbf{i} + \mathbf{j} + \mathbf{k}$ and $\overrightarrow{OB} = \mathbf{i} + 2\mathbf{j} + 3\mathbf{k}$. Given that $C$ lies on $AB$, find the coordinates of $C$ if
+\begin{enumerate}[(a)]
+  \item $AC:CB = 1:2$,
+  \item $3AC = 2CB$,
+  \item $2AB = 5CB$.
+  \item Given instead that $C$ lies on $AB$ produced, and $3AC = 7BC$, find the coordinates of $C$.
+\end{enumerate}
+\end{example}
+\solution{
+(a)\quad $\lambda:\mu = 1:2$, so
+$\overrightarrow{OC} = \dfrac{2\overrightarrow{OA} + \overrightarrow{OB}}{3} = \dfrac{1}{3}\col{3}{4}{5}$, and $C$ is $\ans{ex1316a}{\col{1}{\dfrac{4}{3}}{\dfrac{5}{3}}}$, i.e.\ $C\!\left(1,\dfrac{4}{3},\dfrac{5}{3}\right)$.
+
+(b)\quad $3AC = 2CB$ gives $AC:CB = 2:3$. So
+$\overrightarrow{OC} = \dfrac{3\overrightarrow{OA} + 2\overrightarrow{OB}}{5} = \dfrac{1}{5}\col{5}{7}{9}$, and $C$ is $\ans{ex1316b}{\col{1}{\dfrac{7}{5}}{\dfrac{9}{5}}}$.
+
+(c)\quad $2AB = 5CB$ gives $AB:CB = 5:2$. Since $C$ lies on $AB$, $AC = AB - CB$, so $AC:CB = 3:2$. Then
+$\overrightarrow{OC} = \dfrac{2\overrightarrow{OA} + 3\overrightarrow{OB}}{5} = \dfrac{1}{5}\col{5}{8}{11}$, and $C$ is $\ans{ex1316c}{\col{1}{\dfrac{8}{5}}{\dfrac{11}{5}}}$.
+
+(d)\quad Draw the line: $A$, then $B$, then $C$. $AC:BC = 7:3$, so $AB:BC = 4:3$, and $B$ divides $AC$ in the ratio $4:3$:
+\[
+\overrightarrow{OB} = \dfrac{3\overrightarrow{OA} + 4\overrightarrow{OC}}{7}
+\ \Rightarrow\
+\overrightarrow{OC} = \dfrac{7\overrightarrow{OB} - 3\overrightarrow{OA}}{4} = \dfrac{1}{4}\col{4}{11}{18},
+\]
+and $C$ is $\ans{ex1316d}{\col{1}{\dfrac{11}{4}}{\dfrac{9}{2}}}$, i.e.\ $C\!\left(1,\dfrac{11}{4},\dfrac{9}{2}\right)$.
+}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+  \draw[thick] (0,0) -- (7,0);
+  \node[pt, label=below:{$A$}] at (0,0) {};
+  \node[pt, label=below:{$B$}] at (4,0) {};
+  \node[pt, label=below:{$C$}] at (7,0) {};
+  \draw[decorate, decoration={brace, amplitude=5pt}] (0,0.15) -- (4,0.15) node[midway, above=5pt] {$4$};
+  \draw[decorate, decoration={brace, amplitude=5pt}] (4,0.15) -- (7,0.15) node[midway, above=5pt] {$3$};
+  \draw[decorate, decoration={brace, amplitude=5pt, mirror}] (0,-0.55) -- (7,-0.55) node[midway, below=5pt] {$AC = 7$};
+\end{tikzpicture}
+\end{center}
+Part (d): the diagram turns ``$3AC = 7BC$, on $AB$ produced'' into ``$B$ divides $AC$ in $4:3$''.
+
+\begin{mistake}
+\textbf{Common mistake:} reading $3AC = 2CB$ as $AC:CB = 3:2$. In part (b):
+\begin{align*}
+3AC = 2CB\ \Rightarrow\ AC:CB = 3:2,\ \ \overrightarrow{OC} = \dfrac{2\overrightarrow{OA} + 3\overrightarrow{OB}}{5} = \col{1}{\dfrac{8}{5}}{\dfrac{11}{5}} & & \wrong \\
+3AC = 2CB\ \Rightarrow\ \dfrac{AC}{CB} = \dfrac{2}{3},\ \ \overrightarrow{OC} = \dfrac{3\overrightarrow{OA} + 2\overrightarrow{OB}}{5} = \col{1}{\dfrac{7}{5}}{\dfrac{9}{5}} & & \cmark
+\end{align*}
+Divide both sides: $3AC = 2CB$ means $AC$ is the \emph{shorter} part. Check: $C$ should then be nearer $A$.
+\end{mistake}

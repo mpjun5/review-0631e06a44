@@ -1,0 +1,115 @@
+% ===== Vectors I visual atlas: vector product =====
+\clearpage
+\subsection{Visual Atlas: Vector Product}
+\subsubsection*{V3.1 \ $\mathbf{a}\times\mathbf{b}$ is perpendicular to both}
+\begin{vis}
+\begin{tikzpicture}[v3=1.3]
+\coordinate (O) at (0,0,0); \coordinate (A) at (2,0,0); \coordinate (B) at (0.8,1.8,0);
+\fill[vP,opacity=0.5] (O)--(A)--(2.8,1.8,0)--(B)--cycle;
+\draw[va] (O)--(A) node[right]{$\mathbf{a}$};
+\draw[vb] (O)--(B) node[above right]{$\mathbf{b}$};
+\draw[vn] (O)--(0,0,2.3) node[above]{$\mathbf{a}\times\mathbf{b}$};
+\draw[vn, dashed] (O)--(0,0,-1.6) node[below]{$\mathbf{b}\times\mathbf{a}$};
+\rtang{0,0,0}{2,0,0}{0,0,2}
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+\mathbf{a}\times\mathbf{b} &= \col{a_2b_3-a_3b_2}{-(a_1b_3-a_3b_1)}{a_1b_2-a_2b_1}\\
+(\mathbf{a}\times\mathbf{b})\cdot\mathbf{a} &= 0\\
+(\mathbf{a}\times\mathbf{b})\cdot\mathbf{b} &= 0\\
+\mathbf{b}\times\mathbf{a} &= -\mathbf{a}\times\mathbf{b}
+\end{align*}
+
+\subsubsection*{V3.2 \ Right-hand rule: $\mathbf{i}\times\mathbf{j}=\mathbf{k}$}
+\begin{vis}
+\begin{tikzpicture}[v3=1.6]
+\vaxes{1.8}{1.8}{1.8}
+\draw[va] (0,0,0)--(1,0,0) node[below]{$\mathbf{i}$};
+\draw[vb] (0,0,0)--(0,1,0) node[right]{$\mathbf{j}$};
+\draw[vn] (0,0,0)--(0,0,1) node[left]{$\mathbf{k}$};
+\draw[->, vC, thick] (0.6,0,0.15) arc[start angle=0,end angle=80,radius=0.6];
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+\mathbf{i}\times\mathbf{j} &= \mathbf{k}, & \mathbf{j}\times\mathbf{k} &= \mathbf{i}, & \mathbf{k}\times\mathbf{i} &= \mathbf{j}
+\end{align*}
+
+\subsubsection*{V3.3 \ Parallel vectors: $\mathbf{a}\times\mathbf{b}=\mathbf{0}$}
+\begin{vis}
+\begin{tikzpicture}[v3=1.3]
+\coordinate (O) at (0,0,0);
+\draw[vb] (O)--(2.4,1.2,0.6) node[right]{$\mathbf{b}=2\mathbf{a}$};
+\draw[va, line width=2.2pt] (O)--(1.2,0.6,0.3) node[above left]{$\mathbf{a}$};
+\node at (1.2,0.6,-0.6) {area $=0$};
+\end{tikzpicture}
+\end{vis}
+\[
+\theta = 0 \ \text{or}\ 180^\circ \ \Rightarrow \ |\mathbf{a}\times\mathbf{b}| = |\mathbf{a}||\mathbf{b}|\sin\theta = 0
+\]
+
+\subsubsection*{V3.4 \ Area of parallelogram and triangle}
+\begin{vis}
+\begin{tikzpicture}[v3=1.3]
+\coordinate (O) at (0,0,0); \coordinate (A) at (2.4,0,0.3); \coordinate (B) at (0.8,1.8,1); \coordinate (C) at (3.2,1.8,1.3);
+\fill[vP,opacity=0.6] (O)--(A)--(C)--(B)--cycle;
+\draw[va] (O)--(A) node[right]{$\mathbf{a}$}; \draw[vb] (O)--(B) node[left]{$\mathbf{b}$};
+\draw[dsh] (A)--(C)--(B);
+\draw[dsh] (B)--($(O)!(B)!(A)$); \node at (1.6,0.9,0.75) {$|\mathbf{a}\times\mathbf{b}|$};
+\end{tikzpicture}\qquad
+\begin{tikzpicture}[v3=1.3]
+\coordinate (O) at (0,0,0); \coordinate (A) at (2.4,0,0.3); \coordinate (B) at (0.8,1.8,1);
+\fill[vR,opacity=0.8] (O)--(A)--(B)--cycle;
+\draw[va] (O)--(A) node[right]{$A$}; \draw[vb] (O)--(B) node[left]{$B$};
+\draw[thick] (A)--(B); \node at (1.1,0.6,0.45) {$\tfrac12|\mathbf{a}\times\mathbf{b}|$};
+\node[left] at (O){$O$};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+\text{Area of parallelogram} &= |\mathbf{a}||\mathbf{b}|\sin\theta\\
+&= |\mathbf{a}\times\mathbf{b}|\\
+\text{Area of } \triangle OAB &= \frac12|\mathbf{a}\times\mathbf{b}|\\
+\text{Area of } \triangle ABC &= \frac12|\overrightarrow{AB}\times\overrightarrow{AC}|
+\end{align*}
+
+\subsubsection*{V3.5 \ Perpendicular distance from $A$ to line $OB$}
+\begin{vis}
+\begin{tikzpicture}[v3=1.4]
+\coordinate (O) at (0,0,0); \coordinate (A) at (1,1.5,2); \coordinate (B) at (3,0,0); \coordinate (F) at (1,0,0);
+\draw[ln, black!50] (-0.5,0,0)--(3.6,0,0);
+\draw[vb] (O)--(B) node[below]{$\mathbf{b}$}; \draw[va] (O)--(A) node[above]{$A$};
+\draw[vC, very thick] (A)--(F) node[midway,right]{$|\mathbf{a}\times\hat{\mathbf{b}}|$};
+\rtang{1,0,0}{3,0,0}{1,1.5,2}
+\vang{O}{B}{A}{$\theta$}
+\node[left] at (O){$O$};
+\end{tikzpicture}
+\end{vis}
+\begin{align*}
+AF &= |\mathbf{a}|\sin\theta\\
+&= \frac{|\mathbf{a}\times\mathbf{b}|}{|\mathbf{b}|}\\
+&= |\mathbf{a}\times\hat{\mathbf{b}}|
+\end{align*}
+
+\begin{example}
+$\mathbf{a}=\col{1}{2}{2}$, $\mathbf{b}=\col{2}{-1}{2}$. Find $\mathbf{a}\times\mathbf{b}$, the area of $\triangle OAB$ and the perpendicular distance from $A$ to $OB$.
+\end{example}
+\begin{vis}
+\begin{tikzpicture}[v3=1.2]
+\vaxes{3}{2.6}{2.8}
+\coordinate (O) at (0,0,0); \coordinate (A) at (1,2,2); \coordinate (B) at (2,-1,2);
+\fill[vR,opacity=0.8] (O)--(A)--(B)--cycle;
+\draw[va] (O)--(A) node[above]{$A$}; \draw[vb] (O)--(B) node[right]{$B$};
+\draw[vn] (O)--(6/2.5,2/2.5,-5/2.5) node[below]{$\mathbf{a}\times\mathbf{b}$};
+\end{tikzpicture}
+\end{vis}
+\solution{
+\begin{align*}
+\mathbf{a}\times\mathbf{b} &= \col{1}{2}{2}\times\col{2}{-1}{2}\\
+&= \col{2(2)-2(-1)}{-(1(2)-2(2))}{1(-1)-2(2)}\\
+&= \col{6}{2}{-5}\\
+|\mathbf{a}\times\mathbf{b}| &= \sqrt{36+4+25}\\
+&= \sqrt{65}\\
+\text{Area of }\triangle OAB &= \frac{\sqrt{65}}{2}\\
+\text{Distance} &= \frac{|\mathbf{a}\times\mathbf{b}|}{|\mathbf{b}|}\\
+&= \frac{\sqrt{65}}{3}
+\end{align*}
+}

@@ -1,0 +1,624 @@
+% =====================================================================
+% Section 5 of Maximus's notes: Planes
+% 5.1 equations (+ practice), 5.2 line & plane (+ intersection),
+% 5.3 foot, 5.4 distance, 5.5 reflection of a line about a plane,
+% 5.6 two planes (+ intersection, GC and manual), 5.7 angles,
+% 5.8 distance between parallel planes.
+% =====================================================================
+\clearpage
+\section{Planes}
+% =====================================================================
+\subsection{Equations of Planes}
+% ---------------------------------------------------------------------
+A plane is fixed by \textbf{one point on it} and \textbf{one normal vector} $\mathbf{n}$, a vector perpendicular to every line in the plane. Equivalently, by one point and two non-parallel directions in the plane.
+
+\begin{definition}{Three forms of the equation of a plane}
+\textbf{Vector form:} \quad $\mathbf{r} = \mathbf{a} + \lambda\mathbf{b} + \mu\mathbf{c}$, \quad $\lambda,\mu\in\RR$, \\
+where $\mathbf{a}$ is the position vector of any point on the plane, and $\mathbf{b}$ and $\mathbf{c}$ are any two non-parallel directions parallel to the plane.
+
+\textbf{Scalar product form:} \quad $\mathbf{r}\cdot\mathbf{n} = d$, \\
+where $\mathbf{n}$ is a normal vector of the plane and $d$ is a scalar constant.
+
+\textbf{Cartesian form:} \quad $ax + by + cz = d$, \\
+where $a$, $b$, $c$ are scalar constants, and $\mathbf{n} = a\mathbf{i} + b\mathbf{j} + c\mathbf{k}$ is a normal.
+\end{definition}
+
+\begin{info}
+\textbf{From vector form to scalar product form.} The normal is perpendicular to both directions, so take $\mathbf{n} = \mathbf{b}\times\mathbf{c}$. Every point $\mathbf{r}$ of the plane satisfies $(\mathbf{r}-\mathbf{a})\cdot\mathbf{n} = 0$, so
+\[
+\mathbf{r}\cdot\mathbf{n} = \mathbf{a}\cdot\mathbf{n} \qquad (\text{i.e. } d = \mathbf{a}\cdot\mathbf{n}).
+\]
+\end{info}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=0.95]
+  \draw[plane] (0,0) -- (6,0) -- (7.6,2.2) -- (1.6,2.2) -- cycle;
+  \coordinate (A) at (2.6,0.9);
+  \draw[varr, teal!55!black, very thick] (A) -- ++(1.8,0) node[below] {$\mathbf{b}$};
+  \draw[varr, teal!55!black, very thick] (A) -- ++(0.8,1.1) node[left] {$\mathbf{c}$};
+  \draw[varr, orange!85!black, very thick] (A) -- ++(0,2.4) node[above] {$\mathbf{n} = \mathbf{b}\times\mathbf{c}$};
+  \draw[orange!85!black] (A) ++(0,0.3) -- ++(0.3,0) -- ++(0,-0.3);
+  \node[pt, label=below left:{$A$}] at (A) {};
+  \draw[varr, black!70] (-1.2,-0.6) -- (A) node[pos=0.45, below right] {$\mathbf{a}$};
+  \node[pt, label=left:{$O$}] at (-1.2,-0.6) {};
+  \node[black!55] at (6.7,0.4) {$\pi$};
+\end{tikzpicture}
+\end{center}
+In Example \ref{ex:5.1}(a), $A = (1,2,3)$, $\mathbf{b} = \mathbf{i}-\mathbf{j}+\mathbf{k}$ and $\mathbf{c} = 2\mathbf{i}+\mathbf{j}+2\mathbf{k}$, so $\mathbf{n} = -3\mathbf{i}+3\mathbf{k}$, or simply $-\mathbf{i}+\mathbf{k}$: any non-zero multiple of a normal is a normal.
+
+% EXAMPLE: from Maximus's notes, 5.1.4 Practice Problems for Equation of Planes
+\begin{example}[label=ex:5.1]
+Find the Cartesian equation of the plane that passes through
+\begin{enumerate}[(a)]
+  \item the point $(1,2,3)$, and is parallel to $\mathbf{i}-\mathbf{j}+\mathbf{k}$ and $2\mathbf{i}+\mathbf{j}+2\mathbf{k}$,
+  \item the point $A(3,1,-1)$, and contains the line $\mathbf{r} = \lambda(2\mathbf{i}-\mathbf{j}+\mathbf{k})$, $\lambda\in\RR$,
+  \item the points $B(0,1,1)$, $C(1,1,3)$ and $D(2,0,2)$.
+\end{enumerate}
+\end{example}
+\solution{
+(a)\quad A normal is perpendicular to both directions:
+\[
+\mathbf{n} = \col{1}{-1}{1}\times\col{2}{1}{2} = \col{-2-1}{-(2-2)}{1+2} = \col{-3}{0}{3}, \quad\text{so take } \mathbf{n} = \col{-1}{0}{1}.
+\]
+\[
+\mathbf{r}\cdot\col{-1}{0}{1} = \col{1}{2}{3}\cdot\col{-1}{0}{1} = 2, \quad\text{i.e. } \ans{ex1351a}{-x+z=2}.
+\]
+(b)\quad The line passes through $O$, so the plane contains $O$ and $A$, and $\overrightarrow{OA}$ is a second direction:
+\[
+\mathbf{n} = \col{3}{1}{-1}\times\col{2}{-1}{1} = \col{1-1}{-(3+2)}{-3-2} = \col{0}{-5}{-5}, \quad\text{so take } \mathbf{n} = \col{0}{1}{1}.
+\]
+$O$ is on the plane, so $d = \mathbf{0}\cdot\mathbf{n} = 0$, i.e.\ $\ans{ex1351b}{y+z=0}$.
+
+(c)\quad Two directions in the plane are $\overrightarrow{BC} = \col{1}{0}{2}$ and $\overrightarrow{BD} = \col{2}{-1}{1}$.
+\[
+\mathbf{n} = \overrightarrow{BC}\times\overrightarrow{BD} = \col{0+2}{-(1-4)}{-1-0} = \col{2}{3}{-1}, \qquad
+d = \col{0}{1}{1}\cdot\col{2}{3}{-1} = 2,
+\]
+i.e.\ $\ans{ex1351c}{2x+3y-z=2}$. \ Check $D$: $4 + 0 - 2 = 2$.
+}
+
+\begin{mistake}
+\textbf{Common mistake:} crossing two position vectors instead of two directions in the plane. In (c):
+\begin{align*}
+\mathbf{n} = \overrightarrow{OB}\times\overrightarrow{OC} = \col{0}{1}{1}\times\col{1}{1}{3} = \col{2}{1}{-1},\quad 2x + y - z = 0 & & \wrong \\
+\mathbf{n} = \overrightarrow{BC}\times\overrightarrow{BD} = \col{2}{3}{-1},\quad 2x + 3y - z = 2 & & \cmark
+\end{align*}
+$\overrightarrow{OB}$ and $\overrightarrow{OC}$ start at $O$, which is not on the plane. The check catches it: $D(2,0,2)$ gives $4 + 0 - 2 = 2 \neq 0$.
+\end{mistake}
+
+\begin{question}
+In (b) the constant came out as $d = 0$. What does $d = 0$ tell you about the plane, and why could you have predicted it from the question?
+\end{question}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Relationship Between Line and Plane}
+% ---------------------------------------------------------------------
+Given a line $l$ and a plane $\pi$, exactly one of these is true:
+\begin{enumerate}
+  \item $l$ lies on $\pi$;
+  \item $l$ does not intersect $\pi$ (it is parallel to $\pi$, off the plane);
+  \item $l$ intersects $\pi$ exactly once (most common).
+\end{enumerate}
+To identify which case it is, always draw the diagram, then follow these steps for $l:\ \mathbf{r} = \mathbf{a} + \lambda\mathbf{b}$ and $\pi:\ \mathbf{r}\cdot\mathbf{n} = d$.
+
+\begin{center}
+\begin{tikzpicture}[
+  q/.style={draw=blue!50!black, fill=blue!6, rounded corners, thick, align=center, minimum height=9mm, font=\small},
+  a/.style={draw=teal!55!black, fill=teal!8, thick, align=center, minimum height=8mm, font=\small},
+  arr/.style={-{Stealth[length=2.4mm]}, thick}, lab/.style={font=\small\bfseries, fill=white, inner sep=1pt}]
+\node[q] (q1) at (0,0) {Is $l$ parallel to $\pi$?\\ ($\mathbf{b}\cdot\mathbf{n} = 0$?)};
+\node[a] (one) at (-3.8,-2.0) {$l$ intersects $\pi$\\ exactly once};
+\node[q] (q2) at (3.2,-2.0) {Does $\mathbf{a}$ lie on $\pi$?\\ ($\mathbf{a}\cdot\mathbf{n} = d$?)};
+\node[a] (none) at (0.6,-4.1) {$l$ does not\\ intersect $\pi$};
+\node[a] (on) at (5.6,-4.1) {$l$ lies on $\pi$};
+\draw[arr] (q1) -- node[lab, above left] {No} (one);
+\draw[arr] (q1) -- node[lab, above right] {Yes} (q2);
+\draw[arr] (q2) -- node[lab, above left] {No} (none);
+\draw[arr] (q2) -- node[lab, above right] {Yes} (on);
+\end{tikzpicture}
+\end{center}
+
+% EXAMPLE: kept from the draft (rewritten to follow his decision tree)
+\begin{example}[label=ex:5.2]
+The plane $\pi$ has equation $\mathbf{r}\cdot\col{2}{-1}{2} = 6$. Determine the relationship between $\pi$ and each line.
+\[
+l_a:\ \mathbf{r} = \col{1}{0}{2} + \lambda\col{1}{2}{0}, \qquad
+l_b:\ \mathbf{r} = \lambda\col{1}{2}{0}, \qquad
+l_c:\ \mathbf{r} = \col{1}{0}{0} + \lambda\col{1}{1}{1}.
+\]
+\end{example}
+\solution{
+$l_a$: \ $\mathbf{b}\cdot\mathbf{n} = 2 - 2 + 0 = 0$, so $l_a\parallel\pi$. \ $\mathbf{a}\cdot\mathbf{n} = 2 + 0 + 4 = 6 = d$, so $l_a$ \ans{ex1352a}{lies on $\pi$}.
+
+$l_b$: \ same direction, so $l_b\parallel\pi$. \ $\mathbf{a}\cdot\mathbf{n} = 0 \neq 6$, so $l_b$ \ans{ex1352b}{does not intersect $\pi$}.
+
+$l_c$: \ $\mathbf{b}\cdot\mathbf{n} = 2 - 1 + 2 = 3 \neq 0$, so $l_c$ intersects $\pi$ exactly once. Substituting, $2(1+\lambda) - \lambda + 2\lambda = 6$, so $\lambda = \dfrac{4}{3}$ and the point is $\ans{ex1352c}{\col{\dfrac{7}{3}}{\dfrac{4}{3}}{\dfrac{4}{3}}}$.
+}
+
+\subsubsection*{Intersection Between Line and Plane}
+The general point of the line, $\mathbf{a} + \lambda\mathbf{b}$, is on the plane exactly when it satisfies the plane's equation. Substitute it into $\mathbf{r}\cdot\mathbf{n} = d$, solve for $\lambda$, and substitute back.
+
+% EXAMPLE: from Maximus's notes, 5.2.1 Example 1
+\begin{example}[label=ex:5.3]
+Find the coordinates of the point of intersection between the plane $\mathbf{r}\cdot(\mathbf{i}+2\mathbf{j}+\mathbf{k}) = 5$ and the line $\mathbf{r} = (\mathbf{i}+3\mathbf{j}+\mathbf{k}) + \lambda(\mathbf{i}-2\mathbf{j}+\mathbf{k})$, $\lambda\in\RR$.
+\end{example}
+\solution{
+$\col{1+\lambda}{3-2\lambda}{1+\lambda}\cdot\col{1}{2}{1} = 5$: \quad $1 + \lambda + 6 - 4\lambda + 1 + \lambda = 8 - 2\lambda = 5$, so $\lambda = \dfrac{3}{2}$.
+
+The position vector is $\col{\dfrac{5}{2}}{0}{\dfrac{5}{2}}$, so the point is $\ans{ex1353}{\col{\dfrac{5}{2}}{0}{\dfrac{5}{2}}}$, i.e.\ the coordinates are $\left(\dfrac{5}{2},0,\dfrac{5}{2}\right)$.
+}
+
+\begin{mistake}
+\textbf{Common mistake:} reading $\mathbf{b}\cdot\mathbf{n} = 0$ as ``the line is perpendicular to the plane''. For $l_a$ in Example \ref{ex:5.2}:
+\begin{align*}
+\mathbf{b}\cdot\mathbf{n} = 0,\ \text{so } l_a\perp\pi & & \wrong \\
+\mathbf{b}\cdot\mathbf{n} = 0,\ \text{so } \mathbf{b}\perp\mathbf{n},\ \text{and } l_a\parallel\pi & & \cmark
+\end{align*}
+The line is perpendicular to the \emph{normal}, so it runs along the plane. A line perpendicular to $\pi$ has $\mathbf{b}\parallel\mathbf{n}$.
+\end{mistake}
+
+\begin{caution}
+Take note of whether the question asks for the answer as \textbf{coordinates} $\left(\dfrac{5}{2},0,\dfrac{5}{2}\right)$ or as a \textbf{position vector} $\dfrac{5}{2}\mathbf{i} + \dfrac{5}{2}\mathbf{k}$, and answer accordingly.
+\end{caution}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Foot of Perpendicular (Point to Plane)}
+% ---------------------------------------------------------------------
+The perpendicular from a point $A$ to a plane runs along the \textbf{normal}. So the foot is where the line through $A$ in the direction $\mathbf{n}$ meets the plane: a line--plane intersection (Section \chapnum.5.2).
+
+\begin{definition}{{Method: foot of perpendicular from $A$ to $\pi:\ \mathbf{r}\cdot\mathbf{n} = d$}}
+\begin{enumerate}
+  \item Write the line through $A$ perpendicular to $\pi$: \ $l_{AF}:\ \mathbf{r} = \overrightarrow{OA} + \lambda\mathbf{n}$.
+  \item $F$ lies on $\pi$: substitute $\overrightarrow{OF} = \overrightarrow{OA} + \lambda\mathbf{n}$ into $\mathbf{r}\cdot\mathbf{n} = d$, and solve for $\lambda$.
+  \item Substitute $\lambda$ back into $\overrightarrow{OF}$.
+\end{enumerate}
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  \draw[blue!45!black, very thick] (-0.4,0) -- (7,0) node[right] {$\pi:\ \mathbf{r}\cdot\mathbf{n} = d$};
+  \foreach \x in {0,0.4,...,6.8} \draw[blue!45!black] (\x,0) -- (\x-0.2,-0.2);
+  \coordinate (A) at (2.6,2.4);
+  \coordinate (F) at (2.6,0);
+  \coordinate (Ap) at (2.6,-2.0);
+  \draw[red!70!black, very thick] (A) -- (F);
+  \draw[red!70!black, thick, dashed] (F) -- (Ap);
+  \draw[red!70!black] (F) ++(0.22,0) -- ++(0,0.22) -- ++(-0.22,0);
+  \draw[varr, orange!85!black, very thick] (4.4,0) -- (4.4,1.2) node[above] {$\mathbf{n}$};
+  \node[pt, label=left:{$A$}] at (A) {};
+  \node[pt, label=above left:{$F$}] at (F) {};
+  \node[pt, label=left:{$A'$}] at (Ap) {};
+  \node[red!70!black, left] at (2.6,1.25) {$\mathbf{r} = \overrightarrow{OA} + \lambda\mathbf{n}$};
+\end{tikzpicture}
+\end{center}
+
+% EXAMPLE: from Maximus's notes, 5.3 Example 1
+\begin{example}[label=ex:5.4]
+Find the foot of perpendicular of the point $(7,0,3)$ to the plane $p$ with equation $\mathbf{r}\cdot(\mathbf{i}+\mathbf{j}+2\mathbf{k}) = 1$.
+\end{example}
+\solution{
+Line through $A(7,0,3)$ along the normal: $\mathbf{r} = \col{7}{0}{3} + \lambda\col{1}{1}{2}$. On $p$:
+\[
+\col{7+\lambda}{\lambda}{3+2\lambda}\cdot\col{1}{1}{2} = 7 + \lambda + \lambda + 6 + 4\lambda = 13 + 6\lambda = 1, \quad \lambda = -2.
+\]
+$\overrightarrow{OF} = \col{7}{0}{3} - 2\col{1}{1}{2}$, so the foot is $\ans{ex1354}{\col{5}{-2}{-1}}$, i.e.\ $(5,-2,-1)$.
+}
+
+% EXAMPLE: from Maximus's notes, 5.3 Example 2 (typed key (5/6, 4/3, -1/6);
+% his handwriting corrects it to (5/6, 2/3, 1/6))
+\begin{example}[label=ex:5.5]
+Find the coordinates of the foot of perpendicular from the point $Q(1,1,0)$ to the plane $p$ with equation $\mathbf{r}\cdot(\mathbf{i}+2\mathbf{j}-\mathbf{k}) = 2$.
+\end{example}
+\solution{
+$\mathbf{r} = \col{1}{1}{0} + \lambda\col{1}{2}{-1}$. On $p$: \ $(1+\lambda) + 2(1+2\lambda) - (-\lambda) = 3 + 6\lambda = 2$, so $\lambda = -\dfrac{1}{6}$.
+\[
+\overrightarrow{OF} = \col{1}{1}{0} - \dfrac{1}{6}\col{1}{2}{-1} = \col{\dfrac{5}{6}}{\dfrac{2}{3}}{\dfrac{1}{6}}, \quad\text{so the foot is } \ans{ex1355}{\col{\dfrac{5}{6}}{\dfrac{2}{3}}{\dfrac{1}{6}}},\ \text{i.e. } \left(\dfrac{5}{6},\dfrac{2}{3},\dfrac{1}{6}\right).
+\]
+Check: $\dfrac{5}{6} + \dfrac{4}{3} - \dfrac{1}{6} = 2$. \ \cmark
+}
+
+\begin{mistake}
+\textbf{Common mistake:} a sign slip when multiplying out $-\dfrac{1}{6}\mathbf{n}$.
+\begin{align*}
+\overrightarrow{OF} = \col{1}{1}{0} - \dfrac{1}{6}\col{1}{2}{-1} = \col{\dfrac{5}{6}}{\dfrac{4}{3}}{-\dfrac{1}{6}} & & \wrong \\
+\overrightarrow{OF} = \col{1}{1}{0} - \dfrac{1}{6}\col{1}{2}{-1} = \col{\dfrac{5}{6}}{\dfrac{2}{3}}{\dfrac{1}{6}} & & \cmark
+\end{align*}
+Always substitute the foot back into the plane: $\dfrac{5}{6} + \dfrac{8}{3} + \dfrac{1}{6} = \dfrac{11}{3} \neq 2$ exposes the first answer at once.
+\end{mistake}
+
+\subsubsection*{Reflection (Point about Plane)}
+This is the same as Section \chapnum.4.3: the foot is the midpoint of $A$ and its image, so $\overrightarrow{OA'} = 2\overrightarrow{OF} - \overrightarrow{OA}$.
+
+% EXAMPLE: new, short; the images are used again in Section 13.5.5
+\begin{example}[label=ex:5.6]
+Find the reflections of $A(7,0,3)$ and of $Q(1,1,0)$ in the planes of Examples \ref{ex:5.4} and \ref{ex:5.5}.
+\end{example}
+\solution{
+$\overrightarrow{OA'} = 2\col{5}{-2}{-1} - \col{7}{0}{3} = \ans{ex1356a}{\col{3}{-4}{-5}}$, \qquad
+$\overrightarrow{OQ'} = 2\col{\dfrac{5}{6}}{\dfrac{2}{3}}{\dfrac{1}{6}} - \col{1}{1}{0} = \ans{ex1356b}{\col{\dfrac{2}{3}}{\dfrac{1}{3}}{\dfrac{1}{3}}}$.
+}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Shortest Distance (Point to Plane)}
+% ---------------------------------------------------------------------
+\begin{definition}{{Shortest distance from $A$ to $\pi:\ \mathbf{r}\cdot\mathbf{n} = d$}}
+Let $B$ be any point on $\pi$. Then
+\[
+\text{Shortest distance} = \left|\overrightarrow{BA}\cdot\hat{\mathbf{n}}\right| = \dfrac{\left|\overrightarrow{BA}\cdot\mathbf{n}\right|}{|\mathbf{n}|}.
+\]
+Since $\overrightarrow{OB}\cdot\mathbf{n} = d$, no explicit $B$ is needed:
+\[
+\text{Shortest distance} = \dfrac{\left|(\overrightarrow{OA} - \overrightarrow{OB})\cdot\mathbf{n}\right|}{|\mathbf{n}|} = \dfrac{\left|\overrightarrow{OA}\cdot\mathbf{n} - d\right|}{|\mathbf{n}|}.
+\]
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  \draw[blue!45!black, very thick] (-0.4,0) -- (7,0) node[right] {$\pi$};
+  \foreach \x in {0,0.4,...,6.8} \draw[blue!45!black] (\x,0) -- (\x-0.2,-0.2);
+  \coordinate (A) at (1.8,2.4);
+  \coordinate (F) at (1.8,0);
+  \coordinate (B) at (5.0,0);
+  \draw[varr, teal!55!black, very thick] (B) -- (A) node[midway, above right] {$\overrightarrow{BA}$};
+  \draw[red!70!black, very thick] (A) -- (F);
+  \draw[red!70!black] (F) ++(0.22,0) -- ++(0,0.22) -- ++(-0.22,0);
+  \draw[varr, orange!85!black, very thick] (5.9,0) -- (5.9,1.2) node[above] {$\mathbf{n}$};
+  \node[pt, label=above:{$A$}] at (A) {};
+  \node[pt, label=below:{$B$}] at (B) {};
+  \node[red!70!black, left] at (1.8,1.2) {$|\overrightarrow{BA}\cdot\hat{\mathbf{n}}|$};
+\end{tikzpicture}
+\end{center}
+
+\begin{info}
+\textbf{Why $|\mathbf{a}\cdot\hat{\mathbf{n}}|$, and not $|\mathbf{a}\times\hat{\mathbf{n}}|$?} For a line we used the cross product, because the distance is the side \emph{perpendicular} to the line's direction. Here the vector in consideration is the \emph{normal}, and the distance is the side \emph{along} the normal: the adjacent side, $|\overrightarrow{BA}|\cos\theta$. Adjacent means dot.
+
+We can use the foot of perpendicular too (then the distance is $AF$), but as with lines, it is unnecessary and tedious.
+\end{info}
+
+% EXAMPLE: from Maximus's notes, 5.4 Example 1
+\begin{example}[label=ex:5.7]
+Find the shortest distance of the point $(7,0,3)$ to the plane $p$ with equation $\mathbf{r}\cdot(\mathbf{i}+\mathbf{j}+2\mathbf{k}) = 1$.
+\end{example}
+\solution{
+$B(1,0,0)$ lies on $p$. \ $\overrightarrow{BA} = \col{7}{0}{3} - \col{1}{0}{0} = \col{6}{0}{3}$.
+\[
+\text{Distance} = \dfrac{\left|\col{6}{0}{3}\cdot\col{1}{1}{2}\right|}{\left|\col{1}{1}{2}\right|} = \dfrac{12}{\sqrt{6}} = \ans{ex1357}{2\sqrt{6}}\ \text{units}.
+\]
+Check with Example \ref{ex:5.4}: $|\overrightarrow{AF}| = \left|\col{-2}{-2}{-4}\right| = \sqrt{24} = 2\sqrt{6}$.
+}
+
+% EXAMPLE: from Maximus's notes, 5.4 Example 2 (both of his methods)
+\begin{example}[label=ex:5.8]
+Find the shortest distance from the point $Q(1,1,0)$ to the plane $p$ with equation $\mathbf{r}\cdot(\mathbf{i}+2\mathbf{j}-\mathbf{k}) = 2$.
+\end{example}
+\solution{
+\textbf{With a point.} $B(0,1,0)$ lies on $p$. $\overrightarrow{BQ} = \col{1}{0}{0}$, and the distance is $\dfrac{\left|\col{1}{0}{0}\cdot\col{1}{2}{-1}\right|}{\sqrt{6}} = \ans{ex1358}{\dfrac{1}{\sqrt{6}}}$ units.
+
+\textbf{Without a point.} Let $B$ be \emph{any} point on $p$, so $\overrightarrow{OB}\cdot\mathbf{n} = 2$. Then
+\[
+\text{Distance} = \dfrac{\left|\overrightarrow{OQ}\cdot\mathbf{n} - \overrightarrow{OB}\cdot\mathbf{n}\right|}{|\mathbf{n}|} = \dfrac{\left|\col{1}{1}{0}\cdot\col{1}{2}{-1} - 2\right|}{\sqrt{6}} = \dfrac{|3-2|}{\sqrt{6}} = \dfrac{1}{\sqrt{6}}\ \text{units}.
+\]
+The second method is useful for abstract vector questions, such as the shortest distance from $A$ to $\mathbf{r}\cdot\mathbf{n} = d$.
+}
+
+\begin{mistake}
+\textbf{Common mistake:} using the cross product, as for a line. In Example \ref{ex:5.7}:
+\begin{align*}
+\text{Distance} = \dfrac{\left|\overrightarrow{BA}\times\mathbf{n}\right|}{|\mathbf{n}|} = \dfrac{\left|\col{-3}{-9}{6}\right|}{\sqrt{6}} = \dfrac{\sqrt{126}}{\sqrt{6}} = \sqrt{21} & & \wrong \\
+\text{Distance} = \dfrac{\left|\overrightarrow{BA}\cdot\mathbf{n}\right|}{|\mathbf{n}|} = \dfrac{12}{\sqrt{6}} = 2\sqrt{6} & & \cmark
+\end{align*}
+$\sqrt{21}$ is the distance from $B$ to $F$, \emph{along} the plane.
+\end{mistake}
+
+\begin{question}
+How do we find the shortest distance between a line and a plane, when the line does not lie on the plane? Which case of Section \chapnum.5.2 must the line be in for the question to make sense, and why may any point of the line then be used?
+\end{question}
+
+% EXAMPLE: new, answers his note in 5.4
+\begin{example}[label=ex:5.9]
+Show that the line $l:\ \mathbf{r} = \col{7}{0}{3} + \lambda\col{1}{1}{-1}$ is parallel to $p:\ \mathbf{r}\cdot(\mathbf{i}+\mathbf{j}+2\mathbf{k}) = 1$, and find the distance between them.
+\end{example}
+\solution{
+$\col{1}{1}{-1}\cdot\col{1}{1}{2} = 1 + 1 - 2 = 0$, and $(7,0,3)$ does not satisfy the equation ($7 + 0 + 6 = 13 \neq 1$), so $l\parallel p$ and $l$ is off the plane. Every point of $l$ is the same distance from $p$; use $(7,0,3)$. By Example \ref{ex:5.7}, the distance is $\ans{ex1359}{2\sqrt{6}}$ units.
+}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Reflection (Line about Plane)}
+% ---------------------------------------------------------------------
+Given a line and a plane, we want the reflection of the line about the plane. As in Section \chapnum.4.7, we need two points of the image: the intersection with the plane, which does not move, and the image of one other point.
+
+\begin{definition}{Steps: reflection of $l$ about $\pi$}
+\begin{enumerate}
+  \item Find the intersection $I$ between $l$ and $\pi$ (Section \chapnum.5.2).
+  \item Find the foot of perpendicular $F$ of a point $A$ on $l$ onto $\pi$ (Section \chapnum.5.3).
+  \item Find the reflected point: $\overrightarrow{OA'} = 2\overrightarrow{OF} - \overrightarrow{OA}$ (Section \chapnum.4.3).
+  \item Find the direction of the line, $\overrightarrow{IA'}$. The reflected line is $\mathbf{r} = \overrightarrow{OI} + \mu\,\overrightarrow{IA'}$.
+\end{enumerate}
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+  \draw[black, very thick] (-0.6,0) -- (7.2,0) node[right] {$\pi$};
+  \foreach \x in {-0.4,0,...,6.8} \draw (\x,0) -- (\x-0.2,-0.2);
+  \coordinate (I) at (1.4,0);
+  \coordinate (A) at (4.4,2.4);
+  \coordinate (F) at (4.4,0);
+  \coordinate (Ap) at (4.4,-2.4);
+  \draw[red!70!black, very thick] ($(I)!-0.35!(A)$) -- ($(I)!1.25!(A)$) node[right] {$l$};
+  \draw[blue!70!black, very thick] ($(I)!-0.35!(Ap)$) -- ($(I)!1.25!(Ap)$) node[right] {reflected line};
+  \draw[orange!85!black, thick, dashed] (A) -- (Ap);
+  \node[pt, label=above left:{$I$}] at (I) {};
+  \node[pt, label=right:{$A$}] at (A) {};
+  \node[pt, label=above right:{$F$}] at (F) {};
+  \node[pt, label=right:{$A'$}] at (Ap) {};
+\end{tikzpicture}
+\end{center}
+
+% EXAMPLE: from Maximus's notes, 5.5 Example 1
+\begin{example}[label=ex:5.10]
+Find the reflection of the line $l:\ \mathbf{r} = (7\mathbf{i}+3\mathbf{k}) + \lambda(2\mathbf{i}+\mathbf{k})$, $\lambda\in\RR$, about the plane $\pi:\ \mathbf{r}\cdot(\mathbf{i}+\mathbf{j}+2\mathbf{k}) = 1$.
+\end{example}
+\solution{
+\textbf{\ding{172} Intersection.} $\col{7+2\lambda}{0}{3+\lambda}\cdot\col{1}{1}{2} = 13 + 4\lambda = 1$, so $\lambda = -3$ and $\overrightarrow{OI} = \col{1}{0}{0}$.
+
+\textbf{\ding{173} Foot.} $A(7,0,3)$ is on $l$ ($\lambda = 0$). Its foot on $\pi$ is $F(5,-2,-1)$ (Example \ref{ex:5.4}).
+
+\textbf{\ding{174} Reflected point.} $\overrightarrow{OA'} = 2\overrightarrow{OF} - \overrightarrow{OA} = \col{3}{-4}{-5}$ (Example \ref{ex:5.6}).
+
+\textbf{\ding{175} Direction.} $\overrightarrow{IA'} = \col{3}{-4}{-5} - \col{1}{0}{0} = \col{2}{-4}{-5}$. The reflected line is
+\[
+\mathbf{r} = \ans{ex13510p}{\col{1}{0}{0}} + \mu\ans{ex13510d}{\col{2}{-4}{-5}},\ \mu\in\RR, \quad\text{i.e. } \mathbf{r} = \mathbf{i} + \mu(2\mathbf{i}-4\mathbf{j}-5\mathbf{k}).
+\]
+}
+
+% EXAMPLE: from Maximus's notes, 5.5 Example 2 (typed key direction
+% 2i + 2j - k; his handwriting corrects it to 2i - 2j + k)
+\begin{example}[label=ex:5.11]
+Find the reflection of the line $l:\ \mathbf{r} = (\mathbf{i}+\mathbf{j}) + \lambda\mathbf{i}$, $\lambda\in\RR$, about the plane $\pi:\ \mathbf{r}\cdot(\mathbf{i}+2\mathbf{j}-\mathbf{k}) = 2$.
+\end{example}
+\solution{
+\textbf{\ding{172}} $\col{1+\lambda}{1}{0}\cdot\col{1}{2}{-1} = 3 + \lambda = 2$, so $\lambda = -1$ and $\overrightarrow{OI} = \col{0}{1}{0}$.
+
+\textbf{\ding{173}} $A(1,1,0)$ is on $l$. Its foot on $\pi$ is $F\!\left(\dfrac{5}{6},\dfrac{2}{3},\dfrac{1}{6}\right)$ (Example \ref{ex:5.5}).
+
+\textbf{\ding{174}} $\overrightarrow{OA'} = \col{\dfrac{2}{3}}{\dfrac{1}{3}}{\dfrac{1}{3}}$ (Example \ref{ex:5.6}).
+
+\textbf{\ding{175}} $\overrightarrow{IA'} = \col{\dfrac{2}{3}}{-\dfrac{2}{3}}{\dfrac{1}{3}} = \dfrac{1}{3}\col{2}{-2}{1}$. The reflected line is
+\[
+\mathbf{r} = \ans{ex13511p}{\col{0}{1}{0}} + \mu\ans{ex13511d}{\col{2}{-2}{1}},\ \mu\in\RR, \quad\text{i.e. } \mathbf{r} = \mathbf{j} + \mu(2\mathbf{i}-2\mathbf{j}+\mathbf{k}).
+\]
+}
+
+\begin{caution}
+If $l$ is parallel to $\pi$, step \ding{172} fails: there is no intersection. Then the reflected line is parallel to $l$. Reflect one point of $l$, and keep the direction $\mathbf{b}$.
+\end{caution}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Relationship Between Two Planes}
+% ---------------------------------------------------------------------
+\begin{definition}{{Two planes $p_1:\ \mathbf{r}\cdot\mathbf{n}_1 = d_1$ and $p_2:\ \mathbf{r}\cdot\mathbf{n}_2 = d_2$}}
+\begin{enumerate}
+  \item $p_1$ and $p_2$ are not parallel, and therefore intersect in a line (most common): \ $\mathbf{n}_1\not\parallel\mathbf{n}_2$.
+  \item $p_1$ and $p_2$ are parallel but are not the same plane: \ after scaling so that $\mathbf{n}_1 = \mathbf{n}_2$, \ $d_1\neq d_2$.
+  \item $p_1$ and $p_2$ are the same plane: \ after scaling so that $\mathbf{n}_1 = \mathbf{n}_2$, \ $d_1 = d_2$.
+\end{enumerate}
+\end{definition}
+
+\begin{mistake}
+\textbf{Common mistake:} comparing the constants before the normals are made equal. For $x+y+z = 5$ and $2x+2y+2z = 10$:
+\begin{align*}
+\mathbf{n}_1\parallel\mathbf{n}_2 \text{ and } 5\neq 10, \text{ so the planes are parallel and distinct} & & \wrong \\
+2x+2y+2z = 10 \iff x+y+z = 5:\ \ \mathbf{n}_1 = \mathbf{n}_2,\ d_1 = d_2,\ \text{the same plane} & & \cmark
+\end{align*}
+\end{mistake}
+
+\subsubsection*{Intersection Between Two Planes}
+Two non-parallel planes intersect in a line. Two methods find it.
+
+\begin{info}
+\textbf{Method 1: by GC (recommended).} \tikey{apps}, PlySmlt2, \textsf{SIMULT EQN SOLVER}, \textsf{EQUATIONS: 2}, \textsf{UNKNOWNS: 3}. Enter the two equations and press \textsf{SOLVE}. The GC gives $x_1$ and $x_2$ in terms of $x_3$, with $x_3 = x_3$ free. Let $z = \lambda$ and read off the line.
+
+\textbf{Method 2: manual.} Only necessary if there are unknown constants, e.g.\ $\mathbf{r}\cdot\col{1}{2}{a} = 1$; then the answer will possibly be in terms of $a$. Steps: \ding{172} the direction is $\mathbf{n}_1\times\mathbf{n}_2$ (it lies in both planes, so it is perpendicular to both normals); \ding{173} let $z = 0$ and solve for $x$ and $y$ simultaneously, to get one point.
+\end{info}
+
+% EXAMPLE: from Maximus's notes, 5.6.1 Example 1
+\begin{example}[label=ex:5.12]
+Find the equation of the line of intersection between the planes $3x+2y+z = 10$ and $x-2y+z = 5$.
+\end{example}
+\solution{
+\textbf{Method 1 (GC).} The GC gives $x = \dfrac{15}{4} - \dfrac{1}{2}z$, \ $y = -\dfrac{5}{8} + \dfrac{1}{4}z$, \ $z = z$. Let $z = \lambda$:
+\[
+\mathbf{r} = \ans{ex13512p}{\col{\dfrac{15}{4}}{-\dfrac{5}{8}}{0}} + \lambda\ans{ex13512d}{\col{-\dfrac{1}{2}}{\dfrac{1}{4}}{1}},\ \lambda\in\RR.
+\]
+\textbf{Method 2 (manual).} \ding{172} $\col{3}{2}{1}\times\col{1}{-2}{1} = \col{2+2}{-(3-1)}{-6-2} = \col{4}{-2}{-8} = 2\col{2}{-1}{-4}$.
+\ding{173} Let $z = 0$: $3x + 2y = 10$ and $x - 2y = 5$ give $x = \dfrac{15}{4}$, $y = -\dfrac{5}{8}$. So $\mathbf{r} = \col{\dfrac{15}{4}}{-\dfrac{5}{8}}{0} + \lambda\col{2}{-1}{-4}$.
+}
+
+\begin{question}
+Another student's answer is $\mathbf{r} = \col{0}{\dfrac{5}{4}}{\dfrac{15}{2}} + \lambda\col{2}{-1}{-4}$. Is it the same line? What is the quickest way to decide?
+\end{question}
+
+% EXAMPLE: from Maximus's notes, 5.6.1 Example 2
+\begin{example}[label=ex:5.13]
+Find the equation of the line of intersection between the planes $x+2y-2z = 3$ and $3x-2y+4z = 5$.
+\end{example}
+\solution{
+\textbf{Method 1 (GC).} $x = 2 - \dfrac{1}{2}z$, \ $y = \dfrac{1}{2} + \dfrac{5}{4}z$, \ $z = z$. So
+$\mathbf{r} = \ans{ex13513p}{\col{2}{\dfrac{1}{2}}{0}} + \mu\ans{ex13513d}{\col{-\dfrac{1}{2}}{\dfrac{5}{4}}{1}}$, \ $\mu\in\RR$.
+
+\textbf{Method 2 (manual).} $\col{1}{2}{-2}\times\col{3}{-2}{4} = \col{8-4}{-(4+6)}{-2-6} = 2\col{2}{-5}{-4}$. With $z = 0$: $x + 2y = 3$, $3x - 2y = 5$, so $x = 2$, $y = \dfrac{1}{2}$, and $\mathbf{r} = \col{2}{\dfrac{1}{2}}{0} + \mu\col{2}{-5}{-4}$.
+}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Angles Involving Planes}
+% ---------------------------------------------------------------------
+\subsubsection*{Angle Between Two Planes}
+\begin{definition}{Acute angle between two planes}
+Let $\theta$ denote the acute angle between $p_1:\ \mathbf{r}\cdot\mathbf{n}_1 = d_1$ and $p_2:\ \mathbf{r}\cdot\mathbf{n}_2 = d_2$. Then
+\[
+\cos\theta = \dfrac{|\mathbf{n}_1\cdot\mathbf{n}_2|}{|\mathbf{n}_1|\,|\mathbf{n}_2|}.
+\]
+\end{definition}
+The angle between two planes equals the angle between their normals. The modulus picks the acute angle, exactly as for two lines.
+
+% EXAMPLE: from Maximus's notes, 5.7.1 Example 1
+\begin{example}[label=ex:5.14]
+Find the angle between the planes $3x - y + 2z = 3$ and $y = 2$.
+\end{example}
+\solution{
+$y = 2$ has normal $\col{0}{1}{0}$. \quad $\cos\theta = \dfrac{\left|\col{3}{-1}{2}\cdot\col{0}{1}{0}\right|}{\sqrt{14}\,(1)} = \dfrac{1}{\sqrt{14}}$, so $\theta = \ans{ex13514}{74.5^{\circ}}$ (1 d.p.).
+}
+
+% EXAMPLE: from Maximus's notes, 5.7.1 (second example, labelled
+% "Example 2" there)
+\begin{example}[label=ex:5.15]
+Find the angle between the planes $2x - 3y + 4z = 6$ and $x + 2y - 5z = 8$.
+\end{example}
+\solution{
+$\cos\theta = \dfrac{\left|\col{2}{-3}{4}\cdot\col{1}{2}{-5}\right|}{\sqrt{29}\,\sqrt{30}} = \dfrac{|2 - 6 - 20|}{\sqrt{870}} = \dfrac{24}{\sqrt{870}}$, so $\theta = \ans{ex13515}{35.5^{\circ}}$ (1 d.p.).
+}
+
+\begin{mistake}
+\textbf{Common mistake:} leaving out the modulus, which gives the obtuse angle.
+\begin{align*}
+\cos\theta = \dfrac{-24}{\sqrt{870}},\ \ \theta = 144.5^{\circ} & & \wrong \\
+\cos\theta = \dfrac{|-24|}{\sqrt{870}},\ \ \theta = 35.5^{\circ} & & \cmark
+\end{align*}
+\end{mistake}
+
+\subsubsection*{Angle Between Line and Plane}
+\begin{definition}{Acute angle between a line and a plane}
+Let $\theta$ denote the acute angle between $l:\ \mathbf{r} = \mathbf{a} + \lambda\mathbf{b}$ and $p:\ \mathbf{r}\cdot\mathbf{n} = d$. Then
+\[
+\sin\theta = \dfrac{|\mathbf{n}\cdot\mathbf{b}|}{|\mathbf{n}|\,|\mathbf{b}|}.
+\]
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.72]
+  \draw[black, very thick] (-0.4,0) -- (6.2,0) node[right] {$p$};
+  \foreach \x in {-0.2,0.2,...,6.0} \draw (\x,0) -- (\x-0.2,-0.2);
+  \draw[blue!70!black, very thick] (0.6,-0.6) -- (4.6,2.6) node[right] {$l$};
+  \draw[varr, red!70!black, very thick] (1.35,0) -- (1.35,2.4) node[above] {$\mathbf{n}$};
+  \draw[orange!85!black, thick] (1.85,0) arc (0:38.7:0.5);
+  \node[orange!85!black] at (2.12,0.2) {$\theta$};
+  \draw[orange!85!black, thick] (1.35,0.95) arc (90:38.7:0.95);
+  \node[orange!85!black] at (1.83,1.12) {$\alpha$};
+\end{tikzpicture}
+\end{center}
+The dot product $\mathbf{n}\cdot\mathbf{b}$ measures the angle $\alpha$ between the line and the \emph{normal}. The angle with the plane is $\theta = 90^{\circ} - \alpha$, and $\cos\alpha = \cos(90^{\circ}-\theta) = \sin\theta$.
+
+\begin{caution}
+\textbf{Note that although this formula has ``$\sin\theta$'' rather than ``$\cos\theta$'', it is still the DOT product.} The ``$\sin$'' is there rather than ``$\cos$'' to account for the $90^{\circ} - \alpha$ step at the back. You may use Method 2 (find $\alpha$ with $\cos$, then $\theta = 90^{\circ} - \alpha$) if you are uncomfortable with this.
+\end{caution}
+
+% EXAMPLE: from Maximus's notes, 5.7.2 Example 1
+\begin{example}[label=ex:5.16]
+Find the angle between $\mathbf{r} = \col{-2}{-4}{5} + \mu\col{3}{5}{-4}$, $\mu\in\RR$, and $\mathbf{r}\cdot\col{0}{1}{0} = 1$.
+\end{example}
+\solution{
+\textbf{Method 1 ($\sin\theta$ directly).} \ $\sin\theta = \dfrac{\left|\col{3}{5}{-4}\cdot\col{0}{1}{0}\right|}{\sqrt{50}\,(1)} = \dfrac{5}{\sqrt{50}} = \dfrac{1}{\sqrt{2}}$, so $\theta = \ans{ex13516}{45^{\circ}}$.
+
+\enlargethispage{3\baselineskip}\textbf{Method 2 ($\cos\alpha$, then $90^{\circ}-\alpha$).} \ $\cos\alpha = \dfrac{1}{\sqrt{2}}$, so $\alpha = 45^{\circ}$ and $\theta = 90^{\circ} - 45^{\circ} = 45^{\circ}$.
+}
+
+% EXAMPLE: from Maximus's notes, 5.7.2 (second example, also labelled
+% "Example 1" there)
+\begin{example}[label=ex:5.17]
+Find the angle between $\mathbf{r} = \col{2}{-1}{-3} + \mu\col{2}{6}{3}$, $\mu\in\RR$, and $\mathbf{r}\cdot\col{2}{-1}{-2} = 4$.
+\end{example}
+\solution{
+\textbf{Method 1.} \ $\sin\theta = \dfrac{\left|\col{2}{6}{3}\cdot\col{2}{-1}{-2}\right|}{7\times 3} = \dfrac{|4-6-6|}{21} = \dfrac{8}{21}$, so $\theta = \ans{ex13517}{22.4^{\circ}}$ (1 d.p.).
+
+\textbf{Method 2.} \ $\cos\alpha = \dfrac{8}{21}$, so $\alpha = 67.6^{\circ}$ and $\theta = 90^{\circ} - \alpha = 22.4^{\circ}$ (1 d.p.).
+}
+
+\begin{mistake}
+\textbf{Common mistake:} using $\cos$ and stopping, so the answer is the angle with the normal.
+\begin{align*}
+\cos\theta = \dfrac{8}{21},\ \ \theta = 67.6^{\circ} & & \wrong \\
+\sin\theta = \dfrac{8}{21},\ \ \theta = 22.4^{\circ} \quad (\text{or } 90^{\circ} - 67.6^{\circ}) & & \cmark
+\end{align*}
+Draw the diagram to see which angle the question wants.
+\end{mistake}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Distance Between Parallel Planes}
+% ---------------------------------------------------------------------
+\begin{definition}{{Distance from a plane to the origin, and between parallel planes}}
+The distance from the plane $\pi:\ \mathbf{r}\cdot\mathbf{n} = k$ to the origin is
+\[
+\text{Distance between $\pi$ and the origin} = \left|\dfrac{k}{|\mathbf{n}|}\right|.
+\]
+So for two parallel planes $p_1:\ \mathbf{r}\cdot\mathbf{n} = d_1$ and $p_2:\ \mathbf{r}\cdot\mathbf{n} = d_2$ with \textbf{the same} $\mathbf{n}$,
+\[
+\text{Distance between $p_1$ and $p_2$} = \left|\dfrac{d_1}{|\mathbf{n}|} - \dfrac{d_2}{|\mathbf{n}|}\right|.
+\]
+\end{definition}
+The first formula is Section \chapnum.5.4 with $A = O$: $\dfrac{|\mathbf{0}\cdot\mathbf{n} - k|}{|\mathbf{n}|}$. The second subtracts the two \emph{signed} distances from $O$, measured along the same unit normal $\hat{\mathbf{n}}$: when the planes are on opposite sides of $O$, the distances add.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+  \draw[blue!45!black, very thick] (0,2.2) -- (6.6,2.2) node[right] {$p_1:\ \mathbf{r}\cdot\mathbf{n} = d_1$};
+  \draw[teal!45!black, very thick] (0,-0.9) -- (6.6,-0.9) node[right] {$p_2:\ \mathbf{r}\cdot\mathbf{n} = d_2$};
+  \node[pt, label=left:{$O$}] at (1.6,0) {};
+  \draw[varr, orange!85!black, very thick] (1.6,0) -- (1.6,2.2);
+  \node[orange!85!black, right] at (1.6,1.1) {$\dfrac{d_1}{|\mathbf{n}|}$};
+  \draw[varr, orange!85!black, very thick] (1.6,0) -- (1.6,-0.9);
+  \node[orange!85!black, right] at (1.6,-0.45) {$\dfrac{|d_2|}{|\mathbf{n}|}$};
+  \draw[varr, red!70!black, thick] (5.0,0.6) -- (5.0,1.6) node[right] {$\hat{\mathbf{n}}$};
+\end{tikzpicture}
+\end{center}
+
+\begin{question}
+What does it mean if a plane $p$ has equation $\mathbf{r}\cdot\mathbf{n} = 0$?
+\end{question}
+
+% EXAMPLE: from Maximus's notes, 5.8 Example 1
+\begin{example}[label=ex:5.18]
+Find the distance between the planes $x + y + z = 5$ and $x + y + z = -3$.
+\end{example}
+\solution{
+Same normal $\col{1}{1}{1}$, of length $\sqrt{3}$. \quad Distance $= \left|\dfrac{5}{\sqrt{3}} - \dfrac{-3}{\sqrt{3}}\right| = \ans{ex13518}{\dfrac{8}{\sqrt{3}}}$ units.
+}
+
+% EXAMPLE: from Maximus's notes, 5.8 Example 2
+\begin{example}[label=ex:5.19]
+Find the distance between the planes $x + 2y - 3z = 2$ and $2x + 4y - 6z = -10$.
+\end{example}
+\solution{
+Make the normals the same first: $2x+4y-6z = -10 \iff \mathbf{r}\cdot\col{1}{2}{-3} = -5$. With $\mathbf{r}\cdot\col{1}{2}{-3} = 2$,
+\[
+\text{Distance} = \left|\dfrac{2}{\sqrt{14}} - \dfrac{-5}{\sqrt{14}}\right| = \ans{ex13519}{\dfrac{7}{\sqrt{14}}}\ \text{units}.
+\]
+}
+
+\begin{mistake}
+\textbf{Common mistake:} subtracting the constants before the normals are the same.
+\begin{align*}
+\text{Distance} = \dfrac{|2-(-10)|}{\sqrt{14}} = \dfrac{12}{\sqrt{14}} & & \wrong \\
+\text{Distance} = \dfrac{|2-(-5)|}{\sqrt{14}} = \dfrac{7}{\sqrt{14}} & & \cmark
+\end{align*}
+\end{mistake}
+
+% EXAMPLE: from Maximus's notes, 5.8 Example 3
+\begin{example}[label=ex:5.20]
+The plane $\pi$ has equation $\mathbf{r}\cdot\col{1}{0}{1} = 4$. Find the possible Cartesian equations of the plane $\pi'$ such that $\pi'$ is parallel to $\pi$ and the perpendicular distance between $\pi$ and $\pi'$ is $\dfrac{5\sqrt{2}}{2}$ units.
+\end{example}
+\solution{
+Draw $\pi'$ on either side of $\pi$. Let $\pi':\ \mathbf{r}\cdot\col{1}{0}{1} = k$. Then
+\[
+\left|\dfrac{k}{\sqrt{2}} - \dfrac{4}{\sqrt{2}}\right| = \dfrac{5\sqrt{2}}{2}
+\ \Rightarrow\ \dfrac{|k-4|}{\sqrt{2}} = \dfrac{5}{\sqrt{2}}
+\ \Rightarrow\ |k-4| = 5
+\ \Rightarrow\ k = 9 \ \text{or}\ k = -1.
+\]
+So $\pi'$ is $\ans{ex13520a}{x+z=9}$ or $\ans{ex13520b}{x+z=-1}$.
+}

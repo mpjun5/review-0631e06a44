@@ -1,0 +1,98 @@
+% =====================================================================
+% Chapter \chapnum: Vectors, H2 Mathematics 9758.
+% In the 2026 syllabus this is Topic 3 (3.1 basic properties, 3.2 scalar
+% and vector products, 3.3 three-dimensional vector geometry), not the
+% older "section 1.4" label.
+% Structure follows Maximus's "Vectors Summary Notes" (source/), sections
+% 1-5 -> 13.1-13.5. Every example is marked with its origin:
+%   % EXAMPLE: from Maximus's notes, <his section>   (his practice problem)
+%   % EXAMPLE: kept from the draft / new                (fills a gap)
+% Blue `question' boxes = thought-provoking questions only.
+% Worked examples = `example' box (see preamble_build.tex).
+% Every final answer goes through \ans{key}{value}, and every coordinate
+% of a data-driven diagram is written \coordinate (Name) at \xyz{x}{y}{z}
+% (../vec_common.tex), so that ../checks/verify.py can check them.
+% =====================================================================
+
+\chapter{Vectors}
+
+\localtableofcontents
+
+\vspace{4mm}
+\subsection*{Why this chapter?}
+A drone leaves a point on the ground. One instruction says ``fly $2\,\mathrm{km}$ east, then $2\,\mathrm{km}$ north''. Another says ``fly $2\,\mathrm{km}$ north, then $2\,\mathrm{km}$ east''. A third says ``climb $2\,\mathrm{km}$''. These are not ordinary numbers: each one has a \textbf{size and a direction}. A quantity like that is a \textbf{vector}.
+
+Vectors were written in the form we use here at the end of the 19th century, when Gibbs and Heaviside took the useful part of Hamilton's quaternions and drew it as an arrow. The same arrows now describe forces, velocities and the paths of aircraft. In this chapter we learn to add those arrows, to multiply them in two different ways, and then to write the equations of lines and planes in space.
+
+\begin{question}
+The first two drone instructions finish at the same place. The third one does not. What, exactly, has to be the same about two vectors before we are allowed to call them equal?
+\end{question}
+
+\begin{info}
+\textbf{How to read this chapter.} Every new idea is tied to a small picture with actual coordinates, not to a general proof. Draw the arrow, write the column, then compute. When a line or a plane question gets messy, go back to the one fact it was built on: a point, and a direction (or a normal).
+\end{info}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\small
+\begin{tabular}{|p{5.4cm}|p{6.6cm}|c|}
+\hline
+\textbf{You are asked for \ldots} & \textbf{Start from \ldots} & \textbf{Section} \\ \hline
+a length, ``is it parallel?'', collinear points, a parallelogram, a ratio & components, or the ratio theorem in MF27 & \chapnum.1 \\ \hline
+an angle, ``are they perpendicular?'', a projection & the scalar product & \chapnum.2 \\ \hline
+a normal, a perpendicular distance, an area & the vector product & \chapnum.3 \\ \hline
+a line, a foot, a reflection, two lines, skew lines & one point on the line and one direction vector & \chapnum.4 \\ \hline
+a plane, a line meeting a plane, two planes, a distance or angle with a plane & one point on the plane and one normal vector & \chapnum.5 \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{The chapter at a glance}
+Come back to this page when you revise. Two reminders sit underneath everything else.
+
+\begin{center}
+\begin{tikzpicture}[
+  q/.style={draw=blue!50!black, fill=blue!6, rounded corners, thick, align=center, text width=4.4cm, minimum height=9mm, font=\small},
+  a/.style={draw=teal!55!black, fill=teal!8, thick, align=center, text width=5.4cm, minimum height=9mm, font=\small},
+  lab/.style={font=\small\bfseries, fill=white, inner sep=1pt},
+  arr/.style={-{Stealth[length=2.4mm]}, thick}]
+\node[q] (q1) at (0,0) {Is the unknown a \textbf{line}?};
+\node[q] (q2) at (0,-1.45) {Is the unknown a \textbf{plane}?};
+\node[a] (a1) at (6.6,0) {Need a \textbf{point} and a \textbf{direction} $\mathbf{b}$ \hfill \chapnum.4};
+\node[a] (a2) at (6.6,-1.45) {Need a \textbf{point} and a \textbf{normal} $\mathbf{n}$ \hfill \chapnum.5};
+\draw[arr] (q1) -- (a1);
+\draw[arr] (q2) -- (a2);
+\end{tikzpicture}
+\end{center}
+
+\newpage
+\textbf{Then the usual jobs, and the formula or method that does each one:}
+\begin{center}
+\renewcommand{\arraystretch}{1.28}
+\small
+\begin{tabular}{|p{5.6cm}|p{8.6cm}|}
+\hline
+\textbf{Job} & \textbf{Formula or method (only the ratio theorem and $\mathbf{a}\times\mathbf{b}$ are in MF27)} \\ \hline
+angle between two vectors (both out, or both in) & $\cos\theta = \dfrac{\mathbf{a}\cdot\mathbf{b}}{|\mathbf{a}|\,|\mathbf{b}|}$ \\ \hline
+projection of $\mathbf{a}$ onto $\mathbf{b}$ & length $|\mathbf{a}\cdot\hat{\mathbf{b}}|$, \ vector $(\mathbf{a}\cdot\hat{\mathbf{b}})\hat{\mathbf{b}}$ \\ \hline
+perpendicular distance from a point to a line & $|\overrightarrow{BA}\times\hat{\mathbf{b}}|$, \ $B$ any point on the line \\ \hline
+area of a parallelogram, a triangle & $|\mathbf{a}\times\mathbf{b}|$, \ $\dfrac{1}{2}|\mathbf{a}\times\mathbf{b}|$ \\ \hline
+foot of perpendicular to a line, reflection & $\overrightarrow{AF}\cdot\mathbf{b} = 0$, \ then $\overrightarrow{OA'} = 2\overrightarrow{OF} - \overrightarrow{OA}$ \\ \hline
+acute angle between two lines, two planes & $\cos\theta = \dfrac{|\mathbf{b}_1\cdot\mathbf{b}_2|}{|\mathbf{b}_1|\,|\mathbf{b}_2|}$, \ $\cos\theta = \dfrac{|\mathbf{n}_1\cdot\mathbf{n}_2|}{|\mathbf{n}_1|\,|\mathbf{n}_2|}$ \\ \hline
+foot of perpendicular to a plane & line $\mathbf{r} = \overrightarrow{OA} + \lambda\mathbf{n}$, substitute into the plane \\ \hline
+distance from a point to a plane & $|\overrightarrow{BA}\cdot\hat{\mathbf{n}}| = \dfrac{|\overrightarrow{OA}\cdot\mathbf{n} - d|}{|\mathbf{n}|}$ \\ \hline
+angle between a line and a plane & $\sin\theta = \dfrac{|\mathbf{n}\cdot\mathbf{b}|}{|\mathbf{n}|\,|\mathbf{b}|}$ \ (still a dot product) \\ \hline
+line of intersection of two planes & GC (PlySmlt2), or $\mathbf{n}_1\times\mathbf{n}_2$ and $z = 0$ \\ \hline
+distance between parallel planes (same $\mathbf{n}$) & $\left|\dfrac{d_1}{|\mathbf{n}|} - \dfrac{d_2}{|\mathbf{n}|}\right|$ \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{info}
+\textbf{Conventions used in this chapter} (the same as in the summary notes this chapter follows).
+\begin{itemize}
+  \setlength{\itemsep}{1mm}
+  \item A line is written $\mathbf{r} = \mathbf{a} + \lambda\mathbf{b}$, $\lambda\in\RR$: $\mathbf{a}$ is a \textbf{point}, $\mathbf{b}$ is the \textbf{direction}. A plane is written $\mathbf{r}\cdot\mathbf{n} = d$: $\mathbf{n}$ is the \textbf{normal}. Always state the parameter's range, ``$\lambda\in\RR$''.
+  \item $F$ is a foot of perpendicular, $A'$ is the reflection of $A$, and $I$ is an intersection.
+  \item In handwriting, underline every vector: $\underline{r} = \underline{a} + \lambda\underline{b}$. A vector without its underline is a number, and loses the mark.
+  \item Answer in the form asked: coordinates $(x,y,z)$, or a position vector. Give lengths with ``units'', and angles in degrees to $1$ decimal place unless exact.
+\end{itemize}
+\end{info}

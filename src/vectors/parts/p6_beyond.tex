@@ -1,0 +1,121 @@
+% =====================================================================
+% Out-of-syllabus section and "For your interest" at the end of the
+% chapter. Every page from here on has a grey line in the left margin
+% and "Out of syllabus" / "For your interest" in the header.
+% =====================================================================
+\clearpage
+\oosmargin
+\rhead{\textcolor{gray}{\textbf{Out of syllabus}}\quad Chapter \thechapter: \leftmark}
+\section{Beyond the Syllabus}
+% =====================================================================
+\oosnote[The syllabus studies two lines, a line and a plane, and two planes. It explicitly excludes triple products, and the shortest distance between two skew lines. Three planes at once are not in the list either. Nothing in this section is examined.]
+
+% ---------------------------------------------------------------------
+\subsection{Three Planes}
+% ---------------------------------------------------------------------
+Two planes, if they meet, meet in a line. A third plane can cut that line in a point, contain the whole line, or miss it. Those are the three pictures worth knowing. (A fourth picture, three planes with no two parallel but with an empty common intersection, is the same algebra as the third: the equations are inconsistent.)
+
+% EXAMPLE: kept from the draft
+\begin{example}[label=ex:6.1]
+Let $\Pi_1$ be $x+y+z = 6$ and $\Pi_2$ be $2x-y+z = 3$. By either method of Section \chapnum.5.6 (direction $\mathbf{n}_1\times\mathbf{n}_2$, and $z = 0$ for a point), their line of intersection is $\mathbf{r} = \col{3}{3}{0} + t\col{2}{1}{-3}$. Say how each third plane meets $\Pi_1$ and $\Pi_2$.
+\begin{enumerate}[(a)]
+  \item $\Pi_3:\ x + 2y = 5$.
+  \item $\Pi_4:\ x + y + z = 1$.
+  \item $\Pi_5:\ x - 2y = -3$.
+\end{enumerate}
+\end{example}
+\solution{
+(a)\quad On the line, $x+2y = (3+2t) + 2(3+t) = 9+4t$. Set this equal to $5$: $4t = -4$, so $t = -1$. The three planes meet at the single point
+\[
+\ans{ex1361pt}{\col{1}{2}{3}}.
+\]
+Check: $1+2+3 = 6$, \ $2-2+3 = 3$, \ $1+4 = 5$.
+
+(b)\quad $\Pi_4$ has the same normal as $\Pi_1$ but a different constant, so $\Pi_4$ is parallel to $\Pi_1$ and distinct from it. A point cannot lie on both. There is \ans{ex1361none}{no common point}.
+
+(c)\quad On the line, $x-2y = (3+2t) - 2(3+t) = -3$, for every $t$. The direction $\col{2}{1}{-3}$ is perpendicular to $\col{1}{-2}{0}$, and the point $(3,3,0)$ satisfies $x-2y = -3$. So the whole line lies in $\Pi_5$. The three planes meet in \ans{ex1361line}{the whole line}.
+}
+
+\begin{info}
+\textbf{Three equations on the GC.} The same PlySmlt2 solver as in Section \chapnum.5.6, now with $3$ equations in $3$ unknowns. For (a), type the system $x+y+z = 6$, \ $2x-y+z = 3$, \ $x+2y = 5$. The GC returns $(1,2,3)$. For (b) it reports no solution. If the question asks for a geometrical description, the GC point is only the start: you still say ``one point'', ``a line'' or ``no point''.
+\end{info}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Shortest Distance between Two Skew Lines}
+% ---------------------------------------------------------------------
+The syllabus stops once you know that two lines are skew. It does \emph{not} ask for the distance between them, or for the common perpendicular. Both are excluded by name. The distance is the length of the unique segment that meets both lines and is perpendicular to both.
+
+If the lines are $\mathbf{r} = \mathbf{a}_1 + \lambda\mathbf{d}_1$ and $\mathbf{r} = \mathbf{a}_2 + \mu\mathbf{d}_2$, that distance is
+\[
+\dfrac{\left|(\mathbf{a}_2-\mathbf{a}_1)\cdot(\mathbf{d}_1\times\mathbf{d}_2)\right|}{|\mathbf{d}_1\times\mathbf{d}_2|}.
+\]
+$\mathbf{d}_1\times\mathbf{d}_2$ is perpendicular to both directions. The formula is the length of the projection of $\mathbf{a}_2-\mathbf{a}_1$ onto that unit direction. It is exactly the point-to-plane distance $|\overrightarrow{BA}\cdot\hat{\mathbf{n}}|$ of Section \chapnum.5.4: the plane through $l_1$ parallel to $l_2$ has normal $\mathbf{d}_1\times\mathbf{d}_2$.
+
+% EXAMPLE: new; uses the skew pair of Example 13.4.11(a)
+\begin{example}[label=ex:6.2]
+The lines $l_1:\ \mathbf{r} = \col{1}{0}{2}+\lambda\col{1}{2}{1}$ and $l_3:\ \mathbf{r} = \col{2}{12}{7}+\mu\col{-1}{3}{0}$ were shown to be skew in Example \ref{ex:4.10}. Find the shortest distance between them.
+\end{example}
+\solution{
+$\mathbf{d}_1\times\mathbf{d}_2 = \col{1}{2}{1}\times\col{-1}{3}{0} = \col{0-3}{-(0+1)}{3+2} = \col{-3}{-1}{5}$, \quad $|\mathbf{d}_1\times\mathbf{d}_2| = \sqrt{35}$.
+
+$\mathbf{a}_2-\mathbf{a}_1 = \col{1}{12}{5}$, and $(\mathbf{a}_2-\mathbf{a}_1)\cdot(\mathbf{d}_1\times\mathbf{d}_2) = -3 - 12 + 25 = 10$.
+
+The shortest distance is $\dfrac{|10|}{\sqrt{35}} = \ans{ex1362d}{\dfrac{2\sqrt{35}}{7}}$.
+}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{The Scalar Triple Product}
+% ---------------------------------------------------------------------
+The product $\mathbf{a}\cdot(\mathbf{b}\times\mathbf{c})$ is a scalar. Its absolute value is the volume of the parallelepiped with edges $\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$. The syllabus excludes triple products, both $\mathbf{a}\cdot(\mathbf{b}\times\mathbf{c})$ and $\mathbf{a}\times(\mathbf{b}\times\mathbf{c})$, so this is for interest in the algebra only.
+
+The three edges of the unit cube give the easiest case: $\mathbf{i}\cdot(\mathbf{j}\times\mathbf{k}) = \mathbf{i}\cdot\mathbf{i} = 1$, and the cube has volume $1$.
+
+\begin{center}
+\begin{tikzpicture}[threeD, scale=1.05]
+  \place{O}{0}{0}{0}
+  \place{A}{2}{0}{0}
+  \place{B}{0}{2}{0}
+  \place{C}{0}{0}{2}
+  \place{D}{2}{2}{0}
+  \place{E}{2}{0}{2}
+  \place{F}{0}{2}{2}
+  \place{G}{2}{2}{2}
+  \draw[plane] (O) -- (A) -- (D) -- (B) -- cycle;
+  \draw[blue!70!black, thick] (O) -- (C) -- (E) -- (A);
+  \draw[blue!70!black, thick] (C) -- (F) -- (B);
+  \draw[blue!70!black, thick] (E) -- (G) -- (F);
+  \draw[blue!70!black, thick] (G) -- (D);
+  \draw[varr, orange!85!black, very thick] (O) -- (A) node[below right] {$\mathbf{a}$};
+  \draw[varr, teal!55!black, very thick] (O) -- (B) node[right] {$\mathbf{b}$};
+  \draw[varr, red!70!black, very thick] (O) -- (C) node[above] {$\mathbf{c}$};
+\end{tikzpicture}
+\end{center}
+The volume is the base area times the height, which is exactly $|\mathbf{a}\cdot(\mathbf{b}\times\mathbf{c})|$. In the picture the three edges leave the same corner; the order $\mathbf{b}\times\mathbf{c}$ points along $\mathbf{a}$ when the triple product is positive.
+
+% EXAMPLE: kept from the draft
+\begin{example}[label=ex:6.3]
+Find the volume of the parallelepiped with edges $\mathbf{a} = \col{2}{0}{1}$, $\mathbf{b} = \col{0}{3}{0}$ and $\mathbf{c} = \col{0}{0}{4}$.
+\end{example}
+\solution{
+$\mathbf{b}\times\mathbf{c} = \col{12-0}{0-0}{0-0} = \col{12}{0}{0}$. Then
+$\mathbf{a}\cdot(\mathbf{b}\times\mathbf{c}) = 24 + 0 + 0 = 24$. The volume is $\ans{ex1363vol}{24}$.
+
+(The box is $2$ by $3$ by $4$ after a shear in the $z$ direction that does not change the base area or the height, so the volume is $2\cdot 3\cdot 4 = 24$.)
+}
+
+% =====================================================================
+\clearpage
+\rhead{\textcolor{gray}{\textbf{For your interest}}\quad Chapter \thechapter: \leftmark}
+\section{For Your Interest}
+% =====================================================================
+A few places vectors turn up outside the examination. These are illustrations, not facts to memorise.
+\begin{itemize}
+  \setlength{\itemsep}{2.4mm}
+  \item \textbf{Work.} A force $\col{3}{0}{4}$ newtons acts while an object is displaced by $\col{2}{0}{1}$ metres. The work done is the scalar product $6 + 0 + 4 = \ans{fyiwork}{10}$ joules. The part of the force perpendicular to the displacement does no work.
+  \item \textbf{A $3$-$4$-$5$ sail.} A triangular sail has two edges $\col{3}{0}{0}$ and $\col{0}{4}{0}$, in metres. Their cross product is $\col{0}{0}{12}$, so the area is $\dfrac{1}{2}\times 12 = \ans{fyiarea}{6}$ square metres. The same number as $\dfrac{1}{2}\times 3\times 4$.
+  \item \textbf{Flight paths.} Two aircraft can have paths that are not parallel and still never meet, because one is higher than the other the whole way. That is a pair of skew lines. The distance between the paths is the quantity excluded from the syllabus; air-traffic separation depends on it.
+  \item \textbf{Closing a triangle.} Walking $\col{3}{4}{0}$ kilometres and then home along the straight line, the walk back has length $\sqrt{3^{2}+4^{2}} = \ans{fyihome}{5}$ kilometres. The position vector at the far point is the sum of the two legs out, and the walk home is its negative.
+  \item \textbf{The centroid.} For a triangle with position vectors $\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$, the average $\dfrac{\mathbf{a}+\mathbf{b}+\mathbf{c}}{3}$ lies on each median, two-thirds of the way from a vertex to the midpoint of the opposite side. With $A(1,2,-1)$, $B(7,-4,5)$ and $C(4,6,2)$ this average is $\ans{fyicent}{\col{4}{\dfrac{4}{3}}{2}}$. It is the balance point of a uniform triangular lamina.
+\end{itemize}

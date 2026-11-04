@@ -1,0 +1,270 @@
+% =====================================================================
+% Section 2 of Maximus's notes: The Scalar Product (Dot Product)
+% 2.1 properties, 2.2 angles (+ practice), 2.3 perpendicularity
+% (+ practice), 2.4 projection (+ practice).
+% =====================================================================
+\clearpage
+\section{The Scalar Product (Dot Product)}
+% =====================================================================
+\subsection{Definition and Properties of the Scalar Product}
+% ---------------------------------------------------------------------
+\begin{definition}{Scalar (dot) product}
+Given $\mathbf{a} = a_1\mathbf{i} + a_2\mathbf{j} + a_3\mathbf{k}$ and $\mathbf{b} = b_1\mathbf{i} + b_2\mathbf{j} + b_3\mathbf{k}$, the \textbf{scalar product} of $\mathbf{a}$ and $\mathbf{b}$ is
+\[
+\mathbf{a}\cdot\mathbf{b} = \col{a_1}{a_2}{a_3}\cdot\col{b_1}{b_2}{b_3} = a_1 b_1 + a_2 b_2 + a_3 b_3 .
+\]
+The answer is a \textbf{scalar}, not a vector.
+\end{definition}
+
+\begin{definition}{Properties of the scalar product}
+Let $\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$ be vectors and $\lambda$ a scalar.
+\begin{itemize}
+  \item $\mathbf{a}\cdot\mathbf{b} = \mathbf{b}\cdot\mathbf{a}$
+  \item $\mathbf{a}\cdot(\mathbf{b}+\mathbf{c}) = \mathbf{a}\cdot\mathbf{b} + \mathbf{a}\cdot\mathbf{c}$
+  \item $\lambda(\mathbf{a}\cdot\mathbf{b}) = (\lambda\mathbf{a})\cdot\mathbf{b} = \mathbf{a}\cdot(\lambda\mathbf{b})$
+  \item $\mathbf{a}\cdot\mathbf{a} = |\mathbf{a}|^{2}$
+\end{itemize}
+\end{definition}
+So a scalar product of two brackets expands like ordinary algebra, as long as every product is a dot between two vectors.
+
+\begin{caution}
+\textbf{It is meaningless to write $\mathbf{a}\cdot\mathbf{b}\cdot\mathbf{c}$.} $\mathbf{a}\cdot\mathbf{b}$ is already a number, and a number cannot be dotted with the vector $\mathbf{c}$. Likewise $\mathbf{a}^{2}$ means nothing: write $\mathbf{a}\cdot\mathbf{a}$ or $|\mathbf{a}|^{2}$.
+\end{caution}
+
+\begin{mistake}
+\textbf{Common mistake:} the cancellation law does \textbf{not} hold for the dot product. Take $\mathbf{a} = \mathbf{i}$, $\mathbf{b} = \mathbf{j}$, $\mathbf{c} = \mathbf{k}$:
+\begin{align*}
+\mathbf{a}\cdot\mathbf{b} = 0 = \mathbf{a}\cdot\mathbf{c} \ \Rightarrow\ \mathbf{b} = \mathbf{c} & & \wrong \\
+\mathbf{a}\cdot\mathbf{b} = \mathbf{a}\cdot\mathbf{c} \ \Rightarrow\ \mathbf{a}\cdot(\mathbf{b}-\mathbf{c}) = 0 \ \Rightarrow\ \mathbf{a} = \mathbf{0},\ \mathbf{b} = \mathbf{c},\ \text{or } \mathbf{a}\perp(\mathbf{b}-\mathbf{c}) & & \cmark
+\end{align*}
+Here $\mathbf{j}\neq\mathbf{k}$; it is the third case, $\mathbf{i}\perp(\mathbf{j}-\mathbf{k})$.
+\end{mistake}
+
+% EXAMPLE: new (his notes list the properties without an example)
+\begin{example}[label=ex:2.1]
+Given that $|\mathbf{a}| = 3$, $|\mathbf{b}| = 2$ and $\mathbf{a}\cdot\mathbf{b} = 4$, find
+\begin{enumerate}[(a)]
+  \item $(\mathbf{a}+\mathbf{b})\cdot(\mathbf{a}-2\mathbf{b})$,
+  \item $|\mathbf{a}+\mathbf{b}|$.
+\end{enumerate}
+\end{example}
+\solution{
+(a)\quad Expand, keeping every product a dot product:
+\begin{align*}
+(\mathbf{a}+\mathbf{b})\cdot(\mathbf{a}-2\mathbf{b})
+  &= \mathbf{a}\cdot\mathbf{a} - 2\,\mathbf{a}\cdot\mathbf{b} + \mathbf{b}\cdot\mathbf{a} - 2\,\mathbf{b}\cdot\mathbf{b} \\
+  &= |\mathbf{a}|^{2} - \mathbf{a}\cdot\mathbf{b} - 2|\mathbf{b}|^{2}
+   = 9 - 4 - 8 = \ans{ex1321a}{-3}.
+\end{align*}
+(b)\quad $|\mathbf{a}+\mathbf{b}|^{2} = (\mathbf{a}+\mathbf{b})\cdot(\mathbf{a}+\mathbf{b}) = |\mathbf{a}|^{2} + 2\,\mathbf{a}\cdot\mathbf{b} + |\mathbf{b}|^{2} = 9 + 8 + 4 = 21$, so $|\mathbf{a}+\mathbf{b}| = \ans{ex1321b}{\sqrt{21}}$.
+}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Angles: the Scalar Product Formula}
+% ---------------------------------------------------------------------
+\begin{definition}{The angle formula}
+Let $\mathbf{a}$ and $\mathbf{b}$ be the position vectors of $A$ and $B$ relative to the origin $O$, and let $\theta$ be the non-reflex angle $AOB$. Then
+\[
+\mathbf{a}\cdot\mathbf{b} = |\mathbf{a}|\,|\mathbf{b}|\cos\theta,
+\qquad\text{so}\qquad
+\cos\theta = \dfrac{\mathbf{a}\cdot\mathbf{b}}{|\mathbf{a}|\,|\mathbf{b}|}.
+\]
+\end{definition}
+\noindent\begin{minipage}[c]{0.46\textwidth}
+\begin{itemize}
+  \item If $\mathbf{a}\cdot\mathbf{b} > 0$, then $\theta$ is acute.
+  \item If $\mathbf{a}\cdot\mathbf{b} < 0$, then $\theta$ is obtuse.
+  \item If $\mathbf{a}\cdot\mathbf{b} = 0$, then $\theta$ is a right angle.
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.5\textwidth}\centering
+\begin{tikzpicture}[x={(-0.45cm,-0.38cm)}, y={(0.9cm,0cm)}, z={(0cm,0.85cm)}, >=Stealth, scale=0.62]
+  \place{O}{0}{0}{0}
+  \place{A}{1}{4}{-3}
+  \place{B}{5}{-1}{0}
+  \draw[varr, black!40] (O) -- (2,0,0) node[left] {$x$};
+  \draw[varr, black!40] (O) -- (0,5,0) node[right] {$y$};
+  \draw[varr, black!40] (O) -- (0,0,2.5) node[above] {$z$};
+  \fill[blue!8] (O) -- (A) -- (B) -- cycle;
+  \draw[varr, blue!70!black, very thick] (O) -- (A) node[midway, above right] {$\mathbf{a}$};
+  \draw[varr, teal!55!black, very thick] (O) -- (B) node[midway, above left] {$\mathbf{b}$};
+  \draw[varr, orange!85!black, very thick] (A) -- (B) node[midway, below] {$\overrightarrow{AB}$};
+  \node[pt, label=above left:{$O$}] at (O) {};
+  \node[pt, label=right:{$A(1,4,-3)$}] at (A) {};
+  \node[pt, label=left:{$B(5,-1,0)$}] at (B) {};
+\end{tikzpicture}
+\end{minipage}
+
+\begin{caution}
+\textbf{The two vectors must both point out of the angle, or both point in.} To find angle $OAB$, use $\overrightarrow{AO}$ and $\overrightarrow{AB}$ (both leave $A$). A ``head-to-tail'' pair such as $\overrightarrow{OA}$ and $\overrightarrow{AB}$ gives the supplement, $180^{\circ} - \theta$, instead.
+\end{caution}
+
+
+
+% EXAMPLE: from Maximus's notes, 2.2.1 Practice Problems for Angles
+\begin{example}[label=ex:2.2]
+Points $O$, $A$ and $B$ are such that $\overrightarrow{OA} = \mathbf{i} + 4\mathbf{j} - 3\mathbf{k}$ and $\overrightarrow{OB} = 5\mathbf{i} - \mathbf{j}$.
+\begin{enumerate}[(a)]
+  \item Find the size of angle $AOB$.
+  \item Find the size of angle $OAB$.
+\end{enumerate}
+\end{example}
+\solution{
+\enlargethispage{3\baselineskip}(a)\quad Both $\overrightarrow{OA}$ and $\overrightarrow{OB}$ leave $O$.
+\[
+\cos\theta = \dfrac{\overrightarrow{OA}\cdot\overrightarrow{OB}}{|\overrightarrow{OA}|\,|\overrightarrow{OB}|} = \dfrac{(1)(5) + (4)(-1) + (-3)(0)}{\sqrt{1+16+9}\,\sqrt{25+1+0}} = \dfrac{1}{26},
+\qquad \theta = \ans{ex1322a}{87.8^{\circ}}\ \text{(1 d.p.)}.
+\]
+(b)\quad Use two vectors that leave $A$: $\overrightarrow{AO} = \col{-1}{-4}{3}$ and $\overrightarrow{AB} = \col{5}{-1}{0} - \col{1}{4}{-3} = \col{4}{-5}{3}$.
+\[
+\cos\theta = \dfrac{-4+20+9}{\sqrt{26}\,\sqrt{50}} = \dfrac{25}{\sqrt{1300}},
+\qquad \theta = \ans{ex1322b}{46.1^{\circ}}\ \text{(1 d.p.)}.
+\]
+}
+
+\begin{mistake}
+\textbf{Common mistake:} using the head-to-tail pair $\overrightarrow{OA}$ and $\overrightarrow{AB}$ for angle $OAB$.
+\begin{align*}
+\cos\theta = \dfrac{\overrightarrow{OA}\cdot\overrightarrow{AB}}{|\overrightarrow{OA}|\,|\overrightarrow{AB}|} = \dfrac{4-20-9}{\sqrt{26}\,\sqrt{50}} = \dfrac{-25}{\sqrt{1300}},\ \ \theta = 133.9^{\circ} & & \wrong \\
+\cos\theta = \dfrac{\overrightarrow{AO}\cdot\overrightarrow{AB}}{|\overrightarrow{AO}|\,|\overrightarrow{AB}|} = \dfrac{25}{\sqrt{1300}},\ \ \theta = 46.1^{\circ} & & \cmark
+\end{align*}
+$133.9^{\circ} + 46.1^{\circ} = 180^{\circ}$: the wrong pair measures the outside angle at $A$.
+\end{mistake}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Perpendicularity of Vectors}
+% ---------------------------------------------------------------------
+\begin{definition}{Perpendicular vectors}
+Let $\mathbf{a}$ and $\mathbf{b}$ be non-zero vectors. Then
+\[
+\mathbf{a}\cdot\mathbf{b} = 0 \iff \mathbf{a}\perp\mathbf{b}.
+\]
+\end{definition}
+This is the case $\cos\theta = 0$ of the angle formula. It is the single most used fact in the chapter: every foot of a perpendicular, every normal to a plane, and every ``show that \ldots\ are perpendicular'' comes back to a dot product equal to zero.
+
+\begin{question}
+If $\mathbf{a}\cdot\mathbf{b} = 0$, must one of $\mathbf{a}$ or $\mathbf{b}$ be the zero vector? What does your answer say about ``cancelling'' $\mathbf{a}$ in $\mathbf{a}\cdot\mathbf{b} = \mathbf{a}\cdot\mathbf{c}$?
+\end{question}
+
+% EXAMPLE: from Maximus's notes, 2.3.1 Practice Problems for Perpendicular Vectors
+\begin{example}[label=ex:2.3]
+The vectors $\mathbf{a}$ and $\mathbf{b}$ are given by
+\[
+\mathbf{a} = 2p\,\mathbf{i} + 3p\,\mathbf{j} + 6p\,\mathbf{k}
+\quad\text{and}\quad
+\mathbf{b} = \mathbf{i} - 2\mathbf{j} + 2\mathbf{k},
+\]
+where $p > 0$. It is given that $|\mathbf{a}| = |\mathbf{b}|$.
+\begin{enumerate}[(a)]
+  \item Find the exact value of $p$.
+  \item Show that the vectors $\mathbf{a}+\mathbf{b}$ and $\mathbf{a}-\mathbf{b}$ are perpendicular.
+\end{enumerate}
+\end{example}
+\solution{
+(a)\quad $|\mathbf{a}| = \sqrt{4p^{2}+9p^{2}+36p^{2}} = \sqrt{49p^{2}} = 7p$ (as $p > 0$), and $|\mathbf{b}| = \sqrt{1+4+4} = 3$.
+So $7p = 3$ and $p = \ans{ex1323p}{\dfrac{3}{7}}$.
+
+(b)\quad Expand with the properties of the dot product:
+\begin{align*}
+(\mathbf{a}+\mathbf{b})\cdot(\mathbf{a}-\mathbf{b})
+  &= \mathbf{a}\cdot\mathbf{a} - \mathbf{a}\cdot\mathbf{b} + \mathbf{b}\cdot\mathbf{a} - \mathbf{b}\cdot\mathbf{b} \\
+  &= |\mathbf{a}|^{2} - |\mathbf{b}|^{2} = 0, \quad\text{since } |\mathbf{a}| = |\mathbf{b}|.
+\end{align*}
+Both vectors are non-zero, so $(\mathbf{a}+\mathbf{b})\perp(\mathbf{a}-\mathbf{b})$.
+}
+\begin{info}
+\textbf{Geometry behind (b).} $\mathbf{a}+\mathbf{b}$ and $\mathbf{a}-\mathbf{b}$ are the two diagonals of the parallelogram on $\mathbf{a}$ and $\mathbf{b}$. When $|\mathbf{a}| = |\mathbf{b}|$ the parallelogram is a rhombus, and the diagonals of a rhombus are perpendicular. No components were needed, and none should be used: the question wants the algebra of the dot product.
+\end{info}
+
+% EXAMPLE: kept from the draft
+\begin{example}[label=ex:2.4]
+Find the value of $k$ for which $\col{1}{k}{2}$ is perpendicular to $\col{3}{1}{-2}$.
+\end{example}
+\solution{
+$\col{1}{k}{2}\cdot\col{3}{1}{-2} = 3 + k - 4 = k - 1 = 0$, so $k = \ans{ex1324k}{1}$.
+}
+
+% ---------------------------------------------------------------------
+\clearpage
+\subsection{Projection}
+% ---------------------------------------------------------------------
+\begin{definition}{Projection of $\mathbf{a}$ onto $\mathbf{b}$}
+Let $\mathbf{a}$ and $\mathbf{b}$ be vectors. Then
+\[
+\text{Length of projection of $\mathbf{a}$ onto $\mathbf{b}$} = |\mathbf{a}\cdot\hat{\mathbf{b}}|,
+\qquad
+\text{Projection vector of $\mathbf{a}$ onto $\mathbf{b}$} = (\mathbf{a}\cdot\hat{\mathbf{b}})\,\hat{\mathbf{b}}.
+\]
+\end{definition}
+The projection is the ``shadow'' of $\mathbf{a}$ on the line of $\mathbf{b}$. Only the \emph{direction} of $\mathbf{b}$ matters, which is why it appears as the unit vector $\hat{\mathbf{b}}$. This is the geometrical meaning of $\mathbf{a}\cdot\hat{\mathbf{n}}$ that the syllabus asks for.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.05]
+  \draw[varr, black!55, thick] (0,0) -- (6.2,0) node[right] {$\mathbf{b}$};
+  \coordinate (A) at (2.0,2.4);
+  \draw[varr, teal!55!black, very thick] (0,0) -- (A) node[above] {$\mathbf{a}$};
+  \draw[varr, orange!85!black, very thick] (0,0) -- (2.0,0) node[below, midway] {$(\mathbf{a}\cdot\hat{\mathbf{b}})\hat{\mathbf{b}}$};
+  \draw[hid, red!70!black, thick] (A) -- (2.0,0);
+  \draw[red!70!black] (2.0,0.25) -- (2.25,0.25) -- (2.25,0);
+  \draw (0.6,0) arc (0:50.2:0.6);
+  \node at (0.82,0.36) {$\theta$};
+  \node[orange!85!black, below] at (1.0,-0.5) {length $|\mathbf{a}\cdot\hat{\mathbf{b}}| = |\mathbf{a}|\,|\!\cos\theta|$};
+\end{tikzpicture}
+\end{center}
+
+\begin{caution}
+\textbf{The order matters.} The projection of $\mathbf{a}$ onto $\mathbf{b}$ is not the same as the projection of $\mathbf{b}$ onto $\mathbf{a}$: the lengths are $\dfrac{|\mathbf{a}\cdot\mathbf{b}|}{|\mathbf{b}|}$ and $\dfrac{|\mathbf{a}\cdot\mathbf{b}|}{|\mathbf{a}|}$. ``Onto $\mathbf{b}$'' means make $\mathbf{b}$ the unit vector.
+\end{caution}
+
+% EXAMPLE: from Maximus's notes, 2.4.1 Practice Problems for Projection, Q1
+% (typed question had b = -i + 2k - k; corrected by hand to -i + 2j - k)
+\begin{example}[label=ex:2.5]
+Given that $\mathbf{a} = 2\mathbf{i} + \mathbf{j} + 2\mathbf{k}$ and $\mathbf{b} = -\mathbf{i} + 2\mathbf{j} - \mathbf{k}$, find the length of projection and the projection vector of
+\begin{enumerate}[(a)]
+  \item $\mathbf{a}$ onto $\mathbf{b}$,
+  \item $\mathbf{b}$ onto $\mathbf{a}$.
+\end{enumerate}
+\end{example}
+\solution{
+$\mathbf{a}\cdot\mathbf{b} = -2 + 2 - 2 = -2$, \quad $|\mathbf{b}| = \sqrt{6}$, \quad $|\mathbf{a}| = 3$.
+
+(a)\quad $\mathbf{a}\cdot\hat{\mathbf{b}} = \dfrac{-2}{\sqrt{6}}$, so the length of projection is $\left|\dfrac{-2}{\sqrt{6}}\right| = \ans{ex1325a}{\dfrac{2}{\sqrt{6}}}$, and
+\[
+\text{projection vector} = \left(\dfrac{-2}{\sqrt{6}}\right)\dfrac{1}{\sqrt{6}}\col{-1}{2}{-1} = -\dfrac{1}{3}\col{-1}{2}{-1} = \ans{ex1325av}{\col{\dfrac{1}{3}}{-\dfrac{2}{3}}{\dfrac{1}{3}}}.
+\]
+(b)\quad $\mathbf{b}\cdot\hat{\mathbf{a}} = \dfrac{-2}{3}$, so the length of projection is $\ans{ex1325b}{\dfrac{2}{3}}$, and
+\[
+\text{projection vector} = \left(-\dfrac{2}{3}\right)\dfrac{1}{3}\col{2}{1}{2} = -\dfrac{2}{9}\col{2}{1}{2} = \ans{ex1325bv}{\col{-\dfrac{4}{9}}{-\dfrac{2}{9}}{-\dfrac{4}{9}}}.
+\]
+}
+
+\begin{mistake}
+\textbf{Common mistake:} leaving the minus sign in a length, or forgetting to divide by $|\mathbf{b}|$.
+\begin{align*}
+\text{length of projection of $\mathbf{a}$ onto $\mathbf{b}$} = \mathbf{a}\cdot\mathbf{b} = -2 & & \wrong \\
+\text{length of projection of $\mathbf{a}$ onto $\mathbf{b}$} = |\mathbf{a}\cdot\hat{\mathbf{b}}| = \dfrac{2}{\sqrt{6}} & & \cmark
+\end{align*}
+A length is never negative, and $\mathbf{b}$ must be made a unit vector first.
+\end{mistake}
+
+\begin{info}
+\textbf{Check a projection vector.} What is left over, $\mathbf{a} - (\mathbf{a}\cdot\hat{\mathbf{b}})\hat{\mathbf{b}}$, must be perpendicular to $\mathbf{b}$. In Example \ref{ex:2.5}(a): $\col{2}{1}{2} - \col{\dfrac{1}{3}}{-\dfrac{2}{3}}{\dfrac{1}{3}} = \dfrac{5}{3}\col{1}{1}{1}$, and $\col{1}{1}{1}\cdot\col{-1}{2}{-1} = 0$. \ \cmark\ This leftover is the vector $\mathbf{v}$ of Section \chapnum.3.2.
+\end{info}
+
+% EXAMPLE: from Maximus's notes, 2.4.1 Q2
+\begin{example}[label=ex:2.6]
+With reference to the origin $O$, the points $A$, $B$ and $C$ have position vectors
+\[
+\mathbf{a} = \mathbf{i} + 2\mathbf{j} - \mathbf{k}, \qquad \mathbf{b} = 3\mathbf{i} + \mathbf{k}, \qquad \mathbf{c} = 2\mathbf{i} + 2\mathbf{j} + 3\mathbf{k}.
+\]
+Find the length of projection of $\overrightarrow{BA}$ onto $\overrightarrow{BC}$.
+\end{example}
+\solution{
+$\overrightarrow{BA} = \col{1}{2}{-1} - \col{3}{0}{1} = \col{-2}{2}{-2}$, \quad
+$\overrightarrow{BC} = \col{2}{2}{3} - \col{3}{0}{1} = \col{-1}{2}{2}$, \quad $|\overrightarrow{BC}| = 3$.
+\[
+\text{Length of projection} = \left|\col{-2}{2}{-2}\cdot\dfrac{1}{3}\col{-1}{2}{2}\right| = \dfrac{|2+4-4|}{3} = \ans{ex1326}{\dfrac{2}{3}}\ \text{units}.
+\]
+}
