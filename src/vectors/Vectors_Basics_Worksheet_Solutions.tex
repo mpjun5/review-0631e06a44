@@ -1,0 +1,170 @@
+\documentclass[a4paper,11pt,oneside]{book}
+\input{preamble_build}
+\input{preamble_local}
+\usepackage{needspace,longtable}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\rhead{Vectors I: Basics Worksheet: Solutions}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\newcounter{wq}[section]
+\newcommand{\Q}[1]{\par\needspace{5\baselineskip}\medskip\stepcounter{wq}\noindent\textbf{\thewq}\quad #1\par}
+\newcommand{\wsec}[1]{\par\needspace{8\baselineskip}\bigskip\stepcounter{section}\noindent{\Large\scshape \thesection\quad #1}\par\medskip}
+\renewcommand{\thesection}{\arabic{section}}
+\begin{document}
+\thispagestyle{fancy}
+{\LARGE\scshape Vectors I Basics Worksheet: Solutions}\par\smallskip
+{Compiled by Maximus Pung Jun}\par\smallskip
+{\small\textcolor{black!60}{Basics of vectors: $\mathbf i$, $\mathbf j$, $\mathbf k$ notation, magnitude, unit vectors, parallel vectors, collinear points and the ratio theorem. Each section has footing questions, one tricky question and a True/False check.}}\par\medskip
+\wsec{$\mathbf{i}$, $\mathbf{j}$, $\mathbf{k}$ Notation and Column Vectors}
+\Q{Write $\mathbf a=3\mathbf i-2\mathbf j+5\mathbf k$ as a column vector, and write $\mathbf b=\col{4}{0}{-1}$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
+\begin{align*}\mathbf a&=\col{3}{-2}{5}\\ \mathbf b&=4\mathbf i+0\mathbf j-1\mathbf k\\ &=4\mathbf i-\mathbf k\end{align*}
+\Q{The points $A$ and $B$ have coordinates $(1,2,3)$ and $(4,6,1)$. Find $\overrightarrow{AB}$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
+\begin{center}\begin{tikzpicture}[x={(0.8cm,0cm)},y={(0.4cm,0.32cm)},z={(0cm,0.8cm)},>=Stealth,line cap=round]
+\draw[ax](0,0,0)--(5.8,0,0) node[right]{\scriptsize$x$};
+\draw[ax](0,0,0)--(0,7,0) node[above right]{\scriptsize$y$};
+\draw[ax](0,0,0)--(0,0,3.8) node[above]{\scriptsize$z$};
+\node[below left] at (0,0,0){\scriptsize$O$};
+\draw[dsh](1,2,3)--(1,2,0)--(1,0,0);\draw[dsh](1,2,0)--(0,2,0);
+\draw[dsh](4,6,1)--(4,6,0)--(4,0,0);\draw[dsh](4,6,0)--(0,6,0);
+\draw[va](0,0,0)--(1,2,3);\draw[vb](0,0,0)--(4,6,1);\draw[vc](1,2,3)--(4,6,1);
+\node[dot,label=above:{\scriptsize$A(1,2,3)$}] at (1,2,3){};
+\node[dot,label=right:{\scriptsize$B(4,6,1)$}] at (4,6,1){};
+\end{tikzpicture}\end{center}
+\begin{align*}\overrightarrow{AB}&=\overrightarrow{OB}-\overrightarrow{OA}\\ &=\col{4}{6}{1}-\col{1}{2}{3}\\ &=\col{3}{4}{-2}\\ &=3\mathbf i+4\mathbf j-2\mathbf k\end{align*}
+\Q{\textbf{(Tricky)} Given $\mathbf p=2\mathbf i+\mathbf k$ and $\mathbf q=-\mathbf i+3\mathbf j$, find $\mathbf r$ such that $2\mathbf p-3\mathbf q+\mathbf r=\mathbf 0$. Give $\mathbf r$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
+\begin{align*}\mathbf p&=\col{2}{0}{1},\quad \mathbf q=\col{-1}{3}{0}\\ \mathbf r&=3\mathbf q-2\mathbf p\\ &=3\col{-1}{3}{0}-2\col{2}{0}{1}\\ &=\col{-3}{9}{0}-\col{4}{0}{2}\\ &=\col{-7}{9}{-2}\\ &=-7\mathbf i+9\mathbf j-2\mathbf k\end{align*}
+\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.}\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{11.2cm}|c|}\hline
+ & \textbf{Statement} & \textbf{True / False}\\\hline
+(a) & $3\mathbf i+2\mathbf k=\col{3}{2}{0}$ & \textbf{False} \\[1.2ex]\hline
+(b) & The $\mathbf j$-component of $4\mathbf i-\mathbf j+2\mathbf k$ is $-1$ & \textbf{True} \\[1.2ex]\hline
+(c) & The position vector of $P(1,-2,0)$ is $\mathbf i-2\mathbf j$ & \textbf{True} \\[1.2ex]\hline
+(d) & $\overrightarrow{AB}=\overrightarrow{OA}-\overrightarrow{OB}$ & \textbf{False} \\[1.2ex]\hline
+(e) & $\mathbf i+\mathbf j+\mathbf k=\col{1}{1}{1}$ & \textbf{True} \\[1.2ex]\hline
+\end{tabular}}}\par\medskip
+\begin{align*}
+\text{(a)}\quad & 3\mathbf i+2\mathbf k=\col{3}{0}{2}\neq\col{3}{2}{0}\\[1ex]
+\text{(b)}\quad & 4\mathbf i-\mathbf j+2\mathbf k=\col{4}{-1}{2}\\[1ex]
+\text{(c)}\quad & \overrightarrow{OP}=\col{1}{-2}{0}=\mathbf i-2\mathbf j\\[1ex]
+\text{(d)}\quad & \overrightarrow{AB}=\overrightarrow{OB}-\overrightarrow{OA}\\[1ex]
+\text{(e)}\quad & \mathbf i+\mathbf j+\mathbf k=\col{1}{1}{1}
+\end{align*}
+\wsec{Magnitude}
+\Q{Find $|2\mathbf i-3\mathbf j+6\mathbf k|$.}
+\begin{align*}|2\mathbf i-3\mathbf j+6\mathbf k|&=\sqrt{2^2+(-3)^2+6^2}\\ &=\sqrt{49}\\ &=7\end{align*}
+\Q{The points $A$ and $B$ have coordinates $(1,2,-1)$ and $(3,-4,2)$. Find the distance $AB$.}
+\begin{align*}\overrightarrow{AB}&=\col{3}{-4}{2}-\col{1}{2}{-1}\\ &=\col{2}{-6}{3}\\ AB=\left|\overrightarrow{AB}\right|&=\sqrt{2^2+(-6)^2+3^2}\\ &=\sqrt{49}\\ &=7\end{align*}
+\Q{\textbf{(Tricky)} Given $\mathbf a=\col{t}{2}{t-1}$ and $|\mathbf a|=3$, find the possible values of $t$.}
+\begin{align*}|\mathbf a|^2&=t^2+2^2+(t-1)^2\\ 9&=t^2+4+t^2-2t+1\\ 0&=2t^2-2t-4\\ 0&=t^2-t-2\\ 0&=(t-2)(t+1)\\ t&=2\ \text{or}\ t=-1\end{align*}
+\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.}\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{11.2cm}|c|}\hline
+ & \textbf{Statement} & \textbf{True / False}\\\hline
+(a) & $|\mathbf i+2\mathbf j-2\mathbf k|=1+2-2=1$ & \textbf{False} \\[1.2ex]\hline
+(b) & $|-\mathbf a|=|\mathbf a|$ for every vector $\mathbf a$ & \textbf{True} \\[1.2ex]\hline
+(c) & $|\mathbf a+\mathbf b|=|\mathbf a|+|\mathbf b|$ for all vectors $\mathbf a$, $\mathbf b$ & \textbf{False} \\[1.2ex]\hline
+(d) & $|3\mathbf a|=3|\mathbf a|$ & \textbf{True} \\[1.2ex]\hline
+(e) & $\left|\col{0}{-5}{0}\right|=-5$ & \textbf{False} \\[1.2ex]\hline
+\end{tabular}}}\par\medskip
+\begin{align*}
+\text{(a)}\quad & |\mathbf i+2\mathbf j-2\mathbf k|=\sqrt{1^2+2^2+(-2)^2}=3\\[1ex]
+\text{(b)}\quad & |-\mathbf a|=|-1|\,|\mathbf a|=|\mathbf a|\\[1ex]
+\text{(c)}\quad & |\mathbf i+\mathbf j|=\sqrt2\neq|\mathbf i|+|\mathbf j|=2\\[1ex]
+\text{(d)}\quad & |3\mathbf a|=|3|\,|\mathbf a|=3|\mathbf a|\\[1ex]
+\text{(e)}\quad & \left|\col{0}{-5}{0}\right|=\sqrt{0^2+(-5)^2+0^2}=5
+\end{align*}
+\wsec{Unit Vectors}
+\Q{Find the unit vector in the direction of $\col{2}{-1}{2}$.}
+\begin{align*}\left|\col{2}{-1}{2}\right|&=\sqrt{2^2+(-1)^2+2^2}\\ &=3\\ \text{unit vector}&=\dfrac{1}{3}\col{2}{-1}{2}\end{align*}
+\Q{Find the vector of magnitude $10$ in the direction of $\col{3}{0}{-4}$.}
+\begin{align*}\left|\col{3}{0}{-4}\right|&=\sqrt{3^2+0^2+(-4)^2}\\ &=5\\ \text{vector}&=10\cdot\dfrac{1}{5}\col{3}{0}{-4}\\ &=\col{6}{0}{-8}\end{align*}
+\Q{\textbf{(Tricky)} The points $A$ and $B$ have coordinates $(1,0,2)$ and $(3,-6,5)$. Find the vector of magnitude $14$ in the direction \emph{opposite} to $\overrightarrow{AB}$.}
+\begin{align*}\overrightarrow{AB}&=\col{3}{-6}{5}-\col{1}{0}{2}\\ &=\col{2}{-6}{3}\\ \left|\overrightarrow{AB}\right|&=\sqrt{2^2+(-6)^2+3^2}\\ &=7\\ \text{vector}&=-14\cdot\dfrac{1}{7}\col{2}{-6}{3}\\ &=\col{-4}{12}{-6}\end{align*}
+\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.}\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{11.2cm}|c|}\hline
+ & \textbf{Statement} & \textbf{True / False}\\\hline
+(a) & The unit vector in the direction of $\col{3}{4}{0}$ is $\col{\frac35}{\frac45}{0}$ & \textbf{True} \\[1.2ex]\hline
+(b) & $\col{1}{1}{1}$ is a unit vector & \textbf{False} \\[1.2ex]\hline
+(c) & The unit vector in the direction of $-\mathbf a$ is $\hat{\mathbf a}$ & \textbf{False} \\[1.2ex]\hline
+(d) & $\dfrac13\col{1}{2}{2}$ is a unit vector & \textbf{True} \\[1.2ex]\hline
+(e) & The unit vector in the direction of $\col{-6}{0}{8}$ is $\dfrac{1}{10}\col{6}{0}{-8}$ & \textbf{False} \\[1.2ex]\hline
+\end{tabular}}}\par\medskip
+\begin{align*}
+\text{(a)}\quad & \left|\col{3}{4}{0}\right|=5,\ \tfrac15\col{3}{4}{0}=\col{\frac35}{\frac45}{0}\\[1ex]
+\text{(b)}\quad & \left|\col{1}{1}{1}\right|=\sqrt3\neq1\\[1ex]
+\text{(c)}\quad & \dfrac{-\mathbf a}{|-\mathbf a|}=-\dfrac{\mathbf a}{|\mathbf a|}=-\hat{\mathbf a}\\[1ex]
+\text{(d)}\quad & \left|\tfrac13\col{1}{2}{2}\right|=\tfrac13\sqrt{1+4+4}=1\\[1ex]
+\text{(e)}\quad & \dfrac{1}{10}\col{6}{0}{-8}=-\dfrac{1}{10}\col{-6}{0}{8}
+\end{align*}
+\wsec{Parallel Vectors ($\mathbf a=\lambda\mathbf b$)}
+\Q{Show that $\mathbf a=\col{2}{-1}{3}$ and $\mathbf b=\col{-6}{3}{-9}$ are parallel.}
+\begin{align*}\mathbf b&=\col{-6}{3}{-9}\\ &=-3\col{2}{-1}{3}\\ &=-3\mathbf a\\ \therefore\ \mathbf a&\parallel\mathbf b\ \text{(shown)}\end{align*}
+\Q{Find $p$ and $q$ such that $\col{4}{p}{-2}$ is parallel to $\col{-2}{3}{q}$.}
+\begin{align*}\col{4}{p}{-2}&=\lambda\col{-2}{3}{q}\\ 4&=-2\lambda\\ \lambda&=-2\\ p&=3\lambda\\ &=-6\\ -2&=\lambda q\\ -2&=-2q\\ q&=1\end{align*}
+\Q{\textbf{(Tricky)} Find all vectors of magnitude $6$ that are parallel to $\mathbf a=\col{1}{2}{-2}$.}
+\begin{align*}|\mathbf a|&=\sqrt{1^2+2^2+(-2)^2}\\ &=3\\ \text{vector}&=\pm6\cdot\dfrac13\col{1}{2}{-2}\\ &=\pm\col{2}{4}{-4}\end{align*}
+\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.}\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{11.2cm}|c|}\hline
+ & \textbf{Statement} & \textbf{True / False}\\\hline
+(a) & If $\mathbf a\parallel\mathbf b$, then $\mathbf a=\mathbf b$ & \textbf{False} \\[1.2ex]\hline
+(b) & $\col{1}{-2}{3}$ is parallel to $\col{-2}{4}{-6}$ & \textbf{True} \\[1.2ex]\hline
+(c) & $\col{2}{4}{6}$ is parallel to $\col{1}{2}{4}$ & \textbf{False} \\[1.2ex]\hline
+(d) & $\col{3}{0}{-6}$ is parallel to $\col{-1}{0}{2}$ & \textbf{True} \\[1.2ex]\hline
+(e) & If $\mathbf a=-2\mathbf b$, then $\mathbf a$ and $\mathbf b$ are not parallel since they point in opposite directions & \textbf{False} \\[1.2ex]\hline
+\end{tabular}}}\par\medskip
+\begin{align*}
+\text{(a)}\quad & 2\mathbf i\parallel\mathbf i,\ 2\mathbf i\neq\mathbf i\\[1ex]
+\text{(b)}\quad & \col{-2}{4}{-6}=-2\col{1}{-2}{3}\\[1ex]
+\text{(c)}\quad & \dfrac21=\dfrac42\neq\dfrac64\\[1ex]
+\text{(d)}\quad & \col{3}{0}{-6}=-3\col{-1}{0}{2}\\[1ex]
+\text{(e)}\quad & \mathbf a=\lambda\mathbf b,\ \lambda=-2
+\end{align*}
+\wsec{Collinear Points}
+\Q{Show that the points $A(1,2,3)$, $B(3,5,4)$ and $C(7,11,6)$ are collinear.}
+\begin{align*}\overrightarrow{AB}&=\col{3}{5}{4}-\col{1}{2}{3}\\ &=\col{2}{3}{1}\\ \overrightarrow{BC}&=\col{7}{11}{6}-\col{3}{5}{4}\\ &=\col{4}{6}{2}\\ &=2\overrightarrow{AB}\\ \therefore\ \overrightarrow{AB}&\parallel\overrightarrow{BC},\ B\ \text{common}\\ \therefore\ A,B,C&\ \text{collinear (shown)}\end{align*}
+\Q{For the points in Question 1, find the ratio $AB:BC$.}
+\begin{align*}\overrightarrow{BC}&=2\overrightarrow{AB}\\ BC&=2AB\\ AB:BC&=1:2\end{align*}
+\Q{\textbf{(Tricky)} The points $P(2,-1,0)$, $Q(4,1,3)$ and $R(a,7,b)$ are collinear. Find $a$ and $b$.}
+\begin{align*}\overrightarrow{PR}&=\lambda\overrightarrow{PQ}\\ \col{a-2}{8}{b}&=\lambda\col{2}{2}{3}\\ 8&=2\lambda\\ \lambda&=4\\ a-2&=2(4)\\ a&=10\\ b&=3(4)\\ &=12\end{align*}
+\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.}\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{11.2cm}|c|}\hline
+ & \textbf{Statement} & \textbf{True / False}\\\hline
+(a) & If $\overrightarrow{AB}\parallel\overrightarrow{CD}$, then $A$, $B$, $C$ and $D$ are collinear & \textbf{False} \\[1.2ex]\hline
+(b) & If $\overrightarrow{AB}=3\overrightarrow{AC}$, then $A$, $B$ and $C$ are collinear & \textbf{True} \\[1.2ex]\hline
+(c) & $A(0,0,0)$, $B(1,1,1)$ and $C(2,2,3)$ are collinear & \textbf{False} \\[1.2ex]\hline
+(d) & The points with position vectors $\mathbf a$, $2\mathbf a$ and $-\mathbf a$ are collinear ($\mathbf a\neq\mathbf 0$) & \textbf{True} \\[1.2ex]\hline
+\end{tabular}}}\par\medskip
+\begin{align*}
+\text{(a)}\quad & A(0,0,0),B(1,0,0),C(0,1,0),D(1,1,0):\ \overrightarrow{AB}=\overrightarrow{CD}\\[1ex]
+\text{(b)}\quad & \overrightarrow{AB}\parallel\overrightarrow{AC},\ A\ \text{common}\\[1ex]
+\text{(c)}\quad & \overrightarrow{AC}=\col{2}{2}{3}\neq\lambda\col{1}{1}{1}\\[1ex]
+\text{(d)}\quad & 2\mathbf a-\mathbf a=\mathbf a,\ -\mathbf a-\mathbf a=-2(\mathbf a)
+\end{align*}
+\wsec{Ratio Theorem}
+\begin{center}\begin{tikzpicture}[scale=0.85,>=Stealth]
+\coordinate (O) at (0,0);\coordinate (A) at (0.6,2.4);\coordinate (B) at (5.2,1.6);
+\coordinate (C) at ($(A)!0.4!(B)$);
+\draw[thick,black!70](A)--(B);
+\draw[va](O)--(A) node[midway,left]{\small$\mathbf a$};\draw[vb](O)--(B) node[midway,below]{\small$\mathbf b$};\draw[vc](O)--(C);
+\node[dot,label=below left:$O$] at (O){};\node[dot,label=above left:$A$] at (A){};
+\node[dot,label=right:$B$] at (B){};\node[dot,label=below:$C$] at (C){};
+\draw[decorate,decoration={brace,amplitude=4pt,raise=3pt}](A)--(C) node[midway,above=8pt,sloped]{$\lambda$};
+\draw[decorate,decoration={brace,amplitude=4pt,raise=3pt}](C)--(B) node[midway,above=8pt,sloped]{$\mu$};
+\end{tikzpicture}\end{center}\noindent In the True/False table, $C$ lies on $AB$ with $AC:CB=\lambda:\mu$, $\overrightarrow{OA}=\mathbf a$ and $\overrightarrow{OB}=\mathbf b$.
+\Q{The points $A$ and $B$ have position vectors $\col{1}{4}{-2}$ and $\col{7}{-2}{4}$. The point $C$ lies on $AB$ such that $AC:CB=1:2$. Find $\overrightarrow{OC}$.}
+\begin{align*}\overrightarrow{OC}&=\dfrac{2\col{1}{4}{-2}+1\col{7}{-2}{4}}{1+2}\\ &=\dfrac13\col{9}{6}{0}\\ &=\col{3}{2}{0}\end{align*}
+\Q{Find the position vector of the midpoint $M$ of $AB$, where $A$ and $B$ have coordinates $(3,-1,5)$ and $(-1,5,1)$.}
+\begin{align*}\overrightarrow{OM}&=\dfrac12\left[\col{3}{-1}{5}+\col{-1}{5}{1}\right]\\ &=\dfrac12\col{2}{4}{6}\\ &=\col{1}{2}{3}\end{align*}
+\Q{\textbf{(Tricky)} The point $A$ has coordinates $(1,2,3)$. The point $C(3,0,7)$ lies on $AB$ such that $AC:CB=2:3$. Find the coordinates of $B$.}
+\begin{align*}\overrightarrow{OC}&=\dfrac{3\overrightarrow{OA}+2\overrightarrow{OB}}{5}\\ 2\overrightarrow{OB}&=5\overrightarrow{OC}-3\overrightarrow{OA}\\ &=5\col{3}{0}{7}-3\col{1}{2}{3}\\ &=\col{12}{-6}{26}\\ \overrightarrow{OB}&=\col{6}{-3}{13}\\ B&=(6,-3,13)\end{align*}
+\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.}\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{11.2cm}|c|}\hline
+ & \textbf{Statement} & \textbf{True / False}\\\hline
+(a) & $\overrightarrow{OC}=\dfrac{\mu\mathbf a+\lambda\mathbf b}{\lambda+\mu}$ & \textbf{True} \\[1.2ex]\hline
+(b) & $\overrightarrow{OC}=\dfrac{\lambda\mathbf a+\mu\mathbf b}{\lambda+\mu}$ & \textbf{False} \\[1.2ex]\hline
+(c) & If $\lambda:\mu=1:1$, then $\overrightarrow{OC}=\dfrac12(\mathbf a+\mathbf b)$ & \textbf{True} \\[1.2ex]\hline
+(d) & If $\lambda:\mu=1:3$, then $\overrightarrow{OC}=\dfrac{3\mathbf a+\mathbf b}{4}$ & \textbf{True} \\[1.2ex]\hline
+(e) & If $\lambda:\mu=2:1$, then $\overrightarrow{OC}=\dfrac{2\mathbf a+\mathbf b}{3}$ & \textbf{False} \\[1.2ex]\hline
+\end{tabular}}}\par\medskip
+\begin{align*}
+\text{(a)}\quad & \overrightarrow{OC}=\mathbf a+\tfrac{\lambda}{\lambda+\mu}(\mathbf b-\mathbf a)=\tfrac{\mu\mathbf a+\lambda\mathbf b}{\lambda+\mu}\\[1ex]
+\text{(b)}\quad & \overrightarrow{OC}=\tfrac{\mu\mathbf a+\lambda\mathbf b}{\lambda+\mu}\\[1ex]
+\text{(c)}\quad & \overrightarrow{OC}=\tfrac{1\mathbf a+1\mathbf b}{2}\\[1ex]
+\text{(d)}\quad & \overrightarrow{OC}=\tfrac{3\mathbf a+1\mathbf b}{1+3}\\[1ex]
+\text{(e)}\quad & \overrightarrow{OC}=\tfrac{1\mathbf a+2\mathbf b}{3}
+\end{align*}
+\par\vspace{\baselineskip}\begin{center}\textbf{END OF WORKSHEET}\end{center}\end{document}

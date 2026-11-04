@@ -1,0 +1,129 @@
+\documentclass[a4paper,11pt,oneside]{book}
+\input{preamble_build}
+\input{preamble_local}
+\usepackage{needspace,longtable}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\rhead{Vectors I: Basics Worksheet}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\newcounter{wq}[section]
+\newcommand{\Q}[1]{\par\needspace{5\baselineskip}\medskip\stepcounter{wq}\noindent\textbf{\thewq}\quad #1\par}
+\newcommand{\wsec}[1]{\par\needspace{8\baselineskip}\bigskip\stepcounter{section}\noindent{\Large\scshape \thesection\quad #1}\par\medskip}
+\renewcommand{\thesection}{\arabic{section}}
+\begin{document}
+\thispagestyle{fancy}
+{\LARGE\scshape Vectors I Basics Worksheet: Questions}\par\smallskip
+{Compiled by Maximus Pung Jun}\par\smallskip
+{\small\textcolor{black!60}{Basics of vectors: $\mathbf i$, $\mathbf j$, $\mathbf k$ notation, magnitude, unit vectors, parallel vectors, collinear points and the ratio theorem. Each section has footing questions, one tricky question and a True/False check.}}\par\medskip
+\wsec{$\mathbf{i}$, $\mathbf{j}$, $\mathbf{k}$ Notation and Column Vectors}
+\Q{Write $\mathbf a=3\mathbf i-2\mathbf j+5\mathbf k$ as a column vector, and write $\mathbf b=\col{4}{0}{-1}$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
+\vspace{2.6cm}
+\Q{The points $A$ and $B$ have coordinates $(1,2,3)$ and $(4,6,1)$. Find $\overrightarrow{AB}$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
+\begin{center}\begin{tikzpicture}[x={(0.8cm,0cm)},y={(0.4cm,0.32cm)},z={(0cm,0.8cm)},>=Stealth,line cap=round]
+\draw[ax](0,0,0)--(5.8,0,0) node[right]{\scriptsize$x$};
+\draw[ax](0,0,0)--(0,7,0) node[above right]{\scriptsize$y$};
+\draw[ax](0,0,0)--(0,0,3.8) node[above]{\scriptsize$z$};
+\node[below left] at (0,0,0){\scriptsize$O$};
+\draw[dsh](1,2,3)--(1,2,0)--(1,0,0);\draw[dsh](1,2,0)--(0,2,0);
+\draw[dsh](4,6,1)--(4,6,0)--(4,0,0);\draw[dsh](4,6,0)--(0,6,0);
+\draw[va](0,0,0)--(1,2,3);\draw[vb](0,0,0)--(4,6,1);\draw[vc](1,2,3)--(4,6,1);
+\node[dot,label=above:{\scriptsize$A(1,2,3)$}] at (1,2,3){};
+\node[dot,label=right:{\scriptsize$B(4,6,1)$}] at (4,6,1){};
+\end{tikzpicture}\end{center}
+\vspace{2.6cm}
+\Q{\textbf{(Tricky)} Given $\mathbf p=2\mathbf i+\mathbf k$ and $\mathbf q=-\mathbf i+3\mathbf j$, find $\mathbf r$ such that $2\mathbf p-3\mathbf q+\mathbf r=\mathbf 0$. Give $\mathbf r$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
+\vspace{2.6cm}
+\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.} Circle T (True) or F (False) for each statement.\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{12cm}|c|}\hline
+ & \textbf{Statement} & \textbf{T/F}\\\hline
+(a) & $3\mathbf i+2\mathbf k=\col{3}{2}{0}$ & T\,/\,F \\[1.2ex]\hline
+(b) & The $\mathbf j$-component of $4\mathbf i-\mathbf j+2\mathbf k$ is $-1$ & T\,/\,F \\[1.2ex]\hline
+(c) & The position vector of $P(1,-2,0)$ is $\mathbf i-2\mathbf j$ & T\,/\,F \\[1.2ex]\hline
+(d) & $\overrightarrow{AB}=\overrightarrow{OA}-\overrightarrow{OB}$ & T\,/\,F \\[1.2ex]\hline
+(e) & $\mathbf i+\mathbf j+\mathbf k=\col{1}{1}{1}$ & T\,/\,F \\[1.2ex]\hline
+\end{tabular}}}\par
+\wsec{Magnitude}
+\Q{Find $|2\mathbf i-3\mathbf j+6\mathbf k|$.}
+\vspace{2.6cm}
+\Q{The points $A$ and $B$ have coordinates $(1,2,-1)$ and $(3,-4,2)$. Find the distance $AB$.}
+\vspace{2.6cm}
+\Q{\textbf{(Tricky)} Given $\mathbf a=\col{t}{2}{t-1}$ and $|\mathbf a|=3$, find the possible values of $t$.}
+\vspace{2.6cm}
+\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.} Circle T (True) or F (False) for each statement.\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{12cm}|c|}\hline
+ & \textbf{Statement} & \textbf{T/F}\\\hline
+(a) & $|\mathbf i+2\mathbf j-2\mathbf k|=1+2-2=1$ & T\,/\,F \\[1.2ex]\hline
+(b) & $|-\mathbf a|=|\mathbf a|$ for every vector $\mathbf a$ & T\,/\,F \\[1.2ex]\hline
+(c) & $|\mathbf a+\mathbf b|=|\mathbf a|+|\mathbf b|$ for all vectors $\mathbf a$, $\mathbf b$ & T\,/\,F \\[1.2ex]\hline
+(d) & $|3\mathbf a|=3|\mathbf a|$ & T\,/\,F \\[1.2ex]\hline
+(e) & $\left|\col{0}{-5}{0}\right|=-5$ & T\,/\,F \\[1.2ex]\hline
+\end{tabular}}}\par
+\wsec{Unit Vectors}
+\Q{Find the unit vector in the direction of $\col{2}{-1}{2}$.}
+\vspace{2.6cm}
+\Q{Find the vector of magnitude $10$ in the direction of $\col{3}{0}{-4}$.}
+\vspace{2.6cm}
+\Q{\textbf{(Tricky)} The points $A$ and $B$ have coordinates $(1,0,2)$ and $(3,-6,5)$. Find the vector of magnitude $14$ in the direction \emph{opposite} to $\overrightarrow{AB}$.}
+\vspace{2.6cm}
+\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.} Circle T (True) or F (False) for each statement.\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{12cm}|c|}\hline
+ & \textbf{Statement} & \textbf{T/F}\\\hline
+(a) & The unit vector in the direction of $\col{3}{4}{0}$ is $\col{\frac35}{\frac45}{0}$ & T\,/\,F \\[1.2ex]\hline
+(b) & $\col{1}{1}{1}$ is a unit vector & T\,/\,F \\[1.2ex]\hline
+(c) & The unit vector in the direction of $-\mathbf a$ is $\hat{\mathbf a}$ & T\,/\,F \\[1.2ex]\hline
+(d) & $\dfrac13\col{1}{2}{2}$ is a unit vector & T\,/\,F \\[1.2ex]\hline
+(e) & The unit vector in the direction of $\col{-6}{0}{8}$ is $\dfrac{1}{10}\col{6}{0}{-8}$ & T\,/\,F \\[1.2ex]\hline
+\end{tabular}}}\par
+\wsec{Parallel Vectors ($\mathbf a=\lambda\mathbf b$)}
+\Q{Show that $\mathbf a=\col{2}{-1}{3}$ and $\mathbf b=\col{-6}{3}{-9}$ are parallel.}
+\vspace{2.6cm}
+\Q{Find $p$ and $q$ such that $\col{4}{p}{-2}$ is parallel to $\col{-2}{3}{q}$.}
+\vspace{2.6cm}
+\Q{\textbf{(Tricky)} Find all vectors of magnitude $6$ that are parallel to $\mathbf a=\col{1}{2}{-2}$.}
+\vspace{2.6cm}
+\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.} Circle T (True) or F (False) for each statement.\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{12cm}|c|}\hline
+ & \textbf{Statement} & \textbf{T/F}\\\hline
+(a) & If $\mathbf a\parallel\mathbf b$, then $\mathbf a=\mathbf b$ & T\,/\,F \\[1.2ex]\hline
+(b) & $\col{1}{-2}{3}$ is parallel to $\col{-2}{4}{-6}$ & T\,/\,F \\[1.2ex]\hline
+(c) & $\col{2}{4}{6}$ is parallel to $\col{1}{2}{4}$ & T\,/\,F \\[1.2ex]\hline
+(d) & $\col{3}{0}{-6}$ is parallel to $\col{-1}{0}{2}$ & T\,/\,F \\[1.2ex]\hline
+(e) & If $\mathbf a=-2\mathbf b$, then $\mathbf a$ and $\mathbf b$ are not parallel since they point in opposite directions & T\,/\,F \\[1.2ex]\hline
+\end{tabular}}}\par
+\wsec{Collinear Points}
+\Q{Show that the points $A(1,2,3)$, $B(3,5,4)$ and $C(7,11,6)$ are collinear.}
+\vspace{2.6cm}
+\Q{For the points in Question 1, find the ratio $AB:BC$.}
+\vspace{2.6cm}
+\Q{\textbf{(Tricky)} The points $P(2,-1,0)$, $Q(4,1,3)$ and $R(a,7,b)$ are collinear. Find $a$ and $b$.}
+\vspace{2.6cm}
+\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.} Circle T (True) or F (False) for each statement.\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{12cm}|c|}\hline
+ & \textbf{Statement} & \textbf{T/F}\\\hline
+(a) & If $\overrightarrow{AB}\parallel\overrightarrow{CD}$, then $A$, $B$, $C$ and $D$ are collinear & T\,/\,F \\[1.2ex]\hline
+(b) & If $\overrightarrow{AB}=3\overrightarrow{AC}$, then $A$, $B$ and $C$ are collinear & T\,/\,F \\[1.2ex]\hline
+(c) & $A(0,0,0)$, $B(1,1,1)$ and $C(2,2,3)$ are collinear & T\,/\,F \\[1.2ex]\hline
+(d) & The points with position vectors $\mathbf a$, $2\mathbf a$ and $-\mathbf a$ are collinear ($\mathbf a\neq\mathbf 0$) & T\,/\,F \\[1.2ex]\hline
+\end{tabular}}}\par
+\wsec{Ratio Theorem}
+\begin{center}\begin{tikzpicture}[scale=0.85,>=Stealth]
+\coordinate (O) at (0,0);\coordinate (A) at (0.6,2.4);\coordinate (B) at (5.2,1.6);
+\coordinate (C) at ($(A)!0.4!(B)$);
+\draw[thick,black!70](A)--(B);
+\draw[va](O)--(A) node[midway,left]{\small$\mathbf a$};\draw[vb](O)--(B) node[midway,below]{\small$\mathbf b$};\draw[vc](O)--(C);
+\node[dot,label=below left:$O$] at (O){};\node[dot,label=above left:$A$] at (A){};
+\node[dot,label=right:$B$] at (B){};\node[dot,label=below:$C$] at (C){};
+\draw[decorate,decoration={brace,amplitude=4pt,raise=3pt}](A)--(C) node[midway,above=8pt,sloped]{$\lambda$};
+\draw[decorate,decoration={brace,amplitude=4pt,raise=3pt}](C)--(B) node[midway,above=8pt,sloped]{$\mu$};
+\end{tikzpicture}\end{center}\noindent In the True/False table, $C$ lies on $AB$ with $AC:CB=\lambda:\mu$, $\overrightarrow{OA}=\mathbf a$ and $\overrightarrow{OB}=\mathbf b$.
+\Q{The points $A$ and $B$ have position vectors $\col{1}{4}{-2}$ and $\col{7}{-2}{4}$. The point $C$ lies on $AB$ such that $AC:CB=1:2$. Find $\overrightarrow{OC}$.}
+\vspace{2.6cm}
+\Q{Find the position vector of the midpoint $M$ of $AB$, where $A$ and $B$ have coordinates $(3,-1,5)$ and $(-1,5,1)$.}
+\vspace{2.6cm}
+\Q{\textbf{(Tricky)} The point $A$ has coordinates $(1,2,3)$. The point $C(3,0,7)$ lies on $AB$ such that $AC:CB=2:3$. Find the coordinates of $B$.}
+\vspace{2.6cm}
+\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.} Circle T (True) or F (False) for each statement.\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{12cm}|c|}\hline
+ & \textbf{Statement} & \textbf{T/F}\\\hline
+(a) & $\overrightarrow{OC}=\dfrac{\mu\mathbf a+\lambda\mathbf b}{\lambda+\mu}$ & T\,/\,F \\[1.2ex]\hline
+(b) & $\overrightarrow{OC}=\dfrac{\lambda\mathbf a+\mu\mathbf b}{\lambda+\mu}$ & T\,/\,F \\[1.2ex]\hline
+(c) & If $\lambda:\mu=1:1$, then $\overrightarrow{OC}=\dfrac12(\mathbf a+\mathbf b)$ & T\,/\,F \\[1.2ex]\hline
+(d) & If $\lambda:\mu=1:3$, then $\overrightarrow{OC}=\dfrac{3\mathbf a+\mathbf b}{4}$ & T\,/\,F \\[1.2ex]\hline
+(e) & If $\lambda:\mu=2:1$, then $\overrightarrow{OC}=\dfrac{2\mathbf a+\mathbf b}{3}$ & T\,/\,F \\[1.2ex]\hline
+\end{tabular}}}\par
+\par\vspace{\baselineskip}\begin{center}\textbf{END OF WORKSHEET}\end{center}\end{document}
