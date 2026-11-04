@@ -23,9 +23,9 @@
 \newcommand{\D}[5]{\parbox[c][\cellh][c]{6.6cm}{\centering
  \pgfmathsetmacro\u{min((6.4-0.9)/(#2-(#1)+0.5),(\cellh/1cm-0.2-0.45)/(#4-(#3)+0.5))}%
  \begin{tikzpicture}[x=\u cm,y=\u cm]\gridax{#1}{#2}{#3}{#4}#5\end{tikzpicture}}}
-\newcommand{\E}[1]{\parbox[c][\cellh][c]{\linewidth}{$\displaystyle\begin{aligned}#1\end{aligned}$}}
+\newcommand{\E}[1]{\parbox[c]{\linewidth}{\vspace{3pt}$\displaystyle\begin{aligned}#1\end{aligned}$\vspace{3pt}}}
 \newcommand{\N}[1]{\parbox[c][\cellh][c]{\linewidth}{\raggedright #1}}
-\newlength{\cellh}\setlength{\cellh}{4.0cm}
+\newlength{\cellh}\setlength{\cellh}{3.2cm}
 \begin{document}
 \setcounter{chapter}{\numexpr\chapnum-1\relax}
 \chapter{Vectors I}
@@ -40,7 +40,7 @@ A vector describes a quantity that has both magnitude and direction. Vectors let
 
 \medskip
 
-\noindent\begin{tikzpicture}[x=0.9cm,y=0.9cm]
+\noindent\begin{tikzpicture}[x=0.75cm,y=0.75cm]
 \draw[black!15,step=1](-5,-3) grid (13,3);
 \draw[ax](-5,0)--(13.4,0) node[right,font=\scriptsize]{$x$};
 \draw[ax](0,-3)--(0,3.4) node[above,font=\scriptsize]{$y$};
