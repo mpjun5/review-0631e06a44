@@ -45,7 +45,7 @@
  \ifdim\dimexpr\ht\dtbox+\dp\dtbox+0.35cm>\cellh\setlength{\dtmax}{\dimexpr\ht\dtbox+\dp\dtbox+0.35cm}\else\setlength{\dtmax}{\cellh}\fi
  \parbox[c][\dtmax][c]{6.6cm}{\centering\usebox{\dtbox}}}
 % generic ratio-theorem sketch: {A label}{C label}{B label}{lambda}{mu}{C position fraction}
-\newcommand{\ratiosketch}[6]{\begin{tikzpicture}[scale=0.8]
+\newcommand{\ratiosketch}[6]{\begin{tikzpicture}[scale=0.62]
 \coordinate (O) at (0,0);\coordinate (A) at (0.6,2.4);\coordinate (B) at (5,1.6);
 \coordinate (C) at ($(A)!#6!(B)$);
 \draw[thick,black!70](A)--(B);
@@ -450,7 +450,7 @@ i.e.\ $\mathbf c=\dfrac{\mu\mathbf a+\lambda\mathbf b}{\lambda+\mu}$.
 \begin{example}
 $\vv{OA}=\cvv{4}{1}{0}$ and $\vv{OB}=\cvv{1}{4}{6}$. $C$ lies on $AB$ with $AC:CB=2:1$. Find $\vv{OC}$.
 \end{example}
-\solution{\par\noindent\begin{minipage}[c]{0.6\linewidth}
+\solution{\par\noindent\begin{minipage}[c]{0.36\linewidth}
 \[
 \begin{aligned}
 \vv{OC}&=\frac{1\,\vv{OA}+2\,\vv{OB}}{2+1}\\
@@ -460,25 +460,29 @@ $\vv{OA}=\cvv{4}{1}{0}$ and $\vv{OB}=\cvv{1}{4}{6}$. $C$ lies on $AB$ with $AC:C
 \end{aligned}
 \]
 \end{minipage}\hfill
-\begin{minipage}[c]{0.38\linewidth}\centering
+\begin{minipage}[c]{0.3\linewidth}\centering
 {\small Diagram you can draw:}\\[2pt]
-\ratiosketch{$A(4,1,0)$}{$C\,?$}{$B(1,4,6)$}{2}{1}{0.667}\\[6pt]
-{\small\color{black!50} Actual diagram: (you do not need to draw this)}\\[2pt]
-\begin{tikzpicture}[td,scale=0.45,black!45]
+\ratiosketch{$A(4,1,0)$}{$C\,?$}{$B(1,4,6)$}{2}{1}{0.667}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.3\linewidth}\centering
+\fcolorbox{black!30}{white}{\begin{minipage}{0.95\linewidth}\centering
+{\scriptsize\color{black!50} Actual diagram: (you do not need to draw this)}\\[2pt]
+\begin{tikzpicture}[td,scale=0.4,black!45]
+\begin{scope}[every path/.style={black!40}]\draw[->,>=Stealth](0,0,0)--(5.5,0,0) node[right,L,black!50]{$x$};\draw[->,>=Stealth](0,-1,0)--(0,4.6,0) node[above right,L,black!50]{$y$};\draw[->,>=Stealth](0,0,0)--(0,0,6.8) node[above,L,black!50]{$z$};\end{scope}
 \draw[black!45,thick](4,1,0)--(1,4,6);
-\draw[->,>=Stealth,thick,black!40](0,0,0)--(4,1,0);\draw[->,>=Stealth,thick,black!40](0,0,0)--(1,4,6);\draw[->,>=Stealth,thick,black!55](0,0,0)--(2,3,4);
-\node[dot,fill=black!45,label={[L,black!50]below left:$O$}] at (0,0,0){};
-\node[dot,fill=black!45,label={[L,black!50]right:$A(4,1,0)$}] at (4,1,0){};
-\node[dot,fill=black!45,label={[L,black!50]right:$B(1,4,6)$}] at (1,4,6){};
+\draw[->,>=Stealth,thick,black!45](0,0,0)--(4,1,0);\draw[->,>=Stealth,thick,black!45](0,0,0)--(1,4,6);\draw[->,>=Stealth,thick,black!60](0,0,0)--(2,3,4);
+\node[dot,fill=black!45,label={[L,black!50]below right:$O$}] at (0,0,0){};
+\node[dot,fill=black!45,label={[L,black!50]below:$A(4,1,0)$}] at (4,1,0){};
+\node[dot,fill=black!45,label={[L,black!50]above right:$B(1,4,6)$}] at (1,4,6){};
 \node[dot,fill=black!45,label={[L,black!50]right:$C(2,3,4)$}] at (2,3,4){};
 \end{tikzpicture}
 \end{minipage}}
+\end{minipage}}
 
-\clearpage
 \begin{example}
 $A$ has position vector $\cvv{2}{1}{-1}$ and $C$ has position vector $\cvv{5}{4}{5}$. $C$ lies on $AB$ with $AC:CB=3:2$. Find $\vv{OB}$.
 \end{example}
-\solution{\par\noindent\begin{minipage}[c]{0.6\linewidth}
+\solution{\par\noindent\begin{minipage}[c]{0.36\linewidth}
 \[
 \begin{aligned}
 \vv{OC}&=\frac{2\,\vv{OA}+3\,\vv{OB}}{3+2}\\
@@ -489,18 +493,23 @@ $A$ has position vector $\cvv{2}{1}{-1}$ and $C$ has position vector $\cvv{5}{4}
 \end{aligned}
 \]
 \end{minipage}\hfill
-\begin{minipage}[c]{0.38\linewidth}\centering
+\begin{minipage}[c]{0.3\linewidth}\centering
 {\small Diagram you can draw:}\\[2pt]
-\ratiosketch{$A(2,1,-1)$}{$C(5,4,5)$}{$B\,?$}{3}{2}{0.6}\\[6pt]
-{\small\color{black!50} Actual diagram: (you do not need to draw this)}\\[2pt]
-\begin{tikzpicture}[td,scale=0.3,black!45]
+\ratiosketch{$A(2,1,-1)$}{$C(5,4,5)$}{$B\,?$}{3}{2}{0.6}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.3\linewidth}\centering
+\fcolorbox{black!30}{white}{\begin{minipage}{0.95\linewidth}\centering
+{\scriptsize\color{black!50} Actual diagram: (you do not need to draw this)}\\[2pt]
+\begin{tikzpicture}[td,scale=0.27,black!45]
+\begin{scope}[every path/.style={black!40}]\draw[->,>=Stealth](0,0,0)--(7.6,0,0) node[right,L,black!50]{$x$};\draw[->,>=Stealth](0,-1,0)--(0,6.6,0) node[above right,L,black!50]{$y$};\draw[->,>=Stealth](0,0,-1.6)--(0,0,9.8) node[above,L,black!50]{$z$};\end{scope}
 \draw[black!45,thick](2,1,-1)--(7,6,9);
-\draw[->,>=Stealth,thick,black!40](0,0,0)--(2,1,-1);\draw[->,>=Stealth,thick,black!55](0,0,0)--(5,4,5);\draw[->,>=Stealth,thick,black!40](0,0,0)--(7,6,9);
+\draw[->,>=Stealth,thick,black!45](0,0,0)--(2,1,-1);\draw[->,>=Stealth,thick,black!60](0,0,0)--(5,4,5);\draw[->,>=Stealth,thick,black!45](0,0,0)--(7,6,9);
 \node[dot,fill=black!45,label={[L,black!50]left:$O$}] at (0,0,0){};
-\node[dot,fill=black!45,label={[L,black!50]right:$A(2,1,-1)$}] at (2,1,-1){};
+\node[dot,fill=black!45,label={[L,black!50]below right:$A(2,1,-1)$}] at (2,1,-1){};
 \node[dot,fill=black!45,label={[L,black!50]right:$C(5,4,5)$}] at (5,4,5){};
 \node[dot,fill=black!45,label={[L,black!50]left:$B(7,6,9)$}] at (7,6,9){};
 \end{tikzpicture}
+\end{minipage}}
 \end{minipage}}
 
 \end{document}
