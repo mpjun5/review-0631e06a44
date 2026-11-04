@@ -402,4 +402,87 @@ Let $\mathbf a=2\mathbf i-\mathbf j+2\mathbf k$. Find (a) the unit vector in the
 \end{tikzpicture}
 \end{minipage}}
 
+\clearpage
+\subsection{Ratio Theorem}
+\begin{theorem}{Ratio Theorem}
+\noindent\begin{minipage}[c]{0.5\linewidth}
+If $C$ lies on $AB$ with $AC:CB=\lambda:\mu$, then
+\[
+\vv{OC}=\frac{\mu\,\vv{OA}+\lambda\,\vv{OB}}{\lambda+\mu}
+\]
+i.e.\ $\mathbf c=\dfrac{\mu\mathbf a+\lambda\mathbf b}{\lambda+\mu}$.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.46\linewidth}\centering
+\begin{tikzpicture}[scale=1]
+\coordinate (O) at (0,0);\coordinate (A) at (0.6,2.4);\coordinate (B) at (5,1.6);
+\coordinate (C) at ($(A)!0.6!(B)$);
+\draw[thick,black!70](A)--(B);
+\draw[vA](O)--(A);\draw[vB](O)--(B);\draw[vR](O)--(C);
+\node[dot,label=below left:$O$] at (O){};
+\node[dot,label=above left:$A$] at (A){};
+\node[dot,label=right:$B$] at (B){};
+\node[dot,label=above:$C$] at (C){};
+\node[blue!70!black,left] at ($(O)!0.5!(A)$){$\mathbf a$};
+\node[red!70!black,below right] at ($(O)!0.5!(B)$){$\mathbf b$};
+\node[green!45!black,above left=-1pt] at ($(O)!0.55!(C)$){$\mathbf c$};
+\draw[decorate,decoration={brace,amplitude=4pt,raise=3pt}](A)--(C) node[midway,above=8pt,sloped]{$\lambda$};
+\draw[decorate,decoration={brace,amplitude=4pt,raise=3pt}](C)--(B) node[midway,above=8pt,sloped]{$\mu$};
+\end{tikzpicture}
+\end{minipage}
+\end{theorem}
+
+\begin{example}
+$\vv{OA}=\cvv{4}{1}{0}$ and $\vv{OB}=\cvv{1}{4}{6}$. $C$ lies on $AB$ with $AC:CB=2:1$. Find $\vv{OC}$.
+\end{example}
+\solution{\par\noindent\begin{minipage}[c]{0.6\linewidth}
+\[
+\begin{aligned}
+\vv{OC}&=\frac{1\,\vv{OA}+2\,\vv{OB}}{2+1}\\
+&=\frac13\left[\cvv{4}{1}{0}+\cvv{2}{8}{12}\right]\\
+&=\frac13\cvv{6}{9}{12}\\
+&=\cvv{2}{3}{4}
+\end{aligned}
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.38\linewidth}\centering
+\begin{tikzpicture}[td,scale=0.5]
+\axt{5.6}{-1.5}{4}{6.4}
+\node[dot,label={[L]below right:$O$}] at (0,0,0){};
+\draw[thick,black!70](4,1,0)--(1,4,6);
+\draw[vA](0,0,0)--(4,1,0);\draw[vB](0,0,0)--(1,4,6);\draw[vR](0,0,0)--(2,3,4);
+\node[dot,label={[L]below:$A(4,1,0)$}] at (4,1,0){};
+\node[dot,label={[L]above right:$B(1,4,6)$}] at (1,4,6){};
+\node[dot,label={[L]left:$C(2,3,4)$}] at (2,3,4){};
+\node[L,right] at (3,2,2){$2$};\node[L,right] at (1.5,3.5,5){$1$};
+\end{tikzpicture}
+\end{minipage}}
+
+\begin{example}
+$A$ has position vector $\cvv{2}{1}{-1}$ and $C$ has position vector $\cvv{5}{4}{5}$. $C$ lies on $AB$ with $AC:CB=3:2$. Find $\vv{OB}$.
+\end{example}
+\solution{\par\noindent\begin{minipage}[c]{0.6\linewidth}
+\[
+\begin{aligned}
+\vv{OC}&=\frac{2\,\vv{OA}+3\,\vv{OB}}{3+2}\\
+\therefore\ \vv{OB}&=\frac{5\,\vv{OC}-2\,\vv{OA}}{3}\\
+&=\frac13\left[\cvv{25}{20}{25}-\cvv{4}{2}{-2}\right]\\
+&=\frac13\cvv{21}{18}{27}\\
+&=\cvv{7}{6}{9}
+\end{aligned}
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.38\linewidth}\centering
+\begin{tikzpicture}[td,scale=0.33]
+\axt{7}{-1}{6}{9.4}
+\draw[ax](0,0,0)--(0,0,-1.6);
+\node[dot,label={[L]below right:$O$}] at (0,0,0){};
+\draw[thick,black!70](2,1,-1)--(7,6,9);
+\draw[vA](0,0,0)--(2,1,-1);\draw[vR](0,0,0)--(5,4,5);\draw[vB](0,0,0)--(7,6,9);
+\node[dot,label={[L]right:$A(2,1,-1)$}] at (2,1,-1){};
+\node[dot,label={[L]right:$C(5,4,5)$}] at (5,4,5){};
+\node[dot,label={[L]left:$B(7,6,9)$}] at (7,6,9){};
+\node[L,right] at (3.5,2.5,2){$3$};\node[L,right] at (6,5,7){$2$};
+\end{tikzpicture}
+\end{minipage}}
+
 \end{document}
