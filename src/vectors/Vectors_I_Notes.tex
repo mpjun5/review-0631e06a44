@@ -28,16 +28,22 @@
 \newlength{\cellh}\setlength{\cellh}{3.2cm}
 \newcommand{\cvv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
 % 3D oblique projection: x toward viewer (down-left), y right, z up. No grids.
-\tikzset{td/.style={x={(-0.62cm,-0.42cm)},y={(1cm,0cm)},z={(0cm,1cm)}}}
+\tikzset{td/.style={x={(0.62cm,-0.42cm)},y={(-1cm,0cm)},z={(0cm,1cm)}}}
 % \axt{xmax}{ymin}{ymax}{zmax}: axes only
-\newcommand{\axt}[4]{\draw[ax](0,0,0)--(#1+0.6,0,0) node[below left,L]{$x$};
- \draw[ax](0,#2,0)--(0,#3+0.6,0) node[right,L]{$y$};
+\newcommand{\axt}[4]{\draw[ax](0,0,0)--(#1+0.6,0,0) node[below right,L]{$x$};
+ \draw[ax](0,#2,0)--(0,#3+0.6,0) node[left,L]{$y$};
  \draw[ax](0,0,0)--(0,0,#4+0.6) node[above,L]{$z$};}
 % \pj{x}{y}{z}: dotted guides from the point down to the xy-plane and onto the axes
 \newcommand{\pj}[3]{\draw[comp](#1,#2,#3)--(#1,#2,0)--(#1,0,0);\draw[comp](#1,#2,0)--(0,#2,0);}
 % \DT{unit}{xmax}{ymin}{ymax}{zmax}{body}
-\newcommand{\DT}[6]{\parbox[c][\cellh][c]{6.6cm}{\centering
- \begin{tikzpicture}[td,scale=#1]\axt{#2}{#3}{#4}{#5}#6\end{tikzpicture}}}
+\newsavebox{\dtbox}\newlength{\dtmax}
+\newcommand{\DT}[6]{\sbox{\dtbox}{\begin{tikzpicture}[td,scale=#1]\axt{#2}{#3}{#4}{#5}#6\end{tikzpicture}}%
+ \setlength{\dtmax}{\dimexpr\cellh-0.35cm}%
+ \typeout{DTSIZE \the\wd\dtbox\space x \the\dimexpr\ht\dtbox+\dp\dtbox}%
+ \ifdim\dimexpr\ht\dtbox+\dp\dtbox>\dtmax \typeout{DTOVER}\fi
+ \ifdim\wd\dtbox>6.3cm \typeout{DTWIDE}\fi
+ \ifdim\dimexpr\ht\dtbox+\dp\dtbox+0.35cm>\cellh\setlength{\dtmax}{\dimexpr\ht\dtbox+\dp\dtbox+0.35cm}\else\setlength{\dtmax}{\cellh}\fi
+ \parbox[c][\dtmax][c]{6.6cm}{\centering\usebox{\dtbox}}}
 \begin{document}
 \setcounter{chapter}{\numexpr\chapnum-1\relax}
 \chapter{Vectors I}
@@ -166,16 +172,16 @@ In H2 Mathematics, we extend vectors to three dimensions.
 \mathbf a=\cvv{x}{y}{z}
 \]
 
-\noindent\begin{center}\begin{tikzpicture}[td,scale=0.9]
-\axt{4}{-3}{6}{3.4}
-\node[dot,label=above left:$O$] at (0,0,0){};
+\begin{center}\begin{tikzpicture}[td,scale=0.8]
+\axt{4}{-4}{4}{3.6}
+\node[dot,label=below left:$O$] at (0,0,0){};
 \pj{2}{1}{3}\pj{3}{-2}{2}
 \draw[vA](0,0,0)--(2,1,3);
-\node[dot,blue!70!black,label={[blue!70!black]right:$(2,1,3)$}] at (2,1,3){};
-\node[blue!70!black,left] at (1.6,0.2,2.8){$\mathbf a=\cvv{2}{1}{3}$};
+\node[dot,blue!70!black,label={[blue!70!black]above right:$(2,1,3)$}] at (2,1,3){};
+\node[blue!70!black,left] at (1,0.9,1.8){$\mathbf a=\cvv{2}{1}{3}$};
 \draw[vB](0,0,0)--(3,-2,2);
-\node[dot,red!70!black,label={[red!70!black]below:$(3,-2,2)$}] at (3,-2,2){};
-\node[red!70!black,above left] at (1.2,-2.2,2.2){$\mathbf b=\cvv{3}{-2}{2}$};
+\node[dot,red!70!black,label={[red!70!black]right:$(3,-2,2)$}] at (3,-2,2){};
+\node[red!70!black,above] at (2.6,-1.6,2.6){$\mathbf b=\cvv{3}{-2}{2}$};
 \end{tikzpicture}\end{center}
 
 \begin{center}
@@ -186,83 +192,214 @@ In H2 Mathematics, we extend vectors to three dimensions.
 \hline\rule{0pt}{2.6ex}\textbf{Name}&\textbf{Equation}&\textbf{Diagram}\\[0.8ex]\hline\endhead
 \N{Negative of $\mathbf a$\newline $-\mathbf a$}&
 \E{-\cvv{x}{y}{z}&=\cvv{-x}{-y}{-z}\\ \g{-\mathbf a}&\g{{}=\cvv{-2}{-1}{-3}}}&
-\DT{0.42}{3}{-3}{3}{3.4}{
-\draw[comp](-2,-1,-3)--(-2,-1,0);
+\DT{0.36}{3}{-3}{3}{3}{
 \draw[vA](0,0,0)--(2,1,3);\draw[vB](0,0,0)--(-2,-1,-3);
 \node[dot,label={[L]right:$(2,1,3)$}] at (2,1,3){};
-\node[dot,label={[L]right:$(-2,-1,-3)$}] at (-2,-1,-3){};
+\node[dot,label={[L]left:$(-2,-1,-3)$}] at (-2,-1,-3){};
 \node[L,blue!70!black,left] at (1,0.5,1.5){$\mathbf a$};
-\node[L,red!70!black,right] at (-1,-0.5,-1.5){$-\mathbf a$};}\\\hline
+\node[L,red!70!black,left] at (-1,-0.5,-1.5){$-\mathbf a$};}\\\hline
 \N{$2\mathbf a$}&
 \E{k\cvv{x}{y}{z}&=\cvv{kx}{ky}{kz}\\ \g{2\mathbf a}&\g{{}=2\cvv{2}{1}{3}=\cvv{4}{2}{6}}}&
-\DT{0.4}{4}{-1}{5}{6.2}{\pj{4}{2}{6}
+\DT{0.34}{4}{-3}{3}{6}{
 \draw[vR](0,0,0)--(4,2,6);\draw[vA](0,0,0)--(2,1,3);
 \node[dot,label={[L]right:$(4,2,6)$}] at (4,2,6){};
-\node[L,blue!70!black,right] at (1,0.5,1.5){$\mathbf a$};
+\node[L,blue!70!black,left] at (1,0.5,1.5){$\mathbf a$};
 \node[L,green!45!black,left] at (3,1.5,4.5){$2\mathbf a$};}\\\hline
 \N{Magnitude $|\mathbf a|$}&
 \E{\left|\cvv{x}{y}{z}\right|&=\sqrt{x^2+y^2+z^2}\\ \g{|\mathbf a|}&\g{{}=\sqrt{2^2+1^2+3^2}}\\&\g{{}=\sqrt{14}}}&
-\DT{0.62}{3}{-1}{3}{3.4}{\pj{2}{1}{3}
+\DT{0.48}{3}{-3}{3}{3}{\pj{2}{1}{3}
 \draw[vA](0,0,0)--(2,1,3);
-\node[dot,label={[L]right:$(2,1,3)$}] at (2,1,3){};
-\node[L,below] at (2,0.5,0){$1$};\node[L,below right] at (1,0,0){$2$};\node[L,right] at (2,1,1.0){$3$};
+\node[dot,label={[L]above:$(2,1,3)$}] at (2,1,3){};
+\node[L,above right] at (1,0,0){$2$};\node[L,below] at (2,0.5,0){$1$};\node[L,right] at (2,1,1.5){$3$};
 \node[L,blue!70!black,left] at (1,0.5,1.6){$\sqrt{14}$};}\\\hline
 \N{Triangle law}&
 \E{\vv{OA}+\vv{AB}&=\vv{OB}\\ \g{\vv{OB}}&\g{{}=\cvv{2}{1}{3}+\cvv{3}{-2}{2}}\\&\g{{}=\cvv{5}{-1}{5}}}&
-\DT{0.44}{5}{-2}{3}{5.2}{\pj{5}{-1}{5}
+\DT{0.36}{5}{-3}{3}{5}{
 \draw[vA](0,0,0)--(2,1,3);\draw[vB](2,1,3)--(5,-1,5);\draw[vR](0,0,0)--(5,-1,5);
-\node[L,blue!70!black,right] at (1,0.5,1.5){$\vv{OA}$};
-\node[L,red!70!black,above right] at (3.5,0,4){$\vv{AB}$};
-\node[L,green!45!black,left] at (2.5,-0.5,2.5){$\vv{OB}$};
-\node[dot,label={[L]above left:$O$}] at (0,0,0){};
-\node[dot,label={[L]right:$A$}] at (2,1,3){};
-\node[dot,label={[L]left:$B(5,-1,5)$}] at (5,-1,5){};}\\\hline
+\node[L,blue!70!black,left] at (1,0.5,1.5){$\vv{OA}$};
+\node[L,red!70!black,above] at (3.5,0,4){$\vv{AB}$};
+\node[L,green!45!black,below right] at (2.5,-0.5,2.5){$\vv{OB}$};
+\node[dot,label={[L]below left:$O$}] at (0,0,0){};
+\node[dot,label={[L]left:$A$}] at (2,1,3){};
+\node[dot,label={[L]right:$B(5,-1,5)$}] at (5,-1,5){};}\\\hline
 \N{$\vv{AB}$}&
 \E{\vv{AB}&=\vv{OB}-\vv{OA}\\ \g{\vv{AB}}&\g{{}=\cvv{3}{-2}{2}-\cvv{2}{1}{3}}\\&\g{{}=\cvv{1}{-3}{-1}}}&
-\DT{0.58}{3}{-3}{3}{2.9}{\pj{2}{1}{3}\pj{3}{-2}{2}
+\DT{0.42}{3}{-3}{3}{3}{
 \draw[vA](2,1,3)--(0,0,0);\draw[vB](0,0,0)--(3,-2,2);\draw[vR](2,1,3)--(3,-2,2);
-\node[dot,label={[L]above left:$O$}] at (0,0,0){};
-\node[dot,label={[L]right:$A(2,1,3)$}] at (2,1,3){};
-\node[dot,label={[L]left:$B(3,-2,2)$}] at (3,-2,2){};
-\node[L,green!45!black,above] at (2.5,-0.5,2.6){$\vv{AB}$};}\\\hline
+\node[dot,label={[L]below left:$O$}] at (0,0,0){};
+\node[dot,label={[L]left:$A(2,1,3)$}] at (2,1,3){};
+\node[dot,label={[L]right:$B(3,-2,2)$}] at (3,-2,2){};
+\node[L,green!45!black,above right] at (2.5,-0.5,2.5){$\vv{AB}$};}\\\hline
 \N{Parallelogram law\newline $\mathbf a+\mathbf b$}&
 \E{\vv{OA}+\vv{OB}&=\vv{OC}\\ \g{\mathbf a+\mathbf b}&\g{{}=\cvv{2}{1}{3}+\cvv{3}{-2}{2}}\\&\g{{}=\cvv{5}{-1}{5}}}&
-\DT{0.44}{5}{-2}{3}{5.2}{\pj{5}{-1}{5}
+\DT{0.36}{5}{-3}{3}{5}{
 \draw[vA](0,0,0)--(2,1,3);\draw[vB](0,0,0)--(3,-2,2);\draw[vR](0,0,0)--(5,-1,5);
-\node[dot,label={[L]above left:$O$}] at (0,0,0){};
-\node[dot,label={[L]right:$A$}] at (2,1,3){};
-\node[dot,label={[L]left:$B$}] at (3,-2,2){};
-\node[dot,label={[L]left:$C(5,-1,5)$}] at (5,-1,5){};
-\node[L,blue!70!black,right] at (1,0.5,1.5){$\mathbf a$};
-\node[L,red!70!black,above] at (1.5,-1,1){$\mathbf b$};}\\\hline
+\node[dot,label={[L]below left:$O$}] at (0,0,0){};
+\node[dot,label={[L]left:$A$}] at (2,1,3){};
+\node[dot,label={[L]right:$B$}] at (3,-2,2){};
+\node[dot,label={[L]right:$C(5,-1,5)$}] at (5,-1,5){};
+\node[L,blue!70!black,left] at (1,0.5,1.5){$\mathbf a$};
+\node[L,red!70!black,below] at (1.5,-1,1){$\mathbf b$};}\\\hline
 \N{Linear combination}&
 \E{\lambda\mathbf a+\mu\mathbf b&=\cvv{\lambda a_1+\mu b_1}{\lambda a_2+\mu b_2}{\lambda a_3+\mu b_3}\\ \g{3\mathbf a-2\mathbf b}&\g{{}=\cvv{6}{3}{9}-\cvv{6}{-4}{4}}\\&\g{{}=\cvv{0}{7}{5}}}&
-\DT{0.29}{6}{-1}{7}{9}{\pj{0}{7}{5}
+\DT{0.27}{6}{-3}{7}{9}{
 \draw[vA](0,0,0)--(6,3,9);\draw[vB](6,3,9)--(0,7,5);\draw[vR,line width=1.6pt](0,0,0)--(0,7,5);
-\node[dot,label={[L]right:$(0,7,5)$}] at (0,7,5){};
-\node[L,blue!70!black,left] at (3,1.5,4.5){$3\mathbf a$};
-\node[L,red!70!black,above right] at (3,5,7){$-2\mathbf b$};
-\node[L,green!45!black,below right] at (0,3.5,2.5){$3\mathbf a-2\mathbf b$};}\\\hline
+\node[dot,label={[L]left:$(0,7,5)$}] at (0,7,5){};
+\node[L,blue!70!black,right] at (3,1.5,4.5){$3\mathbf a$};
+\node[L,red!70!black,above] at (3,5,7.2){$-2\mathbf b$};
+\node[L,green!45!black,below left] at (0,4,2.6){$3\mathbf a-2\mathbf b$};}\\\hline
 \N{Equal vectors}&
 \E{\vv{OA}&=\vv{CD}\\ \g{\vv{OA}}&\g{{}=\cvv{2}{1}{3}}\\ \g{\vv{CD}}&\g{{}=\cvv{3-1}{4-3}{4-1}=\cvv{2}{1}{3}}}&
-\DT{0.6}{3}{-1}{4}{4.2}{\pj{2}{1}{3}\pj{1}{3}{1}\pj{3}{4}{4}
+\DT{0.42}{3}{-3}{4}{4}{
 \draw[vA](0,0,0)--(2,1,3);\draw[vA](1,3,1)--(3,4,4);
-\node[dot,label={[L]above left:$O$}] at (0,0,0){};
-\node[dot,label={[L]above left:$A$}] at (2,1,3){};
-\node[dot,label={[L]right:$C(1,3,1)$}] at (1,3,1){};
-\node[dot,label={[L]right:$D(3,4,4)$}] at (3,4,4){};}\\\hline
+\node[dot,label={[L]below left:$O$}] at (0,0,0){};
+\node[dot,label={[L]right:$A$}] at (2,1,3){};
+\node[dot,label={[L]left:$C(1,3,1)$}] at (1,3,1){};
+\node[dot,label={[L]above:$D(3,4,4)$}] at (3,4,4){};}\\\hline
 \N{Collinear vectors}&
 \E{\vv{AB}&=k\,\vv{BC}\\&\Rightarrow A,B,C\text{ collinear}\\ \g{\vv{AB}}&\g{{}=\cvv{2-1}{3-2}{3-1}=\cvv{1}{1}{2}}\\ \g{\vv{BC}}&\g{{}=\cvv{4-2}{5-3}{7-3}=\cvv{2}{2}{4}}\\&\g{{}=2\,\vv{AB}}}&
-\DT{0.36}{4}{-1}{6}{7.2}{\pj{1}{2}{1}\pj{2}{3}{3}\pj{4}{5}{7}
+\DT{0.3}{4}{-3}{6}{7}{
 \draw[vA](1,2,1)--(2,3,3);\draw[vB](2,3,3)--(4,5,7);
-\node[dot,label={[L,xshift=18pt,yshift=-3pt]below:$A(1,2,1)$}] at (1,2,1){};
-\node[dot,label={[L]right:$B(2,3,3)$}] at (2,3,3){};
-\node[dot,label={[L]right:$C(4,5,7)$}] at (4,5,7){};
-\node[dot,label={[L]above left:$O$}] at (0,0,0){};
-\node[L,blue!70!black,left] at (1.5,2.5,2){$\vv{AB}$};
-\node[L,red!70!black,left] at (3,4,5){$\vv{BC}$};}\\\hline
+\node[dot,label={[L]left:$A(1,2,1)$}] at (1,2,1){};
+\node[dot,label={[L]left:$B(2,3,3)$}] at (2,3,3){};
+\node[dot,label={[L]left:$C(4,5,7)$}] at (4,5,7){};
+\node[dot,label={[L]below right:$O$}] at (0,0,0){};
+\node[L,blue!70!black,right] at (1.5,2.5,2){$\vv{AB}$};
+\node[L,red!70!black,right] at (3,4,5){$\vv{BC}$};}\\\hline
 \end{longtable}}
 \end{center}
 
+
+\clearpage
+\section{Basic Terminology and Notation}
+\begin{definition}{{Unit vectors $\mathbf i$, $\mathbf j$, $\mathbf k$}}
+\noindent\begin{minipage}[c]{0.58\linewidth}
+$\mathbf i$, $\mathbf j$ and $\mathbf k$ are the unit vectors in the positive directions of the $x$-, $y$- and $z$-axes:
+\[
+\mathbf i=\cvv{1}{0}{0},\qquad \mathbf j=\cvv{0}{1}{0},\qquad \mathbf k=\cvv{0}{0}{1}
+\]
+Any vector can be written in terms of $\mathbf i$, $\mathbf j$, $\mathbf k$:
+\[
+\cvv{x}{y}{z}=x\mathbf i+y\mathbf j+z\mathbf k
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.38\linewidth}\centering
+\begin{tikzpicture}[td,scale=1.25]
+\axt{1.6}{-0.3}{1.8}{1.6}
+\node[dot,label={[L]below left:$O$}] at (0,0,0){};
+\draw[vA](0,0,0)--(1,0,0) node[midway,above right,L]{$\mathbf i$};
+\draw[vB](0,0,0)--(0,1,0) node[midway,above,L]{$\mathbf j$};
+\draw[vR](0,0,0)--(0,0,1) node[midway,right,L]{$\mathbf k$};
+\end{tikzpicture}
+\end{minipage}
+\end{definition}
+
+\begin{example}
+Write in column vector form: (a) $2\mathbf i+3\mathbf j-4\mathbf k$ \quad (b) $3\mathbf i+2\mathbf k$. \quad (c) Write $\cvv{5}{-1}{0}$ in terms of $\mathbf i,\mathbf j,\mathbf k$.
+\end{example}
+\solution{
+\[
+\begin{aligned}
+\text{(a)}\quad 2\mathbf i+3\mathbf j-4\mathbf k&=\cvv{2}{3}{-4}
+\qquad\qquad
+\text{(b)}\quad 3\mathbf i+2\mathbf k=3\mathbf i+0\mathbf j+2\mathbf k=\cvv{3}{0}{2}
+\qquad\qquad
+\text{(c)}\quad \cvv{5}{-1}{0}=5\mathbf i-\mathbf j
+\end{aligned}
+\]}
+
+\begin{theorem}{Magnitude of a vector}
+\[
+\mathbf a=x\mathbf i+y\mathbf j+z\mathbf k\quad\Rightarrow\quad|\mathbf a|=\sqrt{x^2+y^2+z^2}
+\]
+\end{theorem}
+
+\begin{example}
+Find $|2\mathbf i+3\mathbf j-4\mathbf k|$.
+\end{example}
+\solution{\par\noindent\begin{minipage}[c]{0.55\linewidth}
+\[
+\begin{aligned}
+|2\mathbf i+3\mathbf j-4\mathbf k|&=\sqrt{2^2+3^2+(-4)^2}\\
+&=\sqrt{4+9+16}\\
+&=\sqrt{29}
+\end{aligned}
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\linewidth}\centering
+\begin{tikzpicture}[td,scale=0.42]
+\axt{3}{-1}{4}{1.5}
+\draw[ax](0,0,0)--(0,0,-4.6);
+\node[dot,label={[L]above right:$O$}] at (0,0,0){};
+\draw[comp](2,3,-4)--(2,3,0);
+\draw[vA](0,0,0)--(2,3,-4);
+\node[dot,label={[L]left:$(2,3,-4)$}] at (2,3,-4){};
+\node[L,blue!70!black,left] at (1,1.5,-2){$\sqrt{29}$};
+\end{tikzpicture}
+\end{minipage}}
+
+\begin{theorem}{Parallel vectors}
+\[
+\mathbf a\parallel\mathbf b\iff\mathbf a=\lambda\mathbf b\ \text{ for some scalar }\lambda\neq0
+\]
+$\lambda>0$: same direction; \quad $\lambda<0$: opposite directions.
+\end{theorem}
+
+\begin{example}
+(a) Show that $\cvv{2}{-4}{6}$ is parallel to $\cvv{-1}{2}{-3}$. \quad (b) Find $p$ and $q$ such that $\cvv{p}{6}{q}$ is parallel to $\cvv{1}{3}{-2}$.
+\end{example}
+\solution{\par\noindent\begin{minipage}[c]{0.62\linewidth}
+\[
+\begin{aligned}
+\text{(a)}\quad\cvv{2}{-4}{6}&=-2\cvv{-1}{2}{-3}\\
+\therefore\ \cvv{2}{-4}{6}&\parallel\cvv{-1}{2}{-3}\ \text{(shown)}\\[4pt]
+\text{(b)}\quad\cvv{p}{6}{q}&=\lambda\cvv{1}{3}{-2}\\
+6&=3\lambda\ \Rightarrow\ \lambda=2\\
+\therefore\ p&=2,\quad q=-4
+\end{aligned}
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.34\linewidth}\centering
+\begin{tikzpicture}[td,scale=0.3]
+\axt{3}{-4}{4}{6}
+\draw[ax](0,0,0)--(0,0,-3.6);
+\node[dot,label={[L]above right:$O$}] at (0,0,0){};
+\draw[vA](0,0,0)--(2,-4,6);\draw[vB](0,0,0)--(-1,2,-3);
+\node[dot,label={[L]right:$(2,-4,6)$}] at (2,-4,6){};
+\node[dot,label={[L]left:$(-1,2,-3)$}] at (-1,2,-3){};
+\end{tikzpicture}
+\end{minipage}}
+
+\begin{theorem}{Unit vectors}
+The unit vector in the direction of $\mathbf a$ is
+\[
+\hat{\mathbf a}=\frac{\mathbf a}{|\mathbf a|}
+\]
+\end{theorem}
+
+\begin{example}
+Let $\mathbf a=2\mathbf i-\mathbf j+2\mathbf k$. Find (a) the unit vector in the direction of $\mathbf a$, \quad (b) the vectors of magnitude $6$ parallel to $\mathbf a$.
+\end{example}
+\solution{\par\noindent\begin{minipage}[c]{0.62\linewidth}
+\[
+\begin{aligned}
+\text{(a)}\quad|\mathbf a|&=\sqrt{2^2+(-1)^2+2^2}=\sqrt9=3\\
+\hat{\mathbf a}&=\frac13\cvv{2}{-1}{2}\\[4pt]
+\text{(b)}\quad\pm6\hat{\mathbf a}&=\pm\frac63\cvv{2}{-1}{2}=\pm\cvv{4}{-2}{4}
+\end{aligned}
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.34\linewidth}\centering
+\begin{tikzpicture}[td,scale=0.75]
+\axt{2.5}{-2}{1}{2.6}
+\node[dot,label={[L]below left:$O$}] at (0,0,0){};
+\draw[vR](0,0,0)--(4/3*0.75,-2/3*0.75,4/3*0.75);
+\draw[vA](0,0,0)--(2,-1,2);
+\draw[vR,line width=1.6pt](0,0,0)--(2/3,-1/3,2/3);
+\node[L,blue!70!black,right] at (1.5,-0.75,1.6){$\mathbf a$};
+\node[L,green!45!black,above left] at (1/3,-1/6,1/3){$\hat{\mathbf a}$};
+\node[dot,label={[L]right:$(2,-1,2)$}] at (2,-1,2){};
+\end{tikzpicture}
+\end{minipage}}
 
 \end{document}
