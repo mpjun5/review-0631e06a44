@@ -86,7 +86,7 @@ A vector describes a quantity that has both magnitude and direction. Vectors let
 \N{Triangle law}&
 \E{\vv{OA}+\vv{AB}&=\vv{OB}\\ \g{\vv{OB}}&\g{{}=\cv{2}{1}+\cv{3}{-2}}\\&\g{{}=\cv{5}{-1}}}&
 \D{-1}{7}{-3}{2}{
-\draw[comp](0,0)--(3,-2)--(5,-1);
+
 \draw[vA](0,0)--(2,1);\draw[vB](2,1)--(5,-1);\draw[vR](0,0)--(5,-1);
 \node[L,blue!70!black,above left] at (1.0,0.5){$\vv{OA}$};
 \node[L,red!70!black,above right] at (3.5,0){$\vv{AB}$};
@@ -97,7 +97,7 @@ A vector describes a quantity that has both magnitude and direction. Vectors let
 \N{$\vv{AB}$}&
 \E{\vv{AB}&=\vv{OB}-\vv{OA}\\ \g{\vv{AB}}&\g{{}=\cv{3}{-2}-\cv{2}{1}}\\&\g{{}=\cv{1}{-3}}}&
 \D{-1}{7}{-3}{2}{
-\draw[comp](2,1)--(5,-1)--(3,-2);
+
 \draw[vA](2,1)--(0,0);\draw[vB](0,0)--(3,-2);\draw[vR](2,1)--(3,-2);
 \node[dot,label={[L]below left:$O$}] at (0,0){};
 \node[dot,label={[L]above:$A(2,1)$}] at (2,1){};
@@ -106,7 +106,7 @@ A vector describes a quantity that has both magnitude and direction. Vectors let
 \N{Parallelogram law\newline $\mathbf a+\mathbf b$}&
 \E{\vv{OA}+\vv{OB}&=\vv{OC}\\ \g{\mathbf a+\mathbf b}&\g{{}=\cv{2}{1}+\cv{3}{-2}}\\&\g{{}=\cv{5}{-1}}}&
 \D{-1}{7}{-3}{2}{
-\draw[comp](2,1)--(5,-1)--(3,-2);
+
 \draw[vA](0,0)--(2,1);\draw[vB](0,0)--(3,-2);\draw[vR](0,0)--(5,-1);
 \node[dot,label={[L]below left:$O$}] at (0,0){};
 \node[dot,label={[L]above:$A$}] at (2,1){};
@@ -117,7 +117,7 @@ A vector describes a quantity that has both magnitude and direction. Vectors let
 \N{Linear combination}&
 \E{\lambda\mathbf a+\mu\mathbf b&=\cv{\lambda a_1+\mu b_1}{\lambda a_2+\mu b_2}\\ \g{3\mathbf a-2\mathbf b}&\g{{}=3\cv{2}{1}-2\cv{3}{-2}}\\&\g{{}=\cv{6}{3}-\cv{6}{-4}}\\&\g{{}=\cv{0}{7}}}&
 \D{-7}{8}{-1}{8}{
-\draw[comp](0,0)--(-6,4)--(0,7);
+
 \draw[vA](0,0)--(6,3);\draw[vB](6,3)--(0,7);\draw[vR,line width=1.6pt](0,0)--(0,7);
 \node[dot,label={[L]left:$(0,7)$}] at (0,7){};
 \node[L,blue!70!black,below right] at (3,1.5){$3\mathbf a$};
@@ -147,10 +147,4 @@ A vector describes a quantity that has both magnitude and direction. Vectors let
 \end{center}
 
 
-\input{../src/parts/p1_basics}
-\input{../src/parts/a1_basics_vis}
-\input{../src/parts/p2_scalar}
-\input{../src/parts/a2_scalar_vis}
-\input{../src/parts/p3_vector}
-\input{../src/parts/a3_vector_vis}
 \end{document}
