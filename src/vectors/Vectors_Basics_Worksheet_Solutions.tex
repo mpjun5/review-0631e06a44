@@ -63,13 +63,17 @@
 (c) & $|\mathbf a+\mathbf b|=|\mathbf a|+|\mathbf b|$ for all vectors $\mathbf a$, $\mathbf b$ & \textbf{False} \\[1.2ex]\hline
 (d) & $|3\mathbf a|=3|\mathbf a|$ & \textbf{True} \\[1.2ex]\hline
 (e) & $\left|\col{0}{-5}{0}\right|=-5$ & \textbf{False} \\[1.2ex]\hline
+(f) & $\left|\col{1}{1}{1}\right|=1$ & \textbf{False} \\[1.2ex]\hline
+(g) & $|\mathbf a+\mathbf b|\le|\mathbf a|+|\mathbf b|$ for all vectors $\mathbf a$, $\mathbf b$ & \textbf{True} \\[1.2ex]\hline
 \end{tabular}}}\par\medskip
 \begin{align*}
 \text{(a)}\quad & |\mathbf i+2\mathbf j-2\mathbf k|=\sqrt{1^2+2^2+(-2)^2}=3\\[1ex]
 \text{(b)}\quad & |-\mathbf a|=|-1|\,|\mathbf a|=|\mathbf a|\\[1ex]
 \text{(c)}\quad & |\mathbf i+\mathbf j|=\sqrt2\neq|\mathbf i|+|\mathbf j|=2\\[1ex]
 \text{(d)}\quad & |3\mathbf a|=|3|\,|\mathbf a|=3|\mathbf a|\\[1ex]
-\text{(e)}\quad & \left|\col{0}{-5}{0}\right|=\sqrt{0^2+(-5)^2+0^2}=5
+\text{(e)}\quad & \left|\col{0}{-5}{0}\right|=\sqrt{0^2+(-5)^2+0^2}=5\\[1ex]
+\text{(f)}\quad & \left|\col{1}{1}{1}\right|=\sqrt{1^2+1^2+1^2}=\sqrt3\neq1\\[1ex]
+\text{(g)}\quad & \overrightarrow{OA}=\mathbf a,\ \overrightarrow{AB}=\mathbf b,\ \overrightarrow{OB}=\mathbf a+\mathbf b,\ OB\le OA+AB\ (\triangle OAB)
 \end{align*}
 \wsec{Unit Vectors}
 \Q{Find the unit vector in the direction of $\col{2}{-1}{2}$.}
@@ -80,18 +84,18 @@
 \begin{align*}\overrightarrow{AB}&=\col{3}{-6}{5}-\col{1}{0}{2}\\ &=\col{2}{-6}{3}\\ \left|\overrightarrow{AB}\right|&=\sqrt{2^2+(-6)^2+3^2}\\ &=7\\ \text{vector}&=-14\cdot\dfrac{1}{7}\col{2}{-6}{3}\\ &=\col{-4}{12}{-6}\end{align*}
 \par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.}\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{11.2cm}|c|}\hline
  & \textbf{Statement} & \textbf{True / False}\\\hline
-(a) & The unit vector in the direction of $\col{3}{4}{0}$ is $\col{\frac35}{\frac45}{0}$ & \textbf{True} \\[1.2ex]\hline
-(b) & $\col{1}{1}{1}$ is a unit vector & \textbf{False} \\[1.2ex]\hline
-(c) & The unit vector in the direction of $-\mathbf a$ is $\hat{\mathbf a}$ & \textbf{False} \\[1.2ex]\hline
-(d) & $\dfrac13\col{1}{2}{2}$ is a unit vector & \textbf{True} \\[1.2ex]\hline
-(e) & The unit vector in the direction of $\col{-6}{0}{8}$ is $\dfrac{1}{10}\col{6}{0}{-8}$ & \textbf{False} \\[1.2ex]\hline
+(a) & $\col{1}{1}{1}$ is a unit vector & \textbf{False} \\[1.2ex]\hline
+(b) & $\dfrac13\col{1}{2}{2}$ is a unit vector & \textbf{True} \\[1.2ex]\hline
+(c) & $\mathbf i+\mathbf j$ is a unit vector & \textbf{False} \\[1.2ex]\hline
+(d) & $|\hat{\mathbf a}|=1$ for every non-zero vector $\mathbf a$ & \textbf{True} \\[1.2ex]\hline
+(e) & $\mathbf a$ and $\hat{\mathbf a}$ are parallel & \textbf{True} \\[1.2ex]\hline
 \end{tabular}}}\par\medskip
 \begin{align*}
-\text{(a)}\quad & \left|\col{3}{4}{0}\right|=5,\ \tfrac15\col{3}{4}{0}=\col{\frac35}{\frac45}{0}\\[1ex]
-\text{(b)}\quad & \left|\col{1}{1}{1}\right|=\sqrt3\neq1\\[1ex]
-\text{(c)}\quad & \dfrac{-\mathbf a}{|-\mathbf a|}=-\dfrac{\mathbf a}{|\mathbf a|}=-\hat{\mathbf a}\\[1ex]
-\text{(d)}\quad & \left|\tfrac13\col{1}{2}{2}\right|=\tfrac13\sqrt{1+4+4}=1\\[1ex]
-\text{(e)}\quad & \dfrac{1}{10}\col{6}{0}{-8}=-\dfrac{1}{10}\col{-6}{0}{8}
+\text{(a)}\quad & \left|\col{1}{1}{1}\right|=\sqrt3\neq1\\[1ex]
+\text{(b)}\quad & \left|\tfrac13\col{1}{2}{2}\right|=\tfrac13\sqrt{1+4+4}=1\\[1ex]
+\text{(c)}\quad & |\mathbf i+\mathbf j|=\sqrt{1^2+1^2+0^2}=\sqrt2\neq1\\[1ex]
+\text{(d)}\quad & |\hat{\mathbf a}|=\left|\dfrac{\mathbf a}{|\mathbf a|}\right|=\dfrac{|\mathbf a|}{|\mathbf a|}=1\\[1ex]
+\text{(e)}\quad & \mathbf a=|\mathbf a|\,\hat{\mathbf a}
 \end{align*}
 \wsec{Parallel Vectors ($\mathbf a=\lambda\mathbf b$)}
 \Q{Show that $\mathbf a=\col{2}{-1}{3}$ and $\mathbf b=\col{-6}{3}{-9}$ are parallel.}
