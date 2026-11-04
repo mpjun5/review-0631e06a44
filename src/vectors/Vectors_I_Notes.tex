@@ -44,6 +44,19 @@
  \ifdim\wd\dtbox>6.3cm \typeout{DTWIDE}\fi
  \ifdim\dimexpr\ht\dtbox+\dp\dtbox+0.35cm>\cellh\setlength{\dtmax}{\dimexpr\ht\dtbox+\dp\dtbox+0.35cm}\else\setlength{\dtmax}{\cellh}\fi
  \parbox[c][\dtmax][c]{6.6cm}{\centering\usebox{\dtbox}}}
+% generic ratio-theorem sketch: {A label}{C label}{B label}{lambda}{mu}{C position fraction}
+\newcommand{\ratiosketch}[6]{\begin{tikzpicture}[scale=0.8]
+\coordinate (O) at (0,0);\coordinate (A) at (0.6,2.4);\coordinate (B) at (5,1.6);
+\coordinate (C) at ($(A)!#6!(B)$);
+\draw[thick,black!70](A)--(B);
+\draw[vA](O)--(A);\draw[vB](O)--(B);\draw[vR](O)--(C);
+\node[dot,label=below left:$O$] at (O){};
+\node[dot,label={[L]above left:#1}] at (A){};
+\node[dot,label={[L]right:#3}] at (B){};
+\node[dot,label={[L]below=2pt:#2}] at (C){};
+\draw[decorate,decoration={brace,amplitude=4pt,raise=3pt}](A)--(C) node[midway,above=8pt,sloped]{$#4$};
+\draw[decorate,decoration={brace,amplitude=4pt,raise=3pt}](C)--(B) node[midway,above=8pt,sloped]{$#5$};
+\end{tikzpicture}}
 \begin{document}
 \setcounter{chapter}{\numexpr\chapnum-1\relax}
 \chapter{Vectors I}
@@ -125,7 +138,7 @@ A vector describes a quantity that has both magnitude and direction. Vectors let
 \E{\vv{OA}+\vv{OB}&=\vv{OC}\\ \g{\mathbf a+\mathbf b}&\g{{}=\cv{2}{1}+\cv{3}{-2}}\\&\g{{}=\cv{5}{-1}}}&
 \D{-1}{7}{-3}{2}{
 
-\draw[vA](0,0)--(2,1);\draw[vB](0,0)--(3,-2);\draw[vR](0,0)--(5,-1);
+\draw[comp](2,1)--(5,-1);\draw[comp](3,-2)--(5,-1);\draw[vA](0,0)--(2,1);\draw[vB](0,0)--(3,-2);\draw[vR](0,0)--(5,-1);
 \node[dot,label={[L]below left:$O$}] at (0,0){};
 \node[dot,label={[L]above:$A$}] at (2,1){};
 \node[dot,label={[L]below:$B$}] at (3,-2){};
@@ -232,8 +245,8 @@ In H2 Mathematics, we extend vectors to three dimensions.
 \node[L,green!45!black,right] at (2.5,-0.5,2.5){$\vv{AB}$};}\\\hline
 \N{Parallelogram law\newline $\mathbf a+\mathbf b$}&
 \E{\vv{OA}+\vv{OB}&=\vv{OC}\\ \g{\mathbf a+\mathbf b}&\g{{}=\cvv{2}{1}{3}+\cvv{3}{-2}{2}}\\&\g{{}=\cvv{5}{-1}{5}}}&
-\DT{0.36}{5}{-3}{3}{5}{
-\draw[vA](0,0,0)--(2,1,3);\draw[vB](0,0,0)--(3,-2,2);\draw[vR](0,0,0)--(5,-1,5);
+\DT{0.5}{5}{-3}{3}{5}{
+\draw[comp](2,1,3)--(5,-1,5);\draw[comp](3,-2,2)--(5,-1,5);\draw[vA](0,0,0)--(2,1,3);\draw[vB](0,0,0)--(3,-2,2);\draw[vR](0,0,0)--(5,-1,5);
 \node[dot,label={[L]below right:$O$}] at (0,0,0){};
 \node[dot,label={[L]above left:$A$}] at (2,1,3){};
 \node[dot,label={[L]right:$B$}] at (3,-2,2){};
@@ -448,18 +461,20 @@ $\vv{OA}=\cvv{4}{1}{0}$ and $\vv{OB}=\cvv{1}{4}{6}$. $C$ lies on $AB$ with $AC:C
 \]
 \end{minipage}\hfill
 \begin{minipage}[c]{0.38\linewidth}\centering
-\begin{tikzpicture}[td,scale=0.5]
-\axt{5.6}{-1.5}{4}{6.4}
-\node[dot,label={[L]below right:$O$}] at (0,0,0){};
-\draw[thick,black!70](4,1,0)--(1,4,6);
-\draw[vA](0,0,0)--(4,1,0);\draw[vB](0,0,0)--(1,4,6);\draw[vR](0,0,0)--(2,3,4);
-\node[dot,label={[L]below:$A(4,1,0)$}] at (4,1,0){};
-\node[dot,label={[L]above right:$B(1,4,6)$}] at (1,4,6){};
-\node[dot,label={[L]left:$C(2,3,4)$}] at (2,3,4){};
-\node[L,right] at (3,2,2){$2$};\node[L,right] at (1.5,3.5,5){$1$};
+{\small Diagram you can draw:}\\[2pt]
+\ratiosketch{$A(4,1,0)$}{$C\,?$}{$B(1,4,6)$}{2}{1}{0.667}\\[6pt]
+{\small\color{black!50} Actual diagram: (you do not need to draw this)}\\[2pt]
+\begin{tikzpicture}[td,scale=0.45,black!45]
+\draw[black!45,thick](4,1,0)--(1,4,6);
+\draw[->,>=Stealth,thick,black!40](0,0,0)--(4,1,0);\draw[->,>=Stealth,thick,black!40](0,0,0)--(1,4,6);\draw[->,>=Stealth,thick,black!55](0,0,0)--(2,3,4);
+\node[dot,fill=black!45,label={[L,black!50]below left:$O$}] at (0,0,0){};
+\node[dot,fill=black!45,label={[L,black!50]right:$A(4,1,0)$}] at (4,1,0){};
+\node[dot,fill=black!45,label={[L,black!50]right:$B(1,4,6)$}] at (1,4,6){};
+\node[dot,fill=black!45,label={[L,black!50]right:$C(2,3,4)$}] at (2,3,4){};
 \end{tikzpicture}
 \end{minipage}}
 
+\clearpage
 \begin{example}
 $A$ has position vector $\cvv{2}{1}{-1}$ and $C$ has position vector $\cvv{5}{4}{5}$. $C$ lies on $AB$ with $AC:CB=3:2$. Find $\vv{OB}$.
 \end{example}
@@ -475,16 +490,16 @@ $A$ has position vector $\cvv{2}{1}{-1}$ and $C$ has position vector $\cvv{5}{4}
 \]
 \end{minipage}\hfill
 \begin{minipage}[c]{0.38\linewidth}\centering
-\begin{tikzpicture}[td,scale=0.33]
-\axt{7}{-1}{6}{9.4}
-\draw[ax](0,0,0)--(0,0,-1.6);
-\node[dot,label={[L]below right:$O$}] at (0,0,0){};
-\draw[thick,black!70](2,1,-1)--(7,6,9);
-\draw[vA](0,0,0)--(2,1,-1);\draw[vR](0,0,0)--(5,4,5);\draw[vB](0,0,0)--(7,6,9);
-\node[dot,label={[L]right:$A(2,1,-1)$}] at (2,1,-1){};
-\node[dot,label={[L]right:$C(5,4,5)$}] at (5,4,5){};
-\node[dot,label={[L]left:$B(7,6,9)$}] at (7,6,9){};
-\node[L,right] at (3.5,2.5,2){$3$};\node[L,right] at (6,5,7){$2$};
+{\small Diagram you can draw:}\\[2pt]
+\ratiosketch{$A(2,1,-1)$}{$C(5,4,5)$}{$B\,?$}{3}{2}{0.6}\\[6pt]
+{\small\color{black!50} Actual diagram: (you do not need to draw this)}\\[2pt]
+\begin{tikzpicture}[td,scale=0.3,black!45]
+\draw[black!45,thick](2,1,-1)--(7,6,9);
+\draw[->,>=Stealth,thick,black!40](0,0,0)--(2,1,-1);\draw[->,>=Stealth,thick,black!55](0,0,0)--(5,4,5);\draw[->,>=Stealth,thick,black!40](0,0,0)--(7,6,9);
+\node[dot,fill=black!45,label={[L,black!50]left:$O$}] at (0,0,0){};
+\node[dot,fill=black!45,label={[L,black!50]right:$A(2,1,-1)$}] at (2,1,-1){};
+\node[dot,fill=black!45,label={[L,black!50]right:$C(5,4,5)$}] at (5,4,5){};
+\node[dot,fill=black!45,label={[L,black!50]left:$B(7,6,9)$}] at (7,6,9){};
 \end{tikzpicture}
 \end{minipage}}
 
