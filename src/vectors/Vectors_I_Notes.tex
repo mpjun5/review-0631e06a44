@@ -2,7 +2,7 @@
 \input{preamble_build}
 \input{preamble_local}
 \usepackage{longtable}
-\usepackage{enumitem,multicol}
+\usepackage{enumitem,multicol,needspace}
 \raggedbottom
 \newcommand{\vv}[1]{\overrightarrow{#1}}
 \newcommand{\cv}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
@@ -536,36 +536,10 @@ Find $\cvv{1}{2}{3}\cdot\cvv{5}{-1}{3}$.
 \end{aligned}
 \]}
 
-\begin{question}
-\textbf{Thinking Question:} Note that the Scalar Product yields a result that is scalar (a magnitude). What does this suggest about the other form of multiplication (Vector Product)?
-\end{question}
 
-\begin{example}[title=Problem~\thetcbcounter]
-It is given that $\mathbf a=\cvv{1}{2}{3}$, $\mathbf b=\cvv{-3}{2}{7}$, $\mathbf c=\cvv{4}{-5}{-1}$. Find the following
-\begin{multicols}{4}
-\begin{enumerate}[label=\alph*)]
-\item $\mathbf a\cdot\mathbf b$
-\item $\mathbf b\cdot\mathbf a$
-\item $\mathbf a\cdot(\mathbf b+\mathbf c)$
-\item $\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c$
-\item $\mathbf a\cdot(2\mathbf c)$
-\item $(2\mathbf a)\cdot\mathbf c$
-\item $\mathbf a\cdot\mathbf a$
-\end{enumerate}
-\end{multicols}
-\end{example}
-\textbf{Ans:} \quad a) $22$ \quad b) $22$ \quad c) $13$ \quad d) $13$ \quad e) $-18$ \quad f) $-18$ \quad g) $14$
-
-\textbf{Learning Points:}
-\begin{itemize}
-\item Parts (a) and (b) show that the order of the vectors in the scalar product does NOT matter. In other words, the operation is commutative, [ i.e.\ $\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$]
-\item Parts (c) and (d) show that the scalar product operation is distributive over vector addition, [ i.e.\ $\mathbf a\cdot(\mathbf b+\mathbf c)=\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c$]
-\item Parts (e) and (f) show that the scalar multiplication of vectors is associative over the scalar product, [ i.e.\ $(k\mathbf a)\cdot\mathbf b=\mathbf a\cdot(k\mathbf b)$]
-\end{itemize}
-
-\clearpage
+\needspace{15\baselineskip}
 \subsection{Basic Properties of Scalar Product}
-Taking reference to the problems in the previous section (Scalar Product), we can see that the Scalar Product has properties that are similar to basic algebra multiplication. In general, we have the following properties of the Scalar Product.
+Taking reference to the problems in the Exercise Worksheet (Section 7, Scalar Product), we can see that the Scalar Product has properties that are similar to basic algebra multiplication. In general, we have the following properties of the Scalar Product.
 
 \begin{theorem}{Laws of scalar product}
 \[
@@ -581,64 +555,50 @@ Taking reference to the problems in the previous section (Scalar Product), we ca
 \]
 \end{theorem}
 
-\textbf{Notes:}
-\begin{enumerate}
-\item The scalar product $\mathbf a\cdot\mathbf b$ is indeed a scalar.
-\item $(\mathbf a\cdot\mathbf b)\mathbf c$ is a scalar multiple of the vector $\mathbf c$. The scalar is $\mathbf a\cdot\mathbf b$.
-\item It is meaningless to write $(\mathbf a\cdot\mathbf b)\cdot\mathbf c$ (Why?)
-\item If $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$, then $\mathbf a\cdot\mathbf b=0$.
-\end{enumerate}
 
-\begin{question}
-\textbf{Questions:}
-\begin{itemize}
-\item Does the cancellation law hold: $\mathbf a\cdot\mathbf b=\mathbf a\cdot\mathbf c\implies\mathbf b=\mathbf c$?
-\item Is the following true: $\mathbf a\cdot\mathbf b=\mathbf c\cdot\mathbf d\implies\mathbf a=\dfrac{\mathbf c\cdot\mathbf d}{\mathbf b}$?
-\item Is the following true: $\mathbf a\cdot\mathbf b=0\implies\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$?
-\end{itemize}
-Justify your answer.
-\end{question}
 
-\textbf{Note:} All of the above are not true.
-
-\clearpage
+\needspace{15\baselineskip}
 \subsection{Angle Between Two Vectors}
 We now look at how we are able to use the Scalar Product to find the angle between two vectors. This is one of the applications of the Scalar Product. To be clear, when we say the angle $\theta$ between two vectors, we are referring to the non-reflex angle between them, where either both their start points coincide, or end points coincide.
 
-\textbf{Correct angle:}
 \begin{center}
+{\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|*{4}{>{\centering\arraybackslash}m{0.2\textwidth}|}}
+\hline
+\multicolumn{2}{|c|}{\textbf{Correct angle}} & \multicolumn{2}{c|}{\textbf{Wrong angle}}\\
+\hline
+\vspace{4pt}{%
 \begin{tikzpicture}[scale=0.85]
 \draw[->,>=Stealth,thick](0,0)--(1.6,1.1) node[right]{$\mathbf a$};
 \draw[->,>=Stealth,thick](0,0)--(1.6,-1.1) node[right]{$\mathbf b$};
 \draw (0.5,0.34) arc[start angle=34.5,end angle=-34.5,radius=0.6];
 \node at (0.9,0){$\theta$};
-\end{tikzpicture}
-\hspace{3cm}
+\end{tikzpicture}} &
+\vspace{4pt}{%
 \begin{tikzpicture}[scale=0.85]
 \draw[->,>=Stealth,thick](1.6,1.1)--(0,0);
 \draw[->,>=Stealth,thick](1.6,-1.1)--(0,0);
 \node[above left] at (0.1,0.1){$\mathbf a$};\node[below left] at (0.1,-0.1){$\mathbf b$};
 \draw (0.5,0.34) arc[start angle=34.5,end angle=-34.5,radius=0.6];
 \node at (0.9,0){$\theta$};
-\end{tikzpicture}
-\end{center}
-
-\textbf{Wrong angle:}
-\begin{center}
+\end{tikzpicture}} &
+\vspace{4pt}{%
 \begin{tikzpicture}[scale=0.85]
 \draw[->,>=Stealth,thick](0,0)--(1.6,1.1) node[right]{$\mathbf a$};
 \draw[->,>=Stealth,thick](0,0)--(1.6,-1.1) node[right]{$\mathbf b$};
 \draw (0.5,0.34) arc[start angle=34.5,end angle=325.5,radius=0.6];
 \node at (-0.25,0){$\theta$};
-\end{tikzpicture}
-\hspace{3cm}
+\end{tikzpicture}} &
+\vspace{4pt}{%
 \begin{tikzpicture}[scale=0.85]
 \draw[->,>=Stealth,thick](1.6,1.1)--(0,0);
 \draw[->,>=Stealth,thick](0,0)--(1.6,-1.1) node[below]{$\mathbf b$};
 \node[above left] at (0.1,0.1){$\mathbf a$};
 \draw (0.5,0.34) arc[start angle=34.5,end angle=-34.5,radius=0.6];
 \node at (0.9,0){$\theta$};
-\end{tikzpicture}
+\end{tikzpicture}}\vspace{4pt}\\
+\hline
+\end{tabular}}
 \end{center}
 
 In order to find this angle, we make use of the following formula.
@@ -650,6 +610,15 @@ The scalar product of two vectors $\mathbf a$ and $\mathbf b$ is given by
 \]
 where $\theta$ is the angle between two vectors $\mathbf a$ and $\mathbf b$.
 \end{definition}
+
+\begin{info}
+\textbf{Important Note:} For nonzero $\mathbf a$, $\mathbf b$,
+\begin{itemize}
+\item $\mathbf a\cdot\mathbf b>0\iff\theta$ is acute;
+\item $\mathbf a\cdot\mathbf b<0\iff\theta$ is obtuse;
+\item $\mathbf a\cdot\mathbf b=0\iff\theta=90^\circ$.
+\end{itemize}
+\end{info}
 
 \begin{example}
 Find the angle between the following vectors $\mathbf a=\cvv{1}{2}{3}$, $\mathbf b=\cvv{-2}{2}{1}$.
@@ -671,47 +640,18 @@ Hence we can use Definition~13.4.2 to find the non-reflex angle $\theta$ between
 \cos\theta=\frac{\mathbf a\cdot\mathbf b}{|\mathbf a||\mathbf b|}.
 \]
 
-\clearpage
-\begin{example}[title=Problem~\thetcbcounter]
-\begin{enumerate}[label=\arabic*)]
-\item Points $O$, $A$, $B$ are such that $\vv{OA}=\mathbf i+4\mathbf j-3\mathbf k$ and $\vv{OB}=5\mathbf i-\mathbf j$
-\begin{enumerate}[label=(\alph*)]
-\item Find the size of angle $AOB$
-\item Find the size of angle $OAB$.
-\end{enumerate}
-\textbf{Ans:} (a) $87.8^\circ$ \quad (b) $133.9^\circ$
-\item It is given that $\mathbf c=\cvv{2}{3}{6}$, $\mathbf d=\cvv{1}{-2}{3}$ and $\mathbf e=\cvv{3}{2}{-2}$. Find the angle between the vectors $\mathbf c$ and
-\begin{enumerate}[label=(\alph*)]
-\item the vector $\mathbf d$
-\item the vector $\mathbf e$
-\item the positive $y$-axis
-\end{enumerate}
-\textbf{Ans:} (a) $57.7^\circ$ \quad (b) $90^\circ$ \quad (c) $64.6^\circ$
-\item It is given that two vectors $\mathbf a$ and $\mathbf b$ satisfy the following relationship:
-\[
-|\mathbf a||\mathbf b|=6.
-\]
-Find the value of $\mathbf a\cdot\mathbf b$ for each of the following scenarios.
-\begin{enumerate}[label=(\alph*)]
-\item The angle between $\mathbf a$ and $\mathbf b$ is $60^\circ$.
-\item The angle between $\mathbf a$ and $\mathbf b$ is $120^\circ$.
-\item Vectors $\mathbf a$ and $\mathbf b$ are perpendicular.
-\end{enumerate}
-\textbf{Ans:} (a) $\mathbf a\cdot\mathbf b=3$ \quad (b) $\mathbf a\cdot\mathbf b=-3$ \quad (c) $\mathbf a\cdot\mathbf b=0$
-\end{enumerate}
-\end{example}
 
 \begin{question}
 \textbf{Sign of the Scalar Product}\par
-From Problem 3, what do you observe about the sign of the scalar product $\mathbf a\cdot\mathbf b$ when the angle between $\mathbf a$ and $\mathbf b$ is acute or obtuse? Why is this so?
+From Exercise Worksheet Section 7, Question 2, part 3), what do you observe about the sign of the scalar product $\mathbf a\cdot\mathbf b$ when the angle between $\mathbf a$ and $\mathbf b$ is acute or obtuse? Why is this so?
 \end{question}
 
 \begin{question}
 \textbf{Perpendicular Vectors}\par
-From 3(c), we see that $\mathbf a\cdot\mathbf b=0$. Is this always the case when $\mathbf a$ and $\mathbf b$ are perpendicular? Why? We will explore more on this in the next section.
+From part 3)(c) of that question, we see that $\mathbf a\cdot\mathbf b=0$. Is this always the case when $\mathbf a$ and $\mathbf b$ are perpendicular? Why? We will explore more on this in the next section.
 \end{question}
 
-\clearpage
+\needspace{12\baselineskip}
 \subsection{Perpendicular Vectors}
 We can see that from the previous results, that the scalar product of two non-zero vectors that are perpendicular to each other is zero.
 
@@ -746,21 +686,6 @@ Show that the vector $\mathbf a=\cvv{1}{2}{1}$ and $\mathbf b=\cvv{-1}{1}{-1}$ a
 \]
 Since $\mathbf a\cdot\mathbf b=0$, $\mathbf a$ \& $\mathbf b$ are perpendicular.}
 
-\begin{example}[title=Problem~\thetcbcounter]
-\begin{enumerate}[label=\arabic*)]
-\item Referred to the origin $O$, the position vectors of the points $A$ and $B$ are $\mathbf i-\mathbf j+2\mathbf k$ and $2\mathbf i+4\mathbf j+\mathbf k$ respectively. Show that $OA$ is perpendicular to $OB$.
-\item The position vectors $\mathbf a$ and $\mathbf b$ are given by
-\[
-\mathbf a=2p\mathbf i+3p\mathbf j+6p\mathbf k\quad\text{and}\quad\mathbf b=\mathbf i-2\mathbf j+2\mathbf k
-\]
-where $p>0$. It is given that $|\mathbf a|=|\mathbf b|$.
-\begin{enumerate}[label=(\roman*)]
-\item Find the exact value of $p$.
-\item Show that the vectors $(\mathbf a+\mathbf b)$ and $(\mathbf a-\mathbf b)$ are perpendicular.
-\end{enumerate}
-\textbf{Ans:} (i) $p=\dfrac37$
-\end{enumerate}
-\end{example}
 
 \clearpage
 \subsection{Length of Projection \& Projection Vector}
@@ -828,23 +753,6 @@ $\therefore$ The length of projection of the vector $\mathbf a$ onto $\mathbf b$
 \frac13\left(\frac13\cvv{-1}{-2}{2}\right)=\frac19\cvv{-1}{-2}{2}
 \]}
 
-\begin{example}[title=Problem~\thetcbcounter]
-\begin{enumerate}[label=\arabic*)]
-\item Given that $\mathbf a=2\mathbf i+\mathbf j+2\mathbf k$ and $\mathbf b=-\mathbf i+2\mathbf k-\mathbf k$, find the length of projection and the projection vector of
-\begin{enumerate}[label=(\alph*)]
-\item $\mathbf a$ onto $\mathbf b$,
-\item $\mathbf b$ onto $\mathbf a$.
-\end{enumerate}
-\item With reference to the origin O, the points $A$, $B$ and $C$ have position vectors given by
-\[
-\mathbf a=\mathbf i+2\mathbf j-\mathbf k,\ \mathbf b=3\mathbf i+\mathbf k\ \text{and}\ \mathbf c=2\mathbf i+2\mathbf j+3\mathbf k
-\]
-respectively. Find the length of projection of $\vv{BA}$ onto $\vv{BC}$.
-\end{enumerate}
-\end{example}
-\textbf{Ans:}\par
-1a) $\dfrac{2}{\sqrt6}$, $\dfrac13\cvv{-1}{2}{-1}$ \qquad 1b) $\dfrac23$, $\dfrac29\cvv{2}{1}{2}$\par
-2) $\dfrac23$
 
 \clearpage
 \section{Vector Product}
@@ -868,30 +776,10 @@ Given that $\mathbf a=\cvv{1}{2}{3}$, $\mathbf b=\cvv{-1}{3}{-2}$, find $\mathbf
 \end{aligned}
 \]}
 
-\begin{example}[title=Problem~\thetcbcounter]
-\begin{enumerate}[label=\arabic*)]
-\item Find $\cvv{3}{-1}{4}\times\cvv{5}{7}{1}$
-\item Given that $\mathbf a=\cvv{1}{0}{-1}$, $\mathbf b=\cvv{1}{1}{1}$ and $\mathbf c=\cvv{-1}{1}{-1}$, find
-\begin{multicols}{4}
-\begin{enumerate}[label=(\alph*)]
-\item $\mathbf a\times\mathbf b$;
-\item $\mathbf b\times\mathbf a$;
-\item $\mathbf a\times(\mathbf b+\mathbf c)$;
-\item $\mathbf a\times\mathbf b+\mathbf a\times\mathbf c$;
-\item $\mathbf a\times(2\mathbf b)$;
-\item $(2\mathbf a)\times\mathbf b$;
-\item $\mathbf a\times\mathbf a$;
-\end{enumerate}
-\end{multicols}
-\end{enumerate}
-\end{example}
-\textbf{Ans:}\par
-1) $\cvv{-29}{17}{26}$\par
-2) a) $\cvv{1}{-2}{1}$ \quad b) $\cvv{-1}{2}{-1}$ \quad c) $\cvv{2}{0}{2}$ \quad d) $\cvv{2}{0}{2}$ \quad e) $\cvv{2}{-4}{2}$ \quad f) $\cvv{2}{-4}{2}$ \quad g) $\mathbf 0$
 
 \clearpage
 \subsection{Basic Properties of Vector Product}
-Taking reference to the problems in the previous section (Vector Product), we can see that the Vector Product has properties that are similar to that of scalar product, and basic algebra. While some laws do not hold true for the vector product, others still hold true.
+Taking reference to the problems in the Exercise Worksheet (Section 8, Vector Product), we can see that the Vector Product has properties that are similar to that of scalar product, and basic algebra. While some laws do not hold true for the vector product, others still hold true.
 
 \begin{theorem}{Laws of scalar and vector product}
 \centering
@@ -1023,18 +911,6 @@ Since $\mathbf b$ is a scalar multiple of $\mathbf a$, $\mathbf a$ and $\mathbf 
 \textbf{Thinking question:} \textit{What do we get when we take $\mathbf a\times\mathbf a$? Where $\mathbf a$ is an arbitrary non zero vector.}
 \end{question}
 
-\begin{example}[title=Problem~\thetcbcounter]
-\begin{enumerate}[label=\arabic*.]
-\item Three non-zero vectors $\mathbf a$, $\mathbf b$ and $\mathbf c$ satisfy $\mathbf a\times3\mathbf b=2\mathbf a\times\mathbf c$. Show that $\mathbf a$ and $3\mathbf b-2\mathbf c$ are parallel.
-\item Find the scalar product and vector product of the following vectors, stating whether they are parallel, perpendicular, or neither.
-\begin{enumerate}[label=(\roman*)]
-\item $\cvv{1}{2}{3}$ and $\cvv{4}{5}{6}$
-\item $\mathbf a=\mathbf i+2\mathbf j-3\mathbf k$, $\mathbf b=3\mathbf i+\mathbf k$
-\item $\cvv{1}{2}{-1}$ and $\cvv{-4}{-8}{4}$
-\end{enumerate}
-\end{enumerate}
-\end{example}
-\textbf{Ans:} 2) Neither; Perpendicular; Parallel
 
 \subsection{Vector Product Formula}
 Similar to the dot product formula $[\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta]$ the cross product has a formula as well.
@@ -1068,17 +944,6 @@ Find the angle between the two vectors $\mathbf a=\cvv{1}{2}{1}$ and $\mathbf b=
 \textbf{Thinking Question:} \textit{Notice how we are able to use both dot and cross product to find the angle between any two non zero vectors. Which method is more desirable and why?}
 \end{question}
 
-\begin{example}[title=Problem~\thetcbcounter]
-Using the Vector Product, find the acute angles between the following vectors:
-\begin{multicols}{3}
-\begin{enumerate}[label=\alph*)]
-\item $\cvv{2}{1}{3}$ and $\cvv{4}{-1}{1}$
-\item $\cvv{-1}{2}{-1}$ and $\cvv{3}{-1}{5}$
-\item $\cvv{4}{3}{5}$ and $\cvv{2}{-5}{1}$
-\end{enumerate}
-\end{multicols}
-\end{example}
-\textbf{Ans:} a) $51.0^\circ$ \quad b) $46.4^\circ$ \quad c) $87.0^\circ$
 
 \clearpage
 \subsection{Application of Vector Product: Perpendicular Distance}
@@ -1138,34 +1003,6 @@ Relative to an origin $O$, two point $A$ and $B$ have position vectors given by 
 \end{question}
 
 \clearpage
-\begin{example}[title=Problem~\thetcbcounter]
-\begin{enumerate}[label=\arabic*)]
-\item Relative to an origin $O$, two point $A$ and $B$ have position vectors given by $\mathbf a=3\mathbf i-\mathbf j+2\mathbf k$ and $\mathbf b=-2\mathbf i+3\mathbf j+2\mathbf k$. Find the following:
-\begin{enumerate}[label=\alph*)]
-\item The shortest distance from $A$ to $OB$
-\item The shortest distance from $B$ to $OA$
-\end{enumerate}
-\item Relative to the origin $O$, two points $A$ and $B$ have position vectors given by $\mathbf a=\mathbf i+\mathbf j+\mathbf k$ and $\mathbf b=\mathbf i+2\mathbf j+3\mathbf k$ respectively.
-\begin{enumerate}[label=(\roman*)]
-\item Find the length of projection of $\mathbf b$ onto $\mathbf a$.
-\item Hence, or otherwise, find the shortest distance from $B$ to $OA$.
-\end{enumerate}
-\item Relative to the origin $O$, the points $A$, $B$ and $C$ have position vectors given by $\mathbf a=\mathbf i+2\mathbf j+3\mathbf k$, $\mathbf b=\mathbf i-\mathbf j+\mathbf k$ and $\mathbf c=3\mathbf i-\mathbf j+\mathbf k$. Find the shortest distance from $C$ to the line joining $A$ and $B$.
-\item With respect to an origin $O$, the points $A$ and $B$ have position vectors $\mathbf i+3\mathbf j-4\mathbf k$ and $5\mathbf i+2\mathbf j-3\mathbf k$ respectively. $F$ is the foot of perpendicular of point $B$ on the line that passes through $A$ and is parallel to the vector $\mathbf d=2\mathbf i+\mathbf j+4\mathbf k$
-\begin{enumerate}[label=(\roman*)]
-\item Find the exact length of $AF$
-\item Find the exact length of $BF$
-\item Find the vectors $\vv{AF}$ and $\vv{FB}$.
-\end{enumerate}
-\end{enumerate}
-\end{example}
-\textbf{Ans:}
-\begin{enumerate}[label=\arabic*)]
-\item (a) $4.09$ units \quad (b) $4.51$ units
-\item (i) $2\sqrt3$ units \quad (ii) $\sqrt2$ units
-\item $2$ units
-\item (i) $\dfrac{11}{\sqrt{21}}$ \quad (ii) $\dfrac{\sqrt{5397}}{21}$ \quad (iii) $\vv{AF}=\cvv{\frac{22}{21}}{\frac{11}{21}}{\frac{44}{21}}$, $\vv{FA}=\cvv{\frac{62}{21}}{-\frac{32}{21}}{-\frac{23}{21}}$
-\end{enumerate}
 
 \clearpage
 \subsection{Areas of Triangles \& Parallelograms}
@@ -1262,27 +1099,6 @@ The position vectors $A$, $B$ and $C$ are $\mathbf a=\mathbf i+2\mathbf j+\mathb
 \end{tikzpicture}
 \end{minipage}}
 
-\begin{example}[title=Problem~\thetcbcounter]
-\begin{enumerate}[label=\arabic*)]
-\item Relative to the origin $O$, the points $A$ and $B$ have position vectors $\vv{OA}=\cvv{1}{0}{3}$, $\vv{OB}=\cvv{-2}{3}{2}$. Find the area of triangle $OAB$.
-\item Relative to the origin $O$, the points $A$ and $B$ have position vectors $\vv{OA}=\cvv{0}{1}{1}$, $\vv{OB}=\cvv{1}{-2}{2}$. Find the area of triangle $OAB$.
-\item Relative to an origin $O$, the position vectors of the vertices $A$, $B$ and $C$ of a triangle are
-\[
-\mathbf i+\mathbf j-\mathbf k,\ 2\mathbf i+\mathbf k\ \text{and}\ -\mathbf i+2\mathbf j-\mathbf k
-\]
-respectively. By considering the displacement vectors $\vv{AB}$ and $\vv{AC}$, find
-\begin{enumerate}[label=(\alph*)]
-\item the exact area of triangle $ABC$, and
-\item the exact length of the vector component of $\vv{AB}$ perpendicular to $\vv{AC}$.
-\end{enumerate}
-\item The points $A$ and $B$ have coordinates $(5,0,5)$ and $(10,-5,15)$ respectively. The point $D$ is such that $OADB$ is a parallelogram and the point $C$ divides $AD$ in the ratio $2:3$. Find the exact areas of
-\begin{enumerate}[label=(\roman*)]
-\item the parallelogram $OADB$, and
-\item the quadrilateral $OCDB$.
-\end{enumerate}
-\end{enumerate}
-\end{example}
-\textbf{Ans:} \quad 1) $\dfrac{\sqrt{154}}{2}$ units$^2$ \quad 2) $\dfrac{3\sqrt2}{2}$ units$^2$ \quad 3) (a) $\dfrac{\sqrt{21}}{2}$ units$^2$ (b) $\dfrac{\sqrt{105}}{5}$ units$^2$ \quad 4) (i) $25\sqrt3$ units$^2$ (ii) $20\sqrt3$ units$^2$
 
 \begin{question}
 \textbf{Thinking Question:} \textit{If $ABCD$ is ANY quadrilateral (i.e., not necessarily a parallelogram), can you use the formula $|\vv{AB}\times\vv{AD}|$ to find the area?}\par
