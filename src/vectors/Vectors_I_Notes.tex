@@ -846,4 +846,478 @@ respectively. Find the length of projection of $\vv{BA}$ onto $\vv{BC}$.
 1a) $\dfrac{2}{\sqrt6}$, $\dfrac13\cvv{-1}{2}{-1}$ \qquad 1b) $\dfrac23$, $\dfrac29\cvv{2}{1}{2}$\par
 2) $\dfrac23$
 
+\clearpage
+\section{Vector Product}
+In this section, we learn how to multiply vectors together using the Vector Product. The Vector Product is slightly more difficult to apply, in comparison to the Scalar Product.
+
+\begin{definition}{Vector (cross) product}
+The vector or cross product of two vectors $\mathbf a=a_1\mathbf i+a_2\mathbf j+a_3\mathbf k$ and $\mathbf b=b_1\mathbf i+b_2\mathbf j+b_3\mathbf k$ (denoted by $\mathbf a\times\mathbf b$) is
+\[
+\mathbf a\times\mathbf b=\cvv{a_1}{a_2}{a_3}\times\cvv{b_1}{b_2}{b_3}=\cvv{a_2b_3-a_3b_2}{a_3b_1-a_1b_3}{a_1b_2-a_2b_1}
+\]
+\end{definition}
+
+\begin{example}
+Given that $\mathbf a=\cvv{1}{2}{3}$, $\mathbf b=\cvv{-1}{3}{-2}$, find $\mathbf a\times\mathbf b$.
+\end{example}
+\solution{
+\[
+\begin{aligned}
+\cvv{1}{2}{3}\times\cvv{-1}{3}{-2}&=\cvv{2(-2)-3(3)}{3(-1)-1(-2)}{1(3)-2(-1)}\\
+\therefore\ \mathbf a\times\mathbf b&=\cvv{-13}{-1}{5}
+\end{aligned}
+\]}
+
+\begin{example}[title=Problem~\thetcbcounter]
+\begin{enumerate}[label=\arabic*)]
+\item Find $\cvv{3}{-1}{4}\times\cvv{5}{7}{1}$
+\item Given that $\mathbf a=\cvv{1}{0}{-1}$, $\mathbf b=\cvv{1}{1}{1}$ and $\mathbf c=\cvv{-1}{1}{-1}$, find
+\begin{multicols}{4}
+\begin{enumerate}[label=(\alph*)]
+\item $\mathbf a\times\mathbf b$;
+\item $\mathbf b\times\mathbf a$;
+\item $\mathbf a\times(\mathbf b+\mathbf c)$;
+\item $\mathbf a\times\mathbf b+\mathbf a\times\mathbf c$;
+\item $\mathbf a\times(2\mathbf b)$;
+\item $(2\mathbf a)\times\mathbf b$;
+\item $\mathbf a\times\mathbf a$;
+\end{enumerate}
+\end{multicols}
+\end{enumerate}
+\end{example}
+\textbf{Ans:}\par
+1) $\cvv{-29}{17}{26}$\par
+2) a) $\cvv{1}{-2}{1}$ \quad b) $\cvv{-1}{2}{-1}$ \quad c) $\cvv{2}{0}{2}$ \quad d) $\cvv{2}{0}{2}$ \quad e) $\cvv{2}{-4}{2}$ \quad f) $\cvv{2}{-4}{2}$ \quad g) $\mathbf 0$
+
+\clearpage
+\subsection{Basic Properties of Vector Product}
+Taking reference to the problems in the previous section (Vector Product), we can see that the Vector Product has properties that are similar to that of scalar product, and basic algebra. While some laws do not hold true for the vector product, others still hold true.
+
+\begin{theorem}{Laws of scalar and vector product}
+\centering
+{\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{lcc}
+&\textbf{Scalar Product}&\textbf{Vector Product}\\
+Commutative law&$\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$&$\mathbf a\times\mathbf b\neq\mathbf b\times\mathbf a$\\
+&&$\mathbf a\times\mathbf b=-\mathbf b\times\mathbf a$\\
+Distributive law&$\mathbf a\cdot(\mathbf b+\mathbf c)=\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c$&$\mathbf a\times(\mathbf b+\mathbf c)=\mathbf a\times\mathbf b+\mathbf a\times\mathbf c$\\
+Associative law&$\lambda(\mathbf a\cdot\mathbf b)=(\lambda\mathbf a)\cdot\mathbf b=\mathbf a\cdot(\lambda\mathbf b)$&$\lambda(\mathbf a\times\mathbf b)=(\lambda\mathbf a)\times\mathbf b=\mathbf a\times(\lambda\mathbf b)$\\
+&$\mathbf a\cdot\mathbf a=|\mathbf a|^2$&$\mathbf a\times\mathbf a=\mathbf 0$
+\end{tabular}}
+\end{theorem}
+
+In summary, the laws of the Vector Product are similar to the laws of scalar product and basic algebra. The majority of it is rather intuitive. The only peculiar results are that $\mathbf a\times\mathbf b=-\mathbf b\times\mathbf a$, and that $\mathbf a\times\mathbf a=\mathbf 0$.
+
+\textbf{Important Point:} Note that applying the Vector product would yield a vector as the result, but applying the Scalar Product would yield a Scalar constant as the result.
+
+\begin{question}
+\textbf{Check:} Identify whether each of the following is a scalar, a vector, or is meaningless.
+\begin{multicols}{4}
+\begin{enumerate}[label=(\arabic*)]
+\item $|\mathbf a|^2$,
+\item $|\mathbf a^2|$,
+\item $\mathbf a\mathbf b$,
+\item $(\mathbf a\times\mathbf b)\times\mathbf c$,
+\item $(\mathbf a\times\mathbf b)\cdot\mathbf c$,
+\item $(\mathbf a\cdot\mathbf b)\times\mathbf c$,
+\item $(\mathbf a\cdot\mathbf b)\cdot\mathbf c$.
+\end{enumerate}
+\end{multicols}
+\end{question}
+\textbf{Ans:} (1) Scalar (2) Meaningless (3) Meaningless (4) Vector (5) Scalar (6) Meaningless (7) Meaningless.
+
+\clearpage
+\subsection{Resultant Vector of the Vector Product}
+When we apply the Vector Product to two vectors $\mathbf a$ and $\mathbf b$, we get a resultant vector $\mathbf a\times\mathbf b$. Is there a significant relationship of the vector $\mathbf a\times\mathbf b$ to the vectors $\mathbf a$ and $\mathbf b$? There is, in fact a relationship between these three vectors.
+
+\begin{center}
+\begin{tikzpicture}[td,scale=1.3]
+\draw[->,>=Stealth,thick](0,0,0)--(2.2,0,0) node[midway,above]{$\mathbf b$};
+\draw[->,>=Stealth,thick](0,0,0)--(0,-1.8,0) node[left]{$\mathbf a$};
+\draw[->,>=Stealth,thick](0,0,0)--(0,0,1.8) node[right]{$\mathbf a\times\mathbf b$};
+\draw(0.22,0,0)--(0.22,0,0.22)--(0,0,0.22);
+\draw(0,-0.25,0)--(0,-0.25,0.22)--(0,0,0.22);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Note:} The vector $\mathbf b\times\mathbf a$ would also be perpendicular to the vectors $\mathbf a$ and $\mathbf b$, but in the opposite direction as $\mathbf a\times\mathbf b$, because $\mathbf b\times\mathbf a=-\mathbf a\times\mathbf b$.
+
+The vectors $\mathbf a\times\mathbf b$ and $\mathbf b\times\mathbf a$ are known as normal vectors to the plane in which the vectors $\mathbf a$ and $\mathbf b$ lies in.
+
+\begin{example}
+Given that $\mathbf a=3\mathbf i-5\mathbf j+6\mathbf k$ and $\mathbf b=3\mathbf i+3\mathbf j-2\mathbf k$, find a vector perpendicular to both $\mathbf a$ and $\mathbf b$.
+\end{example}
+\solution{A vector perpendicular to $\mathbf a$ and $\mathbf b$ is
+\[
+\begin{aligned}
+\mathbf a\times\mathbf b&=\cvv{3}{-5}{6}\times\cvv{3}{3}{-2}\\
+&=\cvv{(-5)(-2)-(3)(6)}{(6)(3)-(-2)(3)}{(3)(3)-(3)(-5)}\\
+&=\cvv{-8}{24}{24}
+\end{aligned}
+\]}
+
+\begin{question}
+\textbf{Thinking question:} \textit{Can you think of other vectors that are perpendicular to both $\mathbf a$ and $\mathbf b$?}
+\end{question}
+
+\clearpage
+\subsection{Parallel Vectors}
+We now consider the cross product of two vectors parallel to each other. Suppose $\mathbf a$ and $\mathbf b$ are two non zero vectors that are parallel to each other.
+
+\begin{theorem}{Parallel vectors}
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+\draw[->,>=Stealth,thick](0,0)--(1.4,1) node[midway,above left]{$\mathbf a$};
+\draw[->,>=Stealth,thick](1.2,0)--(4,2) node[midway,below right]{$\mathbf b$};
+\end{tikzpicture}
+\[
+\begin{aligned}
+&\text{If }\mathbf a/\!/\mathbf b,\\
+&\implies\mathbf a\times\mathbf b=\mathbf 0
+\end{aligned}
+\]
+The cross product of any two non zero, parallel vectors will be equal to $\mathbf 0$.
+\end{center}
+\end{theorem}
+
+We consider an explicit example of the above property.
+
+\begin{example}
+Find $\cvv{1}{-2}{1}\times\cvv{-3}{6}{-3}$.
+\end{example}
+\solution{
+\[
+\begin{aligned}
+\cvv{1}{-2}{1}\times\cvv{-3}{6}{-3}&=\cvv{6-6}{-3-(-3)}{6-6}\\
+&=\cvv{0}{0}{0}
+\end{aligned}
+\]
+Since $\cvv{1}{-2}{1}\times\cvv{-3}{6}{-3}=\cvv{0}{0}{0}$, the vectors $\cvv{1}{-2}{1}$ and $\cvv{-3}{6}{-3}$ are parallel to each other.}
+
+\begin{example}
+Show that $\mathbf a=\cvv{1}{-2}{1}$ and $\mathbf b=\cvv{2}{-4}{2}$ are parallel.
+\end{example}
+\solution{\par\noindent\begin{minipage}[t]{0.55\linewidth}
+Method 1:
+\[
+\begin{aligned}
+\cvv{1}{-2}{1}\times\cvv{2}{-4}{2}&=\cvv{(-2)(2)-(1)(-4)}{(1)(2)-(1)(2)}{(1)(-4)-(-2)(2)}\\
+&=\cvv{0}{0}{0}
+\end{aligned}
+\]
+Since $\mathbf a$ and $\mathbf b$ are non-zero vectors, $\mathbf a$ is parallel to $\mathbf b$.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.4\linewidth}
+Method 2:
+\[
+\begin{aligned}
+\mathbf b&=\cvv{2}{-4}{2}\\
+&=2\cvv{1}{-2}{1}\\
+&=2\mathbf a
+\end{aligned}
+\]
+Since $\mathbf b$ is a scalar multiple of $\mathbf a$, $\mathbf a$ and $\mathbf b$ are parallel vectors.
+\end{minipage}}
+
+\begin{question}
+\textbf{Thinking question:} \textit{What do we get when we take $\mathbf a\times\mathbf a$? Where $\mathbf a$ is an arbitrary non zero vector.}
+\end{question}
+
+\begin{example}[title=Problem~\thetcbcounter]
+\begin{enumerate}[label=\arabic*.]
+\item Three non-zero vectors $\mathbf a$, $\mathbf b$ and $\mathbf c$ satisfy $\mathbf a\times3\mathbf b=2\mathbf a\times\mathbf c$. Show that $\mathbf a$ and $3\mathbf b-2\mathbf c$ are parallel.
+\item Find the scalar product and vector product of the following vectors, stating whether they are parallel, perpendicular, or neither.
+\begin{enumerate}[label=(\roman*)]
+\item $\cvv{1}{2}{3}$ and $\cvv{4}{5}{6}$
+\item $\mathbf a=\mathbf i+2\mathbf j-3\mathbf k$, $\mathbf b=3\mathbf i+\mathbf k$
+\item $\cvv{1}{2}{-1}$ and $\cvv{-4}{-8}{4}$
+\end{enumerate}
+\end{enumerate}
+\end{example}
+\textbf{Ans:} 2) Neither; Perpendicular; Parallel
+
+\subsection{Vector Product Formula}
+Similar to the dot product formula $[\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta]$ the cross product has a formula as well.
+
+\begin{theorem}{Vector product formula}
+\[
+|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|\sin\theta
+\]
+Where $\theta$ is the angle between the vectors $\mathbf a$ and $\mathbf b$.
+\end{theorem}
+
+Note that we have to include the modulus sign as $|\mathbf a\times\mathbf b|$ instead of $\mathbf a\times\mathbf b$, because $\mathbf a\times\mathbf b$ would return us a vector, not a scalar.
+
+\begin{example}
+Find the angle between the two vectors $\mathbf a=\cvv{1}{2}{1}$ and $\mathbf b=\cvv{-1}{3}{2}$ by using vector product.
+\end{example}
+\solution{
+\[
+\begin{aligned}
+\left|\cvv{1}{2}{1}\times\cvv{-1}{3}{2}\right|&=\left|\cvv{1}{2}{1}\right|\left|\cvv{-1}{3}{2}\right|\sin\theta\\
+\left|\cvv{4-3}{-1-2}{3-(-2)}\right|&=\sqrt6\sqrt{14}\sin\theta\\
+\left|\cvv{1}{-3}{5}\right|&=\sqrt6\sqrt{14}\sin\theta\\
+\frac{\sqrt{35}}{\sqrt6\sqrt{14}}&=\sin\theta\\
+\theta&=40.2^\circ
+\end{aligned}
+\]}
+
+\textbf{Note:} You can cross check this answer by finding the angle using the dot product.
+
+\begin{question}
+\textbf{Thinking Question:} \textit{Notice how we are able to use both dot and cross product to find the angle between any two non zero vectors. Which method is more desirable and why?}
+\end{question}
+
+\begin{example}[title=Problem~\thetcbcounter]
+Using the Vector Product, find the acute angles between the following vectors:
+\begin{multicols}{3}
+\begin{enumerate}[label=\alph*)]
+\item $\cvv{2}{1}{3}$ and $\cvv{4}{-1}{1}$
+\item $\cvv{-1}{2}{-1}$ and $\cvv{3}{-1}{5}$
+\item $\cvv{4}{3}{5}$ and $\cvv{2}{-5}{1}$
+\end{enumerate}
+\end{multicols}
+\end{example}
+\textbf{Ans:} a) $51.0^\circ$ \quad b) $46.4^\circ$ \quad c) $87.0^\circ$
+
+\clearpage
+\subsection{Application of Vector Product: Perpendicular Distance}
+In this section, we deal with the perpendicular component of vectors. This concept is similar to length of projection of vectors in the previous section.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+\draw[->,>=Stealth,thick](0,0)--(4,3) node[midway,above left]{$\mathbf a$};
+\draw[->,>=Stealth,thick](0,0)--(6,0);
+\node[below] at (2,0){$\mathbf b$};
+\draw[dashed](4,3)--(4,0);
+\draw(3.75,0)--(3.75,0.25)--(4,0.25);
+\node[left] at (0,0){$O$};\node[above] at (4,3){$A$};\node[right] at (6,0){$B$};\node[below] at (4,0){$F$};
+\end{tikzpicture}
+
+The length $OF$ is the length of projection of $\mathbf a$ on $\mathbf b$.\\
+The length $AF$ is the perpendicular distance from $A$ to the line joining $O$ and $B$.
+\end{center}
+
+\begin{theorem}{Perpendicular component}
+For any two non-zero vectors $\mathbf a$ and $\mathbf b$,
+\begin{enumerate}[label=\alph*)]
+\item Length of vector component of $\mathbf a$ perpendicular to $\mathbf b$ (Length $AF$) $=|\mathbf a\times\hat{\mathbf b}|$.
+\item Vector component of $\mathbf a$ perpendicular to $\mathbf b=\mathbf a-(\mathbf a\cdot\hat{\mathbf b})\hat{\mathbf b}$.
+\end{enumerate}
+\end{theorem}
+
+\textbf{Note:} You can think of this concept as the ``cross product version'' of the length of projection.
+
+\begin{example}
+Relative to an origin $O$, two point $A$ and $B$ have position vectors given by $\mathbf a=\mathbf i+2\mathbf j+2\mathbf k$ and $\mathbf b=2\mathbf i-\mathbf j+3\mathbf k$. Find the shortest distance from $B$ to the line joining $O$ and $A$.
+\end{example}
+\solution{\par\noindent\begin{minipage}[c]{0.55\linewidth}
+\[
+\begin{aligned}
+\text{Required distance}&=|\mathbf b\times\hat{\mathbf a}|\\
+&=\left|\cvv{2}{-1}{3}\times\frac13\cvv{1}{2}{2}\right|\\
+&=\frac13\left|\cvv{-8}{-1}{5}\right|\\
+&=\frac13\sqrt{90}\\
+&=\sqrt{10}\text{ units}
+\end{aligned}
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.42\linewidth}\centering
+\begin{tikzpicture}[scale=0.8]
+\draw[thick](0,0)--(5,0);
+\draw[thick](0,0)--(3.2,2.8);
+\draw[dashed](3.2,2.8)--(3.2,0);
+\draw(2.95,0)--(2.95,0.25)--(3.2,0.25);
+\node[left] at (0,0){$O$};\node[right] at (5,0){$A$};\node[above] at (3.2,2.8){$B$};\node[below] at (3.2,0){$F$};
+\node[left] at (1.4,1.7){$\cvv{2}{-1}{3}$};\node[below] at (4.5,-0.1){$\cvv{1}{2}{2}$};
+\end{tikzpicture}
+\end{minipage}}
+
+\begin{question}
+\textbf{Thinking Question:} \textit{There is a difference between the shortest distance from $A$ to $OB$ compared to $B$ to $OA$. Think about how the formula would look like for both cases. (You may draw a diagram to help illustrate this better)}
+\end{question}
+
+\clearpage
+\begin{example}[title=Problem~\thetcbcounter]
+\begin{enumerate}[label=\arabic*)]
+\item Relative to an origin $O$, two point $A$ and $B$ have position vectors given by $\mathbf a=3\mathbf i-\mathbf j+2\mathbf k$ and $\mathbf b=-2\mathbf i+3\mathbf j+2\mathbf k$. Find the following:
+\begin{enumerate}[label=\alph*)]
+\item The shortest distance from $A$ to $OB$
+\item The shortest distance from $B$ to $OA$
+\end{enumerate}
+\item Relative to the origin $O$, two points $A$ and $B$ have position vectors given by $\mathbf a=\mathbf i+\mathbf j+\mathbf k$ and $\mathbf b=\mathbf i+2\mathbf j+3\mathbf k$ respectively.
+\begin{enumerate}[label=(\roman*)]
+\item Find the length of projection of $\mathbf b$ onto $\mathbf a$.
+\item Hence, or otherwise, find the shortest distance from $B$ to $OA$.
+\end{enumerate}
+\item Relative to the origin $O$, the points $A$, $B$ and $C$ have position vectors given by $\mathbf a=\mathbf i+2\mathbf j+3\mathbf k$, $\mathbf b=\mathbf i-\mathbf j+\mathbf k$ and $\mathbf c=3\mathbf i-\mathbf j+\mathbf k$. Find the shortest distance from $C$ to the line joining $A$ and $B$.
+\item With respect to an origin $O$, the points $A$ and $B$ have position vectors $\mathbf i+3\mathbf j-4\mathbf k$ and $5\mathbf i+2\mathbf j-3\mathbf k$ respectively. $F$ is the foot of perpendicular of point $B$ on the line that passes through $A$ and is parallel to the vector $\mathbf d=2\mathbf i+\mathbf j+4\mathbf k$
+\begin{enumerate}[label=(\roman*)]
+\item Find the exact length of $AF$
+\item Find the exact length of $BF$
+\item Find the vectors $\vv{AF}$ and $\vv{FB}$.
+\end{enumerate}
+\end{enumerate}
+\end{example}
+\textbf{Ans:}
+\begin{enumerate}[label=\arabic*)]
+\item (a) $4.09$ units \quad (b) $4.51$ units
+\item (i) $2\sqrt3$ units \quad (ii) $\sqrt2$ units
+\item $2$ units
+\item (i) $\dfrac{11}{\sqrt{21}}$ \quad (ii) $\dfrac{\sqrt{5397}}{21}$ \quad (iii) $\vv{AF}=\cvv{\frac{22}{21}}{\frac{11}{21}}{\frac{44}{21}}$, $\vv{FA}=\cvv{\frac{62}{21}}{-\frac{32}{21}}{-\frac{23}{21}}$
+\end{enumerate}
+
+\clearpage
+\subsection{Areas of Triangles \& Parallelograms}
+Another application of the Vector Product is to find areas of triangles and parallelograms.
+
+\begin{theorem}{Areas}
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+\draw[->,>=Stealth,thick](0,0)--(1.5,2) node[midway,left]{$\mathbf a$};
+\draw[->,>=Stealth,thick](0,0)--(4,0) node[midway,below]{$\mathbf b$};
+\draw[thick](1.5,2)--(4,0);
+\draw[dashed](1.5,2)--(5.5,2)--(4,0);
+\node[left] at (0,0){$O$};\node[above] at (1.5,2){$A$};\node[below right] at (4,0){$B$};
+\end{tikzpicture}
+\[
+\begin{aligned}
+\text{Area of triangle }OAB&=\frac12|\mathbf a\times\mathbf b|\\
+\text{Area of parallelogram with sides }\mathbf a\text{ and }\mathbf b&=|\mathbf a\times\mathbf b|
+\end{aligned}
+\]
+\end{center}
+\end{theorem}
+
+\textbf{Note:} We can use the area of triangle formula, $\frac12ab\sin C$ to see why this formula holds true.
+
+\begin{example}
+Relative to an origin $O$, two point $A$ and $B$ have position vectors given by $\mathbf a=\mathbf i+2\mathbf j+2\mathbf k$ and $\mathbf b=2\mathbf i-\mathbf j+3\mathbf k$. Find the area of the triangle $OAB$.
+\end{example}
+\solution{\par\noindent\begin{minipage}[c]{0.55\linewidth}
+\[
+\begin{aligned}
+\text{Required area}&=\frac12|\vv{OA}\times\vv{OB}|\\
+&=\frac12\left|\cvv{1}{2}{2}\times\cvv{2}{-1}{3}\right|\\
+&=\frac12\left|\cvv{-8}{-1}{5}\right|\\
+&=\frac12\sqrt{90}\\
+&=\frac32\sqrt{10}\text{ units}^2
+\end{aligned}
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.42\linewidth}\centering
+\begin{tikzpicture}[scale=0.75]
+\draw[thick](0,0)--(3.5,2.6)--(4.5,0)--cycle;
+\node[left] at (0,0){$O$};
+\node[right] at (3.5,2.6){$A\cvv{1}{2}{2}$};
+\node[right] at (4.5,0){$B\cvv{2}{-1}{3}$};
+\end{tikzpicture}
+\end{minipage}}
+
+We can now extend this concept to find areas of triangles and parallelograms without the origin $O$ as a vertex.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+\draw[thick](0,0)--(4.5,0)--(1.8,1.8)--cycle;
+\node[left] at (0,0){$A$};\node[right] at (4.5,0){$B$};\node[above] at (1.8,1.8){$C$};
+\end{tikzpicture}
+\hspace{1.5cm}
+\begin{tikzpicture}[scale=0.75]
+\draw[thick](0,0)--(4.5,0)--(6,2.5)--(1.5,2.5)--cycle;
+\node[left] at (0,0){$A$};\node[right] at (4.5,0){$B$};\node[above] at (6,2.5){$C$};\node[above] at (1.5,2.5){$D$};
+\end{tikzpicture}
+\end{center}
+
+Consider the above triangle and parallelogram. The area for the respective figures can be obtained from the following result.
+\begin{theorem}{Areas without $O$ as a vertex}
+\[
+\begin{aligned}
+\text{Area of triangle }ABC&=\frac12|\vv{AB}\times\vv{AC}|\\
+\text{Area of parallelogram }ABCD&=|\vv{AB}\times\vv{AD}|
+\end{aligned}
+\]
+\end{theorem}
+
+\clearpage
+\begin{example}
+The position vectors $A$, $B$ and $C$ are $\mathbf a=\mathbf i+2\mathbf j+\mathbf k$, $\mathbf b=\mathbf i+3\mathbf k$ and $\mathbf c=-\mathbf i+2\mathbf j+7\mathbf k$. Find the area of the triangle $ABC$.
+\end{example}
+\solution{\par\noindent\begin{minipage}[c]{0.58\linewidth}
+\[
+\begin{aligned}
+\text{Required Area}&=\frac12|\vv{AB}\times\vv{AC}|\\
+\vv{AB}&=\vv{OB}-\vv{OA}=\cvv{1}{0}{3}-\cvv{1}{2}{1}=\cvv{0}{-2}{2}\\
+\vv{AC}&=\vv{OC}-\vv{OA}=\cvv{-1}{2}{7}-\cvv{1}{2}{1}=\cvv{-2}{0}{6}\\
+\therefore\ \text{Area}&=\frac12\left|\cvv{0}{-2}{2}\times\cvv{-2}{0}{6}\right|\\
+&=\frac12\left|\cvv{-12}{-4}{-4}\right|\\
+&=\frac{\sqrt{176}}{2}\\
+&=2\sqrt{11}\text{ units}^2
+\end{aligned}
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.38\linewidth}\centering
+\begin{tikzpicture}[scale=0.8]
+\draw[thick](0,0)--(2,1.6)--(4,0)--cycle;
+\node[left] at (0,0){$A$};\node[above] at (2,1.6){$B$};\node[right] at (4,0){$C$};
+\end{tikzpicture}
+\end{minipage}}
+
+\begin{example}[title=Problem~\thetcbcounter]
+\begin{enumerate}[label=\arabic*)]
+\item Relative to the origin $O$, the points $A$ and $B$ have position vectors $\vv{OA}=\cvv{1}{0}{3}$, $\vv{OB}=\cvv{-2}{3}{2}$. Find the area of triangle $OAB$.
+\item Relative to the origin $O$, the points $A$ and $B$ have position vectors $\vv{OA}=\cvv{0}{1}{1}$, $\vv{OB}=\cvv{1}{-2}{2}$. Find the area of triangle $OAB$.
+\item Relative to an origin $O$, the position vectors of the vertices $A$, $B$ and $C$ of a triangle are
+\[
+\mathbf i+\mathbf j-\mathbf k,\ 2\mathbf i+\mathbf k\ \text{and}\ -\mathbf i+2\mathbf j-\mathbf k
+\]
+respectively. By considering the displacement vectors $\vv{AB}$ and $\vv{AC}$, find
+\begin{enumerate}[label=(\alph*)]
+\item the exact area of triangle $ABC$, and
+\item the exact length of the vector component of $\vv{AB}$ perpendicular to $\vv{AC}$.
+\end{enumerate}
+\item The points $A$ and $B$ have coordinates $(5,0,5)$ and $(10,-5,15)$ respectively. The point $D$ is such that $OADB$ is a parallelogram and the point $C$ divides $AD$ in the ratio $2:3$. Find the exact areas of
+\begin{enumerate}[label=(\roman*)]
+\item the parallelogram $OADB$, and
+\item the quadrilateral $OCDB$.
+\end{enumerate}
+\end{enumerate}
+\end{example}
+\textbf{Ans:} \quad 1) $\dfrac{\sqrt{154}}{2}$ units$^2$ \quad 2) $\dfrac{3\sqrt2}{2}$ units$^2$ \quad 3) (a) $\dfrac{\sqrt{21}}{2}$ units$^2$ (b) $\dfrac{\sqrt{105}}{5}$ units$^2$ \quad 4) (i) $25\sqrt3$ units$^2$ (ii) $20\sqrt3$ units$^2$
+
+\begin{question}
+\textbf{Thinking Question:} \textit{If $ABCD$ is ANY quadrilateral (i.e., not necessarily a parallelogram), can you use the formula $|\vv{AB}\times\vv{AD}|$ to find the area?}\par
+\textbf{Ans:} No. If the formula can be used for any quadrilateral, this would mean that any quadrilateral with adjacent sides $AB$ and $AD$ has the same area as the parallelogram with this pair of adjacent sides, which is not true.
+\end{question}
+
+\clearpage
+\subsection{Summary of Scalar \& Vector Products}
+\begin{center}
+\textbf{Difference between scalar and vector products}\par\medskip
+{\renewcommand{\arraystretch}{1.3}\small
+\begin{tabular}{|p{7.2cm}|p{7.2cm}|}
+\hline
+\centering Scalar Product, $\mathbf a\cdot\mathbf b$ & \centering\arraybackslash Vector Product, $\mathbf a\times\mathbf b$\\\hline
+\centering $\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$ gives a scalar & \centering\arraybackslash $\mathbf a\times\mathbf b=|\mathbf a||\mathbf b|\sin\theta\,\hat{\mathbf n}$ gives a vector\\\hline
+\centering Main usage: & \centering\arraybackslash Main usage:\\
+\textbullet\ To find angle between 2 direction vectors (also between 2 lines and between 2 planes to be discussed later)\par
+\textbullet\ To find length and vector of projection
+&
+\textbullet\ To find a vector perpendicular to 2 given vectors\par
+\textbullet\ To find area of triangle and parallelogram\par
+\textbullet\ To find the perpendicular component of a vector with respect to another vector\\\hline
+\centering For 3-D vectors, & \centering\arraybackslash For 3-D vector,\\
+\centering $\cvv{a_1}{a_2}{a_3}\cdot\cvv{b_1}{b_2}{b_3}=a_1b_1+a_2b_2+a_3b_3$ &
+\centering\arraybackslash $\cvv{a_1}{a_2}{a_3}\times\cvv{b_1}{b_2}{b_3}=\cvv{a_2b_3-a_3b_2}{a_3b_1-a_1b_3}{a_1b_2-a_2b_1}$\\\hline
+\centering $\mathbf a\cdot\mathbf b=0\implies\mathbf a=\mathbf 0,\ \mathbf b=\mathbf 0$ or $\mathbf a\perp\mathbf b$ & \centering\arraybackslash $\mathbf a\times\mathbf b=\mathbf 0\implies\mathbf a=\mathbf 0,\ \mathbf b=\mathbf 0$, or $\mathbf a/\!/\mathbf b$\\\hline
+\centering Commutative: $\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$ & \centering\arraybackslash NOT commutative: $\mathbf a\times\mathbf b\neq\mathbf b\times\mathbf a$\par In fact, $\mathbf a\times\mathbf b=-\mathbf b\times\mathbf a$\\\hline
+\centering Need to know: & \centering\arraybackslash Need to know:\\
+\textbullet\ $\mathbf a\cdot\mathbf a=|\mathbf a|^2$\par
+\textbullet\ If $\mathbf a\perp\mathbf b$, then $\mathbf a\cdot\mathbf b=0$ ($\mathbf a$ and $\mathbf b$ are non-zero vectors)
+&
+\textbullet\ $\mathbf a\times\mathbf a=\mathbf 0$ (applies to all parallel vectors)\par
+\textbullet\ If $\mathbf a$ is parallel to $\mathbf b$, then $\mathbf a\times\mathbf b=\mathbf 0$\par
+\textbullet\ The vector $\mathbf a\times\mathbf b$ is perpendicular to both $\mathbf a$ and $\mathbf b$\\\hline
+\end{tabular}}
+\end{center}
+
 \end{document}
