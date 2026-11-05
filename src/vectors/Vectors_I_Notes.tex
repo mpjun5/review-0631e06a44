@@ -2,6 +2,7 @@
 \input{preamble_build}
 \input{preamble_local}
 \usepackage{longtable}
+\usepackage{enumitem,multicol}
 \raggedbottom
 \newcommand{\vv}[1]{\overrightarrow{#1}}
 \newcommand{\cv}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
@@ -514,385 +515,335 @@ $A$ has position vector $\cvv{2}{1}{-1}$ and $C$ has position vector $\cvv{5}{4}
 
 \clearpage
 \section{Scalar Product}
-\begin{theorem}{Scalar product}
+In this section, we learn about how we can multiply vectors together. There are two different ways we can do so, namely the Scalar Product and Vector Product. The Scalar and Vector products each have their own respective applications in the study of Vectors. We will learn about these applications more in depth later in this section.
+
+\subsection{Scalar (Dot) Product}
+\begin{definition}{Scalar (dot) product}
+The scalar or dot product of two vectors $\mathbf a=a_1\mathbf i+a_2\mathbf j+a_3\mathbf k$ and $\mathbf b=b_1\mathbf i+b_2\mathbf j+b_3\mathbf k$ is defined as
 \[
-\mathbf a\cdot\mathbf b=\cvv{a_1}{a_2}{a_3}\cdot\cvv{b_1}{b_2}{b_3}=a_1b_1+a_2b_2+a_3b_3
+\mathbf a\cdot\mathbf b=\cvv{a_1}{a_2}{a_3}\cdot\cvv{b_1}{b_2}{b_3}=a_1b_1+a_2b_2+a_3b_3.
 \]
-\end{theorem}
+\end{definition}
 
 \begin{example}
-$\mathbf a=\cvv{2}{1}{3}$, $\mathbf b=\cvv{3}{-2}{2}$. Find $\mathbf a\cdot\mathbf b$.
+Find $\cvv{1}{2}{3}\cdot\cvv{5}{-1}{3}$.
 \end{example}
-\solution{\par\noindent\begin{minipage}[c]{0.55\linewidth}
+\solution{
 \[
 \begin{aligned}
-\mathbf a\cdot\mathbf b&=2(3)+1(-2)+3(2)\\
-&=6-2+6\\
-&=10
+\cvv{1}{2}{3}\cdot\cvv{5}{-1}{3}&=1(5)+2(-1)+3(3)\\
+&=12
 \end{aligned}
-\]
-\end{minipage}\hfill
-\begin{minipage}[c]{0.4\linewidth}\centering
-\begin{tikzpicture}[td,scale=0.32]
-\axt{3.4}{-2.5}{1.6}{3.2}
-\node[dot,label={[L]below right:$O$}] at (0,0,0){};
-\draw[vA](0,0,0)--(2,1,3);\draw[vB](0,0,0)--(3,-2,2);
-\node[dot,label={[L]right:$(2,1,3)$}] at (2,1,3){};
-\node[dot,label={[L]right:$(3,-2,2)$}] at (3,-2,2){};
-\end{tikzpicture}
-\end{minipage}}
+\]}
 
-\begin{theorem}{Properties}
-\noindent\begin{minipage}[c]{0.74\linewidth}
-\[
-\begin{aligned}
-\mathbf a\cdot\mathbf b&=\mathbf b\cdot\mathbf a\\
-\mathbf a\cdot(\mathbf b+\mathbf c)&=\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c\\
-\lambda(\mathbf a\cdot\mathbf b)&=(\lambda\mathbf a)\cdot\mathbf b=\mathbf a\cdot(\lambda\mathbf b)
-\end{aligned}
-\qquad
-\begin{aligned}
-\mathbf a\cdot\mathbf a&=|\mathbf a|^2\\
-\mathbf i\cdot\mathbf i&=\mathbf j\cdot\mathbf j=\mathbf k\cdot\mathbf k=1\\
-\mathbf i\cdot\mathbf j&=\mathbf j\cdot\mathbf k=\mathbf k\cdot\mathbf i=0
-\end{aligned}
-\]
-\g{$\mathbf a\cdot\mathbf b\cdot\mathbf c$ meaningless; no cancellation law}
-\end{minipage}\hfill
-\begin{minipage}[c]{0.24\linewidth}\centering
-\begin{tikzpicture}[td,scale=0.8]
-\axt{1.6}{-0.3}{1.8}{1.6}
-\node[dot,label={[L]below right:$O$}] at (0,0,0){};
-\draw[vA](0,0,0)--(1,0,0) node[midway,below,L]{$\mathbf i$};
-\draw[vB](0,0,0)--(0,1,0) node[midway,below right,L]{$\mathbf j$};
-\draw[vR](0,0,0)--(0,0,1) node[midway,left,L]{$\mathbf k$};
-\end{tikzpicture}
-\end{minipage}
-\end{theorem}
+\begin{question}
+\textbf{Thinking Question:} Note that the Scalar Product yields a result that is scalar (a magnitude). What does this suggest about the other form of multiplication (Vector Product)?
+\end{question}
 
-\begin{example}
-(a) $\mathbf a=\cvv{1}{2}{-2}$. Show that $\mathbf a\cdot\mathbf a=|\mathbf a|^2$. \quad (b) $|\mathbf a|=5$, $|\mathbf b|=3$. Find $(\mathbf a+\mathbf b)\cdot(\mathbf a-\mathbf b)$. \quad (c) $\mathbf a\cdot\mathbf b=10$. Find $(2\mathbf a)\cdot(3\mathbf b)$. \quad (d) Find $\mathbf i\cdot(2\mathbf i+3\mathbf j-\mathbf k)$. \quad (e) $\mathbf p=\mathbf i$, $\mathbf q=\mathbf i+2\mathbf j$, $\mathbf r=\mathbf i+5\mathbf k$. Show that $\mathbf p\cdot\mathbf q=\mathbf p\cdot\mathbf r$ but $\mathbf q\neq\mathbf r$, and explain why $\mathbf p\cdot\mathbf q\cdot\mathbf r$ is meaningless.
+\begin{example}[title=Problem~\thetcbcounter]
+It is given that $\mathbf a=\cvv{1}{2}{3}$, $\mathbf b=\cvv{-3}{2}{7}$, $\mathbf c=\cvv{4}{-5}{-1}$. Find the following
+\begin{multicols}{4}
+\begin{enumerate}[label=\alph*)]
+\item $\mathbf a\cdot\mathbf b$
+\item $\mathbf b\cdot\mathbf a$
+\item $\mathbf a\cdot(\mathbf b+\mathbf c)$
+\item $\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c$
+\item $\mathbf a\cdot(2\mathbf c)$
+\item $(2\mathbf a)\cdot\mathbf c$
+\item $\mathbf a\cdot\mathbf a$
+\end{enumerate}
+\end{multicols}
 \end{example}
-\solution{\par\noindent\begin{minipage}[t]{0.5\linewidth}
-\[
-\begin{aligned}
-\text{(a)}\quad\mathbf a\cdot\mathbf a&=1^2+2^2+(-2)^2=9=|\mathbf a|^2\\
-\therefore\ \mathbf a\cdot\mathbf a&=|\mathbf a|^2\ \text{(shown)}\\[3pt]
-\text{(b)}\quad(\mathbf a+\mathbf b)\cdot(\mathbf a-\mathbf b)&=\mathbf a\cdot\mathbf a-\mathbf a\cdot\mathbf b+\mathbf b\cdot\mathbf a-\mathbf b\cdot\mathbf b\\
-&=|\mathbf a|^2-|\mathbf b|^2\\
-&=25-9=16
-\end{aligned}
-\]
-\end{minipage}\hfill
-\begin{minipage}[t]{0.46\linewidth}
-\[
-\begin{aligned}
-\text{(c)}\quad(2\mathbf a)\cdot(3\mathbf b)&=6(\mathbf a\cdot\mathbf b)\\
-&=60\\[3pt]
-\text{(d)}\quad\mathbf i\cdot(2\mathbf i+3\mathbf j-\mathbf k)&=2\,\mathbf i\cdot\mathbf i+3\,\mathbf i\cdot\mathbf j-\mathbf i\cdot\mathbf k\\
-&=2(1)+3(0)-0\\
-&=2
-\end{aligned}
-\]
-\end{minipage}\par\noindent\begin{minipage}[t]{0.5\linewidth}
-\[
-\begin{aligned}
-\text{(e)}\quad\mathbf p\cdot\mathbf q&=1+0+0=1\\
-\mathbf p\cdot\mathbf r&=1+0+0=1\\
-\therefore\ \mathbf p\cdot\mathbf q&=\mathbf p\cdot\mathbf r,\ \mathbf q\neq\mathbf r\ \text{(shown)}
-\end{aligned}
-\]
-\end{minipage}\hfill
-\begin{minipage}[t]{0.46\linewidth}
-\[
-\begin{aligned}
-\mathbf p\cdot\mathbf q&=1\ (\text{scalar})\\
-\therefore\ (\mathbf p\cdot\mathbf q)\cdot\mathbf r&=1\cdot\mathbf r\ \text{undefined}
-\end{aligned}
-\]
-\end{minipage}}
+\textbf{Ans:} \quad a) $22$ \quad b) $22$ \quad c) $13$ \quad d) $13$ \quad e) $-18$ \quad f) $-18$ \quad g) $14$
+
+\textbf{Learning Points:}
+\begin{itemize}
+\item Parts (a) and (b) show that the order of the vectors in the scalar product does NOT matter. In other words, the operation is commutative, [ i.e.\ $\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$]
+\item Parts (c) and (d) show that the scalar product operation is distributive over vector addition, [ i.e.\ $\mathbf a\cdot(\mathbf b+\mathbf c)=\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c$]
+\item Parts (e) and (f) show that the scalar multiplication of vectors is associative over the scalar product, [ i.e.\ $(k\mathbf a)\cdot\mathbf b=\mathbf a\cdot(k\mathbf b)$]
+\end{itemize}
 
 \clearpage
-\begin{theorem}{Formula and angle}
-\noindent\begin{minipage}[c]{0.56\linewidth}
+\subsection{Basic Properties of Scalar Product}
+Taking reference to the problems in the previous section (Scalar Product), we can see that the Scalar Product has properties that are similar to basic algebra multiplication. In general, we have the following properties of the Scalar Product.
+
+\begin{theorem}{Laws of scalar product}
+\[
+\begin{gathered}
+\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a\\
+\text{(Commutative Law of Scalar Product)}\\[8pt]
+\mathbf a\cdot(\mathbf b+\mathbf c)=\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c,\quad(\mathbf b+\mathbf c)\cdot\mathbf a=\mathbf b\cdot\mathbf a+\mathbf c\cdot\mathbf a\\
+\text{(Distributive Law of Scalar Product)}\\[8pt]
+\mathbf a\cdot(\lambda\mathbf b)=\lambda(\mathbf a\cdot\mathbf b)=(\lambda\mathbf a)\cdot\mathbf b\quad\lambda\in\mathbb R\\
+\text{(Associative Law of Scalar Product)}\\[8pt]
+|\mathbf a|^2=\mathbf a\cdot\mathbf a
+\end{gathered}
+\]
+\end{theorem}
+
+\textbf{Notes:}
+\begin{enumerate}
+\item The scalar product $\mathbf a\cdot\mathbf b$ is indeed a scalar.
+\item $(\mathbf a\cdot\mathbf b)\mathbf c$ is a scalar multiple of the vector $\mathbf c$. The scalar is $\mathbf a\cdot\mathbf b$.
+\item It is meaningless to write $(\mathbf a\cdot\mathbf b)\cdot\mathbf c$ (Why?)
+\item If $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$, then $\mathbf a\cdot\mathbf b=0$.
+\end{enumerate}
+
+\begin{question}
+\textbf{Questions:}
+\begin{itemize}
+\item Does the cancellation law hold: $\mathbf a\cdot\mathbf b=\mathbf a\cdot\mathbf c\implies\mathbf b=\mathbf c$?
+\item Is the following true: $\mathbf a\cdot\mathbf b=\mathbf c\cdot\mathbf d\implies\mathbf a=\dfrac{\mathbf c\cdot\mathbf d}{\mathbf b}$?
+\item Is the following true: $\mathbf a\cdot\mathbf b=0\implies\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$?
+\end{itemize}
+Justify your answer.
+\end{question}
+
+\textbf{Note:} All of the above are not true.
+
+\clearpage
+\subsection{Angle Between Two Vectors}
+We now look at how we are able to use the Scalar Product to find the angle between two vectors. This is one of the applications of the Scalar Product. To be clear, when we say the angle $\theta$ between two vectors, we are referring to the non-reflex angle between them, where either both their start points coincide, or end points coincide.
+
+\textbf{Correct angle:}
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+\draw[->,>=Stealth,thick](0,0)--(1.6,1.1) node[right]{$\mathbf a$};
+\draw[->,>=Stealth,thick](0,0)--(1.6,-1.1) node[right]{$\mathbf b$};
+\draw (0.5,0.34) arc[start angle=34.5,end angle=-34.5,radius=0.6];
+\node at (0.9,0){$\theta$};
+\end{tikzpicture}
+\hspace{3cm}
+\begin{tikzpicture}[scale=0.85]
+\draw[->,>=Stealth,thick](1.6,1.1)--(0,0);
+\draw[->,>=Stealth,thick](1.6,-1.1)--(0,0);
+\node[above left] at (0.1,0.1){$\mathbf a$};\node[below left] at (0.1,-0.1){$\mathbf b$};
+\draw (0.5,0.34) arc[start angle=34.5,end angle=-34.5,radius=0.6];
+\node at (0.9,0){$\theta$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Wrong angle:}
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+\draw[->,>=Stealth,thick](0,0)--(1.6,1.1) node[right]{$\mathbf a$};
+\draw[->,>=Stealth,thick](0,0)--(1.6,-1.1) node[right]{$\mathbf b$};
+\draw (0.5,0.34) arc[start angle=34.5,end angle=325.5,radius=0.6];
+\node at (-0.25,0){$\theta$};
+\end{tikzpicture}
+\hspace{3cm}
+\begin{tikzpicture}[scale=0.85]
+\draw[->,>=Stealth,thick](1.6,1.1)--(0,0);
+\draw[->,>=Stealth,thick](0,0)--(1.6,-1.1) node[below]{$\mathbf b$};
+\node[above left] at (0.1,0.1){$\mathbf a$};
+\draw (0.5,0.34) arc[start angle=34.5,end angle=-34.5,radius=0.6];
+\node at (0.9,0){$\theta$};
+\end{tikzpicture}
+\end{center}
+
+In order to find this angle, we make use of the following formula.
+
+\begin{definition}{(Definition of Scalar Product)}
+The scalar product of two vectors $\mathbf a$ and $\mathbf b$ is given by
+\[
+\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta,
+\]
+where $\theta$ is the angle between two vectors $\mathbf a$ and $\mathbf b$.
+\end{definition}
+
+\begin{example}
+Find the angle between the following vectors $\mathbf a=\cvv{1}{2}{3}$, $\mathbf b=\cvv{-2}{2}{1}$.
+\end{example}
+\solution{
 \[
 \begin{aligned}
 \mathbf a\cdot\mathbf b&=|\mathbf a||\mathbf b|\cos\theta\\
-\cos\theta&=\frac{\mathbf a\cdot\mathbf b}{|\mathbf a||\mathbf b|}
+\cvv{1}{2}{3}\cdot\cvv{-2}{2}{1}&=\left|\cvv{1}{2}{3}\right|\left|\cvv{-2}{2}{1}\right|\cos\theta\\
+-2+4+3&=\sqrt{14}\sqrt9\cos\theta\\
+\frac{5}{3\sqrt{14}}&=\cos\theta\\
+\theta&=\cos^{-1}\left(\frac{5}{3\sqrt{14}}\right)\\
+\theta&=63.5^\circ
 \end{aligned}
-\]
-\g{$\mathbf a\cdot\mathbf b>0$ acute, $<0$ obtuse, $=0$ right angle}\par
-$\theta$: tail to tail, $0\le\theta\le\pi$
-\end{minipage}\hfill
-\begin{minipage}[c]{0.4\linewidth}\centering
-\begin{tikzpicture}[scale=0.8]
-\draw[vB](0,0)--(3.8,0);\draw[vA](0,0)--(2,2.2);
-\draw[thick](0.7,0) arc[start angle=0,end angle=47.7,radius=0.7];
-\node[L] at (1.0,0.42){$\theta$};
-\node[dot,label={[L]below left:$O$}] at (0,0){};
-\node[blue!70!black,above left] at (1,1.1){$\mathbf a$};
-\node[red!70!black,below] at (2.4,0){$\mathbf b$};
-\end{tikzpicture}
-\end{minipage}
-\end{theorem}
+\]}
 
-\begin{example}
-(a) $|\mathbf a|=3$, $|\mathbf b|=4$, angle between $\mathbf a$ and $\mathbf b$ is $\dfrac{\pi}{3}$. Find $\mathbf a\cdot\mathbf b$. \quad (b) Find the angle between $\cvv{2}{1}{3}$ and $\cvv{3}{-2}{2}$. \quad (c) Find the angle between $\mathbf i+2\mathbf j-2\mathbf k$ and $2\mathbf i-\mathbf j+3\mathbf k$.
-\end{example}
-\solution{\par\noindent\begin{minipage}[t]{0.42\linewidth}
+Hence we can use Definition~13.4.2 to find the non-reflex angle $\theta$ between vectors $\mathbf a$ and $\mathbf b$:
 \[
-\begin{aligned}
-\text{(a)}\quad\mathbf a\cdot\mathbf b&=3(4)\cos\frac{\pi}{3}\\
-&=6\\[3pt]
-\text{(b)}\quad\cos\theta&=\frac{6-2+6}{\sqrt{14}\sqrt{17}}\\
-&=\frac{10}{\sqrt{238}}\ (>0,\ \text{acute})\\
-\theta&=49.6^\circ\ (1\text{ d.p.})
-\end{aligned}
+\cos\theta=\frac{\mathbf a\cdot\mathbf b}{|\mathbf a||\mathbf b|}.
 \]
-\end{minipage}\hfill
-\begin{minipage}[t]{0.54\linewidth}
-\[
-\begin{aligned}
-\text{(c)}\quad\cos\theta&=\frac{2-2-6}{\sqrt{1^2+2^2+(-2)^2}\,\sqrt{2^2+(-1)^2+3^2}}\\
-&=\frac{-6}{3\sqrt{14}}\ (<0,\ \text{obtuse})\\
-\theta&=122.3^\circ\ (1\text{ d.p.})
-\end{aligned}
-\]
-\end{minipage}}
-
-\begin{theorem}{Angle between $\vv{AB}$ and $\vv{BC}$}
-\noindent\begin{minipage}[c]{0.5\linewidth}
-\[
-\begin{aligned}
-\angle ABC&\neq\text{angle between }\vv{AB}\text{ and }\vv{BC}\\
-\cos\angle ABC&=\frac{\vv{BA}\cdot\vv{BC}}{|\vv{BA}||\vv{BC}|}
-\end{aligned}
-\]
-\end{minipage}\hfill
-\begin{minipage}[c]{0.46\linewidth}\centering
-\begin{tikzpicture}[scale=0.8]
-\draw[comp](2.5,0.4)--(4,-0.68);
-\draw[vA](0,2.2)--(2.5,0.4);\draw[vB](2.5,0.4)--(5,1.8);
-\draw[thick](2.95,0.652) arc[start angle=29.25,end angle=144.2,radius=0.52];
-\node[L] at (2.5,1.2){$\angle ABC$};
-\draw[thick](3.068,0.0) arc[start angle=-35.8,end angle=29.25,radius=0.7];
-\node[L] at (3.5,0.15){$\theta$};
-\node[dot,label={[L]above left:$A$}] at (0,2.2){};
-\node[dot,label={[L]below:$B$}] at (2.5,0.4){};
-\node[dot,label={[L]above right:$C$}] at (5,1.8){};
-\node[L,blue!70!black,below left] at (1.25,1.3){$\vv{AB}$};
-\node[L,red!70!black,below right] at (3.9,1.1){$\vv{BC}$};
-\end{tikzpicture}
-\end{minipage}
-\end{theorem}
-
-\begin{example}
-$A(1,0,2)$, $B(3,1,0)$, $C(2,4,1)$. Find (a) $\angle ABC$, \quad (b) the angle between $\vv{AB}$ and $\vv{BC}$.
-\end{example}
-\solution{\par\noindent\begin{minipage}[c]{0.36\linewidth}
-\[
-\begin{aligned}
-\text{(a)}\quad\vv{BA}&=\cvv{-2}{-1}{2},\ \vv{BC}=\cvv{-1}{3}{1}\\
-\cos\angle ABC&=\frac{2-3+2}{3\sqrt{11}}\\
-\angle ABC&=84.2^\circ\ (1\text{ d.p.})
-\end{aligned}
-\]
-\end{minipage}\hfill
-\begin{minipage}[c]{0.34\linewidth}
-\[
-\begin{aligned}
-\text{(b)}\quad\vv{AB}&=\cvv{2}{1}{-2}\\
-\cos\theta&=\frac{-2+3-2}{3\sqrt{11}}\\
-\theta&=95.8^\circ\ (1\text{ d.p.})
-\end{aligned}
-\]
-\end{minipage}\hfill
-\begin{minipage}[c]{0.28\linewidth}\centering
-\begin{tikzpicture}[td,scale=0.45]
-\axt{3.4}{-0.5}{4.4}{2.6}
-\node[dot,label={[L]below left:$O$}] at (0,0,0){};
-\draw[vA](1,0,2)--(3,1,0);\draw[vB](3,1,0)--(2,4,1);
-\node[dot,label={[L]left:$A$}] at (1,0,2){};
-\node[dot,label={[L]below:$B$}] at (3,1,0){};
-\node[dot,label={[L]above:$C$}] at (2,4,1){};
-\end{tikzpicture}
-\end{minipage}}
 
 \clearpage
+\begin{example}[title=Problem~\thetcbcounter]
+\begin{enumerate}[label=\arabic*)]
+\item Points $O$, $A$, $B$ are such that $\vv{OA}=\mathbf i+4\mathbf j-3\mathbf k$ and $\vv{OB}=5\mathbf i-\mathbf j$
+\begin{enumerate}[label=(\alph*)]
+\item Find the size of angle $AOB$
+\item Find the size of angle $OAB$.
+\end{enumerate}
+\textbf{Ans:} (a) $87.8^\circ$ \quad (b) $133.9^\circ$
+\item It is given that $\mathbf c=\cvv{2}{3}{6}$, $\mathbf d=\cvv{1}{-2}{3}$ and $\mathbf e=\cvv{3}{2}{-2}$. Find the angle between the vectors $\mathbf c$ and
+\begin{enumerate}[label=(\alph*)]
+\item the vector $\mathbf d$
+\item the vector $\mathbf e$
+\item the positive $y$-axis
+\end{enumerate}
+\textbf{Ans:} (a) $57.7^\circ$ \quad (b) $90^\circ$ \quad (c) $64.6^\circ$
+\item It is given that two vectors $\mathbf a$ and $\mathbf b$ satisfy the following relationship:
+\[
+|\mathbf a||\mathbf b|=6.
+\]
+Find the value of $\mathbf a\cdot\mathbf b$ for each of the following scenarios.
+\begin{enumerate}[label=(\alph*)]
+\item The angle between $\mathbf a$ and $\mathbf b$ is $60^\circ$.
+\item The angle between $\mathbf a$ and $\mathbf b$ is $120^\circ$.
+\item Vectors $\mathbf a$ and $\mathbf b$ are perpendicular.
+\end{enumerate}
+\textbf{Ans:} (a) $\mathbf a\cdot\mathbf b=3$ \quad (b) $\mathbf a\cdot\mathbf b=-3$ \quad (c) $\mathbf a\cdot\mathbf b=0$
+\end{enumerate}
+\end{example}
+
+\begin{question}
+\textbf{Sign of the Scalar Product}\par
+From Problem 3, what do you observe about the sign of the scalar product $\mathbf a\cdot\mathbf b$ when the angle between $\mathbf a$ and $\mathbf b$ is acute or obtuse? Why is this so?
+\end{question}
+
+\begin{question}
+\textbf{Perpendicular Vectors}\par
+From 3(c), we see that $\mathbf a\cdot\mathbf b=0$. Is this always the case when $\mathbf a$ and $\mathbf b$ are perpendicular? Why? We will explore more on this in the next section.
+\end{question}
+
+\clearpage
+\subsection{Perpendicular Vectors}
+We can see that from the previous results, that the scalar product of two non-zero vectors that are perpendicular to each other is zero.
+
 \begin{theorem}{Perpendicular vectors}
-\noindent\begin{minipage}[c]{0.56\linewidth}
-\[
-\mathbf a\cdot\mathbf b=0\iff\mathbf a\perp\mathbf b
-\]
-\g{($\mathbf a$, $\mathbf b$ nonzero)}\par
-$\because\ \cos\dfrac{\pi}{2}=0$
-\end{minipage}\hfill
-\begin{minipage}[c]{0.4\linewidth}\centering
-\begin{tikzpicture}[scale=0.8]
-\draw[vB](0,0)--(3.5,0);\draw[vA](0,0)--(0,2.2);
-\draw[thick](0.35,0)--(0.35,0.35)--(0,0.35);
-\node[dot,label={[L]below left:$O$}] at (0,0){};
-\node[blue!70!black,left] at (0,1.1){$\mathbf a$};
-\node[red!70!black,below] at (1.75,0){$\mathbf b$};
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+\draw[->,>=Stealth,thick](0,0)--(0,2.2) node[midway,left]{$\mathbf a$};
+\draw[->,>=Stealth,thick](0,0)--(3,0) node[midway,below]{$\mathbf b$};
+\draw(0.3,0)--(0.3,0.3)--(0,0.3);
 \end{tikzpicture}
-\end{minipage}
+\end{center}
+\begin{center}
+If $\mathbf a$ and $\mathbf b$ are perpendicular vectors, then
+\[
+\mathbf a\cdot\mathbf b=0
+\]
+\end{center}
 \end{theorem}
 
-\begin{example}
-(a) Show that $\cvv{2}{1}{2}$ is perpendicular to $\cvv{1}{2}{-2}$. \quad (b) Find $p$ such that $\cvv{2}{p}{-1}$ is perpendicular to $\cvv{3}{1}{4}$.
-\end{example}
-\solution{\par\noindent\begin{minipage}[c]{0.58\linewidth}
-\[
-\begin{aligned}
-\text{(a)}\quad\cvv{2}{1}{2}\cdot\cvv{1}{2}{-2}&=2+2-4\\
-&=0\\
-\therefore\ \cvv{2}{1}{2}&\perp\cvv{1}{2}{-2}\ \text{(shown)}\\[3pt]
-\text{(b)}\quad6+p-4&=0\\
-\therefore\ p&=-2
-\end{aligned}
-\]
-\end{minipage}\hfill
-\begin{minipage}[c]{0.38\linewidth}\centering
-\begin{tikzpicture}[td,scale=0.6]
-\axt{2.4}{-0.5}{2.4}{2.4}
-\draw[ax](0,0,0)--(0,0,-2.4);
-\node[dot,label={[L]below left:$O$}] at (0,0,0){};
-\draw[thick](1/3,1/6,1/3)--(1/2,1/2,0)--(1/6,1/3,-1/3);
-\draw[vA](0,0,0)--(2,1,2);\draw[vB](0,0,0)--(1,2,-2);
-\node[dot,label={[L]right:$(2,1,2)$}] at (2,1,2){};
-\node[dot,label={[L]right:$(1,2,-2)$}] at (1,2,-2){};
-\end{tikzpicture}
-\end{minipage}}
+\textbf{Note:} This result can be used to test for two perpendicular vectors, provided that the two vectors are non-zero.
 
 \begin{example}
-$A(1,1,1)$, $B(3,2,3)$, $C(2,3,-1)$. Show that triangle $ABC$ is right-angled at $A$.
+Show that the vector $\mathbf a=\cvv{1}{2}{1}$ and $\mathbf b=\cvv{-1}{1}{-1}$ are perpendicular to each other.
 \end{example}
-\solution{\par\noindent\begin{minipage}[c]{0.58\linewidth}
+\solution{
 \[
 \begin{aligned}
-\vv{AB}&=\cvv{2}{1}{2},\quad\vv{AC}=\cvv{1}{2}{-2}\\
-\vv{AB}\cdot\vv{AC}&=2+2-4=0\\
-\therefore\ \angle BAC&=90^\circ\ \text{(shown)}
+\mathbf a\cdot\mathbf b&=\cvv{1}{2}{1}\cdot\cvv{-1}{1}{-1}\\
+&=-1+2-1\\
+&=0
 \end{aligned}
 \]
-\end{minipage}\hfill
-\begin{minipage}[c]{0.38\linewidth}\centering
-\begin{tikzpicture}[scale=0.6]
-\draw[thick,black!70](0,0)--(3,0)--(0,2)--cycle;
-\draw[thick](0.3,0)--(0.3,0.3)--(0,0.3);
-\node[dot,label={[L]below left:$A$}] at (0,0){};
-\node[dot,label={[L]below right:$B$}] at (3,0){};
-\node[dot,label={[L]above:$C$}] at (0,2){};
-\end{tikzpicture}
-\end{minipage}}
+Since $\mathbf a\cdot\mathbf b=0$, $\mathbf a$ \& $\mathbf b$ are perpendicular.}
 
-\begin{example}
-(a) Find a vector perpendicular to both $\mathbf i+\mathbf j$ and $\mathbf j+\mathbf k$. \quad (b) $|\mathbf a+\mathbf b|=|\mathbf a-\mathbf b|$, $\mathbf a,\mathbf b$ nonzero. Show that $\mathbf a\perp\mathbf b$.
+\begin{example}[title=Problem~\thetcbcounter]
+\begin{enumerate}[label=\arabic*)]
+\item Referred to the origin $O$, the position vectors of the points $A$ and $B$ are $\mathbf i-\mathbf j+2\mathbf k$ and $2\mathbf i+4\mathbf j+\mathbf k$ respectively. Show that $OA$ is perpendicular to $OB$.
+\item The position vectors $\mathbf a$ and $\mathbf b$ are given by
+\[
+\mathbf a=2p\mathbf i+3p\mathbf j+6p\mathbf k\quad\text{and}\quad\mathbf b=\mathbf i-2\mathbf j+2\mathbf k
+\]
+where $p>0$. It is given that $|\mathbf a|=|\mathbf b|$.
+\begin{enumerate}[label=(\roman*)]
+\item Find the exact value of $p$.
+\item Show that the vectors $(\mathbf a+\mathbf b)$ and $(\mathbf a-\mathbf b)$ are perpendicular.
+\end{enumerate}
+\textbf{Ans:} (i) $p=\dfrac37$
+\end{enumerate}
 \end{example}
-\solution{\par\noindent\begin{minipage}[t]{0.42\linewidth}
-\[
-\begin{aligned}
-\text{(a)}\quad x+y&=0,\quad y+z=0\\
-x=1\ \Rightarrow\ y&=-1,\ z=1\\
-\therefore\ \mathbf i-\mathbf j+\mathbf k&
-\end{aligned}
-\]
-\end{minipage}\hfill
-\begin{minipage}[t]{0.54\linewidth}
-\[
-\begin{aligned}
-\text{(b)}\quad|\mathbf a+\mathbf b|^2&=|\mathbf a-\mathbf b|^2\\
-|\mathbf a|^2+2\,\mathbf a\cdot\mathbf b+|\mathbf b|^2&=|\mathbf a|^2-2\,\mathbf a\cdot\mathbf b+|\mathbf b|^2\\
-4\,\mathbf a\cdot\mathbf b&=0\\
-\therefore\ \mathbf a&\perp\mathbf b\ \text{(shown)}
-\end{aligned}
-\]
-\end{minipage}}
 
 \clearpage
-\begin{theorem}{Applications: projection of $\mathbf a$ onto $\mathbf b$}
-\noindent\begin{minipage}[c]{0.5\linewidth}
+\subsection{Length of Projection \& Projection Vector}
+The projection vector of a vector $\mathbf a$ onto $\mathbf b$ is the vector component of $\mathbf a$ that is parallel to $\mathbf b$. The magnitude (or length) of this vector is known as the length of projection. To help you understand this better, imagine you are shining a torchlight from a point directly above $\mathbf a$. The length of projection is the length of the shadow that is cast on $\mathbf b$.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+\draw[->,>=Stealth,thick](0,0)--(4,3.4) node[midway,above left]{$\mathbf a$};
+\draw[->,>=Stealth,thick](0,0)--(5.6,0);
+\node[above] at (4.8,0){$\mathbf b$};
+\draw[dashed](4,3.4)--(4,0);
+\draw(3.75,0)--(3.75,0.25)--(4,0.25);
+\node[left] at (0,0){$O$};\node[above right] at (4,3.4){$A$};\node[right] at (5.6,0){$B$};
+\draw[|-|](0,-0.35)--(4,-0.35) node[midway,below]{length of projection};
+\end{tikzpicture}
+\end{center}
+
+In order to find the length of projection and projection vector of $\mathbf a$ onto $\mathbf b$, we can make use of the following result.
+
+\begin{theorem}{Projection of Vectors}
+For any two non-zero vectors $\mathbf a$ and $\mathbf b$,
 \[
 \begin{aligned}
-\text{Length of projection}&=|\mathbf a\cdot\hat{\mathbf b}|\\
-\text{Projection vector}&=(\mathbf a\cdot\hat{\mathbf b})\,\hat{\mathbf b}
+\text{length of projection of }\mathbf a\text{ onto }\mathbf b&=|\mathbf a\cdot\hat{\mathbf b}|,\\
+\text{projection vector of }\mathbf a\text{ onto }\mathbf b&=(\mathbf a\cdot\hat{\mathbf b})\hat{\mathbf b}.
 \end{aligned}
 \]
-$|\mathbf a\cdot\hat{\mathbf b}|=ON$, $\vv{ON}=(\mathbf a\cdot\hat{\mathbf b})\,\hat{\mathbf b}$
-\end{minipage}\hfill
-\begin{minipage}[c]{0.46\linewidth}\centering
-\begin{tikzpicture}[scale=0.85]
-\draw[vB](0,0)--(5,0);
-\draw[vR,line width=1.8pt](0,0)--(3,0);
-\draw[vA](0,0)--(3,2.4);
-\draw[comp](3,2.4)--(3,0);
-\draw[thick](2.7,0)--(2.7,0.3)--(3,0.3);
-\draw[thick](0.6,0) arc[start angle=0,end angle=38.66,radius=0.6];
-\node[L] at (0.85,0.3){$\theta$};
-\node[dot,label={[L]below left:$O$}] at (0,0){};
-\node[dot,label={[L]above:$A$}] at (3,2.4){};
-\node[dot,label={[L]below right:$N$}] at (3,0){};
-\node[blue!70!black,above left] at (1.5,1.2){$\mathbf a$};
-\node[red!70!black,above] at (4.3,0){$\mathbf b$};
-\draw[decorate,decoration={brace,mirror,amplitude=4pt,raise=6pt}](0,0)--(3,0) node[midway,below=10pt,L]{$|\mathbf a\cdot\hat{\mathbf b}|$};
-\end{tikzpicture}
-\end{minipage}
 \end{theorem}
 
+\begin{question}
+\textbf{Thinking Question:} \textit{What is the difference between considering the projection of $\mathbf a$ onto $\mathbf b$ and $\mathbf b$ onto $\mathbf a$?}
+\end{question}
+
+\clearpage
 \begin{example}
-$\mathbf a=\cvv{3}{3}{3}$, $\mathbf b=\cvv{1}{2}{2}$. Find (a) the length of projection of $\mathbf a$ onto $\mathbf b$, \quad (b) the projection vector of $\mathbf a$ onto $\mathbf b$, \quad (c) the perpendicular distance from $A$ to the line through $O$ parallel to $\mathbf b$.
+The vectors $\mathbf a$ and $\mathbf b$ are given by
+\[
+\mathbf a=\cvv{1}{2}{3},\quad\text{and}\quad\mathbf b=\cvv{-1}{-2}{2}.
+\]
+Find the length of projection and the projection vector of the vector $\mathbf a$ onto $\mathbf b$.
 \end{example}
 \solution{\par\noindent\begin{minipage}[c]{0.6\linewidth}
 \[
 \begin{aligned}
-\text{(a)}\quad\hat{\mathbf b}&=\frac13\cvv{1}{2}{2}\\
-|\mathbf a\cdot\hat{\mathbf b}|&=\frac{|3+6+6|}{3}\\
-&=5\\[3pt]
-\text{(b)}\quad\vv{ON}&=5\left(\frac13\cvv{1}{2}{2}\right)=\frac53\cvv{1}{2}{2}\\[3pt]
-\text{(c)}\quad AN^2&=|\mathbf a|^2-ON^2\\
-&=27-25\\
-AN&=\sqrt2
+\text{Length of projection}&=|\mathbf a\cdot\hat{\mathbf b}|\\
+\hat{\mathbf b}&=\frac13\cvv{-1}{-2}{2}\\
+\therefore\ \text{length}&=\left|\cvv{1}{2}{3}\cdot\frac13\cvv{-1}{-2}{2}\right|\\
+&=\frac13\left|\cvv{1}{2}{3}\cdot\cvv{-1}{-2}{2}\right|\\
+&=\frac13\text{ units}
 \end{aligned}
 \]
 \end{minipage}\hfill
 \begin{minipage}[c]{0.36\linewidth}\centering
-\begin{tikzpicture}[td,scale=0.6]
-\axt{3.2}{-0.5}{3.6}{3.4}
-\node[dot,label={[L]below left:$O$}] at (0,0,0){};
-\draw[vB](0,0,0)--(1,2,2);
-\draw[black!40](1,2,2)--(2,4,4);
-\draw[vR](0,0,0)--(5/3,10/3,10/3);
-\draw[vA](0,0,0)--(3,3,3);
-\draw[comp](3,3,3)--(5/3,10/3,10/3);
-\node[dot,label={[L]right:$A(3,3,3)$}] at (3,3,3){};
-\node[dot,label={[L]above left:$N$}] at (5/3,10/3,10/3){};
-\node[L,red!70!black,left] at (0.5,1,1){$\mathbf b$};
-\node[L,blue!70!black,below right] at (1.5,1.5,1.5){$\mathbf a$};
+\begin{tikzpicture}[scale=0.8]
+\draw[->,>=Stealth,thick](0,0)--(3,2.6) node[midway,above left]{$\mathbf a$};
+\draw[->,>=Stealth,thick](0,0)--(3.8,0) node[below]{$\mathbf b$};
+\draw[dashed](3,2.6)--(3,0);
+\draw(2.75,0)--(2.75,0.25)--(3,0.25);
+\node[left] at (0,0){$O$};
 \end{tikzpicture}
-\end{minipage}}
+\end{minipage}
+\par
+$\therefore$ The length of projection of the vector $\mathbf a$ onto $\mathbf b$ is $\dfrac13$ units. The projection vector is
+\[
+\frac13\left(\frac13\cvv{-1}{-2}{2}\right)=\frac19\cvv{-1}{-2}{2}
+\]}
 
-\begin{example}
-$\mathbf a=2\mathbf i-\mathbf j+3\mathbf k$, $\mathbf d=\mathbf i+\mathbf j+\mathbf k$. Find (a) the length of projection of $\mathbf a$ onto $\mathbf d$, \quad (b) the projection vector of $\mathbf a$ onto $\mathbf d$, \quad (c) the perpendicular distance from $A$ to the line through $O$ parallel to $\mathbf d$.
+\begin{example}[title=Problem~\thetcbcounter]
+\begin{enumerate}[label=\arabic*)]
+\item Given that $\mathbf a=2\mathbf i+\mathbf j+2\mathbf k$ and $\mathbf b=-\mathbf i+2\mathbf k-\mathbf k$, find the length of projection and the projection vector of
+\begin{enumerate}[label=(\alph*)]
+\item $\mathbf a$ onto $\mathbf b$,
+\item $\mathbf b$ onto $\mathbf a$.
+\end{enumerate}
+\item With reference to the origin O, the points $A$, $B$ and $C$ have position vectors given by
+\[
+\mathbf a=\mathbf i+2\mathbf j-\mathbf k,\ \mathbf b=3\mathbf i+\mathbf k\ \text{and}\ \mathbf c=2\mathbf i+2\mathbf j+3\mathbf k
+\]
+respectively. Find the length of projection of $\vv{BA}$ onto $\vv{BC}$.
+\end{enumerate}
 \end{example}
-\solution{\par\noindent\begin{minipage}[t]{0.48\linewidth}
-\[
-\begin{aligned}
-\text{(a)}\quad\hat{\mathbf d}&=\frac{1}{\sqrt3}\cvv{1}{1}{1}\\
-|\mathbf a\cdot\hat{\mathbf d}|&=\frac{|2-1+3|}{\sqrt3}\\
-&=\frac{4}{\sqrt3}
-\end{aligned}
-\]
-\end{minipage}\hfill
-\begin{minipage}[t]{0.48\linewidth}
-\[
-\begin{aligned}
-\text{(b)}\quad(\mathbf a\cdot\hat{\mathbf d})\,\hat{\mathbf d}&=\frac{4}{\sqrt3}\cdot\frac{1}{\sqrt3}\cvv{1}{1}{1}\\
-&=\frac43\cvv{1}{1}{1}\\[3pt]
-\text{(c)}\quad d^2&=|\mathbf a|^2-|\mathbf a\cdot\hat{\mathbf d}|^2\\
-&=14-\frac{16}{3}\\
-d&=\sqrt{\frac{26}{3}}
-\end{aligned}
-\]
-\end{minipage}}
+\textbf{Ans:}\par
+1a) $\dfrac{2}{\sqrt6}$, $\dfrac13\cvv{-1}{2}{-1}$ \qquad 1b) $\dfrac23$, $\dfrac29\cvv{2}{1}{2}$\par
+2) $\dfrac23$
 
 \end{document}
