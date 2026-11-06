@@ -1,0 +1,109 @@
+\usepackage{needspace}% used to keep the 10-rectangle working together
+% =====================================================================
+% preamble_local.tex: extra packages, styles and macros for the
+% Definite Integrals chapter ONLY. Loaded after preamble_build.tex.
+% Plot styles and the mini 3D macros are in figstyles.tex (shared with the
+% slides and worksheets).
+% =====================================================================
+\usepgfplotslibrary{fillbetween}
+\usepackage{adjustbox} % mini 3D pictures (figstyles.tex)
+\usetikzlibrary{arrows.meta, decorations.pathreplacing, calc}
+\input{figstyles}
+
+% ---------------------------------------------------------------------
+% [limitsum] REVIEW-COPY SWITCH. DI_notes_REVIEW.tex defines \reviewcopy
+% as 1 before loading this file. In the teacher and student copies the
+% macros below do nothing (no highlight, no annotation).
+%   \chg{note}{inline text}     : yellow highlight + hover note (one line only)
+%   \begin{chgblock}{note} ... \end{chgblock}
+%                               : light-yellow block + hover note covering it
+%                                 + a sticky-note icon in the left margin
+% The hover notes are PDF annotations written with xdvipdfmx \special's
+% (no extra package needed).
+% ---------------------------------------------------------------------
+\providecommand\reviewcopy{0}
+\ifnum\reviewcopy=1
+  \tcbuselibrary{skins,breakable}
+  \definecolor{chgyellow}{RGB}{255,246,170}
+  \newcommand\chgann[3]{\special{pdf:ann width #1 height #2 depth 0pt
+    << /Type/Annot /Subtype/Square /Contents (#3) /T (Review: limit-of-sum revision)
+       /BS << /W 0 >> /F 4 >>}}
+  \newcommand\chgicon[1]{\special{pdf:ann width 11pt height 11pt depth 0pt
+    << /Type/Annot /Subtype/Text /Name/Comment /Contents (#1)
+       /T (Review: limit-of-sum revision) /C [1 0.8 0] /F 4 >>}}
+  \newbox\chgbox
+  \newcommand\chg[2]{\leavevmode\begingroup\setbox\chgbox\hbox{#2}%
+    \rlap{\color{chgyellow}\rule[\dimexpr-\dp\chgbox-1pt\relax]{\wd\chgbox}{\dimexpr\ht\chgbox+\dp\chgbox+2pt\relax}}%
+    \chgann{\the\wd\chgbox}{\the\dimexpr\ht\chgbox+1pt\relax}{#1}\box\chgbox\endgroup}
+  \newenvironment{chgblock}[1]{\par\begin{tcolorbox}[enhanced, breakable, colback=chgyellow!55,
+      colframe=chgyellow!70!orange, boxrule=0.4pt, arc=0pt, boxsep=0pt,
+      left=3pt, right=3pt, top=2pt, bottom=2pt, enlarge left by=-3pt, enlarge right by=-3pt,
+      before skip=0pt, after skip=0pt, parbox=false, before upper={\parskip=0.9ex plus 0.3ex minus 0.2ex},
+      overlay={\path let \p1=(frame.south west), \p2=(frame.north east) in
+          node[anchor=south west, inner sep=0, outer sep=0] at (\p1)
+          {\chgann{\the\dimexpr\x2-\x1\relax}{\the\dimexpr\y2-\y1\relax}{#1}};
+        \node[anchor=north east, inner sep=0] at ([xshift=-30pt]frame.north west)
+          {\chgicon{#1}\rule{0pt}{11pt}\hspace{11pt}};}]}%
+    {\end{tcolorbox}\par}
+\else
+  \newcommand\chg[2]{#2}
+  \newenvironment{chgblock}[1]{}{}
+\fi
+% \chgremoved{note}{marker text}: marks the spot where something was REMOVED
+% (review copy only: small highlighted marker + hover note; prints nothing otherwise)
+\ifnum\reviewcopy=1
+  \newcommand\chgremoved[2]{\par\noindent\chg{#1}{\footnotesize\itshape [#2]}\par}
+\else
+  \newcommand\chgremoved[2]{}
+\fi
+
+% Small fractions are allowed only in exponents and in the limits of an
+% integral (which are superscripts/subscripts); everywhere else use \dfrac.
+\newcommand{\dx}{\,dx}
+\newcommand{\dy}{\,dy}
+\newcommand{\evalat}[3]{\left[\,#1\,\right]_{#2}^{#3}}
+
+% [item 78] right-aligned A-level style marks at the end of a question part
+% [limitsum] the mark allocation is now bold, e.g. [3]; in the review copy it
+% is also highlighted with a hover note.
+\newcommand{\mk}[1]{{\unskip\nobreak\hfil\penalty50\hskip1.5em\hbox{}\nobreak\hfill\chg{Mark allocation now bold}{\textbf{[#1]}}%
+  \parfillskip=0pt\finalhyphendemerits=0\par}}
+% [item 11] visually emphasised step labels in worked solutions
+\newcommand{\step}[1]{\textcolor{teal!55!black}{\textbf{Step #1}}\quad}
+% (a), (b), (c) part lists inside questions and solutions
+\newenvironment{parts}{\begin{enumerate}[(a)]\setlength{\itemsep}{0.4ex}}{\end{enumerate}}
+% SEAB-style solution layout (approved 10.5.8 template): working on the
+% left, region sketch on the right (mini 3D pictures go under the sketch)
+\newcommand{\solpair}[3][0.56]{\noindent\begin{minipage}[t]{#1\textwidth}\vspace{0pt}#2\end{minipage}\hfill
+  \begin{minipage}[t]{\dimexpr0.98\textwidth-#1\textwidth\relax}\vspace{0pt}\centering #3\end{minipage}\par}
+% minus-diagram style (drafts/minus_style_template.tex, items 29/31/62)
+\pgfplotsset{minus/.style={axis lines=middle, width=5.0cm, height=4.2cm, ticks=none,
+  xlabel={$x$}, ylabel={$y$}, every axis x label/.style={at={(ticklabel* cs:1)},anchor=west},
+  every axis y label/.style={at={(ticklabel* cs:1)},anchor=south}, clip=false, axis on top,
+  axis line style={gray!70}, every axis label/.append style={gray},
+  every node/.append style={text=gray!80!black, font=\footnotesize}}}
+\tikzset{hlreg/.style={fill=hl!35, draw=hl, thick}}
+
+% ---------------------------------------------------------------------
+% [limitsum] STUDENT COPY: blank working space sized to the teacher's
+% solution. The hidden solution is typeset into a box that is never
+% printed, only measured; the student copy then shows a light empty
+% "Working" frame of about that height (at least \workspace, at most
+% 0.8\textheight). The teacher copy is unchanged.
+% ---------------------------------------------------------------------
+\newsavebox\solmeasurebox
+\newlength\solworkht
+\newtcolorbox{workframe}[1]{enhanced, breakable=false, colback=white, colframe=black!22,
+  boxrule=0.4pt, arc=1mm, left=2mm, right=2mm, top=1mm, bottom=1mm, height=#1,
+  before skip=1mm, after skip=3mm}
+\ifx\conform\ShowSolutionsKey\else
+  \renewcommand\solution[1]{\par
+    \begingroup
+      \setbox\solmeasurebox\vbox{\hsize\linewidth\linewidth\hsize
+        \noindent\textbf{Solution.}\par\vspace{0.5ex}\noindent #1\par}%
+      \global\solworkht\dimexpr\ht\solmeasurebox+\dp\solmeasurebox+4mm\relax
+    \endgroup
+    \ifdim\solworkht<\workspace \global\solworkht\workspace\fi
+    \ifdim\solworkht>0.8\textheight \global\solworkht0.8\textheight\fi
+    \begin{workframe}{\solworkht}{\small\color{black!45}\textbf{Working}}\end{workframe}\par}
+\fi

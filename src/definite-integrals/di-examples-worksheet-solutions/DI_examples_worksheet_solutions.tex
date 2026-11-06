@@ -1,0 +1,597 @@
+\documentclass[a4paper,11pt]{book}
+\input{ep_preamble}
+\input{ep_figs}
+\begin{document}
+\thispagestyle{fancy}
+\begin{center}
+{\LARGE\bfseries Chapter 10 Definite Integrals: Examples Worksheet}\\[2mm]
+{\large\ifteacher Solutions (teacher reference)\else Questions\fi}
+\end{center}
+\medskip
+\noindent JC and A-level examination questions (H2 Mathematics 9758): three on the limit of a sum for Section 10.1, then one for each later section (Promotional Examination where available, otherwise Preliminary Examination). Questions are reproduced as set, with the original marks.
+
+\medskip
+\noindent\begin{tabular}{@{}rll@{}}
+\textbf{Q} & \textbf{Section} & \textbf{Source} \\
+1 & 10.1 The definite integral as a limit of a sum & DHS/2019/P1/Q10$^{\dagger}$ \\
+2 & 10.1 The definite integral as a limit of a sum & ACJC/2019/P1/Q6$^{\dagger}$ \\
+3 & 10.1 The definite integral as a limit of a sum & 9758/2015/P1/Q3$^{\dagger}$ \\
+4 & 10.2 Area between a curve and the $x$-axis & NJC 2024 Promo Q3 \\
+5 & 10.3 Area between a curve and the $y$-axis & SAJC 2025 Prelim P1 Q7 \\
+6 & 10.4 Area between two curves & YIJC 2025 Prelim P1 Q12 \\
+7 & 10.5 Volume of revolution & NJC 2024 Promo Q2 \\
+8 & 10.6 Parametric curves: area & VJC 2025 Promo Q11(c), adapted \\
+\end{tabular}
+
+{\footnotesize $^{\dagger}$From the Section 1 exercises in the teacher's own Definite Integrals notes.}
+\ifteacher\else\par\bigskip\fi
+
+% =====================================================================
+% 10.1: three questions from the teacher's own Typst AoI notes, Section 1 exercises
+% (attachments/4553679d...aca.pdf, pp. 5-6; answers p. 18). His notes give answers only,
+% so the working below is Pip-worked (flagged).
+\Q{10.1}{DHS/2019/P1/Q10}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[sketch, x=7.2cm, y=1.05cm, xmin=-0.05, xmax=1.12, ymin=-0.25, ymax=4.4]
+  \foreach \k in {1,2,3,7} {
+    \edef\temp{\noexpand\draw[thin] (axis cs:{\k/8},0) rectangle (axis cs:{(\k+1)/8},{(\k/8)^2+3*\k/8});
+      \noexpand\draw[semithick] (axis cs:{\k/8},{(\k/8)^2+3*\k/8}) -- (axis cs:{(\k+1)/8},{(\k/8)^2+3*\k/8});}
+    \temp }
+  \addplot[black, semithick, domain=0:1, samples=60, smooth] {x^2 + 3*x};
+  \draw[thin, dashed] (axis cs:1,{(7/8)^2+3*7/8}) -- (axis cs:1,4);
+  \node[below] at (axis cs:0.125,0) {$\frac{1}{n}$};
+  \node[below] at (axis cs:0.25,0) {$\frac{2}{n}$};
+  \node[below] at (axis cs:0.375,0) {$\frac{3}{n}$};
+  \node[below] at (axis cs:0.5,0) {$\frac{4}{n}$};
+  \node[below] at (axis cs:0.65,0) {$\cdots$};
+  \node at (axis cs:0.69,0.6) {$\cdots$};
+  \node[below] at (axis cs:0.875,0) {$\frac{n-1}{n}$};
+  \node[below] at (axis cs:1,0) {$1$};
+  \node[below left] at (axis cs:0,0) {$O$};
+  \node[left] at (axis cs:1.12,4.25) {$y = x^2 + 3x$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+The diagram above shows part of the graph of $y = x^2 + 3x$, with rectangles approximating the area under the curve from $x = 0$ to $x = 1$. The area under the curve may be approximated by the total area, $A$, of $(n - 1)$ rectangles each of width $\dfrac{1}{n}$. Given that
+\[ \sum_{r=1}^{n} r^2 = \dfrac{1}{6}n(n + 1)(2n + 1), \]
+show that $A = \dfrac{(n - 1)(11n - 1)}{6n^2}$.
+
+Explain briefly how the value of $\displaystyle\int_0^1 x^2 + 3x \ \,dx$ can be deduced from this expression, and hence find this value exactly without integration. \mk{6}
+\ifteacher\clearpage\fi
+\Sol{
+\begin{wschgblock}{Amended 15 Oct 2026 to follow the teacher's own working step by step (handwritten amendments). Was Pip-worked; now writes out the first three and last rectangle, then sigma notation, splits into the two standard sums, combines over 6n^2.}
+With $\mathrm{f}(x) = x^2 + 3x$:\vspace{-3mm}
+\begin{align*}
+A &= \dfrac{1}{n}\left[\left(\dfrac{1}{n}\right)^2 + 3\left(\dfrac{1}{n}\right)\right] + \dfrac{1}{n}\left[\left(\dfrac{2}{n}\right)^2 + 3\left(\dfrac{2}{n}\right)\right] + \dfrac{1}{n}\left[\left(\dfrac{3}{n}\right)^2 + 3\left(\dfrac{3}{n}\right)\right] \\
+&\qquad + \cdots + \dfrac{1}{n}\left[\left(\dfrac{n - 1}{n}\right)^2 + 3\left(\dfrac{n - 1}{n}\right)\right] \\
+&= \sum_{r=1}^{n-1} \dfrac{1}{n}\left[\left(\dfrac{r}{n}\right)^2 + 3\left(\dfrac{r}{n}\right)\right] \\
+&= \sum_{r=1}^{n-1} \left(\dfrac{1}{n^3}r^2 + \dfrac{3}{n^2}r\right) \\
+&= \dfrac{1}{n^3}\sum_{r=1}^{n-1} r^2 + \dfrac{3}{n^2}\sum_{r=1}^{n-1} r \\
+&= \dfrac{1}{n^3}\left[\dfrac{(n - 1)(n)(2n - 1)}{6}\right] + \dfrac{3}{n^2}\left[\dfrac{n(n - 1)}{2}\right] \\
+&= \dfrac{(n - 1)(2n - 1)}{6n^2} + \dfrac{3(n - 1)}{2n} \\
+&= \dfrac{(n - 1)(2n - 1) + 9n(n - 1)}{6n^2} \\
+&= \dfrac{(n - 1)(2n - 1 + 9n)}{6n^2} \\
+&= \dfrac{(n - 1)(11n - 1)}{6n^2} \ \text{(shown)}
+\end{align*}
+As $n \to \infty$, the total area of the rectangles approaches the actual area under the curve, which is $\displaystyle\int_0^1 \left(x^2 + 3x\right) dx$.\vspace{-3mm}
+\begin{align*}
+\int_0^1 \left(x^2 + 3x\right) dx &= \lim_{n\to\infty} \dfrac{(n - 1)(11n - 1)}{6n^2} \\
+&= \lim_{n\to\infty} \dfrac{11n^2 - 12n + 1}{6n^2} \\
+&= \lim_{n\to\infty} \dfrac{11 - \frac{12}{n} + \frac{1}{n^2}}{6} \\
+&= \dfrac{11}{6}
+\end{align*}
+\end{wschgblock}
+}
+
+% =====================================================================
+\Q{10.1}{ACJC/2019/P1/Q6}
+The diagram below shows the graph of $y = 2^{x} + 1$ for $0 \leq x \leq 1$. Rectangles, each of width $\dfrac{1}{n}$, are also drawn on the graph as shown.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[sketch, x=9cm, y=1.35cm, xmin=-0.04, xmax=1.08, ymin=-0.25, ymax=3.3]
+  \foreach \k in {1,2,3,4,8,9,10} {
+    \edef\temp{\noexpand\draw[thin] (axis cs:{(\k-1)/10},0) rectangle (axis cs:{\k/10},{2^(\k/10)+1});}
+    \temp }
+  \addplot[red!60!black, semithick, domain=0:1, samples=60, smooth] {2^x + 1};
+  \node at (axis cs:0.55,1.25) {$\cdots\cdots$};
+  \node[above] at (axis cs:0.45,2.45) {$y = 2^{x} + 1$};
+  \node[below] at (axis cs:0.1,0) {$\frac{1}{n}$};
+  \node[below] at (axis cs:0.2,0) {$\frac{2}{n}$};
+  \node[below] at (axis cs:0.3,0) {$\frac{3}{n}$};
+  \node[below] at (axis cs:0.4,0) {$\frac{4}{n}$};
+  \node[below] at (axis cs:0.55,-0.02) {$\cdots$};
+  \node[below] at (axis cs:0.7,0) {$\frac{n-3}{n}$};
+  \node[below] at (axis cs:0.8,0) {$\frac{n-2}{n}$};
+  \node[below] at (axis cs:0.9,0) {$\frac{n-1}{n}$};
+  \node[below] at (axis cs:1,0) {$1$};
+  \node[below left] at (axis cs:0,0) {$O$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+Show that the total area of all $n$ rectangles, $S_n$, is given by
+\[ S_n = \dfrac{2^{1/n}}{n\left(2^{1/n} - 1\right)} + 1. \]
+\hfill\mk{3}
+
+Find the exact value of $\lim_{n\to\infty} S_n$. \mk{2}
+\Sol{
+\begin{wschgblock}{Amended 15 Oct 2026 to follow the teacher's own working step by step (handwritten amendments). Was Pip-worked; now sum of n terms, sigma form, GP formula a(a^n-1)/(a-1), alternative GP view, integral.}
+Show that:\par\noindent
+\begin{minipage}[t]{0.55\textwidth}\vspace{-4mm}
+\begin{align*}
+S_n &= \dfrac{1}{n}\left(2^{\frac{1}{n}} + 1\right) + \dfrac{1}{n}\left(2^{\frac{2}{n}} + 1\right) + \dfrac{1}{n}\left(2^{\frac{3}{n}} + 1\right) \\
+&\qquad + \cdots + \dfrac{1}{n}\left(2^{\frac{n}{n}} + 1\right) \\
+&= \sum_{r=1}^{n} \dfrac{1}{n}\left(2^{\frac{r}{n}} + 1\right) \\
+&= \dfrac{1}{n}\sum_{r=1}^{n} 2^{\frac{r}{n}} + \dfrac{1}{n}\sum_{r=1}^{n} 1 \\
+&= \dfrac{1}{n}\sum_{r=1}^{n} \left(2^{\frac{1}{n}}\right)^{r} + \dfrac{1}{n}(n) \\
+&= \dfrac{1}{n}\left[\dfrac{2^{\frac{1}{n}}\left[\left(2^{\frac{1}{n}}\right)^{n} - 1\right]}{2^{\frac{1}{n}} - 1}\right] + 1 \\
+&= \dfrac{1}{n}\left[\dfrac{2^{\frac{1}{n}}(2 - 1)}{2^{\frac{1}{n}} - 1}\right] + 1 \\
+&= \dfrac{2^{\frac{1}{n}}}{n\left(2^{\frac{1}{n}} - 1\right)} + 1 \ \text{(shown)}
+\end{align*}
+\end{minipage}\hfill\vrule\hfill
+\begin{minipage}[t]{0.41\textwidth}\small
+{\color{black!60}Sum of a GP: $\displaystyle\sum_{r=1}^{n} a^r = \dfrac{a\left(a^n - 1\right)}{a - 1}$}\par\medskip
+Alternatively: $2^{\frac{1}{n}},\ 2^{\frac{2}{n}},\ 2^{\frac{3}{n}},\ \ldots$ is a GP; each term is $2^{\frac{1}{n}}$ times the one before.\vspace{-2mm}
+\begin{align*}
+S_n &= \tfrac{1}{n}\left(2^{\frac{1}{n}} + 2^{\frac{2}{n}} + 2^{\frac{3}{n}} + \cdots + 2^{\frac{n}{n}}\right) \\
+&\quad + \tfrac{1}{n}\left(1 + 1 + 1 + \cdots + 1\right) \\
+&= \tfrac{1}{n}\left(\dfrac{2^{\frac{1}{n}}\left[\left(2^{\frac{1}{n}}\right)^{n} - 1\right]}{2^{\frac{1}{n}} - 1}\right) + \tfrac{1}{n}(n) \\
+&= \ \vdots \quad \text{(as on the left)}
+\end{align*}
+\par\medskip\hrule\par\medskip\normalsize
+Limit:\vspace{-3mm}
+\begin{align*}
+\lim_{n\to\infty} S_n &= \int_0^1 \left(2^x + 1\right) dx \\
+&= \left[\dfrac{2^x}{\ln 2} + x\right]_0^1 \\
+&= \dfrac{2}{\ln 2} + 1 - \dfrac{1}{\ln 2} \\
+&= \dfrac{1}{\ln 2} + 1
+\end{align*}
+\end{minipage}\par
+\end{wschgblock}
+}
+
+% =====================================================================
+\Q{10.1}{9758/2015/P1/Q3}
+\begin{parts}
+\item[(i)] Given that $\mathrm{f}$ is a continuous function, explain, with the aid of a sketch, why the value of
+\[ \lim_{n\to\infty} \dfrac{1}{n}\left\{\mathrm{f}\left(\dfrac{1}{n}\right) + \mathrm{f}\left(\dfrac{2}{n}\right) + \cdots + \mathrm{f}\left(\dfrac{n}{n}\right)\right\} \]
+is $\displaystyle\int_0^1 \mathrm{f}(x)\ dx$. \mk{2}
+\item[(ii)] Hence evaluate $\displaystyle\lim_{n\to\infty} \dfrac{1}{n}\left(\dfrac{\sqrt[3]{1} + \sqrt[3]{2} + \cdots + \sqrt[3]{n}}{\sqrt[3]{n}}\right)$. \mk{3}
+\end{parts}
+\Sol{
+\begin{wschgblock}{Amended 15 Oct 2026 to follow the teacher's own working step by step (handwritten amendments). Was Pip-worked; (i) total area of rectangles written out, his sketch (first three and last three rectangles with ellipsis), (ii) straight to the integral; note on left/right sums added.}
+\solpair{
+(i)\par
+Total area of rectangles\vspace{-2mm}
+\begin{align*}
+&= \dfrac{1}{n}\mathrm{f}\left(\dfrac{1}{n}\right) + \dfrac{1}{n}\mathrm{f}\left(\dfrac{2}{n}\right) + \dfrac{1}{n}\mathrm{f}\left(\dfrac{3}{n}\right) + \cdots + \dfrac{1}{n}\mathrm{f}\left(\dfrac{n}{n}\right) \\
+&= \dfrac{1}{n}\left[\mathrm{f}\left(\dfrac{1}{n}\right) + \mathrm{f}\left(\dfrac{2}{n}\right) + \mathrm{f}\left(\dfrac{3}{n}\right) + \cdots + \mathrm{f}\left(\dfrac{n}{n}\right)\right]
+\end{align*}
+}{
+\begin{tikzpicture}
+\begin{axis}[sketch, width=6.8cm, height=4.6cm, xmin=-0.08, xmax=1.22, ymin=-0.3, ymax=2.1]
+  \foreach \k in {1,2,3,6,7,8} {
+    \edef\temp{\noexpand\filldraw[fill=blue!15, draw=blue!60!black] (axis cs:{(\k-1)/8},0) rectangle (axis cs:{\k/8},{0.6+0.9*(\k/8)+0.3*(\k/8)^2});}
+    \temp }
+  \addplot[curve, domain=0:1.1] {0.6 + 0.9*x + 0.3*x^2};
+  \node at (axis cs:0.5,0.45) {$\cdots$};
+  \node[below, font=\scriptsize] at (axis cs:0.125,0) {$\frac{1}{n}$};
+  \node[below, font=\scriptsize] at (axis cs:0.25,0) {$\frac{2}{n}$};
+  \node[below, font=\scriptsize] at (axis cs:0.375,0) {$\frac{3}{n}$};
+  \node[below, font=\scriptsize] at (axis cs:0.5,-0.02) {$\cdots$};
+  \node[below, font=\scriptsize] at (axis cs:0.75,0) {$\frac{n-2}{n}$};
+  \node[below, font=\scriptsize] at (axis cs:0.875,0) {$\frac{n-1}{n}$};
+  \node[below, font=\scriptsize] at (axis cs:1,0) {$\frac{n}{n}$};
+  \node[below left] at (axis cs:0,0) {$O$};
+  \node[right] at (axis cs:1.05,2.05) {$y = \mathrm{f}(x)$};
+\end{axis}
+\end{tikzpicture}
+}
+As $n \to \infty$, the total area of the rectangles approaches the actual area under the graph, which is $\displaystyle\int_0^1 \mathrm{f}(x)\,dx$.\vspace{-2mm}
+\begin{align*}
+\therefore\ \lim_{n\to\infty} \dfrac{1}{n}\left[\mathrm{f}\left(\dfrac{1}{n}\right) + \mathrm{f}\left(\dfrac{2}{n}\right) + \mathrm{f}\left(\dfrac{3}{n}\right) + \cdots + \mathrm{f}\left(\dfrac{n}{n}\right)\right] &= \int_0^1 \mathrm{f}(x)\,dx \ \text{(shown)}
+\end{align*}
+(ii)\vspace{-3mm}
+\begin{align*}
+\lim_{n\to\infty} \dfrac{1}{n}\left(\sqrt[3]{\dfrac{1}{n}} + \sqrt[3]{\dfrac{2}{n}} + \sqrt[3]{\dfrac{3}{n}} + \cdots + \sqrt[3]{\dfrac{n}{n}}\right) &= \int_0^1 \sqrt[3]{x}\,dx \\
+&= \int_0^1 x^{\frac{1}{3}}\,dx \\
+&= \left[\dfrac{x^{\frac{4}{3}}}{\frac{4}{3}}\right]_0^1 \\
+&= \dfrac{3}{4}
+\end{align*}
+\end{wschgblock}
+}
+\ifteacher\par\bigskip\noindent\begin{minipage}{\textwidth}
+\noindent\textbf{Question 3: right-hand or left-hand rectangles? (5 rectangles on $[0,1]$)}\par\medskip
+\noindent\begin{minipage}[t]{0.48\textwidth}\centering
+{\small\textbf{Decreasing, right-hand}}\hfill\tikz[baseline=-0.5ex]\draw[green!50!black, line width=1.6pt] (0,0) -- (0.12,-0.14) -- (0.38,0.22);\par
+\begin{tikzpicture}
+\begin{axis}[sketch, width=6.4cm, height=3.9cm, xmin=-0.05, xmax=1.12, ymin=0, ymax=1.75, xtick=\empty, ytick=\empty]
+  \foreach \k in {0,...,4} {\edef\temp{\noexpand\filldraw[fill=teal!12, draw=teal!70!black] (axis cs:{\k/5},0) rectangle (axis cs:{(\k+1)/5},{1.5-((\k+1)/5)^2});}\temp}
+  \addplot[curve, domain=0:1, samples=60] {1.5-x^2};
+  \node[below, font=\scriptsize] at (axis cs:0,0) {$0$}; \node[below, font=\scriptsize] at (axis cs:1,0) {$1$};
+\end{axis}
+\end{tikzpicture}\par
+{\small rectangles $= 1.06$, area $= 1.167$: underestimate}
+\end{minipage}\hfill\begin{minipage}[t]{0.48\textwidth}\centering
+{\small\textbf{Up and down, right-hand}}\hfill\tikz[baseline=-0.5ex]\draw[green!50!black, line width=1.6pt] (0,0) -- (0.12,-0.14) -- (0.38,0.22);\par
+\begin{tikzpicture}
+\begin{axis}[sketch, width=6.4cm, height=3.9cm, xmin=-0.05, xmax=1.12, ymin=0, ymax=1.75, xtick=\empty, ytick=\empty]
+  \foreach \k in {0,...,4} {\edef\temp{\noexpand\filldraw[fill=teal!12, draw=teal!70!black] (axis cs:{\k/5},0) rectangle (axis cs:{(\k+1)/5},{1+0.45*sin(7.853982*((\k+1)/5))});}\temp}
+  \addplot[curve, domain=0:1, samples=80] {1+0.45*sin(7.853982*x)};
+  \node[below, font=\scriptsize] at (axis cs:0,0) {$0$}; \node[below, font=\scriptsize] at (axis cs:1,0) {$1$};
+\end{axis}
+\end{tikzpicture}\par
+{\small rectangles $= 1.09$, area $= 1.057$: overestimate}
+\end{minipage}\par\medskip
+\noindent\begin{minipage}[t]{0.48\textwidth}\centering
+{\small\textbf{Decreasing, left-hand}}\hfill\tikz[baseline=-0.5ex]{\draw[red!80!black, line width=1.6pt] (0,-0.15) -- (0.3,0.15) (0,0.15) -- (0.3,-0.15);}\par
+\begin{tikzpicture}
+\begin{axis}[sketch, width=6.4cm, height=3.9cm, xmin=-0.05, xmax=1.12, ymin=0, ymax=1.75, xtick=\empty, ytick=\empty]
+  \foreach \k in {0,...,4} {\edef\temp{\noexpand\filldraw[fill=red!12, draw=red!70!black] (axis cs:{\k/5},0) rectangle (axis cs:{(\k+1)/5},{1.5-(\k/5)^2});}\temp}
+  \addplot[curve, domain=0:1, samples=60] {1.5-x^2};
+  \node[below, font=\scriptsize] at (axis cs:0,0) {$0$}; \node[below, font=\scriptsize] at (axis cs:1,0) {$1$};
+\end{axis}
+\end{tikzpicture}\par
+{\small rectangles $= 1.26$, area $= 1.167$: overestimate}
+\end{minipage}\hfill\begin{minipage}[t]{0.48\textwidth}\centering
+{\small\textbf{Up and down, left-hand}}\hfill\tikz[baseline=-0.5ex]{\draw[red!80!black, line width=1.6pt] (0,-0.15) -- (0.3,0.15) (0,0.15) -- (0.3,-0.15);}\par
+\begin{tikzpicture}
+\begin{axis}[sketch, width=6.4cm, height=3.9cm, xmin=-0.05, xmax=1.12, ymin=0, ymax=1.75, xtick=\empty, ytick=\empty]
+  \foreach \k in {0,...,4} {\edef\temp{\noexpand\filldraw[fill=red!12, draw=red!70!black] (axis cs:{\k/5},0) rectangle (axis cs:{(\k+1)/5},{1+0.45*sin(7.853982*(\k/5))});}\temp}
+  \addplot[curve, domain=0:1, samples=80] {1+0.45*sin(7.853982*x)};
+  \node[below, font=\scriptsize] at (axis cs:0,0) {$0$}; \node[below, font=\scriptsize] at (axis cs:1,0) {$1$};
+\end{axis}
+\end{tikzpicture}\par
+{\small rectangles $= 1.00$, area $= 1.057$: underestimate}
+\end{minipage}\par\medskip
+What matters is that the rectangles use the \textbf{right-hand sum} $\dfrac{1}{n}\left[\mathrm{f}\left(\dfrac{1}{n}\right)+\mathrm{f}\left(\dfrac{2}{n}\right)+\cdots+\mathrm{f}\left(\dfrac{n}{n}\right)\right]$, as the question specifies, not whether it is an under- or overestimate. It is not correct to say this question only accepts overestimates: a right-hand sum alone does not determine under or over (top row), and a left-hand sum $\dfrac{1}{n}\left[\mathrm{f}\left(\dfrac{0}{n}\right)+\cdots+\mathrm{f}\left(\dfrac{n-1}{n}\right)\right]$ is not what the question describes, even when it overestimates (bottom row).
+\end{minipage}\par
+\fi
+
+% =====================================================================
+\Q{10.2}{NJC 2024 Promo Q3}
+\begin{parts}
+\item[(i)] Given that $k$ is a positive constant, sketch the curve $E$ with equation $y = \left|x^2(x - k)\right|$, labelling the coordinates of the points where the curve cuts the axes. \mk{2}
+\item[(ii)] Hence, find, in terms of $k$, the area of the region(s) bounded by $E$ and the $x$-axis for $0 \leq x \leq 2k$. \mk{3}
+\end{parts}
+\Sol{
+\solsrc{https://grail.moe/library/16719/njc-9758-2024-promo-solutions}
+(i)\par
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[sketch, x=2.6cm, y=1.5cm, xmin=-0.8, xmax=1.75, ymin=-0.25, ymax=1.9]
+  \addplot[curve, domain=-0.52:1.28, samples=200] {abs(x^2*(x - 1))*4};
+  \node[pt] at (axis cs:0,0) {};
+  \node[pt] at (axis cs:1,0) {};
+  \node[below left] at (axis cs:0,0) {$(0, 0)$};
+  \node[below] at (axis cs:1,-0.02) {$(k, 0)$};
+  \node[blue, right] at (axis cs:1.28,1.8) {$E$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\solpair[0.56]{
+(ii)\vspace{-3mm}
+\begin{align*}
+&\int_0^{2k} \left|x^2(x - k)\right| dx \\
+&= \int_0^{2k} \left|x^3 - kx^2\right| dx \\
+&= -\int_0^{k} x^3 - kx^2\,dx + \int_k^{2k} x^3 - kx^2\,dx \\
+&= -\left[\dfrac{x^4}{4} - k\dfrac{x^3}{3}\right]_0^{k} + \left[\dfrac{x^4}{4} - k\dfrac{x^3}{3}\right]_k^{2k} \\
+&= \dfrac{3}{2}k^4
+\end{align*}
+}{
+\wschg{Pip-drawn sketch, not from grail.moe (the NJC solution has no diagram for (ii)). Working is from grail.moe.}{%
+\begin{tikzpicture}
+\begin{axis}[sketch, x=2.2cm, y=0.95cm, xmin=-0.3, xmax=2.4, ymin=-0.3, ymax=4.4]
+  \addplot[draw=none, fill=blue!22, domain=0:2, samples=80] {abs(x^2*(x - 1))} \closedcycle;
+  \addplot[curve, domain=-0.2:2.08, samples=200] {abs(x^2*(x - 1))};
+  \draw[thin, dashed] (axis cs:2,0) -- (axis cs:2,4);
+  \node[below] at (axis cs:1,0) {$k$};
+  \node[below] at (axis cs:2,0) {$2k$};
+  \node[below left] at (axis cs:0,0) {$O$};
+  \node[blue, left] at (axis cs:1.9,3.4) {$E$};
+\end{axis}
+\end{tikzpicture}}
+}
+}
+
+% =====================================================================
+\Q{10.3}{SAJC 2025 Prelim P1 Q7}
+\begin{parts}
+\item[(a)] (i)\enspace On a single diagram, sketch the graphs of $y = \dfrac{3x}{x - 1}$ and $y = 3x$, stating the equation(s) of any asymptote(s) and the coordinates of points of intersection. \mk{4}
+\item[] (ii)\enspace Hence find the area bounded by the curve $y = \dfrac{3x}{x - 1}$ and the lines $y = 3x$ and $y = 8$. \mk{2}
+\item[(b)] A curve has the equation $y = \sqrt{x^2 + 1}$ where $x$ is non-negative.
+\item[] (i)\enspace With the aid of a sketch of the above curve, explain why the value of
+\[ S = \lim_{n\to\infty} \dfrac{1}{n}\left[1 + \sqrt{\dfrac{1}{n^2} + 1} + \sqrt{\dfrac{4}{n^2} + 1} + \ldots + \sqrt{\dfrac{(n - 1)^2}{n^2} + 1}\,\right] \text{ is } \int_0^1 \sqrt{x^2 + 1}\,dx. \]
+\mk{4}
+\item[] (ii)\enspace Hence find the value of $S$. \mk{1}
+\end{parts}
+\Sol{
+\solsrc{https://grail.moe/library/19502/sajc-9758-2025-prelim-p1-solutions}
+(a)(i)\par
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[sketch, width=6.8cm, height=6.6cm, xmin=-4.5, xmax=5.6, ymin=-6, ymax=11]
+  \addplot[curve, domain=-4.3:0.64] {3*x/(x - 1)};
+  \addplot[curve, domain=1.38:5.3] {3*x/(x - 1)};
+  \addplot[line2, domain=-1.8:3.5] {3*x};
+  \draw[asym] (axis cs:1,-6) -- (axis cs:1,11);
+  \draw[asym] (axis cs:-4.5,3) -- (axis cs:5.6,3);
+  \node[pt] at (axis cs:2,6) {};
+  \node[above left] at (axis cs:1.95,6.2) {$(2, 6)$};
+  \draw[thin, gray] (axis cs:0,0) -- (axis cs:2.2,-2.6) node[right, black] {$(0, 0)$};
+  \node[right] at (axis cs:1,-5.4) {$x = 1$};
+  \node[above] at (axis cs:-3.3,3) {$y = 3$};
+  \node[red!75!black, left] at (axis cs:3.5,10.6) {$y = 3x$};
+  \node[blue] at (axis cs:4.3,6.0) {$y = \dfrac{3x}{x - 1}$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\solpair[0.58]{
+(a)(ii)\vspace{-3mm}
+\begin{align*}
+\text{Area of region bounded by both curves and } y = 8 &= \int_6^8 \left(\dfrac{y}{3} - \dfrac{y}{y - 3}\right) dy
+\end{align*}
+Using GC,
+\begin{align*}
+\text{Area} &= 1.13 \text{ units}^2 \ \text{(3 s.f.)}
+\end{align*}
+Alternative method:
+\begin{align*}
+\text{Area} &= (2.6667 - 1.6)(8) - \int_{1.6}^{2} \dfrac{3x}{x - 1}\,dx - \int_{2}^{2.6667} 3x\,dx \\
+&= 8.5336 - 2.7325 - 4.6669 \\
+&= 1.13 \text{ units}^2 \ \text{(3 s.f.)}
+\end{align*}
+}{
+\begin{tikzpicture}
+\begin{axis}[sketch, width=5.2cm, height=5.2cm, xmin=-0.3, xmax=3.6, ymin=-0.6, ymax=9.6]
+  \fill[region] plot[variable=\t, domain=6:8, samples=30] (axis cs:{\t/(\t-3)},\t) -- (axis cs:{8/3},8) -- (axis cs:2,6) -- cycle;
+  \addplot[curve, domain=1.45:3.4] {3*x/(x - 1)};
+  \addplot[line2, domain=0:3.15] {3*x};
+  \draw[thin] (axis cs:0,8) -- (axis cs:3.4,8);
+  \draw[asym] (axis cs:1,-0.6) -- (axis cs:1,9.6);
+  \node[left] at (axis cs:0,8) {$8$};
+  \draw[thin, dashed, gray] (axis cs:0,6) -- (axis cs:2,6);
+  \node[left] at (axis cs:0,6) {$6$};
+  \node[pt] at (axis cs:2,6) {};
+  \node[right] at (axis cs:2.05,5.7) {$(2, 6)$};
+  \node[below] at (axis cs:1.6,0) {$1.6$};
+  \node[below] at (axis cs:2.6667,0) {$2.6667$};
+  \draw[thin, dashed, gray] (axis cs:1.6,0) -- (axis cs:1.6,8);
+  \draw[thin, dashed, gray] (axis cs:2.6667,0) -- (axis cs:2.6667,8);
+  \node[below left] at (axis cs:0,0) {$O$};
+\end{axis}
+\end{tikzpicture}
+}
+\solpair[0.58]{
+(b)(i) If we split the area of the region enclosed by the curve $y = \mathrm{f}(x) = \sqrt{x^2 + 1}$, the $x$-axis and the lines $x = 0$ and $x = 1$ into $n$ rectangles, each of width $\dfrac{1}{n}$ as shown, the sum of the area of the $n$ rectangles is given by
+\begin{align*}
+A &= \dfrac{1}{n}\mathrm{f}(0) + \dfrac{1}{n}\mathrm{f}\left(\dfrac{1}{n}\right) + \dfrac{1}{n}\mathrm{f}\left(\dfrac{2}{n}\right) + \cdots + \dfrac{1}{n}\mathrm{f}\left(\dfrac{n - 1}{n}\right) \\
+&= \dfrac{1}{n}\left[\mathrm{f}(0) + \mathrm{f}\left(\dfrac{1}{n}\right) + \mathrm{f}\left(\dfrac{2}{n}\right) + \cdots + \mathrm{f}\left(\dfrac{n - 1}{n}\right)\right] \\
+&= \dfrac{1}{n}\left[1 + \sqrt{\dfrac{1}{n^2} + 1} + \sqrt{\dfrac{4}{n^2} + 1} + \cdots + \sqrt{\dfrac{(n - 1)^2}{n^2} + 1}\,\right]
+\end{align*}
+As the number of rectangles increases, i.e.\ $n \to \infty$, the width of each rectangle decreases, then the sum of the area of the $n$ rectangles approaches the area of the region enclosed by the curve $y = \sqrt{x^2 + 1}$, the $x$-axis and the lines $x = 0$ and $x = 1$, which is given by $\displaystyle\int_0^1 \sqrt{x^2 + 1}\,dx$. Hence
+\begin{align*}
+S &= \lim_{n\to\infty} A \\
+&= \int_0^1 \mathrm{f}(x)\,dx \\
+&= \int_0^1 \sqrt{1 + x^2}\,dx
+\end{align*}
+}{
+\begin{tikzpicture}
+\begin{axis}[sketch, width=5.4cm, height=5.6cm, xmin=-0.12, xmax=1.35, ymin=-0.12, ymax=1.75]
+  \foreach \k in {0,1,3,4} {
+    \edef\temp{\noexpand\filldraw[fill=blue!15, draw=blue!60!black] (axis cs:{\k/5},0) rectangle (axis cs:{(\k+1)/5},{sqrt((\k/5)^2+1)});}
+    \temp }
+  \node at (axis cs:0.5,0.5) {$\cdots$};
+  \addplot[curve, domain=0:1.25] {sqrt(x^2 + 1)};
+  \node[below] at (axis cs:0.2,0) {$\frac{1}{n}$};
+  \node[below] at (axis cs:0.4,0) {$\frac{2}{n}$};
+  \node[below, font=\scriptsize] at (axis cs:0.53,-0.06) {$\cdots$};
+  \node[below] at (axis cs:0.8,0) {$\frac{n - 1}{n}$};
+  \node[below] at (axis cs:1,0) {$1$};
+  \node[left] at (axis cs:0,1) {$(0, 1)$};
+  \node[below left] at (axis cs:0,0) {$O$};
+  \node[blue, above] at (axis cs:1.2,1.56) {$y = \sqrt{x^2 + 1}$};
+\end{axis}
+\end{tikzpicture}
+}
+(b)(ii) Actual area under the graph $y = \sqrt{x^2 + 1}$ from $x = 0$ to $x = 1$. Using GC,
+\begin{align*}
+\int_0^1 \sqrt{x^2 + 1}\,dx &= 1.1478 \\
+&= 1.15 \ \text{(3 s.f.)}
+\end{align*}
+}
+
+% =====================================================================
+\Q{10.4}{YIJC 2025 Prelim P1 Q12}
+\begin{parts}
+\item Use the substitution $x = \sin\theta$ to show that $\displaystyle\int_0^1 \sqrt{1 - x^2}\,dx = \dfrac{\pi}{4}$. \mk{4}
+\end{parts}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[sketch, x=1.15cm, y=1.15cm, xmin=-1.9, xmax=2.6, ymin=-0.35, ymax=4.35]
+  \fill[pattern=north east lines, pattern color=black!70] (axis cs:0,0) -- (axis cs:1,2) -- plot[domain=1:0, samples=40] (axis cs:\x,{2-2*sqrt(1-\x*\x)}) -- cycle;
+  \addplot[black, semithick, variable=t, domain=0:2*pi, samples=120, smooth] ({cos(t)}, {2 + 2*sin(t)});
+  \addplot[black, semithick, domain=-0.12:1.75, samples=2] {2*x};
+  \draw[thin, densely dotted] (axis cs:0.4,2) -- (axis cs:1,2);
+  \node[right] at (axis cs:1.05,2) {$(1, 2)$};
+  \node[below left] at (axis cs:0,0) {$O$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+The diagram shows the region $R$ bounded by the ellipse with equation $4x^2 + (y - 2)^2 = 4$ and the line $y = 2x$. The ellipse and the line intersect at the origin and the point $(1, 2)$.
+\begin{parts}
+\setcounter{enumi}{1}
+\item Find the area of $R$, giving your answer in terms of $\pi$. \mk{4}
+\item Find the volume of solid generated when $R$ is rotated $2\pi$ radians about the $x$-axis. \mk{2}
+\end{parts}
+\Sol{
+\solsrc{https://grail.moe/library/18935/2025-yijc-prelim-h2-maths-papers-1-2-qp-soln}
+(a)\vspace{-3mm}
+\begin{align*}
+x &= \sin\theta \\
+\dfrac{dx}{d\theta} &= \cos\theta
+\end{align*}
+When $x = 0$, $\theta = 0$; \ $x = 1$, $\theta = \dfrac{\pi}{2}$\vspace{-3mm}
+\begin{align*}
+\int_0^1 \sqrt{1 - x^2}\,dx &= \int_0^{\frac{\pi}{2}} \sqrt{1 - \sin^2\theta}\,\cos\theta\,d\theta \\
+&= \int_0^{\frac{\pi}{2}} \cos^2\theta\,d\theta \\
+&= \int_0^{\frac{\pi}{2}} \dfrac{1}{2} + \dfrac{1}{2}\cos 2\theta\,d\theta \\
+&= \left[\dfrac{1}{2}\theta + \dfrac{1}{4}\sin 2\theta\right]_0^{\frac{\pi}{2}} \\
+&= \left[\dfrac{1}{2}\left(\dfrac{\pi}{2}\right) + \dfrac{1}{4}\sin\pi\right] - \left[\dfrac{1}{2}(0) + \dfrac{1}{4}\sin 0\right] \\
+&= \dfrac{\pi}{4}
+\end{align*}
+\begin{caution}
+Remember to change the limits when doing integration by substitution.
+
+To get rid of the square root, use $1 - \sin^2\theta = \cos^2\theta$ (trigo identity).
+
+Use MF27 (double angle formula) $\cos 2\theta = 2\cos^2\theta - 1$ to integrate $\cos^2\theta$.
+\end{caution}
+\solpair[0.56]{
+(b)\vspace{-3mm}
+\begin{align*}
+4x^2 + (y - 2)^2 &= 4 \\
+(y - 2)^2 &= 4 - 4x^2 \\
+y - 2 &= \pm\sqrt{4 - 4x^2} \\
+y &= 2 \pm 2\sqrt{1 - x^2}
+\end{align*}
+Since $y \leq 2$, \ $y = 2 - 2\sqrt{1 - x^2}$\vspace{-3mm}
+\begin{align*}
+\text{Area of } R &= \dfrac{1}{2}(2)(1) - \int_0^1 y\,dx \\
+&= 1 - \int_0^1 2 - 2\sqrt{1 - x^2}\,dx \\
+&= 1 - \int_0^1 2\,dx + 2\int_0^1 \sqrt{1 - x^2}\,dx \\
+&= 1 - \Big[2x\Big]_0^1 + 2\left(\dfrac{\pi}{4}\right) \\
+&= \dfrac{\pi}{2} - 1
+\end{align*}
+Alternatively\vspace{-3mm}
+\begin{align*}
+\text{Area of } R &= \int_0^1 2x - \left(2 - 2\sqrt{1 - x^2}\right) dx \\
+&\quad \text{(``upper curve'' $-$ ``lower curve'')}
+\end{align*}
+}{
+\begin{tikzpicture}
+\begin{axis}[sketch, x=1.0cm, y=1.0cm, xmin=-1.6, xmax=2.6, ymin=-0.3, ymax=4.3]
+  \fill[region] (axis cs:0,0) -- (axis cs:1,2) -- plot[domain=1:0, samples=40] (axis cs:\x,{2-2*sqrt(1-\x*\x)}) -- cycle;
+  \addplot[curve, variable=t, domain=0:2*pi, samples=120] ({cos(t)}, {2 + 2*sin(t)});
+  \addplot[red!75!black, very thick, domain=0:1, samples=60, smooth] {2 - 2*sqrt(1 - x^2)};
+  \addplot[line2, domain=-0.1:1.7] {2*x};
+  \draw[thin, dashed] (axis cs:0,2) -- (axis cs:1,2);
+  \node[left] at (axis cs:0,2) {$2$};
+  \node[right] at (axis cs:1.05,2.1) {$(1, 2)$};
+  \draw[->, red!75!black] (axis cs:1.9,1.2) -- (axis cs:1.05,1.2);
+  \node[right, red!75!black] at (axis cs:1.9,1.2) {$y \leq 2$};
+  \node[below left] at (axis cs:0,0) {$O$};
+\end{axis}
+\end{tikzpicture}
+}
+\begin{caution}
+Observe from the graph that the $y$ values on the curve that we are using to find the area under the curve are less than or equal to 2. Thus, we choose $y = 2 - 2\sqrt{1 - x^2}$.
+\end{caution}
+\solpair[0.62]{
+(c)\vspace{-3mm}
+\begin{align*}
+\text{Volume} &= \dfrac{1}{3}\pi(2)^2(1) - \pi\int_0^1 \left(2 - 2\sqrt{1 - x^2}\right)^2 dx \\
+&= 2.98 \ \text{(3 s.f.)}
+\end{align*}
+Alternatively\vspace{-3mm}
+\begin{align*}
+\text{Volume} &= \pi\int_0^1 (2x)^2\,dx - \pi\int_0^1 \left(2 - 2\sqrt{1 - x^2}\right)^2 dx
+\end{align*}
+}{
+\wschg{Pip-drawn mini solids, not from grail.moe. Working is from grail.moe.}{%
+\minilabel{(c)}\minipair{\solXs{0.9}{0.45}{2*x}{0}{1}{0}{2}{1.5}{2.5}{red!75!black}}{\solXs{0.9}{0.45}{2-2*sqrt(max(1-x*x,0))}{0}{1}{0}{2}{1.5}{2.5}{blue!70!black}}}
+}
+\begin{caution}
+Required volume = Volume of cone $-$ Volume generated by the region under the curve.
+
+Volume of cone can be found by using $\dfrac{1}{3}\pi r^2 h$ or $\pi\displaystyle\int_0^1 (2x)^2\,dx$.
+\end{caution}
+}
+
+% =====================================================================
+\Q{10.5}{NJC 2024 Promo Q2}
+The region bounded by $y = x\sqrt{\sin x}$, the $x$-axis, and the lines $x = 0$ and $x = \pi$ is rotated through $2\pi$ radians about the $x$-axis. Find the exact volume of the solid generated. \mk{5}
+\Sol{
+\solsrc{https://grail.moe/library/16719/njc-9758-2024-promo-solutions}
+\solpair[0.56]{
+\vspace{-6mm}
+\begin{align*}
+\int y^2\,dx &= \int x^2\sin x\,dx \\
+&= -x^2\cos x - \int 2x(-\cos x)\,dx \\
+&= -x^2\cos x + 2\int x(\cos x)\,dx \\
+&= -x^2\cos x + 2\left[x\sin x - \int \sin x\,dx\right] \\
+&= -x^2\cos x + 2\left[x\sin x + \cos x\right] \\
+&= -x^2\cos x + 2x\sin x + 2\cos x \\
+&= \left(2 - x^2\right)\cos x + 2x\sin x + c
+\end{align*}
+\vspace{-6mm}
+\begin{align*}
+\text{Volume required} &= \pi\int_0^{\pi} y^2\,dx \\
+&= \pi\Big[\left(2 - x^2\right)\cos x + 2x\sin x\Big]_0^{\pi} \\
+&= \pi\left[\left(2 - \pi^2\right)(-1) - (2)1\right] \\
+&= \pi^3 - 4\pi
+\end{align*}
+}{
+\wschg{Pip-drawn sketch and mini solid, not from grail.moe (the NJC solution has no diagram). Working is from grail.moe.}{%
+\begin{tabular}{@{}c@{}}
+\begin{tikzpicture}
+\begin{axis}[sketch, x=1.3cm, y=1.3cm, xmin=-0.4, xmax=3.9, ymin=-0.2, ymax=2.2]
+  \addplot[draw=none, fill=blue!22, domain=0:pi, samples=80] {x*sqrt(max(sin(x),0))} \closedcycle;
+  \addplot[curve, domain=0:pi, samples=120] {x*sqrt(max(sin(x),0))};
+  \node[below] at (axis cs:pi,0) {$\pi$};
+  \node[below left] at (axis cs:0,0) {$O$};
+  \node[blue, above] at (axis cs:1.6,1.75) {$y = x\sqrt{\sin x}$};
+\end{axis}
+\end{tikzpicture}\\[2mm]
+\minilabel{}\minisolo{\solXs{0.6}{0.45}{x*sqrt(max(sin(x*180/pi),0))}{0}{3.1416}{0}{0}{3.6}{2.0}{blue!70!black}}
+\end{tabular}}
+}
+}
+
+% =====================================================================
+\Q{10.6}{VJC 2025 Promo Q11(c), adapted}
+The parametric equations $x = t^2$, $y = 20te^{-t}$, for $0 \leq t \leq 6$, model a section of a roller coaster track; $x$ is the horizontal distance and $y$ the vertical distance from the ground, in metres. A wind-blocking panel is attached beneath the track. Its cross-sectional area is modelled by the area under the curve from $t = 0$ to $t = 6$. The area of the region under a parametric curve from $t = \alpha$ to $t = \beta$ is given by the formula $\displaystyle\int_{\alpha}^{\beta} y\left(\dfrac{dx}{dt}\right) dt$.
+\begin{parts}
+\item[(i)] Show that the cross-sectional area of the panel is $\displaystyle\int_a^b kt^2e^{-t}\,dt$, where $a$, $b$ and $k$ are integers to be determined. \mk{2}
+\item[(ii)] Find the exact area of the panel. \mk{4}
+\end{parts}
+\Sol{
+\solpair[0.6]{
+(i)\vspace{-3mm}
+\begin{align*}
+\dfrac{dx}{dt} &= 2t \\
+\text{Area} &= \int_0^6 y\left(\dfrac{dx}{dt}\right) dt \\
+&= \int_0^6 \left(20te^{-t}\right)(2t)\,dt \\
+&= \int_0^6 40t^2e^{-t}\,dt \\
+\therefore\ k &= 40, \quad a = 0, \quad b = 6 \ \text{(shown)}
+\end{align*}
+(ii)\vspace{-3mm}
+\begin{align*}
+\int t^2e^{-t}\,dt &= -\int t^2(-1)e^{-t}\,dt \\
+&= -t^2e^{-t} - \int (2t)\left(-e^{-t}\right) dt \\
+&= -t^2e^{-t} + \int 2te^{-t}\,dt \\
+&= -t^2e^{-t} - 2te^{-t} - \int (2)\left(-e^{-t}\right) dt \\
+&= -t^2e^{-t} - 2te^{-t} + \int 2e^{-t}\,dt \\
+&= -t^2e^{-t} - 2te^{-t} - 2\int (-1)e^{-t}\,dt \\
+&= -t^2e^{-t} - 2te^{-t} - 2e^{-t} + C \\
+&= -e^{-t}\left(t^2 + 2t + 2\right) + C \\[1mm]
+\text{Area} &= 40\int_0^6 t^2e^{-t}\,dt \\
+&= 40\Big[-e^{-t}\left(t^2 + 2t + 2\right)\Big]_0^6 \\
+&= 40\left[-e^{-6}\left(36 + 12 + 2\right) - \left(-e^{0}(0 + 0 + 2)\right)\right] \\
+&= 40\left(-50e^{-6} + 2\right) \\
+&= 80 - 2000e^{-6} \ \text{m}^2
+\end{align*}
+}{
+\begin{tikzpicture}
+\begin{axis}[sketch, width=6cm, height=4cm, xmin=-2, xmax=40, ymin=-1, ymax=9]
+  \fill[blue!22] (axis cs:0,0) -- plot[domain=0:6, samples=80] (axis cs:{\x*\x},{20*\x*exp(-\x)}) -- (axis cs:36,0) -- cycle;
+  \addplot[curve, variable=t, domain=0:6, samples=100] ({t*t}, {20*t*exp(-t)});
+  \draw[thin] (axis cs:36,0) -- (axis cs:36,0.3);
+  \node[below] at (axis cs:36,0) {$36$};
+  \node[below left] at (axis cs:0,0) {$O$};
+\end{axis}
+\end{tikzpicture}
+}
+}
+
+\end{document}

@@ -1,0 +1,38 @@
+% WORKSHEET COPY of ../notes/preamble_local.tex (version the worksheet was last built with,
+% from ../_backup_pre_limitsum, 2026-10-09 17:31). Local so the worksheet no longer depends
+% on ../notes; changes: \input{ws_figstyles}; [2026-10-09 follow-up] \mk marks now bold, as in the notes.
+% =====================================================================
+% preamble_local.tex: extra packages, styles and macros for the
+% Definite Integrals chapter ONLY. Loaded after preamble_build.tex.
+% Plot styles and the mini 3D macros are in figstyles.tex (shared with the
+% slides and worksheets).
+% =====================================================================
+\usepgfplotslibrary{fillbetween}
+\usepackage{adjustbox} % mini 3D pictures (figstyles.tex)
+\usetikzlibrary{arrows.meta, decorations.pathreplacing, calc}
+\input{ws_figstyles}
+
+% Small fractions are allowed only in exponents and in the limits of an
+% integral (which are superscripts/subscripts); everywhere else use \dfrac.
+\newcommand{\dx}{\,dx}
+\newcommand{\dy}{\,dy}
+\newcommand{\evalat}[3]{\left[\,#1\,\right]_{#2}^{#3}}
+
+% [item 78] right-aligned A-level style marks at the end of a question part
+\newcommand{\mk}[1]{{\unskip\nobreak\hfil\penalty50\hskip1.5em\hbox{}\nobreak\hfill\textbf{[#1]}%
+  \parfillskip=0pt\finalhyphendemerits=0\par}}
+% [item 11] visually emphasised step labels in worked solutions
+\newcommand{\step}[1]{\textcolor{teal!55!black}{\textbf{Step #1}}\quad}
+% (a), (b), (c) part lists inside questions and solutions
+\newenvironment{parts}{\begin{enumerate}[(a)]\setlength{\itemsep}{0.4ex}}{\end{enumerate}}
+% SEAB-style solution layout (approved 10.5.8 template): working on the
+% left, region sketch on the right (mini 3D pictures go under the sketch)
+\newcommand{\solpair}[3][0.56]{\noindent\begin{minipage}[t]{#1\textwidth}\vspace{0pt}#2\end{minipage}\hfill
+  \begin{minipage}[t]{\dimexpr0.98\textwidth-#1\textwidth\relax}\vspace{0pt}\centering #3\end{minipage}\par}
+% minus-diagram style (drafts/minus_style_template.tex, items 29/31/62)
+\pgfplotsset{minus/.style={axis lines=middle, width=5.0cm, height=4.2cm, ticks=none,
+  xlabel={$x$}, ylabel={$y$}, every axis x label/.style={at={(ticklabel* cs:1)},anchor=west},
+  every axis y label/.style={at={(ticklabel* cs:1)},anchor=south}, clip=false, axis on top,
+  axis line style={gray!70}, every axis label/.append style={gray},
+  every node/.append style={text=gray!80!black, font=\footnotesize}}}
+\tikzset{hlreg/.style={fill=hl!35, draw=hl, thick}}

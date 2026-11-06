@@ -1,0 +1,331 @@
+% Test questions and worked answers, Maximus Pung Jun.
+% Task 8 rebuild: Q1 ACJC 2026 P1 Q6 (limit of sums; replaces EJC 2025), Q2 TMJC 2019 P2 Q4
+% (modified, genuinely parametric area + arc length; replaces DHS 2025), Q3 RI 2025 P1 Q10 (kept),
+% Q4 ACJC 2026 P2 Q5 (modulus, y-axis volume; replaces TMJC 2025), Q5 VJC 2025 P1 Q9 (kept),
+% Q6 RI 2026 P1 Q9 (area, volume about y = 2; replaces ASRJC 2025). Tags: source only.
+\newcommand{\solhead}{\par\medskip\noindent{\bfseries Solution}\par\nobreak\vspace{-0.6ex}\noindent\textcolor{black!35}{\rule{\linewidth}{0.4pt}}\par\nobreak}
+\newcommand{\slabel}[1]{\par\smallskip\noindent\textbf{#1}\par\nobreak}
+
+% ===================================================================== 1
+\defQ{1}{ACJC/2026 Prelim/P1}{%
+The diagram shows a sketch of the curve $y=\mathrm{f}(x)$. The shaded region under the curve between $x=0$ and $x=1$, as shown in the diagram, is $A$. This region is split into $n$ vertical strips of equal width, $h$.
+\begin{center}\figTlim{0}\end{center}
+\begin{qparts}
+\pt{(a)} State the value of $h$. \mk{1}
+\pt{(b)} Hence show, using a sketch, that $\displaystyle\sum_{r=1}^{n}h\mathrm{f}(rh)$ is less than the area of $A$. \mk{2}
+\end{qparts}
+You are now given that $\mathrm{f}(x)=\dfrac{\mathrm{e}^{-2x}}{1+\mathrm{e}^{-2x}}$.
+\begin{qparts}
+\pt{(c)} Hence find the exact value of $\displaystyle\lim_{n\to\infty}\sum_{r=1}^{n}h\mathrm{f}(rh)$. \mk{3}
+\end{qparts}}
+\defA{1}{%
+\solsrc{pub}{ACJC 2026 Prelim P1 Q6 markers' report (grail.moe 26363); same method and answer. Sketch redrawn.}
+\slabel{(a)}
+\[h=\dfrac{1}{n}\]
+\slabel{(b)}
+\begin{center}\figTlim{1}\end{center}
+Total area of the $n$ rectangles
+\begin{align*}
+&= \dfrac{1}{n}\mathrm{f}\left(\dfrac{1}{n}\right)+\dfrac{1}{n}\mathrm{f}\left(\dfrac{2}{n}\right)+\dfrac{1}{n}\mathrm{f}\left(\dfrac{3}{n}\right)+\cdots+\dfrac{1}{n}\mathrm{f}\left(\dfrac{n}{n}\right)\\
+&= \sum_{r=1}^{n}h\mathrm{f}(rh)<A
+\end{align*}
+since the $n$ rectangles (width $\frac{1}{n}$, right-end heights) lie under the curve.
+\slabel{(c)}
+As $n\to\infty$, the total area of the rectangles tends to the area of $A$.
+\begin{align*}
+\lim_{n\to\infty}\sum_{r=1}^{n}h\mathrm{f}(rh) &= \int_{0}^{1}\dfrac{\mathrm{e}^{-2x}}{\mathrm{e}^{-2x}+1}\dx\\
+&= \left[-\dfrac{1}{2}\ln\left|\mathrm{e}^{-2x}+1\right|\right]_{0}^{1}\\
+&= \dfrac{1}{2}\left[\ln(2)-\ln\left(1+\mathrm{e}^{-2}\right)\right]
+\end{align*}}
+
+% ===================================================================== 2
+\defQ{2}{TMJC/2019 Prelim/P2 (Modified)}{%
+\begin{chgblock}{Teacher: genuinely parametric area question (solved directly with the parametric formula). Modified from TMJC 2019 Prelim P2 Q4: parts (ii) turning point [4] and (iii) sketch [3] removed; the given-formula line added before (b); part (c) arc length (with its formula) added. Parts (a) and (b) are otherwise verbatim (original (i) and (iv)).}
+A curve $C$ has parametric equations
+\[x=-\sqrt{t^2+4},\quad y=\dfrac{\ln t}{t},\quad\text{where }t>0.\]
+\begin{qparts}
+\pt{(a)} Show that $\dfrac{\mathrm{d}y}{\mathrm{d}x}=\dfrac{(\ln t-1)\sqrt{t^2+4}}{t^3}$. \mk{3}
+\pt{(b)} The area of the region under a parametric curve from $t=\alpha$ to $t=\beta$ is given by the formula
+\[\int_{\alpha}^{\beta} y\left(\dfrac{\mathrm{d}x}{\mathrm{d}t}\right)\mathrm{d}t.\]
+Show that the area bounded by $C$ and the lines $x=-\sqrt{13}$ and $x=-\sqrt{5}$ is given by
+\[\int_{1}^{3}\dfrac{\ln t}{\sqrt{t^2+4}}\,\mathrm{d}t.\]
+Find the area, giving your answer to 4 decimal places. \mk{3}
+\pt{(c)} It is given that the length of the arc of a curve defined parametrically by $x=\mathrm{f}(t)$, $y=\mathrm{g}(t)$, from $t=t_1$ to $t=t_2$, is $\displaystyle\int_{t_1}^{t_2}\sqrt{\left(\dfrac{\mathrm{d}x}{\mathrm{d}t}\right)^2+\left(\dfrac{\mathrm{d}y}{\mathrm{d}t}\right)^2}\,\mathrm{d}t$.\par
+Find the length of the arc of $C$ from $t=1$ to $t=3$, giving your answer to 3 significant figures. \mk{3}
+\end{qparts}
+\end{chgblock}}
+\defA{2}{%
+\solsrc{pip}{Pip-worked: no published TMJC 2019 P2 solution was found (not on grail.moe's listing or in the local files); (c) is a new part. Sketch drawn by Pip.}
+\slabel{(a)}
+\begin{align*}
+x=-\sqrt{t^2+4}\ \Rightarrow\ \dfrac{\mathrm{d}x}{\mathrm{d}t} &= -\dfrac{t}{\sqrt{t^2+4}}\\
+y=\dfrac{\ln t}{t}\ \Rightarrow\ \dfrac{\mathrm{d}y}{\mathrm{d}t} &= \dfrac{t\left(\frac{1}{t}\right)-\ln t}{t^2}=\dfrac{1-\ln t}{t^2}\\
+\dfrac{\mathrm{d}y}{\mathrm{d}x}=\dfrac{\mathrm{d}y/\mathrm{d}t}{\mathrm{d}x/\mathrm{d}t} &= \dfrac{1-\ln t}{t^2}\times\left(-\dfrac{\sqrt{t^2+4}}{t}\right)\\
+&= \dfrac{(\ln t-1)\sqrt{t^2+4}}{t^3}\quad\text{(shown)}
+\end{align*}
+\slabel{(b)}
+\begin{center}\figTparam\end{center}
+When $x=-\sqrt{13}$: $t^2+4=13\Rightarrow t=3$ (since $t>0$).\par
+When $x=-\sqrt{5}$: $t^2+4=5\Rightarrow t=1$.\par
+For $1\le t\le 3$, $\ln t\ge 0$, so $y\ge 0$ and the region is above the $x$-axis.
+\begin{align*}
+\text{Area} &= \int_{-\sqrt{13}}^{-\sqrt{5}}y\dx\\
+&= \int_{3}^{1}\dfrac{\ln t}{t}\left(-\dfrac{t}{\sqrt{t^2+4}}\right)\mathrm{d}t\\
+&= \int_{1}^{3}\dfrac{\ln t}{\sqrt{t^2+4}}\,\mathrm{d}t\quad\text{(shown)}\\
+&= 0.431675\\
+&= 0.4317\units{2}\quad\text{(4 d.p.)}
+\end{align*}
+\slabel{(c)}
+\begin{align*}
+\text{Arc length} &= \int_{1}^{3}\sqrt{\left(-\dfrac{t}{\sqrt{t^2+4}}\right)^2+\left(\dfrac{1-\ln t}{t^2}\right)^2}\,\mathrm{d}t\\
+&= \int_{1}^{3}\sqrt{\dfrac{t^2}{t^2+4}+\dfrac{(1-\ln t)^2}{t^4}}\,\mathrm{d}t\\
+&= 1.503666\\
+&= 1.50\text{ units}\quad\text{(3 s.f.)}
+\end{align*}}
+
+% ===================================================================== 3
+\defQ{3}{RI/2025 Prelim/P1}{%
+\begin{qparts}
+\pt{(a)} Using the substitution $u=\sqrt{2x-1}$, show that $\displaystyle\int\dfrac{x}{\sqrt{2x-1}}\dx=\int\dfrac{u^2+1}{2}\,\mathrm{d}u$. \mk{2}
+\pt{(b)} \begin{qparts}[2.2em]
+\begin{chgblock}{Reworded: removed the reference to the Printed Answer Booklet, which this test does not have. Was: Indicate on the same diagram in the Printed Answer Booklet, ...}
+\pt{(i)} The diagram below shows the graph of $y=2-\dfrac{x}{\sqrt{2x-1}}$. Show, on a copy of this diagram, the equation of the asymptote of the curve and the coordinates of its turning point and points of intersection with the $x$-axis. \mk{2}
+\end{chgblock}
+\end{qparts}
+\begin{center}\figTri{0}\end{center}
+\begin{qparts}[2.2em]
+\pt{(ii)} The region $R$ is bounded by the curve $y=2-\dfrac{x}{\sqrt{2x-1}}$ and the lines $x=1$, $x=3$ and $y=\dfrac{1}{2}$. Find the exact area of $R$. \mk{5}
+\end{qparts}
+\pt{(c)} The region $S$ is bounded by the curves $y=2-\dfrac{x}{\sqrt{2x-1}}$, $x=2(y-1)^2+1$, the lines $x=1$, $x=4$ and the $x$-axis.
+\begin{qparts}[2.2em]
+\begin{chgblock}{Reworded: y is not a single function f of x here - there are two branches. Was: Express x=2(y-1)^2+1 in the form y=\mathrm{f}(x).}
+\pt{(i)} Express $y$ in terms of $x$ for the curve $x=2(y-1)^2+1$, giving both branches. \mk{1}
+\end{chgblock}
+\pt{(ii)} On the same diagram as in part \textbf{(b)(i)}, sketch the graph of $x=2(y-1)^2+1$. \mk{2}
+\pt{(iii)} Find the volume of the solid generated when $S$ is rotated through $2\pi$ radians about the $x$-axis. Give your answer correct to 3 decimal places. \mk{3}
+\end{qparts}
+\end{qparts}}
+\defA{3}{%
+\solsrc{his}{his worked answer (Test\_answers.pdf).}
+\slabel{(a)}
+\[u=\sqrt{2x-1}\Rightarrow u^2=2x-1\]
+Hence $u\dfrac{\mathrm{d}u}{\mathrm{d}x}=1\Rightarrow\dfrac{\mathrm{d}x}{\mathrm{d}u}=u$.
+\begin{align*}\int\dfrac{x}{\sqrt{2x-1}}\dx&=\int\dfrac{\frac{u^2+1}{2}}{u}\left(\dfrac{\mathrm{d}x}{\mathrm{d}u}\right)\mathrm{d}u\\&=\int\dfrac{u^2+1}{2u}(u)\,\mathrm{d}u=\int\dfrac{u^2+1}{2}\,\mathrm{d}u\end{align*}
+(shown)\par
+Alternatively,
+\[u=\sqrt{2x-1}\Rightarrow\dfrac{\mathrm{d}u}{\mathrm{d}x}=\dfrac{1}{\sqrt{2x-1}}\]
+and therefore
+\begin{align*}\int\dfrac{x}{\sqrt{2x-1}}\dx&=\int x\cdot\dfrac{1}{\sqrt{2x-1}}\dx\\&=\int\dfrac{u^2+1}{2}\left(\dfrac{\mathrm{d}u}{\mathrm{d}x}\right)\mathrm{d}x=\int\dfrac{u^2+1}{2}\,\mathrm{d}u\end{align*}
+\slabel{(b)}
+\slabel{(i)}
+\begin{center}\figTri{1}\end{center}
+\textbf{Note:} Detailed workings for intercepts and turning points (Optional, since more efficient to use GC)\par
+When $y=0$,
+\begin{gather*}
+\dfrac{x}{\sqrt{2x-1}}=2\\
+\Rightarrow x^2=4(2x-1)\\
+\Rightarrow x=4\pm 2\sqrt{3}
+\end{gather*}
+\[\dfrac{\mathrm{d}y}{\mathrm{d}x}=\chgm{Corrected: the minus sign was missing, since y = 2 - x/sqrt(2x-1).}{-}\dfrac{\sqrt{2x-1}-\frac{x}{\sqrt{2x-1}}}{2x-1}=\dfrac{1-x}{\left(\sqrt{2x-1}\right)^3}=0\Rightarrow x=1\Rightarrow y=1\]
+\slabel{(ii)}
+\begin{center}\figTri{2}\end{center}
+Required area of $R$
+\begin{align*}
+&= \int_{1}^{3}\left(2-\dfrac{x}{\sqrt{2x-1}}-\dfrac{1}{2}\right)\mathrm{d}x\\
+&= \int_{1}^{3}\dfrac{3}{2}\dx-\int_{1}^{3}\dfrac{x}{\sqrt{2x-1}}\dx\qquad
+  \fbox{\footnotesize$\begin{array}{@{}l@{}}u=\sqrt{2x-1}\\ \text{When }x=3,\ u=\sqrt{5}\\ \text{When }x=1,\ u=\sqrt{1}=1\end{array}$}\\
+&= \dfrac{3}{2}[x]_{1}^{3}-\int_{1}^{\sqrt{5}}\dfrac{u^2+1}{2}\,\mathrm{d}u\\
+&= 3-\dfrac{1}{2}\left[\dfrac{u^3}{3}+u\right]_{1}^{\sqrt{5}}\\
+&= 3-\dfrac{1}{2}\left[\chgm{Notation: was written 5 sqrt5/3 as a mixed-number-like 5 (sqrt5 / 3)}{\dfrac{5\sqrt{5}}{3}}+\sqrt{5}-\dfrac{1}{3}-1\right]\\
+&= 3-\left[\chgm{Notation: was written 4 sqrt5/3 as a mixed-number-like 4 (sqrt5 / 3)}{\dfrac{4\sqrt{5}}{3}}-\dfrac{2}{3}\right]\\
+&= \dfrac{11-4\sqrt{5}}{3}
+\end{align*}
+\slabel{(c)}
+\slabel{(i)}
+\[x=2(y-1)^2+1\Rightarrow y=1\pm\sqrt{\dfrac{x-1}{2}}\]
+\slabel{(ii)}
+Please refer to part \textbf{(b)(i)}.
+\slabel{(iii)}
+\begin{center}\figTri{3}\end{center}
+Required volume
+\begin{align*}
+&= \pi\int_{1}^{4}\left(2-\dfrac{x}{\sqrt{2x-1}}\right)^2\mathrm{d}x-\pi\int_{1}^{3}\left(1-\sqrt{\dfrac{x-1}{2}}\right)^2\mathrm{d}x\\
+&= \chgm{GC value corrected: was 4.518334; the integral is 4.51833289...}{4.5183329}\\
+&= 4.518\units{3}\quad\text{(3 d.p.)}
+\end{align*}}
+
+% ===================================================================== 4
+\defQ{4}{ACJC/2026 Prelim/P2}{%
+In this question $\sin^{-1}(1-x)$ refers to the principal value.
+\begin{qparts}
+\pt{(a)} \begin{qparts}[2.2em]
+\pt{(i)} Use the substitution $z=\sin^{-1}(1-x)$ to show that $\displaystyle\int_{0}^{1}\sin^{-1}(1-x)\dx=\int_{a}^{b}z\cos z\,\mathrm{d}z$, where $a$ and $b$ are constants to be determined. \mk{2}
+\pt{(ii)} Hence show that $\displaystyle\int_{0}^{1}\sin^{-1}(1-x)\dx=\dfrac{\pi}{2}-1$. \mk{2}
+\end{qparts}
+\pt{(b)} A curve $C$ is given by the equation
+\[y=\sin^{-1}(1-x)\ \text{ for }0\le x\le 2.\]
+\begin{qparts}[2.2em]
+\pt{(i)} Find exactly $\displaystyle\int_{0}^{2}\left|\sin^{-1}(1-x)\right|\dx$. \mk{2}
+\pt{(ii)} The region $R$ is bounded by the curve $C$, the line $x=2$ and the part of the $x$-axis between 1 and 2. Find the exact volume generated when $R$ is rotated $360^\circ$ about the $y$-axis. \mk{4}
+\end{qparts}
+\end{qparts}}
+\defA{4}{%
+\solsrc{pub}{ACJC 2026 Prelim P2 Q5 markers' report (grail.moe 26365); same method and answers. Sketches redrawn.}
+\slabel{(a)(i)}
+\begin{align*}
+z &= \sin^{-1}(1-x)\\
+\sin z &= 1-x\\
+\cos z\,\dfrac{\mathrm{d}z}{\mathrm{d}x} &= -1
+\end{align*}
+When $x=0$, $z=\sin^{-1}1=\dfrac{\pi}{2}$.\quad When $x=1$, $z=\sin^{-1}0=0$.
+\begin{align*}
+\int_{0}^{1}\sin^{-1}(1-x)\dx &= \int_{\frac{\pi}{2}}^{0}-z\cos z\,\mathrm{d}z\\
+&= \int_{0}^{\frac{\pi}{2}}z\cos z\,\mathrm{d}z
+\end{align*}
+$a=0$ and $b=\dfrac{\pi}{2}$.
+\slabel{(a)(ii)}
+By parts, with $u=z$, $\dfrac{\mathrm{d}v}{\mathrm{d}z}=\cos z$:
+\begin{align*}
+\int_{0}^{\frac{\pi}{2}}z\cos z\,\mathrm{d}z &= \left[z\sin z\right]_{0}^{\frac{\pi}{2}}-\int_{0}^{\frac{\pi}{2}}\sin z\,\mathrm{d}z\\
+&= \dfrac{\pi}{2}+\left[\cos z\right]_{0}^{\frac{\pi}{2}}\\
+&= \dfrac{\pi}{2}-1\quad\text{(shown)}
+\end{align*}
+\slabel{(b)(i)}
+\begin{center}\figTasin{1}\end{center}
+Since the curve $y=\sin^{-1}(1-x)$ is symmetrical about $(1,0)$, area $A$ = area $R$.
+\begin{align*}
+\int_{0}^{2}\left|\sin^{-1}(1-x)\right|\dx &= 2\int_{0}^{1}\sin^{-1}(1-x)\dx\\
+&= 2\left(\dfrac{\pi}{2}-1\right)=\pi-2
+\end{align*}
+\slabel{(b)(ii)}
+\begin{center}\figTasin{2}\end{center}
+\begin{align*}
+y=\sin^{-1}(1-x)\ \Rightarrow\ \sin y=1-x\ \Rightarrow\ x=1-\sin y
+\end{align*}
+When $x=2$, $y=\sin^{-1}(-1)=-\dfrac{\pi}{2}$.\quad When $x=1$, $y=\sin^{-1}0=0$.
+\begin{align*}
+\text{Volume} &= \pi(2)^2\left(\dfrac{\pi}{2}\right)-\pi\int_{-\frac{\pi}{2}}^{0}x^2\dy\\
+&= 2\pi^2-\pi\int_{-\frac{\pi}{2}}^{0}(1-\sin y)^2\dy\\
+&= 2\pi^2-\pi\int_{-\frac{\pi}{2}}^{0}\left(1+\sin^2 y-2\sin y\right)\mathrm{d}y\\
+&= 2\pi^2-\pi\int_{-\frac{\pi}{2}}^{0}\left(\dfrac{3}{2}-\dfrac{1}{2}\cos 2y-2\sin y\right)\mathrm{d}y\\
+&= 2\pi^2-\pi\left[\dfrac{3y}{2}-\dfrac{1}{4}\sin 2y+2\cos y\right]_{-\frac{\pi}{2}}^{0}\\
+&= 2\pi^2-\pi\left[2-\left(-\dfrac{3\pi}{4}\right)\right]\\
+&= 2\pi^2-2\pi-\dfrac{3\pi^2}{4}\\
+&= \dfrac{5\pi^2}{4}-2\pi\units{3}
+\end{align*}}
+
+% ===================================================================== 5
+\defQ{5}{VJC/2025 Prelim/P1}{%
+In the diagram below, the region $R$ is bounded by the curve $C$ with equation $x=6-(y-2)^2$, the lines $y=8$, $y=2-x$ and the $y$-axis. The region $S$ is bounded by $C$ and the line $y=2-x$.
+\begin{center}\figTvjc\end{center}
+\begin{qparts}
+\pt{(a)} Find the exact area of region $R$. \mk{5}
+\pt{(b)} Find the volume of the solid of revolution formed when region $S$ is rotated through $360^\circ$ about the $x$-axis, leaving your answer to 2 decimal places. \mk{3}
+\end{qparts}}
+\defA{5}{%
+\solsrc{his}{his worked answer (Test\_answers.pdf).}
+\slabel{(a)}
+For point of intersection of $C$ and $y=2-x$:
+\begin{align*}
+2-y &= 6-(y-2)^2\\
+2-y &= 6-y^2+4y-4\\
+y^2-5y &= 0\\
+y(y-5) &= 0\\
+y &= 0\ \text{ or }\ y=5
+\end{align*}
+When $x=0$, $6-(y-2)^2=0\Rightarrow y=2\pm\sqrt{6}$.\par
+Area of $R$
+\begin{align*}
+&= -\left[\int_{2+\sqrt{6}}^{5}\left(6-(y-2)^2\right)\mathrm{d}y+\int_{5}^{8}(2-y)\dy\right]\\
+&\phantom{=}\ \ \text{OR}\ \ \left(\dfrac{6+3}{2}\right)\times 3-\int_{2+\sqrt{6}}^{5}\left(6-(y-2)^2\right)\mathrm{d}y\\
+&= -\left\{\left[6y-\dfrac{(y-2)^3}{3}\right]_{2+\sqrt{6}}^{5}+\left[2y-\dfrac{y^2}{2}\right]_{5}^{8}\right\}\\
+&= -\left[(30-9)-\left(6\left(2+\sqrt{6}\right)-\dfrac{\left(\sqrt{6}\right)^3}{3}\right)\right.\\
+&\phantom{= -\Big[}\left.{}+\left(16-\dfrac{64}{2}\right)-\left(10-\dfrac{25}{2}\right)\right]\\
+&= \dfrac{9}{2}+4\sqrt{6}\units{2}
+\end{align*}
+\textbf{Alternative method:}\par
+For point of intersection of $C$ and $y=2-x$:
+\begin{align*}
+2-y &= 6-(y-2)^2\\
+2-y &= 6-y^2+4y-4\\
+y^2-5y &= 0\\
+y(y-5) &= 0\\
+y &= 0\ \text{ or }\ y=5\ \therefore \chgm{Order corrected: y=0 gives x=2 and y=5 gives x=-3. Was: x=-3 or 2}{x=2\ \text{ or }\ -3}
+\end{align*}
+When $y=8$, $8=2-x\Rightarrow x=-6$.\par
+Area of $R$
+\begin{align*}
+&= (6)(8)-\int_{-6}^{-3}(2-x)\dx-\int_{-3}^{0}\left(2+\sqrt{6-x}\right)\mathrm{d}x\\
+&= 48-\left[2x-\dfrac{x^2}{2}\right]_{-6}^{-3}-\left[2x-\dfrac{(6-x)^{\frac{3}{2}}}{\frac{3}{2}}\right]_{-3}^{0}\\
+&= 48-\dfrac{39}{2}-\left(\left(-\dfrac{2}{3}\right)(6)^{\frac{3}{2}}-\left(-6-\dfrac{2}{3}(9)^{\frac{3}{2}}\right)\right)\\
+&= \dfrac{57}{2}-\left(24-\dfrac{2}{3}\left(6\sqrt{6}\right)\right)\\
+&= \dfrac{9}{2}+4\sqrt{6}
+\end{align*}
+\slabel{(b)}
+\begin{align*}
+x &= 6-(y-2)^2\\
+y &= 2\pm\sqrt{6-x}
+\end{align*}
+\begin{align*}
+\text{Volume of solid} &= \pi\int_{-3}^{6}\left(2+\sqrt{6-x}\right)^2\mathrm{d}x-\pi\int_{-3}^{2}(2-x)^2\dx\\
+&\qquad-\pi\int_{2}^{6}\left(2-\sqrt{6-x}\right)^2\mathrm{d}x\\
+&= 327.25\units{3}
+\end{align*}}
+
+% ===================================================================== 6
+\defQ{6}{RI/2026 Prelim/P1}{%
+A curve $C$ has equation $y=x\mathrm{e}^{-x}$, $x\ge 0$.
+\begin{qparts}
+\pt{(a)} Show that $C$ has exactly one stationary point. \mk{2}
+\pt{(b)} Sketch $C$, giving the exact coordinates of the stationary point. \mk{1}
+\end{qparts}
+The region $R$ is bounded by $C$, the $y$-axis and the line $y=\dfrac{1}{\mathrm{e}}$.
+\begin{qparts}
+\pt{(c)} Find the exact area of $R$. \mk{4}
+\pt{(d)} An ornament is formed by rotating $R$ through $2\pi$ radians about the line $y=2$. By considering a suitable translation of $C$, find the volume of the ornament. \mk{3}
+\end{qparts}}
+\defA{6}{%
+\solsrc{pub}{RI 2026 Prelim P1 Q9 solutions with comments (grail.moe 26613); same method and answers. Sketches redrawn.}
+\slabel{(a)}
+\begin{align*}
+y &= x\mathrm{e}^{-x}\\
+\dfrac{\mathrm{d}y}{\mathrm{d}x} &= \mathrm{e}^{-x}+x\left(-\mathrm{e}^{-x}\right)=\mathrm{e}^{-x}(1-x)
+\end{align*}
+When $\dfrac{\mathrm{d}y}{\mathrm{d}x}=0$, $\mathrm{e}^{-x}(1-x)=0$.\par
+Since $\mathrm{e}^{-x}>0$ for all $x\in\mathbb{R}$, $1-x=0\Rightarrow x=1$.\par
+Hence, $C$ has exactly one stationary point. (shown)
+\slabel{(b)}
+\begin{center}\figTxex{1}\end{center}
+When $x=1$, $y=\dfrac{1}{\mathrm{e}}$; stationary point $\left(1,\dfrac{1}{\mathrm{e}}\right)$; $y\to 0$ as $x\to\infty$.
+\slabel{(c)}
+\begin{center}\figTxex{2}\end{center}
+By parts, with $u=x$, $\dfrac{\mathrm{d}v}{\mathrm{d}x}=\mathrm{e}^{-x}$:
+\begin{align*}
+\text{Area of }S &= \int_{0}^{1}x\mathrm{e}^{-x}\dx\\
+&= \left[-x\mathrm{e}^{-x}\right]_{0}^{1}-\int_{0}^{1}-\mathrm{e}^{-x}\dx\\
+&= -\mathrm{e}^{-1}+\left[-\mathrm{e}^{-x}\right]_{0}^{1}\\
+&= -\dfrac{1}{\mathrm{e}}+\left(-\dfrac{1}{\mathrm{e}}+1\right)=1-\dfrac{2}{\mathrm{e}}
+\end{align*}
+\begin{align*}
+\text{Area of }R &= \text{Area of rectangle}-\text{Area of }S\\
+&= (1)\left(\dfrac{1}{\mathrm{e}}\right)-\left(1-\dfrac{2}{\mathrm{e}}\right)\\
+&= \dfrac{3}{\mathrm{e}}-1\units{2}
+\end{align*}
+\slabel{(d)}
+Translate $C$ 2 units in the negative $y$-direction: $y=x\mathrm{e}^{-x}-2$.
+\begin{center}\figTxex{3}\end{center}
+Volume of ornament\par
+$=$ Volume generated when $R$ is rotated through $2\pi$ radians about the line $y=2$\par
+$=$ Volume generated when $R'$ is rotated through $2\pi$ radians about the line $y=0$
+\begin{align*}
+&= \pi\int_{0}^{1}\left[\left(x\mathrm{e}^{-x}-2\right)^2-\left(\dfrac{1}{\mathrm{e}}-2\right)^2\right]\mathrm{d}x\\
+&= 1.13\units{3}\quad\text{(3 s.f.)}
+\end{align*}
+\textbf{OR}
+\begin{align*}
+&= \pi\int_{0}^{1}\left(x\mathrm{e}^{-x}-2\right)^2\dx-\pi\left(2-\dfrac{1}{\mathrm{e}}\right)^2(1)\\
+&= 1.13\units{3}\quad\text{(3 s.f.)}
+\end{align*}}
+
+% marks per (new) question, for the cover
+\def\tMarks{{6}{9}{15}{10}{8}{10}}

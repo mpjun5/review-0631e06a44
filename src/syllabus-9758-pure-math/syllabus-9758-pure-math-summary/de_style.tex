@@ -1,0 +1,67 @@
+% =====================================================================
+% de_style.tex: Differential Equations (Ch11) homework / test layout.
+% = Ch10 di_style (copied as de_core.tex; header text changed) + the DE
+% notation and the framed solution boxes of the v1 DE documents
+% (soln / spart, used by the Test worked solutions).
+% =====================================================================
+\input{de_core}
+\providecommand{\prelimtitle}{DIFFERENTIAL EQUATIONS TEST}
+\providecommand{\prelimsubject}{Differential Equations}
+\providecommand{\e}{\mathrm{e}}
+\providecommand{\cosec}{\operatorname{cosec}}
+\providecommand{\dt}{\,\mathrm{d}t}
+\providecommand{\abs}[1]{\left|#1\right|}
+\providecommand{\dd}[2]{\dfrac{\mathrm{d}#1}{\mathrm{d}#2}}
+\providecommand{\dvdx}{\dfrac{\mathrm{d}v}{\mathrm{d}x}}
+\providecommand{\dudx}{\dfrac{\mathrm{d}u}{\mathrm{d}x}}
+\colorlet{notegrey}{black!60}
+\makeatletter
+\protected\def\note#1{\ifmmode\text{\small\color{notegrey}\itshape #1}\else{\small\color{notegrey}\itshape #1}\fi}
+\newcommand{\award}[1]{\unskip\nobreak\hfill\textbf{\small #1}}
+\newcommand{\tagm}[1]{\tag*{\textbf{\small #1}}}
+\newcommand{\mfAminus}{\[\begin{aligned}&\int\dfrac{1}{a^{2}-x^{2}}\dx\\&\quad=\dfrac{1}{2a}\ln\abs{\dfrac{a+x}{a-x}}+c\end{aligned}\]}
+\newcommand{\mfXminus}{\[\begin{aligned}&\int\dfrac{1}{x^{2}-a^{2}}\dx\\&\quad=\dfrac{1}{2a}\ln\abs{\dfrac{x-a}{x+a}}+c\end{aligned}\]}
+\newcommand{\sbs@start}{\if@inlabel\def\sbs@shift{\vspace{-\ht\strutbox}}\else
+  \ifvmode\else\par\fi\addvspace{0.4ex}\def\sbs@shift{}\fi\noindent}
+\newsavebox{\sbs@box}
+\newenvironment{sbs}[1]{%
+  \sbs@start\begin{minipage}[t]{#1\linewidth}\vspace{0pt}\sbs@shift\raggedright%
+  \def\sbsnext{\end{minipage}\hfill\begin{minipage}[t]{\dimexpr0.97\linewidth-#1\linewidth\relax}\vspace{0pt}\sbs@shift\setlength{\fboxsep}{1.5mm}\begin{lrbox}{\sbs@box}\begin{minipage}[t]{\dimexpr\linewidth-2\fboxsep-1pt\relax}\small\raggedright}%
+}{\end{minipage}\end{lrbox}\setlength{\fboxrule}{0.5pt}\fbox{\usebox{\sbs@box}}\end{minipage}\par}
+\newenvironment{sbsplain}[1]{%
+  \sbs@start\begin{minipage}[t]{#1\linewidth}\vspace{0pt}\sbs@shift\raggedright%
+  \def\sbsnext{\end{minipage}\hfill\begin{minipage}[t]{\dimexpr0.97\linewidth-#1\linewidth\relax}\vspace{0pt}\sbs@shift\centering}%
+}{\end{minipage}\par}
+% ---- framed worked-solution box (v1 DE mark-scheme layout, kept for the Test) ----
+\newlength{\solcol}\setlength{\solcol}{15mm}
+\newcounter{spartno}
+\newcommand{\solskips}{\abovedisplayskip=4pt plus 2pt\belowdisplayskip=4pt plus 2pt\abovedisplayshortskip=2pt\belowdisplayshortskip=3pt}
+\newtcolorbox{soln}[1][]{enhanced, breakable, sharp corners,
+  colback=white, colframe=black, boxrule=0.6pt,
+  boxsep=0pt, left=0pt, right=3mm, top=1.5mm, bottom=2mm,
+  before skip=1.2ex, after skip=1.5ex,
+  before upper={\setcounter{spartno}{0}\parskip=0.5ex\solskips\@fleqntrue\@mathmargin=0pt\raggedright},
+  overlay={\draw[line width=0.4pt] ([xshift=\solcol]frame.north west) -- ([xshift=\solcol]frame.south west);},
+  #1}
+\newenvironment{spart}[1]{%
+  \stepcounter{spartno}%
+  \ifnum\value{spartno}>1 \par\vspace{0.2ex}\noindent
+    \makebox[\linewidth][l]{\rule{\dimexpr\linewidth+3mm\relax}{0.4pt}}\par\nobreak\vspace{0.3ex}\fi
+  \begin{list}{}{\leftmargin=\dimexpr\solcol+2.5mm\relax
+    \labelwidth=\solcol \labelsep=2.5mm \itemindent=0pt
+    \topsep=0.3ex \parsep=0.5ex \rightmargin=0pt \@beginparpenalty=\@M}%
+  \item[{\makebox[\solcol][l]{\strut\hspace{1.5mm}\textbf{#1}}}]%
+  \ignorespaces}{\end{list}}
+\makeatother
+% ---- DE sketches: thin light axes (teacher rule), as the Ch10 'sketch' style ----
+\pgfplotsset{dsketch/.style={sketch, axis lines=middle, axis line style={thin, black!45, -{Stealth[length=1.6mm]}},
+    ticks=none, clip=false, width=6.5cm, height=4.6cm,
+    every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+    every axis y label/.style={at={(current axis.above origin)},anchor=south},
+    every node/.append style={font=\small}},
+  dcurve/.style={black, semithick, smooth, samples=120}}
+\tikzset{asym/.style={black, dashed, thin}}
+\makeatletter
+\newcommand{\dstart}{\leavevmode\vadjust{\nobreak\vskip\dimexpr-\baselineskip-\abovedisplayskip+1pt\relax}}
+\newcommand{\sdstart}{\leavevmode\vadjust{\nobreak\vskip\dimexpr-\baselineskip-\abovedisplayskip+4pt\relax}}
+\makeatother

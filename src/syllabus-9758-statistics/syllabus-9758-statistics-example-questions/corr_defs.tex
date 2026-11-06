@@ -1,0 +1,197 @@
+%Q 28|VJC 2025 Prelim P2 Q11
+\defQ{28}{}{%
+An energy company is studying the relationship between the average daily temperature, $x$ (in degrees Celsius), and the amount of electricity consumed, $y$ (in megawatt-hours MWh). For a random sample of ten days, the records are shown in the table below.\par\smallskip
+{\centering\small\begin{tabular}{|l|*{10}{c|}}\hline
+\begin{tabular}{@{}l@{}}Average daily temperature\\($x^{\circ}$C)\end{tabular} & 20 & 22 & 24 & 26 & 28 & 30 & 32 & 34 & 36 & 38\\\hline
+\begin{tabular}{@{}l@{}}Electricity consumption\\($y$ MWh)\end{tabular} & 12.5 & 12.8 & 13.2 & 14.0 & 14.7 & 16.2 & 16.2 & 19.9 & 22.3 & 29.5\\\hline\end{tabular}\par}
+\begin{qparts}
+\pt{(a)} Draw a scatter diagram for these values, labelling the axes clearly. \mk{1}
+\end{qparts}
+It is thought that the electricity consumption and average daily temperature can be modelled by one of the formulae
+\[y=a+bx^2,\qquad y=c+dx,\]
+where $a$, $b$, $c$ and $d$ are constants.
+\begin{qparts}
+\pt{(b)} Find the value of the product moment correlation coefficient between\par
+\quad\textbf{(i)} $x$ and $y$,\par
+\quad\textbf{(ii)} $x^2$ and $y$. \mk{2}
+\pt{(c)} Using your answers in parts \textbf{(a)} and \textbf{(b)}, explain which of $y=a+bx^2$ and $y=c+dx$ is the better model and find the equation of a suitable regression line for this model. \mk{3}
+\pt{(d)} Use the equation of your regression line to estimate the electricity consumption on a day with an average temperature of $37^{\circ}$C. Comment on the reliability of your estimate. \mk{2}
+\end{qparts}
+In some regions, temperature is measured in degrees Fahrenheit instead of degrees Celsius. A temperature of $C$ degrees Celsius is equivalent to $F$ degrees Fahrenheit, where $F=\frac{9}{5}C+32$.
+\begin{qparts}
+\pt{(e)} Rewrite the equation of your regression line found in part \textbf{(c)} in terms of $y$ and $F$, where $F$ is the average daily temperature in degrees Fahrenheit. \mk{1}
+\end{qparts}
+\src{VJC 2025 Prelim P2 Q11}}
+\defS{28}{%
+\pt{(a)}\figVjcFiveA
+\pt{(b)(i)} From GC, $r=0.89056\approx0.891$.
+\pt{(b)(ii)} From GC, $r=0.92229\approx0.922$.
+\pt{(c)} From the scatter diagram, it is observed that as $x$ increases, $y$ increases by increasing amounts, and the product moment correlation coefficient between $x^2$ and $y$ is 0.922, which is closer to 1 than that between $x$ and $y$, which is 0.891 . Hence $y=a+bx^2$ is the better model.\par\medskip
+$a=4.8291\approx4.83$\par
+$b=0.014074\approx0.0141$\par
+$y=4.83+0.0141x^2$
+\pt{(d)} $y=4.8291+0.014074(37)^2$\par
+\quad $\approx24.1$\par
+Since $x=37$ lies within the given range of $x$ values, $20\leq x\leq38$, and the value of $r\approx0.922$ is close to 1, the estimated electricity consumption is reliable.
+\pt{(e)} $F=\dfrac{9}{5}x+32\Rightarrow x=\dfrac{5}{9}(F-32)$\par
+Replace $x$ by $\dfrac{5}{9}(F-32)$:\par
+$y=4.8291+0.014074\left[\dfrac{5}{9}(F-32)\right]^2$\par
+$\phantom{y}=4.8291+0.0043438(F-32)^2$\par
+$\phantom{y}\approx4.83+0.00434(F-32)^2$
+}
+%Q 29|VJC 2024 Prelim P2 Q10
+\defQ{29}{}{%
+The yield per hectare, $y$ kg, of a crop is believed to depend on the average rainfall, $x$ mm, in the month of June. For 10 regions, records are kept of the values of $x$ and $y$, and these are shown in the table below. The yield from the tenth region was accidentally deleted from the records after the data was analysed, and this is indicated by the value $p$.\par\smallskip
+{\centering\small\begin{tabular}{|l|*{10}{c|}}\hline
+\begin{tabular}{@{}l@{}}Average rainfall\\($x$ mm)\end{tabular} & 149 & 110 & 188 & 135 & 156 & 140 & 168 & 118 & 122 & 174\\\hline
+\begin{tabular}{@{}l@{}}Yield of crop\\($y$ kg)\end{tabular} & 13.8 & 6.5 & 15.2 & 12.2 & 14.4 & 12.2 & 14.7 & 9.5 & 9.9 & $p$\\\hline\end{tabular}\par}\smallskip
+Given that the equation of the regression line of $y$ on $x$ is $y=-2.5652+0.10168x$, show that $p=14.4$. \mk{2}
+\begin{qparts}
+\pt{(a)} Draw a scatter diagram for these values, labelling the axes clearly. Calculate the product moment correlation coefficient between $x$ and $y$. \mk{2}
+\pt{(b)} It is thought that a model of the form $y=a+b\ln x$ may also be a suitable fit to the data. Calculate least square estimates of $a$ and $b$, and find the value of the product moment correlation coefficient between $y$ and $\ln x$. \mk{3}
+\pt{(c)} Use your answers to parts \textbf{(a)} and \textbf{(b)} to explain which of
+\[y=-2.5652+0.10168x\ \text{ or }\ y=a+b\ln x\]
+is the better model. \mk{2}
+\pt{(d)} Using an appropriate regression line, estimate the yield for a region that experienced 200 mm of rainfall in June. Comment on the reliability of your estimate. \mk{2}
+\pt{(e)} In some regions, rainfall is measured in inches instead of in mm. Given that there are 25.4 mm in an inch, show how the regression line found in part \textbf{(b)} can be re-written so that it can be used when $x$, the average rainfall in June, is given in inches. \mk{1}
+\end{qparts}
+\src{VJC 2024 Prelim P2 Q10}}
+\defS{29}{%
+\pt{(Show)} $\sum x=1460$, $\sum y=108.4+p$, $n=10$\par
+Since $(\bar{x},\bar{y})$ lies on the regression line of $y$ on $x$,\par
+\qquad $\bar{y}=-2.5652+0.10168\bar{x}$\par
+$\dfrac{108.4+p}{10}=-2.5652+0.10168\dfrac{1460}{10}$\par
+\qquad\qquad $=12.28008$\par
+\qquad\quad $p=14.4008$\par
+\qquad\quad\ \ $\approx14.4$ \ (shown)
+\pt{(a)}\figVjcFourA
+From GC,\par
+product moment correlation coefficient, $r=0.92147\approx0.921$
+\pt{(b)} From GC, the regression line of $y$ on $\ln x$ is\par
+$y=-63.028+15.154\ln x$\par
+$a=-63.028\approx-63.0$\par
+$b=15.154\approx15.2$\par
+$r=0.94660\approx0.947$
+\pt{(c)} 1) From the scatter diagram, it is observed that as $x$ increases, $y$ increases by decreasing amounts, and\par
+2) product moment correlation coefficient between $y$ and $\ln x$ is 0.947, which is closer to 1 than that of $x$ and $y$, which is 0.921 .\par
+Hence $y=a+b\ln x$ is the better model.
+\pt{(d)} $y=-63.028+15.154\ln200$\par
+\quad $=17.262$\par
+\quad $\approx17.3$\par\medskip
+Since $x=200$ lies outside the given range of $x$ values, $110\leq x\leq188$, the estimated yield may not be reliable.
+\pt{(e)} Replace $x$ by $25.4x$,\par
+$y=-63.028+15.154\ln(25.4x)$\par
+$\phantom{y}=-63.028+15.154[\ln25.4+\ln x]$\par
+$\phantom{y}=-14.009+15.154\ln x$\par
+$\phantom{y}=-14.0+15.2\ln x$\par\smallskip
+{\color{black!55}\footnotesize[Note: the official solution also has a ``Comments'' column (marking tips); only the Solutions column is reproduced here.]}
+}
+%Q 30|9758 A-Level 2024 P2 Q11
+\defQ{30}{}{%
+\begin{qparts}
+\pt{(a)} A certain brand of breakfast cereal is sold in a variety of different sized packs. Details of the mass of cereal in each pack, $m$ grams, and the price, $p$ cents, are given in the table below.\par\smallskip
+{\centering\begin{tabular}{|c|c|c|c|c|c|c|}\hline $m$ & 24 & 250 & 550 & 1000 & 2000 & 5000\\\hline $p$ & 100 & 300 & 400 & 600 & 900 & 1200\\\hline\end{tabular}\par}\smallskip
+A scatter diagram for the data is shown below.
+\figALcereal
+\pt{(i)} Explain what the scatter diagram tells you about the relationship between $m$ and $p$. \mk{1}
+\end{qparts}
+The following two models are proposed, where $a$, $b$, $d$ and $e$ are constants.
+\[p=a+b\ln m\qquad\qquad p=d+e\sqrt{m}\]
+\begin{qparts}
+\pt{(ii)} Determine which of these models gives the better fit to the data. State the values of the constants and the product moment correlation coefficient in this case. \mk{4}
+\pt{(iii)} A new pack containing 750 grams of cereal is introduced. Use the model you identified in part \textbf{(a)(ii)} to estimate the price of this pack, correct to the nearest 10 cents. Explain whether your answer is reliable. \mk{2}
+\pt{(b)} Kai is investigating the relationship between the number, $n$, of a particular type of high-performance batteries in a pack and the price, \$$y$, of the pack she found in different stores. Her results are shown in the table below.\par\smallskip
+{\centering\begin{tabular}{|c|c|c|c|c|c|}\hline $n$ & 2 & 5 & 6 & 7 & 11\\\hline $y$ & 6 & 10 & 16 & 20 & 25\\\hline\end{tabular}\par}\smallskip
+This information is shown in the scatter diagram below.
+\figALkai
+Kai decides to investigate whether the model $y=\frac52n+1$ is a good fit for this data.
+\pt{(i)} Draw the line $y=\frac52n+1$ on the scatter diagram above. \mk{1}
+\pt{(ii)} For the model $y=\mathrm{f}(n)$, the residual for a point $(a,b)$ is $b-\mathrm{f}(a)$.\par
+\textbf{(A)} Mark the residuals for the points on the scatter diagram above. \mk{1}\par
+\textbf{(B)} Explain why Kai should use the sum of the squares of the residuals rather than the sum of the residuals when assessing the fit of the model. \mk{1}\par
+\textbf{(C)} Calculate the sum of the squares of the residuals for the line $y=\frac52n+1$. \mk{1}
+\end{qparts}
+Kai's friend points out that other lines parallel to Kai's line can be drawn which are a better fit for the data.
+\begin{qparts}
+\pt{(iii)} Explain how the sum of the squares of the residuals for a line that is a better fit for the data differs from the sum of the squares of the residuals for the line $y=\frac52n+1$ found in part \textbf{(ii)(C)}. \mk{1}
+\pt{(iv)} Find the range of values of $c$ for which the line $y=\frac52n+c$ is a better fit for the data than the line $y=\frac52n+1$. \mk{3}
+\end{qparts}
+\src{9758 A-Level 2024 P2 Q11}}
+\defS{30}{%
+\pt{(a)(i)} The scatter diagram tells us that as mass of a pack of cereal ($m$) increases, the price ($p$) increases at a decreasing rate.
+\pt{(a)(ii)} For $p=a+b\ln m$, product moment correlation coefficient $r_1=0.928513$\par
+For $p=d+e\sqrt{m}$, product moment correlation coefficient $r_2=0.991438$\par
+Since $r_2$ is closer to 1 than $r_1$, the model \underline{$p=d+e\sqrt{m}$} gives a better fit to the data.\par\medskip
+For this model, $d=32.952567=\underline{33.0}$ and $e=17.269804=\underline{17.3}$\par
+$r=r_2=\underline{0.991}$ (all answers to 3 s.f.)
+\pt{(a)(iii)} $p=32.952567+17.269804\sqrt{m}$\par
+Sub. $m=750$:\par
+$p=32.952567+17.269804\sqrt{750}$\par
+\quad $=505.906$\par
+$\therefore$ Estimated price $=\underline{510\text{ cents}}$ (nearest 10 cents)\par\medskip
+This estimate is reliable as the product moment correlation coefficient of 0.991 is very close to 1, indicating a strong positive linear correlation between $\sqrt{m}$ and $p$. Furthermore, the value $m=750$ is within the data range $24\leq m\leq5000$, hence the estimate is an interpolation.
+\pt{(b)(i)}\figALkaiSol
+\pt{(b)(ii)(A)}{\centering\setlength{\tabcolsep}{4pt}\begin{tabular}{|l|c|c|c|c|c|}\hline
+Point $(a,b)$ & (2, 6) & (5, 10) & (6, 16) & (7, 20) & (11, 25)\\\hline
+$\mathrm{f}(a)$ & 6 & 13.5 & 16 & 18.5 & 28.5\\\hline
+Residual $b-\mathrm{f}(a)$ & 0 & $-3.5$ & 0 & 1.5 & $-3.5$\\\hline\end{tabular}\par}
+\pt{(b)(ii)(B)} As residuals may be positive or negative (or zero), they may cancel out if Kai simply sums the residuals. Squaring the residuals allows Kai to sum up positive numbers for a more accurate assessment of the fit of the model.
+\pt{(b)(ii)(C)} Sum of squares of residuals for the line $y=\frac52n+1$ is $0^2+(-3.5)^2+0^2+1.5^2+(-3.5)^2=\underline{26.75}$
+\pt{(b)(iii)} The sum of squares of residuals for a line that is a better fit will be less than the sum of squares of residuals for the line $y=\frac52n+1$, i.e. less than 26.75.
+\pt{(b)(iv)} Consider $\mathrm{f}(n)=\frac52n+c$.\par\smallskip
+{\centering\setlength{\tabcolsep}{4pt}\begin{tabular}{|l|c|c|c|c|c|}\hline
+Point $(a,b)$ & (2, 6) & (5, 10) & (6, 16) & (7, 20) & (11, 25)\\\hline
+$\mathrm{f}(a)$ & $5+c$ & $12.5+c$ & $15+c$ & $17.5+c$ & $27.5+c$\\\hline
+Residual $b-\mathrm{f}(a)$ & $1-c$ & $-2.5-c$ & $1-c$ & $2.5-c$ & $-2.5-c$\\\hline\end{tabular}\par}\smallskip
+Sum of squares of residuals for the line $y=\frac52n+c$ is\par
+$(1-c)^2+(-2.5-c)^2+(1-c)^2+(2.5-c)^2+(-2.5-c)^2$\par
+$=2(1-c)^2+2(2.5+c)^2+(2.5-c)^2$\par
+$=20.75+c+5c^2$\par\medskip
+For this to be a better fit,\par
+$20.75+c+5c^2<26.75$\par
+$5c^2+c-6<0$
+\figALparab
+Using GC, range of values of $c$ is \underline{$-1.2<c<1$}\par\smallskip
+{\color{black!55}\footnotesize[Note: SEAB publishes no worked solutions. This is the worked solution from the local file ``2024 GCE A-Level H2 Mathematics 9758 Paper 2 Solutions'' (tmp\_ch10/AL2024\_P2\_with\_sol.pdf); its author is not named on the document.]}
+}
+%Q 31|9758 A-Level 2019 P2 Q10
+\defQ{31}{}{%
+Abi and Bhani find the fuel consumption for a car driven at different constant speeds. The table shows the fuel consumption, $y$ kilometres per litre, for different constant speeds, $x$ kilometres per hour.\par\smallskip
+{\centering\begin{tabular}{|c|c|c|c|c|c|}\hline $x$ & 40 & 45 & 50 & 55 & 60\\\hline $y$ & 22 & 20 & 18 & 17 & 16\\\hline\end{tabular}\par}
+\begin{qparts}
+\pt{(i)} Abi decides to model the data using the line $y=35-\frac13x$.\par
+\textbf{(a)} On the grid\par
+\qquad$\bullet$ draw a scatter diagram of the data,\par
+\qquad$\bullet$ draw the line $y=35-\frac13x$. \mk{2}
+\figAbiGrid
+\textbf{(b)} For a line of best fit $y=\mathrm{f}(x)$, the residual for a point $(a,b)$ plotted on the scatter diagram is the vertical distance between $(a,\mathrm{f}(a))$ and $(a,b)$. Mark the residual for each point on your diagram. \mk{1}\par
+\textbf{(c)} Calculate the sum of the squares of the residuals for Abi's line. \mk{1}\par
+\textbf{(d)} Explain why, in general, the sum of the squares of the residuals rather than the sum of the residuals is used. \mk{1}
+\end{qparts}
+Bhani models the same data using a straight line passing through the points (40, 22) and (55, 17).\par
+The sum of the squares of the residuals for Bhani's line is 1.
+\begin{qparts}
+\pt{(ii)} State, with a reason, which of the two models, Abi's or Bhani's, gives a better fit. \mk{1}
+\pt{(iii)} State the coordinates of the point that the least squares regression line must pass through. \mk{1}
+\pt{(iv)} Use your calculator to find the equation of the least squares regression line of $y$ on $x$. State the value of the product moment correlation coefficient. \mk{3}
+\pt{(v)} Use the equation of the regression line to estimate the fuel consumption when the speed is 30 kilometres per hour. Explain whether you would expect this value to be reliable. \mk{2}
+\pt{(vi)} Cerie performs a similar experiment on a different car. She finds that the sum of the squares of the residuals for her line is 0. What can you deduce about the data points in Cerie's experiment? \mk{1}
+\end{qparts}
+\src{9758 A-Level 2019 P2 Q10}}
+\defS{31}{%
+\pt{(i)(a)}\figAbiSol
+\pt{(i)(b)} The residuals are the distances labelled $e_1,\ldots,e_5$ in the diagram.
+\pt{(i)(c)} $\displaystyle\sum_{i=1}^{5}(e_i)^2=\frac19+0+\frac19+\frac19+1=\frac43$\par\smallskip
+Key the eqn in Y$_1$ \quad Define L$_3$ = Y$_{\text{estimated}}$ \quad Define L$_4$ = $e_i^2$\par
+Optional : Using List to calculate the Sum\par
+Go to List (Type 2nd $\rightarrow$ stat $\rightarrow$ MATH) \quad Sum all the entries in L$_4$
+\pt{(i)(d)} Residuals can be positive or negative since they are calculated by taking (\textit{the observed y-value}) -- (\textit{the estimated y-value}). Taking the sum of these residuals will result in them cancelling out and thus losing important information. Taking the sum of the squares of the residuals will avoid this problem.
+\pt{(ii)} Sum of the squares of the residuals for Bhani's model $=1<\dfrac43$ (Sum of the squares of the residuals for Abi's model), Bhani's model is a better fit.
+\pt{(iii)} $(\bar{x},\bar{y})=(50,\,18.6)$
+\pt{(iv)} Regression line: $y=-0.3x+33.6$\par
+$r=-0.985$ (3 s.f.)
+\pt{(v)} $x=30$ , $y=24.6$ (kilometres per litre)\par
+$x=30$ is outside the given range of $x$-values. The estimate obtained using extrapolation is unreliable.
+\pt{(vi)} Sum of the squares of the residuals = 0 implies that ALL data points lie on the regression line, which is highly unlikely in a real-life experiment.\par\smallskip
+{\color{black!55}\footnotesize[Note: SEAB publishes no worked solutions. This is the Raffles Institution ``Solution for 2019 A-Level Paper 2'' (grail.moe item 19456). Its small GC screenshots for (i)(c) are illegible in the source and are described in words only. Question text transcribed from a tutor compilation (Paradigm ``Correlation and Regression'', Q7 N2019/P2/Q10), as no local copy of the SEAB question paper was found.]}
+}

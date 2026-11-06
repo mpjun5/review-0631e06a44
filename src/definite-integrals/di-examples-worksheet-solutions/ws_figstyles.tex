@@ -1,0 +1,79 @@
+% WORKSHEET COPY of ../notes/figstyles.tex (2026-10-09 17:31 version). Only change (follow-up):
+% thin light axes in `sketch' and `ax3' (marked [2026-10-09 follow-up]).
+% =====================================================================
+% figstyles.tex: plot styles and figure macros shared by the notes, the
+% slides (../slides) and the worksheets (../worksheet). Needs pgfplots,
+% the fillbetween library and tikz libraries arrows.meta and calc.
+% House rules built in:
+%   * `axis on top' in every sketch: shading never covers an axis, and the
+%     fill starts at the axis line (items 31, 32, 34);
+%   * regions are filled from the curve itself (fill between / closed plot);
+%   * 3D solids in the page-13 style (translucent blue, light end caps).
+% =====================================================================
+\pgfplotsset{
+  sketch/.style={clip=false, axis line style={thin, black!45}, every axis label/.append style={black!60}, trig format=rad, % [2026-10-09 follow-up] was axis line style=thick
+    axis lines=middle, axis on top,
+    every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+    every axis y label/.style={at={(current axis.above origin)},anchor=south},
+    ticks=none, xlabel=$x$, ylabel=$y$, width=7.6cm, height=6cm,
+    every node/.append style={font=\footnotesize}},
+  curve/.style={blue, semithick, smooth, samples=150},
+  line2/.style={red!75!black, semithick, samples=2},
+  % 3D solids of revolution (angles in DEGREES: no `trig format=rad' here)
+  solid3d/.style={hide axis, trig format=deg, width=8.4cm, height=6.4cm, clip=false,
+    z buffer=sort, colormap={bl}{rgb255=(150,185,235) rgb255=(40,90,180)},
+    every node/.append style={font=\footnotesize}},
+  solidsurf/.style={surf, shader=interp, opacity=0.75, point meta=y},
+  red3d/.style={surf, shader=flat, draw=none, point meta=1,
+    colormap={r}{rgb255=(215,50,50) rgb255=(215,50,50)}},
+  orange3d/.style={surf, shader=interp, point meta=z,
+    colormap={o}{rgb255=(250,210,160) rgb255=(220,120,30)}},
+  cap3d/.style={surf, shader=flat, draw=none, point meta=1,
+    colormap={c}{rgb255=(185,205,238) rgb255=(185,205,238)}},
+  mini3d/.style={solid3d, width=2.6cm, height=2.4cm},
+}
+\tikzset{
+  region/.style={fill=blue!22, draw=none},
+  regionB/.style={fill=orange!35, draw=none},
+  strip/.style={fill=red!55, draw=red!70!black, thin},
+  asym/.style={black, dashed, thin},
+  pt/.style={circle, fill=black, inner sep=1.1pt},
+  dimarrow/.style={<->, >=Stealth, thin},
+  ax3/.style={-{Stealth[length=1.5mm]}, thin, black!50}, % [2026-10-09 follow-up] was -{Stealth[length=2mm]}, thick
+}
+\definecolor{hl}{RGB}{30,110,200}
+
+% ---------------------------------------------------------------------
+% Mini 3D solids for SOLUTIONS (items 54, 62, 66, 74): solid only, no
+% washer, every picture 1.5 cm tall; a "big minus small" pair is 4.4 cm wide.
+%  \solX[x unit cm]{R(x)}{a}{b}{R(a)}{R(b)}{x-axis end}{y-axis top}{curve colour}
+%     solid swept out by y = R(x), a <= x <= b, about the x-axis
+%  \solY[y unit cm]{R(y)}{c}{d}{R(c)}{R(d)}{x-axis end}{y-axis top}{curve colour}
+%     solid swept out by x = R(y), c <= y <= d, about the y-axis
+%     (R is written in terms of the letter x, which here stands for y)
+% ---------------------------------------------------------------------
+\newcommand{\solX}[9][0.5]{%
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{axis}[mini3d, x={(#1cm,-0.06cm)}, y={(0.12cm,0.09cm)}, z={(0cm,0.4cm)}]
+  \addplot3[cap3d, domain=0:1, y domain=0:360, samples=2, samples y=40] ({#3}, {x*(#5)*cos(y)}, {x*(#5)*sin(y)});
+  \addplot3[solidsurf, opacity=0.5, point meta=z, domain=#3:#4, y domain=0:360, samples=24, samples y=40] ({x}, {(#2)*cos(y)}, {(#2)*sin(y)});
+  \addplot3[cap3d, domain=0:1, y domain=0:360, samples=2, samples y=40] ({#4}, {x*(#6)*cos(y)}, {x*(#6)*sin(y)});
+  \addplot3[#9, thick, domain=#3:#4, samples=40, samples y=1] ({x}, {0}, {#2});
+  \draw[ax3] (axis cs:{min(0,#3)-0.3},0,0) -- (axis cs:#7,0,0);
+  \draw[ax3] (axis cs:0,0,{-0.15*(#8)}) -- (axis cs:0,0,#8);
+\end{axis}
+\end{tikzpicture}}
+\newcommand{\solY}[9][0.6]{%
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{axis}[mini3d, x={(0.3cm,-0.03cm)}, y={(0.13cm,0.11cm)}, z={(0cm,#1cm)}]
+  \addplot3[cap3d, domain=0:1, y domain=0:360, samples=2, samples y=40] ({x*(#5)*cos(y)}, {x*(#5)*sin(y)}, {#3});
+  \addplot3[solidsurf, opacity=0.5, point meta=z, domain=#3:#4, y domain=0:360, samples=24, samples y=40] ({(#2)*cos(y)}, {(#2)*sin(y)}, {x});
+  \addplot3[cap3d, domain=0:1, y domain=0:360, samples=2, samples y=40] ({x*(#6)*cos(y)}, {x*(#6)*sin(y)}, {#4});
+  \addplot3[#9, thick, domain=#3:#4, samples=40, samples y=1] ({#2}, {0}, {x});
+  \draw[ax3] (axis cs:0,0,{min(0,#3)-0.15*(#8)}) -- (axis cs:0,0,#8);
+  \draw[ax3] (axis cs:-0.3,0,0) -- (axis cs:#7,0,0);
+\end{axis}
+\end{tikzpicture}}
+\newcommand{\minisolo}[1]{\adjustbox{totalheight=1.5cm, max width=4.6cm}{#1}}
+\newcommand{\minipair}[2]{\adjustbox{totalheight=1.5cm, max width=4.6cm}{#1\;\raisebox{0.15ex}{\Large$-$}\;#2}}
+\newcommand{\minilabel}[1]{\raisebox{0.65cm}{\small #1}\;}

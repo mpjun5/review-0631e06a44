@@ -1,0 +1,118 @@
+% EXAM PRACTICE preamble: copied from ../worksheet/ws_preamble.tex (2026-10-10).
+% Changes: header text; \Q takes a section tag; student copy has NO working
+% boxes (questions follow one another); teacher copy: one question per page,
+% solution box below the question.
+% Original note: Worksheet preamble: LOCAL COPIES (ws_preamble_build, ws_preamble_local,
+% ws_figstyles; copied from ../notes on 2026-10-09) + chapter styles,
+% plus RI-style question / solution-box layout (item 16, item 79).
+\input{ws_preamble_build}
+\input{ws_preamble_local}
+\newif\ifteacher\teachertrue
+\ifx\conform\ShowSolutionsKey\else\teacherfalse\fi
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{H2 Mathematics 9758 \quad Chapter 10: Definite Integrals}
+\rhead{\ifteacher Solutions\else Questions\fi}
+\cfoot{\thepage}
+\newcounter{wsq}
+% \Q{source}: question heading, source cited on the right
+% \Q{section tag}{source}: teacher copy starts each question on a new page;
+% student copy runs the questions on, separated by a thin rule.
+\usepackage{needspace}
+\usetikzlibrary{patterns}
+\newcommand{\Q}[2]{\ifteacher\ifnum\value{wsq}>0 \clearpage\else\par\bigskip\fi\else\ifnum\value{wsq}>0 \par\bigskip\Needspace{12\baselineskip}\noindent\textcolor{black!25}{\rule{\textwidth}{0.4pt}}\par\medskip\fi\fi
+  \stepcounter{wsq}\noindent{\large\bfseries Question \thewsq}\quad{\small\textcolor{teal!50!black}{\textbf{#1}}}\hfill{\small\textcolor{black!60}{[#2]}}\par\smallskip}
+% solution box: filled (teacher) or blank, filling the rest of the page (student)
+\newtcolorbox{solboxT}{enhanced, width=\dimexpr\linewidth-1.5pt\relax, breakable, colback=white, colframe=black!70, boxrule=0.8pt,
+  sharp corners, left=3mm, right=3mm, top=2mm, bottom=2mm,
+  title={Solution}, fonttitle=\bfseries\small, coltitle=black, colbacktitle=black!8}
+\newtcolorbox{solboxS}{enhanced, width=\dimexpr\linewidth-1.5pt\relax, height fill, colback=white, colframe=black!70, boxrule=0.8pt,
+  sharp corners, title={Working}, fonttitle=\bfseries\small, coltitle=black, colbacktitle=black!8}
+\newcommand{\Sol}[1]{\ifteacher\par\medskip\begin{solboxT}#1\end{solboxT}\fi}
+
+% ---------------------------------------------------------------------
+% [diagram fixes 2026-10-09] REVIEW-COPY SWITCH for the worksheet.
+% DI_worksheet_REVIEW.tex defines \wsreviewcopy as 1; the teacher and
+% student builds leave it at 0, so \wschg prints its content unchanged.
+%   \wschg{note}{diagram}: light-yellow frame behind the diagram + a PDF
+%   hover note (Square annotation, written with an xdvipdfmx \special).
+% ---------------------------------------------------------------------
+\providecommand\wsreviewcopy{0}
+\ifnum\wsreviewcopy=1
+  \rhead{\textcolor{orange!80!black}{\textbf{REVIEW COPY}} (yellow = not from grail.moe)}
+  \lhead{H2 Mathematics 9758 \quad Ch 10}
+  \definecolor{wschgyellow}{RGB}{255,246,170}
+  \newcommand\wschgann[3]{\special{pdf:ann width #1 height #2 depth 0pt
+    << /Type/Annot /Subtype/Square /Contents (#3) /T (Review: examples worksheet)
+       /C [1 0.8 0] /BS << /W 0 >> /F 4 >>}}
+  \newcommand\wschg[2]{\tcbox[enhanced, on line, colback=wschgyellow!60, colframe=wschgyellow!70!orange,
+      boxrule=0.6pt, arc=0pt, boxsep=1pt, left=2pt, right=2pt, top=2pt, bottom=2pt,
+      overlay={\path let \p1=(frame.south west), \p2=(frame.north east) in
+        node[anchor=south west, inner sep=0, outer sep=0] at (\p1)
+        {\wschgann{\the\dimexpr\x2-\x1\relax}{\the\dimexpr\y2-\y1\relax}{#1}};}]{#2}}
+  % (worksheet's per-page 'global' note and \Q override removed for the exam practice)
+  % [2026-10-10] block version for changed WORKING (displays allowed inside):
+  % light-yellow block + hover note covering it
+  \newenvironment{wschgblock}[1]{\par\begin{tcolorbox}[enhanced, breakable, colback=wschgyellow!55,
+      colframe=wschgyellow!70!orange, boxrule=0.4pt, arc=0pt, boxsep=0pt,
+      left=3pt, right=3pt, top=2pt, bottom=2pt, enlarge left by=-3pt, enlarge right by=-3pt,
+      before skip=2pt, after skip=2pt, parbox=false,
+      overlay={\path let \p1=(frame.south west), \p2=(frame.north east) in
+        node[anchor=south west, inner sep=0, outer sep=0] at (\p1)
+        {\wschgann{\the\dimexpr\x2-\x1\relax}{\the\dimexpr\y2-\y1\relax}{#1}};}]}%
+    {\end{tcolorbox}\par}
+\else
+  \newcommand\wschg[2]{#2}
+  \newenvironment{wschgblock}[1]{}{}
+\fi
+
+% ---------------------------------------------------------------------
+% [diagram fixes 2026-10-09] Mini 3D solids with BOTH units adjustable, so a
+% solid can keep the proportions of its region graph. Same look as \solX /
+% \solY in ws_figstyles.tex (which are unchanged).
+%  \solXs{x unit cm}{radial unit cm} {R(x)}{a}{b}{R(a)}{R(b)}{x-axis end}{y-axis top}{colour}
+%  \solYs{radial unit cm}{y unit cm} {R(y)}{c}{d}{R(c)}{R(d)}{x-axis end}{y-axis top}{colour}
+% ---------------------------------------------------------------------
+\newcommand{\solXs}[2]{\def\wsxu{#1}\def\wszu{#2}\solXsInner}
+\newcommand{\solXsInner}[8]{%
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{axis}[mini3d, x={(\wsxu cm,-0.06cm)}, y={({0.15*\wszu cm},{0.1*\wszu cm})}, z={(0cm,\wszu cm)}]
+  \addplot3[cap3d, domain=0:1, y domain=0:360, samples=2, samples y=40] ({#2}, {x*(#4)*cos(y)}, {x*(#4)*sin(y)});
+  \addplot3[solidsurf, opacity=0.5, point meta=z, domain=#2:#3, y domain=0:360, samples=30, samples y=40] ({x}, {(#1)*cos(y)}, {(#1)*sin(y)});
+  \addplot3[cap3d, domain=0:1, y domain=0:360, samples=2, samples y=40] ({#3}, {x*(#5)*cos(y)}, {x*(#5)*sin(y)});
+  \addplot3[#8, thick, z buffer=none, domain=#2:#3, samples=40, samples y=1] ({x}, {0}, {#1});
+  \draw[ax3] (axis cs:{min(0,#2)-0.15},0,0) -- (axis cs:#6,0,0);
+  \draw[ax3] (axis cs:0,0,{-0.15*(#7)}) -- (axis cs:0,0,#7);
+\end{axis}
+\end{tikzpicture}}
+\newcommand{\solYs}[2]{\def\wsxu{#1}\def\wszu{#2}\solYsInner}
+\newcommand{\solYsInner}[8]{%
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{axis}[mini3d, x={(\wsxu cm,{-0.1*\wsxu cm})}, y={({0.43*\wsxu cm},{0.37*\wsxu cm})}, z={(0cm,\wszu cm)}]
+  \addplot3[cap3d, domain=0:1, y domain=0:360, samples=2, samples y=40] ({x*(#4)*cos(y)}, {x*(#4)*sin(y)}, {#2});
+  \addplot3[solidsurf, opacity=0.5, point meta=z, domain=#2:#3, y domain=0:360, samples=41, samples y=40] ({(#1)*cos(y)}, {(#1)*sin(y)}, {x});
+  \addplot3[cap3d, domain=0:1, y domain=0:360, samples=2, samples y=40] ({x*(#5)*cos(y)}, {x*(#5)*sin(y)}, {#3});
+  \addplot3[#8, thick, z buffer=none, domain=#2:#3, samples=80, samples y=1] ({#1}, {0}, {x});
+  \draw[ax3] (axis cs:0,0,{min(0,#2)-0.15*(#7)}) -- (axis cs:0,0,#7);
+  \draw[ax3] (axis cs:-0.3,0,0) -- (axis cs:#6,0,0);
+\end{axis}
+\end{tikzpicture}}
+
+% ---------------------------------------------------------------------
+% [2026-10-10] Source of the worked solutions.
+%   \solsrc{url}: grey line at the top of a solution box citing the school's
+%                 own worked solution on grail.moe that the working follows.
+%   \pipworked  : grey tag + PDF hover note "Pip-worked, not from grail.moe",
+%                 placed on any part whose working is NOT from grail.moe.
+% ---------------------------------------------------------------------
+\newcommand\solsrc[1]{{\par\noindent\scriptsize\color{black!55}Working follows the school's solution on grail.moe: \url{#1}\par\smallskip}}
+\newcommand\pipann[3]{\special{pdf:ann width #1 height #2 depth 0pt
+    << /Type/Annot /Subtype/Square /Contents (#3) /T (Solution source)
+       /C [0.55 0.55 0.55] /BS << /W 0 >> /F 4 >>}}
+\newcommand\pipworkedplain{\begingroup\setbox0\hbox{\colorbox{black!8}{\scriptsize\sffamily Pip-worked}}%
+  \edef\pipw{\the\wd0}\edef\piph{\the\ht0}\pipann{\pipw}{\piph}{Pip-worked, not from grail.moe}\box0\endgroup}
+\ifnum\wsreviewcopy=1
+  \newcommand\pipworked{\wschg{Pip-worked, not from grail.moe}{\scriptsize\sffamily Pip-worked, not from grail.moe}}
+\else
+  \let\pipworked\pipworkedplain
+\fi

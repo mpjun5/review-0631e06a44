@@ -1,0 +1,17 @@
+% ep_figs.tex: diagrams for the AoI exam practice (redrawn in TikZ).
+% EJC 2025 P1 Q5 figure (curve y = 1/x with an axis break), plain TikZ.
+% X(u) maps x = u to the page (x = 1 at 1.6 cm, 4 cm per unit); F(u) = height of y = 1/x.
+\tikzset{ejc/.style={declare function={X(\u)=4*\u-2.4; F(\u)=2.6/\u;}, line cap=round},
+  ejcax/.style={thin, black!45}, ejcrect/.style={draw=black, thin, fill=none},
+  ejcrectS/.style={draw=blue!60!black, fill=blue!15, thin}}
+\newcommand{\ejcbase}{%
+  \draw[ejcax] (-0.5,0) -- (0.12,0) -- (0.2,-0.17) -- (0.32,0.17) -- (0.4,0) -- (7.3,0);
+  \draw[ejcax, -{Stealth[length=1.6mm]}] (7.2,0) -- (7.4,0) node[right, black!60] {$x$};
+  \draw[ejcax, -{Stealth[length=1.6mm]}] (0,-0.35) -- (0,4.3) node[above, black!60] {$y$};
+  \draw[dashed, thin] ({X(1)},0) -- ({X(1)},4.15);
+  \draw[dashed, thin] ({X(2)},0) -- ({X(2)},4.15);
+  \node[below] at ({X(1)},0) {$1$};
+  \node[below] at ({X(2)},0) {$2$};}
+\newcommand{\ejccurve}{%
+  \draw[blue!60!black, semithick, domain=0.66:2.32, samples=80, smooth] plot ({X(\x)}, {F(\x)});
+  \node[right] at ({X(2.12)},{F(2.12)-0.5}) {$y = \dfrac{1}{x}$};}

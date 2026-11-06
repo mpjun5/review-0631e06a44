@@ -1,0 +1,290 @@
+% preamble_build.tex: copy of Maximus's preamble.tex for the DE v3 build.
+% The blocks marked [BUILD COPY CHANGE] are the earlier build fixes.
+% The blocks marked [V3 ADDITION] are new in this version (example box,
+% spacing). Everything else is unchanged from preamble.tex.
+
+% For margins
+\usepackage[a4paper, margin = 20mm]{geometry}
+
+\usepackage[Lenny]{fncychap}
+% Rejne, Glenn, Lenny
+
+\usepackage{etoc}
+
+% [V3 ADDITION] cancel: used to show the dx's "cancelling" in Section 11.3
+\usepackage{cancel}
+\renewcommand{\CancelColor}{\color{red}}
+
+% For enumeration & math symbols
+\usepackage{enumerate}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,graphicx,lipsum}
+
+% For diagrams, plots and boxes
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{xcolor}
+\pgfplotsset{
+    standard/.style={clip = false,
+    axis line style = thick,
+    trig format=rad,
+    axis lines = middle,
+    every axis x label/.style={at={(current axis.right of origin)},anchor= west},
+    every axis y label/.style={at={(current axis.above origin)},anchor=south}
+    }
+}
+
+% For GC font
+\usepackage{fontspec}
+% [BUILD COPY CHANGE 1] The TI-84 key font is loaded only if the file exists
+% (checked in ./Fonts/... and ../Fonts/...). Otherwise \ti{} falls back to a
+% small boxed sans-serif key. Known letters of the TI font are mapped to their
+% key names in the fallback: o = [y=], z = [mode], f = [L3].
+\newcommand{\tikey}[1]{\tcbox[on line, enhanced, boxsep=0pt, left=2pt, right=2pt,
+  top=1pt, bottom=1pt, boxrule=0.5pt, arc=1.5pt, colback=white,
+  colframe=black!70]{\sffamily\footnotesize\strut #1}}
+\ExplSyntaxOn
+\NewDocumentCommand{\tifallback}{m}{
+  \str_case:nnF {#1}
+    { {o}{\tikey{y=}} {z}{\tikey{mode}} {f}{\tikey{L3}} }
+    { \tikey{#1} }
+}
+\ExplSyntaxOff
+\def\tifontcase{0}
+\IfFileExists{Fonts/TI-84 Plus CE Key Fonts/TI84PlusCEKeys.ttf}
+  {\def\tifontcase{1}}{}
+\IfFileExists{../Fonts/TI-84 Plus CE Key Fonts/TI84PlusCEKeys.ttf}
+  {\def\tifontcase{2}}{}
+\ifcase\tifontcase\relax
+  % 0: font not found, use boxed fallback keys
+  \newcommand{\ti}[1]{\tifallback{#1}}
+\or
+  % 1: original location (as in preamble.tex)
+  \newfontfamily\tifont[
+    Path = {Fonts/TI-84 Plus CE Key Fonts/},
+    UprightFont = {TI84PlusCEKeys.ttf}
+  ]{}
+  \newcommand{\ti}[1]{{\tifont #1}}
+\or
+  % 2: one level up (when compiling inside draft-ch1/)
+  \newfontfamily\tifont[
+    Path = {../Fonts/TI-84 Plus CE Key Fonts/},
+    UprightFont = {TI84PlusCEKeys.ttf}
+  ]{}
+  \newcommand{\ti}[1]{{\tifont #1}}
+\fi
+
+% [AoI items 17/18/37] GC DISPLAY FONT. Every GC key, command, menu item and
+% screen line goes through \gcfont, so the font can be swapped HERE in one place.
+%   \gc{fnInt(}      command / menu item / stored variable in the display font
+%   \gckey{2nd}      a calculator key (display font in a small key outline)
+%   \gcscreen{...}   a calculator screen (display font on a grey-green LCD panel)
+% The font file lives in ../Fonts (shared by notes, slides and worksheet).
+\def\gcfontfile{VT323-Regular.ttf}
+\IfFileExists{../Fonts/\gcfontfile}{%
+  \newfontfamily\gcfont[Path=../Fonts/, Scale=1.32]{\gcfontfile}}{%
+  \newcommand\gcfont{\ttfamily}}
+\newcommand{\gc}[1]{\mbox{\gcfont #1}}
+\newcommand{\gckey}[1]{\tcbox[on line, enhanced, boxsep=0pt, left=2pt, right=2pt,
+  top=0.6pt, bottom=0.2pt, boxrule=0.5pt, arc=1.5pt, colback=black!4,
+  colframe=black!65]{\gcfont\strut #1}}
+\definecolor{lcd}{RGB}{214,222,204}
+\newcommand{\gcscreen}[1]{\tcbox[on line, enhanced, boxsep=1pt, left=4pt, right=4pt,
+  top=2pt, bottom=2pt, boxrule=1.2pt, arc=1pt, colback=lcd, colframe=black!70]{%
+  \gcfont\begin{tabular}{@{}l@{}}#1\end{tabular}}}
+% integral template as shown on the TI-84 Plus CE (MathPrint): \gcint{0}{2}{e^(-X²)}{X}
+\newcommand{\gcint}[4]{{\gcfont\raisebox{-0.35ex}{\Large ∫}\hspace{-0.15em}%
+  \raisebox{-0.2ex}{\begin{tabular}{@{}l@{}}\footnotesize #2\\[-1.3ex]\footnotesize #1\end{tabular}}%
+  \hspace{0.1em}(#3)d#4}}
+% old key macro kept as an alias so nothing breaks
+\renewcommand{\ti}[1]{\gckey{#1}}
+
+% SI units
+\usepackage{siunitx}
+
+% setspace
+%\usepackage{setspace}
+%\onehalfspacing
+
+% For hyperlinks within and out of document
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    linkcolor = black,
+    urlcolor = blue,
+}   
+
+% For captions for pics
+\usepackage{capt-of}
+
+
+% tcolorbox custom environments
+% Definition ========================================================
+\newtcolorbox[auto counter,number within=section]{definition}[2][drop shadow]{%
+enhanced, before skip=5mm, after skip=6mm, % [V3 ADDITION] spacing
+colback=blue!5!white,colframe=blue!50!black,fonttitle=\bfseries,
+title= Definition~\thetcbcounter. #2,#1}
+
+% Theorem ==========================================================
+\newtcolorbox[auto counter,number within=section]{theorem}[2][drop shadow]{%
+enhanced, before skip=5mm, after skip=6mm, % [V3 ADDITION] spacing
+colback=black!5!white,colframe=black,fonttitle=\bfseries,
+title= Theorem~\thetcbcounter. #2,#1}
+
+% Caution box ======================================================
+\newtcolorbox{caution}[1][]{enhanced,
+before skip=5mm,after skip=6mm, % [V3 ADDITION] was 2mm/3mm
+boxrule=1pt,left=11mm,right=2mm,top=3mm,bottom=3mm,
+colback=yellow!50,
+colframe=yellow!20!black,
+sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+underlay={%
+\path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+\path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+\path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=9mm]interior.north west);
+},
+drop fuzzy shadow,#1}
+
+% Question box ======================================================
+\newtcolorbox{question}[1][]{enhanced,
+before skip=5mm,after skip=6mm, % [V3 ADDITION] was 2mm/3mm
+boxrule=1pt,left=11mm,right=2mm,top=3mm,bottom=3mm,
+colback=blue!20!white,
+colframe=blue!20!black,
+sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+underlay={%
+\path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+\path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+\path[fill=blue!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries ?} ([xshift=9mm]interior.north west);
+},
+drop fuzzy shadow,#1}
+
+% Information box ======================================================
+\newtcolorbox{info}[1][]{enhanced,
+before skip=5mm,after skip=6mm, % [V3 ADDITION] was 2mm/3mm
+boxrule=1pt,left=11mm,right=2mm,top=3mm,bottom=3mm,
+colback=cyan!20!white,
+colframe=cyan!20!black,
+sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+underlay={%
+\path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+\path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+\path[fill=cyan!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries i} ([xshift=9mm]interior.north west);
+},
+drop fuzzy shadow,#1}
+
+% Mistake box ======================================================
+\newtcolorbox{mistake}[1][]{enhanced,
+before skip=5mm,after skip=6mm, % [V3 ADDITION] was 2mm/3mm
+boxrule=1pt,left=11mm,right=2mm,top=3mm,bottom=3mm,
+colback=red!20!white,
+colframe=red!20!black,
+sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+underlay={%
+\path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+\path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+\path[fill=red!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries $\times$} ([xshift=9mm]interior.north west);
+},
+drop fuzzy shadow,#1}
+
+
+
+% [V3 ADDITION] Worked example box ==================================
+% Own counter, numbered within the section (Example 11.2.1, 11.2.2, ...).
+% For per-subsection numbering (11.2.1.1) change `section' to `subsection'. Blue `question' boxes are kept for thought-provoking questions
+% only; worked examples always use this box. Usage:
+%   \begin{example} ...question text... \end{example}
+%   \solution{...}
+\newtcolorbox[auto counter,number within=section]{example}[1][]{%
+enhanced, breakable=false, before skip=5mm, after skip=4mm,
+colback=teal!5!white, colframe=teal!55!black, boxrule=0.8pt,
+left=3mm, right=3mm, top=2mm, bottom=2mm,
+sharp corners, rounded corners=northwest, arc=3mm,
+fonttitle=\bfseries, coltitle=white,
+title=Example~\thetcbcounter, attach boxed title to top left={yshift=-2mm, xshift=3mm},
+boxed title style={colback=teal!55!black, sharp corners, rounded corners=northwest, arc=2mm},
+drop fuzzy shadow, #1}
+
+% [V3 ADDITION] Spacing between sections, subsections, parts, paragraphs =
+% (fncychap's chapter heading is untouched; only \section and below.)
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+  {-2ex \@plus -.5ex \@minus -.2ex}{3.2ex \@plus .3ex}%
+  {\normalfont\LARGE\bfseries\color{blue!50!black}}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+  {-1.5ex \@plus -.5ex \@minus -.2ex}{2.6ex \@plus .3ex}%
+  {\normalfont\Large\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+  {-4ex \@plus -1ex \@minus -.5ex}{1.6ex \@plus .2ex}%
+  {\normalfont\large\bfseries\color{teal!50!black}}}
+\makeatother
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.9ex plus 0.3ex minus 0.2ex}
+
+% Headers and Footers
+\usepackage{fancyhdr,lastpage}
+% [V3 R2] grey left-margin line on the out-of-syllabus pages (item 13)
+\usepackage{eso-pic}
+% [AoI item 63] thicker line (2.6pt, was 1.6pt) that starts just BELOW the header rule
+% (top 14mm of the page left clear). Flag: copy this line into every chapter's preamble.
+\newcommand{\oosmargin}{\AddToShipoutPictureBG{\put(12mm,0){\color{gray!75}\rule{2.6pt}{\dimexpr\paperheight-14mm\relax}}}}
+\pagestyle{fancy}
+\lhead{Maximus Pung Jun}
+% [BUILD COPY CHANGE 2] Header bug fix: \chaptername is the word "Chapter",
+% so the original header printed "Chapter 1: Chapter". \chaptermark now stores
+% the bare chapter title in \leftmark, and the header uses \leftmark.
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\rhead{Chapter \thechapter: \leftmark}
+% \cfoot{Page \thepage\  of \pageref{LastPage}} % buggy, does not appear on chapter pages.
+
+% [V3 R2] tick and cross markers for mistake boxes (G3)
+\newcommand{\wrong}{\textcolor{red!70!black}{\ensuremath{\boldsymbol{\times}}}}
+\newcommand{\cmark}{\textcolor{green!50!black}{\ensuremath{\checkmark}}}
+
+\newcommand{\xmark}{\wrong}   % alias: red cross
+% [V3 R2] out-of-syllabus helpers (DE notes item 13)
+%   \oosmargin    : grey line in the left margin on every following page
+%   \oosmarginoff : stop the margin line
+%   \oosnote      : grey banner "Out of syllabus. For your interest only."
+%   outofsyllabus : environment = new page + margin line + banner; ends with
+%                   \clearpage and switches the margin line off again
+\newcommand{\oosmarginoff}{\ClearShipoutPictureBG}
+\newcommand{\oosnote}[1][Nothing in this section is examined in H2 Mathematics.]{\par\noindent\colorbox{gray!15}{\parbox{\dimexpr\textwidth-2\fboxsep}{\textbf{Out of syllabus. For your interest only.} #1}}\par}
+\newenvironment{outofsyllabus}{\clearpage\oosmargin}{\clearpage\oosmarginoff}
+
+% Notation as in Maximus's notes: italic d, display style everywhere (G1).
+% Fractions inside exponents stay small, so never use these macros inside ^{}.
+\newcommand{\dydx}{\dfrac{dy}{dx}}
+\newcommand{\dvdx}{\dfrac{dv}{dx}}
+\newcommand{\dudx}{\dfrac{du}{dx}}
+\newcommand{\ddydx}{\dfrac{d^{2}y}{dx^{2}}}
+\newcommand{\ddt}[1]{\dfrac{d#1}{dt}}
+% Small syllabus flag (no longer used in the DE notes, kept for other chapters)
+\newcommand{\syllabusflag}[1]{\par\noindent{\footnotesize\color{red!70!black}\textbf{Syllabus note.} #1}\par}
+
+
+% Teacher's copy toggle ================================================
+% [BUILD COPY CHANGE 3] \ifx compares the whole word (the original
+% \if\conform test was always false). DE_notes_student.tex predefines
+% \conform as HideSolutions.
+% A student copy defines \conform as HideSolutions BEFORE loading this preamble.
+\providecommand\conform{ShowSolutions}
+\newcommand\ShowSolutionsKey{ShowSolutions}
+% [V3 ADDITION] In the student copy the hidden solution leaves stretchable
+% blank space (\vfill), so the free space on each page is shared out as
+% working space below the examples instead of collecting at the bottom.
+% [AoI item 10] "Solution." on its own line, so that (a), (b), (c) line up below it.
+\newcommand\solution[1]{\ifx\conform\ShowSolutionsKey
+  \par\noindent\textbf{Solution.}\par\nobreak\vspace{0.5ex}\noindent #1\par\medskip\else\par\vspace{\workspace}\fi}
+% [V3 R2] minimum working space left under each example in the student copy
+\newlength\workspace\setlength\workspace{3cm plus 1fill}
+
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+

@@ -1,0 +1,72 @@
+\documentclass[a4paper,openany]{book}
+\input{preamble_build}
+\input{preamble_local}
+\input{summary_common}
+\input{prelim_fonts}
+\newcommand{\hl}[1]{\colorbox{yellow!45}{$\displaystyle #1$}}
+\newcommand{\cq}[2]{\bigskip\noindent{\large\bfseries\color{blue!50!black}#1}\par\noindent{\small\itshape #2}\par\smallskip}
+\renewcommand{\mk}[1]{\hfill[#1]}
+\pagestyle{plain}
+\begin{document}
+\noindent{\fontsize{24}{28}\selectfont\bfseries\color{blue!50!black} Ch9 Candidate Questions}\par
+\noindent{\large Maximus Pung}\par\smallskip
+\noindent{\small Question text copied word for word from the question papers (questions only, no solutions). Equations to be shown are highlighted.}\par
+
+\par\bigskip\noindent{\Large\bfseries\color{teal!50!black}A. Tangent parallel to the $y$-axis (implicit curves)}\par
+\cq{A1. EJC 2025 Prelim P2 Q1(b)}{Solution on the EJC P2 answer sheet, p1}
+The curve $C$ has equation $x^{3}+y^{3}-3xy=k$, where $k$ is a positive constant.\par
+$C$ intersects the $x$-axis at the point $A$.
+\begin{enumerate}[(a)]
+\item Find the equation of the tangent to $C$ at $A$. Give your answer in the form $y=px+q$, where $p$ and $q$ are constants to be found in terms of $k$.\mk{5}
+\item There are two points on $C$ where the tangents are parallel to the $y$-axis. Given that $k=3$, find the exact $y$-coordinates of these two points.\mk{3}
+\end{enumerate}
+
+\cq{A2. NYJC 2025 Prelim P2 Q4(a)--(c)}{Solution on the NYJC P2 answer sheet, p3}
+The equation of a curve $C$ is $x^{3}+xy+2y^{3}=k$, where $k$ is a constant.
+\begin{enumerate}[(a)]
+\item Find $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ in terms of $x$ and $y$.\mk{2}
+\end{enumerate}
+It is given that $C$ has a tangent which is parallel to the $y$-axis.
+\begin{enumerate}[(a)]\setcounter{enumi}{1}
+\item Show that the $y$-coordinate of the points of contact of the tangent with $C$ must satisfy $\hl{216y^{6}+4y^{3}+k=0}$. Hence show that $\hl{k\leqslant\frac{1}{54}}$.\mk{6}
+\item Find the possible values of $k$ in the case where the line $x=-6$ is a tangent to $C$.\mk{2}
+\end{enumerate}
+
+\par\bigskip\noindent{\Large\bfseries\color{teal!50!black}B. Tangent at the point with parameter $p$}\par
+\cq{B1. ACJC 2025 Prelim P1 Q11(a)}{Solution on the ACJC P1 answer sheet, p13 (later parts (b), (c) not shown)}
+The curve $C$ is defined by the parametric equations $x=at^{2}$, $y=\dfrac{a}{t}$, $t\neq0$, where $a$ is a positive constant.
+\begin{enumerate}[(a)]
+\item Show that the equation of the tangent to the curve at the point $P\left(ap^{2},\dfrac{a}{p}\right)$ is
+\[\hl{2p^{3}y+x=3ap^{2}}.\]\mk{2}
+\end{enumerate}
+
+\cq{B2. MI 2025 Prelim P2 Q2(i), (ii)}{Solution on the MI P2 answer sheet, p2 ((iii) is a sketch)}
+A curve $C$ has parametric equations $x=\sqrt{t}$, $y=t^{2}+4$, where $0\leqslant t\leqslant16$.
+\begin{enumerate}[(i)]
+\item Find the equation of the tangent to $C$ at the point $P$ with parameter $p$.\mk{3}
+\item Given that the tangent in part (i) passes through the point $(0,1)$, find the exact coordinates of the point $P$.\mk{3}
+\end{enumerate}
+
+\par\bigskip\noindent{\Large\bfseries\color{teal!50!black}C. Turning point and its nature (implicit curve)}\par
+\cq{C1. DHS 2025 Prelim P2 Q3}{Checked against the page image. Solution: \texttt{pnc-src/prelims/2025-dhs-h2-math-prelim-p2-soln.pdf}, pp3--4}
+A curve $C$ has equation $x^{3}+y^{3}-5xy=0$ where $x>0$.
+\begin{enumerate}[(a)]
+\item Find $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ in terms of $x$ and $y$.\mk{2}
+\item Find the coordinates of the point on $C$ at which the normal is parallel to the $y$-axis.\mk{3}
+\item Determine the nature of the stationary point.\mk{2}
+\end{enumerate}
+
+\par\bigskip\noindent{\Large\bfseries\color{teal!50!black}D. Parametric curve: prove a maximum}\par
+\cq{D1. VJC 2025 Promo Q11(b)}{Solution in the scanned VJC Promo 2025 PDF, pp29--30 (parts (a), (c) not shown)}
+The parametric equations
+\[x=t^{2},\quad y=20t\mathrm{e}^{-t},\quad\text{for }0\leqslant t\leqslant6,\]
+model the motion of a roller coaster train along a section of the track as time $t$ varies. The variable $x$ represents the horizontal distance travelled by the train from its starting point, and $y$ represents the vertical distance from the ground. In this question, distance is measured in metres and time is measured in seconds.
+\begin{enumerate}[(a)]\setcounter{enumi}{1}
+\item Use differentiation to find the coordinates of the turning point in this section of the track and prove that it is a maximum point.\mk{4}
+\end{enumerate}
+
+\par\bigskip\noindent{\Large\bfseries\color{teal!50!black}E. Solids: sphere between two cones}\par
+\cq{E1. NYJC 2025 Prelim P1 Q2}{No diagram printed. Solution on the NYJC P1 answer sheet (not yet copied)}
+An ornament consists of two identical solid right circular cones whose flat bases are separated by a solid sphere, such that the sphere is in contact with the two bases. The axis passes through the vertex of each cone and the centre of the sphere. It is given that the distance between the vertices of the cones is $2l$, and the radii of the bases of the cones are $\sqrt{\dfrac32}\,l$, where $l$ is a constant. Find the radius of the sphere in terms of $l$ if the total volume of the ornament is to be a minimum.\par
+[The volume of a sphere with radius $r$ is given by $V=\dfrac43\pi r^{3}$.]\mk{6}
+\end{document}

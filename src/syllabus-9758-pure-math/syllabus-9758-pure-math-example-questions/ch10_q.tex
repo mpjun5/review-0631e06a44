@@ -1,0 +1,284 @@
+\providecommand{\dD}{\mathrm{d}}
+\newcommand{\figEJCtri}{\begin{tikzpicture}[scale=1]
+\coordinate (A) at (0,0); \coordinate (C) at (6.6,0.08); \coordinate (B) at (6.6,2.7); \coordinate (X) at (6.6,1.6);
+\draw[line width=0.6pt] (A) -- (B) -- (C) -- cycle; \draw[dashed,line width=0.5pt] (A) -- (X);
+\draw[line width=0.4pt] ($(C)+(-0.18,0)$) -- ($(C)+(-0.18,0.18)$) -- ($(C)+(0,0.18)$);
+\pic[draw,line width=0.4pt,angle radius=1.5cm,"$\alpha$",angle eccentricity=1.2] {angle=X--A--B};
+\node[below left] at (A) {$A$}; \node[above] at (B) {$B$}; \node[below right] at (C) {$C$}; \node[right] at (X) {$X$};
+\end{tikzpicture}}
+%% ============================================================ 101 TJC 2025 Prelim P2 Q1 (soln: TJC_2025_H2_Math_Prelim_P2_Solutions.pdf p1)
+\defQ{101}{}{%
+It is given that $y=\ln\sqrt{1+\mathrm{e}^{3x}}$.
+\begin{qparts}
+\pt{(a)} Show that $2\mathrm{e}^{2y}\dfrac{\dD y}{\dD x}=3\mathrm{e}^{3x}$. \mk{2}
+\pt{(b)} By further differentiation of the result in part \textbf{(a)}, find the Maclaurin series for $y$, up to and including the term in $x^{2}$, giving the coefficients in exact form. \mk{4}
+\pt{(c)} Deduce the Maclaurin series for $\ln\left(\dfrac{\sqrt{1+\mathrm{e}^{-3x}}}{2}\right)$, up to and including the term in $x^{2}$. \mk{2}
+\end{qparts}
+\src{TJC 2025 Prelim P2 Q1}}
+\defS{101}{%
+\begin{gtpart}{(a)}{2}\begin{topalign}
+y&=\frac{1}{2}\ln\left(1+\mathrm{e}^{3x}\right)\\
+\mathrm{e}^{2y}&=1+\mathrm{e}^{3x}
+\end{topalign}
+Diff. wrt $x$,
+\begin{topalign}
+2\mathrm{e}^{2y}\frac{\dD y}{\dD x}&=3\mathrm{e}^{3x}\quad\text{(Shown)}\quad\text{-- (1)}
+\end{topalign}
+\underline{Alternative solution:}
+\begin{topalign}
+y&=\ln\sqrt{1+\mathrm{e}^{3x}}\\
+\frac{\dD y}{\dD x}&=\frac{3\mathrm{e}^{3x}\left(1+\mathrm{e}^{3x}\right)^{-\frac{1}{2}}}{2\left(1+\mathrm{e}^{3x}\right)^{\frac{1}{2}}}=\frac{3\mathrm{e}^{3x}}{2\left(1+\mathrm{e}^{3x}\right)}\\
+2\left(1+\mathrm{e}^{3x}\right)\frac{\dD y}{\dD x}&=3\mathrm{e}^{3x}\\
+2\mathrm{e}^{2y}\frac{\dD y}{\dD x}&=3\mathrm{e}^{3x}
+\end{topalign}
+$\left(\because y=\ln\sqrt{1+\mathrm{e}^{3x}}=\dfrac{1}{2}\ln\left(1+\mathrm{e}^{3x}\right)\text{ i.e. }2y=\ln\left(1+\mathrm{e}^{3x}\right)\Rightarrow\mathrm{e}^{2y}=1+\mathrm{e}^{3x}\right)$\end{gtpart}
+\begin{gtpart}{(b)}{4}Diff. wrt $x$,
+\begin{topalign}
+2\mathrm{e}^{2y}\frac{\dD^{2}y}{\dD x^{2}}+4\mathrm{e}^{2y}\left(\frac{\dD y}{\dD x}\right)^{2}&=9\mathrm{e}^{3x}\quad\text{---- (2)}
+\end{topalign}
+When $x=0$, $y=\dfrac{1}{2}\ln(1+1)=\dfrac{1}{2}\ln2$, $\mathrm{e}^{2y}=\mathrm{e}^{\ln2}=2$
+\begin{topalign}
+\text{Sub into (1): }\frac{\dD y}{\dD x}&=\frac{3}{4}\\
+\text{Sub into (2): }2(2)\frac{\dD^{2}y}{\dD x^{2}}+8\left(\frac{3}{4}\right)^{2}&=9\ \Rightarrow\ \frac{\dD^{2}y}{\dD x^{2}}=\frac{9}{8}\\
+y&=\frac{1}{2}\ln2+\frac{3}{4}x+\frac{9}{16}x^{2}+\dots
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(c)}{2}\begin{topalign}
+\ln\left(\frac{\sqrt{1+\mathrm{e}^{-3x}}}{2}\right)&=\ln\left(\sqrt{1+\mathrm{e}^{3(-x)}}\right)-\ln2\\
+&=-\ln2+\frac{1}{2}\ln2+\frac{3}{4}(-x)+\frac{9}{16}(-x)^{2}+\dots\\
+&=-\frac{1}{2}\ln2-\frac{3}{4}x+\frac{9}{16}x^{2}+\dots
+\end{topalign}\end{gtpart}}
+%% ============================================================ 102 YIJC 2026 Prelim P1 Q10 (soln: YIJC_2026_P1_Solutions.pdf pp15-17)
+\defQ{102}{}{%
+It is given that $y=\mathrm{e}^{\sin^{-1}(3x)}$, where $-\dfrac{1}{3}<x<\dfrac{1}{3}$.
+\begin{qparts}
+\pt{(a)} Show that $\left(1-9x^{2}\right)\dfrac{\dD^{2}y}{\dD x^{2}}-9x\dfrac{\dD y}{\dD x}-9y=0$. \mk{3}
+\pt{(b)} By differentiating the above result, find the Maclaurin series for $y$, up to and including the term in $x^{3}$. \mk{4}
+\pt{(c)} Using your result in part \textbf{(b)} and the standard series in the List of Formulae (MF27), obtain the Maclaurin series for $\sin^{-1}(3x)$, up to and including the term in $x^{3}$. \mk{3}
+\end{qparts}
+\src{YIJC 2026 Prelim P1 Q10}}
+\defS{102}{%
+\begin{gtpart}{(a)}{3}\textbf{EITHER}
+\begin{topalign}
+y&=\mathrm{e}^{\sin^{-1}(3x)}\\
+\frac{\dD y}{\dD x}&=3\cdot\frac{1}{\sqrt{1-9x^{2}}}\,\mathrm{e}^{\sin^{-1}(3x)}\\
+&=\frac{3y}{\sqrt{1-9x^{2}}}\\
+\sqrt{1-9x^{2}}\,\frac{\dD y}{\dD x}&=3y
+\end{topalign}
+\textbf{OR}
+\begin{topalign}
+y&=\mathrm{e}^{\sin^{-1}(3x)}\\
+\ln y&=\sin^{-1}(3x)
+\end{topalign}
+Differentiating w.r.t. $x$,
+\begin{topalign}
+\frac{1}{y}\frac{\dD y}{\dD x}&=\frac{1}{\sqrt{1-9x^{2}}}\cdot3\\
+\sqrt{1-9x^{2}}\,\frac{\dD y}{\dD x}&=3y
+\end{topalign}
+\textbf{THEN}\par
+\textbf{EITHER}\par
+Differentiating with respect to $x$,
+\begin{topalign}
+\sqrt{1-9x^{2}}\,\frac{\dD^{2}y}{\dD x^{2}}+\frac{1}{2}\left(1-9x^{2}\right)^{-\frac{1}{2}}(-18x)\frac{\dD y}{\dD x}&=3\frac{\dD y}{\dD x}
+\end{topalign}
+Multiplying throughout by $\sqrt{1-9x^{2}}$,
+\begin{topalign}
+\left(1-9x^{2}\right)\frac{\dD^{2}y}{\dD x^{2}}-9x\frac{\dD y}{\dD x}&=3\sqrt{1-9x^{2}}\,\frac{\dD y}{\dD x}\\
+&=3(3y)\\
+\left(1-9x^{2}\right)\frac{\dD^{2}y}{\dD x^{2}}-9x\frac{\dD y}{\dD x}-9y&=0\quad\text{(shown)}\quad\text{--- (1)}
+\end{topalign}
+\textbf{OR}\par
+Squaring both sides,
+\begin{topalign}
+\left(1-9x^{2}\right)\left(\frac{\dD y}{\dD x}\right)^{2}&=9y^{2}
+\end{topalign}
+Differentiating with respect to $x$,
+\begin{topalign}
+\left(1-9x^{2}\right)\cdot2\left(\frac{\dD y}{\dD x}\right)\frac{\dD^{2}y}{\dD x^{2}}-18x\left(\frac{\dD y}{\dD x}\right)^{2}&=18y\frac{\dD y}{\dD x}
+\end{topalign}
+Dividing throughout by $2\dfrac{\dD y}{\dD x}$,
+\begin{topalign}
+\left(1-9x^{2}\right)\frac{\dD^{2}y}{\dD x^{2}}-9x\left(\frac{\dD y}{\dD x}\right)&=9y\\
+\left(1-9x^{2}\right)\frac{\dD^{2}y}{\dD x^{2}}-9x\frac{\dD y}{\dD x}-9y&=0\quad\text{(shown)}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(b)}{4}Differentiating with respect to $x$,
+\begin{topalign}
+\left(1-9x^{2}\right)\frac{\dD^{3}y}{\dD x^{3}}-18x\frac{\dD^{2}y}{\dD x^{2}}-9x\frac{\dD^{2}y}{\dD x^{2}}-9\frac{\dD y}{\dD x}-9\frac{\dD y}{\dD x}&=0\\
+\left(1-9x^{2}\right)\frac{\dD^{3}y}{\dD x^{3}}-27x\frac{\dD^{2}y}{\dD x^{2}}-18\frac{\dD y}{\dD x}&=0\quad\text{--- (2)}
+\end{topalign}
+When $x=0$, $y=1$. $\dfrac{\dD y}{\dD x}=3$
+\begin{topalign}
+\text{From (1): }\frac{\dD^{2}y}{\dD x^{2}}-0-9&=0\Rightarrow\frac{\dD^{2}y}{\dD x^{2}}=9\\
+\text{From (2): }\frac{\dD^{3}y}{\dD x^{3}}-0-18(3)&=0\Rightarrow\frac{\dD^{3}y}{\dD x^{3}}=54\\
+\therefore\ y&=1+3x+\frac{9}{2!}x^{2}+\frac{54}{3!}x^{3}+\dots\\
+&=1+3x+\frac{9}{2}x^{2}+9x^{3}+\dots
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(c)}{3}\begin{topalign}
+\mathrm{e}^{\sin^{-1}(3x)}&=1+3x+\frac{9}{2}x^{2}+9x^{3}+\dots\\
+\sin^{-1}(3x)&\approx\ln\left(1+3x+\frac{9}{2}x^{2}+9x^{3}\right)\\
+&\approx\left(3x+\frac{9}{2}x^{2}+9x^{3}\right)-\frac{1}{2}\left(3x+\frac{9}{2}x^{2}\right)^{2}+\frac{1}{3}(3x)^{3}\\
+&\approx3x+\frac{9}{2}x^{2}+9x^{3}-\frac{1}{2}\left(9x^{2}+27x^{3}\right)+\frac{1}{3}\left(27x^{3}\right)\\
+&=3x+\frac{9}{2}x^{3}
+\end{topalign}\end{gtpart}}
+%% ============================================================ 103 ACJC 2025 Prelim P2 Q2 (soln: ACJC_2025_H2_Math_Prelim_P2_Solutions.pdf p2)
+\defQ{103}{}{%
+It is given that $\mathrm{f}(x)=\dfrac{1}{\sqrt{1-4x^{2}}}$ where $-\dfrac{1}{2}<x<\dfrac{1}{2}$.
+\begin{qparts}
+\pt{(a)} Using standard series from the List of Formulae (MF27), find the Maclaurin's expansion of $\mathrm{f}(x)$, up to and including the term in $x^{6}$. \mk{2}
+\pt{(b)} Hence find the first four non-zero terms of the Maclaurin series for $\sin^{-1}2x$. \mk{4}
+\end{qparts}
+\src{ACJC 2025 Prelim P2 Q2}}
+\defS{103}{%
+\begin{gtpart}{(a)}{2}\begin{topalign}
+\mathrm{f}(x)&=\frac{1}{\sqrt{1-4x^{2}}}=\left(1-4x^{2}\right)^{-\frac{1}{2}}\\
+&=1-\frac{1}{2}\left(-4x^{2}\right)+\frac{-\frac{1}{2}\left(-\frac{3}{2}\right)}{2!}\left(-4x^{2}\right)^{2}+\frac{-\frac{1}{2}\left(-\frac{3}{2}\right)\left(-\frac{5}{2}\right)}{3!}\left(-4x^{2}\right)^{3}+\dots\\
+&=1+2x^{2}+6x^{4}+20x^{6}+\dots
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(b)}{4}\begin{topalign}
+\int\frac{1}{\sqrt{1-4x^{2}}}\,\dD x&=\int1+2x^{2}+6x^{4}+20x^{6}\ \dD x\\
+\frac{1}{2}\sin^{-1}2x&=x+\frac{2}{3}x^{3}+\frac{6}{5}x^{5}+\frac{20}{7}x^{7}+c\\
+\sin^{-1}2x&=2x+\frac{4}{3}x^{3}+\frac{12}{5}x^{5}+\frac{40}{7}x^{7}+d\\
+\sin^{-1}0&=0\quad\therefore d=0\\
+\sin^{-1}2x&=2x+\frac{4}{3}x^{3}+\frac{12}{5}x^{5}+\frac{40}{7}x^{7}
+\end{topalign}\end{gtpart}}
+%% ============================================================ 104 EJC 2025 Prelim P1 Q3 (soln: EJC_2025_H2_Math_Prelim_P1_Solutions.pdf p3)
+\defQ{104}{}{%
+In the right-angled triangle $ABC$, angle $C$ is a right angle. $AB=13$ cm, $BC=5$ cm and $X$ is a point on $BC$ such that angle $BAX$ is $\alpha$ radians.
+\begin{center}\figEJCtri\end{center}
+\begin{qparts}
+\pt{(a)} Find the exact value of $\cos\angle BAC$. \mk{1}
+\pt{(b)} By considering triangle $AXC$, or otherwise, show that $AX=\dfrac{156}{12\cos\alpha+5\sin\alpha}$. \mk{3}
+\pt{(c)} Given that $\alpha$ is a sufficiently small angle, show that
+\[AX\approx13+p\alpha+q\alpha^{2},\]
+where $p$ and $q$ are constants to be determined exactly. \mk{4}
+\end{qparts}
+\src{EJC 2025 Prelim P1 Q3}}
+\defS{104}{%
+\begin{gtpart}{(a)}{1}\begin{topalign}
+AC&=\sqrt{13^{2}-5^{2}}=12\\
+\cos\angle BAC&=\frac{AC}{\fhlmi{AB}}=\frac{12}{13}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(b)}{3}\begin{topalign}
+AX&=\frac{12}{\cos\left(\angle BAC-\alpha\right)}\\
+&=\frac{12}{\cos\angle BAC\cos\alpha+\sin\angle BAC\sin\alpha}\\
+&=\frac{12}{\frac{12}{13}\cos\alpha+\frac{5}{13}\sin\alpha}\\
+&=\frac{156}{12\cos\alpha+5\sin\alpha}\quad\text{(shown)}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(c)}{4}Using small angle approximation,
+\begin{topalign}
+AX&\approx\frac{156}{12\left(1-\frac{\alpha^{2}}{2}\right)+5\alpha}\\
+&=156\left[12\left(1+\frac{5}{12}\alpha-\frac{\alpha^{2}}{2}\right)\right]^{-1}\\
+&=156[12]^{-1}\left[1+\left(\frac{5}{12}\alpha-\frac{\alpha^{2}}{2}\right)\right]^{-1}\\
+&=13\left[1-\left(\frac{5}{12}\alpha-\frac{\alpha^{2}}{2}\right)+\left(\frac{5}{12}\alpha-\frac{\alpha^{2}}{2}\right)^{2}+\dots\right]\\
+&=13\left[1-\frac{5}{12}\alpha+\frac{\alpha^{2}}{2}+\left(\frac{5}{12}\alpha\right)^{2}+\dots\right]\\
+&\approx13-\frac{65}{12}\alpha+\frac{1261}{144}\alpha^{2}\\
+p&=-\frac{65}{12},\quad q=\frac{1261}{144}\quad\text{(shown)}
+\end{topalign}\end{gtpart}}
+%% ============================================================ 105 JPJC 2025 Prelim P1 Q9 (soln: JPJC_2025_H2_Math_Prelim_P1_Solutions.pdf p10)
+\defQ{105}{}{%
+It is given that $\mathrm{f}(x)=\dfrac{1}{4+9x^{2}}$.
+\begin{qparts}
+\pt{(i)} Find $\displaystyle\int\mathrm{f}(x)\,\dD x$. \mk{2}
+\pt{(ii)} Find the binomial expansion for $\mathrm{f}(x)$, up to and including the term in $x^{4}$. Give the coefficients as exact fractions in their simplest form. \mk{2}
+\pt{(iii)} Hence, find the Maclaurin series for $\tan^{-1}\dfrac{3x}{2}$. Give the coefficients as exact fractions in their simplest form. \mk{3}
+\pt{(iv)} Use your series from part \textbf{(iii)} to estimate $\displaystyle\int_{0}^{0.5}\tan^{-1}\frac{3x}{2}\,\dD x$, correct to 3 decimal places. \mk{1}
+\pt{(v)} Use your calculator to find $\displaystyle\int_{0}^{0.5}\tan^{-1}\frac{3x}{2}\,\dD x$, correct to 3 decimal places. \mk{1}
+\pt{(vi)} Comparing your answers to parts \textbf{(iv)} and \textbf{(v)}, comment on the accuracy of your estimate in \textbf{(iv)} and how it can be improved. \mk{2}
+\end{qparts}
+\src{JPJC 2025 Prelim P1 Q9}}
+\defS{105}{%
+\begin{gtpart}{(i)}{2}\begin{topalign}
+\int\frac{1}{4+9x^{2}}\,\dD x&=\int\frac{1}{9\left(\frac{4}{9}+x^{2}\right)}\,\dD x=\frac{1}{6}\tan^{-1}\frac{3x}{2}+K
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(ii)}{2}\begin{topalign}
+\mathrm{f}(x)=\left(4+9x^{2}\right)^{-1}&=\frac{1}{4}\left(1+\frac{9x^{2}}{4}\right)^{-1}\\
+&=\frac{1}{4}\left[1+(-1)\left(\frac{9x^{2}}{4}\right)+\frac{-1(-2)}{2}\left(\frac{9x^{2}}{4}\right)^{2}+\dots\right]\\
+&=\frac{1}{4}\left(1-\frac{9x^{2}}{4}+\frac{81}{16}x^{4}+\dots\right)\\
+&\approx\frac{1}{4}-\frac{9}{16}x^{2}+\frac{81}{64}x^{4}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(iii)}{3}\begin{topalign}
+\text{From \textbf{(i)} }\tan^{-1}\frac{3x}{2}&=6\int\frac{1}{4+9x^{2}}\,\dD x+C,\quad\text{where }C=-6K\\
+\text{From \textbf{(ii)} }\tan^{-1}\frac{3x}{2}&=6\int\left(\frac{1}{4}-\frac{9}{16}x^{2}+\frac{81}{64}x^{4}\right)\dD x+C\\
+&=6\left(\frac{1}{4}x-\frac{3}{16}x^{3}+\frac{81}{320}x^{5}\right)+D\\
+&=\frac{3}{2}x-\frac{9}{8}x^{3}+\frac{243}{160}x^{5}+D\\
+x=0,\ \tan^{-1}0=0&\Rightarrow D=0\\
+\therefore\ \tan^{-1}\frac{3x}{2}&=\frac{3}{2}x-\frac{9}{8}x^{3}+\frac{243}{160}x^{5}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(iv)}{1}\begin{topalign}
+\int_{0}^{0.5}\tan^{-1}\frac{3x}{2}\,\dD x&=\int_{0}^{0.5}\left(\frac{3}{2}x-\frac{9}{8}x^{3}+\frac{243}{160}x^{5}\right)\dD x\\&=0.174\ \text{(to 3 dp)}\quad\text{(Using GC)}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(v)}{1}From GC, $\displaystyle\int_{0}^{0.5}\tan^{-1}\frac{3x}{2}\,\dD x=0.173$ (to 3 dp)\end{gtpart}
+\begin{gtpart}{(vi)}{2}The estimate in \textbf{(iv)} is accurate up to 2 decimal places but not to 3 decimal places.\par
+To improve the estimate, we can include higher-order terms in the Maclaurin series expansion of $\tan^{-1}\dfrac{3x}{2}$.\end{gtpart}}
+%% ============================================================ 106 SAJC 2024 Prelim P2 Q4 (soln: SAJC_2024_prelim.pdf pp48-51)
+\defQ{106}{}{%
+It is given that $y=\ln\left(\cos x\right)$.
+\begin{qparts}
+\pt{(i)} Prove that $\dfrac{\dD^{2}y}{\dD x^{2}}+\left(\dfrac{\dD y}{\dD x}\right)^{2}+1=0$. \mk{2}
+\pt{(ii)} By differentiating further, find the first two non-zero terms of the expansion of $y$. \mk{4}
+\pt{(iii)} Using the answer in \textbf{(ii)} and an appropriate expansion from MF26 up to and including the term in $x^{4}$, find an approximate value for $\displaystyle\int_{0}^{0.08}\ln\left(\frac{\cos^{3}x}{1-x}\right)\dD x$, leaving your answer correct to 7 decimal places. \mk{2}
+\end{qparts}
+The calculated value of $\displaystyle\int_{0}^{0.08}\ln\left(\frac{\cos^{3}x}{1-x}\right)\dD x$ is given to be 0.0030328 correct to 7 decimal places.
+\begin{qparts}
+\pt{(iv)} Comparing the calculated value of $\displaystyle\int_{0}^{0.08}\ln\left(\frac{\cos^{3}x}{1-x}\right)\dD x$ given above to your answer in \textbf{(iii)}, and with reference to the value of $x$, comment on the accuracy of your approximation. \mk{2}
+\end{qparts}
+\src{SAJC 2024 Prelim P2 Q4}}
+\defS{106}{%
+\begin{gtpart}{(i)}{2}\begin{topalign}
+y&=\ln\left(\cos x\right)\quad\text{---- (1)}
+\end{topalign}
+Therefore, $e^{y}=\cos x$\par
+Differentiate with respect to $x$,
+\begin{topalign}
+e^{y}\left(\frac{\dD y}{\dD x}\right)&=-\sin x\quad\text{---- (2)}
+\end{topalign}
+Differentiate with respect to $x$,
+\begin{topalign}
+e^{y}\left(\frac{\dD^{2}y}{\dD x^{2}}\right)+\left(\frac{\dD y}{\dD x}\right)^{2}e^{y}&=-\cos x\\
+e^{y}\left(\frac{\dD^{2}y}{\dD x^{2}}\right)+\left(\frac{\dD y}{\dD x}\right)^{2}e^{y}&=-e^{y}\\
+\frac{\dD^{2}y}{\dD x^{2}}+\left(\frac{\dD y}{\dD x}\right)^{2}&=-1\quad\text{---- (3)}\\
+\frac{\dD^{2}y}{\dD x^{2}}+\left(\frac{\dD y}{\dD x}\right)^{2}+1&=0\quad\text{(shown)}
+\end{topalign}
+\underline{Alternative Method}
+\begin{topalign}
+y&=\ln\left(\cos x\right)\\
+\frac{\dD y}{\dD x}&=\frac{1}{\cos x}(-\sin x)\\
+&=-\frac{\sin x}{\cos x}\\
+\frac{\dD^{2}y}{\dD x^{2}}&=-\frac{\cos x(\cos x)-\sin x(-\sin x)}{\cos^{2}x}\\
+&=-\frac{\cos^{2}x+\sin^{2}x}{\cos^{2}x}\\
+&=-1-\frac{\sin^{2}x}{\cos^{2}x}\\
+&=-1-\left(\frac{\dD y}{\dD x}\right)^{2}\\
+\frac{\dD^{2}y}{\dD x^{2}}+\left(\frac{\dD y}{\dD x}\right)^{2}&=-1\\
+\frac{\dD^{2}y}{\dD x^{2}}+\left(\frac{\dD y}{\dD x}\right)^{2}+1&=0\quad\text{(shown)}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(ii)}{4}Differentiate with respect to $x$,
+\begin{topalign}
+\frac{\dD^{3}y}{\dD x^{3}}+2\left(\frac{\dD y}{\dD x}\right)\left(\frac{\dD^{2}y}{\dD x^{2}}\right)&=0\quad\text{(shown)}\quad\text{---- (4)}
+\end{topalign}
+Differentiate with respect to $x$,
+\begin{topalign}
+\frac{\dD^{4}y}{\dD x^{4}}+2\left[\frac{\dD^{2}y}{\dD x^{2}}\cdot\frac{\dD^{2}y}{\dD x^{2}}+\frac{\dD^{3}y}{\dD x^{3}}\cdot\frac{\dD y}{\dD x}\right]&=0\\
+\frac{\dD^{4}y}{\dD x^{4}}+2\left(\frac{\dD y}{\dD x}\right)\left(\frac{\dD^{3}y}{\dD x^{3}}\right)+2\left(\frac{\dD^{2}y}{\dD x^{2}}\right)^{2}&=0\quad\text{----- (5)}
+\end{topalign}
+Let $y=\ln\left(\cos x\right)=f(x)$\par
+When $x=0$,
+\begin{topalign}
+\text{From (1), }y&=f(0)=\ln\left(\cos0\right)=0\\
+\text{From (2), }\frac{\dD y}{\dD x}&=f'(0)=0\\
+\text{From (3), }\frac{\dD^{2}y}{\dD x^{2}}&=f''(0)=-(0)^{2}-1=-1\\
+\text{From (4), }\frac{\dD^{3}y}{\dD x^{3}}&=f'''(0)=-2(0)\,x\,(-1)=0\\
+\text{From (5), }\frac{\dD^{4}y}{\dD x^{4}}&=f^{4}(0)=-2\left[(-1)^{2}+(0)-(0)\right]=-2
+\end{topalign}
+Using Maclaurin's expansion,
+\begin{topalign}
+f(x)&=f(0)+f'(0)x+\frac{f''(0)}{2!}x^{2}+\frac{f'''(0)}{3!}x^{3}+\frac{f^{4}(0)}{4!}x^{4}+\dots\\
+&=-\frac{1}{2}x^{2}-\frac{1}{12}x^{4}+\dots\\
+\ln\left(\cos x\right)&=-\frac{1}{2}x^{2}-\frac{1}{12}x^{4}+\dots
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(iii)}{2}\begin{topalign}
+&\int_{0}^{0.08}\ln\left(\frac{\cos^{3}x}{1-x}\right)\dD x\\
+&=\int_{0}^{0.08}\left[\ln\left(\cos x\right)^{3}-\ln\left(1-x\right)\right]\dD x\\
+&=\int_{0}^{0.08}\left[3\ln\left(\cos x\right)-\ln\left(1-x\right)\right]\dD x\\
+&\approx\int_{0}^{0.08}\left[3\left(-\frac{1}{2}x^{2}-\frac{1}{12}x^{4}\right)-\left(-x-\frac{x^{2}}{2}-\frac{x^{3}}{3}-\frac{x^{4}}{4}\right)\right]\dD x\\
+&=0.0030327\ \text{(to 7 decimal places)}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(iv)}{2}The two values are the same up to 6 decimal places, and the $x$ value is between 0 and 0.08, which is relatively small and close to 0. Hence, the approximation is relatively accurate for the integral.\end{gtpart}}

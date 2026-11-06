@@ -1,0 +1,43 @@
+% =====================================================================
+% prelim_fonts.tex: fonts of the real 9758 prelim papers (Word + MathType; pdffonts on
+% ACJC 2026 P1/P2, ACJC 2025 P1, JPJC 2026, RVHS 2026, CJC/DHS/TJC/NYJC/HCI/EJC 2025):
+%   text Times New Roman; cover/footer Arial; RI page footer Calibri (here Carlito);
+%   maths = MathType: Times New Roman letters/digits (italic variables; upright digits,
+%   function names, d, e, f), SymbolMT for the integral, sigma, pi and = + < >,
+%   scripts 7 pt on 12 pt (about 58 %), tight operator spacing.
+% Candidate C (teacher-approved 13 Oct 2026): the real Times New Roman and Arial
+% (ttf-mscorefonts-installer) + URW Standard Symbols PS (fonts-urw-base35, a SymbolMT
+% clone with the same Symbol encoding) for the integral, sigma, pi, = + < >;
+% TeX Gyre Termes Math only for what MathType draws itself (radicals, stretchy brackets,
+% fraction bars, arrows). House style: upright d (\mathrm{d}x), upright e and f.
+% Loaded once by di_style / de_core (HW sheets) and prelim_style (Tests, solutions).
+% =====================================================================
+\ifdefined\prelimfontsloaded\endinput\fi
+\def\prelimfontsloaded{1}
+\edef\pfrestoreat{\catcode`\noexpand\@=\the\catcode`\@\relax}\makeatletter
+% MathType script sizes: 7 pt superscripts on 12 pt text (58 %), 5 pt second level
+\DeclareMathSizes{12}{12}{7}{5}
+\DeclareMathSizes{11}{11}{6.5}{5}
+\DeclareMathSizes{10.95}{10.95}{6.5}{5}
+\DeclareMathSizes{10}{10}{6}{5}
+\DeclareMathSizes{9}{9}{5.5}{5}
+\DeclareMathSizes{14.4}{14.4}{8.5}{6}
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\newfontfamily\coverfont{Arial}
+\newfontfamily\calibrifont{Carlito}
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Termes Math}
+\setmathfont[range={up/{latin,Latin,num}}]{Times New Roman}
+\setmathfont[range={it/{latin,Latin}}]{Times New Roman Italic}
+\setmathfont[range={bfup/{latin,Latin,num}}]{Times New Roman Bold}
+\setmathfont[range={"002B,"003D,"003C,"003E}]{Standard Symbols PS}
+\newfontfamily\pf@sym{Standard Symbols PS}
+\newfontfamily\pf@symi[FakeSlant=0.21]{Standard Symbols PS}
+% MathType-like spacing (tighter than TeX around = + -)
+\AtBeginDocument{\thickmuskip=2.5mu plus 1mu\medmuskip=1.5mu plus 1mu\thinmuskip=3mu
+% Symbol integral and sigma (18 pt at 12 pt text, as MathType), slanted Symbol pi
+ \renewcommand{\int}{\mathop{\vcenter{\hbox{\pf@sym\fontsize{\fpeval{1.5*\f@size}}{0pt}\selectfont\char"F2}}}\nolimits}%
+ \renewcommand{\sum}{\mathop{\vcenter{\hbox{\pf@sym\fontsize{\fpeval{1.5*\f@size}}{0pt}\selectfont\char"E5}}}\limits}%
+ \renewcommand{\pi}{\mathord{\text{\pf@symi\char"70}}}}
+\pfrestoreat

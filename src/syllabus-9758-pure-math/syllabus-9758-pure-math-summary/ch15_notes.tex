@@ -1,0 +1,638 @@
+\providecommand{\vecpart}[1]{\par\noindent{\Large\bfseries\color{blue!50!black}#1\par}\nopagebreak\smallskip}
+%% CHAPTER 15 VECTORS -- merged from vectors_draft.tex (approved by Maximus, 27 Oct 2026)
+%% (draft had two headings, "Vectors I" and "Vectors II"; kept as banners inside ONE chapter 15)
+\clearpage
+\inchap{Vectors}
+\vecpart{Vectors I}
+\section{Basic Formulas}
+\begin{center}\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|>{\centering\arraybackslash}m{3.2cm}|>{\centering\arraybackslash}m{6.2cm}|>{\centering\arraybackslash}m{5.4cm}|}\hline
+ & \textbf{Formula} & \textbf{Note}\\\Xhline{2pt}
+Magnitude & $|\vv a|=\sqrt{x^{2}+y^{2}+z^{2}}$ & \\\hline
+Unit vector & $\hat{\vv a}=\dfrac{\vv a}{|\vv a|}$ & $|\hat{\vv a}|=1$\\\hline
+Parallel vectors & $\vv a=k\vv b$\qquad $\vv a\times\vv b=\vv 0$ & $k$ scalar constant\\\hline
+Collinear $A,B,C$ & $\vab{AB}\,/\!/\,\vab{BC}$ \ (or any two of $\vab{AB},\vab{BC},\vab{AC}$) & \sidenote{Try drawing the diagram and take any two vectors, to show that they are parallel.}\\\hline
+Parallelogram $ABCD$ & $\vab{AB}=\vab{DC}$,\qquad $\vab{AD}=\vab{BC}$ &
+\begin{tikzpicture}[scale=0.55]\draw(0,0)node[below left]{$A$}--(3,0)node[below right]{$B$}--(3.8,1.4)node[above right]{$C$}--(0.8,1.4)node[above left]{$D$}--cycle;\end{tikzpicture}\\\hline
+\end{tabular}\end{center}
+\subsection*{The Ratio Theorem}
+Let the points $A$, $B$ and $C$ have position vectors $\vv a$, $\vv b$ and $\vv c$ respectively, and suppose that $\lambda AC=\mu CB$. Then the position vector of $C$ is given by the formula
+\begin{center}\begin{tikzpicture}[scale=0.9]
+\draw(0,0)--(6,0);
+\node[pt]at(0,0){};\node[below]at(0,0){$A$};\node[pt]at(6,0){};\node[below]at(6,0){$B$};\node[pt]at(2.4,0){};\node[below]at(2.4,0){$C$};
+\node[pt]at(3,2.2){};\node[above]at(3,2.2){$O$};
+\draw(3,2.2)--(0,0);\draw(3,2.2)--(6,0);\draw(3,2.2)--(2.4,0);
+\node[below]at(1.2,-0.35){$\mu$};\node[below]at(4.2,-0.35){$\lambda$};
+\end{tikzpicture}\qquad
+\raisebox{8mm}{\begin{theorem}[width=4.2cm,before skip=0pt,after skip=0pt]{Ratio Theorem}\centering$\vv c=\dfrac{\lambda\vv a+\mu\vv b}{\lambda+\mu}$\end{theorem}}\end{center}
+\sidenote{$AC:CB=\mu:\lambda$, so $C$ divides $AB$ with $\mu$ beside $A$ and $\lambda$ beside $B$.}\par
+\sidenote{The same theorem, starting from a point $D$ instead of $O$:}
+\begin{center}\begin{tikzpicture}[scale=0.9,color=gray]
+\draw(0,0)--(6,0);
+\node[pt]at(0,0){};\node[below]at(0,0){$A$};\node[pt]at(6,0){};\node[below]at(6,0){$B$};\node[pt]at(2.4,0){};\node[below]at(2.4,0){$C$};
+\node[pt]at(3,2.2){};\node[above]at(3,2.2){$D$};
+\draw(3,2.2)--(0,0);\draw(3,2.2)--(6,0);\draw(3,2.2)--(2.4,0);
+\node[below]at(1.2,-0.35){$\mu$};\node[below]at(4.2,-0.35){$\lambda$};
+\end{tikzpicture}\qquad
+\raisebox{8mm}{\begin{theorem}[width=4.2cm,before skip=0pt,after skip=0pt,colframe=black!45,colback=black!2]{Ratio Theorem}\centering\textcolor{gray}{$\vab{DC}=\dfrac{\lambda\vab{DA}+\mu\vab{DB}}{\lambda+\mu}$}\end{theorem}}\end{center}
+%% ---------------------------------------------------------------- products
+\clearpage
+\section{Scalar Product and Vector Product}
+\topdisplay{\vv a=a_1\vv i+a_2\vv j+a_3\vv k,\qquad \vv b=b_1\vv i+b_2\vv j+b_3\vv k,\qquad\theta=\text{non-reflex }\angle AOB}
+\begin{center}\renewcommand{\arraystretch}{1.25}\small
+\begin{tabular}{|>{\centering\arraybackslash}m{2.4cm}|>{\centering\arraybackslash}m{6.2cm}|>{\centering\arraybackslash}m{6.2cm}|}\hline
+ & \textbf{Scalar Product (Dot)} & \textbf{Vector Product (Cross)}\\\Xhline{2pt}
+Definition & $\vv a\cdot\vv b=a_1b_1+a_2b_2+a_3b_3$ & $\vv a\times\vv b=\cv{a_2b_3-a_3b_2}{-(a_1b_3-a_3b_1)}{a_1b_2-a_2b_1}$\\\hline
+Result & scalar & vector, $\perp$ to both $\vv a$ and $\vv b$\\\hline
+Formula & $\vv a\cdot\vv b=|\vv a||\vv b|\cos\theta$ & $|\vv a\times\vv b|=|\vv a||\vv b|\sin\theta$\\\hline
+Angle & $\cos\theta=\dfrac{\vv a\cdot\vv b}{|\vv a||\vv b|}$\par\sidenote{\hl{$\vv a\cdot\vv b>0$ acute, $<0$ obtuse, $=0$ right angle}} & $\sin\theta=\dfrac{|\vv a\times\vv b|}{|\vv a||\vv b|}$\par
+\sidenote{this method only finds the basic angle}\par
+\sidenote{possible, but usually undesirable}\\\hline
+Properties &
+\makecell{$\vv a\cdot\vv b=\vv b\cdot\vv a$\\ $\vv a\cdot(\vv b+\vv c)=\vv a\cdot\vv b+\vv a\cdot\vv c$\\ $\lambda(\vv a\cdot\vv b)=(\lambda\vv a)\cdot\vv b=\vv a\cdot(\lambda\vv b)$\\ $\vv a\cdot\vv a=|\vv a|^{2}$} &
+\makecell{$\vv a\times\vv b=-\vv b\times\vv a$\\ $\vv a\times(\vv b+\vv c)=\vv a\times\vv b+\vv a\times\vv c$\\ $\lambda(\vv a\times\vv b)=(\lambda\vv a)\times\vv b=\vv a\times(\lambda\vv b)$\\ $\vv a\times\vv a=\vv 0$}\\\hline
+Test & $\vv a\cdot\vv b=0\iff\vv a\perp\vv b$ & $\vv a\times\vv b=\vv 0\iff\vv a\,/\!/\,\vv b$\\
+ & \multicolumn{2}{c|}{\sidenote{\hl{(nonzero $\vv a$, $\vv b$)}}}\\\hline
+Applications &
+\makecell{Length of projection $=|\vv a\cdot\hat{\vv b}|$\\ Projection vector $=(\vv a\cdot\hat{\vv b})\hat{\vv b}$} &
+\makecell{Perpendicular distance $=|\vv a\times\hat{\vv b}|$\\ $\text{Area of }\triangle OAB=\tfrac12|\vv a\times\vv b|$\\ Area of parallelogram $=|\vv a\times\vv b|$}\\\hline
+Geometrical meaning &
+\begin{tikzpicture}[scale=0.5]
+\draw[ar](0,0)--(3.4,0)node[right]{$\vv b$};\draw[ar](0,0)--(2.2,1.6)node[above]{$\vv a$};
+\draw[dashed](2.2,1.6)--(2.2,0);\draw[very thick,red](0,0)--(2.2,0);\node[below,red,font=\footnotesize]at(1.1,0){$|\vv a\cdot\hat{\vv b}|$};
+\end{tikzpicture}\par
+$|\vv a\cdot\hat{\vv b}|$ = length of projection of $\vv a$ onto $\vv b$
+&
+\scriptsize\renewcommand{\arraystretch}{1}\setlength{\tabcolsep}{1.5pt}\begin{tabular}{@{}>{\centering\arraybackslash}m{1.9cm}>{\centering\arraybackslash}m{1.9cm}>{\centering\arraybackslash}m{1.9cm}@{}}
+\begin{tikzpicture}[scale=0.36]
+\draw[dashed](-0.6,0)--(4.4,0);
+\draw[ar](0,0)--(3.2,0)node[below]{$\vv b$};\draw[ar](0,0)--(1.4,2)node[above left]{$\vv a$};
+\draw[very thick,red](1.4,2)--(1.4,0);\draw(1.4,0)++(0.25,0)--++(0,0.25)--++(-0.25,0);
+\node[below left]at(0,0){$O$};
+\end{tikzpicture} &
+\begin{tikzpicture}[scale=0.36]
+\draw[fill=blue!8](0,0)--(3,0)--(4.4,2)--(1.4,2)--cycle;
+\draw[ar](0,0)--(3,0)node[below]{$\vv b$};\draw[ar](0,0)--(1.4,2)node[above left]{$\vv a$};
+\node[below left]at(0,0){$O$};
+\end{tikzpicture} &
+\begin{tikzpicture}[scale=0.36]
+\draw[dashed](3,0)--(4.4,2)--(1.4,2);
+\draw[fill=blue!15](0,0)--(3,0)--(1.4,2)--cycle;
+\draw[ar](0,0)--(3,0)node[below]{$B$};\draw[ar](0,0)--(1.4,2)node[above left]{$A$};
+\node[below left]at(0,0){$O$};
+\end{tikzpicture}\\[1mm]
+perpendicular distance from $A$ to line along $\vv b$\par{\color{red}$|\vv a\times\hat{\vv b}|$} &
+area of parallelogram, sides $\vv a$, $\vv b$\par$|\vv a\times\vv b|$ &
+$2\times$ area of $\triangle OAB$\par$|\vv a\times\vv b|$
+\end{tabular}\\\hline
+Note & \sidenote{$\vv a\cdot\vv b\cdot\vv c$ meaningless; no cancellation law} & \sidenote{no cancellation law}\par\sidenote{$(\vv a\times\vv b)\times\vv c$ is a vector, but triple cross products are usually not tested}\\\hline
+\end{tabular}\end{center}
+\begin{info}[title=Note]
+Projection of $\vv a$ onto $\vv b$ $\neq$ projection of $\vv b$ onto $\vv a$. Perpendicular distance from $A$ to $OB$ $\neq$ from $B$ to $OA$. Triangles without $O$ as a vertex: $\tfrac12|\vab{AB}\times\vab{AC}|$.
+\end{info}
+\begin{theorem}[before skip=0pt]{Useful identity}
+For any vectors $\vv a$, $\vv b$:\quad $(\vv a\times\vv b)\cdot\vv a=0$\quad and\quad $(\vv a\times\vv b)\cdot\vv b=0$\par
+$\because\ \vv a\times\vv b$ is perpendicular to $\vv a$ and $\vv b$.
+\end{theorem}
+%% ============================================================ VECTORS II
+\clearpage
+\vecpart{Vectors II}
+\section{Equations of Lines and Planes}
+\begin{center}\renewcommand{\arraystretch}{1.35}\small
+\begin{tabular}{|>{\centering\arraybackslash}m{1.4cm}|>{\centering\arraybackslash}m{4.1cm}|>{\centering\arraybackslash}m{4.1cm}|>{\centering\arraybackslash}m{4.8cm}|}\hline
+& \textbf{Vector} & \textbf{Cartesian} & \textbf{What you need}\\\Xhline{2pt}
+\textbf{Line}&
+\begin{tikzpicture}[scale=0.8]\draw[blue,thick](-0.4,-0.2)--(3,1.5);\fill(0.6,0.3)circle(1.5pt)node[below right]{$A$};\draw[-{Stealth},red,thick](0.6,0.3)--(1.8,0.9)node[above left]{$\vv b$};\fill(0,-1)circle(1.2pt)node[left]{$O$};\draw[-{Stealth}](0,-1)--(0.57,0.27)node[pos=0.5,left]{$\vv a$};\end{tikzpicture}\par
+$\vv r=\vv a+\lambda\vv b,\ \lambda\in\mathbb R$\par\smallskip
+$(\vv r-\vv a)\times\vv b=\vv 0$\par\sidenote{(same line: $\vv r-\vv a\,/\!/\,\vv b$)}&
+\hlm{\dfrac{x-a_x}{b_x}=\dfrac{y-a_y}{b_y}=\dfrac{z-a_z}{b_z}}\par\smallskip
+\sidenote{\hl{$\vv a=\left(\begin{smallmatrix}a_x\\a_y\\a_z\end{smallmatrix}\right)$, $\vv b=\left(\begin{smallmatrix}b_x\\b_y\\b_z\end{smallmatrix}\right)$}}\par\sidenote{\hl{if $b_x=0$: $x=a_x$ separately}}\par\smallskip
+\sidenote{all coefficients of $x$, $y$ and $z$ in the numerators must be 1}&
+\need{1 point $+$ 1 direction}\par\smallskip
+or 2 points $A$, $B$:\par $\vv b=\vab{AB}$\\\hline
+\textbf{Plane}&
+\begin{tikzpicture}[scale=0.8]\draw[fill=blue!8](0,0)--(3,0)--(3.8,1.3)--(0.8,1.3)--cycle;\fill(1.2,0.5)circle(1.5pt)node[below]{$A$};\draw[-{Stealth},red,thick](1.2,0.5)--(2.3,0.5)node[below]{$\vv b$};\draw[-{Stealth},red,thick](1.2,0.5)--(1.65,1.1)node[right]{$\vv c$};\draw[-{Stealth},thick,green!50!black](1.2,0.5)--(1.2,1.9)node[left]{$\vv n$};\end{tikzpicture}\par
+$\vv r=\vv a+\lambda\vv b+\mu\vv c$\par\smallskip
+$\vv r\cdot\vv n=d$\par\sidenote{(scalar product form)}&
+\hlm{n_xx+n_yy+n_zz=d}\par\sidenote{\hl{$\vv n=\left(\begin{smallmatrix}n_x\\n_y\\n_z\end{smallmatrix}\right)$}}&
+\need{1 point $+$ 2 non-parallel directions $/\!/$ plane}\par\smallskip
+or 1 point $+$ normal $\vv n$\par\smallskip
+$\vv n=\vv b\times\vv c$,\quad $d=\vv a\cdot\vv n$\par\smallskip
+\sidenote{3 points: $\vv b=\vab{AB}$, $\vv c=\vab{AC}$;\newline contains a line: use its direction}\\\hline
+\end{tabular}\end{center}
+\sidenote{$\vv a$: position vector of any point on the line/plane. $\vv b$, $\vv c$: any two linearly independent directions parallel to the plane. The equation of any line is not unique.}\par
+\begin{info}[title=Note]
+To check if a given point \hlm{C} lies on
+\begin{itemize}[leftmargin=*,itemsep=1pt,topsep=1pt,parsep=0pt]
+\item a line: \hlm{\vab{OC}}$=\vv a+\lambda\vv b$ \ (one $\lambda$ satisfies all 3 components)
+\item a plane: \hlm{\vab{OC}}$\cdot\vv n=d$
+\end{itemize}
+\end{info}
+\noindent\begin{minipage}[t]{0.48\textwidth}
+\exlab Line through $(1,2,3)$, $(3,2,2)$ \srcex
+\cdisp{\vv b&=\cv{2}{0}{-1}\\\vv r&=\cv123+\lambda\cv20{-1},\ \ \lambda\in\mathbb R\\\frac{x-1}{2}&=\frac{z-3}{-1},\quad y=2}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\exlab Plane through $B(0,1,1)$, $C(1,1,3)$, $D(2,0,2)$ \srcex
+\cdisp{\vv n&=\vab{BC}\times\vab{BD}=\cv102\times\cv2{-1}1=\cv23{-1}\\d&=\cv011\cdot\cv23{-1}=2\\2x+3y-z&=2}
+\end{minipage}
+%% ---------------------------------------------------------------- map
+\clearpage
+\section{Interactions Map}
+\begin{center}\renewcommand{\arraystretch}{1.25}\small
+\begin{tabular}{|>{\centering\arraybackslash}m{1.3cm}|p{4.4cm}|p{4.4cm}|p{4.4cm}|}\hline
+& \centering\textbf{Point} & \centering\textbf{Line} & \centering\arraybackslash\textbf{Plane}\\\Xhline{2pt}
+\textbf{Point}& distance $|\vab{AB}|$ & \cellcolor{black!4}& \cellcolor{black!4}\\\hline
+\textbf{Line}&
+$\bullet$ on line? \hfill\fhl{\sref{15.3}}\par
+$\bullet$ foot $F$ \hfill\fhl{\sref{15.5}}\par
+$\bullet$ shortest distance \hfill\fhl{\sref{15.5}}\par
+$\bullet$ reflection \hfill\fhl{\sref{15.5}}&
+$\bullet$ $/\!/$ / intersect / skew \hfill\fhl{\sref{15.6}}\par
+$\bullet$ point of intersection \hfill\fhl{\sref{15.6}}\par
+$\bullet$ angle \hfill\fhl{\sref{15.8}}\par
+$\bullet$ reflect line in line \hfill\fhl{\sref{15.9}}& \cellcolor{black!4}\\\hline
+\textbf{Plane}&
+$\bullet$ on plane? \hfill\fhl{\sref{15.3}}\par
+$\bullet$ foot $F$ \hfill\fhl{\sref{15.5}}\par
+$\bullet$ shortest distance \hfill\fhl{\sref{15.5}}\par
+$\bullet$ reflection \hfill\fhl{\sref{15.5}}&
+$\bullet$ $/\!/$ / lies in / intersect \hfill\fhl{\sref{15.6}}\par
+$\bullet$ point of intersection \hfill\fhl{\sref{15.6}}\par
+$\bullet$ angle \hfill\fhl{\sref{15.8}}\par
+$\bullet$ reflect line in plane \hfill\fhl{\sref{15.9}}&
+$\bullet$ $/\!/$ / same / intersect \hfill\fhl{\sref{15.6}}\par
+$\bullet$ line of intersection \hfill\fhl{\sref{15.6}}\par
+$\bullet$ angle \hfill\fhl{\sref{15.8}}\par
+$\bullet$ distance ($/\!/$) \hfill\fhl{\sref{15.10}}\\\hline
+\end{tabular}\end{center}
+\sidenote{Always draw the diagram first.}
+%% ---------------------------------------------------------------- card foot
+\section{Foot / Distance / Reflection}
+\noindent\begin{tabular}{@{}p{0.475\textwidth}|p{0.475\textwidth}@{}}
+{\centering\textbf{Point $P$ -- Line $\vv r=\vv a+\lambda\vv b$}\par}\smallskip
+{\centering\begin{tikzpicture}[scale=0.85]
+\draw[blue,thick](-0.5,0)--(5,0)node[right]{$l$};
+\fill(0.5,0)circle(1.5pt)node[below]{$A$};\draw[-{Stealth},red,thick](0.5,0)--(1.6,0)node[below]{$\vv b$};
+\fill(3,1.5)circle(1.5pt)node[above]{$P$};\fill(3,0)circle(1.5pt)node[below right]{$F$};\fill(3,-1.5)circle(1.5pt)node[below]{$P'$};
+\draw[dashed](3,1.5)--(3,-1.5);\draw(3,0)rectangle(3.2,0.2);\draw[densely dotted](0.5,0)--(3,1.5);
+\end{tikzpicture}\par}
+\begin{enumerate}[leftmargin=*,itemsep=1pt,label=\arabic*.]
+\item $\vab{OF}=\vv a+\lambda\vv b$ for some $\lambda\in\mathbb R$
+\item $\vab{PF}\cdot\vv b=0\ \Rightarrow$ solve for $\lambda$
+\item $\vab{OF}=\dfrac{\vab{OP}+\vab{OP'}}{2}$ \ \sidenote{(midpoint / ratio theorem)}
+\end{enumerate}\vspace{6mm}
+&
+{\centering\textbf{Point $P$ -- Plane $\vv r\cdot\vv n=d$}\par}\smallskip
+{\centering\begin{tikzpicture}[scale=0.85]
+\draw[fill=blue!8](0,-0.5)--(4,-0.5)--(5,0.5)--(1,0.5)--cycle;\node at(4.3,-0.25){\hlm{p}};
+\fill(1.2,0)circle(1.5pt)node[below left]{$A$};
+\fill(2.5,1.5)circle(1.5pt)node[above right]{$P$};\fill(2.5,0)circle(1.5pt)node[below right]{$F$};\fill(2.5,-1.5)circle(1.5pt)node[below]{$P'$};
+\draw[dashed](2.5,1.5)--(2.5,-1.5);\draw[densely dotted](1.2,0)--(2.5,1.5);\draw[-{Stealth},green!50!black,thick](1.2,0)--(1.2,1)node[left]{$\vv n$};
+\end{tikzpicture}\par}
+\begin{enumerate}[leftmargin=*,itemsep=1pt,label=\arabic*.]
+\item $l_{PF}:\ \vv r=\hlm{\vab{OP}}+\lambda\vv n$,\ $\lambda\in\mathbb R$
+\item $(\hlm{\vab{OP}}+\lambda\vv n)\cdot\vv n=d$ \sidenote{(intersection between line \& plane)} $\Rightarrow$ solve for $\lambda$
+\item $\vab{OF}=\dfrac{\vab{OP}+\vab{OP'}}{2}$ \ \sidenote{(midpoint / ratio theorem)}
+\end{enumerate}\vspace{6mm}
+\\
+\begin{theorem}[before skip=2mm,after skip=2mm]{Distance}
+\centering$PF=|\vab{AP}\times\hat{\vv b}|$
+\end{theorem}
+&
+\begin{theorem}[before skip=2mm,after skip=2mm]{Distance}
+\centering$PF=|\vab{AP}\cdot\hat{\vv n}|$
+\end{theorem}
+\end{tabular}\par\medskip
+\noindent\begin{tabular}{@{}p{0.475\textwidth}|p{0.475\textwidth}@{}}
+{\centering\textbf{Reflection (and foot of perpendicular) of point to line}\par}\smallskip
+&
+{\centering\textbf{Reflection (and foot of perpendicular) of point to plane}\par}\smallskip
+\\
+\raggedright\exlab Find the foot of the perpendicular $N$ from $A(3,-2,-1)$ to the line $l_1$, and the reflection $A'$ of $A$ in $l_1$, where\par\noindent\hfill$l_1:\ \vv r=\cv123+\lambda\cv30{-1},\ \ \lambda\in\mathbb R$\hfill\null\par
+\begin{center}\begin{tikzpicture}[scale=0.72]
+\draw[blue,thick](-0.5,0)--(5.2,0)node[right,font=\footnotesize]{$l_1$};
+\fill(3,2.2)circle(1.5pt)node[above,font=\footnotesize]{$A(3,-2,-1)$};\fill(3,0)circle(1.5pt)node[below right,font=\footnotesize]{$N(4,2,2)$};\fill(3,-2.2)circle(1.5pt)node[below,font=\footnotesize]{$A'(5,6,5)$};
+\draw[dashed](3,2.2)--(3,-2.2);\draw(3,0)rectangle(3.25,0.25);
+\end{tikzpicture}\end{center}
+\cdisp{\vab{AN}&=\cv{-2+3\lambda}{4}{4-\lambda}\\
+\vab{AN}\cdot\cv30{-1}&=0\\10\lambda-10&=0\ \Rightarrow\ \lambda=1\\
+\therefore\ N&=(4,2,2)\\
+\vab{ON}&=\dfrac{\vab{OA}+\vab{OA'}}{2}\ \ \text{\sidenote{(midpoint/ratio theorem)}}\\
+\Rightarrow\ \vab{OA'}&=2\vab{ON}-\vab{OA}\\
+\vab{OA'}&=2\cv422-\cv3{-2}{-1}\\\therefore\ A'&=(5,6,5)}
+&
+\raggedright\exlab Find the foot of the perpendicular $F$ from $P(7,0,3)$ to the plane $p$, and the reflection $P'$ of $P$ in $p$, where\par\noindent\hfill$p:\ \vv r\cdot\cv112=1$\hfill\null\par
+\begin{center}\begin{tikzpicture}[scale=0.72]
+\draw[fill=blue!8](0,-0.8)--(6,-0.8)--(7.2,0.8)--(1.2,0.8)--cycle;\node[font=\footnotesize]at(6.0,-0.45){$p$};
+\fill(3.1,2.2)circle(1.5pt)node[above,font=\footnotesize]{$P(7,0,3)$};\fill(3.1,0)circle(1.5pt)node[right,xshift=1pt,fill=blue!8,inner sep=1pt,font=\footnotesize]{$F(5,-2,-1)$};\fill(3.1,-2.2)circle(1.5pt)node[below,font=\footnotesize]{$P'(3,-4,-5)$};
+\draw[dashed](3.1,2.2)--(3.1,-2.2);
+\end{tikzpicture}\end{center}
+\cdisp{\hlm{l_{PF}:\ \vv r}&=\hlm{\cv703+\lambda\cv112,\ \ \lambda\in\mathbb R}\\\left(\cv703+\lambda\cv112\right)\cdot\cv112&=1\\13+6\lambda&=1\ \Rightarrow\ \lambda=-2\\
+\therefore\ F&=(5,-2,-1)\\
+\vab{OF}&=\dfrac{\vab{OP}+\vab{OP'}}{2}\ \ \text{\sidenote{(midpoint/ratio theorem)}}\\
+\Rightarrow\ \vab{OP'}&=2\vab{OF}-\vab{OP}\\
+\vab{OP'}&=2\cv5{-2}{-1}-\cv703\\\therefore\ P'&=(3,-4,-5)}
+\end{tabular}
+\clearpage
+\noindent\begin{tabular}{@{}p{0.475\textwidth}|p{0.475\textwidth}@{}}
+{\centering\textbf{Shortest distance from point to line}\par}\smallskip
+&
+{\centering\textbf{Shortest distance from point to plane}\par}\smallskip
+\\
+\raggedright\exlab Find the shortest distance from $P(5,1,3)$ to the line\par\noindent\hfill$l:\ \vv r=\cv102+\lambda\cv2{-1}2,\ \ \lambda\in\mathbb R$\hfill\null\par
+\begin{center}\begin{tikzpicture}[scale=0.8]
+\draw[blue,thick](-0.5,0)--(5,0)node[right]{$l$};
+\fill(0.5,0)circle(1.5pt)node[below]{$A(1,0,2)$};
+\fill(3,1.5)circle(1.5pt)node[above]{$P(5,1,3)$};
+\draw[densely dotted](0.5,0)--(3,1.5);\draw[very thick,red](3,1.5)--(3,0);\draw(3,0)rectangle(2.8,0.2);
+\end{tikzpicture}\end{center}
+\cdisp{\text{shortest distance}&=|\vab{AP}\times\hat{\vv b}|\\
+&=\left|\cv411\times\frac13\cv2{-1}2\right|\\
+&=\left|\frac13\cv3{-6}{-6}\right|=\left|\cv1{-2}{-2}\right|\\
+&=3}
+&
+\raggedright\exlab Find the shortest distance from $P(4,4,1)$ to the plane\par\noindent\hfill$p:\ \vv r\cdot\cv21{-2}=4$\hfill\null\par
+\begin{center}\begin{tikzpicture}[scale=0.8]
+\draw[fill=blue!8](0,-0.9)--(5,-0.9)--(6,0.6)--(1,0.6)--cycle;\node at(5.0,-0.5){$p$};
+\fill(2.2,0)circle(1.5pt)node[below]{$A(1,2,0)$};
+\fill(3.6,1.6)circle(1.5pt)node[above]{$P(4,4,1)$};
+\draw[densely dotted](2.2,0)--(3.6,1.6);\draw[very thick,red](3.6,1.6)--(3.6,0);\fill(3.6,0)circle(1pt);
+\end{tikzpicture}\end{center}
+\cdisp{\text{shortest distance}&=|\vab{AP}\cdot\hat{\vv n}|\\
+&=\left|\cv321\cdot\frac13\cv21{-2}\right|\\
+&=\left|\frac13(6+2-2)\right|\\
+&=2}
+\end{tabular}\par\medskip
+\begin{info}[title=Note]
+We can also find the coordinates of the foot of the perpendicular $N$ first, then take $|\vab{PN}|$, but this is less efficient.
+\end{info}
+%% ---------------------------------------------------------------- relationships
+\clearpage
+\section{Relationships and Intersections}
+\tikzset{q/.style={diamond,draw,aspect=2.6,fill=black!5,inner sep=1pt,align=center,font=\small},
+r/.style={rectangle,rounded corners,draw,thick,fill=blue!8,minimum width=2.5cm,minimum height=0.75cm,align=center,font=\small},
+qb/.style={rectangle,draw,fill=black!5,inner sep=4pt,text width=5.3cm,align=center,font=\small}}
+\subsection*{Line -- Line \quad $l_1:\vv r=\vv a_1+\lambda\hlm{\vv b_1}$,\ \ $l_2:\vv r=\vv a_2+\mu\hlm{\vv b_2}$}
+\begin{center}\renewcommand{\arraystretch}{1.3}\small
+\begin{tabular}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{4.3cm}|>{\centering\arraybackslash}m{4.3cm}|>{\centering\arraybackslash}m{4.3cm}|}\hline
+ & \textbf{Parallel} & \textbf{Intersecting} & \textbf{Skew}\\\Xhline{2pt}
+\textbf{Diagram} &
+\begin{tikzpicture}[scale=1]
+\draw[blue,thick](0,1.1)--(3.6,1.5);\draw[red!70!black,thick](0,0.2)--(3.6,0.6);
+\fill[blue](0.8,1.19)circle(1.3pt)node[above,font=\scriptsize]{$A_1$};\fill[red!70!black](2.4,0.47)circle(1.3pt)node[below,font=\scriptsize]{$A_2$};
+\node[blue,font=\scriptsize,right]at(3.6,1.5){$l_1$};\node[red!70!black,font=\scriptsize,right]at(3.6,0.6){$l_2$};
+\node[anchor=west,font=\scriptsize,text=blue] at(-0.1,-0.45){$l_1:\vv r=\vv a_1+\lambda\vv b_1,\ \lambda\in\mathbb R$};
+\node[anchor=west,font=\scriptsize,text=red!70!black] at(-0.1,-0.85){$l_2:\vv r=\vv a_2+\mu\vv b_2,\ \mu\in\mathbb R$};
+\end{tikzpicture}&
+\begin{tikzpicture}[scale=1]
+\draw[blue,thick](0,0.1)--(3.6,1.5);\draw[red!70!black,thick](0,1.5)--(3.6,0.1);
+\fill(1.8,0.8)circle(1.3pt);
+\node[blue,font=\scriptsize,right]at(3.6,1.5){$l_1$};\node[red!70!black,font=\scriptsize,right]at(3.6,0.1){$l_2$};
+\node[anchor=west,font=\scriptsize,text=blue] at(-0.1,-0.45){$l_1:\vv r=\vv a_1+\lambda\vv b_1,\ \lambda\in\mathbb R$};
+\node[anchor=west,font=\scriptsize,text=red!70!black] at(-0.1,-0.85){$l_2:\vv r=\vv a_2+\mu\vv b_2,\ \mu\in\mathbb R$};
+\end{tikzpicture}&
+\hlf{\begin{tikzpicture}[scale=1]
+\draw[red!70!black,thick](0,1.5)--(1.5,0.917);\draw[red!70!black,thick](2.1,0.683)--(3.6,0.1);
+\draw[blue,thick](0,0.1)--(3.6,1.5);
+\node[blue,font=\scriptsize,right]at(3.6,1.5){$l_1$};\node[red!70!black,font=\scriptsize,right]at(3.6,0.1){$l_2$};
+\node[anchor=west,font=\scriptsize,text=blue] at(-0.1,-0.45){$l_1:\vv r=\vv a_1+\lambda\vv b_1,\ \lambda\in\mathbb R$};
+\node[anchor=west,font=\scriptsize,text=red!70!black] at(-0.1,-0.85){$l_2:\vv r=\vv a_2+\mu\vv b_2,\ \mu\in\mathbb R$};
+\end{tikzpicture}}\\\hline
+\textbf{Condition} & \hlb{$\vv b_1\,/\!/\,\vv b_2$ and $A_1\notin l_2$, $A_2\notin l_1$} & \hlb{$\vv b_1\nparallel \vv b_2$, unique solution for $\lambda$ and $\mu$} & \hlb{$\vv b_1\nparallel \vv b_2$, no solution for $\lambda$ and $\mu$}\\\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tikzpicture}
+\node[qb,text width=4.2cm](q1) at(0,0){Is $l_1$ parallel to $l_2$?\\[-1pt]\sidenote{i.e. \hlm{\vv b_1=k\vv b_2}?}};
+\node[qb](qa) at(-3.5,-2.4){Does point $A_1$ lie on $l_2$ or point $A_2$ lie on $l_1$?};
+\node[qb](qb2) at(3.5,-2.4){Does $\vv a_1+\lambda\vv b_1=\vv a_2+\mu\vv b_2$ have a unique solution for $\lambda$ and $\mu$?};
+\node[r](s1) at(-5.1,-4.6){same line};\node[r](s2) at(-1.9,-4.6){parallel};
+\node[r](s3) at(1.9,-4.6){intersecting};\node[r](s4) at(5.1,-4.6){skew};
+\draw[ar](q1.south)--node[above left,font=\footnotesize,pos=0.55]{yes}(qa.north);
+\draw[ar](q1.south)--node[above right,font=\footnotesize,pos=0.55]{no}(qb2.north);
+\draw[ar](qa.south)--node[above left,font=\footnotesize,pos=0.55]{yes}(s1.north);
+\draw[ar](qa.south)--node[above right,font=\footnotesize,pos=0.55]{no}(s2.north);
+\draw[ar](qb2.south)--node[above left,font=\footnotesize,pos=0.55]{yes}(s3.north);
+\draw[ar](qb2.south)--node[above right,font=\footnotesize,pos=0.55]{no}(s4.north);
+\end{tikzpicture}\end{center}
+\begin{info}[title=Note]
+Definition of \textbf{skew lines}:
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=1pt,parsep=0pt]
+\item non parallel
+\item non intersecting
+\end{itemize}
+Thus, to prove that two lines are skew, we must first state that \hlm{\vv b_1\neq k\vv b_2}, so $l_1$ and $l_2$ are not parallel, before proceeding with simultaneous equations to show they have no solution.
+\end{info}
+\clearpage
+\exlab Determine whether $l_1$ and $l_2$ are intersecting or skew lines.\par
+\noindent\hfill$l_1:\ \vv r=\cv102+\lambda\cv121,\ \ \lambda\in\mathbb R$\hfill\null\par
+\noindent\hfill$l_2:\ \vv r=\cv2{12}5+\mu\cv{-1}30,\ \ \mu\in\mathbb R$\hfill\null\par
+\cdisp{1+\lambda&=2-\mu\lb1\\2\lambda&=12+3\mu\lb2\\2+\lambda&=5\lb3\\
+\text{From (1) and (3), }\lambda&=3,\ \ \mu=-2\\
+\text{Sub into (2), LHS}&=6,\ \ \text{RHS}=12+3(-2)=6\\
+\therefore\ \text{LHS}&=\text{RHS}\\
+\text{Sub }\lambda=3\text{ into }l_1:\ \vv r&=\cv102+3\cv121=\cv465\\
+\text{They intersect at}\ &(4,6,5)}
+\sidenote{Solve 2 of the 3 equations, sub into the 3rd: LHS $=$ RHS $\Rightarrow$ intersect; LHS $\neq$ RHS $\Rightarrow$ skew.}
+\clearpage
+\subsection*{Line -- Plane \quad $l:\vv r=\vv a+\lambda\vv b$,\ \ $\hlm{p}:\vv r\cdot\vv n=d$}\label{sec:lineplane}
+\begin{center}\renewcommand{\arraystretch}{1.3}\small
+\begin{tabular}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{4.3cm}|>{\centering\arraybackslash}m{4.3cm}|>{\centering\arraybackslash}m{4.3cm}|}\hline
+ & \textbf{Parallel, not on the plane} & \textbf{Line lies in the plane} & \textbf{Intersects at one point}\\\Xhline{2pt}
+\textbf{Diagram} &
+\begin{tikzpicture}[scale=0.95]
+\draw[fill=blue!8](0,0)--(3.4,0)--(4.0,1.0)--(0.6,1.0)--cycle;\node[font=\scriptsize,right]at(3.7,0.5){$p$};
+\draw[blue,thick](0.2,1.8)--(3.8,1.8);\fill[blue](1.0,1.8)circle(1.3pt)node[above,font=\scriptsize]{$A$};\node[blue,font=\scriptsize,right]at(3.8,1.8){$l$};
+\node[anchor=west,font=\scriptsize,text=blue] at(-0.1,-0.75){$l:\vv r=\vv a+\lambda\vv b,\ \lambda\in\mathbb R$};
+\node[anchor=west,font=\scriptsize,text=black] at(-0.1,-1.15){$p:\vv r\cdot\vv n=d$};
+\end{tikzpicture}&
+\begin{tikzpicture}[scale=0.95]
+\draw[fill=blue!8](0,0)--(3.4,0)--(4.0,1.0)--(0.6,1.0)--cycle;\node[font=\scriptsize,right]at(3.7,0.5){$p$};
+\draw[blue,thick](0.5,0.3)--(3.4,0.6);\fill[blue](1.2,0.37)circle(1.3pt)node[above,font=\scriptsize]{$A$};\node[blue,font=\scriptsize,above]at(3.0,0.55){$l$};
+\node[anchor=west,font=\scriptsize,text=blue] at(-0.1,-0.75){$l:\vv r=\vv a+\lambda\vv b,\ \lambda\in\mathbb R$};
+\node[anchor=west,font=\scriptsize,text=black] at(-0.1,-1.15){$p:\vv r\cdot\vv n=d$};
+\end{tikzpicture}&
+\begin{tikzpicture}[scale=0.95]
+\draw[fill=blue!8](0,0)--(3.4,0)--(4.0,1.0)--(0.6,1.0)--cycle;\node[font=\scriptsize,right]at(3.7,0.5){$p$};
+\draw[blue,thick](2.6,1.9)--(1.874,0.5);\draw[blue,thick,dashed](1.874,0.5)--(1.615,0);\draw[blue,thick](1.615,0)--(1.41,-0.4);\fill[blue](2.39,1.495)circle(1.3pt)node[right,font=\scriptsize]{$A$};\fill(1.874,0.5)circle(1.3pt);\node[blue,font=\scriptsize,above]at(2.6,1.9){$l$};
+\node[anchor=west,font=\scriptsize,text=blue] at(-0.1,-0.75){$l:\vv r=\vv a+\lambda\vv b,\ \lambda\in\mathbb R$};
+\node[anchor=west,font=\scriptsize,text=black] at(-0.1,-1.15){$p:\vv r\cdot\vv n=d$};
+\end{tikzpicture}\\\hline
+\textbf{Condition} & \footnotesize$\bullet$ normal $\perp$ line: $\vv b\cdot\vv n=0$\par $\bullet$ $A$ does not lie on $p$: $\vv a\cdot\vv n\neq d$ & \footnotesize$\bullet$ normal $\perp$ line: $\vv b\cdot\vv n=0$\par $\bullet$ $A$ lies on $p$: $\vv a\cdot\vv n=d$ & \footnotesize$\bullet$ normal not $\perp$ line: $\vv b\cdot\vv n\neq0$\\\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tikzpicture}
+\node[qb,text width=4.2cm](q1) at(0,0){Normal of plane $\perp$ line?\\[-1pt]\sidenote{$\vv b\cdot\vv n=0$?}};
+\node[qb,text width=4.2cm](qa) at(-3.5,-2.4){Does $A$ lie on $p$?\\[-1pt]\sidenote{$\vv a\cdot\vv n=d$?}};
+\node[r](s3) at(3.5,-2.4){intersect at one point};
+\node[r](s1) at(-5.3,-4.6){line lies in plane};\node[r](s2) at(-1.7,-4.6){parallel, not on the plane};
+\draw[ar](q1.south)--node[above left,font=\footnotesize,pos=0.55]{yes}(qa.north);
+\draw[ar](q1.south)--node[above right,font=\footnotesize,pos=0.55]{no}(s3.north);
+\draw[ar](qa.south)--node[above left,font=\footnotesize,pos=0.55]{yes}(s1.north);
+\draw[ar](qa.south)--node[above right,font=\footnotesize,pos=0.55]{no}(s2.north);
+\end{tikzpicture}\end{center}
+\exlab Find the point of intersection between the line $l$ and plane $p$.\par
+\noindent\hfill$l:\ \vv r=\cv131+\lambda\cv1{-2}1,\ \ \lambda\in\mathbb R$\hfill\null\par
+\noindent\hfill$p:\ \vv r\cdot\cv121=5$\hfill\null\par
+\cdisp{\vv r&=\cv131+\lambda\cv1{-2}1=\cv{1+\lambda}{3-2\lambda}{1+\lambda},\ \ \lambda\in\mathbb R\\
+\cv{1+\lambda}{3-2\lambda}{1+\lambda}\cdot\cv121&=5\\8-2\lambda&=5\ \Rightarrow\ \lambda=\tfrac32\\\therefore\ &(2.5,0,2.5)}
+\clearpage
+\subsection*{Plane -- Plane \quad $p_1:\vv r\cdot\vv n_1=d_1$,\ \ $p_2:\vv r\cdot\vv n_2=d_2$}
+\noindent\hl{Let $p_1:\ \vv r\cdot\vv n_1=d_1$ and $p_2:\ \vv r\cdot\vv n_2=d_2$ be distinct planes.}\par\smallskip
+\begin{center}\renewcommand{\arraystretch}{1.3}\small
+\begin{tabular}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{4.3cm}|>{\centering\arraybackslash}m{4.3cm}|}\hline
+ & \textbf{Parallel} & \textbf{Intersecting in a line}\\\Xhline{2pt}
+\textbf{Diagram} &
+\begin{tikzpicture}[scale=0.95]
+\draw[fill=blue!10,draw=blue](0,0)--(3.4,0)--(4.0,0.9)--(0.6,0.9)--cycle;\node[blue,font=\scriptsize,right]at(3.7,0.45){$p_1$};
+\draw[fill=red!10,draw=red!70!black](0,1.4)--(3.4,1.4)--(4.0,2.3)--(0.6,2.3)--cycle;\node[red!70!black,font=\scriptsize,right]at(3.7,1.85){$p_2$};
+\node[anchor=west,font=\scriptsize,text=blue] at(-0.1,-0.45){$p_1:\vv r\cdot\vv n_1=d_1$};
+\node[anchor=west,font=\scriptsize,text=red!70!black] at(-0.1,-0.85){$p_2:\vv r\cdot\vv n_2=d_2$};
+\end{tikzpicture}&
+\begin{tikzpicture}[x={(1.0cm,0cm)},y={(0.5cm,0.35cm)},z={(0cm,0.9cm)}]
+\filldraw[fill=blue,fill opacity=0.4,draw=blue!60!black,line width=0.5pt](-1.2,-1,0)--(-1.2,1,0)--(1.2,1,0)--(1.2,-1,0)--cycle;
+\filldraw[fill=red,fill opacity=0.4,draw=red!60!black,line width=0.5pt](-0.5,-1,-1)--(0.5,-1,1)--(0.5,1,1)--(-0.5,1,-1)--cycle;
+\node[blue!60!black,font=\scriptsize,right]at(1.2,1,0){$p_1$};\node[red!60!black,font=\scriptsize,above]at(0.5,1,1){$p_2$};
+\draw[Lcol,line width=3pt,line cap=round](0,-1.15,0)--(0,1.15,0);
+\node[anchor=west,font=\scriptsize,text=blue] at(-1.7cm,-1.6cm){$p_1:\vv r\cdot\vv n_1=d_1$};
+\node[anchor=west,font=\scriptsize,text=red!70!black] at(-1.7cm,-2.0cm){$p_2:\vv r\cdot\vv n_2=d_2$};
+\end{tikzpicture}\\\hline
+\textbf{Condition} & $\vv n_1\,/\!/\,\vv n_2$, $p_1\neq p_2$ & $\vv n_1\nparallel \vv n_2$\\\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tikzpicture}
+\node[qb,text width=4.2cm](q1) at(0,0){Is $p_1$ parallel to $p_2$?\\[-1pt]\sidenote{i.e. $\vv n_1=k\vv n_2$?}};
+\node[qb,text width=4.8cm](qa) at(-3.5,-2.4){Does a point on $p_1$ lie on $p_2$?\\[-1pt]\sidenote{i.e. \hlm{d_1=kd_2}?}\\[-1pt]\sidenote{\hl{(same $k$ as $\vv n_1=k\vv n_2$)}}};
+\node[r,align=center](s3) at(3.5,-2.4){intersect in a line\\[-1pt]\footnotesize direction $\vv n_1\times\vv n_2$};
+\node[r](s1) at(-5.1,-4.6){same plane};\node[r](s2) at(-1.9,-4.6){parallel};
+\draw[ar](q1.south)--node[above left,font=\footnotesize,pos=0.55]{yes}(qa.north);
+\draw[ar](q1.south)--node[above right,font=\footnotesize,pos=0.55]{no}(s3.north);
+\draw[ar](qa.south)--node[above left,font=\footnotesize,pos=0.55]{yes}(s1.north);
+\draw[ar](qa.south)--node[above right,font=\footnotesize,pos=0.55]{no}(s2.north);
+\end{tikzpicture}\end{center}
+\exlab Find the intersection between the planes:\par\noindent\hfill$\begin{aligned}3x+2y+z&=10\\x-2y+z&=5\end{aligned}$\hfill\null\par
+\cdisp{\text{GC:}\ x&=\dfrac{15}{4}-\dfrac12z\\
+y&=-\dfrac58+\dfrac14z\\
+z&=z\\
+\therefore\ l:\ \vv r&=\cvf{\dfrac{15}{4}}{-\dfrac58}{0}+\lambda\cvf{-\dfrac12}{\dfrac14}{1},\ \ \lambda\in\mathbb R}
+\providecolor{Lcol}{RGB}{230,120,0}
+\clearpage
+\exlab Sometimes, we may not be able to use our GC to find the line of intersection between two planes. The steps to find it manually are:\par\noindent\hfill$p_1:\ \vv r\cdot\cv111=6$,\qquad $p_2:\ \vv r\cdot\cv1{-1}2=2$\hfill\null\par
+\noindent\begin{minipage}[c]{0.5\textwidth}\raggedright
+\textbf{Step 1:} direction $=\vv n_1\times\vv n_2$
+\cdisp{\hlm{\vv b}&=\cv111\times\cv1{-1}2\\
+&=\cv{1(2)-1(-1)}{1(1)-1(2)}{1(-1)-1(1)}\\
+&=\cv3{-1}{-2}}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.46\textwidth}\centering
+\begin{tikzpicture}[x={(1.5cm,0cm)},y={(0.8cm,0.55cm)},z={(0cm,1.35cm)}]
+\filldraw[fill=blue,fill opacity=0.4,draw=blue!60!black,line width=0.5pt](-1.2,-1,0)--(-1.2,1,0)--(1.2,1,0)--(1.2,-1,0)--cycle;
+\filldraw[fill=red,fill opacity=0.4,draw=red!60!black,line width=0.5pt](-0.5,-1,-1)--(0.5,-1,1)--(0.5,1,1)--(-0.5,1,-1)--cycle;
+\node[blue!60!black,font=\scriptsize,right]at(1.2,1,0){$p_1$};\node[red!60!black,font=\scriptsize,above]at(0.5,1,1){$p_2$};
+\draw[Lcol,line width=2.4pt,line cap=round,-{Stealth[length=3mm]}](0,-1,0)--(0,1.3,0)node[right,font=\scriptsize,text=Lcol]{$\vv n_1\times\vv n_2$};
+\draw[blue!60!black,thick,-{Stealth}](-0.9,-0.3,0)--(-0.9,-0.3,1.2)node[above,font=\scriptsize]{$\vv n_1$};
+\draw[red!60!black,thick,-{Stealth}](-0.3,-0.3,-0.6)--(0.7,-0.3,-1.1)node[below right,font=\scriptsize]{$\vv n_2$};
+\end{tikzpicture}
+\end{minipage}\par\medskip
+\textbf{Step 2:} find a point that lies on both planes
+\cdisp{p_1:\ x+y+z&=6\\
+p_2:\ x-y+2z&=2\\
+\text{Let }z&=0}
+\sys{x+y&=6\\x-y&=2}{\begin{aligned}x&=4\\y&=2\end{aligned}}
+\cdisp{\therefore\ l:\ \vv r&=\cv420+\lambda\cv3{-1}{-2},\ \ \lambda\in\mathbb R}
+\tikzset{pv/.style={x={(1.15cm,0cm)},y={(0.6cm,0.42cm)},z={(0cm,1.05cm)},baseline=(current bounding box.center)}}
+\definecolor{Lcol}{RGB}{230,120,0}
+\newcommand{\Pq}[5]{\filldraw[fill=#1,fill opacity=0.4,draw=#1!60!black,line width=0.5pt](#2)--(#3)--(#4)--(#5)--cycle;}
+\newcommand{\Pg}[4]{\filldraw[fill=black!12,fill opacity=0.55,draw=black!35,line width=0.4pt](#1)--(#2)--(#3)--(#4)--cycle;}
+\newcommand{\Ln}[2]{\draw[Lcol,line width=2.4pt,line cap=round](#1)--(#2);}
+\clearpage
+\section{Interaction between 3 Planes}
+\tikzset{pvs/.style={x={(0.8cm,0cm)},y={(0.42cm,0.29cm)},z={(0cm,0.74cm)},baseline=(current bounding box.center)}}
+\renewcommand{\Ln}[2]{\draw[Lcol,line width=1.8pt,line cap=round](#1)--(#2);}
+\newcommand{\lcond}{\textcolor{Lcol}{$l:\ \vv r=\vv a+\lambda\vv b,\ \lambda\in\mathbb R$}}
+\newcommand{\pthree}{\textcolor{green!55!black}{$p_3$}}
+\newcommand{\arr}{\raisebox{0pt}{$\Rightarrow$}}
+\noindent\hl{Let $p_1:\ \vv r\cdot\vv n_1=d_1$, $p_2:\ \vv r\cdot\vv n_2=d_2$ and $p_3:\ \vv r\cdot\vv n_3=d_3$ be distinct planes.}\par\smallskip
+\begin{center}\renewcommand{\arraystretch}{1.45}\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{8.3cm}|>{\centering\arraybackslash}m{4.6cm}|}\hline
+\textbf{Case} & \textbf{Diagram(s)} & \textbf{Condition}\par\hlb{\footnotesize\textcolor{Lcol}{$l$}: line of intersection of $p_1$ and $p_2$ ($\vv n_1\nparallel\vv n_2$)}\\\Xhline{2pt}
+\textbf{1. All parallel} &
+\begin{tikzpicture}[pvs]
+\Pq{blue}{-1.2,-1,-1}{-1.2,1,-1}{1.2,1,-1}{1.2,-1,-1}
+\Pq{red}{-1.2,-1,0}{-1.2,1,0}{1.2,1,0}{1.2,-1,0}
+\Pq{green!55!black}{-1.2,-1,1}{-1.2,1,1}{1.2,1,1}{1.2,-1,1}
+\node[blue!60!black,font=\scriptsize,right]at(1.2,1,-1){$p_1$};
+\node[red!60!black,font=\scriptsize,right]at(1.2,1,0){$p_2$};
+\node[green!55!black,font=\scriptsize,right]at(1.2,1,1){$p_3$};
+\end{tikzpicture} & \footnotesize$\vv n_1\parallel\vv n_2\parallel\vv n_3$\\\hline
+\textbf{2. Two parallel, one not} &
+\begin{tikzpicture}[pvs]
+\Pq{blue}{-1.2,-1,-0.7}{-1.2,1,-0.7}{1.2,1,-0.7}{1.2,-1,-0.7}
+\Pq{red}{-1.2,-1,0.7}{-1.2,1,0.7}{1.2,1,0.7}{1.2,-1,0.7}
+\Pq{green!55!black}{-1.3,-0.2,-1.3}{1.3,-0.2,-1.3}{1.3,0.2,1.3}{-1.3,0.2,1.3}
+\draw[black,line width=0.9pt](-1.2,-0.1077,-0.7)--(1.2,-0.1077,-0.7);
+\draw[black,line width=0.9pt](-1.2,0.1077,0.7)--(1.2,0.1077,0.7);
+\node[blue!60!black,font=\scriptsize,right]at(1.2,1,-0.7){$p_1$};
+\node[red!60!black,font=\scriptsize,right]at(1.2,1,0.7){$p_2$};
+\node[green!55!black,font=\scriptsize,above right]at(1.3,0.2,1.3){$p_3$};
+\end{tikzpicture} & \footnotesize$\vv n_1\parallel\vv n_2$, but $\vv n_3$ not parallel to them\\\hline
+\textbf{3. All intersect at 1 point}\par\sidenote{(most common)} &
+\begin{tikzpicture}[pvs]
+\Pq{blue}{-1.2,-1,0}{-1.2,1,0}{1.2,1,0}{1.2,-1,0}
+\Pq{red}{-0.5,-1,-1}{0.5,-1,1}{0.5,1,1}{-0.5,1,-1}
+\Ln{0,-1,0}{0,1,0}
+\node[blue!60!black,font=\scriptsize,right]at(1.2,1,0){$p_1$};
+\node[red!60!black,font=\scriptsize,above]at(0.5,1,1){$p_2$};
+\end{tikzpicture}\ \raisebox{0pt}{\large$\Rightarrow$}\ 
+\begin{tikzpicture}[pvs]
+\Pg{-1.2,-1,0}{-1.2,1,0}{1.2,1,0}{1.2,-1,0}
+\Pg{-0.5,-1,-1}{0.5,-1,1}{0.5,1,1}{-0.5,1,-1}
+\Pq{green!55!black}{-1.2,-0.26,-1}{1.2,0.46,-1}{1.2,0.86,1}{-1.2,0.14,1}
+\draw[black!45,dashed,line width=0.9pt](-1.2,-0.06,0)--(1.2,0.66,0);
+\draw[black!45,dashed,line width=0.9pt](-0.5,-0.05,-1)--(0.5,0.65,1);
+\Ln{0,-1,0}{0,1,0}
+\filldraw[fill=black,draw=white,line width=0.6pt](0,0.3,0)circle(2pt);
+\node[green!55!black,font=\scriptsize,above left]at(-1.2,0.14,1){$p_3$};
+\end{tikzpicture} &
+\footnotesize\lcond\par intersects \pthree\par (see p.~\pageref{sec:lineplane})\\\hline
+\textbf{4. All intersect in a line} &
+\begin{tikzpicture}[pvs]
+\Pq{blue}{-1.2,-1,0}{-1.2,1,0}{1.2,1,0}{1.2,-1,0}
+\Pq{red}{-0.5,-1,-1}{0.5,-1,1}{0.5,1,1}{-0.5,1,-1}
+\Ln{0,-1,0}{0,1,0}
+\node[blue!60!black,font=\scriptsize,right]at(1.2,1,0){$p_1$};
+\node[red!60!black,font=\scriptsize,above]at(0.5,1,1){$p_2$};
+\end{tikzpicture}\ \raisebox{0pt}{\large$\Rightarrow$}\ 
+\begin{tikzpicture}[pvs]
+\Pg{-1.2,-1,0}{-1.2,1,0}{1.2,1,0}{1.2,-1,0}
+\Pg{-0.5,-1,-1}{0.5,-1,1}{0.5,1,1}{-0.5,1,-1}
+\Pq{green!55!black}{-1,-1,0.9}{-1,1,0.9}{1,1,-0.9}{1,-1,-0.9}
+\Ln{0,-1,0}{0,1,0}
+\node[green!55!black,font=\scriptsize,right]at(1,1,-0.9){$p_3$};
+\end{tikzpicture} &
+\footnotesize\lcond\par lies on \pthree\par (see p.~\pageref{sec:lineplane})\\\hline
+\textbf{5. Form a triangular prism}\par\sidenote{(no single point of intersection)} &
+\begin{tikzpicture}[pvs]
+\Pq{blue}{-0.6,-1,0}{-0.6,1,0}{1.3,1,0}{1.3,-1,0}
+\Pq{red}{-0.25,-1,-0.5}{0.65,-1,1.3}{0.65,1,1.3}{-0.25,1,-0.5}
+\Ln{0,-1,0}{0,1,0}
+\node[blue!60!black,font=\scriptsize,right]at(1.3,1,0){$p_1$};
+\node[red!60!black,font=\scriptsize,above]at(0.65,1,1.3){$p_2$};
+\end{tikzpicture}\ \raisebox{0pt}{\large$\Rightarrow$}\ 
+\begin{tikzpicture}[pvs]
+\Pg{-0.6,-1,0}{-0.6,1,0}{1.3,1,0}{1.3,-1,0}
+\Pg{-0.25,-1,-0.5}{0.65,-1,1.3}{0.65,1,1.3}{-0.25,1,-0.5}
+\Pq{green!55!black}{0.69,-1,-0.3}{0.69,1,-0.3}{0.21,1,1.3}{0.21,-1,1.3}
+\draw[black!45,dashed,line width=0.9pt](0.6,-1,0)--(0.6,1,0);
+\draw[black!45,dashed,line width=0.9pt](0.375,-1,0.75)--(0.375,1,0.75);
+\Ln{0,-1,0}{0,1,0}
+\node[green!55!black,font=\scriptsize,above]at(0.21,1,1.3){$p_3$};
+\end{tikzpicture} &
+\hlb{\footnotesize\lcond\par $\bullet$ \textcolor{Lcol}{$l\,/\!/\,$}\pthree: $\vv b\cdot\vv n_3=0$\par $\bullet$ \textcolor{Lcol}{$l\not\subset$}\pthree: $\vv a\cdot\vv n_3\neq d_3$\par (see p.~\pageref{sec:lineplane})}\\\hline
+\end{tabular}\end{center}
+\begin{info}[title=Note]
+To analyse the interaction between 3 arbitrary planes, we can study how the \textcolor{Lcol}{\textbf{line of intersection between $p_1$ and $p_2$}} interacts with \textcolor{green!55!black}{$p_3$}.
+\end{info}
+%% angles
+\section{Angles}
+\begin{center}\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|>{\centering\arraybackslash}m{4.6cm}|>{\centering\arraybackslash}m{4.6cm}|>{\centering\arraybackslash}m{4.6cm}|}\hline
+\textbf{Line -- Line} & \textbf{Line -- Plane} & \textbf{Plane -- Plane}\\\Xhline{2pt}
+\begin{tikzpicture}[scale=0.75]\draw[blue,thick](0,0)--(3,1.2);\draw[red,thick](0,1.2)--(3,0);\draw(1.95,0.78)arc(22:-22:0.5);\node[font=\footnotesize]at(2.3,0.6){$\theta$};\node[font=\footnotesize,above]at(3,1.2){\hlm{\vv b_1}};\node[font=\footnotesize,below]at(3,0){\hlm{\vv b_2}};\end{tikzpicture}&
+\begin{tikzpicture}[scale=0.75]\draw[fill=blue!8](0,0)--(3,0)--(3.6,0.8)--(0.6,0.8)--cycle;\draw[red,thick](1,0.4)--(3,1.8)node[right,font=\footnotesize]{$\vv b$};\draw[dashed](1,0.4)--(3,0.4);\draw[dashed](3,0.4)--(3,1.8);\draw[green!50!black,ar](1,0.4)--(1,1.8)node[left,font=\footnotesize]{$\vv n$};\draw(1.5,0.4)arc(0:35:0.5);\node[font=\footnotesize]at(1.75,0.6){$\theta$};\end{tikzpicture}&
+\begin{tikzpicture}[x={(0.95cm,0cm)},y={(0.5cm,0.35cm)},z={(0cm,0.9cm)},baseline=(current bounding box.center)]
+\Pq{blue}{-1.2,-1,0}{-1.2,1,0}{1.2,1,0}{1.2,-1,0}
+\Pq{red}{-0.5,-1,-1}{0.5,-1,1}{0.5,1,1}{-0.5,1,-1}
+\Ln{0,-1,0}{0,1,0}
+\draw[black,line width=0.5pt](0.45,-1,0)arc[start angle=0,end angle=63.4,x radius=0.45*0.95cm,y radius=0.45*0.9cm];
+\node[font=\scriptsize]at(0.78,-1,0.14){$\theta$};
+\node[blue!60!black,font=\scriptsize,right]at(1.2,1,0){$p_1$};
+\node[red!60!black,font=\scriptsize,above]at(0.5,1,1){$p_2$};
+\end{tikzpicture}\\
+\hlm{\cos\theta=\dfrac{|\vv b_1\cdot\vv b_2|}{|\vv b_1||\vv b_2|}} &
+$\sin\theta=\left|\dfrac{\vv n\cdot\vv b}{|\vv n||\vv b|}\right|$ &
+$\cos\theta=\left|\dfrac{\vv n_1\cdot\vv n_2}{|\vv n_1||\vv n_2|}\right|$\\
+\sidenote{directions} & \sidenote{$\sin$: $\angle(\vv n,\vv b)=90^\circ-\theta$} & \sidenote{normals}\\\hline
+\end{tabular}\end{center}
+\sidenote{$\theta$ = acute angle.}\par
+\sidenote{Each formula has a modulus in the numerator $\because$ $\theta$ must be acute.}\par
+\noindent\begin{minipage}[t]{0.48\textwidth}
+\exlab Find the angle between the planes $3x-y+2z=3$ and $y=2$.\par
+\cdisp{\cos\theta&=\frac{|-1|}{\sqrt{14}\cdot1}\\\theta&=74.5^\circ}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\exlab Find the angle between the line $l$ and plane $p$.\par
+\noindent\hfill$l:\ \vv r=\cv{-2}{-4}5+\lambda\cv35{-4},\ \ \lambda\in\mathbb R$\hfill\null\par
+\noindent\hfill$p:\ \vv r\cdot\cv010=1$\hfill\null\par
+\cdisp{\sin\theta&=\frac{5}{\sqrt{50}\cdot1}=\frac1{\sqrt2}\\\theta&=45^\circ}
+\end{minipage}
+%% ---------------------------------------------------------------- reflection of lines
+\section{Reflection of a Line}
+\noindent\begin{minipage}[t]{0.48\textwidth}
+\centering\textbf{Line $l_1$ in line $l_2$} \sidenote{(intersect at $X$)}\par\smallskip
+\begin{tikzpicture}[scale=0.8]
+\draw[blue,thick](-0.3,0)--(5,0)node[right]{$l_2$};
+\draw[red,thick](0.5,0)--(3.6,1.6)node[above]{$l_1$};\draw[red,thick,dashed](0.5,0)--(3.6,-1.6)node[below]{$l_1'$};
+\fill(0.5,0)circle(1.5pt)node[below left]{$X$};
+\fill(3,1.29)circle(1.5pt)node[above left]{$A$};\fill(3,0)circle(1.5pt)node[below right]{$F$};\fill(3,-1.29)circle(1.5pt)node[below left]{$A'$};
+\draw[densely dotted](3,1.29)--(3,-1.29);
+\node[anchor=west,font=\scriptsize,text=red] at(-0.3,-2.2){$l_1:\vv r=\vv a_1+\lambda\vv b_1,\ \lambda\in\mathbb R$};
+\node[anchor=west,font=\scriptsize,text=blue] at(-0.3,-2.7){$l_2:\vv r=\vv a_2+\mu\vv b_2,\ \mu\in\mathbb R$};
+\end{tikzpicture}
+\begin{enumerate}[leftmargin=*,itemsep=1pt,label=\arabic*.]
+\item $X=l_1\cap l_2$
+\item $A\in l_1$: foot $F$ on $l_2$
+\item $\vab{OF}=\dfrac{\vab{OA}+\vab{OA'}}{2}$ \sidenote{(midpoint/ratio theorem)}
+\item $l_1':\ \vv r=\vab{OX}+\mu\vab{XA'},\ \mu\in\mathbb R$
+\end{enumerate}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering\textbf{Line $l$ in plane $p$} \sidenote{(intersect at $X$)}\par\smallskip
+\begin{tikzpicture}[scale=0.8]
+\draw[fill=blue!8](0,-0.5)--(4,-0.5)--(5,0.5)--(1,0.5)--cycle;\node at(4.4,-0.25){$p$};
+\draw[red,thick](1.5,0)--(3.5,1.8)node[above]{$l$};\draw[red,thick,dashed](1.5,0)--(3.5,-1.8)node[below]{$l'$};
+\fill(1.5,0)circle(1.5pt)node[left]{$X$};
+\fill(3,1.35)circle(1.5pt)node[right]{$A$};\fill(3,0)circle(1.5pt)node[below right]{$F$};\fill(3,-1.35)circle(1.5pt)node[right]{$A'$};
+\draw[densely dotted](3,1.35)--(3,-1.35);
+\node[anchor=west,font=\scriptsize,text=red] at(0,-2.2){$l:\vv r=\vv a+\lambda\vv b,\ \lambda\in\mathbb R$};
+\node[anchor=west,font=\scriptsize,text=black] at(0,-2.7){$p:\vv r\cdot\vv n=d$};
+\end{tikzpicture}
+\begin{enumerate}[leftmargin=*,itemsep=1pt,label=\arabic*.]
+\item $X=l\cap p$
+\item $A\in l$: foot $F$ on $p$
+\item $\vab{OF}=\dfrac{\vab{OA}+\vab{OA'}}{2}$ \sidenote{(midpoint/ratio theorem)}
+\item $l':\ \vv r=\vab{OX}+\mu\vab{XA'},\ \mu\in\mathbb R$
+\end{enumerate}
+\end{minipage}\par\smallskip
+\sidenote{If $l\,/\!/\,p$: $l'$ has the same direction, through $A'$.}\par
+%% ---------------------------------------------------------------- distance
+\section{Distance Between Parallel Planes}
+\noindent\begin{minipage}[c]{0.55\textwidth}
+\topdisplay{p:\ \vv r\cdot\vv n=d}
+\begin{theorem}[before skip=2mm,after skip=2mm]{Distance of plane from origin}
+\centering$\text{distance from }O=\dfrac{|d|}{|\vv n|}$
+\end{theorem}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}\centering
+\begin{tikzpicture}[scale=0.8]
+\draw[fill=blue!8](0.2,1.4)--(3.6,1.4)--(4.4,2.2)--(1.0,2.2)--cycle;\node[right] at(4.4,2.0){$p$};
+\fill(1.6,0)circle(1.5pt)node[below]{$O$};
+\fill(1.6,1.8)circle(1.5pt)node[below left,font=\footnotesize]{$N$};
+\draw[densely dashed](1.6,0)--(1.6,1.8);
+\draw(1.6,1.55)--(1.85,1.55)--(1.85,1.8);
+\node[left,font=\footnotesize]at(1.55,0.8){$\dfrac{|d|}{|\vv n|}$};
+\draw[green!50!black,ar](1.6,1.8)--(1.6,2.7)node[above,font=\footnotesize]{$\vv n$};
+\end{tikzpicture}\end{minipage}\par\medskip
+\noindent\begin{minipage}[c]{0.55\textwidth}
+\topdisplay{p_1:\ \vv r\cdot\vv n=d_1,\qquad p_2:\ \vv r\cdot\vv n=d_2}
+\begin{theorem}[before skip=2mm,after skip=2mm]{Distance}
+\centering$\text{distance}=\left|\dfrac{d_1}{|\vv n|}-\dfrac{d_2}{|\vv n|}\right|$
+\end{theorem}
+\sidenote{Same $\vv n$ for both planes first. $\vv r\cdot\vv n=0$: plane through $O$.}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}\centering
+\begin{tikzpicture}[scale=0.8]
+\draw[fill=blue!8](0,1.6)--(3.4,1.6)--(4.2,2.3)--(0.8,2.3)--cycle;\node[right] at(4.2,2.1){$p_1$};
+\draw[fill=blue!8](0,0)--(3.4,0)--(4.2,0.7)--(0.8,0.7)--cycle;\node[right] at(4.2,0.5){$p_2$};
+\draw[<->,thick](2,0.35)--(2,1.95);\node[right,font=\footnotesize]at(2,1.15){distance};
+\end{tikzpicture}\end{minipage}
+\exlab Find the distance between the two planes $x+2y-3z=2$ and $2x+4y-6z=-10$.\par
+\cdisp{2x+4y-6z&=-10\ \Rightarrow\ x+2y-3z=-5\\
+\text{distance}&=\left|\frac{2}{\sqrt{14}}-\frac{-5}{\sqrt{14}}\right|=\frac{7}{\sqrt{14}}=\hlm{\frac{\sqrt{14}}{2}}}

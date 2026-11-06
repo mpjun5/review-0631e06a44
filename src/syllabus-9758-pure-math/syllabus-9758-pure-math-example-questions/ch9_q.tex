@@ -1,0 +1,521 @@
+\newcommand{\dD}{\mathrm{d}}
+\providecommand{\solnotfound}{\par\noindent\fbox{\parbox{0.9\linewidth}{\centering\color{red}\textbf{Official solution not found}}}\par}
+%% ============================================================ 91  RVHS 2025 Promo Q1  (soln: promo25/promo_rv_sa.pdf p15)
+\defQ{91}{}{%
+A conical water tank is being filled with water at a constant rate of $0.2\ \text{m}^{3}\text{s}^{-1}$. The tank has a height of 6 m and a radius at the top of 3 m.
+\begin{qparts}
+\pt{(a)} Show that the volume of the water in the tank, $V$, can be expressed as $\dfrac{2}{3}\pi r^{3}$, where $r$ is the radius of the top water surface. \mk{1}
+\pt{(b)} Find the exact rate of change of $r$ when the height of the water is 4 m. \mk{3}
+\end{qparts}
+[The volume of a cone of base radius $r$ and height $h$ is given by $V=\dfrac{1}{3}\pi r^{2}h$.]
+\src{RVHS 2025 Promo Q1}}
+\defS{91}{%
+\begin{gtpart}{(a)}{1}{\centering\figRVHSsol\par}
+\begin{topalign}
+V&=\frac{1}{3}\pi r^{2}h,\ \text{where $h$ is the height of the water.}\\
+&=\frac{1}{3}\pi r^{2}(2r),\ \text{since }\frac{h}{r}=\frac{6}{3}=\frac{2}{1}\text{ by similar triangles.}\\
+&=\frac{2}{3}\pi r^{3}.\ \text{(Shown)}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(b)}{3}\begin{topalign}
+\frac{\dD V}{\dD r}&=2\pi r^{2}
+\end{topalign}
+When $h=4$ (i.e. when $r=2$),
+\begin{topalign}
+\frac{\dD r}{\dD t}&=\frac{\dD r}{\dD V}\times\frac{\dD V}{\dD t}\\
+&=\frac{1}{2\pi r^{2}}\times0.2\\
+&=\frac{1}{8\pi}\times0.2\\
+&=\frac{1}{40\pi}\ \text{m s}^{-1}
+\end{topalign}\end{gtpart}}
+%% ============================================================ 92  TJC 2025 Prelim P2 Q4  (soln: TJC_2025_H2_Math_Prelim_P2_Solutions.pdf pp4-6)
+\defQ{92}{}{%
+[The arc length $L$ of a sector of radius $a$ and angle $\theta$ is given by $L=a\theta$;\par
+The volume $V$ of a cone of base radius $r$ and height $h$ is given by $V=\dfrac{1}{3}\pi r^{2}h$\,]
+\begin{center}\figTJCfa\hspace{1.5cm}\raisebox{0.6cm}{\figTJCfb}\end{center}
+A metal sheet is shaped as a circular sector with angle $\theta$ and fixed radius $a$, as shown in Figure 1. This sector is then formed into a right circular cone with slant height $a$ by joining the two radii $OA$ and $OB$ together as shown in Figure 2.
+\begin{qparts}
+\pt{(a)} If $\theta$ is measured in radians, state the base radius of the cone, $r$, in term of $a$ and $\theta$. \mk{1}
+\pt{(b)} Show that the volume of the cone, $V$, is given by
+\[V^{2}=\frac{a^{6}}{576\pi^{4}}\theta^{4}\left(4\pi^{2}-\theta^{2}\right).\] \mk{3}
+\pt{(c)} Using differentiation, find the exact value of $\theta$ that will maximise $V$. \mk{4}
+\end{qparts}
+\begin{center}\figTJCfc\end{center}
+Two identical cones, as described in part \textbf{(c)}, are joined together tip-to-tip to form a new object, as shown in Figure 3. The upper cone is initially filled with water, which leaks out into the lower cone at a rate of $\dfrac{\pi}{15}\ \text{cm}^{3}\,\text{s}^{-1}$. At time $t$ seconds, the height of the water in the upper cone is $y$.
+\begin{qparts}
+\pt{(d)} Show that the volume of water in the cone, $W$ cm$^{3}$, is given by $W=\dfrac{2\pi y^{3}}{3}$. \mk{2}
+\pt{(e)} Calculate the rate of change of $y$ when $y=2$. \mk{2}
+\end{qparts}
+\src{TJC 2025 Prelim P2 Q4}}
+\defS{92}{%
+\begin{gtpart}{(a)}{1}Circumference of base = length of arc AB
+\begin{topalign}
+2\pi r&=a\theta\\
+r&=\frac{a}{2\pi}\theta
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(b)}{3}(i)\quad Let $h$ = height of cone
+\begin{topalign}
+h^{2}&=a^{2}-r^{2}\\
+&=a^{2}-\frac{a^{2}}{4\pi^{2}}\theta^{2}\\
+&=\frac{a^{2}}{4\pi^{2}}\left(4\pi^{2}-\theta^{2}\right)\\
+V&=\frac{1}{3}\pi r^{2}h\\
+V^{2}&=\frac{1}{9}\pi^{2}r^{4}h^{2}\\
+&=\frac{1}{9}\pi^{2}\left(\frac{a^{4}}{16\pi^{4}}\right)\cdot\frac{a^{2}}{4\pi^{2}}\left(4\pi^{2}-\theta^{2}\right)\\
+&=\frac{a^{6}}{576\pi^{4}}\theta^{4}\left(4\pi^{2}-\theta^{2}\right)
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(c)}{4}\textbf{Method 1}
+\begin{topalign}
+\frac{\dD V^{2}}{\dD\theta}&=\frac{a^{6}}{576\pi^{4}}\frac{\dD}{\dD\theta}\left(4\pi^{2}\theta^{4}-\theta^{6}\right)\\
+&=\frac{a^{6}}{576\pi^{4}}\left(16\pi^{2}\theta^{3}-6\theta^{5}\right)\\
+&=\frac{a^{6}}{576\pi^{4}}\cdot2\theta^{3}\left(8\pi^{2}-3\theta^{2}\right)\\
+\frac{\dD V^{2}}{\dD\theta}&=0\ \text{when }\theta^{3}\left(8\pi^{2}-3\theta^{2}\right)=0\\
+\theta^{2}&=\frac{8\pi^{2}}{3}\quad\Rightarrow\ \theta=2\pi\sqrt{\frac{2}{3}}\\
+\frac{\dD^{2}V^{2}}{\dD\theta^{2}}&=\frac{a^{6}}{576\pi^{4}}\left(48\pi^{2}\theta^{2}-30\theta^{4}\right)
+\end{topalign}
+When $\theta=2\pi\sqrt{\dfrac{2}{3}}$,
+\begin{topalign}
+\frac{\dD^{2}V^{2}}{\dD\theta^{2}}&=\frac{a^{6}}{576\pi^{4}}\left(48\pi^{2}\left(\frac{8\pi^{2}}{3}\right)-30\left(\frac{64\pi^{4}}{9}\right)\right)=-\frac{4a^{6}}{27}<0
+\end{topalign}
+Therefore $V$ is max when $\theta=2\pi\sqrt{\dfrac{2}{3}}$\par\medskip
+\textbf{Method 2}
+\begin{topalign}
+V^{2}&=\frac{a^{6}}{576\pi^{4}}\theta^{4}\left(4\pi^{2}-\theta^{2}\right)
+\end{topalign}
+Differentiating w.r.t. $\theta$,
+\begin{topalign}
+2V\frac{\dD V}{\dD\theta}&=\frac{a^{6}}{576\pi^{4}}\frac{\dD}{\dD\theta}\left(4\pi^{2}\theta^{4}-\theta^{6}\right)\\
+&=\frac{a^{6}}{576\pi^{4}}\left(16\pi^{2}\theta^{3}-6\theta^{5}\right)\\
+&=\frac{a^{6}}{576\pi^{4}}\cdot2\theta^{3}\left(8\pi^{2}-3\theta^{2}\right)\\
+\frac{\dD V}{\dD\theta}&=0\ \text{when }\theta^{3}\left(8\pi^{2}-3\theta^{2}\right)=0\\
+\theta^{2}&=\frac{8\pi^{2}}{3}\quad\Rightarrow\ \theta=2\pi\sqrt{\frac{2}{3}}\quad(\because\theta>0)\\
+2V\frac{\dD^{2}V}{\dD\theta^{2}}+2\left(\frac{\dD V}{\dD\theta}\right)^{2}&=\frac{a^{6}}{576\pi^{4}}\left(48\pi^{2}\theta^{2}-30\theta^{4}\right)
+\end{topalign}
+When $\theta=2\pi\sqrt{\dfrac{2}{3}}$, $\dfrac{\dD V}{\dD\theta}=0$
+\begin{topalign}
+2V\frac{\dD^{2}V}{\dD\theta^{2}}&=\frac{a^{6}}{576\pi^{4}}\left(48\pi^{2}\left(\frac{8\pi^{2}}{3}\right)-30\left(\frac{64\pi^{4}}{9}\right)\right)=-\frac{4a^{6}}{27}<0
+\end{topalign}
+Since $V>0$, $\dfrac{\dD^{2}V}{\dD\theta^{2}}<0$\par
+Therefore $V$ is max when $\theta=2\pi\sqrt{\dfrac{2}{3}}$\end{gtpart}
+\begin{gtpart}{(d)}{2}Note that: $\theta=2\pi\sqrt{\dfrac{2}{3}}$
+\begin{topalign}
+r&=\frac{a}{2\pi}\theta=\frac{a}{2\pi}\left(2\pi\sqrt{\frac{2}{3}}\right)=a\sqrt{\frac{2}{3}}\\
+h^{2}&=a^{2}-r^{2}=a^{2}-\left(a\sqrt{\frac{2}{3}}\right)^{2}=\frac{1}{3}a^{2}\quad\Rightarrow\ h=\frac{1}{\sqrt{3}}a\\
+\frac{r}{h}&=a\sqrt{\frac{2}{3}}\times\frac{\sqrt{3}}{a}=\sqrt{2}\quad\Rightarrow\ r=\sqrt{2}h\\
+W&=\frac{1}{3}\pi r_{w}^{2}h_{w}=\frac{1}{3}\pi\left(\sqrt{2}y\right)^{2}y=\frac{2\pi y^{3}}{3}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(e)}{2}\begin{topalign}
+\frac{\dD W}{\dD t}&=\frac{\dD W}{\dD y}\times\frac{\dD y}{\dD t}\\
+-\frac{\pi}{15}&=2\pi y^{2}\times\frac{\dD y}{\dD t}\\
+\frac{\dD y}{\dD t}&=-\frac{1}{30y^{2}}
+\end{topalign}
+When $y=2$, $\dfrac{\dD y}{\dD t}=-\dfrac{1}{120}$ cm s$^{-1}$\par
+Rate of change of $y$ is $-\dfrac{1}{120}$ cm s$^{-1}$.\end{gtpart}}
+%% ============================================================ 93  DHS 2025 Prelim P1 Q11  (soln: DHS_2025_H2_Math_Prelim_P1_Solutions.pdf pp20-22)
+\defQ{93}{}{%
+[The surface area and volume of a sphere are given by $4\pi r^{2}$ and $\dfrac{4}{3}\pi r^{3}$ respectively.]\par\medskip
+An aquarist who has a fixed budget of \$$k$ wants to make a goldfish sanctuary. His design of the tank consists of a circular cover, a cylinder of length $L$ cm and a hemispherical base of radius $r$ cm neatly fitted together. The costs of the material per cm$^{2}$ used for the cover, the cylindrical surface and hemispherical base are \$20, \$10 and \$30 respectively. Assume that the tank is made of material with negligible thickness.
+\begin{center}\figDHSa\end{center}
+\begin{qparts}
+\pt{(a)} Show that the volume of the tank is $V$ cm$^{3}$, where $V=\dfrac{k}{20}r-\dfrac{10}{3}\pi r^{3}$. \mk{3}
+\pt{(b)} As $r$ varies, find the cost of the material used to make the hemispherical base in terms of $k$ when $V$ is at its maximum value. You need to show that $V$ is a maximum. \mk{3}
+\end{qparts}
+The aquarist has fixed the radius of the cylinder to be 15 cm. Initially, there is some water in the hemispherical part of the tank. However, due to a defect in the tank, water is leaking at a constant rate of 20 cm$^{3}$ per minute.\par\smallskip
+The depth of the water at the hemispherical bottom is denoted by $h$ cm, and the radius of the water surface is $x$ cm. The volume of water in the hemispherical bottom is given by $W$ cm$^{3}$, where $W=\dfrac{\pi h\left(3x^{2}+h^{2}\right)}{6}$.
+\begin{center}\figDHSb\end{center}
+\begin{qparts}
+\pt{(c)} By formulating a relationship between $x$ and $h$, find, when $h=3$, the rate of change of
+\begin{qparts}
+\pt{(i)} the depth of water, \mk{3}
+\pt{(ii)} the radius of the water surface. \mk{3}
+\end{qparts}
+\end{qparts}
+\src{DHS 2025 Prelim P1 Q11}}
+\defS{93}{%
+\begin{gtpart}{(a)}{3}\begin{topalign}
+k&=2\pi r^{2}(30)+2\pi rL(10)+\pi r^{2}(20)\\
+k&=80\pi r^{2}+20\pi rL\\
+k&=20\pi r(4r+L)\\
+\Rightarrow L&=\frac{k}{20\pi r}-4r\\
+V&=\frac{2}{3}\pi r^{3}+\pi r^{2}L\\
+&=\frac{2}{3}\pi r^{3}+\pi r^{2}\left(\frac{k}{20\pi r}-4r\right)\\
+&=\frac{2}{3}\pi r^{3}+\frac{kr}{20}-4\pi r^{3}\\
+&=\frac{k}{20}r-\frac{10}{3}\pi r^{3}\ \text{(shown)}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(b)}{3}For maximum $V$ as $r$ varies,
+\begin{topalign}
+\frac{\dD V}{\dD r}&=0\\
+\frac{\dD V}{\dD r}&=\frac{k}{20}-10\pi r^{2}\\
+r&=\sqrt{\frac{k}{200\pi}}\quad\text{(reject $r<0$)}\\
+\frac{\dD^{2}V}{\dD r^{2}}&=-20\pi r<0
+\end{topalign}
+Therefore, $V$ is maximum.\par\smallskip
+Cost of material for the hemispherical base
+\begin{topalign}
+&=2\pi r^{2}(30)=2\pi\left(\sqrt{\frac{k}{200\pi}}\right)^{2}(30)=\frac{3k}{10}\ \text{dollars}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(c)(i)}{3}{\centering\figDHSsol\par}
+By Pythagoras' Theorem,
+\begin{topalign}
+x^{2}&=15^{2}-(15-h)^{2}\\
+x^{2}&=\left(15-(15-h)\right)\left(15+(15-h)\right)\\
+x^{2}&=h(30-h)\\
+W&=\frac{\pi h\left(3x^{2}+h^{2}\right)}{6}=\frac{\pi h\left(3\left(h(30-h)\right)+h^{2}\right)}{6}\\
+W&=\frac{\pi h\left(90h-2h^{2}\right)}{6}=\frac{\pi\left(45h^{2}-h^{3}\right)}{3}\\
+\frac{\dD W}{\dD h}&=\frac{\pi\left(90h-3h^{2}\right)}{3}\\
+\frac{\dD W}{\dD t}&=\frac{\dD W}{\dD h}\times\frac{\dD h}{\dD t}=\frac{\pi\left(90h-3h^{2}\right)}{3}\times\frac{\dD h}{\dD t}
+\end{topalign}
+At $h=3$,
+\begin{topalign}
+\frac{\dD h}{\dD t}&=\frac{\frac{\dD W}{\dD t}}{\frac{\dD W}{\dD h}}=\frac{-20}{\frac{\pi\left(90(3)-3(3)^{2}\right)}{3}}\\
+&=-0.078595=-0.0786\ \text{cm/min}\ \text{(3 s.f.)}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(c)(ii)}{3}\begin{topalign}
+\frac{\dD x}{\dD t}&=\frac{\dD x}{\dD h}\times\frac{\dD h}{\dD t}\\
+x^{2}&=h(30-h)\Rightarrow x=\sqrt{h(30-h)}=\sqrt{30h-h^{2}}\quad(x>0)\\
+\frac{\dD x}{\dD h}&=\frac{30-2h}{2\sqrt{30h-h^{2}}}=\frac{15-h}{\sqrt{30h-h^{2}}}
+\end{topalign}
+At $h=3$,
+\begin{topalign}
+\frac{\dD x}{\dD t}&=\left(\frac{15-3}{\sqrt{30(3)-(3)^{2}}}\right)\times(-0.078595)\\
+&=-0.10479=-0.105\ \text{cm/min}\ \text{(3sf)}
+\end{topalign}\end{gtpart}}
+%% ============================================================ 94  TJC 2024 Promo Q12 (soln: TJC Promo 2024.pdf pp26-28)
+\defQ{94}{}{%
+[It is given that the volume of cone with radius $r$ and height $h$ is $\dfrac{1}{3}\pi r^{2}h$\,]\par\medskip
+A water filter system takes the shape of an inverted right circular cone with a circular top of radius $r$ cm and height $h$ cm. It contains a spherical filter which the water passes through during filtration. The sphere has a constant radius $R$ cm and is inscribed in the cone such that the sphere is in contact with the center of the circular top, $O$, and the slant surface of the cone as shown in the diagram below.
+\begin{center}\figTJCsph\end{center}
+\begin{qparts}
+\pt{(a)} Show that $r^{2}=\dfrac{h^{2}R^{2}}{h^{2}-2hR}$. \mk{3}
+\pt{(b)} As $h$ varies, find the minimum volume of the cone in terms of $R$. \mk{5}\par
+[You do not need to show that the volume is minimum]
+\end{qparts}
+\src{TJC 2024 Promo Q12}}
+\defS{94}{%
+\begin{gtpart}{(a)}{3}{\centering\figTJCsph[1]\par}
+Let centre of the sphere be $P$.\par
+Using similar triangles $APD$ and $ACO$,
+\begin{topalign}
+\frac{h-R}{AC}&=\frac{R}{r}\\
+AC&=\frac{rh-rR}{R}
+\end{topalign}
+By Pythagoras' Theorem, $AC^{2}=h^{2}+r^{2}$
+\begin{topalign}
+\left(\frac{rh-rR}{R}\right)^{2}&=h^{2}+r^{2}\\
+r^{2}h^{2}-2r^{2}hR+r^{2}R^{2}&=h^{2}R^{2}+r^{2}R^{2}\\
+r^{2}\left(h^{2}-2hR\right)&=h^{2}R^{2}\\
+\therefore\ r^{2}&=\frac{h^{2}R^{2}}{h^{2}-2hR}
+\end{topalign}
+\textbf{OR}\par
+Let centre of the sphere be $P$.
+\begin{topalign}
+AD&=\sqrt{\left(AP^{2}-PD^{2}\right)}\\
+&=\sqrt{\left((h-R)^{2}-R^{2}\right)}\\
+&=\sqrt{\left(h^{2}-2hR\right)}
+\end{topalign}
+Using congruent triangles $PCO$ and $PCD$, $CO=CD=r$ cm.
+\begin{topalign}
+AC&=AD+DC\\
+&=\sqrt{\left(h^{2}-2hR\right)}+r
+\end{topalign}
+Since by Pythagoras' theorem, $AC^{2}=h^{2}+r^{2}$
+\begin{topalign}
+h^{2}+r^{2}&=h^{2}-2hR+2r\sqrt{\left(h^{2}-2hR\right)}+r^{2}\\
+\therefore\ r^{2}&=\frac{h^{2}R^{2}}{h^{2}-2hR}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(b)}{5}Volume of cone, $V$
+\begin{topalign}
+&=\tfrac{1}{3}\pi r^{2}h\\
+&=\tfrac{1}{3}\pi\frac{h^{2}R^{2}}{h^{2}-2hR}h\\
+&=\tfrac{1}{3}\pi R^{2}\frac{h^{3}}{h^{2}-2hR}\\
+&=\tfrac{1}{3}\pi R^{2}\frac{h^{2}}{h-2R}\\
+\frac{\dD V}{\dD h}&=\tfrac{1}{3}\pi R^{2}\left[\frac{2h(h-2R)-h^{2}}{(h-2R)^{2}}\right]\\
+&=\tfrac{1}{3}\pi R^{2}\left[\frac{h^{2}-4hR}{(h-2R)^{2}}\right]\\
+&=\tfrac{1}{3}\pi R^{2}\frac{h(h-4R)}{(h-2R)^{2}}\\
+\frac{\dD V}{\dD h}&=0\\
+\tfrac{1}{3}\pi R^{2}\frac{h(h-4R)}{(h-2R)^{2}}&=0\\
+h&=4R\ \text{or}\ h=0\ (\text{reject}\ \because h>0)\\
+\therefore\ \text{minimum }V&=\tfrac{1}{3}\pi R^{2}\frac{(4R)^{2}}{4R-2R}=\tfrac{8}{3}\pi R^{3}\ \text{cm}^{3}
+\end{topalign}\end{gtpart}}
+%% ============================================================ 95  CJC 2024 Promo Q10 (soln: CJC Promo 2024.pdf pp21-24)
+\defQ{95}{}{%
+\mbox{}\par\vspace{-1ex}\begin{center}\figCJC\end{center}
+A cone-shaped cup is made of paper of negligible thickness to hold $20\pi$ cm$^{3}$ of liquid. The open inverted cone has radius $r$ cm and height $h$ cm as shown in the diagram above.\par
+The external surface area of the cup is denoted by $A$ cm$^{2}$. The manufacturer wants to reduce the cost of production by minimizing the value of $A$.
+\begin{qparts}
+\pt{(a)} Find $h$ in terms of $r$. \mk{1}
+\pt{(b)} By considering $A^{2}$ or otherwise, show that $A\dfrac{\dD A}{\dD r}=\pi^{2}\left(2r^{3}-\dfrac{3600}{r^{3}}\right)$. \mk{3}
+\pt{(c)} Find the exact value of $r$ that gives the minimum value of $A$, proving that $A$ is a minimum. Find also the ratio of the radius to the height, $\dfrac{r}{h}$, giving your answer in terms of $k\sqrt{2}$, where $k$ is a constant to be determined. \mk{5}
+\end{qparts}
+The manufacturer decides to make paper cups at minimum external surface area using the ratio $\dfrac{r}{h}$ found in part \textbf{(c)}.
+\begin{qparts}
+\pt{(d)} The cup is being filled completely with water. However, there is a small hole at the bottom of the cup that causes water to leak out at the rate of 3 cm$^{3}$ per second. Find the rate of decrease of the depth of the water at the instant when the depth is 2 cm. \mk{3}
+\end{qparts}
+[It is given that the volume of a circular cone with base radius $r$ and height $h$ is $\dfrac{1}{3}\pi r^{2}h$ and the curved surface area is $\pi rl$, where $l$ is the slant height of the cone.]
+\src{CJC 2024 Promo Q10}}
+\defS{95}{%
+\begin{gtpart}{(a)}{1}\begin{topalign}
+\text{Volume of cone}&=\frac{1}{3}\pi r^{2}h=20\pi\\
+\frac{r^{2}h}{3}&=20\\
+h&=\frac{60}{r^{2}}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(b)}{3}\underline{\textbf{Method 1: Considering $A^{2}$}}
+\begin{topalign}
+A&=\pi rl\\
+&=\pi r\sqrt{r^{2}+h^{2}}\\
+&=\pi r\sqrt{r^{2}+\left(\frac{60}{r^{2}}\right)^{2}}\\
+&=\pi r\sqrt{r^{2}+\frac{3600}{r^{4}}}\\
+A^{2}&=\pi^{2}r^{2}\left(r^{2}+\frac{3600}{r^{4}}\right)\\
+&=\pi^{2}\left(r^{4}+\frac{3600}{r^{2}}\right)\\
+&=\pi^{2}\left(r^{4}+3600r^{-2}\right)
+\end{topalign}
+Differentiating implicitly with respect to $r$:
+\begin{topalign}
+2A\frac{\dD A}{\dD r}&=\pi^{2}\left(4r^{3}-7200r^{-3}\right)\\
+A\frac{\dD A}{\dD r}&=\pi^{2}\left(2r^{3}-\frac{3600}{r^{3}}\right)\quad\text{(shown)}
+\end{topalign}
+\underline{\textbf{Method 2: ``Otherwise'' Method}}
+\begin{topalign}
+A&=\pi rl\\
+&=\pi r\sqrt{r^{2}+h^{2}}\\
+&=\pi r\sqrt{r^{2}+\left(\frac{60}{r^{2}}\right)^{2}}\\
+&=\pi r\sqrt{r^{2}+\frac{3600}{r^{4}}}\\
+&=\pi r\left(r^{2}+3600r^{-4}\right)^{\frac{1}{2}}
+\end{topalign}
+Differentiating with respect to $r$:
+\begin{topalign}
+\frac{\dD A}{\dD r}&=\pi\left[r\cdot\frac{1}{2}\left(r^{2}+3600r^{-4}\right)^{-\frac{1}{2}}\left(2r-4\cdot3600r^{-5}\right)+\left(r^{2}+3600r^{-4}\right)^{\frac{1}{2}}\right]\\
+&=\pi\left(r^{2}+3600r^{-4}\right)^{-\frac{1}{2}}\left[r^{2}-7200r^{-4}+r^{2}+3600r^{-4}\right]\\
+&=\pi\left(r^{2}+3600r^{-4}\right)^{-\frac{1}{2}}\left[2r^{2}-3600r^{-4}\right]\\
+&=\frac{\pi}{\sqrt{r^{2}+3600r^{-4}}}\left(2r^{2}-\frac{3600}{r^{4}}\right)\\
+A\frac{\dD A}{\dD r}&=\pi r\sqrt{r^{2}+3600r^{-4}}\cdot\frac{\pi}{\sqrt{r^{2}+3600r^{-4}}}\left(2r^{2}-\frac{3600}{r^{4}}\right)\\
+&=\pi^{2}r\left(2r^{2}-\frac{3600}{r^{4}}\right)\\
+&=\pi^{2}\left(2r^{3}-\frac{3600}{r^{3}}\right)\quad\text{(shown)}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(c)}{5}At stationary point, $\dfrac{\dD A}{\dD r}=0$
+\begin{topalign}
+\pi^{2}\left(2r^{3}-\frac{3600}{r^{3}}\right)&=0\\
+2r^{3}-\frac{3600}{r^{3}}&=0\\
+2r^{3}&=\frac{3600}{r^{3}}\\
+r^{6}&=1800\\
+r&=(1800)^{\frac{1}{6}}
+\end{topalign}
+To prove minimum:\par
+\underline{\textbf{Method 1: Using 1\textsuperscript{st} derivative test}}\par\smallskip
+{\renewcommand{\arraystretch}{1.6}\begin{tabular}{|c|c|c|c|}\hline
+$r$&$\left((1800)^{\frac{1}{6}}\right)^{-}$&$(1800)^{\frac{1}{6}}$&$\left((1800)^{\frac{1}{6}}\right)^{+}$\\\hline
+Sign of $\dfrac{\dD A}{\dD r}$&$<0$&$0$&$>0$\\\hline
+Tangent&\tikz\draw[blue](0,0.25)--(0.4,0);&\tikz\draw[blue](0,0)--(0.4,0);&\tikz\draw[blue](0,0)--(0.4,0.25);\\\hline
+\end{tabular}}\par\smallskip
+$r=(1800)^{\frac{1}{6}}$ gives the minimum $A$.\par\medskip
+\underline{\textbf{Method 2: Using 2\textsuperscript{nd} derivative test}}\par
+From the result $A\dfrac{\dD A}{\dD r}=\pi^{2}\left(2r^{3}-\dfrac{3600}{r^{3}}\right)$, using implicit differentiation to obtain:
+\begin{topalign}
+A\frac{\dD^{2}A}{\dD r^{2}}+\left(\frac{\dD A}{\dD r}\right)^{2}&=\pi^{2}\left(6r^{2}+\frac{10800}{r^{4}}\right)
+\end{topalign}
+At $\dfrac{\dD A}{\dD r}=0$ and $r=(1800)^{\frac{1}{6}}$, $\dfrac{\dD^{2}A}{\dD r^{2}}=\dfrac{\pi^{2}}{A}\left(6r^{2}+\dfrac{10800}{r^{4}}\right)>0$ (minimum)\par
+$r=(1800)^{\frac{1}{6}}$ gives the minimum $A$.\par\medskip
+\underline{\textbf{Method 3:}}
+\begin{topalign}
+\frac{r}{h}&=\frac{r}{\left(\frac{60}{r^{2}}\right)}\\
+&=\frac{r^{3}}{60}\\
+&=\frac{\left(1800^{\frac{1}{6}}\right)^{3}}{60}\\
+&=\frac{\sqrt{1800}}{60}\\
+&=\frac{30\sqrt{2}}{60}\\
+&=\frac{\sqrt{2}}{2},\ \text{where }k=\frac{1}{2}
+\end{topalign}
+\underline{\textbf{Method 4:}}
+\begin{topalign}
+h&=\frac{60}{r^{2}}\\
+&=\frac{60}{\left(1800^{\frac{1}{6}}\right)^{2}}\\
+&=\frac{60}{1800^{\frac{1}{3}}}\\
+\frac{r}{h}&=\frac{1800^{\frac{1}{6}}}{\left(\frac{60}{1800^{\frac{1}{3}}}\right)}\\
+&=\frac{\sqrt{1800}}{60}\\
+&=\frac{30\sqrt{2}}{60}\\
+&=\frac{\sqrt{2}}{2},\ \text{where }k=\frac{1}{2}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(d)}{3}Let $V$ be the volume of water in the cone when radius of water surface is $x$ cm and depth is $y$ cm.\par
+By similar triangles,\par
+{\centering\figCJCsol\par}
+\begin{topalign}
+\frac{x}{y}&=\frac{r}{h}=\frac{\sqrt{2}}{2}\\
+x&=\frac{\sqrt{2}}{2}y\\
+V&=\frac{1}{3}\pi x^{2}y\\
+&=\frac{1}{3}\pi\left(\frac{\sqrt{2}}{2}y\right)^{2}y\\
+&=\frac{1}{6}\pi y^{3}\\
+\frac{\dD V}{\dD y}&=\frac{1}{2}\pi y^{2}\\
+\frac{\dD V}{\dD t}&=\frac{\dD V}{\dD y}\times\frac{\dD y}{\dD t}\\
+&=\frac{1}{2}\pi y^{2}\times\frac{\dD y}{\dD t}
+\end{topalign}
+When $y=2$,
+\begin{topalign}
+-3&=\frac{1}{2}\pi(2)^{2}\times\frac{\dD y}{\dD t}\\
+\frac{\dD y}{\dD t}&=-\frac{3}{2\pi}
+\end{topalign}
+Rate of decrease of depth of water is $\dfrac{3}{2\pi}$ cm/s or 0.477 cm/s (3 s.f.)\end{gtpart}}
+%% ============================================================ 96  EJC 2018 Promo Q7 (soln: Promo2018.pdf pp107-109)
+\defQ{96}{}{%
+\mbox{}\par\vspace{-1ex}\begin{center}\figEJC\end{center}
+The diagram shows a right cone with a slant edge of fixed length $R$ cm, height $h$ cm and radius $x$ cm.\par\smallskip
+Show that $9V^{2}=\pi^{2}x^{4}\left(R^{2}-x^{2}\right)$, where $V$ is the volume of the cone.\par\smallskip
+\begin{qparts}
+\pt{} Show further that, as $x$ varies, $V$ is a maximum when $x^{2}=\dfrac{2}{3}R^{2}$. \mk{7}
+\end{qparts}
+\src{EJC 2018 Promo Q7}}
+\defS{96}{%
+\begin{gtpart}{}{7}\begin{topalign}
+h&=\sqrt{R^{2}-x^{2}}\\
+V&=\frac{1}{3}\pi x^{2}h\\
+&=\frac{1}{3}\pi x^{2}\sqrt{R^{2}-x^{2}}\\
+V^{2}&=\frac{1}{9}\pi^{2}x^{4}\left(\sqrt{R^{2}-x^{2}}\right)^{2}\\
+9V^{2}&=\pi^{2}x^{4}\left(R^{2}-x^{2}\right)\ \text{(shown)}
+\end{topalign}
+Differentiate w.r.t. $x$,
+\begin{topalign}
+9V^{2}&=\pi^{2}R^{2}x^{4}-\pi^{2}x^{6}\\
+18V\frac{\dD V}{\dD x}&=4\pi^{2}R^{2}x^{3}-6\pi^{2}x^{5}\ \text{--- (*)}
+\end{topalign}
+When the volume is maximum, $\dfrac{\dD V}{\dD x}=0$
+\begin{topalign}
+-6\pi^{2}x^{5}+4\pi^{2}R^{2}x^{3}&=0\\
+2\pi^{2}x^{3}\left(-3x^{2}+2R^{2}\right)&=0\\
+-3x^{2}+2R^{2}&=0\ \text{or}\ x=0\ (\text{reject}\ \because x>0)\\
+x^{2}&=\frac{2}{3}R^{2}\Rightarrow R^{2}=\frac{3}{2}x^{2}
+\end{topalign}
+\textbf{Check that $V$ is indeed a maximum:}\par
+\underline{Second derivative method}\par
+Differentiating (*) wrt $x$
+\begin{topalign}
+18V\frac{\dD^{2}V}{\dD x^{2}}+18\left(\frac{\dD V}{\dD x}\right)^{2}&=12\pi^{2}R^{2}x^{2}-30\pi^{2}x^{4}
+\end{topalign}
+Substitute $x^{2}=\dfrac{2}{3}R^{2}$, $\dfrac{\dD V}{\dD x}=0$,
+\begin{topalign}
+18V\frac{\dD^{2}V}{\dD x^{2}}+18(0)^{2}&=12\pi^{2}R^{2}\left(\frac{2R^{2}}{3}\right)-30\pi^{2}\left(\frac{2R^{2}}{3}\right)^{2}\\
+18V\frac{\dD^{2}V}{\dD x^{2}}&=\frac{-40}{3}\pi^{2}R^{4}+8\pi^{2}R^{4}\\
+18V\frac{\dD^{2}V}{\dD x^{2}}&=-\frac{16}{3}\pi^{2}R^{4}\\
+\frac{\dD^{2}V}{\dD x^{2}}&=-\frac{16\pi^{2}R^{4}}{54V}<0
+\end{topalign}
+Therefore, $V$ is a maximum when $x^{2}=\dfrac{2}{3}R^{2}$.\par\medskip
+\underline{First derivative method}\par
+From (*),
+\begin{topalign}
+\frac{\dD V}{\dD x}&=\frac{4\pi^{2}R^{2}x^{3}-6\pi^{2}x^{5}}{18V}=\frac{\pi^{2}x^{3}\left(2R^{2}-3x^{2}\right)}{9V}
+\end{topalign}
+(\textit{Note to students}: Since $\dfrac{\pi^{2}x^{3}}{9V}>0$ for all $x$, we just need to consider $\left(2R^{2}-3x^{2}\right)$.)\par\smallskip
+{\small\renewcommand{\arraystretch}{1.6}\begin{tabular}{|c|c|c|c|}\hline
+$x$&$\left(\sqrt{\frac{2}{3}}R\right)^{-}$&$\sqrt{\frac{2}{3}}R$&$\left(\sqrt{\frac{2}{3}}R\right)^{+}$\\\hline
+$\dfrac{\dD V}{\dD x}$&$\begin{aligned}[t]&2R^{2}-3\left[\left(\sqrt{\tfrac{2}{3}}R\right)^{-}\right]^{2}\\&=2R^{2}-\left(2R^{2}\right)^{-}>0\end{aligned}$&$0$&$\begin{aligned}[t]&2R^{2}-3\left[\left(\sqrt{\tfrac{2}{3}}R\right)^{+}\right]^{2}\\&=2R^{2}-\left(2R^{2}\right)^{+}<0\end{aligned}$\\\hline
+Slope&/&--&$\backslash$\\\hline
+\end{tabular}}\par\smallskip
+Therefore, $V$ is a maximum when $x^{2}=\dfrac{2}{3}R^{2}$.\end{gtpart}}
+%% ============================================================ 97  TMJC 2024 Prelim P1 Q2 (soln: TMJC_2024_Prelim.pdf pp51-52)
+\defQ{97}{}{%
+\mbox{}\par\vspace{-1ex}\begin{center}\figTMJC\end{center}
+\begin{qparts}
+\pt{} A cylinder with height $h$ cm and base radius $r$ cm is inscribed within a sphere with fixed radius $k$ cm. The circumference of the circular top and bottom of the cylinder is in contact with the sphere (see figure above). By using differentiation, find, in terms of $k$, the exact value of $h$ for which the volume of the cylinder is maximum. \mk{6}
+\end{qparts}
+\src{TMJC 2024 Prelim P1 Q2}}
+\defS{97}{%
+\begin{gtpart}{}{6}Let $V$ be the volume of the cylinder (in cm$^{3}$).\par
+By Pythagoras Theorem,\hfill\figTMJCsol\hspace*{1cm}\null
+\begin{topalign}
+\left(\frac{h}{2}\right)^{2}+r^{2}&=k^{2}\\
+r^{2}&=k^{2}-\frac{h^{2}}{4}\quad\text{--- (1)}\\
+V&=\pi r^{2}h\\
+&=\pi\left(k^{2}-\frac{h^{2}}{4}\right)h\quad\text{,from (1)}\\
+&=\pi k^{2}h-\frac{\pi}{4}h^{3}
+\end{topalign}
+Differentiate w.r.t $h$,
+\begin{topalign}
+\frac{\dD V}{\dD h}&=\pi k^{2}-\frac{3\pi}{4}h^{2}
+\end{topalign}
+For maximum $V$, $\dfrac{\dD V}{\dD h}=0$
+\begin{topalign}
+\therefore\ \frac{\dD V}{\dD h}&=\pi k^{2}-\frac{3\pi}{4}h^{2}=0\\
+k^{2}-\frac{3}{4}h^{2}&=0\\
+h^{2}&=\frac{4k^{2}}{3}\\
+h&=\frac{2k}{\sqrt{3}}\quad(\because h>0)
+\end{topalign}
+\underline{\textbf{Testing $V$ is maximum}}\par
+\underline{\textbf{Method 1:}} 1\textsuperscript{st} derivative test\par\smallskip
+{\renewcommand{\arraystretch}{1.7}\begin{tabular}{|c|c|c|c|}\hline
+$h$&$\left(\dfrac{2k}{\sqrt{3}}\right)^{-}$&$\dfrac{2k}{\sqrt{3}}$&$\left(\dfrac{2k}{\sqrt{3}}\right)^{+}$\\\hline
+$\dfrac{\dD V}{\dD h}$&$+$&$0$&$-$\\\hline
+Slope&\tikz\draw(0,0)--(0.6,0.2);&\tikz\draw(0,0)--(0.6,0);&\tikz\draw(0,0.2)--(0.6,0);\\\hline
+\end{tabular}}\par\smallskip
+$\therefore V$ is maximum when $h=\dfrac{2k}{\sqrt{3}}$.\par\medskip
+\underline{\textbf{Method 2:}} 2\textsuperscript{nd} derivative test\par
+Differentiate w.r.t $h$,
+\begin{topalign}
+\frac{\dD^{2}V}{\dD h^{2}}&=-\frac{3\pi}{2}h
+\end{topalign}
+When $h=\dfrac{2k}{\sqrt{3}}$, $\dfrac{\dD^{2}V}{\dD h^{2}}=-\dfrac{3\pi}{2}\left(\dfrac{2k}{\sqrt{3}}\right)=-\sqrt{3}\pi k<0\quad(\because k>0)$\par
+$\therefore V$ is maximum when $h=\dfrac{2k}{\sqrt{3}}$.\end{gtpart}}
+%% ============================================================ 98  EJC 2025 Prelim P2 Q1 (soln: EJC_2025_H2_Math_Prelim_P2_Solutions.pdf p1)
+\defQ{98}{}{%
+The curve $C$ has equation $x^{3}+y^{3}-3xy=k$, where $k$ is a positive constant.\par
+$C$ intersects the $x$-axis at the point $A$.
+\begin{qparts}
+\pt{(a)} Find the equation of the tangent to $C$ at $A$. Give your answer in the form $y=px+q$, where $p$ and $q$ are constants to be found in terms of $k$. \mk{5}
+\pt{(b)} There are two points on $C$ where the tangents are parallel to the $y$-axis. Given that $k=3$, find the exact $y$-coordinates of these two points. \mk{3}
+\end{qparts}
+\src{EJC 2025 Prelim P2 Q1}}
+\defS{98}{%
+\begin{gtpart}{(a)}{5}Differentiating $C$ w.r.t. $x$,
+\begin{topalign}
+3x^{2}+3y^{2}\frac{\dD y}{\dD x}-3x\frac{\dD y}{\dD x}-3y&=0\\
+\frac{\dD y}{\dD x}&=\frac{3y-3x^{2}}{3y^{2}-3x}=\frac{y-x^{2}}{y^{2}-x}
+\end{topalign}
+When $y=0$,
+\begin{topalign}
+x^{3}&=k,\\
+x&=k^{\frac{1}{3}}\\
+\frac{\dD y}{\dD x}&=x=k^{\frac{1}{3}}\\
+y&=k^{\frac{1}{3}}\left(x-k^{\frac{1}{3}}\right)=k^{\frac{1}{3}}x-k^{\frac{2}{3}}
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(b)}{3}For tangent to be parallel to $y$-axis, $\dfrac{\dD y}{\dD x}$ must be undefined.\par
+Hence,
+\begin{topalign}
+y^{2}-x&=0\\
+x&=y^{2}
+\end{topalign}
+Substituting into $C$ and $k=3$,
+\begin{topalign}
+y^{6}+y^{3}-3y^{3}-k&=0\\
+y^{6}-2y^{3}-3&=0
+\end{topalign}
+Factorising,
+\begin{topalign}
+\left(y^{3}-3\right)\left(y^{3}+1\right)&=0\\
+y^{3}=3\quad&\text{or}\quad y^{3}=-1\\
+y=3^{\frac{1}{3}}\quad&\text{or}\quad y=-1
+\end{topalign}\end{gtpart}}
+%% ============================================================ 99  MI 2025 Prelim P2 Q2(i),(ii) (soln: MI_2025_H2_Math_Prelim_P2_Solutions.pdf p2)
+\defQ{99}{}{%
+A curve $C$ has parametric equations $x=\sqrt{t}$, $y=t^{2}+4$, where $0\leqslant t\leqslant16$.
+\begin{qparts}
+\pt{(i)} Find the equation of the tangent to $C$ at the point $P$ with parameter $p$. \mk{3}
+\pt{(ii)} Given that the tangent in part \textbf{(i)} passes through the point $(0,1)$, find the exact coordinates of the point $P$. \mk{3}
+\end{qparts}
+\src{MI 2025 Prelim P2 Q2(i), (ii)}}
+\defS{99}{%
+\begin{gtpart}{(i)}{3}\begin{topalign}
+x&=\sqrt{t},\quad y=t^{2}+4\\
+\frac{\dD x}{\dD t}&=\frac{1}{2\sqrt{t}},\quad\frac{\dD y}{\dD t}=2t\\
+\frac{\dD y}{\dD x}&=\frac{2t}{\frac{1}{2\sqrt{t}}}=4t^{\frac{3}{2}}
+\end{topalign}
+Note: $t=p$\par
+The eqn of tangent to $C$ at $P\left(\sqrt{p},\,p^{2}+4\right)$:
+\begin{topalign}
+y-\left(p^{2}+4\right)&=4p^{\frac{3}{2}}\left(x-\sqrt{p}\right)\\
+y&=4p^{\frac{3}{2}}x-3p^{2}+4
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(ii)}{3}The eqn of tangent of $C$ at $P$ passes through $(0,1)$\par
+At $(0,1)$:
+\begin{topalign}
+1&=4p^{\frac{3}{2}}(0)-3p^{2}+4\\
+3p^{2}&=3\\
+p&=1\quad(\text{reject }-1\ \because p\geqslant0)
+\end{topalign}
+When $p=1$
+\begin{topalign}
+x&=1,\ y=5\\
+&P(1,5)
+\end{topalign}\end{gtpart}}

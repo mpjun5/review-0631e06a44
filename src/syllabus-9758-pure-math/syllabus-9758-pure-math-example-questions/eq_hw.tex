@@ -1,0 +1,148 @@
+\documentclass[a4paper,11pt,oneside]{book}
+\IfFileExists{eq_hw.totpg}{\input{eq_hw.totpg}}{\def\totpg{92}}
+\input{de_style}
+\usepackage{multirow}
+\defaultfontfeatures{Mapping=tex-text}
+\def\prelimkeepcolour{1}
+\input{prelim_style}
+\def\risoltitle{Syllabus 9758 Pure Math Example Questions}
+\input{ri_solstyle}
+\input{tys_common_s}
+\makeatletter\fancypagestyle{risolfirst}{\fancyhf{}\lhead{\fontsize{11}{12}\selectfont \risoltitle\\[-1.2ex]\rule{\textwidth}{0.6pt}}%
+  \rfoot{\calibrifont\fontsize{11}{13}\selectfont Page \textbf{\thepage} of \textbf{\totpg}}\renewcommand{\headrulewidth}{0pt}}\makeatother
+\providecommand{\e}{\mathrm{e}}
+\providecommand{\sidenote}[1]{{\small\textcolor{gray}{#1}}}
+\providecommand{\ph}[1]{{\color{gray}\itshape[#1]}}
+\providecommand{\cdisp}[1]{\par\noindent$\displaystyle\begin{aligned}[t]#1\end{aligned}$\par\smallskip}
+\providecommand{\gcsys}{\text{Using GC,}}
+\providecommand{\gcl}[1]{\par\noindent Using GC, #1\par}
+\newcommand{\placeholderpage}{\clearpage\thispagestyle{empty}\null\stepcounter{chapter}\clearpage}
+\setcounter{secnumdepth}{2}\setcounter{tocdepth}{2}
+\pagestyle{risol}
+\makeatletter\renewcommand{\ri@newq}{}\makeatother
+\input{review_flags}
+\input{summary_common_hw}\input{eq_body_di}\input{q9}\input{gt_promo}\input{tf_q}\input{fn_q}\input{seq_q}\input{ap_q}\input{diff_q}\input{ch9_figs}\input{ch9_q}\input{ch10_q}\input{ch11_eq}\input{ch12_eq}\input{ch13_eq}\input{ch14_eq}
+\renewcommand{\cdisp}[1]{\par\noindent\hfill$\displaystyle\begin{aligned}[t]#1\end{aligned}$\hfill\null\par\smallskip}
+\makeatletter\renewenvironment{theorem}[2][]{\begin{tcolorbox}[enhanced, before skip=5mm, after skip=6mm, colback=black!5!white,colframe=black,fonttitle=\bfseries,title={#2},#1]}{\end{tcolorbox}}\makeatother
+\newcommand{\sumhead}{\par\noindent{\fontsize{26}{30}\selectfont Summary\par}\bigskip}
+\renewcommand{\thediq}{\arabic{chapter}.\arabic{diq}}
+\newcommand{\inchap}[1]{\needspace{0.6\textheight}\refstepcounter{chapter}\setcounter{section}{0}\setcounter{diq}{0}\par\noindent{\LARGE\bfseries\color{blue!50!black}\thechapter\quad #1\par}\markboth{\thechapter\quad #1}{}\medskip}
+\makeatletter
+\newcommand{\keepQS}[1]{\edef\kq@save{\the\value{diq}}\begingroup\setbox0=\vbox{\hsize\textwidth\putQS{#1}}\dimen0=\ht0\advance\dimen0\dp0
+ \ifdim\dimen0>\textheight\dimen0=0.5\textheight\fi\global\dimen1=\dimen0\endgroup\setcounter{diq}{\kq@save}\needspace{\dimen1}\putQS{#1}}
+\newcommand{\keepQST}[2]{\edef\kq@save{\the\value{diq}}\begingroup\setbox0=\vbox{\hsize\textwidth\putQS{#1}}\dimen0=\ht0\advance\dimen0\dp0
+ \ifdim\dimen0>\textheight\dimen0=0.5\textheight\fi\global\dimen1=\dimen0\endgroup\setcounter{diq}{\kq@save}\needspace{\dimen1}\phantomsection\addcontentsline{toc}{section}{#2}\putQS{#1}}
+\makeatother
+% ---- every solution in the Definite Integrals HW solutions layout (ri_solstyle 'Solutions with comments'):
+% a former per-part block is one table row (bold label + [marks] from the question in the left column)
+\makeatletter
+\newenvironment{gtpart}[2]{\ri@row{#1}}{\par}
+\renewenvironment{gtpartn}[1]{\ri@row{#1}}{\par}
+\newcommand{\qnew}{\clearpage\global\ri@freshtrue}\newcommand{\qfirst}{\global\ri@freshtrue}
+% working left-aligned in the working column, exactly as common/ri_solstyle.tex of Definite Integrals
+\AtBeginDocument{\@ifundefined{topalign}{}{%
+  \renewenvironment{topalign}{\par\noindent$\displaystyle\begin{aligned}[t]}{\end{aligned}$\par\smallskip}%
+  \renewcommand{\topdisplay}[1]{\par\noindent$\displaystyle #1$\par\smallskip}}}
+\makeatother
+\definecolor{amb}{RGB}{214,120,0}\definecolor{ambdark}{RGB}{140,75,10}
+\makeatletter\g@addto@macro\ps@risol{\rhead{\fontsize{11}{12}\selectfont\leftmark\\[-1.2ex]\mbox{}}}\makeatother\makeatletter\g@addto@macro\ps@risol{\rfoot{\calibrifont\fontsize{11}{13}\selectfont Page \textbf{\thepage} of \textbf{\totpg}}}\makeatother\pagestyle{risol} %RHEAD
+\begin{document}
+\makeatletter\setbox0\vbox{\@starttoc{toc}}\makeatother
+\clearpage\thispagestyle{empty}\null\clearpage %FRONTTOC
+\IfFileExists{eq_hw.tocextra}{\input{eq_hw.tocextra}}{}
+\inchap{Systems of Linear Equations}
+\keepQST{1}{Question 1.1 [MI 2025 Prelim P1 Q4] --- Forming equations from a table}
+\bigskip
+\keepQST{4}{Question 1.2 [SAJC 2025 Prelim P1 Q1] --- Unknown coefficients of a polynomial}
+\bigskip
+\needspace{0.62\textheight}\phantomsection\addcontentsline{toc}{section}{Question 1.3 [HCI 2025 Prelim P1 Q2] --- Unknown constants in a recurrence relation}
+\keepQS{3}
+\bigskip
+\keepQST{5}{Question 1.4 [SAJC 2025 Prelim P1 Q3] --- More equations than variables}
+\bigskip
+\keepQST{10}{Question 1.5 [TJC 2022 Prelim P2 Q1] --- Fewer equations than variables with an inequality}
+\bigskip
+\inchap{Inequalities}
+\keepQST{8}{Question 2.1 [RVHS 2026 Prelim P1 Q2] --- Graphical method and sign test}
+\bigskip
+\keepQST{6}{Question 2.2 [ACJC 2026 Prelim P1 Q1] --- Sign test and \texorpdfstring{$\frac1x$}{1/x} substitution}
+\bigskip
+\keepQST{7}{Question 2.3 [SAJC 2025 Prelim P2 Q1] --- Modulus inequality and substitution}
+\bigskip
+\keepQST{11}{Question 2.4 [SAJC 2019 Prelim P1 Q2] --- Modulus graphs and area}
+\bigskip
+\inchap{Graphing Techniques}
+\qfirst\phantomsection\addcontentsline{toc}{section}{Question 3.1 [VJC 2025 Promo Q9(a), (b)] --- Range of values \texorpdfstring{$y$}{y} cannot take and rational curve sketch}\putQS{31}
+\bigskip
+\keepQST{32}{Question 3.2 [SAJC 2025 Promo Q7] --- Stationary point condition and line through intersection of asymptotes}
+\bigskip
+\keepQST{33}{Question 3.3 [DHS 2025 Promo Q8] --- Increasing rational function and superimposed hyperbola}
+\bigskip
+\clearpage\phantomsection\addcontentsline{toc}{section}{Question 3.4 [RVHS 2025 Prelim P1 Q12] --- Parametric sketch with endpoint and intersection with another curve}\putQS{34}
+\bigskip
+\keepQST{35}{Question 3.5 [HCI 2024 Promo Q12] --- Cartesian equation of parametric curve and its oblique asymptotes}
+\bigskip
+\clearpage\inchap{Graphing Transformations}
+\qfirst\phantomsection\addcontentsline{toc}{section}{Question 4.1 [NJC 2024 Promo Q4(b)] --- Reverse transformation to find the original equation}\putQS{41}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 4.2 [EJC 2025 Prelim P1 Q4] --- Translation, scaling, modulus and reflection sketches}\putQS{42}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 4.3 [CJC 2025 Promo Q8] --- Graphs of \texorpdfstring{$\mathrm{f}'(x)$}{f'(x)}, \texorpdfstring{$\frac{1}{\mathrm{f}(x)}$}{1/f(x)} and \texorpdfstring{$|\mathrm{f}(x)|$}{|f(x)|} from \texorpdfstring{$y=\mathrm{f}(x)$}{y=f(x)}}\putQS{43}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 4.4 [RVHS 2026 Prelim P1 Q10(b)] --- Rational graph and \texorpdfstring{$y=\frac1x$}{y=1/x} by a sequence of transformations}\putQS{44}
+\inchap{Functions}
+\qfirst\phantomsection\addcontentsline{toc}{section}{Question 5.1 [2023 A-Level P1 Q7] --- Modulus linear/linear function, range and inverse}\putQS{51}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 5.2 [HCI 2025 Prelim P1 Q8] --- Self-inverse function, \texorpdfstring{$\mathrm{f}^{2025}$}{f\textasciicircum 2025} and range of a composite}\putQS{52}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 5.3 [VJC 2025 Prelim P1 Q5(a), (b)] --- Periodic piecewise function: sketch and area}\putQS{53}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 5.4 [ACJC 2022 Prelim P2 Q1] --- Composite with a piecewise function}\putQS{55}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 5.5 [CJC 2025 Prelim P2 Q2(a), (b)] --- Existence, rule, domain and range of a composite function}\putQS{56}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 5.6 [2016 A-Level P1 Q10(b)] --- One-one test for a function defined on integers}\putQS{57}
+\clearpage\inchap{Sequences and Series}
+\qfirst\phantomsection\addcontentsline{toc}{section}{Question 6.1 [JPJC 2025 Prelim P1 Q8(b)] --- Standard formulas, change of index and divergence}\putQS{61}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 6.2 [VJC 2025 Prelim P1 Q6(a), (b), (d)] --- Convergence and change of index}\putQS{62}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 6.3 [NYJC 2025 Prelim P1 Q8] --- Arithmetic sequence from a recurrence relation, sum of even-numbered terms and a GP}\putQS{64}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 6.4 [EJC 2025 Prelim P2 Q2] --- Limits of a recurrence relation}\putQS{65}
+\clearpage\inchap{Arithmetic and Geometric Progressions}
+\qfirst\phantomsection\addcontentsline{toc}{section}{Question 7.1 [ASRJC 2025 Prelim P1 Q8] --- AP terms forming a GP, and proving an AP from \texorpdfstring{$S_n$}{Sn}}\putQS{71}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 7.2 [TMJC 2025 Prelim P1 Q4] --- AP and GP terms equal: equation in \texorpdfstring{$r$}{r} and least \texorpdfstring{$n$}{n}}\putQS{72}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 7.3 [SAJC 2025 Prelim P1 Q5] --- AP terms forming a GP: \texorpdfstring{$d$}{d} in terms of \texorpdfstring{$a$}{a}}\putQS{73}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 7.4 [TJC 2025 Prelim P1 Q7] --- Piggy bank vs savings account with monthly interest}\putQS{74}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 7.5 [ACJC 2025 Prelim P1 Q12] --- Tuition fee loan: AP savings and GP repayments}\putQS{75}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 7.6 [RVHS 2025 Prelim P2 Q4] --- Medicine dosage: AP daily increase, GP from a total-dosage formula}\putQS{76}
+\clearpage\inchap{Differentiation}
+\qfirst\phantomsection\addcontentsline{toc}{section}{Question 8.1 [RVHS 2025 Prelim P1 Q7(a)] --- Implicit differentiation}\putQS{81}
+\bigskip\qfirst\phantomsection\addcontentsline{toc}{section}{Question 8.2 Parametric differentiation}\putQS{82}
+\clearpage\inchap{Applications of Differentiation}
+\qfirst\phantomsection\addcontentsline{toc}{section}{Question 9.1 [EJC 2025 Prelim P2 Q1] --- Implicit curve: tangent at a point and tangents parallel to the \texorpdfstring{$y$}{y}-axis}\putQS{98}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 9.2 [MI 2025 Prelim P2 Q2(i), (ii)] --- Parametric curve: tangent at the point with parameter \texorpdfstring{$p$}{p}}\putQS{99}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 9.3 [RVHS 2025 Promo Q1] --- Conical tank being filled: rate of change of the water radius}\putQS{91}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 9.4 [TJC 2025 Prelim P2 Q4] --- Sector folded into a cone: maximum volume, and water leaking between two cones}\putQS{92}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 9.5 [DHS 2025 Prelim P1 Q11] --- Tank on a fixed budget: maximum volume, and water leaking from a hemispherical bottom}\putQS{93}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 9.6 [TJC 2024 Promo Q12] --- Sphere inscribed in an inverted cone: minimum volume of the cone}\putQS{94}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 9.7 [CJC 2024 Promo Q10] --- Paper cone cup: minimum surface area, and rate of decrease of the water depth}\putQS{95}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 9.8 [EJC 2018 Promo Q7] --- Cone with fixed slant edge: maximum volume}\putQS{96}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 9.9 [TMJC 2024 Prelim P1 Q2] --- Cylinder inscribed in a sphere: maximum volume}\putQS{97}
+\clearpage\inchap{Power Series}
+\qfirst\phantomsection\addcontentsline{toc}{section}{Question 10.1 [TJC 2025 Prelim P2 Q1] --- Maclaurin series of \texorpdfstring{$\ln\sqrt{1+\mathrm{e}^{3x}}$}{ln sqrt(1+e^3x)} by repeated differentiation}\putQS{101}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 10.2 [YIJC 2026 Prelim P1 Q10] --- Maclaurin series of \texorpdfstring{$\mathrm{e}^{\sin^{-1}(3x)}$}{e^asin(3x)} and of \texorpdfstring{$\sin^{-1}(3x)$}{asin(3x)}}\putQS{102}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 10.3 [ACJC 2025 Prelim P2 Q2] --- Binomial expansion and integrating to get \texorpdfstring{$\sin^{-1}2x$}{asin 2x}}\putQS{103}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 10.4 [EJC 2025 Prelim P1 Q3] --- Small angle approximation in a right-angled triangle}\putQS{104}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 10.5 [JPJC 2025 Prelim P1 Q9] --- Series for \texorpdfstring{$\tan^{-1}\frac{3x}{2}$}{atan(3x/2)} and estimating an integral}\putQS{105}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 10.6 [SAJC 2024 Prelim P2 Q4] --- Maclaurin series of \texorpdfstring{$\ln(\cos x)$}{ln cos x} and approximating an integral}\putQS{106}
+\clearpage\inchap{Integration}
+\qfirst\phantomsection\addcontentsline{toc}{section}{Question 11.1 [VJC 2025 Promo Q7(a)] --- Splitting the numerator into a multiple of \texorpdfstring{$\mathrm{f}'(x)$}{f'(x)} plus a constant}\putQS{111}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 11.2 [VJC 2025 Promo Q7(b)] --- Trigonometric substitution \texorpdfstring{$x=\tan\theta$}{x = tan theta}}\putQS{112}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 11.3 [YIJC 2024 Prelim P1 Q9(c)] --- Integration by parts twice (loop method), hence a definite integral}\putQS{113}
+\clearpage\inchap{Definite Integrals}
+\qfirst\phantomsection\addcontentsline{toc}{section}{Question 12.1 [2021 A-level P2 Q2] --- Rectangles under a curve: lower and upper bounds for an area}\putQS{121}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 12.2 [ASRJC 2025 Prelim P1 Q7] --- Circle and line: area using a triangle, volume using a cylinder}\putQS{122}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 12.3 [TJC 2025 Prelim P1 Q10] --- Substitution integral used for area and volume}\putQS{123}
+\clearpage\inchap{Differential Equations}
+\qfirst\phantomsection\addcontentsline{toc}{section}{Question 13.1 [HCI 2025 Prelim P1 Q10] --- Bird population: logistic model \texorpdfstring{$\frac{\mathrm{d}Q}{\mathrm{d}t}=kQ(500-Q)$}{dQ/dt = kQ(500-Q)}}\putQS{131}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 13.2 [HCI 2025 Prelim P1 Q3] --- Given substitution \texorpdfstring{$u=xy^{2}$}{u = xy2}}\putQS{132}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 13.3 [2018 A-level P1 Q10] --- Electric circuit: second-order differential equation}\putQS{133}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 13.4 [NJC 2025 Prelim P2 Q4] --- Atmospheric pressure against altitude, with a limitation of the model}\putQS{134}
+\clearpage\inchap{Complex Numbers}
+\qfirst\phantomsection\addcontentsline{toc}{section}{Question 14.1 [TJC 2025 Prelim P1 Q8] --- Simultaneous equations with \texorpdfstring{$|w|$}{|w|}, and a square on an Argand diagram}\putQS{141}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 14.2 [2025 A-level P1 Q12] --- Conjugate root theorem, then the substitution \texorpdfstring{$z=\frac1w$}{z = 1/w}}\putQS{142}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 14.3 [NYJC 2025 Prelim P2 Q2] --- Cubic with imaginary coefficients, then the substitution \texorpdfstring{$x\to-x$}{x -> -x}}\putQS{143}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 14.4 [VJC 2025 Prelim P2 Q4] --- Points on an Argand diagram and \texorpdfstring{$\tan\frac{5\pi}{12}$}{tan 5pi/12}}\putQS{144}
+\qnew\phantomsection\addcontentsline{toc}{section}{Question 14.5 [AJC 2011 P1 Q13] --- Simultaneous equations in \texorpdfstring{$p$}{p} and \texorpdfstring{$p^*$}{p*}, then an argument condition}\putQS{145}
+\end{document}

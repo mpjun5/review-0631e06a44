@@ -1,0 +1,14 @@
+\input{stats_pre}
+\input{stats_macros}
+\begin{document}
+\makeatletter\setbox0\vbox{\@starttoc{toc}}\makeatother
+\IfFileExists{stats_front.tex}{\input{stats_front}}{\thispagestyle{empty}\null}
+\input{s1_pnc}
+\input{s2_prob}
+\input{s3_drv}
+\input{s4_bin}
+\input{s5_norm}
+\input{s6_samp}
+\input{s7_ht}
+\input{s8_corr}
+\end{document}

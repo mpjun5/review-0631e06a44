@@ -1,0 +1,977 @@
+\documentclass[a4paper,11pt,oneside]{book}
+\input{de_style}
+\usepackage{enumitem}\usepackage{multirow}\usepackage{makecell}\usepackage{array}
+\defaultfontfeatures{Mapping=tex-text}
+\def\prelimkeepcolour{1}
+\input{prelim_style}
+\def\risoltitle{Syllabus 9758 Pure Math Summary}
+\input{ri_solstyle}
+\input{tys_common_s}
+\makeatletter\fancypagestyle{risolfirst}{\fancyhf{}\lhead{\fontsize{11}{12}\selectfont \risoltitle\\[-1.2ex]\rule{\textwidth}{0.6pt}}%
+  \rfoot{\calibrifont\fontsize{11}{13}\selectfont Page \textbf{\thepage} of \textbf{\pageref*{LastPage}}}\renewcommand{\headrulewidth}{0pt}}\makeatother
+\providecommand{\e}{\mathrm{e}}
+\providecommand{\sidenote}[1]{{\small\textcolor{gray}{#1}}}
+\providecommand{\ph}[1]{{\color{gray}\itshape[#1]}}
+\providecommand{\cdisp}[1]{\par\noindent$\displaystyle\begin{aligned}[t]#1\end{aligned}$\par\smallskip}
+\providecommand{\gcsys}{\text{Using GC,}}
+\providecommand{\gcl}[1]{\par\noindent Using GC, #1\par}
+\newcommand{\placeholderpage}{\clearpage\thispagestyle{empty}\null\stepcounter{chapter}\clearpage}
+\setcounter{secnumdepth}{2}\setcounter{tocdepth}{2}
+\pagestyle{risol}
+\makeatletter\renewcommand{\ri@newq}{}\makeatother
+\input{summary_common_hw}
+\renewcommand{\cdisp}[1]{\par\noindent\hfill$\displaystyle\begin{aligned}[t]#1\end{aligned}$\hfill\null\par\smallskip}
+\makeatletter\renewenvironment{theorem}[2][]{\begin{tcolorbox}[enhanced, before skip=5mm, after skip=6mm, colback=black!5!white,colframe=black,fonttitle=\bfseries,title={#2},#1]}{\end{tcolorbox}}\makeatother
+\newcounter{exctr}[chapter]\renewcommand{\theexctr}{\arabic{chapter}.\arabic{exctr}}\newcommand{\exlab}{\par\smallskip\noindent\refstepcounter{exctr}\textbf{Example~\theexctr}\par\nopagebreak}
+\newcommand{\sys}[2]{\par\noindent\hfill$\displaystyle\left.\begin{aligned}#1\end{aligned}\ \right\}\ \Rightarrow\ #2$\hfill\null\par\smallskip}
+\newcommand{\lb}[1]{&&\text{---\,(#1)}}
+\newcommand{\sumhead}{\par\noindent{\fontsize{26}{30}\selectfont Summary\par}\bigskip}
+\newcommand{\inchap}[1]{\refstepcounter{chapter}\setcounter{section}{0}\par\noindent{\LARGE\bfseries\color{blue!50!black}\thechapter\quad #1\par}\markboth{\thechapter\quad #1}{}\medskip}
+\makeatletter\g@addto@macro\ps@risol{\rhead{\fontsize{11}{12}\selectfont\leftmark\\[-1.2ex]\mbox{}}}\makeatother\pagestyle{risol} %RHEAD
+\usepackage{longtable}\usepackage{pifont}
+\input{ch9_figs}
+\usepackage{multicol}
+\input{review_flags}
+%% ---- Chapter 15 (Vectors): packages, TikZ libraries and macros merged from vectors_draft.tex ----
+\usepackage{tikz-3dplot}\usepackage{colortbl}\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc}
+\providecommand{\vv}[1]{\mathbf{#1}}
+\providecommand{\cv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+\providecommand{\need}[1]{{\color{blue!50!black}\textbf{Need:} #1}}
+\providecommand{\sref}[1]{{\color{gray}\footnotesize\S#1}}
+\providecommand{\vab}[1]{\overrightarrow{#1}}
+\providecommand{\cvf}[3]{\begin{pmatrix}#1\\[1.6ex]#2\\[1.6ex]#3\end{pmatrix}}
+\providecommand{\illus}{\textcolor{gray}{\footnotesize(illustration, checked)}}
+\providecommand{\srcex}{}
+\providecommand{\todo}[1]{\par\noindent\colorbox{yellow!30}{\parbox{\dimexpr\textwidth-2\fboxsep}{\small\textbf{DRAFT:} #1}}\par\smallskip}
+\definecolor{Lcol}{RGB}{230,120,0}
+%% ---- change highlighting (Vectors): \highlightfalse = ALL \hl/\hlm/\hlb/\hlf highlights OFF (approved 27 Oct 2026) ----
+\definecolor{HLc}{RGB}{255,245,120}
+\newif\ifhighlight\highlightfalse
+\newcommand{\hl}[1]{\ifhighlight\colorbox{HLc}{#1}\else#1\fi}
+\newcommand{\hlm}[1]{\ifhighlight\colorbox{HLc}{$\displaystyle#1$}\else\ensuremath{#1}\fi}
+\newcommand{\hlb}[1]{\ifhighlight\colorbox{HLc}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\centering#1}}\else#1\fi}
+\newcommand{\hlf}[1]{\ifhighlight{\setlength{\fboxrule}{1.6pt}\setlength{\fboxsep}{2pt}\fcolorbox{orange!85!yellow}{white}{#1}}\else#1\fi}
+\tikzset{pt/.style={circle,fill,inner sep=1.2pt},ar/.style={-{Stealth},thick}}
+\begin{document}
+\makeatletter\setbox0\vbox{\@starttoc{toc}}\makeatother
+\pgfplotsset{mini/.style={width=4.4cm,height=3.6cm,axis lines=middle,ticks=none,clip=false,xlabel=$x$,ylabel=$y$,label style={font=\small},unbounded coords=jump,every axis x label/.style={at={(ticklabel* cs:1)},anchor=west},every axis y label/.style={at={(ticklabel* cs:1)},anchor=south}},
+noax/.style={width=4.8cm,height=4.4cm,axis lines=none,ticks=none,clip=false,axis equal image}}
+\newcommand{\Om}{\node[anchor=north east,inner sep=1pt] at (axis cs:0,0){$O$};}
+\newcommand{\ptt}[1]{\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{#1};}
+\newcommand{\exg}[2]{\par\noindent\begin{minipage}[c]{0.54\textwidth}#1\end{minipage}\hspace{2mm}\begin{minipage}[c]{0.42\textwidth}\raggedright#2\end{minipage}\par\medskip}
+\newcommand{\cell}[2]{\begin{minipage}[t]{0.32\textwidth}\centering#2\\[-1mm]{\small #1}\end{minipage}}
+
+%% ================================================================ SUMMARY 1
+\clearpage\thispagestyle{empty}\null\clearpage\IfFileExists{notes_hw.tocextra}{\input{notes_hw.tocextra}}{} %FRONTTOC
+\inchap{Systems of Linear Equations}
+\section{Forming the Equations}
+We read the context of the question and form equations depending on the context of the question.\par\smallskip
+\exlab
+\sys{a+b+c&=176\lb1\\0.85a+0.90b+0.95c&=161.80\lb2\\0.93a+0.95b+0.98c&=169.56\lb3}{a=32,\ b=44,\ c=100}
+\exlab
+The ``variables'' may be expressions. To find $x$, $y$ and $z$, use the given information to form the equations:
+\sys{2x^{3}+3\ln y-\e^{z}&=18\lb1\\x^{3}-\ln y+2\e^{z}&=9\lb2\\x^{3}+2\ln y+\e^{z}&=11\lb3}{x^{3}=8,\ \ln y=1,\ \e^{z}=1}
+\sidenote{It is technically still `linear' because we can think of $A=x^{3}$, $B=\ln y$, $C=\e^{z}$, which turns it into a linear system in $A$, $B$ and $C$. A truly nonlinear equation could look like $x^{2}+x+y^{2}+2y-3z^{3}-xz+xy=1$; it cannot be made linear this way, because $x$ appears as both $x^{2}$ and $x$, and there are product terms such as $xz$ and $xy$.}
+\section{Special Case: Number of Equations \texorpdfstring{$>$}{>} Number of Variables}
+Sometimes the number of equations is more than the number of variables, and the solution must satisfy all of the equations.\par\smallskip
+\exlab
+\sys{\lambda+\mu&=1\lb1\\2\lambda-\mu&=5\lb2}{\lambda=2,\ \mu=-1}
+\topdisplay{\lambda+3\mu=-1\qquad\text{---\,(3)}}
+Sometimes there may be no solution, e.g.\ skew lines in vectors. In this case, solve for $\lambda$ and $\mu$ using equations (1) and (2). Then sub into (3).
+\begin{info}[title=Note]
+Check (3): if LHS $=$ RHS, the equations are consistent; if LHS $\neq$ RHS, there is no solution.
+\end{info}
+\section{Special Case: Number of Equations \texorpdfstring{$<$}{<} Number of Variables}
+Sometimes the number of equations is less than the number of variables, so there are infinitely many solutions \fhl{(if consistent)}.\par\smallskip
+\exlab
+\sys{x+y+z&=6\lb1\\x-y+2z&=5\lb2}{x=\tfrac{11}{2}-\tfrac32z,\ y=\tfrac12+\tfrac12z,\ z=z}
+\begin{info}[title=Note]
+Useful trick: in contextual questions, the variables are usually non-negative integers, $z\in\mathbb{Z}^{+}_{0}$, so use this to find the solution from the general solution.
+\end{info}
+When $z=z$, it means that there are infinitely many solutions, and $z$ can be any real value. So just sub that into $x$ and $y$ to get a correct solution.
+\[\setlength{\arraycolsep}{10pt}\begin{array}{llll}z=-1:\ (7,0,-1)&z=0:\ (\tfrac{11}{2},\tfrac{1}{2},0)&z=1:\ \textcolor{blue}{(4,1,1)}&z=2:\ (\tfrac{5}{2},\tfrac{3}{2},2)\\[2pt]z=3:\ \textcolor{blue}{(1,2,3)}&z=4:\ (-\tfrac{1}{2},\tfrac{5}{2},4)&z=5:\ (-2,3,5)&z=6:\ (-\tfrac{7}{2},\tfrac{7}{2},6)\end{array}\]
+\sidenote{We can use the GC table to find all these solutions.}\par
+%% ================================================================ SUMMARY 2
+\clearpage
+\inchap{Inequalities}
+\section{Solving Inequalities Graphically}
+Some inequalities cannot be solved algebraically, so we sketch the graphs and read off the solution.\par
+\begin{itemize}\setlength\itemsep{0pt}\setlength\parskip{0pt}
+\item Rearrange to $\mathrm{f}(x)>0$, or compare $y=\mathrm{f}(x)$ with $y=\mathrm{g}(x)$.
+\item Sketch on the GC; mark the intersections and the asymptotes.
+\item Read off the $x$-values where the required graph is above or below.
+\end{itemize}
+\exlab
+\topdisplay{\left|x^{2}-4\right|\leqslant\ln(x+3)}
+\begin{center}\begin{tikzpicture}
+\begin{axis}[width=0.85\linewidth,height=8cm,axis lines=middle,xmin=-3.6,xmax=3.4,ymin=-2.5,ymax=6,ticks=none,clip=false,xlabel=$x$,ylabel=$y$,label style={font=\normalsize}]
+\addplot[blue,semithick,domain=-3.6:3.2,samples=300]{abs(x^2-4)};
+\addplot[red,semithick,domain=-2.92:3.4,samples=300]{ln(x+3)};
+\addplot[black,dashed,thin] coordinates{(-3,-2.5)(-3,6)};
+\addplot[black,only marks,mark=*,mark size=1.3pt] coordinates{(-2,0)(2,0)(0,4)(0,1.0986)(1.5746,1.5197)(2.3840,1.6837)};
+\node[font=\normalsize,anchor=north east] at (axis cs:0,0){$O$};
+\node[font=\normalsize,anchor=north] at (axis cs:-2,-0.15){$(-2,0)$};
+\node[font=\normalsize,anchor=north] at (axis cs:2,-0.8){$(2,0)$};
+\node[font=\normalsize,anchor=south west] at (axis cs:0.05,4){$(0,4)$};
+\node[font=\normalsize,anchor=north west] at (axis cs:0.05,1.05){$(0,\ln3)$};
+\draw[thin,dotted] (axis cs:1.5746,1.5197)--(axis cs:1.5746,0);\node[font=\normalsize,anchor=north east] at (axis cs:1.62,-0.1){$1.57$};
+\draw[thin,dotted] (axis cs:2.3840,1.6837)--(axis cs:2.3840,0);\node[font=\normalsize,anchor=north west] at (axis cs:2.34,-0.1){$2.38$};
+\node[font=\normalsize,anchor=north] at (axis cs:-3,-2.5){$x=-3$};
+\node[font=\normalsize,anchor=west] at (axis cs:3.0,5.4){$y=|x^{2}-4|$};
+\node[font=\normalsize,anchor=west] at (axis cs:3.4,1.9){$y=\ln(x+3)$};
+\end{axis}\end{tikzpicture}\end{center}
+\gcl{intersections at $x=1.5746$, $x=2.3840$}
+\cdisp{\therefore\ x=-2\ \ \text{or}\ \ 1.57\leqslant x\leqslant2.38}
+\clearpage
+\section{Sign Test Technique}
+We solve rational inequalities by finding where the expression changes sign.\par
+\begin{itemize}\setlength\itemsep{0pt}\setlength\parskip{0pt}
+\item Make the right-hand side $0$.
+\item Do \textbf{not} cross multiply unless the expression or bracket is always positive.
+\item Expressions that are always positive can be divided across, e.g.\ a quadratic with discriminant $<0$ and positive leading coefficient: $x^{2}+2x+5=(x+1)^{2}+4>0$.
+\end{itemize}
+\exlab
+\topdisplay{\frac{(x-1)(x-2)^{2}}{(x-3)(x-4)}\leqslant0}
+\begin{center}\begin{tikzpicture}
+\draw[dashed,-{Stealth[length=2mm]}](-0.3,0)--(10.3,0);
+\foreach \p/\l in {2/1,4/2,6/3,8/4}{\draw(\p,0.12)--(\p,-0.12)node[below]{$\l$};}
+\foreach \p/\s in {1/-,3/+,5/+,7/-,9/+}{\node at(\p,0.35){$\s$};}
+\end{tikzpicture}\end{center}
+\cdisp{&x=2:\ \text{numerator }=0\ \ (\text{included})\\
+&x=3,\ x=4:\ \text{denominator }=0\ \ (\text{excluded})\\
+&\therefore\ x\leqslant1\ \ \text{or}\ \ x=2\ \ \text{or}\ \ 3<x<4}
+\sidenote{You can sketch the graph to check the answer.}\par
+\begin{info}[title=Note]
+Crossing a factor with an odd power changes the sign; crossing a factor with an even power keeps the sign the same.
+\end{info}
+\clearpage
+\section{Common Substitutions}
+Once an inequality in $x$ is solved, we can replace $x$ with an expression to deduce the solution of a related inequality.\par\smallskip
+\begin{center}\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|c|c|}\hline
+ & \multicolumn{3}{c|}{\textbf{Original inequality}}\\\cline{2-4}
+\textbf{Replace $x$ by} & $x>2$ & $x<-1$ & $-1<x<2$\\\Xhline{2pt}
+$\e^{x}$ & $x>\ln2$ & no solution & $x<\ln2$\\\hline
+$\ln x$ & $x>\e^{2}$ & $0<x<\e^{-1}$ & $\e^{-1}<x<\e^{2}$\\\hline
+$-x$ & $x<-2$ & $x>1$ & $-2<x<1$\\\hline
+$x+1$ & $x>1$ & $x<-2$ & $-2<x<1$\\\hline
+$|x|$ & $x<-2$ or $x>2$ & no solution & $-2<x<2$\\\hline
+$x^{2}$ & $x<-\sqrt2$ or $x>\sqrt2$ & no solution & $-\sqrt2<x<\sqrt2$\\\hline
+$\dfrac1x$ & $\left(0<x<\tfrac12\right)$ & $(-1<x<0)$ & $\left(x<-1\text{ or }x>\tfrac12\right)$\\\hline
+$\cos x$, $0\leqslant x\leqslant2\pi$ & (no solution) & (no solution) & $(0\leqslant x<\pi\text{ or }\pi<x\leqslant2\pi)$\\\hline
+\end{tabular}\end{center}
+\sidenote{Regardless of whatever substitution you use, using a graph will always work, but some can be solved without a graph.}\par
+For $\dfrac1x$, $\sin x$ and $\cos x$, draw the graph to solve.\par\medskip
+\noindent\begin{minipage}[t]{0.48\textwidth}
+\exlab
+\topdisplay{\frac1x>2,\quad \frac1x<-1,\quad -1<\frac1x<2}
+\begin{center}\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=6.5cm,axis lines=middle,xmin=-3,xmax=3,ymin=-3.5,ymax=3.5,ticks=none,clip=false,xlabel=$x$,ylabel=$y$]
+\addplot[blue,semithick,domain=0.29:3,samples=80]{1/x};\addplot[blue,semithick,domain=-3:-0.29,samples=80]{1/x};
+\addplot[red,dotted,thick,domain=-3:3]{2};\addplot[red,dotted,thick,domain=-3:3]{-1};\node[font=\scriptsize,anchor=north east] at (axis cs:0,0){$O$};\node[font=\tiny,anchor=south east] at (axis cs:0,2){$(0,2)$};\node[font=\tiny,anchor=north east] at (axis cs:0,-1){$(0,-1)$};
+\node[font=\scriptsize,anchor=west] at (axis cs:3,2){$y=2$};\node[font=\scriptsize,anchor=west] at (axis cs:3,-1){$y=-1$};
+\node[font=\scriptsize] at (axis cs:1.6,1.1){$y=\frac1x$};
+\end{axis}\end{tikzpicture}\end{center}
+\end{minipage}\hfill\begin{minipage}[t]{0.48\textwidth}
+\exlab
+\topdisplay{\cos x>\tfrac12,\quad \cos x<-\tfrac12,}\topdisplay{-\tfrac12<\cos x<\tfrac12,\quad 0\leqslant x\leqslant2\pi}
+\begin{center}\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=6.5cm,axis lines=middle,xmin=0,xmax=2.15*pi,ymin=-1.3,ymax=1.4,
+  xtick={pi/2,pi,3*pi/2,2*pi},xticklabels={$\frac{\pi}{2}$,$\pi$,$\frac{3\pi}{2}$,$2\pi$},ytick={-1,-0.5,0.5,1},yticklabels={$-1$,$-\frac12$,$\frac12$,$1$},tick label style={font=\scriptsize},xlabel=$x$,ylabel=$y$]
+\addplot[blue,semithick,domain=0:2*pi,samples=200]{cos(deg(x))};
+\addplot[red,dotted,thick,domain=0:2*pi]{0.5};\addplot[red,dotted,thick,domain=0:2*pi]{-0.5};\node[font=\scriptsize,anchor=north east] at (axis cs:0,0){$O$};\addplot[black,only marks,mark=*,mark size=1pt] coordinates{(pi/2,0)(3*pi/2,0)(0,1)};\node[font=\tiny,anchor=south west] at (axis cs:pi/2,0){$(\frac{\pi}{2},0)$};\node[font=\tiny,anchor=north west] at (axis cs:3*pi/2,0){$(\frac{3\pi}{2},0)$};\node[font=\tiny,anchor=south west] at (axis cs:0,1){$(0,1)$};
+\end{axis}\end{tikzpicture}\end{center}
+\end{minipage}
+%% ================================================================ SUMMARY 3
+\clearpage
+\inchap{Graphing Techniques}
+\section{Key Features of a Curve}
+Key features of a curve:
+\begin{enumerate}[label=(\alph*)]
+\item \exg{\textbf{$x$-intercepts:} let $y=0$.\par e.g.\ $y=x^{2}-1$: $x^{2}-1=0\Rightarrow x=\pm1$.}{\begin{tikzpicture}\begin{axis}[mini,xmin=-2,xmax=2,ymin=-1.6,ymax=3]
+\addplot[blue,semithick,domain=-2:2,samples=80]{x^2-1};\ptt{(-1,0)(1,0)}\Om
+\node[anchor=north east,inner sep=1pt] at (axis cs:-1,0){$(-1,0)$};\node[anchor=north west,inner sep=1pt] at (axis cs:1,0){$(1,0)$};\end{axis}\end{tikzpicture}}
+\exg{\textbf{$y$-intercepts:} let $x=0$.\par e.g.\ $y=x+2$: $y=2$.}{\begin{tikzpicture}\begin{axis}[mini,xmin=-3,xmax=2,ymin=-1.5,ymax=4]
+\addplot[blue,semithick,domain=-3:2]{x+2};\ptt{(0,2)}\Om
+\node[anchor=north west,inner sep=1pt] at (axis cs:0.12,2.05){$(0,2)$};\end{axis}\end{tikzpicture}}
+
+\item \textbf{Stationary points}, \fhl{when $\dfrac{\mathrm{d}y}{\mathrm{d}x}=0$.} Label upon request.
+
+\exg{\textbf{Horizontal turning point:} $\dfrac{\mathrm{d}y}{\mathrm{d}x}=0$ (tangent horizontal).\par e.g.\ $y=-(x-1)^{2}+2$, maximum point $(1,2)$.}{\begin{tikzpicture}\begin{axis}[mini,xmin=-1.2,xmax=3.2,ymin=-1.5,ymax=3]
+\addplot[blue,semithick,domain=-0.8:2.8,samples=80]{-(x-1)^2+2};\ptt{(1,2)}\Om
+\node[anchor=south] at (axis cs:1,2){$(1,2)$};
+\end{axis}\end{tikzpicture}}
+\exg{\textbf{Vertical turning point:} $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ undefined (tangent vertical).\par e.g.\ $x=(y-1)^{2}+1$, turning point $(1,1)$.}{\begin{tikzpicture}\begin{axis}[mini,xmin=-0.6,xmax=4,ymin=-1.2,ymax=3.2]
+\addplot[blue,semithick,domain=-0.6:2.6,samples=80,variable=\t]({(t-1)^2+1},{t});\ptt{(1,1)}\Om
+\node[anchor=east] at (axis cs:1,1){$(1,1)$};\end{axis}\end{tikzpicture}}
+
+\clearpage
+\item \textbf{Asymptotes}
+\begin{enumerate}[label=(\roman*),leftmargin=2.5em]
+\item \textbf{Vertical asymptotes.} If as $x\to k$, $y\to\pm\infty$, then $x=k$ is a vertical asymptote.\par\smallskip
+{\renewcommand{\arraystretch}{1.3}\begin{tabular}{|>{\raggedright\arraybackslash}m{2.2cm}|>{\raggedright\arraybackslash}m{3.2cm}|>{\raggedright\arraybackslash}m{3.4cm}|>{\centering\arraybackslash}m{4.4cm}|}\hline
+\textbf{Common Occurrence} & \textbf{Condition} & \textbf{Example and asymptote} & \textbf{Graph}\\\hline
+Fractions & denominator $=0$ \fhl{\sidenote{(numerator $\neq0$)}} & $y=\dfrac{1}{x-1}$\par $x-1=0\Rightarrow x=1$\par $\therefore x=1$ is a vertical asymptote & \rule{0pt}{3.4cm}\begin{tikzpicture}\begin{axis}[mini,width=4cm,height=3.2cm,xmin=-2,xmax=4,ymin=-3,ymax=3]
+\addplot[blue,semithick,domain=1.34:4,samples=80]{1/(x-1)};\addplot[blue,semithick,domain=-2:0.66,samples=80]{1/(x-1)};
+\addplot[red,dashed] coordinates{(1,-3)(1,3)};\Om\node[anchor=north,red,font=\small] at (axis cs:1,-3){$x=1$};\end{axis}\end{tikzpicture}\\\hline
+Logarithmic graphs & inside $\ln=0$ & $y=\ln(x-2)$\par $x-2=0\Rightarrow x=2$\par $\therefore x=2$ is a vertical asymptote & \rule{0pt}{3.4cm}\begin{tikzpicture}\begin{axis}[mini,width=4cm,height=3.2cm,xmin=-0.5,xmax=6,ymin=-3,ymax=2]
+\addplot[blue,semithick,domain=2.05:6,samples=100]{ln(x-2)};\addplot[red,dashed] coordinates{(2,-3)(2,2)};\Om
+\node[anchor=north,red,font=\small] at (axis cs:2,-3){$x=2$};\end{axis}\end{tikzpicture}\\\hline
+Tangent graphs & inside $\tan=\dfrac{\pi}{2}+k\pi$, $k\in\mathbb{Z}$ & $y=\tan x$\par $x=\pm\dfrac{\pi}{2},\ \pm\dfrac{3\pi}{2},\dots$ & \rule{0pt}{3.4cm}\begin{tikzpicture}\begin{axis}[mini,width=4cm,height=3.2cm,xmin=-2.6,xmax=2.6,ymin=-3,ymax=3]
+\addplot[blue,semithick,domain=-1.25:1.25,samples=80]{tan(deg(x))};\addplot[red,dashed] coordinates{(-1.5708,-3)(-1.5708,3)};\addplot[red,dashed] coordinates{(1.5708,-3)(1.5708,3)};\Om
+\node[anchor=north,red,font=\small] at (axis cs:-1.57,-3){$x=-\frac{\pi}{2}$};\node[anchor=north,red,font=\small] at (axis cs:1.57,-3){$x=\frac{\pi}{2}$};\end{axis}\end{tikzpicture}\\\hline
+\end{tabular}}
+\item \textbf{Horizontal asymptotes.} As $x\to\pm\infty$, if $y\to k$, then $y=k$ is a horizontal asymptote.
+\begin{itemize}
+\item \textcolor{red}{To find horizontal asymptotes, one should sub in $x\to\pm\infty$ into the equation. This is the only foolproof way to do it.}
+\item \textcolor{red}{A curve \textbf{CAN} intersect its horizontal asymptote.}
+\end{itemize}
+\noindent\begin{minipage}[t]{0.48\textwidth}\centering\begin{tikzpicture}\begin{axis}[mini,width=6.4cm,height=4cm,xmin=-13,xmax=13,ymin=-0.5,ymax=1.3]
+\addplot[blue,semithick,domain=-13:13,samples=300]{x==0?1:sin(deg(x))/x};\addplot[red,dashed] coordinates{(-13,0)(13,0)};\Om
+\addplot[only marks,mark=o,mark size=1.4pt,fill=white] coordinates{(0,1)};\node[anchor=south west,font=\small] at (axis cs:0.3,1){$(0,1)$};\node[anchor=north,red,font=\small] at (axis cs:-10,-0.2){$y=0$};\draw[->,thick,black!70](axis cs:6.5,0.45)--(axis cs:11.5,0.15);\node[anchor=south,font=\small] at (axis cs:8.5,0.5){as $x\to\pm\infty$, $y\to0$};\end{axis}\end{tikzpicture}\par{\small e.g.\ $y=\dfrac{\sin x}{x}$: curve crosses $y=0$}\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}\centering\begin{tikzpicture}\begin{axis}[mini,width=6.4cm,height=4cm,xmin=-1.5,xmax=5,ymin=-0.6,ymax=7]
+\addplot[blue,semithick,domain=-1.3:5,samples=100]{3+exp(-x)};\addplot[red,dashed] coordinates{(-1.5,3)(5,3)};\Om
+\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{(0,4)};\node[anchor=south west,font=\small] at (axis cs:0.05,4.05){$(0,4)$};\node[anchor=north,red,font=\small] at (axis cs:4.3,2.95){$y=3$};\draw[->,thick,black!70](axis cs:1.6,4.4)--(axis cs:4.2,3.4);\node[anchor=south west,font=\small] at (axis cs:1.8,4.5){as $x\to\infty$, $y\to3$};\end{axis}\end{tikzpicture}\par{\small e.g.\ $y=3+\e^{-x}$}\end{minipage}\par\vspace{1.5cm}
+\newpage
+\noindent\textbf{Useful trick to find horizontal asymptotes}\par\smallskip
+For rational functions $\dfrac{P(x)}{Q(x)}$:\par\smallskip
+{\renewcommand{\arraystretch}{1.3}\setlength{\tabcolsep}{4pt}\centering\begin{tabular}{|>{\raggedright\arraybackslash}m{3.3cm}|>{\raggedright\arraybackslash}m{3.6cm}|>{\raggedright\arraybackslash}m{2.4cm}|>{\centering\arraybackslash}m{4cm}|}\hline
+\textbf{Case} & \textbf{Horizontal asymptote} & \textbf{Example} & \textbf{Graph}\\\hline
+numerator power $>$ denominator power & no horizontal asymptote & $y=\dfrac{x^{2}}{x-1}$ & \rule{0pt}{3.1cm}\begin{tikzpicture}\begin{axis}[mini,width=3.8cm,height=3cm,xmin=-3,xmax=4,ymin=-6,ymax=8]
+\addplot[blue,semithick,domain=1.15:4,samples=80]{x^2/(x-1)};\addplot[blue,semithick,domain=-3:0.88,samples=80]{x^2/(x-1)};
+\addplot[red,dashed] coordinates{(1,-6)(1,8)};\addplot[red,dashed,domain=-3:4]{x+1};\Om\node[anchor=north,red,font=\small] at (axis cs:1,-6){$x=1$};\node[anchor=west,red,font=\small] at (axis cs:4,5){$y=x+1$};\end{axis}\end{tikzpicture}\\\hline
+numerator power $<$ denominator power & $y=0$ & $y=\dfrac{1}{x^{2}+1}$ & \rule{0pt}{2.6cm}\begin{tikzpicture}\begin{axis}[mini,width=3.8cm,height=2.6cm,xmin=-3.5,xmax=3.5,ymin=-0.3,ymax=1.4]
+\addplot[blue,semithick,domain=-3.5:3.5,samples=80]{1/(x^2+1)};\Om\end{axis}\end{tikzpicture}\\\hline
+numerator power $=$ denominator power & ratio of coefficients of highest power & $y=\dfrac{2x+1}{x-1}$\par $y=2$ & \rule{0pt}{3.1cm}\begin{tikzpicture}\begin{axis}[mini,width=3.8cm,height=3cm,xmin=-4,xmax=5,ymin=-5,ymax=8]
+\addplot[blue,semithick,domain=1.4:5,samples=80]{(2*x+1)/(x-1)};\addplot[blue,semithick,domain=-4:0.6,samples=80]{(2*x+1)/(x-1)};
+\addplot[red,dashed] coordinates{(1,-5)(1,8)};\addplot[red,dashed] coordinates{(-4,2)(5,2)};\Om
+\node[anchor=north,red,font=\small] at (axis cs:1,-5){$x=1$};\node[anchor=west,red,font=\small] at (axis cs:5,2){$y=2$};\end{axis}\end{tikzpicture}\\\hline
+\end{tabular}\par}
+\item \textbf{Oblique asymptotes.} An asymptote of the form $y=mx+c$, $m\neq0$.\par
+Graphs with oblique asymptotes come in the form $y=mx+c+\mathrm{g}(x)$, where $\mathrm{g}(x)\to0$ as $x\to\pm\infty$; the oblique asymptote is $y=mx+c$.\par\smallskip
+\noindent\begin{minipage}[t]{0.48\textwidth}\centering
+\begin{tikzpicture}\begin{axis}[mini,width=5.2cm,height=4.4cm,xmin=-4,xmax=7,ymin=-12,ymax=18]
+\addplot[blue,semithick,domain=2.2:7,samples=100]{2*x+1+3/(x-2)};\addplot[blue,semithick,domain=-4:1.75,samples=100]{2*x+1+3/(x-2)};
+\addplot[red,dashed] coordinates{(2,-12)(2,18)};\addplot[red,dashed,domain=-4:7]{2*x+1};\Om
+\node[anchor=north,red,font=\small] at (axis cs:2,-12){$x=2$};\node[anchor=west,red,font=\small] at (axis cs:7,15){$y=2x+1$};\end{axis}\end{tikzpicture}\par
+e.g.\ $y=2x+1+\dfrac{3}{x-2}$\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}\centering
+\begin{tikzpicture}\begin{axis}[mini,width=5.2cm,height=4.4cm,xmin=-2,xmax=4,ymin=-8,ymax=10]
+\addplot[blue,semithick,domain=-1.6:4,samples=100]{3*x-5+exp(-x)};
+\addplot[red,dashed,domain=-1:4]{3*x-5};\Om
+\node[anchor=west,red,font=\small] at (axis cs:4,7){$y=3x-5$};\end{axis}\end{tikzpicture}\par
+e.g.\ $y=3x-5+\e^{-x}$\end{minipage}\par\medskip
+\begin{info}[title=Note]
+For parametric curves, oblique asymptotes (if they exist) can \fhl{usually} be found via the cartesian equation.
+\end{info}
+\end{enumerate}
+\end{enumerate}
+\clearpage
+\section{Graphs of Rational Functions}
+Two common shapes for each type.\par\medskip
+{\renewcommand{\arraystretch}{1.2}\centering\begin{tabular}{|>{\raggedright\arraybackslash}m{3.7cm}|>{\centering\arraybackslash}m{5.6cm}|>{\centering\arraybackslash}m{5.6cm}|}\hline
+\textbf{Type and form} & \textbf{Shape 1} & \textbf{Shape 2}\\\hline
+\textbf{Linear / linear}\par\smallskip $y=\dfrac{Ax+B}{Cx+D}$\par Horizontal asymptote: $y=\dfrac{A}{C}$\par Vertical asymptote: $x=-\dfrac{D}{C}$ & \rule{0pt}{4ex}\begin{tikzpicture}\begin{axis}[mini,width=5.4cm,height=4.6cm,xmin=-3,xmax=4,ymin=-4,ymax=5]
+\addplot[blue,semithick,domain=1.5:4,samples=80]{(x+1)/(x-1)};\addplot[blue,semithick,domain=-3:0.6,samples=80]{(x+1)/(x-1)};
+\addplot[red,dashed] coordinates{(1,-4)(1,5)};\addplot[red,dashed] coordinates{(-3,1)(4,1)};\Om
+\node[anchor=north,red,font=\small] at (axis cs:1,-4){$x=1$};\node[anchor=west,red,font=\small] at (axis cs:4,1){$y=1$};\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{(-1,0)(0,-1)};\node[anchor=north east,font=\small,inner sep=1pt] at (axis cs:-1.05,-0.1){$(-1,0)$};\node[anchor=north west,font=\small,inner sep=1pt] at (axis cs:0.1,-1.1){$(0,-1)$};\end{axis}\end{tikzpicture}\par{\small $y=\dfrac{x+1}{x-1}$} & \begin{tikzpicture}\begin{axis}[mini,width=5.4cm,height=4.6cm,xmin=-4,xmax=3,ymin=-4,ymax=5]
+\addplot[blue,semithick,domain=-0.6:3,samples=80]{(x-1)/(x+1)};\addplot[blue,semithick,domain=-4:-1.5,samples=80]{(x-1)/(x+1)};
+\addplot[red,dashed] coordinates{(-1,-4)(-1,5)};\addplot[red,dashed] coordinates{(-4,1)(3,1)};\Om
+\node[anchor=north,red,font=\small] at (axis cs:-1,-4){$x=-1$};\node[anchor=west,red,font=\small] at (axis cs:3,1){$y=1$};\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{(1,0)(0,-1)};\node[anchor=north west,font=\small,inner sep=1pt] at (axis cs:1.1,-0.1){$(1,0)$};\node[anchor=north east,font=\small,inner sep=1pt] at (axis cs:-0.1,-1.1){$(0,-1)$};\end{axis}\end{tikzpicture}\par{\small $y=\dfrac{x-1}{x+1}$}\\\hline
+\textbf{Quadratic / linear}\par\smallskip $y=\dfrac{ax^{2}+bx+c}{dx+e}$\par $=Ax+B+\dfrac{C}{dx+e}$\par Oblique asymptote: $y=Ax+B$\par Vertical asymptote: $x=-\dfrac{e}{d}$ & \rule{0pt}{4ex}\begin{tikzpicture}\begin{axis}[mini,width=5.4cm,height=4.6cm,xmin=-3,xmax=4.5,ymin=-5,ymax=8]
+\addplot[blue,semithick,domain=1.17:4.5,samples=100]{x+1+1/(x-1)};\addplot[blue,semithick,domain=-3:0.85,samples=100]{x+1+1/(x-1)};
+\addplot[red,dashed] coordinates{(1,-5)(1,8)};\addplot[red,dashed,domain=-3:4.5]{x+1};\Om
+\node[anchor=north,red,font=\small] at (axis cs:1,-5){$x=1$};\node[anchor=west,red,font=\small] at (axis cs:4.5,5.5){$y=x+1$};\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{(0,0)(2,4)};\node[anchor=north west,font=\small,inner sep=1pt] at (axis cs:2.1,3.9){$(2,4)$};\end{axis}\end{tikzpicture}\par{\small 2 turning points\par $y=x+1+\dfrac{1}{x-1}$\quad $\left(\dfrac{Cd}{A}>0\right)$} & \begin{tikzpicture}\begin{axis}[mini,width=5.4cm,height=4.6cm,xmin=-3,xmax=4.5,ymin=-5,ymax=8]
+\addplot[blue,semithick,domain=1.12:4.5,samples=100]{x+1-1/(x-1)};\addplot[blue,semithick,domain=-3:0.88,samples=100]{x+1-1/(x-1)};
+\addplot[red,dashed] coordinates{(1,-5)(1,8)};\addplot[red,dashed,domain=-3:4.5]{x+1};\Om
+\node[anchor=north,red,font=\small] at (axis cs:1,-5){$x=1$};\node[anchor=west,red,font=\small] at (axis cs:4.5,5.5){$y=x+1$};\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{(0,2)(-1.414,0)(1.414,0)};\node[anchor=east,font=\small,inner sep=1pt] at (axis cs:-0.1,2.3){$(0,2)$};\node[anchor=north east,font=\small,inner sep=1pt] at (axis cs:-1.45,-0.1){$(-1.41,0)$};\node[anchor=north west,font=\small,inner sep=1pt] at (axis cs:1.5,-0.1){$(1.41,0)$};\end{axis}\end{tikzpicture}\par{\small No turning points\par $y=x+1-\dfrac{1}{x-1}$\quad $\left(\dfrac{Cd}{A}<0\right)$}\\\hline
+\textbf{Linear / quadratic}\par\smallskip $y=\dfrac{ax+b}{cx^{2}+dx+e}$\par Horizontal asymptote: $y=0$\par Vertical asymptotes: solve $cx^{2}+dx+e=0$ (possibly no roots) & \rule{0pt}{4ex}\begin{tikzpicture}\begin{axis}[mini,width=5.4cm,height=4.6cm,xmin=-3,xmax=3,ymin=-4,ymax=4]
+\foreach \a/\b in {-3/-1.12,-0.89/0.89,1.12/3}{\addplot[blue,semithick,domain=\a:\b,samples=80]{x/((x-1)*(x+1))};}
+\addplot[red,dashed] coordinates{(1,-4)(1,4)};\addplot[red,dashed] coordinates{(-1,-4)(-1,4)};\Om
+\node[anchor=north,red,font=\small] at (axis cs:-1,-4){$x=-1$};\node[anchor=north,red,font=\small] at (axis cs:1,-4){$x=1$};\end{axis}\end{tikzpicture}\par{\small $y=\dfrac{x}{(x-1)(x+1)}$} & \begin{tikzpicture}\begin{axis}[mini,width=5.8cm,height=6.2cm,xmin=-3,xmax=9,ymin=-2.5,ymax=3.2]
+\addplot[blue,semithick,domain=-3:-1.556,samples=80]{(x-2)/((x-1)*(x+1))};\addplot[blue,semithick,domain=-0.476:0.788,samples=100]{(x-2)/((x-1)*(x+1))};\addplot[blue,semithick,domain=1.156:9,samples=200]{(x-2)/((x-1)*(x+1))};
+\addplot[red,dashed] coordinates{(1,-2.5)(1,3.2)};\addplot[red,dashed] coordinates{(-1,-2.5)(-1,3.2)};\Om
+\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{(0,2)(2,0)(3.732,0.134)(0.268,1.866)};
+\node[anchor=east,font=\small,inner sep=1pt] at (axis cs:-0.1,2.0){$(0,2)$};\node[anchor=north,font=\small,inner sep=2pt] at (axis cs:2,-0.05){$(2,0)$};
+\node[anchor=south,font=\small,inner sep=3pt] at (axis cs:4.3,0.15){$(3.73,0.134)$};\node[anchor=west,font=\small,inner sep=1pt] at (axis cs:1.2,1.87){$(0.268,1.87)$};\draw[gray,thin](axis cs:0.33,1.87)--(axis cs:1.2,1.87);
+\node[anchor=north,red,font=\small] at (axis cs:-1,-2.5){$x=-1$};\node[anchor=north,red,font=\small] at (axis cs:1,-2.5){$x=1$};\end{axis}\end{tikzpicture}\par{\small $y=\dfrac{x-2}{(x-1)(x+1)}$}\\\hline
+\end{tabular}\par}
+
+\clearpage
+\section{Symmetry}
+\noindent\begin{minipage}[t]{0.48\textwidth}
+\textbf{Even functions:} $\mathrm{f}(-x)=\mathrm{f}(x)$.\par The graph is symmetric about the $y$-axis (line of symmetry $x=0$, dotted).\par\smallskip\centering
+\begin{tikzpicture}\begin{axis}[mini,width=3.9cm,height=3.5cm,xmin=-2,xmax=2,ymin=-0.4,ymax=3.4]
+\addplot[blue,semithick,domain=-1.8:1.8,samples=80]{x^2};\addplot[black,dotted,thick] coordinates{(0,-0.4)(0,3.4)};\Om\end{axis}\end{tikzpicture}\hfill
+\begin{tikzpicture}\begin{axis}[mini,width=3.9cm,height=3.5cm,xmin=-3.3,xmax=3.3,ymin=-1.3,ymax=1.3]
+\addplot[blue,semithick,domain=-3.14:3.14,samples=100]{cos(deg(x))};\addplot[black,dotted,thick] coordinates{(0,-1.3)(0,1.3)};\Om\end{axis}\end{tikzpicture}\par
+{\small e.g.\ $y=x^{2}$\hspace{2.2cm}e.g.\ $y=\cos x$}
+\end{minipage}\hfill\vrule\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\textbf{Odd functions:} $\mathrm{f}(-x)=-\mathrm{f}(x)$.\par The graph is symmetric about the origin.\par\smallskip
+\begin{minipage}[c]{0.4\linewidth}e.g.\ $y=x^{3}-x$\end{minipage}\hfill\begin{minipage}[c]{0.58\linewidth}\centering\begin{tikzpicture}\begin{axis}[mini,width=3.9cm,height=3.4cm,xmin=-2,xmax=2,ymin=-2.5,ymax=2.5]
+\addplot[blue,semithick,domain=-1.6:1.6,samples=80]{x^3-x};\Om\end{axis}\end{tikzpicture}\end{minipage}\par\medskip
+\textbf{Symmetry about $y=x$:} swapping $x$ and $y$ gives the same equation.\par\smallskip
+\begin{minipage}[c]{0.4\linewidth}e.g.\ $y=\dfrac{1}{x}$\par ($xy=1$)\end{minipage}\hfill\begin{minipage}[c]{0.58\linewidth}\centering\begin{tikzpicture}\begin{axis}[mini,width=3.9cm,height=3.4cm,xmin=-3,xmax=3,ymin=-3,ymax=3]
+\addplot[blue,semithick,domain=0.34:3,samples=60]{1/x};\addplot[blue,semithick,domain=-3:-0.34,samples=60]{1/x};\addplot[black,dotted,thick,domain=-3:3]{x};\node[anchor=west,font=\small] at (axis cs:2.6,2.8){$y=x$};\Om\end{axis}\end{tikzpicture}\end{minipage}
+\end{minipage}\par\bigskip
+\section{Basic Graphs}
+\pgfplotsset{bg/.style={mini,width=4.2cm,height=2.75cm}}
+{\renewcommand{\cell}[2]{\begin{minipage}[t]{0.29\textwidth}\centering\vspace{1mm}#2\\[-1mm]{\small #1}\vspace{1mm}\end{minipage}}\centering\begin{tabular}{|c|c|c|}\hline
+\cell{Linear $y=x+1$}{\begin{tikzpicture}\begin{axis}[bg,xmin=-2.5,xmax=2,ymin=-1.5,ymax=3]\addplot[blue,semithick,domain=-2.5:2]{x+1};\ptt{(-1,0)(0,1)}\Om\node[anchor=south east,font=\small] at (axis cs:-1.1,0){$(-1,0)$};\node[anchor=west,font=\small] at (axis cs:0.1,0.9){$(0,1)$};\end{axis}\end{tikzpicture}} &
+\cell{Quadratic $y=x^{2}-1$}{\begin{tikzpicture}\begin{axis}[bg,xmin=-2,xmax=2,ymin=-1.5,ymax=3]\addplot[blue,semithick,domain=-2:2]{x^2-1};\ptt{(-1,0)(1,0)(0,-1)}\Om\node[anchor=north east,font=\small] at (axis cs:-1,0){$(-1,0)$};\node[anchor=north west,font=\small] at (axis cs:1,0){$(1,0)$};\node[anchor=north west,font=\small] at (axis cs:0,-1){$(0,-1)$};\end{axis}\end{tikzpicture}} &
+\cell{Cubic $y=x^{3}-x$}{\begin{tikzpicture}\begin{axis}[bg,xmin=-2,xmax=2,ymin=-2,ymax=2]\addplot[blue,semithick,domain=-1.55:1.55]{x^3-x};\ptt{(-1,0)(1,0)}\Om\node[anchor=south east,font=\small] at (axis cs:-1.05,0.1){$(-1,0)$};\node[anchor=north west,font=\small] at (axis cs:1.05,-0.1){$(1,0)$};\end{axis}\end{tikzpicture}}\\\hline
+\cell{Exponential $y=\e^{x}$}{\begin{tikzpicture}\begin{axis}[bg,xmin=-3,xmax=2,ymin=-0.8,ymax=4]\addplot[blue,semithick,domain=-3:1.35]{exp(x)};\ptt{(0,1)}\Om\node[anchor=south east,font=\small] at (axis cs:0,1){$(0,1)$};\node[anchor=north,font=\small] at (axis cs:-2,-0.1){$y\to0$};\end{axis}\end{tikzpicture}} &
+\cell{Logarithm $y=\ln x$}{\begin{tikzpicture}\begin{axis}[bg,xmin=-0.8,xmax=4,ymin=-3,ymax=2]\addplot[blue,semithick,domain=0.05:4,samples=100]{ln(x)};\ptt{(1,0)}\Om\node[anchor=north west,font=\small] at (axis cs:1,0){$(1,0)$};\node[anchor=east,font=\small,red] at (axis cs:0,-2.4){$x=0$};\end{axis}\end{tikzpicture}} &
+\cell{Reciprocal $y=\frac1x$}{\begin{tikzpicture}\begin{axis}[bg,xmin=-3,xmax=3,ymin=-3,ymax=3]\addplot[blue,semithick,domain=0.33:3]{1/x};\addplot[blue,semithick,domain=-3:-0.33]{1/x};\Om\end{axis}\end{tikzpicture}}\\\hline
+\cell{$y=\sin x$}{\begin{tikzpicture}\begin{axis}[bg,xmin=-3.6,xmax=3.6,ymin=-1.5,ymax=1.6]\addplot[blue,semithick,domain=-3.3:3.3,samples=100]{sin(deg(x))};\ptt{(-3.1416,0)(3.1416,0)}\Om\node[anchor=north,font=\small] at (axis cs:-3.14,0){$-\pi$};\node[anchor=north,font=\small] at (axis cs:3.14,0){$\pi$};\end{axis}\end{tikzpicture}} &
+\cell{$y=\cos x$}{\begin{tikzpicture}\begin{axis}[bg,xmin=-3.6,xmax=3.6,ymin=-1.5,ymax=1.6]\addplot[blue,semithick,domain=-3.3:3.3,samples=100]{cos(deg(x))};\ptt{(0,1)(-1.5708,0)(1.5708,0)}\Om\node[anchor=south west,font=\small] at (axis cs:0,1){$(0,1)$};\node[anchor=north,font=\small] at (axis cs:-1.9,-0.05){$-\frac{\pi}{2}$};\node[anchor=south west,font=\small] at (axis cs:1.57,0){$\frac{\pi}{2}$};\end{axis}\end{tikzpicture}} &
+\cell{$y=\tan x$}{\begin{tikzpicture}\begin{axis}[bg,xmin=-2.4,xmax=2.4,ymin=-3,ymax=3]\addplot[blue,semithick,domain=-1.25:1.25,samples=80]{tan(deg(x))};\addplot[red,dashed] coordinates{(-1.5708,-3)(-1.5708,3)};\addplot[red,dashed] coordinates{(1.5708,-3)(1.5708,3)};\Om\node[anchor=north,red,font=\small] at (axis cs:-1.57,-3){$x=-\frac{\pi}{2}$};\node[anchor=north,red,font=\small] at (axis cs:1.57,-3){$x=\frac{\pi}{2}$};\end{axis}\end{tikzpicture}}\\\hline
+\cell{$y=\sin^{-1}x$}{\begin{tikzpicture}\begin{axis}[bg,xmin=-1.8,xmax=1.8,ymin=-2,ymax=2]\addplot[blue,semithick,domain=-1:1,samples=100]{rad(asin(x))};\ptt{(-1,-1.5708)(1,1.5708)}\Om\node[anchor=north,font=\small] at (axis cs:-1,-1.6){$(-1,-\frac{\pi}{2})$};\node[anchor=south,font=\small] at (axis cs:1,1.6){$(1,\frac{\pi}{2})$};\end{axis}\end{tikzpicture}} &
+\cell{$y=\cos^{-1}x$}{\begin{tikzpicture}\begin{axis}[bg,xmin=-1.8,xmax=1.8,ymin=-0.6,ymax=3.6]\addplot[blue,semithick,domain=-1:1,samples=100]{rad(acos(x))};\ptt{(-1,3.1416)(1,0)(0,1.5708)}\Om\node[anchor=south,font=\small] at (axis cs:-1,3.14){$(-1,\pi)$};\node[anchor=north,font=\small] at (axis cs:1,0){$(1,0)$};\node[anchor=west,font=\small] at (axis cs:0.1,1.75){$(0,\frac{\pi}{2})$};\end{axis}\end{tikzpicture}} &
+\cell{$y=\tan^{-1}x$}{\begin{tikzpicture}\begin{axis}[bg,xmin=-4,xmax=4,ymin=-2.2,ymax=2.2]\addplot[blue,semithick,domain=-4:4,samples=100]{rad(atan(x))};\addplot[red,dashed] coordinates{(-4,1.5708)(4,1.5708)};\addplot[red,dashed] coordinates{(-4,-1.5708)(4,-1.5708)};\Om\node[anchor=south,red,font=\small] at (axis cs:-2.5,1.57){$y=\frac{\pi}{2}$};\node[anchor=north,red,font=\small] at (axis cs:2.5,-1.57){$y=-\frac{\pi}{2}$};\end{axis}\end{tikzpicture}}\\\hline
+\end{tabular}\par}
+
+\clearpage
+\section{Parametric Equations}
+A curve $C$ can be described by giving both coordinates in terms of a parameter $t$:
+\topdisplay{x=x(t),\quad y=y(t),\quad t\in T}
+\exg{\exlab $x=2\cos t+1,\ \ y=3\sin t-2,\ \ 0\leqslant t\leqslant\pi$\par\smallskip
+$t=0$: $(3,-2)$\quad $t=\frac{\pi}{2}$: $(1,1)$\quad $t=\pi$: $(-1,-2)$\par
+$x=0$: $\left(0,\tfrac{3\sqrt3}{2}-2\right)$\par $y=0$: $\left(1\pm\tfrac{2\sqrt5}{3},0\right)$}
+{\begin{tikzpicture}\begin{axis}[mini,width=6.6cm,height=5.4cm,xmin=-1.8,xmax=3.8,ymin=-2.6,ymax=1.6]
+\addplot[blue,semithick,domain=0:180,samples=100]({2*cos(x)+1},{3*sin(x)-2});\addplot[black,only marks,mark=*,mark size=1.4pt] coordinates{(3,-2)(-1,-2)(1,1)};\Om
+\node[anchor=north,font=\small] at (axis cs:3,-2){$(3,-2)$};\node[anchor=north,font=\small] at (axis cs:-1,-2){$(-1,-2)$};\node[anchor=south,font=\small] at (axis cs:1,1){$(1,1)$};
+\end{axis}\end{tikzpicture}}
+\begin{info}[title={CAUTION: sketching from parametric equations}]
+\textbf{ALWAYS take note of the range of $t$ when sketching graphs.} The restriction on $t$ decides which part of the curve exists: above, $0\leqslant t\leqslant\pi$ gives only the upper half of the ellipse, with endpoints $(3,-2)$ and $(-1,-2)$, not the whole ellipse.
+\end{info}
+\subsection{Finding the Cartesian Equation}
+The cartesian equation of $C$ is an equation without the parameter $t$. Common techniques:\par\smallskip
+\textbf{\textcircled{\scriptsize1} Make $t$ the subject.}\quad e.g.\ $x=2t-1$, $y=3t^{2}+\e^{t}$, $t\in\mathbb{R}$
+\cdisp{t&=\frac{x+1}{2}\\ y&=3\left(\frac{x+1}{2}\right)^{2}+\e^{\frac{x+1}{2}}}
+\textbf{\textcircled{\scriptsize2} Trigo identity formulas.}\quad e.g.\ $x=2\cos t+1$, $y=3\sin t-2$, $0\leqslant t\leqslant\pi$
+\cdisp{\cos t=\frac{x-1}{2},\quad \sin t&=\frac{y+2}{3}\\ \cos^{2}t+\sin^{2}t&=1\\ \frac{(x-1)^{2}}{4}+\frac{(y+2)^{2}}{9}&=1,\quad y\geqslant-2}
+\textbf{\textcircled{\scriptsize3} Others.}\quad e.g.\ $x=t-\dfrac1t$, $y=t+\dfrac1t$, $t\neq0$
+\cdisp{y+x=2t,\quad y-x&=\frac{2}{t}\\ (y+x)(y-x)&=4\\ y^{2}-x^{2}&=4}
+\textcolor{red}{Note: Avoid finding the cartesian eqn if the question did not ask you to.}
+\subsection{Asymptotes (Parametric Equations)}
+\begin{itemize}
+\item Find (if possible) $t\to t_0$ such that $x\to x_0$, $y\to\pm\infty$ (vertical asymptote $x=x_0$), or $y\to y_0$, $x\to\pm\infty$ (horizontal asymptote $y=y_0$).
+\item Oblique asymptotes (if they exist) can \fhl{usually} be found via the cartesian equation.
+\end{itemize}
+\exg{\exlab $x=\dfrac{1}{t-1}$, \ $y=2t$, \ $t\neq1$
+\cdisp{&\text{As }t\to\pm\infty,\ x\to0,\ y\to\pm\infty\\ &\therefore\ x=0\text{ is a vertical asymptote}\\ &\text{As }t\to1,\ x\to\pm\infty,\ y\to2\\ &\therefore\ y=2\text{ is a horizontal asymptote}}}{\begin{tikzpicture}\begin{axis}[mini,xmin=-4,xmax=4,ymin=-3,ymax=7]
+\addplot[blue,semithick,domain=0.35:4,samples=100]{2+2/x};\addplot[blue,semithick,domain=-4:-0.42,samples=100]{2+2/x};
+\addplot[red,dashed] coordinates{(-4,2)(4,2)};\addplot[red,dashed] coordinates{(0,-3)(0,7)};\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{(-1,0)};\Om
+\node[anchor=north east,font=\small,inner sep=1pt] at (axis cs:-1,-0.1){$(-1,0)$};\node[anchor=west,red,font=\small] at (axis cs:4,2){$y=2$};\node[anchor=north west,red,font=\small] at (axis cs:0.1,-3){$x=0$};\end{axis}\end{tikzpicture}}
+\exg{\textbf{Oblique asymptotes.} \fhl{Is not usually} \fhl{found from the} \fhl{parametric form}; find the cartesian equation first.\par e.g.\ $x=2\sec\theta$, \ $y=3\tan\theta$
+\cdisp{\sec^{2}\theta-\tan^{2}\theta&=1\\ \frac{x^{2}}{4}-\frac{y^{2}}{9}&=1}
+Oblique asymptotes: $y=\pm\dfrac{3}{2}x$}{\begin{tikzpicture}\begin{axis}[mini,xmin=-6,xmax=6,ymin=-7,ymax=7]
+\addplot[blue,semithick,domain=-1.5:1.5,samples=80,variable=\t]({2*cosh(t)},{3*sinh(t)});\addplot[blue,semithick,domain=-1.5:1.5,samples=80,variable=\t]({-2*cosh(t)},{3*sinh(t)});
+\addplot[red,dashed,domain=-4.6:4.6]{1.5*x};\addplot[red,dashed,domain=-4.6:4.6]{-1.5*x};\Om
+\node[anchor=west,red,font=\small] at (axis cs:4.6,6.9){$y=\frac32x$};\node[anchor=west,red,font=\small] at (axis cs:4.6,-6.9){$y=-\frac32x$};\end{axis}\end{tikzpicture}}
+\subsection{Intersections}
+Intersection between a parametric curve and another curve: sometimes both equations are needed.
+\par e.g.\ $x=2t+\ln t$, \ $y=t^{2}-1$, \ $t>0$ \ and the circle $x^{2}+y^{2}=25$:
+\cdisp{(2t+\ln t)^{2}+(t^{2}-1)^{2}&=25}
+\gcl{$t=0.00735$ \ or \ $t=1.86$ \ (both $>0$)}
+\cdisp{\therefore\ \text{intersections: }(-4.90,\,-1.00)\ \text{and}\ (4.35,\,2.47)}
+\sidenote{This equation in $t$ cannot be solved algebraically, so the GC is needed.}
+
+\clearpage
+\section{Conics}
+\newcommand{\conic}[4]{\par\needspace{6cm}\noindent{\large\bfseries\color{blue!50!black}#1}\par\smallskip{\centering$\displaystyle #2$\par}\smallskip
+\noindent\begin{minipage}[c]{0.52\textwidth}#3\end{minipage}\hfill\begin{minipage}[c]{0.44\textwidth}\centering\vspace{3mm}#4\vspace{3mm}\end{minipage}\par\medskip\noindent{\color{gray!60}\rule{\textwidth}{0.4pt}}\par\medskip}
+\newcommand{\rednote}[1]{\begin{info}#1\end{info}}
+\conic{Circle}{(x-h)^{2}+(y-k)^{2}=r^{2}}{Centre: $(h,k)$\par\smallskip Radius: $r$}
+{\begin{tikzpicture}[scale=1.1]\draw[blue,semithick](0,0)circle(1.1);\fill(0,0)circle(1.5pt);\draw[red](0,0)--(0.78,0.78);\node[anchor=north,font=\small]at(0,0){$(h,k)$};\node[anchor=south east,red,font=\small]at(0.42,0.38){$r$};\end{tikzpicture}}
+\conic{Parabola}{y-k=a(x-h)^{2}\qquad\qquad x-h=b(y-k)^{2}}{$y-k=a(x-h)^{2}$:\par turning point $(h,k)$, \ $\dfrac{\mathrm{d}y}{\mathrm{d}x}=0$\par\medskip $x-h=b(y-k)^{2}$:\par turning point $(h,k)$, \ $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ undefined}
+{\begin{tikzpicture}[scale=0.8]\draw[blue,semithick,domain=-1.3:1.3,smooth]plot(\x,{\x*\x});\fill(0,0)circle(1.5pt);\node[anchor=north,font=\small]at(0,0){$(h,k)$};
+\begin{scope}[xshift=2.4cm,yshift=0.85cm]\draw[blue,semithick,domain=-1.3:1.3,smooth]plot({\x*\x},\x);\fill(0,0)circle(1.5pt);\node[anchor=east,font=\small]at(0,0){$(h,k)$};\end{scope}\end{tikzpicture}}
+\conic{Ellipse}{\frac{(x-h)^{2}}{a^{2}}+\frac{(y-k)^{2}}{b^{2}}=1}{Centre: $(h,k)$\par ``Horizontal radius'' $=a$, ``vertical radius'' $=b$\par\smallskip For $a>b$: major axis horizontal (length $2a$, semi-major $a$); minor axis vertical (length $2b$, semi-minor $b$).\par\smallskip
+\rednote{$\star$ RHS $\Rightarrow$ numerator coefficients of $x^{2}$, $y^{2}$ must all be $1$.}}
+{\begin{tikzpicture}[scale=0.95]\draw[blue,semithick](0,0) ellipse (2 and 1);\draw[red,dashed](-2,0)--(2,0);\draw[red,dashed](0,-1)--(0,1);\fill(0,0)circle(1.5pt);
+\node[anchor=north east,font=\small]at(0,0){$(h,k)$};\node[anchor=south,red,font=\small]at(1,0){$a$};\node[anchor=west,red,font=\small]at(0,0.5){$b$};
+\node[anchor=north,font=\small]at(0,-1.05){major axis $2a$};\node[anchor=south,font=\small]at(0,1.05){minor axis $2b$};\end{tikzpicture}}
+\conic{Hyperbola: Type I}{\frac{(x-h)^{2}}{a^{2}}-\frac{(y-k)^{2}}{b^{2}}=1}{Centre: $(h,k)$\par Distance from centre to vertices $=a$\par Asymptotes (dashed): $y-k=\pm\dfrac{b}{a}(x-h)$\par\smallskip
+\rednote{$\star$ Equation of asymptotes: $y-k=\pm\dfrac{b}{a}(x-h)$}}
+{\begin{tikzpicture}[scale=0.7]\draw[blue,semithick,domain=-1.3:1.3,samples=50,smooth] plot({cosh(\x)},{sinh(\x)});\draw[blue,semithick,domain=-1.3:1.3,samples=50,smooth] plot({-cosh(\x)},{sinh(\x)});
+\draw[red,dashed](-2.2,-2.2)--(2.2,2.2);\draw[red,dashed](-2.2,2.2)--(2.2,-2.2);\fill(0,0)circle(1.5pt)(1,0)circle(1.5pt)(-1,0)circle(1.5pt);\draw[<->](0,-0.3)--(1,-0.3);
+\node[anchor=north,font=\small]at(0.5,-0.3){$a$};\node[anchor=south,font=\small]at(0,0.15){$(h,k)$};\node[anchor=south,red,font=\small]at(2.2,2.2){$y-k=\frac{b}{a}(x-h)$};\node[anchor=north,red,font=\small]at(2.2,-2.2){$y-k=-\frac{b}{a}(x-h)$};\end{tikzpicture}}
+\conic{Hyperbola: Type II}{\frac{(y-k)^{2}}{b^{2}}-\frac{(x-h)^{2}}{a^{2}}=1}{Centre: $(h,k)$\par Distance from centre to vertices $=b$\par Asymptotes (dashed): $y-k=\pm\dfrac{b}{a}(x-h)$\par\smallskip
+\rednote{$\star$ Equation of asymptotes: $y-k=\pm\dfrac{b}{a}(x-h)$}}
+{\begin{tikzpicture}[scale=0.7]\draw[blue,semithick,domain=-1.3:1.3,samples=50,smooth] plot({sinh(\x)},{cosh(\x)});\draw[blue,semithick,domain=-1.3:1.3,samples=50,smooth] plot({sinh(\x)},{-cosh(\x)});
+\draw[red,dashed](-2,-2)--(2,2);\draw[red,dashed](-2,2)--(2,-2);\fill(0,0)circle(1.5pt)(0,1)circle(1.5pt)(0,-1)circle(1.5pt);\draw[<->](0.3,0)--(0.3,1);
+\node[anchor=west,font=\small]at(0.3,0.5){$b$};\node[anchor=east,font=\small]at(-0.2,0){$(h,k)$};\node[anchor=south,red,font=\small]at(2,2){$y-k=\frac{b}{a}(x-h)$};\node[anchor=north,red,font=\small]at(2,-2){$y-k=-\frac{b}{a}(x-h)$};\end{tikzpicture}}
+\begin{caution}\fhlp{\textbf{Ellipse and hyperbola:} before reading off $a$, $b$ and $(h,k)$, make sure the RHS is $1$ and the coefficients of $(x-h)^{2}$ and $(y-k)^{2}$ are $1$.}\end{caution}
+%% ================================================================ CHAPTER 4
+\clearpage
+\inchap{Graphing Transformations}
+\newcommand{\tg}[3]{\begin{tikzpicture}\begin{axis}[mini,width=4.6cm,height=3.8cm,#1]\addplot[blue,semithick,domain=-1:3,samples=80]{x*(x-2)};#2\Om#3\end{axis}\end{tikzpicture}}
+\newcommand{\cautionbox}[2][CAUTION]{\begin{info}[title={#1}]#2\end{info}}
+\newcommand{\rp}[1]{\addplot[red,semithick,samples=80]#1;}
+\newcommand{\pdots}[1]{\addplot[black,only marks,mark=*,mark size=1.1pt] coordinates{#1};}
+\newcommand{\lab}[4][small]{\node[anchor=#2,font=\small,inner sep=1pt] at (axis cs:#3){$#4$};}
+Every transformation comes from \textbf{replacing $x$ or $y$} in the equation $y=\mathrm{f}(x)$.\par\smallskip
+Throughout, \textcolor{blue}{blue} is $y=\mathrm{f}(x)=x(x-2)$, with intercepts $(0,0)$, $(2,0)$ and minimum point $(1,-1)$; \textcolor{red}{red} is the transformed graph.
+\section{Translations and Scalings}
+{\renewcommand{\arraystretch}{1.25}\centering\begin{tabular}{|>{\raggedright\arraybackslash}m{3.4cm}|>{\raggedright\arraybackslash}m{3.3cm}|>{\centering\arraybackslash}m{2.3cm}|>{\centering\arraybackslash}m{4.6cm}|}\hline
+\textbf{Transformation} & \textbf{Replacement} & \textbf{Result} & \textbf{Graph}\\\hline
+Translation of $a$ units in the positive $y$ direction & replace $y$ with $y-a$:\par $y-a=\mathrm{f}(x)$ & $y=\mathrm{f}(x)+a$\par\small(graph: $a=2$) & \rule{0pt}{3.6cm}\tg{xmin=-1.6,xmax=3.6,ymin=-1.6,ymax=3.6}{\rp{[domain=-0.4:2.4]{x*(x-2)+2}}}{\pdots{(1,1)(0,2)(1,-1)}\lab{north}{1,0.9}{(1,1)}\lab{east}{-0.05,2.2}{(0,2)}}\\\hline
+Translation of $a$ units in the positive $x$ direction & replace $x$ with $x-a$ & $y=\mathrm{f}(x-a)$\par\small(graph: $a=2$) & \rule{0pt}{3.6cm}\tg{xmin=-1.6,xmax=5.6,ymin=-1.6,ymax=3.6}{\rp{[domain=1:5]{(x-2)*(x-4)}}}{\pdots{(3,-1)(4,0)(1,-1)}\lab{north}{3,-1.05}{(3,-1)}\lab{south west}{4.05,0.05}{(4,0)}}\\\hline
+Scaling by factor $a$ parallel to the $y$-axis & replace $y$ with $\dfrac{y}{a}$:\par $\dfrac{y}{a}=\mathrm{f}(x)$ & $y=a\mathrm{f}(x)$\par\small(graph: $a=2$) & \rule{0pt}{3.6cm}\tg{xmin=-1.6,xmax=3.6,ymin=-2.6,ymax=3.6}{\rp{[domain=-0.58:2.58]{2*x*(x-2)}}}{\pdots{(1,-2)(2,0)(1,-1)}\lab{north}{1,-2.05}{(1,-2)}\lab{south west}{2.05,0.05}{(2,0)}}\\\hline
+Scaling by factor $a$ parallel to the $x$-axis & replace $x$ with $\dfrac{x}{a}$ & $y=\mathrm{f}\!\left(\dfrac{x}{a}\right)$\par\small(graph: $a=2$) & \rule{0pt}{3.6cm}\tg{xmin=-1.6,xmax=5.6,ymin=-1.6,ymax=3.6}{\rp{[domain=-1.6:5.6]{(x/2)*(x/2-2)}}}{\pdots{(2,-1)(4,0)(1,-1)}\lab{north}{2,-1.05}{(2,-1)}\lab{south west}{4.05,0.05}{(4,0)}}\\\hline
+\end{tabular}\par}
+\cautionbox{Every replacement acts the ``opposite'' way to what it looks like: $x-2$ moves the graph in the \textbf{positive} $x$ direction; $y=\mathrm{f}(2x)$ is a scaling by factor $\frac12$ (not $2$) parallel to the $x$-axis.\par Replacing $x$ does \textbf{not} mean replacing the input of $\mathrm{f}$, and replacing $y$ does not mean replacing the output $\mathrm{f}(x)$.\par If you are ever confused, think of $\sin x$ vs $\sin 2x$.}
+\section{Reflections}
+{\renewcommand{\arraystretch}{1.25}\centering\begin{tabular}{|>{\raggedright\arraybackslash}m{3.4cm}|>{\raggedright\arraybackslash}m{3.3cm}|>{\centering\arraybackslash}m{2.3cm}|>{\centering\arraybackslash}m{4.6cm}|}\hline
+\textbf{Transformation} & \textbf{Replacement} & \textbf{Result} & \textbf{Graph}\\\hline
+Reflection about the $x$-axis & replace $y$ with $-y$:\par $-y=\mathrm{f}(x)$ & $y=-\mathrm{f}(x)$ & \rule{0pt}{3.6cm}\tg{xmin=-1.6,xmax=3.6,ymin=-1.6,ymax=1.8}{\rp{[domain=-0.8:2.8]{-x*(x-2)}}}{\pdots{(1,1)(1,-1)(2,0)}\lab{south}{1,1.05}{(1,1)}}\\\hline
+Reflection about the $y$-axis & replace $x$ with $-x$ & $y=\mathrm{f}(-x)$ & \rule{0pt}{3.6cm}\tg{xmin=-3.6,xmax=3.6,ymin=-1.6,ymax=3}{\rp{[domain=-3:1]{(-x)*(-x-2)}}}{\pdots{(-1,-1)(-2,0)(1,-1)(2,0)}\lab{north}{-1,-1.05}{(-1,-1)}\lab{south east}{-2.05,0.05}{(-2,0)}\lab{south west}{2.05,0.05}{(2,0)}}\\\hline
+\end{tabular}\par}
+\section{Combining Transformations}
+Functions of the form $y=a\mathrm{f}(bx+c)+d$, \ $a,b,c,d\in\mathbb{R}$: replace $x$ and $y$ \textbf{one step at a time}.\par\medskip
+\exlab $y=\mathrm{f}(x)\ \longrightarrow\ y=2\mathrm{f}(2x-1)+1$\par\smallskip
+{\renewcommand{\arraystretch}{1.3}\centering\begin{tabular}{|l|l|l|}\hline
+\textbf{Replacement} & \textbf{Transformation} & \textbf{Function}\\\hline
+replace $x$ with $x-1$ & translation of $1$ unit in the positive $x$ direction & $y=\mathrm{f}(x-1)$\\\hline
+replace $x$ with $2x$ & scaling by factor $\frac12$ parallel to the $x$-axis & $y=\mathrm{f}(2x-1)$\\\hline
+replace $y$ with $\frac{y}{2}$ & scaling by factor $2$ parallel to the $y$-axis & $y=2\mathrm{f}(2x-1)$\\\hline
+replace $y$ with $y-1$ & translation of $1$ unit in the positive $y$ direction & $y=2\mathrm{f}(2x-1)+1$\\\hline
+\end{tabular}\par}\medskip
+\section{Modulus Graphs}
+Every modulus graph can be partitioned into a ``$+$'' part and a ``$-$'' part: $|x|=x$ for $x\geqslant0$, \ $|x|=-x$ for $x<0$.\par\medskip
+{\renewcommand{\arraystretch}{1.25}\centering\begin{tabular}{|>{\centering\arraybackslash}m{1.9cm}|>{\raggedright\arraybackslash}m{4.4cm}|>{\centering\arraybackslash}m{8.4cm}|}\hline
+\textbf{Graph} & \textbf{How to sketch} & \textbf{Graph}\\\hline
+$y=|\mathrm{f}(x)|$ & Keep the part on or above the $x$-axis; reflect the part below the $x$-axis about the $x$-axis. & \rule[-1.9cm]{0pt}{3.8cm}\begin{tikzpicture}[baseline=(current bounding box.center)]\begin{axis}[mini,width=3.9cm,height=3.8cm,xmin=-1.6,xmax=3.6,ymin=-1.6,ymax=3.2]\addplot[blue,semithick,samples=120,domain=-0.8:2.8]{x*(x-2)};\Om \pdots{(1,-1)(2,0)}\lab{north west}{1.05,-1.05}{(1,-1)}\lab{north west}{2.1,-0.05}{(2,0)}\end{axis}\end{tikzpicture}\,$\longrightarrow$\,\begin{tikzpicture}[baseline=(current bounding box.center)]\begin{axis}[mini,width=3.9cm,height=3.8cm,xmin=-1.6,xmax=3.6,ymin=-1.6,ymax=3.2]\addplot[red,semithick,samples=120,domain=-0.8:2.8]{abs(x*(x-2))};\Om \pdots{(1,1)(2,0)}\lab{south}{1,1.05}{(1,1)}\lab{north west}{2.1,-0.05}{(2,0)}\end{axis}\end{tikzpicture}\\\hline
+$y=\mathrm{f}(|x|)$ & Remove the part on the left of the $y$-axis; reflect the part on the right of the $y$-axis about the $y$-axis. & \rule[-1.9cm]{0pt}{3.8cm}\begin{tikzpicture}[baseline=(current bounding box.center)]\begin{axis}[mini,width=3.9cm,height=3.8cm,xmin=-3.6,xmax=3.6,ymin=-1.6,ymax=3]\addplot[blue,semithick,samples=120,domain=-1:3]{x*(x-2)};\Om \pdots{(1,-1)(2,0)}\lab{north west}{1.05,-1.05}{(1,-1)}\lab{north west}{2.1,-0.05}{(2,0)}\end{axis}\end{tikzpicture}\,$\longrightarrow$\,\begin{tikzpicture}[baseline=(current bounding box.center)]\begin{axis}[mini,width=3.9cm,height=3.8cm,xmin=-3.6,xmax=3.6,ymin=-1.6,ymax=3]\addplot[red,semithick,samples=120,domain=-2.9:2.9]{abs(x)*(abs(x)-2)};\Om \pdots{(-1,-1)(1,-1)(-2,0)(2,0)}\lab{north east}{-1.05,-1.05}{(-1,-1)}\lab{north west}{1.05,-1.05}{(1,-1)}\lab{north east}{-2.1,-0.05}{(-2,0)}\lab{north west}{2.1,-0.05}{(2,0)}\end{axis}\end{tikzpicture}\\\hline
+\end{tabular}\par}\medskip
+\exlab $y=\mathrm{f}(x)\ \longrightarrow\ y=|\mathrm{f}(-2x+1)|$\par\smallskip
+{\renewcommand{\arraystretch}{1.3}\centering\begin{tabular}{|l|l|l|}\hline
+\textbf{Replacement} & \textbf{Transformation} & \textbf{Function}\\\hline
+replace $x$ with $x+1$ & translation of $1$ unit in the negative $x$ direction & $y=\mathrm{f}(x+1)$\\\hline
+replace $x$ with $-x$ & reflection about the $y$-axis & $y=\mathrm{f}(-x+1)$\\\hline
+replace $x$ with $2x$ & scaling by factor $\frac12$ parallel to the $x$-axis & $y=\mathrm{f}(-2x+1)$\\\hline
+$|\mathrm{f}|$ & reflect parts below the $x$-axis about the $x$-axis & $y=|\mathrm{f}(-2x+1)|$\\\hline
+\end{tabular}\par}
+\clearpage
+\section{Reciprocal Graphs \texorpdfstring{$y=\frac{1}{\mathrm{f}(x)}$}{y=1/f(x)}}
+Analyse the new curve at the critical points of $y=\mathrm{f}(x)$.\par\smallskip
+{\renewcommand{\arraystretch}{1.35}\centering\begin{tabular}{|l c l|}\hline
+$x$-intercept $(a,0)$ & $\longleftrightarrow$ & vertical asymptote $x=a$\\\hline
+vertical asymptote $x=a$ & $\longleftrightarrow$ & $y\to0$: point $(a,0)$ (excluded)\\\hline
+maximum point $(a,b)$, $b\neq0$ & $\longleftrightarrow$ & minimum point $\left(a,\frac1b\right)$\\\hline
+minimum point $(a,b)$, $b\neq0$ & $\longleftrightarrow$ & maximum point $\left(a,\frac1b\right)$\\\hline
+horizontal asymptote $y=k$, $k\neq0$ & $\longleftrightarrow$ & horizontal asymptote $y=\frac1k$\\\hline
+$y\to\pm\infty$ (incl.\ oblique asymptote) & $\longleftrightarrow$ & horizontal asymptote $y=0$\\\hline
+\fhl{horizontal asymptote $y=0$} & \fhl{$\longleftrightarrow$} & \fhl{$y\to\pm\infty$}\\\hline
+$y=\pm1$ & $\longleftrightarrow$ & same point ($\frac{1}{\pm1}=\pm1$)\\\hline
+$\mathrm{f}(x)>0$ \ / \ $\mathrm{f}(x)<0$ & $\longleftrightarrow$ & $\frac{1}{\mathrm{f}(x)}>0$ \ / \ $\frac{1}{\mathrm{f}(x)}<0$ (same sign)\\\hline
+\end{tabular}\par}\medskip
+\par\noindent\begin{center}\begin{tikzpicture}[baseline=(current bounding box.center)]\begin{axis}[mini,width=7.2cm,height=5.6cm,xmin=-8,xmax=10,ymin=-3,ymax=6,restrict y to domain=-3:6]
+\addplot[blue,semithick,domain=-8:-2.02,samples=400]{2*x^2*(x-4)/((x+2)*(x^2-6*x+12))};\addplot[blue,semithick,domain=-1.98:10,samples=400]{2*x^2*(x-4)/((x+2)*(x^2-6*x+12))};
+\addplot[red,dashed] coordinates{(-2,-3) (-2,6)};\addplot[red,dashed] coordinates{(-8,2) (10,2)};\Om
+\pdots{(2.667,-1.306)(4,0)}\node[anchor=north,font=\small,inner sep=1pt,text=black] at (axis cs:2.667,-1.4){$(a,b)$};\node[anchor=south west,font=\small,inner sep=1pt,text=black] at (axis cs:4.1,0.05){$(4,0)$};\node[anchor=north,font=\small,inner sep=1pt,text=red] at (axis cs:-2,-3){$x=-2$};\node[anchor=south east,font=\small,inner sep=1pt,text=red] at (axis cs:10,2.05){$y=2$};\end{axis}\end{tikzpicture}
+\,$\longrightarrow$\,
+\begin{tikzpicture}[baseline=(current bounding box.center)]\begin{axis}[mini,width=7.2cm,height=5.6cm,xmin=-8,xmax=10,ymin=-4,ymax=4,restrict y to domain=-4:4]
+\addplot[red,semithick,domain=-8:-2,samples=400]{((x+2)*(x^2-6*x+12))/(2*x^2*(x-4))};\addplot[red,semithick,domain=-2:-0.02,samples=400]{((x+2)*(x^2-6*x+12))/(2*x^2*(x-4))};\addplot[red,semithick,domain=0.02:3.98,samples=400]{((x+2)*(x^2-6*x+12))/(2*x^2*(x-4))};\addplot[red,semithick,domain=4.02:10,samples=400]{((x+2)*(x^2-6*x+12))/(2*x^2*(x-4))};
+\addplot[red,dashed] coordinates{(0,-4) (0,4)};\addplot[red,dashed] coordinates{(4,-4) (4,4)};\addplot[red,dashed] coordinates{(-8,0.5) (10,0.5)};\Om
+\pdots{(2.667,-0.766)}\addplot[black,only marks,mark=*,mark size=1.4pt,fill=white] coordinates{(-2,0)};\node[anchor=south east,font=\small,inner sep=1pt,text=black] at (axis cs:-2.1,0.05){$(-2,0)$};\node[anchor=south,font=\small,inner sep=1pt,text=black] at (axis cs:2.667,-0.6){$(a,\frac1b)$};\node[anchor=north,font=\small,inner sep=1pt,text=red] at (axis cs:4,-4){$x=4$};\node[anchor=north east,font=\small,inner sep=1pt,text=red] at (axis cs:-0.05,-4){$x=0$};\node[anchor=south east,font=\small,inner sep=1pt,text=red] at (axis cs:10,0.55){$y=\frac12$};\end{axis}\end{tikzpicture}\par{\small \textcolor{blue}{$y=\mathrm{f}(x)$}\hspace{6cm}\textcolor{red}{$y=\dfrac{1}{\mathrm{f}(x)}$}}\end{center}
+\begin{info}[title={Note: sketching $y=\frac{1}{\mathrm{f}(x)}$}]
+\begin{itemize}\setlength\itemsep{0pt}
+\item Same sign: $\mathrm{f}>0\Rightarrow\frac1{\mathrm{f}}>0$, \ $\mathrm{f}<0\Rightarrow\frac1{\mathrm{f}}<0$.
+\item $|\mathrm{f}|$ large $\Rightarrow$ $\left|\frac1{\mathrm{f}}\right|$ small; \ $|\mathrm{f}|$ small $\Rightarrow$ $\left|\frac1{\mathrm{f}}\right|$ large.
+\item $\mathrm{f}=0\Rightarrow\frac1{\mathrm{f}}$ undefined (vertical asymptote).
+\item $\mathrm{f}=\pm1\Rightarrow\frac1{\mathrm{f}}=\pm1$ (graphs meet).
+\end{itemize}
+\end{info}
+\clearpage
+\section{Derivative Graphs \texorpdfstring{$y=\mathrm{f}'(x)$}{y=f'(x)}}
+$\mathrm{f}'(x)=\dfrac{\mathrm{d}y}{\mathrm{d}x}$ is the gradient of $y=\mathrm{f}(x)$: read off the gradient on each interval.\par\smallskip
+{\renewcommand{\arraystretch}{1.0}\centering\begin{tabular}{|l|l|}\hline
+\textbf{$y=\mathrm{f}(x)$} & \textbf{$y=\mathrm{f}'(x)$}\\\hline
+stationary point at $x=a$ & $x$-intercept $(a,0)$\\\hline
+increasing \ / \ decreasing & above \ / \ below the $x$-axis\\\hline
+point of inflexion (max.\ or min.\ gradient) & turning point\\\hline
+vertical asymptote $x=a$ & vertical asymptote $x=a$\\\hline
+horizontal asymptote $y=k$ & horizontal asymptote $y=0$\\\hline
+oblique asymptote $y=mx+c$ & horizontal asymptote $y=m$\\\hline
+\end{tabular}\par}
+\par\smallskip{\centering \begin{tikzpicture}[baseline=(current bounding box.center)]\begin{axis}[mini,width=7cm,height=3.6cm,xmin=-12,xmax=9,ymin=-2,ymax=6,restrict y to domain=-2:6]
+\addplot[blue,semithick,domain=-12:1.98,samples=400]{2*x^2*(x+3)/((x-2)*(x^2+5*x+10))};\addplot[blue,semithick,domain=2.02:9,samples=400]{2*x^2*(x+3)/((x-2)*(x^2+5*x+10))};
+\addplot[red,dashed] coordinates{(2,-2) (2,6)};\addplot[red,dashed] coordinates{(-12,2) (9,2)};\Om
+\pdots{(-3,0)(-2,-0.5)}\node[anchor=north east,font=\small,inner sep=1pt,text=black] at (axis cs:-3.3,-0.1){$(-3,0)$};\node[anchor=north,font=\small,inner sep=1pt,text=black] at (axis cs:-1.2,-0.7){$(a,b)$};\addplot[blue,only marks,mark=*,mark size=1.6pt] coordinates{(-3.273,0.256)};\node[anchor=south east,font=\small,inner sep=1pt,text=blue] at (axis cs:-5.5,3.2){$\text{steepest}$};\draw[->,blue,thin] (axis cs:-5.8,3.1)--(axis cs:-3.45,0.45);\node[anchor=north,font=\small,inner sep=1pt,text=red] at (axis cs:2,-2){$x=2$};\node[anchor=south east,font=\small,inner sep=1pt,text=red] at (axis cs:9,2.05){$y=2$};\end{axis}\end{tikzpicture}
+\,$\longrightarrow$\,
+\begin{tikzpicture}[baseline=(current bounding box.center)]\begin{axis}[mini,width=7cm,height=3.6cm,xmin=-12,xmax=9,ymin=-3,ymax=1.5,restrict y to domain=-3:1.5]
+\addplot[red,semithick,domain=-12:1.98,samples=400]{-120*x*(x+2)/(((x-2)*(x^2+5*x+10))^2)};\addplot[red,semithick,domain=2.02:9,samples=400]{-120*x*(x+2)/(((x-2)*(x^2+5*x+10))^2)};
+\addplot[red,dashed] coordinates{(2,-3) (2,1.5)};\Om
+\pdots{(-2,0)}\node[anchor=south,font=\small,inner sep=1pt,text=black] at (axis cs:-1.7,0.2){$(a,0)$};\addplot[red,only marks,mark=*,mark size=1.6pt] coordinates{(-3.273,-0.951)};\node[anchor=north,font=\small,inner sep=1pt,text=red] at (axis cs:-3.273,-1.05){$\text{turning pt}$};\node[anchor=north,font=\small,inner sep=1pt,text=red] at (axis cs:2,-3){$x=2$};\end{axis}\end{tikzpicture}\par{\small \textcolor{blue}{$y=\mathrm{f}(x)$}\hspace{6cm}\textcolor{red}{$y=\mathrm{f}'(x)$}}\par}\smallskip
+\noindent\begin{minipage}[t]{0.47\textwidth}\begin{info}\raggedright The turning point on the derivative graph corresponds to the {\setlength{\fboxsep}{0.5pt}\fhl{point of greatest or least gradient}} on the original graph.\end{info}\end{minipage}\hfill\begin{minipage}[t]{0.50\textwidth}\cautionbox{Mark $x$-coordinates only where they come from $y=\mathrm{f}(x)$: the $y$-values of $y=\mathrm{f}'(x)$ are generally \textbf{not} known from the graph of $y=\mathrm{f}(x)$.}\end{minipage}\par
+\vspace{-7mm}\section{Reverse Transformations}
+If $y=\mathrm{f}(x)$ undergoes a sequence of transformations to give a known $y=\mathrm{g}(x)$, undo the transformations \textbf{in reverse order}, each with its opposite replacement.\par\smallskip
+\exlab $y=\mathrm{f}(x)$ undergoes, in order, the following to give $y=6\e^{-x+3}$. Find $\mathrm{f}(x)$.\\
+\hspace*{1em}A: translation of $2$ units in the negative $x$ direction\\
+\hspace*{1em}B: reflection about the $y$-axis\\
+\hspace*{1em}C: scaling by factor $3$ parallel to the $y$-axis\par
+{\renewcommand{\arraystretch}{1.05}\centering\begin{tabular}{|c|l|l|l|}\hline
+\textbf{Step} & \textbf{Opposite transformation} & \textbf{Replacement} & \textbf{Function}\\\hline
+$\mathrm{C}^{-1}$ & scale by factor $\frac13$ parallel to the $y$-axis & replace $y$ with $3y$ & $y=2\e^{-x+3}$\\\hline
+$\mathrm{B}^{-1}$ & reflect about the $y$-axis & replace $x$ with $-x$ & $y=2\e^{x+3}$\\\hline
+$\mathrm{A}^{-1}$ & translate $2$ units in the positive $x$ direction & replace $x$ with $x-2$ & $y=2\e^{x+1}$\\\hline
+\end{tabular}\par}\smallskip
+\centerline{$\therefore\ \mathrm{f}(x)=2\e^{x+1}$}
+%% ================================================================ CHAPTER 5
+\clearpage
+\inchap{Functions}
+\section{Functions, Domain and Range}
+\topdisplay{\mathrm{f}:x\mapsto\underbrace{x^{2}+3x+2}_{\text{rule }\mathrm{f}(x)},\quad x\in\mathbb{R},\ \underbrace{x\geqslant0}_{\text{domain }D_{\mathrm{f}}}}
+A function is a relation that gives \textbf{exactly one} value of $y$ for each $x\in D_{\mathrm{f}}$.
+\par\smallskip{\renewcommand{\arraystretch}{1.2}\centering\begin{tabular}{|>{\centering\arraybackslash}m{7.6cm}|>{\centering\arraybackslash}m{7.6cm}|}\hline
+\textbf{It's a function} & \textbf{Not a function}\\\hline
+\rule{0pt}{3.6cm}\begin{tikzpicture}\begin{axis}[mini,width=5.6cm,height=4.2cm,xmin=-1,xmax=4,ymin=-1,ymax=4]
+\addplot[blue,semithick,domain=-0.8:3.8,samples=100]{0.4*(x-1.5)^2+0.6};\addplot[black,dashed] coordinates{(2.5,-1)(2.5,4)};\Om
+\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{(2.5,1)};\node[anchor=north west,font=\small] at (axis cs:2.55,-0.05){$x=k$};\end{axis}\end{tikzpicture}
+&
+\begin{tikzpicture}\begin{axis}[mini,width=5.6cm,height=4.2cm,xmin=-1,xmax=4,ymin=-2.4,ymax=2.4]
+\addplot[blue,semithick,domain=-1.9:1.9,samples=100]({x^2},{x});\addplot[black,dashed] coordinates{(2,-2.4)(2,2.4)};\Om
+\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{(2,1.414)(2,-1.414)};\node[anchor=north west,font=\small] at (axis cs:2.05,-1.5){$x=2$};\node[anchor=south west,font=\small] at (axis cs:2.6,1.6){$y^{2}=x$};\end{axis}\end{tikzpicture}\\
+{\small every vertical line $x=k$, $k\in D_{\mathrm{f}}$, cuts the graph \textbf{exactly once}} & {\small one vertical line ($x=2$) cuts the graph \textbf{more than once}}\\\hline
+\end{tabular}\par}\medskip
+{\renewcommand{\arraystretch}{1.25}\centering\begin{tabular}{|c|c|c|}\hline
+\textbf{Inequality} & \textbf{Set notation} & \textbf{Interval}\\\hline
+$a<x<b$ & $\{x\in\mathbb{R}:a<x<b\}$ & $(a,b)$\\\hline
+$a\leqslant x\leqslant b$ & $\{x\in\mathbb{R}:a\leqslant x\leqslant b\}$ & $[a,b]$\\\hline
+$a\leqslant x<b$ & $\{x\in\mathbb{R}:a\leqslant x<b\}$ & $[a,b)$\\\hline
+$x>a$ & $\{x\in\mathbb{R}:x>a\}$ & $(a,\infty)$\\\hline
+$x\in\mathbb{R},\ x\neq0$ & $\mathbb{R}\setminus\{0\}$ & $(-\infty,0)\cup(0,\infty)$\\\hline
+\end{tabular}\par}
+\cautionbox{To find the range of a function, \textbf{ALWAYS} sketch its graph $y=\mathrm{f}(x)$, $x\in D_{\mathrm{f}}$, and read the range off the graph. \textbf{Never} just sub in the endpoints of the domain.}
+\clearpage
+\section{Inverse Functions}
+{\renewcommand{\arraystretch}{1.35}\centering\begin{tabular}{|>{\raggedright\arraybackslash}m{2.4cm}|>{\raggedright\arraybackslash}m{12.4cm}|}\hline
+ & \textbf{Working}\\\hline
+Exists & \textbf{Exists:} $\mathrm{f}$ is one-to-one: every line $y=k$, $k\in\mathbb{R}$, cuts $y=\mathrm{f}(x)$ \textbf{at most once} $\Rightarrow$ $\mathrm{f}^{-1}$ exists.\par $\Rightarrow$ $\mathrm{f}$ is one-to-one, thus $\mathrm{f}^{-1}$ exists.\par \textcolor{red}{\textbf{Does not exist:} e.g.\ $\mathrm{f}(x)=(x-3)^{2}-7$, $x\in\mathbb{R}$: the line $y=0$ cuts $y=\mathrm{f}(x)$ \textbf{twice} (at $x=3\pm\sqrt7$) $\Rightarrow$ $\mathrm{f}^{-1}$ does not exist.}\par\textcolor{red}{Alternatively: $\exists\,x_1\neq x_2$ such that $\mathrm{f}(x_1)=\mathrm{f}(x_2)$ $\therefore$ $\mathrm{f}$ is not one-one $\Rightarrow$ $\mathrm{f}^{-1}$ does not exist.}\\\hline
+Rule & make $x$ the subject of $y=\mathrm{f}(x)$\\\hline
+Domain & $D_{\mathrm{f}^{-1}}=R_{\mathrm{f}}$\\\hline
+Range & $R_{\mathrm{f}^{-1}}=D_{\mathrm{f}}$\\\hline
+Graph & reflection of $y=\mathrm{f}(x)$ about $y=x$: all $x$- and $y$-coordinates are swapped, $(a,b)\to(b,a)$\\\hline
+\end{tabular}\par}\medskip
+\exg{\exlab $\mathrm{f}:x\mapsto(x-3)^{2}-7$, \ $x\geqslant3$
+\cdisp{y&=(x-3)^{2}-7\\x-3&=\sqrt{y+7}\quad(x\geqslant3)\\x&=3+\sqrt{y+7}\\R_{\mathrm{f}}&=[-7,\infty)}
+\cdisp{\therefore\ \mathrm{f}^{-1}:x\mapsto3+\sqrt{x+7},\ x\in\mathbb{R},\ x\geqslant-7}}
+{\begin{tikzpicture}\begin{axis}[mini,width=5.6cm,height=5.6cm,xmin=-8,xmax=8,ymin=-8,ymax=8,axis equal image]
+\addplot[blue,semithick,domain=3:6.8,samples=60]{(x-3)^2-7};\addplot[red,semithick,domain=-7:7.4,samples=100]{3+sqrt(x+7)};\addplot[black,dotted,thick,domain=-8:8]{x};
+\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{(3,-7)(-7,3)};\node[anchor=north,font=\small] at (axis cs:3,-7){$(3,-7)$};\node[anchor=east,font=\small] at (axis cs:-7,3.4){$(-7,3)$};\node[anchor=west,font=\small] at (axis cs:7.5,7.5){$y=x$};\Om\end{axis}\end{tikzpicture}}
+\cautionbox{\textbullet\ When drawing $y=\mathrm{f}(x)$ and $y=\mathrm{f}^{-1}(x)$ together, use the \textbf{same scale} on both axes.\par
+\textbullet\ $\mathrm{f}\mathrm{f}^{-1}(x)=\mathrm{f}^{-1}\mathrm{f}(x)=x$, but $D_{\mathrm{f}\mathrm{f}^{-1}}=D_{\mathrm{f}^{-1}}=R_{\mathrm{f}}$ while $D_{\mathrm{f}^{-1}\mathrm{f}}=D_{\mathrm{f}}$.\par
+\textbullet\ Solving $\mathrm{f}(x)=\mathrm{f}^{-1}(x)$: it is \textbf{not always} $\mathrm{f}(x)=x$ (only when the curves meet on $y=x$).}
+\clearpage
+\subsection{Removing the Modulus}
+On a restricted domain, the sign inside the modulus is fixed, so the modulus can be removed: $|x-a|=x-a$ for $x\geqslant a$, \ $|x-a|=-(x-a)$ for $x<a$.\par\smallskip
+\exlab $\mathrm{f}:x\to\left|\dfrac{2x+4}{3-x}\right|$, \ $x\in\mathbb{R}$, \ $x\leqslant-2$ \ {\small(2023 A-Level P1 Q7, with the domain restricted to $x\leqslant a$, $a=-2$)}
+\begin{align*}
+y=\mathrm{f}(x)&=\left|\frac{2x+4}{3-x}\right|\\
+&=-\frac{2x+4}{3-x}\qquad(x\leqslant-2)
+\end{align*}
+{\centering \begin{tikzpicture}[baseline=(current bounding box.center)]\begin{axis}[mini,width=6.8cm,height=5.6cm,xmin=-14,xmax=20,ymin=-10,ymax=6,restrict y to domain=-10:6]\addplot[blue,semithick,domain=-14:2.9,samples=300]{(2*x+4)/(3-x)};\addplot[blue,semithick,domain=3.1:20,samples=300]{(2*x+4)/(3-x)};
+\addplot[black,dashed] coordinates{(3,-10)(3,6)};\addplot[black,dashed] coordinates{(-14,-2)(20,-2)};\Om\pdots{(-2,0)(0,1.3333)}\node[anchor=south east,font=\small,inner sep=1pt,text=black] at (axis cs:-3.2,0.5){$(-2,0)$};\draw[black!60,thin] (axis cs:-0.3,1.5)--(axis cs:-4.5,3.6);\node[anchor=south east,font=\small,inner sep=1pt,text=black] at (axis cs:-4.5,3.6){$\left(0,\frac43\right)$};\node[anchor=north,font=\small,inner sep=1pt,text=black] at (axis cs:3,-10){$x=3$};\node[anchor=north west,font=\small,inner sep=1pt,text=black] at (axis cs:-14,-2.1){$y=-2$};\end{axis}\end{tikzpicture}
+\,$\longrightarrow$\,
+\begin{tikzpicture}[baseline=(current bounding box.center)]\begin{axis}[mini,width=6.8cm,height=5.6cm,xmin=-14,xmax=20,ymin=-10,ymax=6,restrict y to domain=-10:6]\addplot[black!25,semithick,domain=-2:2.9,samples=300]{abs((2*x+4)/(3-x))};\addplot[black!25,semithick,domain=3.1:20,samples=300]{abs((2*x+4)/(3-x))};\addplot[black,dashed] coordinates{(3,-10)(3,6)};\node[anchor=north,font=\small,inner sep=1pt,text=black] at (axis cs:3,-10){$x=3$};\addplot[red,semithick,domain=-14:-2,samples=300]{abs((2*x+4)/(3-x))};
+\addplot[black,dashed] coordinates{(-14,2)(20,2)};\Om\pdots{(-2,0)}\draw[black!60,thin] (axis cs:-2.2,-0.3)--(axis cs:-6,-3);\node[anchor=north east,font=\small,inner sep=1pt,text=black] at (axis cs:-6,-3){$(-2,0)$};\node[anchor=south west,font=\small,inner sep=1pt,text=black] at (axis cs:-14,2.1){$y=2$};\end{axis}\end{tikzpicture}\par{\small \textcolor{blue}{$y=\dfrac{2x+4}{3-x}$}\hspace{5cm}\textcolor{red}{$y=\left|\dfrac{2x+4}{3-x}\right|,\ x\leqslant-2$}}\par}\medskip
+\begin{info}[title=Note]
+Whenever you are asked to find $\mathrm{f}^{-1}$ and there is a modulus, you are usually able to remove it in the first step by determining whether the region of the graph is positive or negative for the domain of $\mathrm{f}$.
+\end{info}
+\clearpage
+\section{Composite Functions}
+{\renewcommand{\arraystretch}{1.35}\centering\begin{tabular}{|>{\raggedright\arraybackslash}m{2.4cm}|>{\raggedright\arraybackslash}m{12.4cm}|}\hline
+ & \textbf{Working}\\\hline
+Exists & \textbf{Exists:} $R_{\mathrm{g}}\subseteq D_{\mathrm{f}}$\par \textcolor{red}{\textbf{Does not exist:} $x_0\in R_{\mathrm{g}}$, $x_0\notin D_{\mathrm{f}}$ $\therefore R_{\mathrm{g}}\not\subseteq D_{\mathrm{f}}$}\\\hline
+Rule & sub $\mathrm{g}(x)$ into $\mathrm{f}(x)$: $\mathrm{f}[\mathrm{g}(x)]$\\\hline
+Domain & $D_{\mathrm{f}\mathrm{g}}=D_{\mathrm{g}}$: rightmost function's domain (e.g.\ $D_{\mathrm{fgh}}=D_{\mathrm{h}}$)\\\hline
+Range & $D_{\mathrm{g}}\xrightarrow{\ \mathrm{g}\ }R_{\mathrm{g}}\xrightarrow{\ \mathrm{f}\ }R_{\mathrm{f}\mathrm{g}}$: sketch $y=\mathrm{f}(x)$ on the domain $R_{\mathrm{g}}$\par \textcolor{black!35}{Alternatively, sketch the graph of $\mathrm{fg}(x)$ for $D_{\mathrm{fg}}$ (avoid, as $\mathrm{fg}$ might usually be quite hard to deal with).}\\\hline
+\end{tabular}\par}\medskip
+\subsection{Composite with a Piecewise Function}
+Split according to which piece of $\mathrm{f}$ the value $\mathrm{g}(x)$ lands in.\par\smallskip
+\exg{\exlab $\mathrm{f}(x)=\begin{cases}x^{2},&0\leqslant x<1\\2-x,&1\leqslant x\leqslant2\end{cases}$\quad $\mathrm{g}(x)=\dfrac{x}{2}+1$, \ $0\leqslant x\leqslant2$
+\cdisp{R_{\mathrm{g}}&=[1,2]\\\therefore\ \mathrm{fg}(x)=\mathrm{f}(\mathrm{g}(x))&=2-\left(\frac{x}{2}+1\right)=1-\frac{x}{2},\quad 0\leqslant x\leqslant2}}
+{\begin{tikzpicture}\begin{axis}[mini,width=5.6cm,height=4.4cm,xmin=-0.5,xmax=3,ymin=-0.3,ymax=2.6]
+\addplot[blue,semithick,domain=0:2]{x/2+1};
+\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{(0,1)(2,2)};
+\addplot[dotted] coordinates{(2,2)(0,2)};
+\draw[red,line width=2pt] (axis cs:0,1)--(axis cs:0,2);
+\node[anchor=east,font=\small,text=red] at (axis cs:-0.1,1.5){$R_{\mathrm{g}}$};
+\node[anchor=north west,font=\small] at (axis cs:0.05,0.98){$(0,1)$};\node[anchor=south west,font=\small] at (axis cs:2,2){$(2,2)$};
+\node[anchor=north west,font=\small,text=blue] at (axis cs:1.2,1.5){$y=\mathrm{g}(x)$};\Om\end{axis}\end{tikzpicture}}
+\par\medskip
+\exlab $\mathrm{g}(x)=x+1$, \ $0\leqslant x\leqslant3$; \quad $\mathrm{f}(x)=(x-2)^{2}$, \ $x\in\mathbb{R}$. \ Assume $\mathrm{fg}$ exists.
+\[\begin{array}{ccccc}D_{\mathrm{g}}&\xrightarrow{\ \mathrm{g}\ }&R_{\mathrm{g}}&\xrightarrow{\ \mathrm{f}\ }&R_{\mathrm{fg}}\\[1pt][0,3]&&[1,4]&&[0,4]\end{array}\]
+\vspace{-3mm}\[\therefore\ R_{\mathrm{fg}}=[0,4]\]
+{\centering\begin{tikzpicture}\begin{axis}[mini,width=5.2cm,height=4.4cm,xmin=-0.6,xmax=3.8,ymin=-0.5,ymax=4.8]
+\addplot[blue,very thick,domain=0:3]{x+1};\pdots{(0,1)(3,4)}
+\node[anchor=east,font=\small] at (axis cs:-0.05,1){$(0,1)$};\node[anchor=south east,font=\small] at (axis cs:3,4){$(3,4)$};
+\node[anchor=north west,font=\small,text=blue] at (axis cs:1.6,2.4){$y=\mathrm{g}(x)$};\Om\end{axis}\end{tikzpicture}\qquad
+\begin{tikzpicture}\begin{axis}[mini,width=5.2cm,height=4.4cm,xmin=-0.6,xmax=4.8,ymin=-0.5,ymax=4.8]
+\addplot[red!35,thin,domain=-0.1:1,samples=40]{(x-2)^2};\addplot[red!35,thin,domain=4:4.2,samples=10]{(x-2)^2};
+\addplot[red,very thick,domain=1:4,samples=60]{(x-2)^2};\pdots{(1,1)(2,0)(4,4)}
+\node[anchor=south west,font=\small] at (axis cs:1.15,0.95){$(1,1)$};\node[anchor=north,font=\small] at (axis cs:2,-0.05){$(2,0)$};\node[anchor=east,font=\small] at (axis cs:3.95,4){$(4,4)$};
+\node[anchor=west,font=\small,text=red] at (axis cs:4.1,2.6){$y=\mathrm{f}(x)$};\Om\end{axis}\end{tikzpicture}\par}
+\clearpage
+\section{Functional Powers and Self-Inverse Functions}
+$\mathrm{f}^{2}(x)=\mathrm{f}[\mathrm{f}(x)]$ exists if $R_{\mathrm{f}}\subseteq D_{\mathrm{f}}$; similarly $\mathrm{f}^{3}$, $\mathrm{f}^{4}$, \dots \quad Note $\mathrm{f}^{2}(x)\neq[\mathrm{f}(x)]^{2}$.\par\medskip
+\textbf{Self-inverse:} $\mathrm{f}=\mathrm{f}^{-1}\iff{}$\fhl{$D_{\mathrm{f}}=R_{\mathrm{f}}$ and} $\mathrm{f}^{2}(x)=x$ for all $x\in D_{\mathrm{f}}$ (graph symmetric about $y=x$).\par\smallskip
+\textbf{Periodic composition pattern.} If $\mathrm{g}^{2}(x)=x$:
+\cdisp{\mathrm{g}^{n}(x)&=\begin{cases}\mathrm{g}(x),&n\text{ odd}\\x,&n\text{ even}\end{cases}\\\mathrm{g}^{2027}(x)&=\mathrm{g}(x).}
+\sidenote{Similarly, if $\mathrm{f}^{3}(x)=x$, the pattern repeats every $3$: $\mathrm{f}^{n}=\mathrm{f}^{\,n\bmod3}$, and $\mathrm{f}^{-1}=\mathrm{f}^{2}$.}\par
+\section{Piecewise and Periodic Functions}
+\topdisplay{\mathrm{f}:x\mapsto\begin{cases}\mathrm{f}_1(x),&x\in D_1\\\mathrm{f}_2(x),&x\in D_2\end{cases},\qquad \mathrm{f}(x)=\mathrm{f}(x+p)}
+$\mathrm{f}(x)=\mathrm{f}(x+p)$: the graph repeats every $p$ units (period $p$).\par\smallskip
+$\rightarrow$ Always sketch the \textbf{original copy} first, then copy \& paste.\par
+$\rightarrow$ Never sub any $x$ value into $\mathrm{f}$ that is outside the domain of the original copy: shift by multiples of $p$ first.\par\medskip
+\exlab $\mathrm{f}(x)=\begin{cases}1-x^{2},&0\leqslant x<1\\x-1,&1\leqslant x<2\end{cases}$, \ $\mathrm{f}(x)=\mathrm{f}(x+2)$, \ $-3\leqslant x\leqslant4.5$\par\smallskip
+{\centering\begin{tikzpicture}\begin{axis}[mini,axis on top,width=12cm,height=3.2cm,xmin=-3.3,xmax=5,ymin=-0.4,ymax=1.5]
+\addplot[fill=blue!12,draw=none,domain=-3:-2,samples=40]{x-(-4)-1}\closedcycle;\addplot[fill=blue!12,draw=none,domain=-2:-1,samples=40]{1-(x-(-2))^2}\closedcycle;\addplot[fill=blue!12,draw=none,domain=-1:0,samples=40]{x-(-2)-1}\closedcycle;\addplot[fill=blue!12,draw=none,domain=0:1,samples=40]{1-(x-(0))^2}\closedcycle;\addplot[fill=blue!12,draw=none,domain=1:2,samples=40]{x-(0)-1}\closedcycle;\addplot[fill=blue!12,draw=none,domain=2:3,samples=40]{1-(x-(2))^2}\closedcycle;\addplot[fill=blue!12,draw=none,domain=3:4,samples=40]{x-(2)-1}\closedcycle;\addplot[fill=blue!12,draw=none,domain=4:4.5,samples=40]{1-(x-(4))^2}\closedcycle;
+\addplot[blue,semithick,domain=-3:-2,samples=10]{x-(-4)-1};\addplot[blue,semithick,domain=-2:-1,samples=40]{1-(x-(-2))^2};\addplot[blue,semithick,domain=-1:0,samples=10]{x-(-2)-1};\addplot[blue,semithick,domain=0:1,samples=40]{1-(x-(0))^2};\addplot[blue,semithick,domain=1:2,samples=10]{x-(0)-1};\addplot[blue,semithick,domain=2:3,samples=40]{1-(x-(2))^2};\addplot[blue,semithick,domain=3:4,samples=10]{x-(2)-1};\addplot[blue,semithick,domain=4:4.5,samples=40]{1-(x-(4))^2};
+\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{(-3,0)(-2,1)(0,1)(2,1)(4,1)(-1,0)(1,0)(3,0)(4.5,0.75)};
+\node[anchor=north,font=\small] at (axis cs:-3,0){$(-3,0)$};\node[anchor=south,font=\small] at (axis cs:-2,1){$(-2,1)$};\node[anchor=south west,font=\small] at (axis cs:0,1){$(0,1)$};\node[anchor=south,font=\small] at (axis cs:2,1){$(2,1)$};\node[anchor=south,font=\small] at (axis cs:4,1){$(4,1)$};
+\node[anchor=north,font=\small] at (axis cs:-1,0){$(-1,0)$};\node[anchor=north,font=\small] at (axis cs:1,0){$(1,0)$};\node[anchor=north,font=\small] at (axis cs:3,0){$(3,0)$};\node[anchor=west,font=\small] at (axis cs:4.55,0.75){$(4.5,0.75)$};\Om\end{axis}\end{tikzpicture}\par}
+\cdisp{\mathrm{f}(4.5)&=\mathrm{f}(4.5-4)=\mathrm{f}(0.5)=1-0.5^{2}=0.75}
+\textbf{Area} under a periodic function: area over $n$ full periods $=n\times$ area over one period.
+\cdisp{\int_{-3}^{4.5}\mathrm{f}(x)\,\mathrm{d}x&=\int_{-3}^{3}\mathrm{f}(x)\,\mathrm{d}x+\int_{3}^{4}\mathrm{f}(x)\,\mathrm{d}x+\int_{4}^{4.5}\mathrm{f}(x)\,\mathrm{d}x\\&=3\int_{0}^{2}\mathrm{f}(x)\,\mathrm{d}x+\int_{1}^{2}(x-1)\,\mathrm{d}x+\int_{0}^{0.5}(1-x^{2})\,\mathrm{d}x\\&=\frac{107}{24}\approx4.46}
+\clearpage
+\subsection{Inverse of a Piecewise Function}
+Check one-to-one using the ranges of the pieces (they must not overlap and each piece is one-to-one); then invert each piece, with domain $=$ range of that piece.\par\smallskip
+\exg{\exlab $\mathrm{h}(x)=\begin{cases}\textcolor{blue}{x^{2}},&0\leqslant x\leqslant1\\\textcolor{green!50!black}{2x-1},&1<x\leqslant3\end{cases}$
+\cdisp{\text{ranges: }[0,1]\text{ and }(1,5]\ \text{(no overlap)}\\\mathrm{h}^{-1}(x)=\begin{cases}\textcolor{blue}{\sqrt{x},}&\textcolor{blue}{0\leqslant x\leqslant1}\\[2pt]\textcolor{green!50!black}{\dfrac{x+1}{2},}&\textcolor{green!50!black}{1<x\leqslant5}\end{cases}}}
+{\begin{tikzpicture}\begin{axis}[mini,width=5.4cm,height=5.4cm,xmin=-0.5,xmax=5.5,ymin=-0.5,ymax=5.5,axis equal image]
+\addplot[blue,semithick,domain=0:1,samples=40]{x^2};\addplot[green!50!black,semithick,domain=1:3]{2*x-1};
+\addplot[black,only marks,mark=*,mark size=1.2pt] coordinates{(1,1)(3,5)};\node[anchor=north west,font=\small] at (axis cs:1,1){$(1,1)$};\node[anchor=east,font=\small] at (axis cs:3,5){$(3,5)$};\Om\end{axis}\end{tikzpicture}}
+%% ================================================================ SUMMARY 6
+\clearpage
+\newcommand{\gcph}[1]{\par\noindent\fbox{\parbox{0.6\textwidth}{\centering\small\color{red}[GC SCREEN PLACEHOLDER] #1}}\par\smallskip}
+\inchap{Sequences and Series}
+A \textbf{sequence} is a set of numbers arranged in a definite order, \qquad A \textbf{series} is the sum of the terms of a sequence:
+\cdisp{u_1,\ u_2,\ u_3,\ \dots,\quad u_n\text{: the }n\text{th term}}
+\cdisp{S_n=u_1+u_2+\cdots+u_n=\sum_{r=1}^{n}u_r,\qquad S_\infty=u_1+u_2+u_3+\cdots=\sum_{r=1}^{\infty}u_r\quad\text{(infinite series)}}
+\section{Recurrence Relations}
+A recurrence relation defines $u_n$ in terms of one or more preceding terms, together with the initial condition(s).
+\textbf{First-order recurrence relation}: requires only one initial condition; defined using only the immediately preceding term, i.e.\ $u_{n-1}$ only.\par
+\textbf{Second-order recurrence relation}: requires two initial conditions; defined using the two preceding terms, i.e.\ $u_{n-1}$, $u_{n-2}$.\par
+\exlab
+\noindent\begin{minipage}[c]{0.58\textwidth}
+\cdisp{\fhlm{u_{r}}&=\fhlm{\frac{u_{r-1}}{2}}+1,\quad u_1=4\\u_2&=3,\quad u_3=\frac52,\quad u_4=\frac94}
+\sidenote{Rule: \fhl{$u_{r}=\frac{u_{r-1}}{2}+1$}; initial condition: $u_1=4$.}
+\end{minipage}\hfill\begin{minipage}[c]{0.38\textwidth}\centering
+\par\smallskip{\centering\includegraphics[width=0.48\linewidth]{gc/ex61_yeditor.png}\hfill\includegraphics[width=0.48\linewidth]{gc/ex61_table.png}\par}
+\end{minipage}\par\smallskip
+\exlab
+\cdisp{\fhlm{u_{r}}&=\fhlm{2u_{r-1}}+1,\quad u_1=1}
+\exlab
+\noindent\begin{minipage}[c]{0.58\textwidth}
+\cdisp{\fhlm{u_{n}}&=\fhlm{u_{n-1}+2u_{n-2}},\quad u_1=1,\quad u_2=1\\&1,\ 1,\ 3,\ 5,\ 11,\ 21,\ 43,\ \dots}
+\end{minipage}\hfill\begin{minipage}[c]{0.38\textwidth}\centering
+\par\smallskip{\centering\includegraphics[width=0.48\linewidth]{gc/ex63_yeditor.png}\hfill\includegraphics[width=0.48\linewidth]{gc/ex63_table.png}\par}
+\end{minipage}\par\smallskip
+\noindent\begin{minipage}[t]{0.4\textwidth}
+\exlab {\small(GP)}
+\cdisp{\fhlm{u_{n}}&=\fhlm{ru_{n-1}},\quad u_1=a\\&a,\ ar,\ ar^{2},\ \dots}
+\end{minipage}\hfill\begin{minipage}[t]{0.56\textwidth}
+\exlab {\small(AP)}\par
+\cdisp{\fhlm{u_{n}}&=\fhlm{u_{n-1}}+d,\quad u_1=a\\&a,\ a+d,\ a+2d,\ \dots}
+(However, this is not unique.)
+\cdisp{\fhlm{u_{n}-2u_{n-1}+u_{n-2}}&=0,\quad u_1=a,\quad u_2=a+d}
+\end{minipage}\par
+\subsection{Limit of a Sequence}
+\cdisp{\text{As }r\to\infty,\ u_r=\frac1r&\to0\quad\text{or}\quad\lim_{r\to\infty}\left(u_r\right)=\lim_{r\to\infty}\left(\frac1r\right)=0\\\text{As }r\to\infty,\ u_r&\to L\quad\text{or}\quad\lim_{r\to\infty}\left(u_r\right)=L\quad\text{(convergent)}}
+$u_r\to L\Rightarrow{}$\fhl{$u_{r-1}\to L,\ u_{r-2}\to L$}$,\ \dots$\par
+(For recurrence relations: if the sequence is given to be convergent, change all \fhl{$u_n$, $u_{n-1}$, $u_{n-2}$} to $L$ and solve for $L$.)\par
+\textbf{Rules} ($\lim u_r$, $\lim v_r$ real):
+\cdisp{\lim_{r\to\infty}\left(a\right)&=a\\\lim_{r\to\infty}\left(u_r\pm v_r\right)&=\lim_{r\to\infty}\left(u_r\right)\pm\lim_{r\to\infty}\left(v_r\right)\\\lim_{r\to\infty}\left(u_rv_r\right)&=\lim_{r\to\infty}\left(u_r\right)\times\lim_{r\to\infty}\left(v_r\right)\\\lim_{r\to\infty}\left(\frac{u_r}{v_r}\right)&=\frac{\lim_{r\to\infty}\left(u_r\right)}{\lim_{r\to\infty}\left(v_r\right)},\quad \lim_{r\to\infty}\left(v_r\right)\neq0}
+\section{Sigma Notation}
+\cdisp{\sum_{r=m}^{n}\mathrm{f}(r)&=\mathrm{f}(m)+\mathrm{f}(m+1)+\cdots+\mathrm{f}(n)\\S_n=\sum_{r=1}^{n}u_r&=u_1+u_2+\cdots+u_n\quad\text{\small\color{gray!70}(By default, $S_n$ starts from $r=1$ unless otherwise stated.)}}
+\textbf{Properties:}
+\cdisp{\text{no. of terms in }\sum_{r=m}^{n}u_r&:\ n-m+1\\\sum_{r=m}^{n}a&=(n-m+1)a\\\sum_{r=m}^{n}au_r&=a\sum_{r=m}^{n}u_r\\\sum_{r=m}^{n}\left(u_r\pm v_r\right)&=\sum_{r=m}^{n}u_r\pm\sum_{r=m}^{n}v_r\\\sum_{r=m}^{n}u_r&=\sum_{r=1}^{n}u_r-\sum_{r=1}^{m-1}u_r}
+\sidenote{(To remember the last three, note that the properties are similar to what you can do in integration.)}\par
+\clearpage
+\section{Standard Formulas}
+\noindent\begin{minipage}[t]{0.48\textwidth}
+\topdisplay{\boxed{\sum_{r=1}^{n}r=\frac{n(n+1)}{2}}}
+{\color{gray}AP with first term $1$, common difference $1$:
+\cdisp{\sum_{r=1}^{n}r&=1+2+\cdots+n\\S_n&=\frac{n}{2}\left[2(1)+(n-1)(1)\right]\\&=\frac{n(n+1)}{2}}}
+\end{minipage}\hfill\begin{minipage}[t]{0.48\textwidth}
+\topdisplay{\boxed{\sum_{r=1}^{n}a^{r}=\frac{a\left(a^{n}-1\right)}{a-1},\quad a\neq1}}
+{\color{gray}GP with first term $a$, common ratio $a$:
+\cdisp{\sum_{r=1}^{n}a^{r}&=a+a^{2}+\cdots+a^{n}\\&=\frac{a\left(a^{n}-1\right)}{a-1}}}
+\end{minipage}\par
+\noindent\begin{minipage}[t]{0.48\textwidth}
+\topdisplay{\boxed{\sum_{r=1}^{n}r^{2}=\frac{n(n+1)(2n+1)}{6}}}
+\end{minipage}\hfill\begin{minipage}[t]{0.48\textwidth}
+\topdisplay{\boxed{\sum_{r=1}^{n}r^{3}=\left[\frac{n(n+1)}{2}\right]^{2}=\frac{n^{2}(n+1)^{2}}{4}}}
+\end{minipage}\par
+\begin{info}[title=Note]
+$\sum r^{2}$ and $\sum r^{3}$ are given in the exam if needed. All four results hold only if $r$ starts from $1$.
+\end{info}
+\section{Augmented Forms}
+\exlab
+\cdisp{\sum_{r=1}^{n}\frac{4}{5^{2r+1}}&=4\sum_{r=1}^{n}\frac{1}{5\cdot25^{r}}\\&=\frac45\sum_{r=1}^{n}\left(\frac{1}{25}\right)^{r}\\&=\frac45\cdot\frac{\frac{1}{25}\left[1-\left(\frac{1}{25}\right)^{n}\right]}{1-\frac{1}{25}}\\&=\frac45\cdot\frac{1}{24}\left[1-\left(\frac{1}{25}\right)^{n}\right]\\&=\frac{1}{30}\left(1-\frac{1}{25^{n}}\right)}
+\begin{info}[title=Note]
+To use the $\sum a^{r}$ formula, the power must be exactly $r$, not $r+1$, not $2r$. Rewrite first.
+\end{info}
+\clearpage
+\section{Substitution}
+\cdisp{\sum_{r=m}^{n}\mathrm{f}(r)=\sum_{r=m-k}^{n-k}\mathrm{f}(r+k)\quad\text{(replace $r$ with $r+k$)}}
+\exlab
+Given $\displaystyle\sum_{r=2}^{n}\frac{1}{r(r+2)}=\frac12\left(\frac56-\frac{1}{n+1}-\frac{1}{n+2}\right)$, find $\displaystyle\sum_{r=2}^{n}\frac{1}{r^{2}-1}$.
+\cdisp{\sum_{r=2}^{n}\frac{1}{r^{2}-1}&=\sum_{r=2}^{n}\frac{1}{(r-1)(r+1)}\\&=\sum_{r=1}^{n-1}\frac{1}{r(r+2)}\quad\text{(replace $r$ with $r+1$)}\\&=\sum_{r=1}^{1}\frac{1}{r(r+2)}+\sum_{r=2}^{n-1}\frac{1}{r(r+2)}\\&=\frac13+\frac12\left(\frac56-\frac1n-\frac{1}{n+1}\right)\\&=\frac34-\frac{1}{2n}-\frac{1}{2(n+1)}}
+\begin{info}[title=Note]
+Substitution only allows \textbf{translation} of $r$ values, e.g.\ replace $r$ with $\ldots$, $r-2$, $r-1$, $r+1$, $r+2$, $\ldots$\par
+Scaling is not allowed. E.g.\ replacing $r$ with $2r$ is wrong. List out the terms to see why.
+\end{info}
+\clearpage
+\section{Convergence}
+\exlab
+Given $u_n=\dfrac{1}{n(n+1)}$ and $S_n=\displaystyle\sum_{r=1}^{n}u_r=1-\frac{1}{n+1}$.\par\smallskip
+{\centering\renewcommand{\arraystretch}{1.3}\begin{tabular}{|p{0.36\textwidth}|p{0.56\textwidth}|}\hline
+\textbf{Convergence of $u_n$:} let $n\to\infty$ in $u_n$. & \textbf{Convergence of $S_n$:} let $n\to\infty$ in $S_n$.\\\hline
+$\displaystyle\begin{aligned}u_n&=\frac{1}{n(n+1)}\\\text{As }n\to\infty,\ u_n&\to0\end{aligned}$ &
+$\displaystyle\begin{aligned}S_n&=\sum_{r=1}^{n}\frac{1}{r(r+1)}\\&=1-\frac{1}{n+1}\\\text{As }n\to\infty,\ S_n&\to1\ \text{(finite)}\\\therefore\ \text{the series converges},\ S_\infty&=1\end{aligned}$\\\hline
+\end{tabular}\par}
+\begin{info}[title=Note]
+(1) $u_n\to0$ is not strong enough evidence that $S_n$ converges, e.g.\ $1+\frac12+\frac13+\frac14+\cdots=\infty$.\par
+(2) However, if $S_n$ converges, then $u_n$ \textbf{must} converge to $0$.
+\end{info}
+\section{Finding \texorpdfstring{$u_n$}{u\_n} or \texorpdfstring{$S_n$}{S\_n} from Each Other}
+\subsection{Finding \texorpdfstring{$u_n$}{u\_n} from \texorpdfstring{$S_n$}{S\_n}}
+\cdisp{u_n&=S_n-S_{n-1},\quad u_1=S_1}
+\exlab
+\cdisp{S_n&=n^{2}+2n\\u_n&=S_n-S_{n-1}\\&=\left(n^{2}+2n\right)-\left[(n-1)^{2}+2(n-1)\right]\\&=2n+1}
+\fhl{\sidenote{Check: $u_1=S_1=3=2(1)+1$, as $u_n=S_n-S_{n-1}$ only holds for $n\geq2$.}}\par
+\subsection{Finding \texorpdfstring{$S_n$}{S\_n} from \texorpdfstring{$u_n$}{u\_n}}
+\exlab
+\cdisp{u_r&=3r^{2}+r\\S_n&=\sum_{r=1}^{n}\left(3r^{2}+r\right)\\&=3\cdot\frac{n(n+1)(2n+1)}{6}+\frac{n(n+1)}{2}\fhlmi{=\cdots}}
+\clearpage
+\inchap{Arithmetic and Geometric Progressions}
+An \textbf{arithmetic progression (AP)} is a sequence with a common difference $d$, e.g.\ $2,\ 5,\ 8,\ 11,\ \dots$\par
+A \textbf{geometric progression (GP)} is a sequence with a common ratio $r$, e.g.\ $3,\ 6,\ 12,\ 24,\ \dots$\par
+$u_n$: the $n$th term,\qquad $S_n$: the sum of the first term up to the $n$th term.\par\smallskip
+{\centering\renewcommand{\arraystretch}{1.5}\begin{tabular}{|p{0.15\textwidth}|p{0.36\textwidth}|p{0.36\textwidth}|}\hline
+ & \textbf{AP} & \textbf{GP}\\\hline
+Property & common difference $d$ & common ratio $r$\\\hline
+Example & $2,\ 5,\ 8,\ 11,\ \dots$\quad($d=3$) & $3,\ 6,\ 12,\ 24,\ \dots$\quad($r=2$)\\\hline
+$u_n$ & $\displaystyle u_n=a+(n-1)d$ & $\displaystyle u_n=ar^{n-1}$\\\hline
+$S_n$ & $\displaystyle S_n=\frac n2\left[2a+(n-1)d\right]$\par\smallskip $\displaystyle S_n=\frac n2\left(a+l\right)$ & $\displaystyle S_n=\frac{a\left(1-r^{n}\right)}{1-r}=\frac{a\left(r^{n}-1\right)}{r-1}$,\ $r\neq1$\\\hline
+$S_\infty$ & not convergent \fhl{\sidenote{(unless $a=d=0$)}} & $\displaystyle S_\infty=\frac{a}{1-r}$, only if $|r|<1$\\\hline
+Proving & $u_{n+1}-u_n=d$ (constant)\par\smallskip
+{\color{red}$u_3-u_2=k_1$, $u_2-u_1=k_2$\par $k_1\neq k_2$ $\therefore$ not an AP} &
+$\dfrac{u_{n+1}}{u_n}=r$ (constant)\par\smallskip
+{\color{red}$\dfrac{u_3}{u_2}=k_1$, $\dfrac{u_2}{u_1}=k_2$\par $k_1\neq k_2$ $\therefore$ not a GP}\\\hline
+\end{tabular}\par}
+\smallskip
+{\color{gray!70}However, to prove that something IS an AP, you have to do it in terms of $n$. You cannot compare $u_1$, $u_2$ and $u_3$ in the same way that we prove that something is not an AP.}\par
+\textbf{Note:}\quad AP: $u_2,\ u_4,\ u_6,\ \dots$ is an AP (common difference $2d$),\qquad GP: $u_2,\ u_4,\ u_6,\ \dots$ is a GP (common ratio $r^{2}$).\par
+\begin{info}[title=Important Note]
+Remember that you can use a GC table whenever needed, especially when the variable you are solving for is an integer. It is very common in this chapter because a lot of the time you are solving for $n\in\mathbb{Z}^{+}$.
+\end{info}
+\section{Summing}
+\exlab
+AP: first term $9$, common difference $2$. Sum of the 20th to 50th terms inclusive:
+\cdisp{S_{50}-S_{19}&=\frac{50}{2}\left[2(9)+49(2)\right]-\frac{19}{2}\left[2(9)+18(2)\right]\\&=2900-513\\&=2387}
+\section{Common Questions}
+\subsection{Comparing AP and GP terms}
+\exlab {\small[TMJC 2025 Prelim P1 Q4]}\par
+An arithmetic series has first term $a$ and common difference $d$, where $a$ and $d$ are non-zero real constants. A convergent geometric series has first term $b$ and common ratio $r$, where $b>0$ and $r$ is a non-zero real constant. The sum of the first $n$ terms of the geometric series is denoted by $S$.\par
+It is given that the 7th, 10th and 11th terms of the arithmetic series are equal to the 3rd, 6th and 10th terms of the geometric series respectively.
+\cdisp{a+6d&=br^{2}\quad--\ (1)\\a+9d&=br^{5}\quad--\ (2)\\a+10d&=br^{9}\quad--\ (3)}
+\subsection{Bank Questions}
+\begin{info}[title=Important Note]
+\fhl{Many} bank questions will come in the form $u_{n+1}=pu_n+q$, where $p$ and $q$ are constants.
+\end{info}
+\medskip
+\exlab {\small[TJC 2025 Prelim P1 Q7]}\par
+\fhl{Janice deposits} \$100 at the start of every month into a bank account that earns 0.3\% interest per month, with interest calculated and added into the account at the end of each month.\par
+Find the amount that Janice will have in her savings account at the end of $N$ months.\par\medskip
+{\small\renewcommand{\arraystretch}{1.3}\begin{tabular}{|l|l|l|}\hline
+$n$th mth&Amount at start of month (\$)&Amount at end of month (\$)\\\hline
+1 Jan26&$100$&$100(1.003)$\\\hline
+2&$\begin{aligned}[t]&100+100(1.003)\\&=100(1+1.003)\end{aligned}$&$\begin{aligned}[t]&100(1+1.003)(1.003)\\&=100\left(1.003+1.003^{2}\right)\end{aligned}$\\\hline
+3&$\begin{aligned}[t]&100+100\left(1.003+1.003^{2}\right)\\&=100\left(1+1.003+1.003^{2}\right)\end{aligned}$&$\begin{aligned}[t]&100\left(1+1.003+1.003^{2}\right)(1.003)\\&=100\left(1.003+1.003^{2}+1.003^{3}\right)\end{aligned}$\\\hline
+$\vdots$&$\vdots$&$\vdots$\\\hline
+$N$&&$\begin{aligned}[t]&100\left(1.003+1.003^{2}+\dots+1.003^{N}\right)\\&=\frac{100(1.003)\left(1.003^{N}-1\right)}{1.003-1}\end{aligned}$\\\hline
+\end{tabular}}\par\medskip
+\needspace{14\baselineskip}
+\subsection{Contextual Questions}
+For general contextual questions, it is important to determine whether the question is asking for $u_n$ or $S_n$.\par
+\exlab {\small[RVHS 2025 Prelim P2 Q4]}\par
+The dosage of medicine given to a patient needs to be carefully managed in order to achieve the desired result.
+\begin{enumerate}[label=(\alph*)]
+\item To give the patient time to adapt to a particular medicine, the dosage is slowly increased over time. The patient is initially given a dosage of 0.75 units. The dosage is increased by 0.5 units each day until a total of at least 10 units of medicine has been taken. Find the least number of days it takes to achieve this, and the dosage on that day.\hfill[4]
+\item The doctor prescribed a new medication to another patient. After $n$ days, the total dosage of the new medicine administered to the patient is given by $\dfrac{3}{20}\left(\dfrac{5^{n}-4^{n}}{5^{n-1}}\right)$ units.
+\begin{enumerate}[label=(\roman*)]
+\item Show that the increase in dosage of the new medicine administered per day follows a geometric progression.\hfill[3]
+\item Find the total dosage of the new medicine administered to the patient after a long period of treatment.\hfill[2]
+\end{enumerate}
+\item Doctors can manage the medication so that the daily dosage of medicine increases as an arithmetic progression. Explain in context why the arithmetic progression is not a preferred model for the dosage of medication.\hfill[1]
+\end{enumerate}
+\clearpage
+\inchap{Differentiation}
+\section{Basic Differentials}
+{\centering\renewcommand{\arraystretch}{1.9}\begin{tabular}{|c|c|}\hline
+$y$ & $\dfrac{\mathrm{d}y}{\mathrm{d}x}$\\\hline
+$x^{n}$ & $nx^{n-1}$\\\hline
+$\sin x$ & $\cos x$\\\hline
+$\cos x$ & $-\sin x$\\\hline
+$\tan x$ & $\sec^{2}x$\\\hline
+$\log_{b}x$ & $\dfrac{1}{x\ln b}$,\ $b$ constant\\\hline
+$\mathrm{e}^{\mathrm{f}(x)}$ & $\mathrm{f}'(x)\,\mathrm{e}^{\mathrm{f}(x)}$\\\hline
+$a^{\mathrm{f}(x)}$ & $\mathrm{f}'(x)\,a^{\mathrm{f}(x)}\ln a$,\ $a$ constant\\\hline
+$\mathrm{p}(x)\,\mathrm{q}(x)$ & $\mathrm{p}'(x)\,\mathrm{q}(x)+\mathrm{p}(x)\,\mathrm{q}'(x)$\\\hline
+$\dfrac{\mathrm{p}(x)}{\mathrm{q}(x)}$ & $\dfrac{\mathrm{p}'(x)\,\mathrm{q}(x)-\mathrm{p}(x)\,\mathrm{q}'(x)}{\left[\mathrm{q}(x)\right]^{2}}$\\\hline
+\end{tabular}\qquad
+\begin{tabular}{|c|c|}\hline
+$y$ & $\dfrac{\mathrm{d}y}{\mathrm{d}x}$\\\hline
+$\sin^{-1}x$ & $\dfrac{1}{\sqrt{1-x^{2}}}$\\\hline
+$\cos^{-1}x$ & $-\dfrac{1}{\sqrt{1-x^{2}}}$\\\hline
+$\tan^{-1}x$ & $\dfrac{1}{1+x^{2}}$\\\hline
+$\sec x$ & $\sec x\tan x$\\\hline
+$\operatorname{cosec}x$ & $-\operatorname{cosec}x\cot x$\\\hline
+{\color{blue}$\cot x$} & {\color{blue}$-\operatorname{cosec}^{2}x$}\\\hline
+\end{tabular}\par}
+\begin{info}[title=Important Note]
+Remember to multiply by the differential when you are differentiating. Bracket, not divide.
+\end{info}
+\needspace{22\baselineskip}
+\subsection{Implicit Differentiation}
+\exlab
+\cdisp{x^{3}y+1+\ln y&=\cos(xy)}
+Differentiate both sides with respect to $x$:
+\cdisp{3x^{2}y+x^{3}\frac{\mathrm{d}y}{\mathrm{d}x}+0+\frac{1}{y}\frac{\mathrm{d}y}{\mathrm{d}x}&=-\sin(xy)\left(y+x\frac{\mathrm{d}y}{\mathrm{d}x}\right)\\
+3x^{2}y+x^{3}\frac{\mathrm{d}y}{\mathrm{d}x}+\frac{1}{y}\frac{\mathrm{d}y}{\mathrm{d}x}&=-y\sin(xy)-x\sin(xy)\frac{\mathrm{d}y}{\mathrm{d}x}\\
+x^{3}\frac{\mathrm{d}y}{\mathrm{d}x}+\frac{1}{y}\frac{\mathrm{d}y}{\mathrm{d}x}+x\sin(xy)\frac{\mathrm{d}y}{\mathrm{d}x}&=-y\sin(xy)-3x^{2}y\\
+\frac{\mathrm{d}y}{\mathrm{d}x}\left(x^{3}+\frac{1}{y}+x\sin(xy)\right)&=-y\left(\sin(xy)+3x^{2}\right)\\
+\frac{\mathrm{d}y}{\mathrm{d}x}\left(\frac{x^{3}y+1+xy\sin(xy)}{y}\right)&=-y\left(\sin(xy)+3x^{2}\right)\\
+\therefore\ \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{y^{2}\left(\sin(xy)+3x^{2}\right)}{x^{3}y+1+xy\sin(xy)}}
+\subsection{Parametric Differentiation}
+\cdisp{\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{\mathrm{d}y}{\mathrm{d}t}\times\frac{\mathrm{d}t}{\mathrm{d}x}}
+\exlab
+\cdisp{x&=t+\sin t,\quad y=1-\cos t\\
+\frac{\mathrm{d}x}{\mathrm{d}t}&=1+\cos t,\quad\frac{\mathrm{d}y}{\mathrm{d}t}=\sin t\\
+\frac{\mathrm{d}t}{\mathrm{d}x}&=\dfrac{1}{\dfrac{\mathrm{d}x}{\mathrm{d}t}}=\frac{1}{1+\cos t}\\
+\frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{\mathrm{d}y}{\mathrm{d}t}\times\frac{\mathrm{d}t}{\mathrm{d}x}\\
+&=\frac{\sin t}{1+\cos t}\\
+&=\frac{2\sin\frac{t}{2}\cos\frac{t}{2}}{2\cos^{2}\frac{t}{2}}\\
+&=\frac{\sin\frac{t}{2}}{\cos\frac{t}{2}}\\
+\therefore\ \frac{\mathrm{d}y}{\mathrm{d}x}&=\tan\frac{t}{2}}
+\clearpage
+\inchap{Applications of Differentiation}
+\section{Tangents \& Normals}
+A tangent can be diagonal, vertical or horizontal.\par
+Gradient of tangent = value of $\dfrac{\mathrm{d}y}{\mathrm{d}x}$.\par
+Gradient of normal:
+\cdisp{m_{\text{tangent}}\times m_{\text{normal}}&=-1}
+Equation of tangent: $y=mx+c$. To find $c$, substitute any point on the tangent.\par\smallskip
+\noindent\fhlp{\small\textbf{Horizontal and vertical tangents} at $(x_0,y_0)$:\par\smallskip
+\renewcommand{\arraystretch}{1.5}\begin{tabular}{@{}l@{\ \ }l@{}}
+Horizontal: & $\dfrac{\mathrm{d}y}{\mathrm{d}x}=0$,\ \ tangent $y=y_0$,\ \ normal $x=x_0$\\
+Vertical: & $\dfrac{\mathrm{d}x}{\mathrm{d}y}=0$ \ ($\dfrac{\mathrm{d}y}{\mathrm{d}x}$ undefined),\ \ tangent $x=x_0$,\ \ normal $y=y_0$
+\end{tabular}}\par
+\subsection{Standard Curves}
+\exlab
+Find the equation of the tangent to $y=x^{2}-3x+5$ at $x=2$.
+\cdisp{\text{When }x=2,\quad y&=2^{2}-3(2)+5=3\\
+\frac{\mathrm{d}y}{\mathrm{d}x}&=2x-3\\
+\text{When }x=2,\quad\frac{\mathrm{d}y}{\mathrm{d}x}&=2(2)-3=1\\
+y&=x+c\\
+3&=2+c\\
+c&=1\\
+\therefore\ y&=x+1}
+\subsection{Implicit Curves}
+\exlab {\small[EJC 2025 Prelim P2 Q1(b)]}\par
+The curve $C$ has equation $x^{3}+y^{3}-3xy=k$, where $k$ is a positive constant. There are two points on $C$ where the tangents are parallel to the $y$-axis. Given that $k=3$, find the exact $y$-coordinates of these two points.
+\cdisp{\frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{y-x^{2}}{y^{2}-x}}
+Tangent parallel to $y$-axis $\Rightarrow\dfrac{\mathrm{d}y}{\mathrm{d}x}$ undefined:
+\cdisp{y^{2}-x&=0\\
+x&=y^{2}\\
+y^{6}-2y^{3}-3&=0\\
+\left(y^{3}-3\right)\left(y^{3}+1\right)&=0\\
+\therefore\ y=3^{\frac{1}{3}}\quad&\text{or}\quad y=-1}
+\subsection{Parametric Curves}
+\exlab {\small[MI 2025 Prelim P2 Q2(i)]}\par
+A curve $C$ has parametric equations $x=\sqrt{t}$, $y=t^{2}+4$, where $0\leqslant t\leqslant16$. Find the equation of the tangent to $C$ at the point $P$ with parameter $p$.
+\cdisp{\frac{\mathrm{d}x}{\mathrm{d}t}&=\frac{1}{2\sqrt{t}},\quad\frac{\mathrm{d}y}{\mathrm{d}t}=2t\\
+\frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{2t}{\frac{1}{2\sqrt{t}}}=4t^{\frac{3}{2}}\\
+y-\left(p^{2}+4\right)&=4p^{\frac{3}{2}}\left(x-\sqrt{p}\right)\\
+\therefore\ y&=4p^{\frac{3}{2}}x-3p^{2}+4}
+\section{Max/Min}
+\begin{itemize}
+\item To find the stationary value of $y$, solve $\dfrac{\mathrm{d}y}{\mathrm{d}x}=0$.
+\item Then, to find/prove its nature, perform the first/second derivative test.
+\end{itemize}
+\begin{info}[title=Important Note]
+In many questions, you may be asked to prove the equation of the quantity you are trying to maximise. It's important to not spend too long on it if you can't prove it. Just continue with the rest of the question to differentiate and solve $\dfrac{\mathrm{d}y}{\mathrm{d}x}=0$.
+\end{info}
+\par\medskip
+{\small\renewcommand{\arraystretch}{1.3}\begin{longtable}{|c|p{3.9cm}|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{4.0cm}|>{\raggedright\arraybackslash}p{2.9cm}|}\hline
+Index&Diagram&Info&Equation&Comments\\\hline\endhead
+1&{\footnotesize[TJC 2025 Prelim P2 Q4]}\par {\centering\adjustbox{max width=\linewidth,max height=3.6cm}{\figTJCfa\hspace{4mm}\raisebox{0.6cm}{\figTJCfb}}\par}&Constant: radius $a$\newline Variables: angle $\theta$&Prove that\newline $\displaystyle V^{2}=\dfrac{a^{6}}{576\pi^{4}}\theta^{4}\left(4\pi^{2}-\theta^{2}\right)$&Take advantage of the constant slant height and major arc length $AB$.\\\hline
+2&{\footnotesize[DHS 2025 Prelim P1 Q11]}\par {\centering\adjustbox{max width=\linewidth,max height=3.6cm}{\figDHSa}\par}&Constant: budget \$$k$\newline Variables: $r$&Prove that\newline $\displaystyle V=\dfrac{k}{20}r-\dfrac{10}{3}\pi r^{3}$&Use the constant budget $k$ to eliminate $L$.\\\hline
+3&{\footnotesize[TJC 2024 Promo Q12]}\par {\centering\adjustbox{max width=\linewidth,max height=3.6cm}{\figTJCsph}\par}&Constant: sphere radius $R$\newline Variables: $h$&Prove that\newline $\displaystyle r^{2}=\dfrac{h^{2}R^{2}}{h^{2}-2hR}$&Take advantage of the constant sphere radius $R$, and similar triangles. Pythagoras theorem is useful here too.\\\hline
+4&{\footnotesize[CJC 2024 Promo Q10]}\par {\centering\adjustbox{max width=\linewidth,max height=3.6cm}{\figCJC}\par}&Constant: volume $20\pi$ cm$^{3}$\newline Variables: $r$&Prove that\newline $\displaystyle A\dfrac{\mathrm{d}A}{\mathrm{d}r}=\pi^{2}\left(2r^{3}-\dfrac{3600}{r^{3}}\right)$&Use the constant volume to eliminate $h$. For rate of change questions, use similar triangles.\\\hline
+5&{\footnotesize[EJC 2018 Promo Q7]}\par {\centering\adjustbox{max width=\linewidth,max height=3.6cm}{\figEJC}\par}&Constant: slant edge $R$\newline Variables: $x$&Prove that\newline $\displaystyle 9V^{2}=\pi^{2}x^{4}\left(R^{2}-x^{2}\right)$&Use the constant $R$ to eliminate $h$.\\\hline
+6&{\footnotesize[TMJC 2024 Prelim P1 Q2]}\par {\centering\adjustbox{max width=\linewidth,max height=3.6cm}{\figTMJC}\par}&Constant: sphere radius $k$\newline \fhl{Variables: $h$, $r$}&---&Use the constant radius of sphere $k$ and Pythagoras theorem is useful here too.\\\hline
+\end{longtable}}
+\section{Rate of Change}
+\cdisp{\frac{\mathrm{d}y}{\mathrm{d}t}=\frac{\mathrm{d}y}{\mathrm{d}x}\times\frac{\mathrm{d}x}{\mathrm{d}t}}
+\textbf{Step 1:} Identify what information is given.\par
+\textbf{Step 2:} Form the missing equation if necessary and differentiate it.\par
+\exlab
+Given $y=x^{2}-4x+1$ and $\dfrac{\mathrm{d}x}{\mathrm{d}t}=3$, find the rate of change of $y$ when $x=5$.
+\cdisp{\frac{\mathrm{d}y}{\mathrm{d}x}&=2x-4\\
+\text{When }x=5,\quad\frac{\mathrm{d}y}{\mathrm{d}x}&=2(5)-4=6\\
+\frac{\mathrm{d}y}{\mathrm{d}t}&=\frac{\mathrm{d}y}{\mathrm{d}x}\times\frac{\mathrm{d}x}{\mathrm{d}t}\\
+&=6\times3\\
+\therefore\ \frac{\mathrm{d}y}{\mathrm{d}t}&=18}
+
+\clearpage
+\inchap{Power Series}
+\section{Standard Formulae (MF27)}
+\begin{align*}
+(1+x)^{n}&=1+nx+\frac{n(n-1)}{2!}x^{2}+\dots+\frac{n(n-1)\cdots(n-r+1)}{r!}x^{r}+\dots\quad(|x|<1)\tag{1}\\[1ex]
+\mathrm{e}^{x}&=1+x+\frac{x^{2}}{2!}+\dots+\frac{x^{r}}{r!}+\dots\quad(\text{all }x)\tag{2}\\[1ex]
+\sin x&=x-\frac{x^{3}}{3!}+\frac{x^{5}}{5!}-\dots+\frac{(-1)^{r}x^{2r+1}}{(2r+1)!}+\dots\quad(\text{all }x)\tag{3}\\[1ex]
+\cos x&=1-\frac{x^{2}}{2!}+\frac{x^{4}}{4!}-\dots+\frac{(-1)^{r}x^{2r}}{(2r)!}+\dots\quad(\text{all }x)\tag{4}\\[1ex]
+\ln(1+x)&=x-\frac{x^{2}}{2}+\frac{x^{3}}{3}-\dots+\frac{(-1)^{r+1}x^{r}}{r}+\dots\quad(-1<x\leqslant1)\tag{5}
+\end{align*}
+\begin{info}[title=Important Note]
+For equations (1) and (5), the constant must be 1.
+\end{info}
+\cautionbox{Any substituted expressions of $x$ cannot have \fhl{``$+$ constant inside} hl{\sidenote{(more precisely, the substituted term must tend to $0$)}}.
+\cdisp{\text{\ding{55}}\quad\mathrm{e}^{1+x+x^{2}+\cdots}&=1+\left(1+x+x^{2}+\cdots\right)+\frac{\left(1+x+x^{2}+\cdots\right)^{2}}{2!}+\cdots\\[1ex]
+\text{\ding{51}}\quad\mathrm{e}^{1+x+x^{2}+\cdots}&=\mathrm{e}^{1}\cdot\mathrm{e}^{x+x^{2}+\cdots}\\
+&=\mathrm{e}\left[1+\left(x+x^{2}+\cdots\right)+\frac{\left(x+x^{2}+\cdots\right)^{2}}{2!}+\cdots\right]}}
+\section{Maclaurin Series}
+\cdisp{\mathrm{f}(x)&=\mathrm{f}(0)+x\,\mathrm{f}'(0)+\frac{x^{2}}{2!}\mathrm{f}''(0)+\dots+\frac{x^{r}}{r!}\mathrm{f}^{(r)}(0)+\dots}
+Conditions for existence: for all $n\in\mathbb{Z}^{+}\cup\{0\}$, $\mathrm{f}^{(n)}$ is differentiable and $\mathrm{f}^{(n)}(0)$ is defined.
+\newpage
+\section{Small Angle Approximations}
+When $\theta$ is sufficiently small, $\theta^{3}$ and above can be ignored.
+\cdisp{\sin\theta&\approx\theta\\\cos\theta&\approx1-\frac{\theta^{2}}{2}\\\tan\theta&\approx\theta}
+\exlab
+\cdisp{\sin2\theta&\approx2\theta}
+\exlab
+\cdisp{\cos3\theta&\approx1-\frac{(3\theta)^{2}}{2}\\&=1-\frac{9\theta^{2}}{2}}
+\exlab
+\cdisp{\sec\theta&=\frac{1}{\cos\theta}\\&\approx\left(1-\frac{\theta^{2}}{2}\right)^{-1}\\&\approx1+\frac{\theta^{2}}{2}}
+\exlab
+$\sin\left(\frac{\pi}{4}+\theta\right)\not\approx\frac{\pi}{4}+\theta$
+\cdisp{\sin\left(\frac{\pi}{4}+\theta\right)&=\sin\frac{\pi}{4}\cos\theta+\cos\frac{\pi}{4}\sin\theta\\&=\frac{1}{\sqrt{2}}\left(\cos\theta+\sin\theta\right)\\&\approx\frac{1}{\sqrt{2}}\left(1-\frac{\theta^{2}}{2}+\theta\right)\\\therefore\ \sin\left(\frac{\pi}{4}+\theta\right)&\approx\frac{1}{\sqrt{2}}\left(1+\theta-\frac{\theta^{2}}{2}\right)}
+\section{General Approximations}
+\begin{itemize}
+\item Values of $x$ closer to 0 give better approximations as higher powers of $x$ are less significant.
+\item Values of $x$ outside the range of validity give an inaccurate approximation.
+\end{itemize}
+\input{ch11_notes}
+\input{ch12_notes}
+\input{ch13_notes}
+\input{ch14_notes}
+\input{ch15_notes}
+\end{document}

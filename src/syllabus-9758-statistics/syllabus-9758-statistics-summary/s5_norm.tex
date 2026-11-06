@@ -1,0 +1,121 @@
+%% ============================================================ 5 NORMAL DISTRIBUTION
+\clearpage
+\inchap{Normal Distribution}
+\section{Properties}
+\noindent\begin{minipage}[c]{0.50\textwidth}
+\begin{tikzpicture}
+\begin{axis}[nc,width=\linewidth,height=3.9cm,domain=-3.4:3.4]
+\addplot[fill=blue!15,draw=none,domain=-3.4:3.4]{\nf{0}}\closedcycle;
+\addplot[black,semithick]{\nf{0}};
+\draw[dashed,thin] (axis cs:0,0)--(axis cs:0,0.3989);
+\draw (axis cs:-3,0)--(axis cs:-3,-0.012);\node[below,font=\scriptsize,inner sep=1pt] at (axis cs:-3,-0.012){$\mu-3\sigma$};\draw (axis cs:-2,0)--(axis cs:-2,-0.012);\node[below,font=\scriptsize,inner sep=1pt,yshift=-8pt] at (axis cs:-2,-0.012){$\mu-2\sigma$};\draw (axis cs:-1,0)--(axis cs:-1,-0.012);\node[below,font=\scriptsize,inner sep=1pt] at (axis cs:-1,-0.012){$\mu-\sigma$};\draw (axis cs:0,0)--(axis cs:0,-0.012);\node[below,font=\scriptsize,inner sep=1pt] at (axis cs:0,-0.012){$\mu$};\draw (axis cs:1,0)--(axis cs:1,-0.012);\node[below,font=\scriptsize,inner sep=1pt] at (axis cs:1,-0.012){$\mu+\sigma$};\draw (axis cs:2,0)--(axis cs:2,-0.012);\node[below,font=\scriptsize,inner sep=1pt,yshift=-8pt] at (axis cs:2,-0.012){$\mu+2\sigma$};\draw (axis cs:3,0)--(axis cs:3,-0.012);\node[below,font=\scriptsize,inner sep=1pt] at (axis cs:3,-0.012){$\mu+3\sigma$};
+\node[font=\small] at (axis cs:2.3,0.3){$X\sim\mathrm{N}(\mu,\sigma^{2})$};
+\node[font=\small] at (axis cs:0,0.15){area $=1$};
+\end{axis}\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.46\textwidth}\small
+\begin{itemize}[leftmargin=*,itemsep=1pt,topsep=0pt,parsep=0pt]
+\item bell-shaped, symmetric about $x=\mu$
+\item total area $=1$; mean $=\mu$; variance $=\sigma^{2}$
+\item continuous: $\Pp{X=a}=0$, so $\Pp{X<a}=\Pp{X\leqslant a}$
+\item $\sigma$ larger $\Rightarrow$ wider and flatter
+\end{itemize}
+\end{minipage}
+\begin{center}\bba\small
+\begin{tabular}{|M{3.8cm}|M{5.6cm}|L{5.8cm}|}\hline
+\textbf{Item} & \textbf{Result} & \textbf{Note}\\\Xhline{2pt}
+Standardise & $Z=\dfrac{X-\mu}{\sigma}\sim\mathrm{N}(0,1)$ & $Z$ = number of s.d.\ from the mean\\\hline
+Symmetry & $\Pp{X<\mu-a}=\Pp{X>\mu+a}$ & $\Pp{Z<-z}=\Pp{Z>z}=1-\Pp{Z<z}$\\\hline
+Complement & $\Pp{X>a}=1-\Pp{X<a}$ & total area is $1$\\\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 1,horizontal sep=1.2cm},nc,width=6.6cm,height=3.2cm]
+\nextgroupplot
+\addplot[fill=blue!30,draw=none,domain=-3.4:-1.2]{\nf{0}}\closedcycle;
+\addplot[fill=blue!30,draw=none,domain=1.2:3.4]{\nf{0}}\closedcycle;
+\addplot[black,semithick]{\nf{0}};
+\node[below] at (axis cs:-1.2,0){$\mu-a$};\node[below] at (axis cs:1.2,0){$\mu+a$};\node[below] at (axis cs:0,0){$\mu$};
+\nextgroupplot
+\addplot[fill=blue!30,draw=none,domain=-1.2:1.2]{\nf{0}}\closedcycle;
+\addplot[black,semithick]{\nf{0}};
+\node[below] at (axis cs:-1.2,0){$\mu-a$};\node[below] at (axis cs:1.2,0){$\mu+a$};
+\node[font=\small] at (axis cs:0,0.18){$p$};
+\end{groupplot}\end{tikzpicture}\end{center}
+\sidenote{Left: equal tails. Right: $\Pp{\mu-a<X<\mu+a}=p$, so each tail is $\tfrac{1-p}{2}$.}\par
+\section{Finding Probabilities and Values (GC)}
+\begin{center}\ba\small
+\begin{tabular}{|M{4.2cm}|M{6.2cm}|M{4.6cm}|}\hline
+\textbf{Find} & \textbf{GC command} & \textbf{Graph}\\\Xhline{2pt}
+$\Pp{a<X<b}$ & \gc{normalcdf(a,b,$\mu$,$\sigma$)} & \rule{0pt}{1.3cm}\begin{tikzpicture}[scale=1.35,baseline=(current bounding box.center),font=\scriptsize]\fill[blue!25] (-0.6,0) -- plot[domain=-0.6:0.25,samples=40] (\x,{0.55*exp(-(\x)^2/(2*0.16))}) -- (0.25,0) -- cycle;\draw[thin,black!55] (-1.3,0)--(1.3,0);\draw[thin,black!25,dashed] (0,0)--(0,0.6);\draw[thick,blue!50!black] plot[domain=-1.3:1.3,samples=60] (\x,{0.55*exp(-(\x)^2/(2*0.16))});\draw (-0.6,0)--(-0.6,-0.05) node[below,inner sep=1pt]{$a$};\draw (0.25,0)--(0.25,-0.05) node[below,inner sep=1pt]{$b$};\draw[-{Stealth},thin] (0.75,0.75) node[anchor=south,inner sep=1pt]{?}--(-0.15,0.25);\end{tikzpicture}\\\hline
+$\Pp{X<a}$ & \gc{normalcdf(-1E99,a,$\mu$,$\sigma$)} & \rule{0pt}{1.3cm}\begin{tikzpicture}[scale=1.35,baseline=(current bounding box.center),font=\scriptsize]\fill[blue!25] (-1.3,0) -- plot[domain=-1.3:-0.45,samples=40] (\x,{0.55*exp(-(\x)^2/(2*0.16))}) -- (-0.45,0) -- cycle;\draw[thin,black!55] (-1.3,0)--(1.3,0);\draw[thin,black!25,dashed] (0,0)--(0,0.6);\draw[thick,blue!50!black] plot[domain=-1.3:1.3,samples=60] (\x,{0.55*exp(-(\x)^2/(2*0.16))});\draw (-0.45,0)--(-0.45,-0.05) node[below,inner sep=1pt]{$a$};\draw[-{Stealth},thin] (-1.0,0.6) node[anchor=south,inner sep=1pt]{?}--(-0.6,0.08);\end{tikzpicture}\\\hline
+$\Pp{X>a}$ & \gc{normalcdf(a,1E99,$\mu$,$\sigma$)} & \rule{0pt}{1.3cm}\begin{tikzpicture}[scale=1.35,baseline=(current bounding box.center),font=\scriptsize]\fill[blue!25] (0.35,0) -- plot[domain=0.35:1.3,samples=40] (\x,{0.55*exp(-(\x)^2/(2*0.16))}) -- (1.3,0) -- cycle;\draw[thin,black!55] (-1.3,0)--(1.3,0);\draw[thin,black!25,dashed] (0,0)--(0,0.6);\draw[thick,blue!50!black] plot[domain=-1.3:1.3,samples=60] (\x,{0.55*exp(-(\x)^2/(2*0.16))});\draw (0.35,0)--(0.35,-0.05) node[below,inner sep=1pt]{$a$};\draw[-{Stealth},thin] (1.0,0.6) node[anchor=south,inner sep=1pt]{?}--(0.55,0.12);\end{tikzpicture}\\\hline
+$x$ with $\Pp{X<x}=p$ & \gc{invNorm(p,$\mu$,$\sigma$,LEFT)} & \rule{0pt}{1.3cm}\begin{tikzpicture}[scale=1.35,baseline=(current bounding box.center),font=\scriptsize]\fill[blue!25] (-1.3,0) -- plot[domain=-1.3:-0.4,samples=40] (\x,{0.55*exp(-(\x)^2/(2*0.16))}) -- (-0.4,0) -- cycle;\draw[thin,black!55] (-1.3,0)--(1.3,0);\draw[thin,black!25,dashed] (0,0)--(0,0.6);\draw[thick,blue!50!black] plot[domain=-1.3:1.3,samples=60] (\x,{0.55*exp(-(\x)^2/(2*0.16))});\draw (-0.4,0)--(-0.4,-0.05) node[below,inner sep=1pt]{?};\draw[-{Stealth},thin] (-1.0,0.6) node[anchor=south,inner sep=1pt]{$p$}--(-0.55,0.1);\end{tikzpicture}\\\hline
+$x$ with $\Pp{X>x}=p$ & \gc{invNorm(p,$\mu$,$\sigma$,RIGHT)} & \rule{0pt}{1.3cm}\begin{tikzpicture}[scale=1.35,baseline=(current bounding box.center),font=\scriptsize]\fill[blue!25] (0.4,0) -- plot[domain=0.4:1.3,samples=40] (\x,{0.55*exp(-(\x)^2/(2*0.16))}) -- (1.3,0) -- cycle;\draw[thin,black!55] (-1.3,0)--(1.3,0);\draw[thin,black!25,dashed] (0,0)--(0,0.6);\draw[thick,blue!50!black] plot[domain=-1.3:1.3,samples=60] (\x,{0.55*exp(-(\x)^2/(2*0.16))});\draw (0.4,0)--(0.4,-0.05) node[below,inner sep=1pt]{?};\draw[-{Stealth},thin] (1.0,0.6) node[anchor=south,inner sep=1pt]{$p$}--(0.55,0.1);\end{tikzpicture}\\\hline
+$x$ with $\Pp{\mu-c<X<\mu+c}=p$ & \gc{invNorm(p,$\mu$,$\sigma$,CENTER)}\newline{\footnotesize the two values ($\mu\pm c$) need to be symmetrical about $\mu$} & \rule{0pt}{1.3cm}\begin{tikzpicture}[scale=1.35,baseline=(current bounding box.center),font=\scriptsize]\fill[blue!25] (-0.5,0) -- plot[domain=-0.5:0.5,samples=40] (\x,{0.55*exp(-(\x)^2/(2*0.16))}) -- (0.5,0) -- cycle;\draw[thin,black!55] (-1.3,0)--(1.3,0);\draw[thin,black!25,dashed] (0,0)--(0,0.6);\draw[thick,blue!50!black] plot[domain=-1.3:1.3,samples=60] (\x,{0.55*exp(-(\x)^2/(2*0.16))});\draw (-0.5,0)--(-0.5,-0.05) node[below,inner sep=1pt]{?};\draw (0.5,0)--(0.5,-0.05) node[below,inner sep=1pt]{?};\draw[-{Stealth},thin] (0.9,0.75) node[anchor=south,inner sep=1pt]{$p$}--(0.15,0.3);\end{tikzpicture}\\\hline
+\end{tabular}\end{center}
+\begin{info}[title=Note]
+Remember to square root your variance before keying into GC!
+\end{info}
+\Needspace{9\baselineskip}
+\noindent\begin{minipage}[t]{0.48\textwidth}
+\exlab $X\sim\No{60}{8^{2}}$: find $\Pp{52<X<70}$, and $x$ with $\Pp{X>x}=0.2$
+\cdisp{\Pp{52<X<70}&=0.736\\\Pp{X<x}&=0.8\\\therefore\ x&=66.7}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\exlab Find $\mu$, $\sigma$ given $\Pp{X<30}=0.1$ and $\Pp{X>46}=0.2$
+\par\noindent Let $X\sim\No{\mu}{\sigma^{2}}$
+\cdisp{\Pp{X<30}&=0.1,\quad\Pp{X>46}=0.2\\\Pp{Z<\tfrac{30-\mu}{\sigma}}&=0.1,\quad\Pp{Z>\tfrac{46-\mu}{\sigma}}=0.2\\\dfrac{30-\mu}{\sigma}&=-1.2816,\quad\dfrac{46-\mu}{\sigma}=0.8416}
+\noindent Solving simultaneously,
+\cdisp{\sigma&=7.54,\quad\mu=39.7}
+\sidenote{Sometimes if the probabilities given are similar, e.g.\ $\Pp{X<30}=0.1$ \& $\Pp{X>50}=0.1$, we should use symmetry to find $\mu$, i.e.\ $\mu=\frac{30+50}{2}=40$.}
+\end{minipage}
+\begin{caution}[title=invNorm Double Inequalities,colback=orange!12,colframe=orange!35!black,underlay={\path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);\path[fill=orange!65!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=9mm]interior.north west);}]
+\begin{center}\ba\small
+\begin{tabular}{|M{2.5cm}|M{4.3cm}|M{3.3cm}|M{2.4cm}|}\hline
+\textbf{Inequality} & \textbf{Solution} & \textbf{Graph} & \textbf{Note}\\\Xhline{2pt}
+$\Pp{X\boldsymbol{\leqslant}a}<k$ & $a<$ \gc{invNorm(k,$\mu$,$\sigma$,LEFT)} & \rule{0pt}{1.2cm}\begin{tikzpicture}[scale=1.2,baseline=(current bounding box.center),font=\scriptsize]\fill[blue!25] (-1.3,0) -- plot[domain=-1.3:-0.45,samples=40] (\x,{0.5*exp(-(\x)^2/(2*0.16))}) -- (-0.45,0) -- cycle;\fill[black!20] (-1.3,-0.07) rectangle (-0.45,-0.01);\draw[thin,black!55] (-1.3,0)--(1.3,0);\draw[thick,blue!50!black] plot[domain=-1.3:1.3,samples=60] (\x,{0.5*exp(-(\x)^2/(2*0.16))});\draw (-0.45,0)--(-0.45,-0.05) node[below,inner sep=1pt]{$q$};\draw[-{Stealth},black!60,thick] (-0.45,-0.32)--(-1.05,-0.32) node[left,inner sep=1pt,text=black!70]{$a$};\end{tikzpicture} & keep the outer sign $<$\\\hline
+$\Pp{X\boldsymbol{\leqslant}a}>k$ & $a>$ \gc{invNorm(k,$\mu$,$\sigma$,LEFT)} & \rule{0pt}{1.2cm}\begin{tikzpicture}[scale=1.2,baseline=(current bounding box.center),font=\scriptsize]\fill[blue!25] (-1.3,0) -- plot[domain=-1.3:-0.45,samples=40] (\x,{0.5*exp(-(\x)^2/(2*0.16))}) -- (-0.45,0) -- cycle;\fill[black!20] (-0.45,-0.07) rectangle (1.3,-0.01);\draw[thin,black!55] (-1.3,0)--(1.3,0);\draw[thick,blue!50!black] plot[domain=-1.3:1.3,samples=60] (\x,{0.5*exp(-(\x)^2/(2*0.16))});\draw (-0.45,0)--(-0.45,-0.05) node[below,inner sep=1pt]{$q$};\draw[-{Stealth},black!60,thick] (-0.45,-0.32)--(0.14999999999999997,-0.32) node[right,inner sep=1pt,text=black!70]{$a$};\end{tikzpicture} & keep the outer sign $>$\\\hline
+$\Pp{X\boldsymbol{\geqslant}a}<k$ & $a>$ \gc{invNorm(k,$\mu$,$\sigma$,RIGHT)} & \rule{0pt}{1.2cm}\begin{tikzpicture}[scale=1.2,baseline=(current bounding box.center),font=\scriptsize]\fill[blue!25] (0.45,0) -- plot[domain=0.45:1.3,samples=40] (\x,{0.5*exp(-(\x)^2/(2*0.16))}) -- (1.3,0) -- cycle;\fill[black!20] (0.45,-0.07) rectangle (1.3,-0.01);\draw[thin,black!55] (-1.3,0)--(1.3,0);\draw[thick,blue!50!black] plot[domain=-1.3:1.3,samples=60] (\x,{0.5*exp(-(\x)^2/(2*0.16))});\draw (0.45,0)--(0.45,-0.05) node[below,inner sep=1pt]{$q$};\draw[-{Stealth},black!60,thick] (0.45,-0.32)--(1.05,-0.32) node[right,inner sep=1pt,text=black!70]{$a$};\end{tikzpicture} & flip the outer sign $<$\\\hline
+$\Pp{X\boldsymbol{\geqslant}a}>k$ & $a<$ \gc{invNorm(k,$\mu$,$\sigma$,RIGHT)} & \rule{0pt}{1.2cm}\begin{tikzpicture}[scale=1.2,baseline=(current bounding box.center),font=\scriptsize]\fill[blue!25] (0.45,0) -- plot[domain=0.45:1.3,samples=40] (\x,{0.5*exp(-(\x)^2/(2*0.16))}) -- (1.3,0) -- cycle;\fill[black!20] (-1.3,-0.07) rectangle (0.45,-0.01);\draw[thin,black!55] (-1.3,0)--(1.3,0);\draw[thick,blue!50!black] plot[domain=-1.3:1.3,samples=60] (\x,{0.5*exp(-(\x)^2/(2*0.16))});\draw (0.45,0)--(0.45,-0.05) node[below,inner sep=1pt]{$q$};\draw[-{Stealth},black!60,thick] (0.45,-0.32)--(-0.14999999999999997,-0.32) node[left,inner sep=1pt,text=black!70]{$a$};\end{tikzpicture} & flip the outer sign $>$\\\hline
+\end{tabular}\end{center}
+\end{caution}
+
+\section{Linear Functions and Combinations of Normals}
+\begin{center}\ba\small
+\begin{tabular}{|M{5.2cm}|M{6.6cm}|L{3.4cm}|}\hline
+\textbf{Situation} & \textbf{Distribution} & \textbf{Condition}\\\Xhline{2pt}
+$aX+b$ & $\No{a\mu+b}{a^{2}\sigma^{2}}$ & $X$ normal\\\hline
+$aX\pm bY$ & $\No{a\mu_{X}\pm b\mu_{Y}}{a^{2}\sigma_{X}^{2}+b^{2}\sigma_{Y}^{2}}$ & $X$, $Y$ independent normals\\\hline
+$X_{1}+X_{2}+\cdots+X_{n}$ & $\No{n\mu}{n\sigma^{2}}$ & independent copies of $X$\\\hline
+$nX$ & $\No{n\mu}{n^{2}\sigma^{2}}$ & one observation $\times\,n$\\\hline
+\end{tabular}\end{center}
+\begin{mistake}[title=Common mistake]
+\begin{itemize}\setlength{\itemsep}{0pt}\item Variances \textbf{add} for both $X+Y$ and $X-Y$: $\Var(X-Y)=\Var(X)+\Var(Y)$.\item $\Var(2X)=4\Var(X)\neq\Var(X_{1}+X_{2})=2\Var(X)$.\end{itemize}
+\end{mistake}
+\noindent\exlab $X\sim\No{120}{15^{2}}$, $Y\sim\No{100}{8^{2}}$ independent; $\Pp{X>Y}$
+\cdisp{X-Y&\sim\No{20}{15^{2}+8^{2}}\\&=\No{20}{17^{2}}\\\Pp{X>Y}&=\Pp{X-Y>0}\\&=0.880}
+\section{Further Question Types}
+\begin{center}\renewcommand{\arraystretch}{1.12}\footnotesize
+\begin{tabular}{|L{4.6cm}|L{10.6cm}|}\hline
+\textbf{Type} & \textbf{Method}\\\Xhline{2pt}
+Percentage change (``loses $5\%$'') & new variable is $0.95X$: $\No{0.95\mu}{0.95^{2}\sigma^{2}}$ (not $X-5$)\\\hline
+Total of different items (e.g.\ $2$ of $X$ and $3$ of $Y$) & $T=X_{1}+X_{2}+Y_{1}+Y_{2}+Y_{3}$: $\E(T)=2\mu_{X}+3\mu_{Y}$, $\Var(T)=2\sigma_{X}^{2}+3\sigma_{Y}^{2}$; with scaled items add $a^{2}\sigma^{2}$\\\hline
+``differs by less than $c$'' & $\Pp{|X-Y|<c}=\Pp{-c<X-Y<c}$: \gc{normalcdf(-c,c,$\mu$,$\sigma$)}\\\hline
+Unknown $\mu$ or $\sigma$ (one condition) & standardise: $\dfrac{a-\mu}{\sigma}=$ \gc{invNorm(p)}, solve (the sign of $z$ follows the tail)\\\hline
+Range of $\sigma$ (or $\mu$) for $\Pp{X>a}<p$ & $\dfrac{a-\mu}{\sigma}>$ \gc{invNorm(1-p)}; $\sigma>0$, so multiply through without reversing; then solve\\\hline
+Normal event, then count (``$k$ of $n$ items'') & $p=\Pp{\text{event}}$ by GC; then $\Bi{n}{p}$\\\hline
+Sketch of normal curves & bell shape, axis marked at $\mu$, $\mu\pm\sigma$, $\mu\pm2\sigma$, $\mu\pm3\sigma$; same $\mu$: larger $\sigma$ is wider and lower; different $\mu$: curves shifted; each has area $1$\\\hline
+Model unsuitable & compute $\Pp{X<0}$ (or outside a natural range): not negligible; or non-symmetric data\\\hline
+\end{tabular}\end{center}
+\noindent\begin{minipage}[t]{0.48\textwidth}
+\exlab $X\sim\No{50}{3^{2}}$, $Y\sim\No{30}{2^{2}}$ independent; $T=2X+3Y$, find $\Pp{T>200}$
+\cdisp{\E(T)&=2(50)+3(30)=190\\\Var(T)&=4(9)+9(4)=72\\T&\sim\No{190}{72}\\\Pp{T>200}&=0.119}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\exlab The mass, $X$ grams, of a bag of rice is modelled by $X\sim\No{500}{12^{2}}$. A bag is underweight if its mass is less than $480$ grams. $20$ bags are chosen at random. Find the probability that at least $2$ of the bags are underweight.
+\cdisp{X&\sim\No{500}{12^{2}}\\\Pp{X<480}&=0.04779\\\text{let }Y&\sim\Bi{20}{0.04779}\\\Pp{Y\geqslant2}&=1-\Pp{Y\leqslant1}\\&=1-0.75249\\&=0.248}
+\end{minipage}
+\par\medskip
+\noindent\exlab The height, $X$ cm, of a student is modelled by $X\sim\No{165}{6^{2}}$. Sketch the normal curve of $X$, marking $\mu\pm\sigma$, $\mu\pm2\sigma$ and $\mu\pm3\sigma$ on the horizontal axis, and shade the region representing $\Pp{159<X<177}$. Hence find $\Pp{159<X<177}$.
+\begin{center}\begin{tikzpicture}[x=1.05cm,y=4cm,font=\small]\fill[blue!25] (-1,0) -- plot[domain=-1:2,samples=50] (\x,{0.5*exp(-(\x)^2/2)}) -- (2,0) -- cycle;\draw[thin,black!55,-{Stealth}] (-3.6,0)--(3.8,0) node[right]{$x$};\draw[thick,blue!50!black] plot[domain=-3.4:3.4,samples=80] (\x,{0.5*exp(-(\x)^2/2)});\draw[dashed,thin] (0,0)--(0,0.5);\draw (-3,0)--(-3,-0.02) node[below,font=\small]{147};\draw (-2,0)--(-2,-0.02) node[below,font=\small]{153};\draw (-1,0)--(-1,-0.02) node[below,font=\small]{159};\draw (0,0)--(0,-0.02) node[below,font=\small]{165};\draw (1,0)--(1,-0.02) node[below,font=\small]{171};\draw (2,0)--(2,-0.02) node[below,font=\small]{177};\draw (3,0)--(3,-0.02) node[below,font=\small]{183};\node at (0.5,0.2){$0.819$};\end{tikzpicture}\end{center}
+\cdisp{\Pp{159<X<177}&=\Pp{-1<Z<2}\\&=0.819}

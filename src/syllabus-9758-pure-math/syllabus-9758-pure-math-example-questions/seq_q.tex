@@ -1,0 +1,102 @@
+\providecommand{\gcph}[1]{\par\noindent\fbox{\parbox{0.6\textwidth}{\centering\small\color{red}[GC SCREEN PLACEHOLDER] #1}}\par\smallskip}
+%% ============================================================ 61  JPJC 2025 Prelim P1 Q8(b)
+\defQ{61}{}{%
+It is given $\displaystyle\sum_{r=1}^{n}r^{3}=\frac{n^{2}(n+1)^{2}}{4}$ and $u_r=2r^{3}+5$.
+\begin{qparts}
+\pt{(i)} Find $\displaystyle\sum_{r=1}^{n}u_r$. \mk{2}
+\pt{(ii)} Hence, or otherwise, find $\displaystyle\sum_{r=2}^{n}\left(2(r+2)^{3}+5\right)$. \mk{3}
+\pt{(iii)} Explain why the series $\displaystyle\sum_{r=1}^{\infty}u_r$ does not converge. \mk{1}
+\end{qparts}
+\src{JPJC 2025 Prelim P1 Q8(b)}}
+\defS{61}{%
+\begin{gtpart}{(i)}{2}\begin{topalign}
+\sum_{r=1}^{n}\left(2r^{3}+5\right)&=2\sum_{r=1}^{n}r^{3}+\sum_{r=1}^{n}5\\&=2\left(\frac{n^{2}(n+1)^{2}}{4}\right)+5n\\&=\frac{n^{2}(n+1)^{2}}{2}+5n
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(ii)}{3}\begin{topalign}
+\sum_{r=2}^{n}\left(2(r+2)^{3}+5\right)&=\left(2(2+2)^{3}+5\right)+\dots+\left(2(n+2)^{3}+5\right)\\&=\sum_{r=4}^{n+2}\left(2r^{3}+5\right)\\&=\sum_{r=1}^{n+2}\left(2r^{3}+5\right)-\sum_{r=1}^{3}\left(2r^{3}+5\right)\\&=\frac{(n+2)^{2}(n+3)^{2}}{2}+5(n+2)-\left[\left(\frac{3^{2}(4)^{2}}{2}\right)+5(3)\right]\\&=\frac{(n+2)^{2}(n+3)^{2}}{2}+5n-77
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(iii)}{1}\begin{topalign}
+\text{From (i) }\sum_{r=1}^{n}u_r&=\frac{n^{2}(n+1)^{2}}{2}+5n\\\text{As }n\to\infty,\ \frac{n^{2}(n+1)^{2}}{2}&\to\infty,\quad5n\to\infty
+\end{topalign}
+Hence, $\displaystyle\sum_{r=1}^{n}u_r=\frac{n^{2}(n+1)^{2}}{2}+5n\to\infty$, series $\displaystyle\sum_{r=1}^{\infty}u_r$ does not converge.\end{gtpart}}
+%% ============================================================ 62  VJC 2025 Prelim P1 Q6(a), (b), (d)
+\defQ{62}{}{%
+It is given that $\displaystyle\sum_{r=2}^{n}\frac{1}{r\left(r^{2}-1\right)}=\frac14+\frac{1}{2(n+1)}-\frac{1}{2n}$.
+\begin{qparts}
+\pt{(a)} Show that $\displaystyle\sum_{r=2}^{n}\frac{1}{r\left(r^{2}-1\right)}$ is less than $\frac14$. \mk{2}
+\pt{(b)} Give a reason why the series $\displaystyle\sum_{r=2}^{\infty}\frac{1}{r\left(r^{2}-1\right)}$ converges, and write down its value. \mk{2}
+\pt{(d)} Find $\displaystyle\sum_{r=m+1}^{N}\frac{1}{(r-m)(r-m+1)(r-m+2)}$, where $m$ and $N$ are integers with $N>m>0$.\par (There is no need to express your answer as a single algebraic fraction.) \mk{2}
+\end{qparts}
+\src{VJC 2025 Prelim P1 Q6(a), (b), (d)}}
+\defS{62}{%
+\begin{gtpart}{(a)}{2}\begin{topalign}
+\frac{1}{2(n+1)}-\frac{1}{2n}=\frac{n-(n+1)}{2n(n+1)}&=\frac{-1}{2n(n+1)}<0\quad\text{for all }n\geqslant2\\\sum_{r=2}^{n}\frac{1}{r\left(r^{2}-1\right)}=\frac14+\frac{1}{2(n+1)}-\frac{1}{2n}&<\frac14
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(b)}{2}\begin{topalign}
+\text{As }n\to\infty,\ \frac{1}{2(n+1)}\to0\ \text{and}\ \frac{1}{2n}&\to0,\\\therefore\sum_{r=2}^{n}\frac{1}{r\left(r^{2}-1\right)}&\to\frac14,\ \text{a constant.}
+\end{topalign}
+Hence $\displaystyle\sum_{r=2}^{\infty}\frac{1}{r\left(r^{2}-1\right)}$ converges and $\displaystyle\sum_{r=2}^{\infty}\frac{1}{r\left(r^{2}-1\right)}=\frac14$.\end{gtpart}
+\begin{gtpart}{(d)}{2}\begin{topalign}
+&\sum_{r=m+1}^{N}\frac{1}{(r-m)(r-m+1)(r-m+2)}\\&=\frac{1}{1(2)(3)}+\frac{1}{2(3)(4)}+\dots+\frac{1}{(N-m)(N-m+1)(N-m+2)}\\&=\sum_{r=2}^{N-m+1}\frac{1}{(r-1)(r)(r+1)}\\&=\sum_{r=2}^{N-m+1}\frac{1}{r\left(r^{2}-1\right)}\\&=\frac14+\frac{1}{2(N-m+2)}-\frac{1}{2(N-m+1)}
+\end{topalign}\end{gtpart}}
+%% ============================================================ 64  NYJC 2025 Prelim P1 Q8
+\defQ{64}{}{%
+A sequence is such that $u_{n+1}=u_n+1.5$, for $n=1,2,3,\dots$.
+\begin{qparts}
+\pt{(a)} Given that $u_{50}=99u_1$, show that $u_1=0.75$. \mk{2}
+\pt{(b)} Find the least value of $n$ such that $u_2+u_4+u_6+\dots+u_{2n}$ is more than 2025. \mk{2}
+\pt{(c)} It is given that $u_{25}$, $u_k$ and $u_5$ are the first three terms of a geometric progression.
+\begin{qparts}
+\pt{(i)} Find $k$. \mk{2}
+\pt{(ii)} Find the sum of the first 13 terms of the geometric series, giving your answer to 3 decimal places. \mk{2}
+\end{qparts}
+\end{qparts}
+\src{NYJC 2025 Prelim P1 Q8}}
+\defS{64}{%
+\begin{gtpart}{(a)}{2}Note that the sequence is an arithmetic progression with common difference $1.5$
+\begin{topalign}
+u_{50}&=u_1+49(1.5)\\99u_1&=u_1+73.5\\u_1&=0.75
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(b)}{2}\textbf{\underline{Method 1}}\par
+$\displaystyle\sum_{k=1}^{n}u_{2k}=u_2+u_4+\dots+u_{2n}$ is a sum of $n$ terms of an arithmetic sequence with first term $u_2=0.75+1.5=2.25$ and common difference $2(1.5)=3$
+\begin{topalign}
+u_2+u_4+\dots+u_{2n}&=\frac{n}{2}\left(2(2.25)+(n-1)(3)\right)\\&=\frac{n}{2}(1.5+3n)
+\end{topalign}
+From GC, for $\dfrac{n}{2}(1.5+3n)>2025$, least $n=37$\par\smallskip
+\textbf{\underline{Method 2}}
+\begin{topalign}
+\sum_{k=1}^{n}u_{2k}=\sum_{k=1}^{n}\fhlmi{\left(0.75+(2k-1)(1.5)\right)}>2025
+\end{topalign}
+Using GC, least $n=37$\end{gtpart}
+\begin{gtpart}{(c)(i)}{2}\begin{topalign}
+\frac{u_k}{u_{25}}&=\frac{u_5}{u_k}\\u_k^{2}&=u_5u_{25}\\\left[0.75+(k-1)(1.5)\right]^{2}&=\left[0.75+(5-1)(1.5)\right]\left[0.75+(25-1)(1.5)\right]\\0.75+(k-1)(1.5)&=\sqrt{6.75\times36.75}=15.75\\k&=11
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(c)(ii)}{2}\textbf{\underline{Method 1}}
+\begin{topalign}
+\text{Common ratio}&=\frac{15.75}{36.75}=\frac37\\S_{13}&=\frac{36.75\left(1-\left(\frac37\right)^{13}\right)}{1-\frac37}\\&=64.31144\\&=64.311
+\end{topalign}
+\textbf{\underline{Method 2}}
+\begin{topalign}
+\text{Using GC, }\sum_{r=1}^{13}\left(36.75\left(\frac37\right)^{r-1}\right)=64.311
+\end{topalign}\end{gtpart}}
+%% ============================================================ 65  EJC 2025 Prelim P2 Q2
+\defQ{65}{}{%
+A sequence $u_1,u_2,u_3,\dots$ is defined by
+\[u_{n+1}=2u_n\left(1-u_n\right)\]
+for all positive integers $n$.
+\begin{qparts}
+\pt{(a)} Find the possible limits of the sequence, if the sequence is convergent. \mk{2}
+\pt{(b)} For each of the following, evaluate $u_2$ and $u_3$, and state whether the sequence is convergent:\par
+\textbullet\quad $u_1=0$,\par
+\textbullet\quad $u_1=0.01$,\par
+\textbullet\quad $u_1=-0.01$. \mk{6}
+\end{qparts}
+\src{EJC 2025 Prelim P2 Q2}}
+\defS{65}{%
+\begin{gtpart}{(a)}{2}Let $L$ be the limit of the sequence $u_{n+1}=2u_n\left(1-u_n\right)$.
+\begin{topalign}
+L&=2L(1-L)\\2L^{2}-L&=0\\L(2L-1)&=0\\L=0\ &\text{or}\ L=\frac12
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(b)}{6}When $u_1=0$, $u_2=0$, $u_3=0$, sequence is convergent.\par\smallskip
+When $u_1=0.01$, $u_2=0.0198$ (exact), $u_3=0.0388$ (3 s.f.), sequence is convergent.\par\smallskip
+When $u_1=-0.01$, $u_2=-0.0202$ (exact), $u_3=-0.0412$ (3 s.f.), sequence is not convergent.\end{gtpart}}

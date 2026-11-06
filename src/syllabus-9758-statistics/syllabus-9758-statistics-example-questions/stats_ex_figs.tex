@@ -1,0 +1,198 @@
+% TikZ illustrations for the Permutations & Combinations solutions (additions only)
+\usetikzlibrary{matrix,decorations.pathreplacing}
+\tikzset{slot/.style={draw,minimum width=6mm,minimum height=6mm,inner sep=0pt,font=\scriptsize},
+ fill1/.style={slot,fill=teal!25}, fill2/.style={slot,fill=orange!35},
+ glue/.style={draw=blue!50!black,rounded corners=2pt,thick},
+ gap/.style={font=\scriptsize\bfseries,text=red!70!black},
+ pccap/.style={font=\scriptsize,align=center,text=black!70}}
+\newcommand{\pcfig}[1]{\par\smallskip{\centering\begin{tikzpicture}#1\end{tikzpicture}\par}\smallskip}
+% ---------- Q1 (a)(i): 12 locations, one row per storey; 5 chosen, 1 for the distinct treasure
+\newcommand{\pcstorey}[3]{% #1 y, #2 label, #3 list of styles
+ \node[pccap,anchor=east] at (0.4,#1){#2};
+ \foreach \s [count=\i] in {#3}{\node[\s] at (\i,#1){};}}
+\newcommand{\figQoneAi}{\pcfig{[x=6.6mm,y=7.5mm]
+ \pcstorey{0}{1st storey}{fill2,slot,slot}\node[font=\scriptsize] at (1,0){$\star$};
+ \pcstorey{-1}{2nd storey}{fill1,slot,slot}
+ \pcstorey{-2}{3rd storey}{fill1,slot,fill1,slot,fill1,slot}
+ \node[pccap,below] at (3.5,-2.5){choose 5 of the 12 locations: $\binom{12}{5}$;\quad the distinct treasure ($\star$) takes 1 of these 5: $\binom51$};}}
+% ---------- Q1 (a)(ii): exactly 2 on 3rd storey, one row per storey
+\newcommand{\figQoneAii}{\pcfig{[x=6.6mm,y=7.5mm]
+ \pcstorey{0}{1st storey}{fill1,slot,slot}
+ \pcstorey{-1}{2nd storey}{fill1,fill1,slot}
+ \pcstorey{-2}{3rd storey}{fill2,fill2,slot,slot,slot,slot}
+ \draw[decorate,decoration={brace,amplitude=3pt}] (3.5,0.4)--(3.5,-1.4) node[midway,right=3pt,pccap,align=left]{1st \& 2nd storeys (6 locations):\\ choose 3, $\binom63$};
+ \draw[decorate,decoration={brace,amplitude=3pt}] (6.5,-1.6)--(6.5,-2.4) node[midway,right=3pt,pccap]{3rd storey (6): choose 2, $\binom62$};
+ \node[pccap,below] at (3.5,-2.5){then the distinct treasure goes to 1 of the 5 chosen locations: $\binom51$};}}
+% ---------- Q1 (a)(iii): case table
+\newcommand{\figQoneAiii}{\pcfig{[font=\scriptsize]
+ \matrix[matrix of nodes,ampersand replacement=\&,nodes={minimum width=15mm,minimum height=5mm,anchor=center,draw=black!50},
+   row 1/.style={nodes={fill=blue!8,font=\scriptsize\bfseries}},column 1/.style={nodes={minimum width=12mm}}] (m) {
+   Case \& 1st (3) \& 2nd (3) \& 3rd (6) \& ways\\
+   1 \& 2 \& 1 \& 2 \& 675\\
+   2 \& 1 \& 2 \& 2 \& 675\\
+   3 \& 1 \& 1 \& 3 \& 900\\};
+ \node[pccap,below=1mm] at (m.south){each row: $\binom{3}{\cdot}\binom{3}{\cdot}\binom{6}{\cdot}\times\binom51$ (distinct treasure); 5 treasures in total};}}
+% ---------- Q1 (b): 5 team blocks round a table, 2 game masters slotted into the 5 gaps
+\newcommand{\figQoneB}{\pcfig{[font=\scriptsize]
+ \draw[black!40] (0,0) circle (1.55);
+ \foreach \k in {0,...,4}{\pgfmathsetmacro\a{90+72*\k}
+   \node[glue,fill=teal!15,minimum width=9mm,minimum height=4.5mm] at (\a:1.55){\pgfmathparse{int(\k+1)}T$_{\pgfmathresult}$\,T$_{\pgfmathresult}$};
+   \node[gap] at (\a+36:1.55){$\wedge$};}
+ \node[pccap] at (0,0){table};
+ \node[pccap,anchor=west] at (2.1,0.45){$(5-1)!$ ways round the table,};
+ \node[pccap,anchor=west] at (2.1,0.05){$(2!)^5$ within the 5 teams;};
+ \node[pccap,anchor=west] at (2.1,-0.35){game masters in 2 of the 5 gaps $\wedge$:};
+ \node[pccap,anchor=west] at (2.1,-0.75){$\binom52\,2!$ (never next to each other)};}}
+% ---------- Q2: complement
+\newcommand{\figQtwo}{\pcfig{[font=\scriptsize,x=5.2mm]
+ \foreach \i in {1,...,18}{\pgfmathsetmacro\c{\i<6?"orange!35":(\i<12?"teal!25":"blue!15")}\node[slot,minimum width=4.6mm,fill=\c] at (\i,0){};}
+ \draw[decorate,decoration={brace,amplitude=3pt}] (0.6,0.4)--(5.4,0.4) node[midway,above=2pt,pccap]{5 youths};
+ \draw[decorate,decoration={brace,amplitude=3pt}] (5.6,0.4)--(11.4,0.4) node[midway,above=2pt,pccap]{6 young adults};
+ \draw[decorate,decoration={brace,amplitude=3pt}] (11.6,0.4)--(18.4,0.4) node[midway,above=2pt,pccap]{7 seniors};
+ \node[pccap,below,align=center] at (9.5,-0.5){all teams $-$ (no youth: 12 from 13) $-$ (no young adult: 12 from 12);\\ no senior is impossible (only 11 others)};}}
+% ---------- Q3 (a)(i)
+\newcommand{\figQthreeAi}{\pcfig{[font=\scriptsize,x=6mm]
+ \foreach \i/\s in {1/fill2,2/fill2,3/slot,4/slot,5/slot}{\node[\s] at (\i,0){A};}
+ \foreach \i/\s in {7/fill1,8/fill1,9/slot,10/slot}{\node[\s] at (\i,0){D};}
+ \node[slot,fill=blue!20] at (12,0){G};\node[slot] at (13,0){G};\node[slot] at (14,0){G};
+ \node[pccap,below] at (3,-0.4){$^{5}C_{2}$};\node[pccap,below] at (8.5,-0.4){$^{4}C_{2}$};\node[pccap,below] at (13,-0.4){$^{3}C_{1}$};}}
+% ---------- Q3 (a)(ii): case table
+\newcommand{\figQthreeAii}{\pcfig{[font=\scriptsize]
+ \matrix[matrix of nodes,ampersand replacement=\&,nodes={minimum width=13mm,minimum height=5mm,anchor=center,draw=black!50},
+   row 1/.style={nodes={fill=blue!8,font=\scriptsize\bfseries}}] (m) {
+   Case \& G (3) \& A (5) \& D (4) \& ways\\
+   1 \& 1 \& 2 \& 2 \& 180\\
+   2 \& 1 \& 1 \& 3 \& 60\\
+   3 \& 1 \& 0 \& 4 \& 3\\};
+ \node[pccap,below=1mm] at (m.south){team of 5: exactly 1 goalkeeper, at most 2 attackers};}}
+% ---------- Q3 (b): 4 positions for the single D
+\newcommand{\figQthreeB}{\pcfig{[font=\scriptsize,x=6mm,y=6.5mm]
+ \foreach \r in {0,...,3}{\foreach \c in {0,...,3}{\ifnum\c=\r\node[fill1] at (\c,-\r){D};\else\node[fill2] at (\c,-\r){A};\fi}
+   \node[pccap,anchor=west] at (4,-\r){$\left(\frac59\right)^3\left(\frac49\right)$};}
+ \foreach \c in {0,...,3}{\node[pccap] at (\c,0.7){pass \pgfmathparse{int(\c+1)}\pgfmathresult};}
+ \node[pccap,anchor=west] at (6.6,-1.5){$\times 4$ positions for D};}}
+% ---------- Q3 (c): overlap of "first 3" and "last 3"
+\newcommand{\figQthreeC}{\pcfig{[font=\scriptsize]
+ \draw[fill=orange!20,fill opacity=0.6] (-0.6,0) ellipse (1.25 and 0.8);
+ \draw[fill=teal!20,fill opacity=0.6] (0.6,0) ellipse (1.25 and 0.8);
+ \node at (-1.2,0){AAA\_};\node at (1.2,0){\_AAA};\node[font=\scriptsize\bfseries] at (0,0){AAAA};
+ \node[pccap] at (-1.3,1.05){first 3 to A};\node[pccap] at (1.3,1.05){last 3 to A};
+ \node[pccap,anchor=west] at (2.2,0.25){Method 1: add both, subtract overlap};
+ \node[pccap,anchor=west] at (2.2,-0.25){Method 2: AAAD $+$ DAAA $+$ AAAA};}}
+% ---------- Q4 (i): 5 distinct roles
+\newcommand{\figQfourI}{\pcfig{[font=\scriptsize,x=10mm]
+ \foreach \i in {1,...,5}{\node[slot,minimum width=8mm] at (\i,0){role \i};}
+ \node[pccap,below] at (3,-0.4){choose 5 of 10: $\binom{10}{5}$, then assign the 5 distinct roles: $5!$};}}
+% ---------- Q4 (iii): round table, B between A and C
+\newcommand{\figQfourIii}{\pcfig{[font=\scriptsize]
+ \draw[black!40] (0,0) circle (1.3);
+ \node[glue,fill=orange!25,minimum width=14mm,minimum height=5mm] at (90:1.3){A\,B\,C};
+ \foreach \k in {1,...,7}{\node[draw,circle,inner sep=1pt,fill=white] at (90+45*\k:1.3){M};}
+ \node[pccap] at (0,0){8 units};
+ \node[pccap,anchor=west] at (1.8,0.2){$(8-1)!$ round the table,};
+ \node[pccap,anchor=west] at (1.8,-0.2){$2!$ for A\,B\,C or C\,B\,A};}}
+% ---------- Q4 (iv): 2 rows of 5, three cases ("-" = another person)
+\def\pcdash{-}
+\newcommand{\pcrow}[3]{\foreach \t [count=\i] in {#2}{\edef\pctt{\t}\ifx\pctt\pcdash\node[slot] at (#3+0.62*\i,#1){};\else\node[slot,fill=orange!30] at (#3+0.62*\i,#1){\t};\fi}}
+\newcommand{\figQfourIv}{\pcfig{[font=\scriptsize,x=1cm,y=0.68cm]
+ \pcrow{0}{B,-,-,-,-}{0}\pcrow{-1}{A,-,C,-,-}{0}\node[pccap] at (1.86,0.75){Case 1};
+ \pcrow{0}{B,-,A,-,-}{3.7}\pcrow{-1}{-,-,-,-,-}{3.7}\node[pccap] at (5.56,0.75){Case 2};}
+ {\centering\scriptsize\color{black!70} Case 1: B in one row, A and C in the other.\\ Case 2: B and one of A, C in the same row, not side by side.\par}\smallskip
+ \pcfig{[font=\scriptsize,x=1cm,y=0.68cm]
+ \pcrow{0}{A,C,-,B,-}{0}\node[pccap] at (1.86,0.75){A and C together};
+ \pcrow{0}{A,-,C,-,B}{3.7}\node[pccap] at (5.56,0.75){A and C separated};}
+ {\centering\scriptsize\color{black!70} Case 3: A, B, C in the same row, B beside neither A nor C.\par}}
+% ---------- Normal-distribution sketches (TikZ redraws of the official sketches)
+\newcommand{\nrmcurve}[5]{% #1 mu, #2 sd, #3 xmin, #4 xmax, #5 x-scale (cm per unit)
+ \draw[->] (#3*#5-0.3,0)--(#4*#5+0.5,0) node[right,font=\scriptsize]{$x$};
+ \draw[thick,blue!60!black,domain=#3:#4,samples=120] plot ({\x*#5},{2.2*exp(-((\x-#1)/#2)^2/2)});
+ \draw[dashed] (#1*#5,0)--(#1*#5,2.4);}
+\newcommand{\figNjcSketch}{\pcfig{[font=\scriptsize]
+ \nrmcurve{45}{6}{20}{70}{0.12}
+ \foreach \t in {20,45,70}{\draw (\t*0.12,0.06)--(\t*0.12,-0.06) node[below]{\t};}}}
+\newcommand{\figRvSketch}{\pcfig{[font=\scriptsize]
+ \nrmcurve{18}{0.6}{14}{22}{0.75}
+ \foreach \t in {14,18,22}{\draw (\t*0.75,0.06)--(\t*0.75,-0.06) node[below]{\t};}
+ \node[right] at (22*0.75+0.7,0){mass};}}
+\newcommand{\figMiSym}{\pcfig{[font=\scriptsize]
+ \fill[orange!35,domain=0:5,samples=40] (0,0)--plot ({\x*0.15},{1.8*exp(-((\x-15)/7.8)^2/2)})--(5*0.15,0)--cycle;
+ \fill[orange!35,domain=25:30,samples=40] (25*0.15,0)--plot ({\x*0.15},{1.8*exp(-((\x-15)/7.8)^2/2)})--(30*0.15,0)--cycle;
+ \draw[->] (-0.2,0)--(4.8,0) node[right]{$x$};
+ \draw[thick,blue!60!black,domain=0:30,samples=120] plot ({\x*0.15},{1.8*exp(-((\x-15)/7.8)^2/2)});
+ \draw[dashed] (2.25,0)--(2.25,2.0) node[above]{$\mu$};
+ \foreach \t in {5,25}{\draw (\t*0.15,0.05)--(\t*0.15,-0.05) node[below]{\t};}
+ \node at (0.35,0.45){0.10};\node at (4.15,0.45){0.10};}}
+\newcommand{\figMiGC}{\pcfig{[font=\scriptsize,x=1cm,y=1cm]
+ \draw[->] (0,0)--(4.2,0) node[right]{$\sigma$};\draw[->] (0.4,-0.1)--(0.4,1.6) node[above]{$y$};
+ \draw[thick,domain=0.4:4,samples=80] plot (\x,{1.2/(1+exp(-3*(\x-2.0)))});
+ \draw (0.2,1.0)--(4,1.0) node[right]{$y=0.1$};
+ \draw[dashed] (2.3,0)--(2.3,1.0);
+ \node[above] at (1.7,1.25){$y=\mathrm{P}(X>25)$};}}
+\newcommand{\figRvBinom}{\pcfig{[font=\scriptsize,x=6mm]
+ \foreach \i in {1,...,8}{\node[slot,fill=\ifnum\i<6 teal!25\else white\fi] at (\i,0){\i};}
+ \node[pccap,below] at (4.5,-0.45){8 strips, each ``success'' if $15.8<S<17.2$ (prob.\ 0.690125006): $X\sim B(8,\,0.690125006)$, need $X\geq5$};}}
+% ---------- Q1.2 (b)(ii): BOOKKEEPER letter stock and the four case patterns
+\newcommand{\figQtwoBii}{\pcfig{[font=\scriptsize,x=6mm,y=7mm]
+ \foreach \l [count=\i] in {E,E,E,O,O,K,K,P,R,B}{\node[slot,fill=\ifnum\i<8 orange!25\else teal!20\fi] at (\i,0){\l};}
+ \node[pccap,anchor=west] at (11,0){3 E, 2 O, 2 K (repeatable); P, R, B};
+ \foreach \p [count=\r] in {{X,Y,Z,W},{X,X,Y,Z},{X,X,Y,Y},{X,X,X,Y}}{
+   \foreach \l [count=\c] in \p {\node[slot] at (\c+1,-\r-0.3){\l};}}
+ \node[pccap,anchor=west] at (6,-1.3){Case 1: all distinct};
+ \node[pccap,anchor=west] at (6,-2.3){Case 2: one pair};
+ \node[pccap,anchor=west] at (6,-3.3){Case 3: two pairs};
+ \node[pccap,anchor=west] at (6,-4.3){Case 4: three alike (only E)};}}
+% ---- Hypothesis Testing: standard normal sketches (additions only) ----
+% \htz{left cut or none}{right cut or none}{left label}{right label}{area label left}{area label right}
+\newcommand{\htz}[6]{\pcfig{[font=\scriptsize,x=0.55cm,y=1cm]
+ \def\hl{#1}\def\hr{#2}\def\none{none}
+ \ifx\hl\none\else\fill[red!30,domain=-3.6:#1,samples=40] (-3.6,0)--plot (\x,{2*exp(-\x*\x/2)})--(#1,0)--cycle;
+   \draw (#1,0.06)--(#1,-0.06) node[below]{#3}; \node[above left] at (#1-0.3,0.35){#5};\fi
+ \ifx\hr\none\else\fill[red!30,domain=#2:3.6,samples=40] (#2,0)--plot (\x,{2*exp(-\x*\x/2)})--(3.6,0)--cycle;
+   \draw (#2,0.06)--(#2,-0.06) node[below]{#4}; \node[above right] at (#2+0.3,0.35){#6};\fi
+ \draw[->] (-3.8,0)--(4.2,0) node[right]{$z$};
+ \draw[thick,blue!60!black,domain=-3.6:3.6,samples=120] plot (\x,{2*exp(-\x*\x/2)});
+ \draw[dashed] (0,0)--(0,2.1); \node[below] at (0,-0.02){0};}}
+% ---- Correlation & Regression scatter diagrams (additions only) ----
+% \scat{xscale}{yscale}{x0}{y0}{xlen}{ylen}{body}: axes start at (x0,y0) data units
+\newcommand{\scatfig}[2][]{\pcfig{[font=\scriptsize,#1]#2}}
+\newcommand{\figVjcFiveA}{\scatfig[x=0.22cm,y=0.13cm]{
+ \draw[->](17,10)--(41,10) node[right]{$x$}; \draw[->](17,10)--(17,32) node[above]{$y$};
+ \foreach \a/\b in {20/12.5,22/12.8,24/13.2,26/14.0,28/14.7,30/16.2,32/16.2,34/19.9,36/22.3,38/29.5}{\node at (\a,\b){$\times$};}
+ \draw(20,10.4)--(20,9.6) node[below]{20}; \draw(38,10.4)--(38,9.6) node[below]{38};
+ \draw(17.4,12.5)--(16.6,12.5) node[left]{12.5}; \draw(17.4,29.5)--(16.6,29.5) node[left]{29.5};}}
+\newcommand{\figVjcFourA}{\scatfig[x=0.06cm,y=0.3cm]{
+ \draw[->](100,5)--(195,5) node[right]{$x$}; \draw[->](100,5)--(100,17) node[above]{$y$};
+ \foreach \a/\b in {149/13.8,110/6.5,188/15.2,135/12.2,156/14.4,140/12.2,168/14.7,118/9.5,122/9.9,174/14.4}{\fill[blue!60!black] (\a,\b) circle (1.6pt);}
+ \draw(110,5.15)--(110,4.85) node[below]{110}; \draw(188,5.15)--(188,4.85) node[below]{188};
+ \draw(101,6.5)--(99,6.5) node[left]{6.5}; \draw(101,15.2)--(99,15.2) node[left]{15.2};}}
+% A-level 2024 P2 Q11 scatter diagrams
+\newcommand{\figALcereal}{\scatfig[x=1.1cm,y=0.26cm]{
+ \draw[gray!30,xstep=1,ystep=2] (0,0) grid (6,14);
+ \draw[->](0,0)--(6.3,0) node[right]{$m$}; \draw[->](0,0)--(0,15) node[above]{$p$};
+ \foreach \t in {1,...,6}{\node[below] at (\t,0){\t000};} \node[below left] at (0,0){0};
+ \foreach \t in {2,4,...,14}{\node[left] at (0,\t){\t00};}
+ \foreach \a/\b in {0.024/1,0.25/3,0.55/4,1/6,2/9,5/12}{\node at (\a,\b){$\times$};}
+ \node[below] at (3,-1.1){Mass (grams)}; \node[rotate=90] at (-0.9,7){Price (cents)};}}
+\newcommand{\kaiaxes}{\draw[gray!30,xstep=2,ystep=5] (0,0) grid (12,30);
+ \draw[->](0,0)--(12.6,0) node[right]{$n$}; \draw[->](0,0)--(0,32) node[above]{$y$};
+ \foreach \t in {2,4,...,12}{\node[below] at (\t,0){\t};} \node[below left] at (0,0){0};
+ \foreach \t in {5,10,...,30}{\node[left] at (0,\t){\t};}
+ \foreach \a/\b in {2/6,5/10,6/16,7/20,11/25}{\node at (\a,\b){$\times$};}
+ \node[below] at (6,-3){Number of batteries}; \node[rotate=90] at (-2.2,15){Price (\$)};}
+\newcommand{\figALkai}{\scatfig[x=0.55cm,y=0.12cm]{\kaiaxes}}
+\newcommand{\figALkaiSol}{\scatfig[x=0.55cm,y=0.12cm]{\kaiaxes
+ \draw[red,thick](0,1)--(12,31) node[above left]{$y=\frac52n+1$};
+ \foreach \a/\b/\c/\l in {2/6/6/0,5/10/13.5/-3.5,6/16/16/0,7/20/18.5/1.5,11/25/28.5/-3.5}{\draw[red,<->](\a,\b)--(\a,\c); \node[red,right] at (\a,{(\b+\c)/2}){\l};}}}
+\newcommand{\figALparab}{\scatfig[x=0.9cm,y=0.18cm]{
+ \draw[->](-2,0)--(2,0) node[right]{$c$}; \draw[->](0,-7)--(0,6) node[above]{$y$};
+ \draw[thick,domain=-1.75:1.6,samples=60] plot (\x,{5*\x*\x+\x-6}) node[right]{$y=5c^2+c-6$};
+ \fill (-1.2,0) circle (1.5pt) node[above left]{$-1.2$}; \fill (1,0) circle (1.5pt) node[above right]{1};}}
+% A-level 2019 P2 Q10
+\newcommand{\abiaxes}{\draw[cyan!40,xstep=1,ystep=0.2] (38,14.6) grid (61,22.4);
+ \draw[->](38,14.6)--(62,14.6) node[right]{$x$}; \draw[->](38,14.6)--(38,22.8) node[above]{$y$};
+ \foreach \t in {40,45,...,60}{\draw(\t,14.75)--(\t,14.45) node[below]{\t};}
+ \foreach \t in {15,...,22}{\draw(38.3,\t)--(37.7,\t) node[left]{\t};}}
+\newcommand{\figAbiGrid}{\scatfig[x=0.32cm,y=0.75cm]{\abiaxes}}
+\newcommand{\figAbiSol}{\scatfig[x=0.32cm,y=0.75cm]{\abiaxes
+ \draw[thick](38.5,{35-38.5/3})--(61,{35-61/3});
+ \foreach \a/\b/\l in {40/22/e_1,45/20/e_2=0,50/18/e_3,55/17/e_4,60/16/e_5}{\node at (\a,\b){$\times$}; \draw[<->,>=stealth](\a,\b)--(\a,{35-\a/3}); \node[right] at (\a+0.3,{(\b+35-\a/3)/2}){$\l$};}}}

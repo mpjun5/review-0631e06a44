@@ -1,0 +1,139 @@
+% =====================================================================
+% di_style.tex: Definite Integrals homework / test layout.
+% Loads the house preamble (local copies of the AoI worksheet files:
+% ws_preamble_build.tex, ws_preamble_local.tex -> ws_figstyles.tex),
+% then adds the homework layout used by HW1-HW3 and the Test.
+% Usage (before \begin{document}):  \ditle{Homework 1}
+% =====================================================================
+\input{ws_preamble_build}
+\input{ws_preamble_local}
+\input{prelim_fonts}% Times New Roman + MathType-style maths (as the prelim papers)
+\usepackage{needspace}
+\usepackage{zref-savepos,zref-abspage}\makeatletter\zref@addprop{savepos}{abspage}\makeatother
+\usepackage{array}
+
+% ---- shortlist toggle ------------------------------------------------
+% \ifshortlist true  -> only the questions in SHORTLIST.md (+ challenges)
+% A wrapper file sets it with \def\setshortlist{1} before \input-ing the
+% main file; the main file can also be edited to say \shortlisttrue.
+\newif\ifshortlist
+% Task 5: the FINAL homework (= former shortlist) is the default build. HWn.tex -> HWn.pdf.
+% A wrapper that sets \def\setfull{1} builds the archive with all original questions.
+\ifdefined\setfull\else\shortlisttrue\fi
+
+\makeatletter
+% ---- REVIEW build: highlight amended content ---------------------------
+% A wrapper sets \def\setreview{1}. In review mode amended text is shaded
+% yellow and carries a hover note (PDF tooltip / sticky note); otherwise the
+% macros print the content plainly.
+%   \chg{note}{inline content}        short inline change (no line breaks), text mode
+%   \chgm{note}{math}                 the same inside math mode
+%   \begin{chgblock}{note} ... \end{chgblock}   paragraph/display-level change
+\newif\ifreview
+\ifdefined\setreview \reviewtrue \fi
+% hover notes are raw PDF annotations (xdvipdfmx \special; no extra packages).
+% Keep notes plain ASCII; balanced parentheses are fine.
+\newsavebox{\chg@box}
+\newcommand{\chg@ann}[4]{% width, height, depth, note -> invisible markup annotation with a hover note
+  \special{pdf:ann width #1 height #2 depth #3 << /Type /Annot /Subtype /Square /Border [0 0 0] /BS << /W 0 >> /C [1 0.85 0] /CA 0.01
+    /T (Review) /Subj (Amendment) /Contents (#4) >>}}
+\newcommand{\chg@sticky}[1]{\special{pdf:ann width 12pt height 12pt depth 0pt << /Type /Annot /Subtype /Text /Name /Comment
+    /C [1 0.85 0] /T (Review) /Subj (Amendment) /Contents (#1) >>}}
+\newcommand{\chg}[2]{\ifreview\sbox\chg@box{\colorbox{yellow!60}{#2}}%
+  \leavevmode\rlap{\chg@ann{\the\wd\chg@box}{\the\ht\chg@box}{\the\dp\chg@box}{#1}}\usebox\chg@box\else#2\fi}
+% \chgm{note}{math}: the same, for use INSIDE math mode (display style kept)
+\newcommand{\chgm}[2]{\ifreview\mathchoice{\chg{#1}{$\displaystyle#2$}}{\chg{#1}{$\textstyle#2$}}{\chg{#1}{$\scriptstyle#2$}}{\chg{#1}{$\scriptscriptstyle#2$}}\else#2\fi}
+\newtcolorbox{chgbox}[1]{enhanced, breakable, colback=yellow!35, colframe=yellow!35, boxrule=0pt, sharp corners,
+  left=2pt, right=14pt, top=1pt, bottom=1pt, before skip=2pt, after skip=2pt,
+  overlay first and middle={}, overlay last={}, overlay unbroken and first={\node[anchor=north east, inner sep=1pt] at (frame.north east) {\chg@sticky{#1}\hbox to 12pt{\vrule width 0pt height 12pt}};}}
+% \chgnote{note}: just the sticky-note icon (e.g. inside a figure); nothing outside review mode
+\newcommand{\chgnote}[1]{\ifreview\chg@sticky{#1}\hbox to 12pt{\vrule width 0pt height 12pt}\fi}
+\newenvironment{chgblock}[1]{\ifreview\begin{chgbox}{#1}\fi}{\ifreview\end{chgbox}\fi}
+
+% ---- header ---------------------------------------------------------
+\newcommand\di@title{}
+\makeatletter
+\newcommand{\ditle}[1]{\gdef\di@title{#1}}
+\fancypagestyle{di}{\fancyhf{}%
+  \lhead{\small Definite Integrals: \di@title}%
+  \rhead{\small Compiled by Maximus Pung Jun}%
+  \cfoot{\small\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{di}
+% title block on page 1, as in his Typst sheets
+\newcommand{\dititleblock}[1][]{\thispagestyle{di}%
+  {\LARGE\scshape Definite Integrals: \di@title}\par\smallskip
+  {Compiled by Maximus Pung Jun}\par\ifx&#1&\else\smallskip{\small\textcolor{black!60}{#1}}\par\fi\medskip}
+\makeatother
+\newcommand{\disection}[1]{\par\bigskip\noindent{\Large\scshape #1}\par\medskip}
+
+% ---- questions --------------------------------------------------------
+% \Qhead{label}{source tag}: question heading, tag in brackets on the right
+\newcommand{\Qhead}[2]{\par\needspace{8\baselineskip}\bigskip\noindent
+  {\large\bfseries #1}\hfill{\small\textcolor{black!60}{[#2]}}\par\smallskip}
+% part lists with bold labels as he writes them: \pt{(a)}, \pt{(i)}, \pt{(b) (i)}
+\newenvironment{qparts}[1][2.4em]{\begin{list}{}{\setlength\leftmargin{#1}%
+  \setlength\labelwidth{\dimexpr#1-0.5em\relax}\setlength\labelsep{0.5em}%
+  \setlength\itemsep{0.8ex}\setlength\topsep{0.6ex}\setlength\parsep{0.6ex}%
+  \renewcommand\makelabel[1]{\textbf{##1}\hfil}}}{\end{list}}
+\newcommand{\pt}[1]{\item[#1]}
+% thin horizontal label for a challenge question
+\newcommand{\challengebanner}{\par\bigskip\noindent\textcolor{black!50}{\rule[0.5ex]{\linewidth}{0.4pt}}\par
+  \noindent{\large\scshape Challenge (optional)}\par}
+% upright "units"
+\newcommand{\units}[1]{\ \text{units}^{#1}}
+% END line
+\newcommand{\diend}[1][END OF WORKSHEET]{\par\vspace{2\baselineskip}\begin{center}\textbf{#1}\end{center}}
+
+% ---- question registry (full / shortlist from one source) -------------
+% \defQ{n}{tag}{body}   question n of the original sheet
+% \defA{n}{answer body} its final answer, as printed in his answer section
+% \putQ{n} / \putC{n}   print question n as the next (challenge) question
+% \putA{n}              print its answer under the same new label
+\newcounter{diq}
+\makeatletter
+\newcommand{\defQ}[3]{\expandafter\gdef\csname diQtag@#1\endcsname{#2}%
+  \expandafter\long\expandafter\gdef\csname diQbody@#1\endcsname{#3}}
+\newcommand{\defA}[2]{\expandafter\long\expandafter\gdef\csname diA@#1\endcsname{#2}}
+\newcommand{\di@tag}[1]{\csname diQtag@#1\endcsname}% source tag only (no original Q number)
+% A question never breaks across pages: it is measured and starts on a new page unless it
+% fits whole on the rest of this one (only a question taller than a page may break, and then
+% only between parts). Page positions of its start/end (zref labels q-s<n>/q-e<n> in the .aux)
+% let the checker verify this.
+\newsavebox{\di@qmeas}
+\newcommand{\di@placeQ}[1]{\par\setbox\di@qmeas=\vbox{#1}%
+  \ifdim\dimexpr\ht\di@qmeas+\dp\di@qmeas\relax<0.95\textheight
+    \needspace{\dimexpr\ht\di@qmeas+\dp\di@qmeas+\bigskipamount\relax}\else\needspace{14\baselineskip}\fi
+  \zsavepos{q-s\thediq}#1\par\zsavepos{q-e\thediq}}
+\newcommand{\putQ}[1]{\stepcounter{diq}%
+  \expandafter\xdef\csname diLab@#1\endcsname{\thediq}%
+  \di@placeQ{\Qhead{\thediq}{\di@tag{#1}}\csname diQbody@#1\endcsname\par}}
+\newcommand{\putC}[1]{\stepcounter{diq}%
+  \expandafter\xdef\csname diLab@#1\endcsname{\thediq}%
+  \expandafter\gdef\csname diChal@#1\endcsname{1}%
+  \di@placeQ{\Qhead{\thediq\quad\normalsize\mdseries\scshape Challenge}{\di@tag{#1}}\csname diQbody@#1\endcsname\par}}
+\newcommand{\putA}[1]{\par\needspace{4\baselineskip}%
+  \begin{qparts}[2.4em]\item[{\csname diLab@#1\endcsname}]\csname diA@#1\endcsname\end{qparts}\medskip}
+% ---- worked solutions: \defS{n}{body}, \putQS{n} prints question n + its solution ----
+\newcommand{\defS}[2]{\expandafter\long\expandafter\gdef\csname diS@#1\endcsname{#2}}
+\newcommand{\disolhead}{\par\medskip\noindent{\bfseries Solution}\par\nobreak\vspace{-0.6ex}\noindent\textcolor{black!35}{\rule{\linewidth}{0.4pt}}\par\nobreak}
+\newcommand{\putQS}[1]{\putQ{#1}\disolhead\csname diS@#1\endcsname\par}
+% source of a worked solution; visible only in REVIEW builds. #1: his / pub / pip
+\newcommand{\solsrc}[2]{\ifreview\par\noindent\def\di@a{#1}\def\di@b{pip}%
+  \ifx\di@a\di@b\colorbox{yellow!60}{\parbox{\dimexpr\linewidth-2\fboxsep-14pt}{\small\textbf{Pip-worked:} #2}}\chgnote{Pip-worked solution. No worked solution by the teacher and no published solution was found. Please check it.}%
+  \else{\small\textcolor{black!55}{Source of this solution: #2}}\fi\par\smallskip\fi}
+\makeatother
+% compact sketch for worked solutions: \solfig[axis options]{plot commands}
+\newcommand{\solfig}[2][]{\par\begin{center}\begin{tikzpicture}\begin{axis}[qfig, width=6.6cm, height=5cm, #1]#2\end{axis}\end{tikzpicture}\end{center}}
+% a sketch added to an existing worked solution (teacher rule), shaded in REVIEW
+\newenvironment{addedsketch}{\begin{chgblock}{Sketch added: teacher rule - every area or volume solution has a sketch.}}{\end{chgblock}}
+% answer part list (compact)
+\newenvironment{aparts}[1][2.4em]{\begin{qparts}[#1]\setlength\itemsep{0.3ex}}{\end{qparts}}
+
+% ---- figure helpers ---------------------------------------------------------
+\tikzset{rect/.style={fill=blue!10, draw=blue!55!black, thin}}
+\pgfplotsset{qfig/.style={sketch, every node/.append style={font=\scriptsize}}}
+% aligned working that starts on the same line as a part label: \pt{(iii)} \begin{topalign} ... \end{topalign}
+\newenvironment{topalign}{\hfill$\displaystyle\begin{aligned}[t]}{\end{aligned}$\hfill\null\par\smallskip}
+% one display that starts on the same line as a part label
+\newcommand{\topdisplay}[1]{\hfill$\displaystyle #1$\hfill\null\par\smallskip}

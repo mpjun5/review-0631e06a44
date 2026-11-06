@@ -1,0 +1,159 @@
+%% ============================================================ 8 CORRELATION AND LINEAR REGRESSION
+\clearpage
+\inchap{Correlation and Linear Regression}
+\section{Scatter Diagrams}
+\begin{center}\begin{tikzpicture}
+\begin{groupplot}[group style={group size=4 by 1,horizontal sep=0.35cm},sc,width=3.55cm,height=3.0cm]
+\nextgroupplot[title={\scriptsize positive linear}]
+\addplot[only marks,mark=*,mark size=1.1pt] coordinates{(0.7,1.2)(1.3,1.1)(1.9,2.3)(2.5,2.4)(3.1,3.5)(3.6,3.2)(4.2,4.4)(4.9,4.6)(5.5,5.7)};
+\nextgroupplot[title={\scriptsize negative linear}]
+\addplot[only marks,mark=*,mark size=1.1pt] coordinates{(0.7,5.5)(1.3,5.0)(1.9,4.6)(2.5,4.1)(3.1,3.9)(3.6,3.0)(4.2,2.8)(4.9,1.8)(5.5,1.5)};
+\nextgroupplot[title={\scriptsize no correlation}]
+\addplot[only marks,mark=*,mark size=1.1pt] coordinates{(0.7,3.5)(1.3,1.5)(1.9,5.0)(2.5,2.7)(3.1,4.6)(3.6,1.1)(4.2,3.9)(4.9,2.2)(5.5,4.4)};
+\nextgroupplot[title={\scriptsize non-linear}]
+\addplot[only marks,mark=*,mark size=1.1pt] coordinates{(0.7,5.0)(1.3,3.6)(1.9,2.5)(2.5,1.7)(3.1,1.3)(3.6,1.3)(4.2,1.8)(4.9,3.0)(5.5,4.9)};
+\end{groupplot}\end{tikzpicture}\end{center}
+\begin{center}\ba\small
+\begin{tabular}{|L{4.4cm}|L{10.8cm}|}\hline
+\textbf{Item} & \textbf{Note}\\\Xhline{2pt}
+Independent $x$, dependent $y$ & $x$: controlled / explains; $y$: the response (e.g.\ $y$ = sales, $x$ = advertising)\\\hline
+Describe a scatter diagram & direction (positive / negative), linear or curved, strength (close to a line), outliers\\\hline
+GC & enter $x$ in \gc{L1}, $y$ in \gc{L2}; \gckey{2nd} \gckey{Y=} (STAT PLOT) $\to$ \gc{Plot1} on, scatter; \gckey{ZOOM} \gc{9:ZoomStat}\\\hline
+\end{tabular}\end{center}
+\section{Product Moment Correlation Coefficient $r$}
+\begin{theorem}[before skip=2mm,after skip=3mm]{Product Moment Correlation Coefficient (PMCC) (MF27)}
+\centering$r=\dfrac{\sum(x-\xb)(y-\yb)}{\sqrt{\sum(x-\xb)^{2}\sum(y-\yb)^{2}}}=\dfrac{\Sxy}{\sqrt{\Sxx\Syy}}$\par\medskip
+$\Sxx=\displaystyle\sum x^{2}-\dfrac{\left(\sum x\right)^{2}}{n},\quad\Syy=\displaystyle\sum y^{2}-\dfrac{\left(\sum y\right)^{2}}{n},\quad\Sxy=\displaystyle\sum xy-\dfrac{\sum x\sum y}{n}$
+\end{theorem}
+\begin{center}\ba\small
+\begin{tabular}{|M{3.2cm}|L{12.0cm}|}\hline
+\textbf{Value of $r$} & \textbf{Interpretation}\\\Xhline{2pt}
+$r=1$ or $-1$ & all points lie exactly on a straight line (positive / negative gradient)\\\hline
+$r$ close to $1$ & strong positive linear correlation\\\hline
+$r$ close to $-1$ & strong negative linear correlation\\\hline
+$r$ close to $0$ & little or no \textbf{linear} correlation (a non-linear relation may still exist)\\\hline
+\end{tabular}\end{center}
+\begin{info}[title=Note]
+$-1\leqslant r\leqslant1$. \ $|r|$ close to $1$ only says a \textbf{linear} model fits well; check the scatter diagram. A strong correlation does \textbf{not} mean that $x$ causes $y$.
+\end{info}
+\gcs{\gckey{2nd} \gckey{0} (CATALOG) $\to$ \gc{DiagnosticOn} (once). Then \gckey{STAT} $\to$ \gc{CALC} $\to$ \gc{8:LinReg(a+bx)} \gc{L1,L2} gives \gc{a}, \gc{b}, \gc{r} for $y=a+bx$.}
+\section{Least-Squares Regression Line}
+\noindent\begin{minipage}[t]{0.48\textwidth}\centering
+\begin{tikzpicture}\begin{axis}[sc,width=\linewidth,height=4.2cm,xmax=6.6,ymax=6.6]
+\addplot[black,semithick,domain=0.2:6.2]{0.9*x+0.5};
+\draw[blue,thick,dotted](axis cs:1,1.0)--(axis cs:1,1.40);
+\draw[blue,thick,dotted](axis cs:2,3.0)--(axis cs:2,2.30);
+\draw[blue,thick,dotted](axis cs:3,2.6)--(axis cs:3,3.20);
+\draw[blue,thick,dotted](axis cs:4,4.8)--(axis cs:4,4.10);
+\draw[blue,thick,dotted](axis cs:5,4.5)--(axis cs:5,5.00);
+\addplot[only marks,mark=*,mark size=1.1pt]coordinates{(1,1.0)(2,3.0)(3,2.6)(4,4.8)(5,4.5)};
+\node[font=\scriptsize,anchor=west] at (axis cs:4.6,5.9){line of $y$ on $x$};
+\end{axis}\end{tikzpicture}
+\par{\small Line of $y$ on $x$ minimises $\sum(\text{vertical distances})^{2}$ ({\color{blue}blue}).}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}\centering
+\begin{tikzpicture}\begin{axis}[sc,width=\linewidth,height=4.2cm,xmax=6.6,ymax=6.6]
+\addplot[black,semithick,domain=0.2:6.2]{0.9*x+0.5};
+\draw[red,thick,dotted](axis cs:1,1.0)--(axis cs:0.5556,1.0);
+\draw[red,thick,dotted](axis cs:2,3.0)--(axis cs:2.7778,3.0);
+\draw[red,thick,dotted](axis cs:3,2.6)--(axis cs:2.3333,2.6);
+\draw[red,thick,dotted](axis cs:4,4.8)--(axis cs:4.7778,4.8);
+\draw[red,thick,dotted](axis cs:5,4.5)--(axis cs:4.4444,4.5);
+\addplot[only marks,mark=*,mark size=1.1pt]coordinates{(1,1.0)(2,3.0)(3,2.6)(4,4.8)(5,4.5)};
+\node[font=\scriptsize,anchor=west] at (axis cs:4.6,5.9){line of $x$ on $y$};
+\end{axis}\end{tikzpicture}
+\par{\small Line of $x$ on $y$ minimises $\sum(\text{horizontal distances})^{2}$ ({\color{red}red}).}
+\end{minipage}
+\begin{center}\bba\small
+\begin{tabular}{|M{4.2cm}|M{4.6cm}|M{4.6cm}|}\hline
+ & \textbf{Estimate $y$ given $x$} & \textbf{Estimate $x$ given $y$}\\\Xhline{2pt}
+$x$ is independent & {\color{blue}$y$ on $x$} & {\color{blue}$y$ on $x$}\\\hline
+{\color{gray}$y$ is independent (rare)} & {\color{red}$x$ on $y$} & {\color{red}$x$ on $y$}\\\hline
+neither independent & {\color{blue}$y$ on $x$} & {\color{red}$x$ on $y$}\\\hline
+\end{tabular}\end{center}
+\begin{info}[title=Note]
+Both lines pass through $(\xb,\yb)$.
+\end{info}
+\noindent\exlab It is given that $n=6$, $\sum x=21$, $\sum y=35.4$, $\sum xy=143.4$, $\sum x^{2}=91$ and $\sum y^{2}=231$. Find the product moment correlation coefficient.
+\cdisp{r&=\dfrac{\sum xy-\dfrac{\sum x\sum y}{n}}{\sqrt{\left(\sum x^{2}-\dfrac{\left(\sum x\right)^{2}}{n}\right)\left(\sum y^{2}-\dfrac{\left(\sum y\right)^{2}}{n}\right)}}\\&=\dfrac{143.4-\dfrac{21(35.4)}{6}}{\sqrt{\left(91-\dfrac{21^{2}}{6}\right)\left(231-\dfrac{35.4^{2}}{6}\right)}}\\&=\dfrac{19.5}{\sqrt{17.5\times22.14}}\\\therefore\ r&=0.991\ \text{(3 s.f.)}}
+\section{Interpolation, Extrapolation and Interpretation}
+\begin{center}\ba\small
+\begin{tabular}{|L{4.0cm}|L{11.2cm}|}\hline
+\textbf{Item} & \textbf{Note}\\\Xhline{2pt}
+Interpolation & estimate for $x$ \textbf{within} the data range: reliable if $|r|$ is close to $1$ and the scatter diagram is linear\\\hline
+Extrapolation & estimate for $x$ \textbf{outside} the data range: unreliable, the linear relation may not continue\\\hline
+Gradient $b$ & the change in $y$ per unit increase in $x$ (in context)\\\hline
+Intercept $a$ & value of $y$ when $x=0$; meaningful only if $x=0$ is sensible in context\\\hline
+How well does the model fit? & $|r|$ close to $1$ and points close to the line $\Rightarrow$ good fit; comment on the range of $x$\\\hline
+\end{tabular}\end{center}
+\begin{info}[title=Note]
+Reliability of an estimate requires \textbf{two} conditions:
+\begin{itemize}[leftmargin=1.4em,itemsep=0pt,topsep=2pt]
+\item interpolation is used (state the data range);
+\item $|r|$ is close to $1$, indicating a strong linear correlation between the two variables.
+\end{itemize}
+If any one of these fails, the estimate is unreliable.
+\end{info}
+\section{Transformations to Achieve Linearity}
+\noindent Choose the model whose scatter diagram of (transformed variable, $y$) is the most linear, and whose $|r|$ is closest to $1$.\par\smallskip
+\begin{center}\bba\small
+\begin{tabular}{|M{2.7cm}|M{3.2cm}|M{3.1cm}|M{5.6cm}|}\hline
+\textbf{Model} & \textbf{Scatter diagram} & \textbf{Plot} & \textbf{Shape ($a,b>0$)}\\\Xhline{2pt}
+$y=a+bx^{2}$ & \begin{tikzpicture}\begin{axis}[sc,width=2.6cm,height=2.2cm,xlabel={},ylabel={}]\addplot[black,semithick,domain=0.2:6,samples=30]{0.15*x^2+0.5};\end{axis}\end{tikzpicture} & $y$ against $x^{2}$ & As $x$ increases, $y$ increases at an increasing rate.\\\hline
+$y=a+b\ln x$ & \begin{tikzpicture}\begin{axis}[sc,width=2.6cm,height=2.2cm,xlabel={},ylabel={}]\addplot[black,semithick,domain=0.5:6.2,samples=30]{1.5+2.2*ln(x)/1.5-0.3};\end{axis}\end{tikzpicture} & $y$ against $\ln x$ & As $x$ increases, $y$ increases at a decreasing rate.\\\hline
+$y=a+\dfrac{b}{x}$ & \begin{tikzpicture}\begin{axis}[sc,width=2.6cm,height=2.2cm,xlabel={},ylabel={}]\addplot[black,semithick,domain=0.6:6.2,samples=30]{0.5+3/x};\end{axis}\end{tikzpicture} & $y$ against $\dfrac1x$ & As $x$ increases, $y$ decreases at a decreasing rate.\\\hline
+$y=a\,\mathrm{e}^{bx}$ & \begin{tikzpicture}\begin{axis}[sc,width=2.6cm,height=2.2cm,xlabel={},ylabel={}]\addplot[black,semithick,domain=0.2:5,samples=30]{0.3*exp(0.55*x)};\end{axis}\end{tikzpicture} & $\ln y$ against $x$ & As $x$ increases, $y$ increases at an increasing rate.\\\hline
+\end{tabular}\end{center}
+\sidenote{The shapes above are for $a,b>0$. In some cases $a$ or $b$ may be negative; the new shape can be analysed by plotting the graph in your GC.}\par
+\sidenote{Let $w$ be the transformed variable (e.g.\ $w=x^{2}$, $\ln x$, $\tfrac1x$). Find $r$ and the line of $y$ on $w$ with the GC (new list), then substitute $w=\ldots$ to estimate $y$. For $\ln y$ on $x$: $\ln y=a+bx\Rightarrow y=\mathrm{e}^{a}\mathrm{e}^{bx}$.}\par
+\section{Sum of Squares of Residuals}
+\begin{theorem}[before skip=2mm,after skip=3mm]{Residual}
+For a line $y=f(x)$ fitted to data, the residual at the data point $(x_i,y_i)$ is
+\[e_i=y_i-f(x_i)\qquad\text{(observed value $-$ fitted value)}.\]
+\end{theorem}
+\noindent\exlab The least squares regression line for the 6 data points $(1,3.1)$, $(2,4.3)$, $(3,5.2)$, $(4,6.8)$, $(5,7.1)$, $(6,8.9)$ is $y=2.00+1.11x$. Find the residuals and the sum of squares of residuals.
+\begin{center}\begin{tikzpicture}\begin{axis}[sc,width=6.5cm,height=4.6cm,xmin=0,xmax=7,ymin=0,ymax=10]
+\addplot[black,semithick,domain=0.3:6.7]{1.11*x+2};
+\draw[blue,thick,dotted](axis cs:1,3.1)--(axis cs:1,3.11);
+\draw[blue,thick,dotted](axis cs:2,4.3)--(axis cs:2,4.22);
+\draw[blue,thick,dotted](axis cs:3,5.2)--(axis cs:3,5.33);
+\draw[blue,thick,dotted](axis cs:4,6.8)--(axis cs:4,6.44);
+\draw[blue,thick,dotted](axis cs:5,7.1)--(axis cs:5,7.55);
+\draw[blue,thick,dotted](axis cs:6,8.9)--(axis cs:6,8.66);
+\addplot[only marks,mark=*,mark size=1.2pt]coordinates{(1,3.1)(2,4.3)(3,5.2)(4,6.8)(5,7.1)(6,8.9)};
+\node[font=\scriptsize,anchor=west] at (axis cs:4.3,9.3){$y=2.00+1.11x$};
+\end{axis}\end{tikzpicture}\end{center}
+\cdisp{e_1&=3.1-(2.00+1.11(1))=-0.01\\e_2&=4.3-(2.00+1.11(2))=0.08\\e_3&=5.2-(2.00+1.11(3))=-0.13\\e_4&=6.8-(2.00+1.11(4))=0.36\\e_5&=7.1-(2.00+1.11(5))=-0.45\\e_6&=8.9-(2.00+1.11(6))=0.24}
+\cdisp{\text{Sum of squares of residuals}&=(3.1-3.11)^{2}+(4.3-4.22)^{2}+(5.2-5.33)^{2}\\&\quad+(6.8-6.44)^{2}+(7.1-7.55)^{2}+(8.9-8.66)^{2}\\&=(-0.01)^{2}+(0.08)^{2}+(-0.13)^{2}+(0.36)^{2}+(-0.45)^{2}+(0.24)^{2}\\\therefore\ \textstyle\sum e_i^{2}&=0.4131}
+\begin{info}[title=Note]
+Let $c$ be the sum of squares of residuals of the least squares regression line. For any line $y=a+bx$,
+\[\sum_{i=1}^{n}\bigl(y_i-(a+bx_i)\bigr)^{2}\geqslant c,\]
+with equality if and only if $y=a+bx$ is the least squares regression line.
+\end{info}
+\begin{info}[title=Note]
+\textbf{The residuals are squared} because some points are above the line, some below and some on the line. The residuals may be positive, negative or zero; adding them causes them to cancel out. Squaring them ensures they are all non-negative.\par\smallskip
+\textbf{The least squares regression line is the line that minimises the sum of squares of residuals.}
+\end{info}
+\section{Further Question Types}
+\begin{center}\renewcommand{\arraystretch}{1.12}\footnotesize
+\begin{tabular}{|L{4.6cm}|L{10.6cm}|}\hline
+\textbf{Type} & \textbf{Method}\\\Xhline{2pt}
+Residual and least squares & residual $e=y-(a+bx)$ (observed $-$ predicted); positive above the line. For the least-squares line $\sum e=0$, so \textbf{squares} are used; the line minimising $\sum e^{2}$ is the best fit; smaller $\sum e^{2}$ $\Rightarrow$ better fit\\\hline
+Sum of squares of residuals & compute each $e$, square, add (or use the GC); compare two lines or two models by their $\sum e^{2}$\\\hline
+Missing data value / unknown & the line passes through $(\xb,\yb)$: $\yb=a+b\xb$ with the unknown in $\sum x$ or $\sum y$; solve\\\hline
+Extra point that leaves the line unchanged & the point $(\xb,\yb)$ (the mean point)\\\hline
+Change of units or coding, $x'=px+q$ & $r$ unchanged if $p>0$ (sign of $r$ reverses if $p<0$); new line: substitute $x=\dfrac{x'-q}{p}$ into the fitted equation\\\hline
+Remove or change one point & recompute $r$, $a$, $b$ on the GC; comment on the effect (e.g.\ $|r|$ nearer $1$)\\\hline
+Choosing a model & scatter shape \textbf{in context} (e.g.\ levels off, cannot be negative), then $|r|$ closest to $1$; state the constants and $r$ for the chosen model\\\hline
+Estimate $x$ from $y$ (transformed model) & Use the fitted equation and substitute the given value in.\\\hline
+Sketch a scatter diagram & Label axes; plot every point (label $X_{\min}$, $X_{\max}$, $Y_{\min}$, $Y_{\max}$, dashed).\\\hline
+\end{tabular}\end{center}
+\gcs{\gc{LinReg(a+bx) L1,L2,Y1} (\gckey{VARS} $\to$ Y-VARS $\to$ \gc{1:Function} $\to$ \gc{Y1} stores the line). In \gc{L3} enter \gc{L2-Y1(L1)}. Then \gckey{2nd} \gckey{STAT} (LIST) $\to$ MATH $\to$ \gc{5:sum(} \gc{L3$^{2}$)} gives $\sum e^{2}$. \ Transformed variable: highlight the \gc{L3} header and enter e.g. \gc{ln(L1)}, \gc{L1$^{2}$} or \gc{1/L1}, then run \gc{LinReg} with \gc{L3,L2}.}
+\noindent\begin{minipage}[t]{0.48\textwidth}
+\exlab $x$: $1,2,3,4$ \ \ $y$: $3,6,6,10$; line $y=2x+1$
+\cdisp{e&=0,\ 1,\ -1,\ 1\\\sum e^{2}&=0+1+1+1=3\\\text{least squares }&y=1+2.1x\\\sum e^{2}&=2.70<3}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\exlab $s=1.2t+5$, $t$ in $^{\circ}$C; use $F$ in $^{\circ}$F
+\cdisp{t&=\dfrac59(F-32)\\s&=1.2\times\dfrac59(F-32)+5\\&=\dfrac23F-16.3}
+\end{minipage}

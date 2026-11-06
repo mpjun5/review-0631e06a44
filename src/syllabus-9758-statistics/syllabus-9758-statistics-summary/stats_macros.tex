@@ -1,0 +1,44 @@
+%% ---- Statistics summary: macros (on top of pre.tex / the Pure Math summary preamble) ----
+\usepackage{pgfplots}\pgfplotsset{compat=1.17}\usepgfplotslibrary{groupplots}
+\usepackage{pdflscape}
+\usetikzlibrary{arrows.meta,calc,positioning,patterns,decorations.pathreplacing,intersections}
+\providecommand{\Xhline}[1]{\noalign{\global\arrayrulewidth#1}\hline\noalign{\global\arrayrulewidth0.4pt}}
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Pp}[1]{\mathrm{P}(#1)}
+\newcommand{\g}{\,|\,}
+\newcommand{\Bi}[2]{\mathrm{B}(#1,#2)}
+\newcommand{\No}[2]{\mathrm{N}(#1,#2)}
+\newcommand{\nCr}[2]{{}^{#1}\mathrm{C}_{#2}}
+\newcommand{\nPr}[2]{{}^{#1}\mathrm{P}_{#2}}
+\newcommand{\Xb}{\overline{X}}
+\newcommand{\xb}{\bar{x}}
+\newcommand{\yb}{\bar{y}}
+\newcommand{\Hz}{\mathrm{H}_{0}}
+\newcommand{\Ho}{\mathrm{H}_{1}}
+\newcommand{\Sxx}{S_{xx}}\newcommand{\Sxy}{S_{xy}}\newcommand{\Syy}{S_{yy}}
+\newcommand{\ba}{\renewcommand{\arraystretch}{1.22}}
+\newcommand{\row}[1]{\ba\small}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
+\newcommand{\gcs}[1]{\par\nopagebreak[4]\noindent{\small\textbf{GC:}\ #1}\par}
+\newcommand{\tick}{\cmark}
+\newcommand{\bul}{\ensuremath{\bullet}\ }
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\pkg}[1]{\begin{center}\renewcommand{\arraystretch}{1.5}\small#1\end{center}}
+% standard-normal style sketches
+\pgfplotsset{nc/.style={width=0.46\linewidth,height=3.4cm,axis lines=middle,axis line style={thin,black!55,-{Stealth[length=1.6mm]}},ticks=none,clip=false,domain=-3.4:3.4,samples=100,ymin=0,ymax=0.5,xmin=-3.8,xmax=3.8,every axis x label/.style={at={(current axis.right of origin)},anchor=west},every axis y label/.style={at={(current axis.above origin)},anchor=south},every node/.append style={font=\small}}}
+\newcommand{\nf}[1]{exp(-0.5*((x-(#1))^2))/2.5066}
+\pgfplotsset{sc/.style={width=4.1cm,height=3.3cm,axis lines=left,axis line style={thin,black!55},ticks=none,clip=true,xmin=0,xmax=6.4,ymin=0,ymax=6.4,xlabel={$x$},ylabel={$y$},label style={font=\small},every axis x label/.style={at={(current axis.right of origin)},anchor=west},every axis y label/.style={at={(current axis.above origin)},anchor=south}}}
+% two-set Venn: \vnn{outside}{A only}{B only}{A and B}  (colours or white); optional labels via \vnl
+\newcommand{\vnn}[4]{\begin{tikzpicture}[scale=0.40,baseline=(current bounding box.center)]
+\useasboundingbox (-2.1,-1.85) rectangle (3.1,1.85);\fill[#1] (-2.1,-1.5) rectangle (3.1,1.5);
+\fill[#2] (0,0) circle (1.15);\fill[#3] (1.0,0) circle (1.15);
+\begin{scope}\clip (0,0) circle (1.15);\fill[#4] (1.0,0) circle (1.15);\end{scope}
+\draw (-2.1,-1.5) rectangle (3.1,1.5);\draw (0,0) circle (1.15);\draw (1.0,0) circle (1.15);
+\node[font=\scriptsize] at (-0.95,1.2){$A$};\node[font=\scriptsize] at (1.95,1.2){$B$};
+\end{tikzpicture}}
+\newcommand{\sh}{blue!30}
+
+\renewcommand{\exlab}{\Needspace{5\baselineskip}\par\smallskip\noindent\refstepcounter{exctr}\textbf{Example~\theexctr}\par\nopagebreak}
+\newcommand{\bba}{\renewcommand{\arraystretch}{1.75}}

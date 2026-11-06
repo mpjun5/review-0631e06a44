@@ -1,0 +1,67 @@
+\providecommand{\dD}{\mathrm{d}}
+\makeatletter
+\providecommand{\cmtrow}[3][0pt]{\par\noindent\hbox to\linewidth{\begin{minipage}[t]{\linewidth}#3\end{minipage}\hskip2\ri@pad\begin{minipage}[t]{\dimexpr\ri@C-2\ri@pad\relax}\vspace*{#1}\raggedright #2\end{minipage}\hss}\par}
+\makeatother
+%% ============================================================ 111 VJC 2025 Promo Q7(a) (soln: /workspace/uploads/VJC Promo 2025.pdf p21, official solution)
+\defQ{111}{}{%
+\begin{qparts}
+\pt{(a)} Find $\displaystyle\int\frac{5-4x}{\sqrt{1+2x-x^{2}}}\,\dD x$. \mk{3}
+\end{qparts}
+\src{VJC 2025 Promo Q7(a)}}
+\defS{111}{%
+\begin{gtpart}{(a)}{3}\cmtrow{\small Spilt the numerator into $k\mathrm{f}'(x)+m$ allows us to use standard form \mbox{$\int\mathrm{f}'(x)\left[\mathrm{f}(x)\right]^{n}\dD x$} and from MF 27 $\displaystyle\int\frac{1}{\sqrt{a^{2}-x^{2}}}\,\dD x$.\par\vspace{4mm}Must write $+\,C$}{\begin{topalign}
+&\int\frac{5-4x}{\sqrt{1+2x-x^{2}}}\,\dD x\\
+&=\int2\left(2-2x\right)\left(1+2x-x^{2}\right)^{-\frac{1}{2}}\,\dD x+\int\frac{1}{\sqrt{1+2x-x^{2}}}\,\dD x\\
+&=2\left(\frac{1}{\frac{1}{2}}\right)\left(1+2x-x^{2}\right)^{\frac{1}{2}}+\int\frac{1}{\sqrt{2-\left(x-1\right)^{2}}}\,\dD x\\
+&=4\sqrt{1+2x-x^{2}}+\sin^{-1}\left(\frac{x-1}{\sqrt{2}}\right)+C
+\end{topalign}}\end{gtpart}}
+%% ============================================================ 112 VJC 2025 Promo Q7(b) (soln: /workspace/uploads/VJC Promo 2025.pdf p22, official solution)
+\defQ{112}{}{%
+\begin{qparts}
+\pt{(b)} \begin{qparts}[2.2em]
+\pt{(i)} Use the substitution $x=\tan\theta$ to show that
+\[\int\frac{x^{5}}{\left(x^{2}+1\right)^{4}}\,\dD x=\int\sin^{m}\theta\cos^{n}\theta\,\dD\theta,\]
+where $m$ and $n$ are integers to be determined. \mk{2}
+\pt{(ii)} Hence, find the exact value of $\displaystyle\int_{0}^{\sqrt{3}}\frac{x^{5}}{\left(x^{2}+1\right)^{4}}\,\dD x$. \mk{3}
+\end{qparts}
+\end{qparts}
+\src{VJC 2025 Promo Q7(b)}}
+\defS{112}{%
+\begin{gtpart}{(b)(i)}{2}\begin{topalign}
+x=\tan\theta\quad&\Rightarrow\quad\frac{\dD x}{\dD\theta}=\sec^{2}\theta\\
+\int\frac{x^{5}}{\left(x^{2}+1\right)^{4}}\,\dD x&=\int\frac{\tan^{5}\theta}{\left(\tan^{2}\theta+1\right)^{4}}\sec^{2}\theta\,\dD\theta\\
+&=\int\frac{\tan^{5}\theta}{\sec^{8}\theta}\sec^{2}\theta\,\dD\theta\\
+&=\int\frac{\left(\dfrac{\sin^{5}\theta}{\cos^{5}\theta}\right)}{\left(\dfrac{1}{\cos^{6}\theta}\right)}\,\dD\theta\\
+&=\int\sin^{5}\theta\cos\theta\,\dD\theta
+\end{topalign}\end{gtpart}
+\begin{gtpart}{(b)(ii)}{3}\cmtrow[30mm]{Sufficient working must be shown to demonstrate that calculator is not used here since question ask for ``exact''}{When $x=\sqrt{3}$, $\sqrt{3}=\tan\theta\ \Rightarrow\ \theta=\dfrac{\pi}{3}$\par
+When $x=0$, $0=\tan\theta\ \Rightarrow\ \theta=0$
+\begin{topalign}
+\int_{0}^{\sqrt{3}}\frac{x^{5}}{\left(x^{2}+1\right)^{4}}\,\dD x&=\int_{0}^{\frac{\pi}{3}}\sin^{5}\theta\cos\theta\,\dD\theta\\
+&=\frac{1}{6}\Big[\sin^{6}\theta\Big]_{0}^{\frac{\pi}{3}}\\
+&=\frac{1}{6}\left(\frac{\sqrt{3}}{2}\right)^{6}\\
+&=\frac{9}{128}
+\end{topalign}}\end{gtpart}}
+%% ============================================================ 113 YIJC 2024 Prelim P1 Q9(c) (soln: /workspace/tmp_ch10/2024-jc2-h2-math-prelim-yijc.pdf p30, official solution)
+\defQ{113}{}{%
+\begin{qparts}
+\pt{(c)} Find $\displaystyle\int\mathrm{e}^{-x}\cos3x\,\dD x$. Hence, find the exact value of $\displaystyle\int_{0}^{\pi}\mathrm{e}^{-x}\cos3x\,\dD x$. \mk{5}
+\end{qparts}
+\src{YIJC 2024 Prelim P1 Q9(c)}}
+\defS{113}{%
+\begin{gtpart}{(c)}{5}\cmtrow[52mm]{Remember to include the arbitrary constant once integration is completed}{\begin{topalign}
+&\int\mathrm{e}^{-x}\cos3x\,\dD x\\
+&=-\mathrm{e}^{-x}\cos3x-\int-\mathrm{e}^{-x}\left(-3\sin3x\right)\dD x\\
+&=-\mathrm{e}^{-x}\cos3x-3\int\mathrm{e}^{-x}\sin3x\,\dD x\\
+&=-\mathrm{e}^{-x}\cos3x-3\left[-\mathrm{e}^{-x}\sin3x-\int-\mathrm{e}^{-x}\left(3\cos3x\right)\dD x\right]\\
+&=-\mathrm{e}^{-x}\cos3x+3\mathrm{e}^{-x}\sin3x-9\int\mathrm{e}^{-x}\cos3x\,\dD x
+\end{topalign}
+\begin{topalign}
+\int\mathrm{e}^{-x}\cos3x\,\dD x&=-\mathrm{e}^{-x}\cos3x+3\mathrm{e}^{-x}\sin3x-9\int\mathrm{e}^{-x}\cos3x\,\dD x\\
+10\int\mathrm{e}^{-x}\cos3x\,\dD x&=-\mathrm{e}^{-x}\cos3x+3\mathrm{e}^{-x}\sin3x+C\\
+\int\mathrm{e}^{-x}\cos3x\,\dD x&=\frac{1}{10}\mathrm{e}^{-x}\left(-\cos3x+3\sin3x\right)+D\\
+\int_{0}^{\pi}\mathrm{e}^{-x}\cos3x\,\dD x&=\left[\frac{1}{10}\mathrm{e}^{-x}\left(-\cos3x+3\sin3x\right)\right]_{0}^{\pi}\\
+&=\frac{1}{10}\mathrm{e}^{-\pi}\left(-\cos3\pi+3\sin3\pi\right)\\
+&\quad-\frac{1}{10}\mathrm{e}^{0}\left(-\cos3(0)+3\sin3(0)\right)\\
+&=\frac{1}{10}\mathrm{e}^{-\pi}+\frac{1}{10}
+\end{topalign}}\end{gtpart}}

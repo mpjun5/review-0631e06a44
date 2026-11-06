@@ -1,0 +1,9 @@
+%% ---- change highlights turned OFF (28 Oct 2026, Maximus): macros keep content, no yellow ----
+\definecolor{FLhl}{RGB}{255,240,0}
+\protected\def\fhl#1{\ifmmode\text{#1}\else{#1}\fi}
+\newcommand{\fhlm}[1]{\ensuremath{\displaystyle#1}}
+\newcommand{\fhlmi}[1]{\ensuremath{#1}}
+\newcommand{\fhlp}[1]{{#1}}
+\newcommand{\flagi}[2]{{\setlength{\fboxsep}{1.5pt}\setlength{\fboxrule}{0.7pt}\fcolorbox{red}{white}{\textcolor{red}{\scriptsize\bfseries #1: #2}}}}
+% block red note (own paragraph). #1 = flag id, #2 = severity, #3 = text
+\newcommand{\flagb}[3]{\par\medskip\noindent{\setlength{\fboxsep}{3pt}\setlength{\fboxrule}{0.9pt}\fcolorbox{red}{red!6}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\raggedright\color{red!70!black}\footnotesize\textbf{FLAG #1 [#2] --- for Maximus to review:} #3}}}\par\medskip}
