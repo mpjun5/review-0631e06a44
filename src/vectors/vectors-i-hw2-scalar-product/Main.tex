@@ -1,0 +1,95 @@
+\documentclass[a4paper,11pt,oneside]{book}
+\input{preamble_build}
+\input{preamble_local}
+\input{prelim_fonts}
+\usepackage{needspace,longtable,multicol,enumitem,array}
+\providecommand{\vv}[1]{\overrightarrow{#1}}\providecommand{\cvv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+\raggedbottom
+\setlength{\parindent}{0pt}
+
+\fancyhf{}\lhead{\small Vectors I: HW2 (Scalar Product)}\rhead{\small Compiled by Maximus Pung Jun}
+\cfoot{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\newcounter{wq}
+\newcommand{\Q}[1]{\par\needspace{5\baselineskip}\medskip\stepcounter{wq}\noindent\textbf{\thewq}\quad #1\par}
+\begin{document}
+\thispagestyle{fancy}
+{\LARGE\scshape Vectors I Homework 2: Scalar Product}\par\smallskip
+{Compiled by Maximus Pung Jun}\par\smallskip
+{\small\textcolor{black!60}{Scalar product: properties, angles, perpendicularity, projections. Q1 True/False from the Basics Worksheet (Scalar Product). Q2--Q6 are full past-paper questions.}}\par\medskip
+\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
+\par\smallskip{\setlength{\extrarowheight}{5pt}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
+(a)&$\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(b)&$\mathbf a\cdot\mathbf a=|\mathbf a|^2$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(c)&$\mathbf i\cdot\mathbf j=0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(d)&$\mathbf a\cdot\mathbf b$ is a vector.\rule[-8pt]{0pt}{8pt}&\\\hline
+(e)&$\mathbf i\cdot\mathbf j=\mathbf k$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(f)&If $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$, then $\mathbf a\cdot\mathbf b=0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(g)&$(2\mathbf a)\cdot(3\mathbf b)=6\,\mathbf a\cdot\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(h)&$(\mathbf a\cdot\mathbf b)\mathbf c$ is a vector.\rule[-8pt]{0pt}{8pt}&\\\hline
+(i)&$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$, where $\theta$ is the non-reflex angle between $\mathbf a$ and $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(j)&$\cvv{1}{2}{3}\cdot\cvv{2}{3}{5}=\cvv{2}{6}{15}$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(k)&If $\mathbf a\cdot\mathbf b=0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(l)&$|\mathbf a\cdot\mathbf b|=|\mathbf a||\mathbf b|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(m)&$\mathbf a\cdot\mathbf b\le|\mathbf a||\mathbf b|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(n)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b>0$ means that the angle between $\mathbf a$ and $\mathbf b$ is acute.\rule[-8pt]{0pt}{8pt}&\\\hline
+(o)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b<0$ means that the angle between $\mathbf a$ and $\mathbf b$ is obtuse.\rule[-8pt]{0pt}{8pt}&\\\hline
+(p)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b\ge0$ means that the angle between $\mathbf a$ and $\mathbf b$ is acute.\rule[-8pt]{0pt}{8pt}&\\\hline
+(q)&$\mathbf a\cdot(\mathbf b\cdot\mathbf c)$ is a scalar.\rule[-8pt]{0pt}{8pt}&\\\hline
+(r)&$(\mathbf a+\mathbf b)\cdot(\mathbf a+\mathbf b)=|\mathbf a|^2+|\mathbf b|^2$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(s)&For non-zero $\mathbf a$ and $\mathbf b$, if $\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|$, then $\mathbf a$ and $\mathbf b$ are parallel.\rule[-8pt]{0pt}{8pt}&\\\hline
+(t)&$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$ also holds if $\theta$ is the reflex angle between $\mathbf a$ and $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(u)&Let $\theta$ be the angle $ABC$. Then $\vv{BA}\cdot\vv{BC}=|\vv{BA}||\vv{BC}|\cos\theta$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(v)&The length of projection of $\mathbf a$ onto $\mathbf b$ is equal to the length of projection of $\mathbf b$ onto $\mathbf a$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(w)&If $|\mathbf a|=|\mathbf b|$, then $(\mathbf a+\mathbf b)\cdot(\mathbf a-\mathbf b)=0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(x)&$\mathbf a\cdot\mathbf b=\mathbf a\cdot\mathbf c$ means that $\mathbf b=\mathbf c$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(y)&Let $\theta$ be the angle $ABC$. Then $\vv{AB}\cdot\vv{BC}=|\vv{AB}||\vv{BC}|\cos\theta$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(z)&Let $\theta$ be the angle $CBD$. Then $\vv{BD}\cdot\vv{CB}=|\vv{BD}||\vv{CB}|\cos\theta$.\rule[-8pt]{0pt}{8pt}&\\\hline\end{longtable}}
+\Q{\textcolor{black!60}{\small[TJC 2025 Prelim P1 Q6]}\par\smallskip
+The points $A$ and $B$ lie on a circle with centre $O$ and radius $\lambda$ units. With reference to the origin $O$, points $A$ and $B$ have position vectors $\mathbf a$ and $\mathbf b$ respectively. The point $X$ on the line segment $AB$ is such that $AX:XB=1:3$ and the point $Y$ is the foot of the perpendicular from $X$ to $OB$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
+\item Find the position vector of $X$.\hfill[1]
+\item It is given that the acute angle $AOB$ is $\dfrac{\pi}{6}$. Find $\mathbf a\cdot\mathbf b$ in terms of $\lambda$.\hfill[1]
+\item Show that the position vector of $Y$ is $\dfrac{2+3\sqrt3}{8}\mathbf b$.\hfill[2]
+\item Hence find the exact area of $\Delta OXY$ in terms of $\lambda$.\hfill[4]
+\end{enumerate}}
+\Q{\textcolor{black!60}{\small[HCI 2025 Prelim P2 Q4]}\par\smallskip
+Let $A$, $B$ and $C$ be the points on the same plane with position vectors $\mathbf a$, $\mathbf b$ and $\mathbf c$ respectively and $\mathbf a+\mathbf b+\mathbf c=\mathbf 0$. It is given that vectors $\mathbf a$, $\mathbf b$ and $\mathbf c$ are unit vectors.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
+\item \begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=2pt]
+\item By considering $\mathbf c\cdot\mathbf c$, find the value of $\mathbf a\cdot\mathbf b$.\hfill[3]
+\item Find the angle $\angle AOB$.\hfill[2]
+\item Draw the position vectors $\mathbf a$, $\mathbf b$ and $\mathbf c$ on a single diagram. Using your diagram, identify the type of triangle $ABC$.\hfill[2]
+\end{enumerate}
+\item The point $D$ has position vector $\mathbf a+\mathbf b$. Find the area of the quadrilateral $ACBD$.\hfill[2]
+\end{enumerate}}
+\Q{\textcolor{black!60}{\small[SAJC 2025 Prelim P1 Q11]}\par\smallskip
+The points $A$, $B$ and $A'$ lie on a circle with centre $O$ such that $\overrightarrow{OA}=\mathbf a$ and $\overrightarrow{OB}=\mathbf b$. It is also given that the line segment $AA'$ is a straight line that passes through $O$ (see diagram).
+\begin{center}\begin{tikzpicture}[scale=1.1,font=\small,line join=round]
+\draw[semithick] (0,0) circle (1.5);
+\coordinate (A) at (-1.5,0);\coordinate (Ap) at (1.5,0);\coordinate (B) at ({1.5*cos(55)},{1.5*sin(55)});
+\draw[semithick] (A)--(Ap);\draw[semithick] (A)--(B)--(Ap);
+\fill (0,0) circle (1.5pt);
+\node[left] at (A){$A$};\node[right] at (Ap){$A'$};\node[above] at (B){$B$};\node[below=2pt] at (0,0){$O$};
+\end{tikzpicture}\end{center}
+\begin{enumerate}[label=\textbf{(\roman*)},leftmargin=2.2em,itemsep=3pt]
+\item Using a suitable scalar product, prove that $\angle ABA'=90^\circ$.\hfill[4]
+\item Express the area of $\Delta ABA'$ in the form $k|\mathbf a\times\mathbf b|$, where $k$ is a real constant.\hfill[2]
+\end{enumerate}}
+\Q{\textcolor{black!60}{\small[VJC 2025 Prelim P1 Q3]}\par\smallskip
+Referred to the origin $O$, points $A$ and $B$ have position vectors $\mathbf a$ and $\mathbf b$ respectively. Point $C$ lies on $OA$, such that $OC:CA=2:1$. Point $D$ lies on $OB$, such that $OD:DB=\lambda:\mu$. It is given that the area of triangle $ABD$ is half the area of triangle $ABC$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
+\item Show that the area of triangle $ABD$ is given by $\dfrac{\mu}{2(\lambda+\mu)}|\mathbf a\times\mathbf b|$. Hence find the ratio $\lambda:\mu$.\hfill[4]
+\item The point $E$ has position vector $\dfrac14\mathbf a+\dfrac58\mathbf b$. Show that $A$, $E$ and $D$ are collinear.\hfill[3]
+\end{enumerate}
+It is further given that the angle $AOB$ is $\dfrac{\pi}{4}$ and $O$ lies on the perpendicular bisector of the line segment $AB$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt,start=3]
+\item Find the length of projection of $\mathbf a$ on $\mathbf b$, giving your answer in terms of $|\mathbf b|$. Hence find the position vector of the point $F$, the foot of the perpendicular from $A$ to $OB$.\hfill[3]
+\end{enumerate}}
+\Q{\textcolor{black!60}{\small[CJC 2024 Prelim P2 Q1]}\par\smallskip
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
+\item The points $P$, $Q$ and $R$ have position vectors $\mathbf j+\mathbf k$, $\mathbf i-2\mathbf j+3\mathbf k$ and $-2\mathbf i+\mathbf j+4\mathbf k$ respectively. Find the exact length of projection of $\vv{QR}$ on $\vv{PQ}$.\hfill[3]
+\item Two non-zero vectors $\mathbf a$ and $\mathbf b$ are such that $|\mathbf a|=\lambda|\mathbf b|$ and $|\mathbf a+\lambda\mathbf b|=2|\mathbf a-\lambda\mathbf b|$, where $\lambda$ is a positive constant. Using a suitable scalar product, show that $\cos\theta=\dfrac35$, where $\theta$ is the acute angle between $\mathbf a$ and $\mathbf b$.\hfill[3]
+\end{enumerate}}
+\par\vspace{\baselineskip}\begin{center}\textbf{END OF HOMEWORK}\end{center}\end{document}

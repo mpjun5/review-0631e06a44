@@ -193,6 +193,26 @@
           "type": "Homework",
           "status": "in progress",
           "deleted": null
+        },
+        {
+          "title": "Vectors I HW2 (Scalar Product)",
+          "slug": "vectors-i-hw2-scalar-product",
+          "updated": "06 Nov 2026, 08:57 PM SGT",
+          "size_kb": 85,
+          "source": "src/vectors/vectors-i-hw2-scalar-product/Main.tex",
+          "type": "Homework",
+          "status": "in progress",
+          "deleted": null
+        },
+        {
+          "title": "Vectors I HW1 (Introduction to Ratio Theorem) Solutions",
+          "slug": "vectors-i-hw1-introduction-to-ratio-theorem-solutions",
+          "updated": "06 Nov 2026, 08:57 PM SGT",
+          "size_kb": 90,
+          "source": "src/vectors/vectors-i-hw1-introduction-to-ratio-theorem-solutions/Vectors_I_HW1_Solutions.tex",
+          "type": "Solutions",
+          "status": "in progress",
+          "deleted": null
         }
       ]
     },
