@@ -4,8 +4,8 @@
 \usetikzlibrary{calc}
 \input{prelim_fonts}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{4pt}
-\setlist[enumerate]{leftmargin=2.2em,itemsep=4pt,topsep=3pt}
+\setlength{\parskip}{3pt}
+\setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,topsep=3pt}
 \setlength{\abovedisplayskip}{6pt}\setlength{\belowdisplayskip}{6pt}
 \pagestyle{fancy}\fancyhf{}\lhead{\small Vectors I -- HW1}\rhead{\small Compiled by Maximus Pung Jun}\cfoot{\small\thepage}
 \newcommand{\cv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
@@ -17,76 +17,51 @@
 {\Large\textbf{Vectors I - HW1 (Introduction to Ratio Theorem)}}\par
 \textbf{Solutions}\par
 {\small Compiled by Maximus Pung Jun}\par
-{\small Original practice questions. Total: 52 marks. Give exact answers unless otherwise stated.}\par\medskip\hrule\medskip
-\q{1}{6}The points $A$, $B$, $C$ and $D$ have coordinates $(1,2,0)$, $(4,-2,0)$, $(-2,5,1)$ and $(1,1,1)$ respectively.
-\begin{enumerate}[label=(\alph*)]
-\item Find $\vv{AB}$, $\vv{CD}$ and the distance $AB$. \mk{3}
-\item Are $\vv{AB}$ and $\vv{CD}$ equal vectors? Are $\vv{OA}$ and $\vv{OC}$ equal vectors? Explain the difference between these two comparisons. \mk{2}
-\item A student claims that $A,B,C,D$ are collinear because $\vv{AB}=\vv{CD}$. Explain why this is false. \mk{1}
-\end{enumerate}
-\medskip\textbf{Solution}\par\begin{enumerate}[label=(\alph*)]
-\item $\displaystyle\vv{AB}=\cv{4}{-2}{0}-\cv{1}{2}{0}=\cv{3}{-4}{0}$ and $\displaystyle\vv{CD}=\cv{1}{1}{1}-\cv{-2}{5}{1}=\cv{3}{-4}{0}$.
-\[AB=|\vv{AB}|=\sqrt{3^2+(-4)^2}=5.\]
-\item Yes: $\vv{AB}$ and $\vv{CD}$ have the same components, hence the same magnitude and direction. No: $A$ and $C$ are different points, so their position vectors have different components. Equal displacement vectors need not start at the same point; equal position vectors, relative to the same origin, identify the same point.
-\item Parallel segments at different locations need not be collinear. Here every point of the line through $A$ and $B$ has $z=0$, whereas $C$ and $D$ have $z=1$.
-\end{enumerate}
-\q{2}{5}The vectors $\mathbf a$ and $\mathbf b$ are given by $\mathbf a=2\mathbf i-\mathbf j+3\mathbf k$ and $\mathbf b=-\mathbf i+4\mathbf j$.
+{\small Original practice questions. Total: 47 marks. Give exact answers unless otherwise stated.}\par\medskip\hrule\medskip
+\q{1}{5}The vectors $\mathbf a$ and $\mathbf b$ are given by $\mathbf a=2\mathbf i-\mathbf j+3\mathbf k$ and $\mathbf b=-\mathbf i+4\mathbf j$.
 \begin{enumerate}[label=(\alph*)]
 \item Write $\mathbf a$ and $\mathbf b$ as column vectors and find $\mathbf a+2\mathbf b$. \mk{2}
 \item Find $\mathbf c$ such that $2\mathbf a-3\mathbf b+\mathbf c=\mathbf0$. \mk{2}
 \item Points $P$ and $Q$ have position vectors $\mathbf a+2\mathbf b$ and $\mathbf c$ respectively. Find $\vv{PQ}$. \mk{1}
 \end{enumerate}
-\medskip\textbf{Solution}\par\begin{enumerate}[label=(\alph*)]
+\par\medskip\textbf{Solution}\par \begin{enumerate}[label=(\alph*)]
 \item $\displaystyle\mathbf a=\cv{2}{-1}{3},\qquad\mathbf b=\cv{-1}{4}{0},\qquad \mathbf a+2\mathbf b=\cv{2}{-1}{3}+2\cv{-1}{4}{0}=\cv{0}{7}{3}$.
 \item $\displaystyle\mathbf c=3\mathbf b-2\mathbf a=\cv{-3}{12}{0}-\cv{4}{-2}{6}=\cv{-7}{14}{-6}$.
 \item $\displaystyle\vv{PQ}=\vv{OQ}-\vv{OP}=\cv{-7}{14}{-6}-\cv{0}{7}{3}=\cv{-7}{7}{-9}$.
 \end{enumerate}
-\clearpage
-\q{3}{5}The vector $\mathbf u=\cv{t}{3}{t+2}$ has magnitude $\sqrt{19}$, where $t$ is real.
+\q{2}{6}The points $A$ and $B$ have coordinates $(1,-2,2)$ and $(3,1,-4)$ respectively.
 \begin{enumerate}[label=(\alph*)]
-\item Find all possible values of $t$. \mk{3}
-\item Find the corresponding unit vectors in the direction of $\mathbf u$. \mk{1}
-\item Are the two possible vectors $\mathbf u$ parallel? Justify your answer without calculating any angle. \mk{1}
-\end{enumerate}
-\medskip\textbf{Solution}\par\begin{enumerate}[label=(\alph*)]
-\item \[t^2+3^2+(t+2)^2=19\quad\Longrightarrow\quad 2t^2+4t-6=0.\]
-Thus $(t-1)(t+3)=0$, so $\boxed{t=1\text{ or }t=-3}$.
-\item The unit vectors are $\displaystyle\frac1{\sqrt{19}}\cv{1}{3}{3}$ and $\displaystyle\frac1{\sqrt{19}}\cv{-3}{3}{-1}$ respectively.
-\item No. If one were a scalar multiple of the other, their equal non-zero second components would force the scalar to be $1$, but their first components are different.
-\end{enumerate}
-\q{4}{6}The points $A$ and $B$ have coordinates $(1,-2,2)$ and $(3,1,-4)$ respectively.
-\begin{enumerate}[label=(\alph*)]
-\item Find the unit vector in the direction of $\vv{AB}$. \mk{2}
-\item Find the vector of magnitude $21$ in the direction opposite to $\vv{AB}$. \mk{2}
+\item Find a unit vector that is parallel to $AB$. \mk{2}
+\item Find a vector of length 21 parallel to $AB$. \mk{2}
 \item A point $P$ is such that $\vv{AP}$ has magnitude $14$ and the same direction as $\vv{AB}$. Find the coordinates of $P$ and state the order of the three points along their common straight path. \mk{2}
 \end{enumerate}
-\medskip\textbf{Solution}\par\begin{enumerate}[label=(\alph*)]
+\par\medskip\textbf{Solution}\par \begin{enumerate}[label=(\alph*)]
 \item \[\vv{AB}=\cv{3}{1}{-4}-\cv{1}{-2}{2}=\cv{2}{3}{-6},\qquad |\vv{AB}|=\sqrt{4+9+36}=7.\]
-The required unit vector is $\displaystyle\frac17\cv{2}{3}{-6}$.
-\item The required vector is $\displaystyle-21\left(\frac17\cv{2}{3}{-6}\right)=\boxed{\cv{-6}{-9}{18}}$.
+One such unit vector is $\displaystyle\frac17\cv{2}{3}{-6}$. Its negative is also a valid answer.
+\item One such vector is $\displaystyle21\left(\frac17\cv{2}{3}{-6}\right)=\boxed{\cv{6}{9}{-18}}$. Its negative is also a valid answer.
 \item \[\vv{AP}=14\left(\frac17\cv{2}{3}{-6}\right)=\cv{4}{6}{-12},\qquad \vv{OP}=\vv{OA}+\vv{AP}=\cv{5}{4}{-10}.\]
 Thus $\boxed{P(5,4,-10)}$. Since $\vv{AP}=2\vv{AB}$, the order is $A,B,P$.
 \end{enumerate}
 \clearpage
-\q{5}{6}The vectors $\mathbf p=\cv{6}{k}{-3}$ and $\mathbf q=\cv{2}{-4}{m}$ are parallel, where $k$ and $m$ are real constants.
+\q{3}{6}The vectors $\mathbf p=\cv{6}{k}{-3}$ and $\mathbf q=\cv{2}{-4}{m}$ are parallel, where $k$ and $m$ are real constants.
 \begin{enumerate}[label=(\alph*)]
 \item Find $k$ and $m$. \mk{3}
 \item State whether $\mathbf p$ and $\mathbf q$ have the same or opposite directions, and find $|\mathbf p|:|\mathbf q|$. \mk{1}
 \item Find all vectors of magnitude $\sqrt{21}$ that are parallel to $\mathbf p$. \mk{2}
 \end{enumerate}
-\medskip\textbf{Solution}\par\begin{enumerate}[label=(\alph*)]
+\par\medskip\textbf{Solution}\par \begin{enumerate}[label=(\alph*)]
 \item Since the vectors are parallel, $\mathbf p=h\mathbf q$ for some non-zero real $h$. Comparing first components gives $6=2h$, so $h=3$.
 \[k=3(-4)=-12,\qquad -3=3m\quad\Longrightarrow\quad\boxed{k=-12,\ m=-1}.\]
 \item Since $\mathbf p=3\mathbf q$, they have the same direction and $\boxed{|\mathbf p|:|\mathbf q|=3:1}$.
 \item $\displaystyle|\mathbf q|=\sqrt{2^2+(-4)^2+(-1)^2}=\sqrt{21}$. Both directions must be included, so all such vectors are
 \[\boxed{\pm\cv{2}{-4}{-1}}.\]
 \end{enumerate}
-\q{6}{6}The points $A$, $B$ and $C$ have coordinates $(1,2,-1)$, $(3,1,2)$ and $(7,-1,8)$ respectively.
+\q{4}{6}The points $A$, $B$ and $C$ have coordinates $(1,2,-1)$, $(3,1,2)$ and $(7,-1,8)$ respectively.
 \begin{enumerate}[label=(\alph*)]
 \item Show that $A$, $B$ and $C$ are collinear, and find $AB:BC$. \mk{3}
 \item The point $R(u,-2,v)$ lies on the same straight path as $A$, $B$ and $C$. Find $u$ and $v$. \mk{3}
 \end{enumerate}
-\medskip\textbf{Solution}\par\begin{enumerate}[label=(\alph*)]
+\par\medskip\textbf{Solution}\par \begin{enumerate}[label=(\alph*)]
 \item \[\vv{AB}=\cv{2}{-1}{3},\qquad \vv{BC}=\cv{4}{-2}{6}=2\vv{AB}.\]
 Thus $\vv{AB}$ and $\vv{BC}$ are parallel and have the common point $B$, so $A,B,C$ are collinear. Taking magnitudes gives $\boxed{AB:BC=1:2}$.
 \item Collinearity gives $\vv{AR}=s\vv{AB}$ for some real $s$, so
@@ -94,13 +69,13 @@ Thus $\vv{AB}$ and $\vv{BC}$ are parallel and have the common point $B$, so $A,B
 The second components give $s=4$. Hence $u-1=8$ and $v+1=12$, giving $\boxed{u=9,\ v=11}$.
 \end{enumerate}
 \clearpage
-\q{7}{8}The points $A$ and $B$ have coordinates $(2,-1,3)$ and $(-4,5,0)$ respectively. A point $M$ divides $AB$ internally in the ratio $AM:MB=2:1$. A point $N$ lies on $AB$ produced beyond $B$ and satisfies $AN:NB=5:2$.
+\q{5}{8}The points $A$ and $B$ have coordinates $(2,-1,3)$ and $(-4,5,0)$ respectively. A point $M$ divides $AB$ internally in the ratio $AM:MB=2:1$. A point $N$ lies on $AB$ produced beyond $B$ and satisfies $AN:NB=5:2$.
 \begin{enumerate}[label=(\alph*)]
 \item Find the position vector of $M$. \mk{2}
 \item Find the position vector of $N$. \mk{3}
-\item State the order of the four points and find $MB:BN$. \mk{3}
+\item State the order of the four points $A$, $B$, $M$ and $N$, and find $MB:BN$. \mk{3}
 \end{enumerate}
-\medskip\textbf{Solution}\par\begin{enumerate}[label=(\alph*)]
+\par\medskip\textbf{Solution}\par \begin{enumerate}[label=(\alph*)]
 \item By the ratio theorem,
 \[\vv{OM}=\frac{\vv{OA}+2\vv{OB}}3=\frac13\left[\cv{2}{-1}{3}+2\cv{-4}{5}{0}\right]=\boxed{\cv{-2}{3}{1}}.\]
 \item Since $AN=AB+BN$ and $AN:BN=5:2$, $AB:BN=3:2$. Hence $\vv{BN}=\frac23\vv{AB}$, and
@@ -109,7 +84,7 @@ The second components give $s=4$. Hence $u-1=8$ and $v+1=12$, giving $\boxed{u=9
 \[\boxed{MB:BN=1:2}.\]
 \end{enumerate}
 \clearpage
-\q{8}{10}Relative to the origin $O$, the points $A$ and $B$ have non-zero, non-parallel position vectors $\mathbf a$ and $\mathbf b$ respectively. The point $X$ lies on $OA$ with $OX:XA=2:1$, and the point $Y$ lies on $OB$ with $OY:YB=1:2$. The line segments $AY$ and $BX$ intersect at $P$.
+\q{6}{10}Relative to the origin $O$, the points $A$ and $B$ have non-zero, non-parallel position vectors $\mathbf a$ and $\mathbf b$ respectively. The point $X$ lies on $OA$ with $OX:XA=2:1$, and the point $Y$ lies on $OB$ with $OY:YB=1:2$. The line segments $AY$ and $BX$ intersect at $P$.
 \begin{center}\begin{tikzpicture}[scale=0.55,every node/.style={font=\small}]
 \coordinate(O)at(0,0);\coordinate(A)at(0,4.2);\coordinate(B)at(7,0);
 \coordinate(X)at(0,2.8);\coordinate(Y)at(2.3333,0);\coordinate(P)at(1,2.4);
@@ -123,7 +98,7 @@ The second components give $s=4$. Hence $u-1=8$ and $v+1=12$, giving $\boxed{u=9
 \item Find $AP:PY$ and $BP:PX$. \mk{2}
 \item The point $Z$ divides $AB$ internally with $AZ:ZB=1:4$. Show that $O,P,Z$ are collinear and find $OP:PZ$. \mk{2}
 \end{enumerate}
-\medskip\textbf{Solution}\par\begin{enumerate}[label=(\alph*)]
+\par\medskip\textbf{Solution}\par \begin{enumerate}[label=(\alph*)]
 \item First, $\vv{OX}=\frac23\mathbf a$ and $\vv{OY}=\frac13\mathbf b$.
 Let $AP:PY=s:(1-s)$ and $BP:PX=t:(1-t)$, where $0<s,t<1$. By the ratio theorem,
 \begin{align*}
@@ -141,4 +116,64 @@ Consequently,
 \[\vv{OZ}=\frac{4\mathbf a+\mathbf b}{5},\qquad \vv{OP}=\frac{4\mathbf a+\mathbf b}{7}=\frac57\vv{OZ}.\]
 The two vectors are parallel and have the common point $O$, so $O,P,Z$ are collinear. Since $0<\frac57<1$, $P$ is between $O$ and $Z$; hence $\boxed{OP:PZ=5:2}$.
 \end{enumerate}
+\clearpage
+\q{7}{6}A solid house consists of a cuboid $OBCDEFGH$ and a triangular prism roof $EFPHGQ$, as shown. The base $OBCD$ is horizontal. The vertices $E$, $F$, $G$ and $H$ are directly above $O$, $B$, $C$ and $D$ respectively.
+
+The front-left corner $O$ is the origin. The positive $\mathbf i$, $\mathbf j$ and $\mathbf k$ directions are along $OB$, $OD$ and $OE$ respectively, and each unit represents $1$ metre. It is given that $OB=6\,\mathrm m$, $OD=4\,\mathrm m$ and $OE=3\,\mathrm m$.
+
+The ridge $PQ$ is parallel to $OD$. The front gable $EFP$ and back gable $HGQ$ are congruent isosceles triangles, with $P$ vertically above the midpoint of $EF$ and $Q$ vertically above the midpoint of $HG$. Each sloping roof face makes an angle $\alpha$ with the horizontal, where $\tan\alpha=\frac23$; the vertical roof rise is $2\,\mathrm m$.
+\begin{center}
+\begin{tikzpicture}[x={(0.95cm,0cm)},y={(0.55cm,0.65cm)},z={(0cm,0.9cm)},scale=0.72,line join=round,line cap=round,>=stealth,every node/.style={font=\small}]
+\coordinate(O)at(0,0,0);\coordinate(B)at(6,0,0);\coordinate(C)at(6,4,0);\coordinate(D)at(0,4,0);
+\coordinate(E)at(0,0,3);\coordinate(F)at(6,0,3);\coordinate(G)at(6,4,3);\coordinate(H)at(0,4,3);
+\coordinate(P)at(3,0,5);\coordinate(Q)at(3,4,5);\coordinate(M)at(3,0,3);
+% Cuboid walls and the two rectangular faces of the solid prism roof.
+\fill[gray!10](O)--(B)--(F)--(E)--cycle;
+\fill[gray!18](B)--(C)--(G)--(F)--cycle;
+\fill[blue!9](E)--(P)--(Q)--(H)--cycle;
+\fill[blue!16](P)--(F)--(G)--(Q)--cycle;
+\fill[blue!4](E)--(F)--(P)--cycle;
+% Hidden cuboid edges.
+\draw[dashed,black!55](O)--(D)--(C);\draw[dashed,black!55](D)--(H);
+\draw[thick](O)--(B)--(C)--(G)--(Q)--(H)--(E)--cycle;
+\draw[thick](E)--(F)--(G)--(H);\draw[thick](B)--(F)--(P)--(E);
+\draw[thick](P)--(Q);
+% Roof rise and pitch on the front gable.
+\draw[dashed,black!65](M)--(P)node[pos=0.48,right=2pt,fill=blue!4,inner sep=1pt]{$2\,\mathrm m$};
+\draw ($(M)+(-0.18,0,0)$)--++(0,0,0.18)--++(0.18,0,0);
+\draw (0.72,0,3) arc[start angle=0,end angle=32.28,radius=0.684cm];
+\node at (1.12,0,3.22){$\alpha$};
+% Dimensions, placed outside the solid.
+\draw[thin] (0,0,-0.42)--(6,0,-0.42)node[midway,below]{$6\,\mathrm m$};
+\draw[thin](0,0,-0.28)--(0,0,-0.56);\draw[thin](6,0,-0.28)--(6,0,-0.56);
+\draw[thin](6.5,0,0)--(6.5,4,0)node[midway,below right]{$4\,\mathrm m$};
+\draw[thin](6.36,0,0)--(6.64,0,0);\draw[thin](6.36,4,0)--(6.64,4,0);
+\draw[thin](-0.48,0,0)--(-0.48,0,3)node[midway,left]{$3\,\mathrm m$};
+\draw[thin](-0.34,0,0)--(-0.62,0,0);\draw[thin](-0.34,0,3)--(-0.62,0,3);
+% Positive coordinate directions are along OB, OD and OE.
+\draw[->,black!70](B)--(7.4,0,0)node[right]{$\mathbf i$};
+\draw[->,black!70](D)--(0,5.5,0)node[above right]{$\mathbf j$};
+\draw[->,black!70](E)--(0,0,6.2)node[above]{$\mathbf k$};
+\foreach \n in {O,B,C,D,E,F,G,H,P,Q}{\fill (\n)circle(1.35pt);}
+\node[below left]at(O){$O$};\node[below]at(B){$B$};\node[right]at(C){$C$};\node[below right]at(D){$D$};
+\node[left]at(E){$E$};\node[below right]at(F){$F$};\node[right]at(G){$G$};\node[left]at(H){$H$};
+\node[above left]at(P){$P$};\node[above]at(Q){$Q$};
+\end{tikzpicture}\par
+{\small All lengths are in metres. The diagram is not drawn to scale.}
+\end{center}Find the coordinates of all the vertices of the house.
+\par\medskip\textbf{Solution}\par The positive coordinate directions are along $OB$, $OD$ and $OE$. Hence the four base vertices have $z=0$, the front vertices have $y=0$, and the back vertices have $y=4$.
+
+The walls are $3\,\mathrm m$ high, so $E,F,G,H$ all have $z=3$. The roof is symmetric across the middle of its $6\,\mathrm m$ width, so the ridge has $x=\frac62=3$.
+
+Writing $h$ for the vertical roof rise,
+\[\tan\alpha=\frac{h}{6/2}=\frac23\quad\Longrightarrow\quad h=2\,\mathrm m.\]
+This agrees with the labelled rise. The ridge is at height $3+2=5\,\mathrm m$. Therefore all ten vertices are
+\[\boxed{\begin{aligned}
+O&=(0,0,0),& B&=(6,0,0),\\
+C&=(6,4,0),& D&=(0,4,0),\\
+E&=(0,0,3),& F&=(6,0,3),\\
+G&=(6,4,3),& H&=(0,4,3),\\
+P&=(3,0,5),& Q&=(3,4,5).
+\end{aligned}}\]
+
 \medskip\begin{center}\textbf{END OF HOMEWORK}\end{center}\end{document}
