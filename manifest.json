@@ -275,6 +275,16 @@
           "type": "Worksheet",
           "source": "src/vectors/vectors-basics-worksheet/Vectors_Basics_Worksheet.tex",
           "deleted": null
+        },
+        {
+          "title": "Vectors Basics Worksheet Solutions",
+          "slug": "vectors-basics-worksheet-solutions",
+          "updated": "06 Nov 2026, 11:00 PM SGT",
+          "size_kb": 129,
+          "status": "in progress",
+          "type": "Worksheet",
+          "source": "src/vectors/vectors-basics-worksheet-solutions/Vectors_Basics_Worksheet_Solutions.tex",
+          "deleted": null
         }
       ]
     }
