@@ -11,7 +11,8 @@
           "size_kb": 151,
           "status": "in progress",
           "type": "Summary",
-          "deleted": null
+          "deleted": null,
+          "source": "src/h2-math-summary/h2-math-summary-vectors-draft/vectors_draft.tex"
         }
       ]
     },
@@ -25,7 +26,7 @@
           "updated": "22 Oct 2026, 09:17 PM SGT",
           "size_kb": 62,
           "status": "completed",
-          "source": "src/definite-integrals/DI_examples_worksheet.tex",
+          "source": "src/definite-integrals/di-examples-worksheet/DI_examples_worksheet.tex",
           "type": "Worksheet",
           "deleted": null
         },
@@ -35,7 +36,7 @@
           "updated": "22 Oct 2026, 09:17 PM SGT",
           "size_kb": 524,
           "status": "completed",
-          "source": "src/definite-integrals/DI_examples_worksheet_solutions.tex",
+          "source": "src/definite-integrals/di-examples-worksheet-solutions/DI_examples_worksheet_solutions.tex",
           "type": "Solutions",
           "deleted": null
         },
@@ -46,7 +47,8 @@
           "size_kb": 135,
           "status": "completed",
           "type": "Test",
-          "deleted": null
+          "deleted": null,
+          "source": "src/definite-integrals/definite-integrals-test/Test.tex"
         },
         {
           "title": "Definite Integrals Test solutions",
@@ -55,7 +57,8 @@
           "size_kb": 194,
           "status": "completed",
           "type": "Solutions",
-          "deleted": null
+          "deleted": null,
+          "source": "src/definite-integrals/definite-integrals-test-solutions/Test_solutions.tex"
         }
       ]
     },
@@ -70,7 +73,8 @@
           "size_kb": 92,
           "status": "in progress",
           "type": "Questions",
-          "deleted": null
+          "deleted": null,
+          "source": "src/h2-math-summary/ch9-candidate-questions/ch9cand.tex"
         }
       ]
     },
@@ -85,7 +89,8 @@
           "size_kb": 9910,
           "status": "completed",
           "type": "Summary",
-          "deleted": null
+          "deleted": null,
+          "source": "src/syllabus-9758-pure-math/syllabus-9758-pure-math-summary/notes_hw.tex"
         },
         {
           "title": "Syllabus 9758 Pure Math Example Questions",
@@ -94,7 +99,8 @@
           "size_kb": 14001,
           "status": "completed",
           "type": "Example Questions",
-          "deleted": null
+          "deleted": null,
+          "source": "src/syllabus-9758-pure-math/syllabus-9758-pure-math-example-questions/eq_hw.tex"
         }
       ]
     },
@@ -109,7 +115,8 @@
           "size_kb": 312,
           "status": "completed",
           "type": "Summary",
-          "deleted": null
+          "deleted": null,
+          "source": "src/syllabus-9758-statistics/syllabus-9758-statistics-summary/stats.tex"
         },
         {
           "title": "Syllabus 9758 Statistics Example Questions",
@@ -118,7 +125,8 @@
           "size_kb": 8230,
           "status": "completed",
           "type": "Example Questions",
-          "deleted": null
+          "deleted": null,
+          "source": "src/syllabus-9758-statistics/syllabus-9758-statistics-example-questions/stats_examples.tex"
         }
       ]
     },
@@ -189,7 +197,8 @@
           "size_kb": 143,
           "type": "Solutions",
           "status": "in progress",
-          "deleted": null
+          "deleted": null,
+          "source": "src/paper-2/h2-mathematics-9758-paper-2-suggested-solutions/Paper2_Suggested_Solutions.tex"
         }
       ]
     }
