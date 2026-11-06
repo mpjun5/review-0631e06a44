@@ -1,6 +1,7 @@
 \documentclass[a4paper]{book}
 \input{preamble_build}
 \input{preamble_local}
+\input{prelim_fonts}% Times New Roman + Termes Math (summary-sheet / HW house font)
 \usepackage{longtable}
 \usepackage{enumitem,multicol,needspace}
 \raggedbottom
@@ -891,7 +892,7 @@ Where $\theta$ is the angle between the vectors $\mathbf a$ and $\mathbf b$.
 Note that we have to include the modulus sign as $|\mathbf a\times\mathbf b|$ instead of $\mathbf a\times\mathbf b$, because $\mathbf a\times\mathbf b$ would return us a vector, not a scalar.
 
 \begin{example}
-Find the angle between the two vectors $\mathbf a=\cvv{1}{2}{1}$ and $\mathbf b=\cvv{-1}{3}{2}$ by using vector product.
+Find the acute angle between the two vectors $\mathbf a=\cvv{1}{2}{1}$ and $\mathbf b=\cvv{-1}{3}{2}$ by using vector product.
 \end{example}
 \solution{
 \[
@@ -904,11 +905,7 @@ Find the angle between the two vectors $\mathbf a=\cvv{1}{2}{1}$ and $\mathbf b=
 \end{aligned}
 \]}
 
-\textbf{Note:} You can cross check this answer by finding the angle using the dot product.
 
-\begin{question}
-\textbf{Thinking Question:} \textit{Notice how we are able to use both dot and cross product to find the angle between any two non zero vectors. Which method is more desirable and why?}
-\end{question}
 
 
 \clearpage
@@ -964,9 +961,6 @@ Relative to an origin $O$, two point $A$ and $B$ have position vectors given by 
 \end{tikzpicture}
 \end{minipage}}
 
-\begin{question}
-\textbf{Thinking Question:} \textit{There is a difference between the shortest distance from $A$ to $OB$ compared to $B$ to $OA$. Think about how the formula would look like for both cases. (You may draw a diagram to help illustrate this better)}
-\end{question}
 
 \clearpage
 
@@ -1073,8 +1067,8 @@ The position vectors $A$, $B$ and $C$ are $\mathbf a=\mathbf i+2\mathbf j+\mathb
 $\mathbf b=b_1\mathbf i+b_2\mathbf j+b_3\mathbf k$,\quad
 $\theta=\text{non-reflex }\angle AOB$.
 \par\smallskip
-{\renewcommand{\arraystretch}{1.15}\setlength{\tabcolsep}{3pt}\footnotesize
-\noindent\begin{tabular}{|p{1.55cm}|p{6.85cm}|p{6.85cm}|}
+{\renewcommand{\arraystretch}{1.12}\setlength{\tabcolsep}{3.5pt}\footnotesize
+\noindent\begin{tabular}{|>{\raggedright\arraybackslash}p{2.15cm}|p{6.5cm}|p{6.5cm}|}
 \hline
 & \centering\textbf{Scalar Product (Dot)} & \centering\arraybackslash\textbf{Vector Product (Cross)}\\\hline
 \textbf{Definition} &
@@ -1090,7 +1084,7 @@ $|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|\sin\theta$\\\hline
 $\cos\theta=\dfrac{\mathbf a\cdot\mathbf b}{|\mathbf a||\mathbf b|}$\par
 $\mathbf a\cdot\mathbf b>0$ acute, $<0$ obtuse, $=0$ right angle &
 $\sin\theta=\dfrac{|\mathbf a\times\mathbf b|}{|\mathbf a||\mathbf b|}$\par
-{\scriptsize\color{black!55}\textit{note:} this method only finds the basic angle possible, but usually undesirable}\\\hline
+{\scriptsize\color{black!55}this method only finds the basic angle possible, but usually undesirable}\\\hline
 \textbf{Properties} &
 $\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$\par
 $\mathbf a\cdot(\mathbf b+\mathbf c)=\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c$\par
@@ -1101,62 +1095,66 @@ $\mathbf a\times(\mathbf b+\mathbf c)=\mathbf a\times\mathbf b+\mathbf a\times\m
 $\lambda(\mathbf a\times\mathbf b)=(\lambda\mathbf a)\times\mathbf b=\mathbf a\times(\lambda\mathbf b)$\par
 $\mathbf a\times\mathbf a=\mathbf 0$\\\hline
 \textbf{Test} &
-$\mathbf a\cdot\mathbf b=0\iff\mathbf a\perp\mathbf b$\par
-{\scriptsize\color{black!55}(nonzero $\mathbf a$, $\mathbf b$)} &
-$\mathbf a\times\mathbf b=\mathbf 0\iff\mathbf a\parallel\mathbf b$\par
-{\scriptsize\color{black!55}(nonzero $\mathbf a$, $\mathbf b$)}\\\hline
+$\mathbf a\cdot\mathbf b=0\iff\mathbf a\perp\mathbf b$ &
+$\mathbf a\times\mathbf b=\mathbf 0\iff\mathbf a\parallel\mathbf b$\\\hline
+\multicolumn{3}{|l|}{\scriptsize\color{black!55}(nonzero $\mathbf a$, $\mathbf b$)}\\\hline
 \textbf{Applications} &
 Length of projection $=|\mathbf a\cdot\hat{\mathbf b}|$\par
-Projection vector $=(\mathbf a\cdot\hat{\mathbf b})\hat{\mathbf b}$
-\par\smallskip
-\begin{center}\begin{tikzpicture}[scale=0.72,>=Stealth]
-\coordinate (O) at (0,0);\coordinate (B) at (3.2,0);\coordinate (A) at (1.7,1.55);
-\coordinate (F) at (1.7,0);
+Projection vector $=(\mathbf a\cdot\hat{\mathbf b})\hat{\mathbf b}$ &
+Perpendicular distance $=|\mathbf a\times\hat{\mathbf b}|$\par
+Area of $\triangle OAB=\tfrac12|\mathbf a\times\mathbf b|$\par
+Area of parallelogram $=|\mathbf a\times\mathbf b|$\\\hline
+\textbf{\raggedright Geometrical meaning} &
+\begin{center}\vspace{1pt}
+\begin{tikzpicture}[scale=0.78,>=Stealth]
+\coordinate (O) at (0,0);\coordinate (B) at (3.4,0);\coordinate (A) at (1.85,1.65);
+\coordinate (F) at (1.85,0);
 \draw[->,thick](O)--(B) node[right]{$\mathbf b$};
 \draw[->,thick,blue!70!black](O)--(A) node[above]{$\mathbf a$};
 \draw[dashed,thick](A)--(F);
+\draw (F) ++(-0.18,0)-- ++(0,0.18)-- ++(0.18,0);
 \draw[red!70!black,thick](O)--(F);
-\node[red!70!black,below,font=\scriptsize] at (0.85,0){$|\mathbf a\cdot\hat{\mathbf b}|$};
-\end{tikzpicture}\end{center}
-{\scriptsize $|\mathbf a\cdot\hat{\mathbf b}|=$ length of projection of $\mathbf a$ onto $\mathbf b$}
+\node[red!70!black,below,font=\scriptsize] at (0.92,0){$|\mathbf a\cdot\hat{\mathbf b}|$};
+\node[font=\scriptsize,left] at (O) {$O$};
+\end{tikzpicture}
+\par{\scriptsize $|\mathbf a\cdot\hat{\mathbf b}|=$ length of projection of $\mathbf a$ onto $\mathbf b$}
+\end{center}
 &
-Perpendicular distance $=|\mathbf a\times\hat{\mathbf b}|$\par
-Area of $\triangle OAB=\tfrac12|\mathbf a\times\mathbf b|$\par
-Area of parallelogram $=|\mathbf a\times\mathbf b|$
-\par\smallskip
-\begin{minipage}[t]{0.48\linewidth}\centering
-\begin{tikzpicture}[scale=0.55,>=Stealth]
-\coordinate (O) at (0,0);\coordinate (B) at (2.8,0);\coordinate (A) at (1.0,1.7);
-\coordinate (F) at (1.0,0);
+\begin{minipage}[t]{\linewidth}\centering\vspace{1pt}
+\begin{tikzpicture}[scale=0.58,>=Stealth]
+\coordinate (O) at (0,0);\coordinate (B) at (2.9,0);\coordinate (A) at (1.05,1.75);
+\coordinate (F) at (1.05,0);
 \draw[->,thick](O)--(B) node[right]{$\mathbf b$};
 \draw[->,thick,blue!70!black](O)--(A) node[above left]{$\mathbf a$};
 \draw[dashed,red!70!black,thick](A)--(F);
-\node[font=\scriptsize] at (0.15,0.15){$O$};
+\draw (F) ++(-0.15,0)-- ++(0,0.15)-- ++(0.15,0);
+\node[font=\scriptsize] at (-0.15,0.12){$O$};
 \node[font=\scriptsize] at (A) [right]{$A$};
-\node[red!70!black,right,font=\scriptsize] at (1.05,0.85){$|\mathbf a\times\hat{\mathbf b}|$};
+\node[red!70!black,right,font=\scriptsize] at (1.12,0.9){$|\mathbf a\times\hat{\mathbf b}|$};
 \end{tikzpicture}
-{\scriptsize perpendicular distance}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.48\linewidth}\centering
-\begin{tikzpicture}[scale=0.5,>=Stealth]
-\coordinate (O) at (0,0);\coordinate (A) at (1.6,1.2);\coordinate (B) at (2.4,0);\coordinate (C) at (4.0,1.2);
+\par{\scriptsize perpendicular distance from $A$ to line along $\mathbf b$}
+\par\smallskip
+\begin{tikzpicture}[scale=0.52,>=Stealth]
+\coordinate (O) at (0,0);\coordinate (A) at (1.55,1.15);\coordinate (B) at (2.5,0);\coordinate (C) at (4.05,1.15);
 \fill[blue!15](O)--(A)--(C)--(B)--cycle;
 \draw[thick](O)--(A)--(C)--(B)--cycle;
 \draw[->,thick,blue!70!black](O)--(A) node[above left,font=\scriptsize]{$\mathbf a$};
 \draw[->,thick](O)--(B) node[below,font=\scriptsize]{$\mathbf b$};
 \end{tikzpicture}
-{\scriptsize area of parallelogram, sides $\mathbf a$, $\mathbf b$ is $|\mathbf a\times\mathbf b|$}
+\par{\scriptsize area of parallelogram, sides $\mathbf a$, $\mathbf b$ \ldots\ $|\mathbf a\times\mathbf b|$}
 \par\smallskip
-\begin{tikzpicture}[scale=0.5,>=Stealth]
-\coordinate (O) at (0,0);\coordinate (A) at (1.6,1.2);\coordinate (B) at (2.4,0);\coordinate (C) at (4.0,1.2);
+\begin{tikzpicture}[scale=0.52,>=Stealth]
+\coordinate (O) at (0,0);\coordinate (A) at (1.55,1.15);\coordinate (B) at (2.5,0);\coordinate (C) at (4.05,1.15);
 \fill[blue!15](O)--(A)--(B)--cycle;
 \draw[thick](O)--(A)--(B)--cycle;
-\draw[dashed,thick,black!50](A)--(C)--(B);
+\draw[dashed,thick,black!45](A)--(C)--(B);
 \draw[->,thick,blue!70!black](O)--(A) node[above left,font=\scriptsize]{$\mathbf a$};
 \draw[->,thick](O)--(B) node[below,font=\scriptsize]{$\mathbf b$};
 \node[font=\scriptsize] at (O) [below left]{$O$};
+\node[font=\scriptsize] at (A) [above]{$A$};
+\node[font=\scriptsize] at (B) [below right]{$B$};
 \end{tikzpicture}
-{\scriptsize $2\times$ area of $\triangle OAB$ is $|\mathbf a\times\mathbf b|$}
+\par{\scriptsize $2\times$ area of $\triangle OAB$ \ldots\ $|\mathbf a\times\mathbf b|$}
 \end{minipage}\\\hline
 \end{tabular}}
 \par\smallskip
