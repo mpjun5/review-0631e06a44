@@ -1,0 +1,173 @@
+\documentclass[a4paper,11pt,oneside]{book}
+\input{preamble_build}
+\input{preamble_local}
+\input{prelim_fonts}
+\usepackage{needspace,longtable,multicol,enumitem,array}
+\providecommand{\vv}[1]{\overrightarrow{#1}}\providecommand{\cvv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+\raggedbottom
+\setlength{\parindent}{0pt}
+
+\fancyhf{}\lhead{\small Vectors I: HW2 Solutions}\rhead{\small Compiled by Maximus Pung Jun}
+\cfoot{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\newcounter{wq}
+\newcommand{\Q}[1]{\par\needspace{5\baselineskip}\medskip\stepcounter{wq}\noindent\textbf{\thewq}\quad #1\par}
+\begin{document}
+\thispagestyle{fancy}
+{\LARGE\scshape Vectors I Homework 2: Scalar Product --- Solutions}\par\smallskip
+{Compiled by Maximus Pung Jun}\par\smallskip
+{\small\textcolor{black!60}{Official worked solutions for sourced past-paper questions; True/False answers from the Basics Worksheet.}}\par\medskip
+\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
+\par\smallskip{\setlength{\extrarowheight}{5pt}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
+(a)&$\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$.\par\smallskip $\displaystyle a_1b_1+a_2b_2+a_3b_3=b_1a_1+b_2a_2+b_3a_3$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(b)&$\mathbf a\cdot\mathbf a=|\mathbf a|^2$.\par\smallskip $\displaystyle \mathbf a\cdot\mathbf a=a_1^2+a_2^2+a_3^2=|\mathbf a|^2$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(c)&$\mathbf i\cdot\mathbf j=0$.\par\smallskip $\displaystyle 1\cdot0+0\cdot1+0\cdot0=0$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(d)&$\mathbf a\cdot\mathbf b$ is a vector.\par\smallskip $\displaystyle \cvv{1}{0}{0}\cdot\cvv{1}{0}{0}=1\ \text{(a scalar)}$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(e)&$\mathbf i\cdot\mathbf j=\mathbf k$.\par\smallskip $\displaystyle \mathbf i\cdot\mathbf j=0$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(f)&If $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$, then $\mathbf a\cdot\mathbf b=0$.\par\smallskip $\displaystyle \mathbf 0\cdot\mathbf b=0b_1+0b_2+0b_3=0$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(g)&$(2\mathbf a)\cdot(3\mathbf b)=6\,\mathbf a\cdot\mathbf b$.\par\smallskip $\displaystyle (2\mathbf a)\cdot(3\mathbf b)=2\cdot3\,(\mathbf a\cdot\mathbf b)$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(h)&$(\mathbf a\cdot\mathbf b)\mathbf c$ is a vector.\par\smallskip $\displaystyle (\mathbf a\cdot\mathbf b)\mathbf c=\lambda\mathbf c,\ \lambda=\mathbf a\cdot\mathbf b\in\mathbb R$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(i)&$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$, where $\theta$ is the non-reflex angle between $\mathbf a$ and $\mathbf b$.\par\smallskip $\displaystyle \text{Definition of scalar product}$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(j)&$\cvv{1}{2}{3}\cdot\cvv{2}{3}{5}=\cvv{2}{6}{15}$.\par\smallskip $\displaystyle \cvv{1}{2}{3}\cdot\cvv{2}{3}{5}=2+6+15=23\ \text{(a scalar)}$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(k)&If $\mathbf a\cdot\mathbf b=0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.\par\smallskip $\displaystyle \mathbf i\cdot\mathbf j=0,\ \mathbf i\neq\mathbf 0,\ \mathbf j\neq\mathbf 0$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(l)&$|\mathbf a\cdot\mathbf b|=|\mathbf a||\mathbf b|$.\par\smallskip $\displaystyle |\mathbf i\cdot\mathbf j|=0\neq1=|\mathbf i||\mathbf j|$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(m)&$\mathbf a\cdot\mathbf b\le|\mathbf a||\mathbf b|$.\par\smallskip $\displaystyle \mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta\le|\mathbf a||\mathbf b|$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(n)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b>0$ means that the angle between $\mathbf a$ and $\mathbf b$ is acute.\par\smallskip $\displaystyle |\mathbf a||\mathbf b|\cos\theta>0\ \therefore\ \cos\theta>0,\ 0^\circ\le\theta<90^\circ$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(o)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b<0$ means that the angle between $\mathbf a$ and $\mathbf b$ is obtuse.\par\smallskip $\displaystyle \cos\theta<0\ \therefore\ 90^\circ<\theta\le180^\circ$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(p)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b\ge0$ means that the angle between $\mathbf a$ and $\mathbf b$ is acute.\par\smallskip $\displaystyle \mathbf i\cdot\mathbf j=0,\ \theta=90^\circ$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(q)&$\mathbf a\cdot(\mathbf b\cdot\mathbf c)$ is a scalar.\par\smallskip $\displaystyle \mathbf b\cdot\mathbf c\ \text{is a scalar}\ \therefore\ \mathbf a\cdot(\mathbf b\cdot\mathbf c)\ \text{is meaningless}$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(r)&$(\mathbf a+\mathbf b)\cdot(\mathbf a+\mathbf b)=|\mathbf a|^2+|\mathbf b|^2$.\par\smallskip $\displaystyle (\mathbf a+\mathbf b)\cdot(\mathbf a+\mathbf b)=|\mathbf a|^2+2\mathbf a\cdot\mathbf b+|\mathbf b|^2;\ \mathbf a=\mathbf b=\mathbf i:\ 4\neq2$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(s)&For non-zero $\mathbf a$ and $\mathbf b$, if $\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|$, then $\mathbf a$ and $\mathbf b$ are parallel.\par\smallskip $\displaystyle \cos\theta=1\ \therefore\ \theta=0^\circ$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(t)&$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$ also holds if $\theta$ is the reflex angle between $\mathbf a$ and $\mathbf b$.\par\smallskip $\displaystyle \cos(360^\circ-\theta)=\cos\theta$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(u)&Let $\theta$ be the angle $ABC$. Then $\vv{BA}\cdot\vv{BC}=|\vv{BA}||\vv{BC}|\cos\theta$.\par\smallskip $\displaystyle \vv{BA},\ \vv{BC}\ \text{both start at}\ B$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(v)&The length of projection of $\mathbf a$ onto $\mathbf b$ is equal to the length of projection of $\mathbf b$ onto $\mathbf a$.\par\smallskip $\displaystyle \mathbf a=\mathbf i,\ \mathbf b=2\mathbf i:\ |\mathbf a\cdot\hat{\mathbf b}|=1\neq2=|\mathbf b\cdot\hat{\mathbf a}|$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(w)&If $|\mathbf a|=|\mathbf b|$, then $(\mathbf a+\mathbf b)\cdot(\mathbf a-\mathbf b)=0$.\par\smallskip $\displaystyle (\mathbf a+\mathbf b)\cdot(\mathbf a-\mathbf b)=|\mathbf a|^2-|\mathbf b|^2=0$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(x)&$\mathbf a\cdot\mathbf b=\mathbf a\cdot\mathbf c$ means that $\mathbf b=\mathbf c$.\par\smallskip $\displaystyle \mathbf a=\mathbf i,\ \mathbf b=\mathbf j,\ \mathbf c=\mathbf k:\ \mathbf a\cdot\mathbf b=0=\mathbf a\cdot\mathbf c,\ \mathbf b\neq\mathbf c$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(y)&Let $\theta$ be the angle $ABC$. Then $\vv{AB}\cdot\vv{BC}=|\vv{AB}||\vv{BC}|\cos\theta$.\par\smallskip $\displaystyle \vv{AB}\cdot\vv{BC}=-\vv{BA}\cdot\vv{BC}=-|\vv{AB}||\vv{BC}|\cos\theta$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(z)&Let $\theta$ be the angle $CBD$. Then $\vv{BD}\cdot\vv{CB}=|\vv{BD}||\vv{CB}|\cos\theta$.\par\smallskip $\displaystyle \vv{BD}\cdot\vv{CB}=-\vv{BD}\cdot\vv{BC}=-|\vv{BD}||\vv{CB}|\cos\theta$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline\end{longtable}}
+\Q{\textcolor{black!60}{\small[TJC 2025 Prelim P1 Q6]}\par\smallskip\textit{Official solution.}}
+\par\smallskip\noindent\textbf{(a)}\par
+Using the ratio theorem, $\vv{OX}=\dfrac{3\mathbf a+\mathbf b}{4}$.
+\par\smallskip\noindent\textbf{(b)}\par
+$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\dfrac{\pi}{6}=\lambda\cdot\lambda\cdot\dfrac{\sqrt3}{2}=\dfrac{\sqrt3}{2}\lambda^2$.
+\par\smallskip\noindent\textbf{(c)}\par
+\begin{align*}
+\vv{OY}&=\left(\vv{OX}\cdot\hat{\mathbf b}\right)\hat{\mathbf b}
+=\left(\frac{3\mathbf a+\mathbf b}{4}\cdot\frac{\mathbf b}{|\mathbf b|}\right)\frac{\mathbf b}{|\mathbf b|}
+=\frac{1}{4|\mathbf b|^2}(3\mathbf a\cdot\mathbf b+\mathbf b\cdot\mathbf b)\,\mathbf b\\
+&=\frac{1}{4\lambda^2}\left(3\lambda^2\cos\frac{\pi}{6}+\lambda^2\right)\mathbf b
+=\frac{1}{4}\left(3\cdot\frac{\sqrt3}{2}+1\right)\mathbf b
+=\frac{2+3\sqrt3}{8}\mathbf b\quad\text{(shown)}.
+\end{align*}
+\par\smallskip\noindent\textbf{(d)}\par
+\begin{align*}
+\text{Area of }\Delta OXY
+&=\frac12\left|\vv{OX}\times\vv{OY}\right|
+=\frac12\left|\frac{3\mathbf a+\mathbf b}{4}\times\frac{2+3\sqrt3}{8}\mathbf b\right|
+=\frac{3(2+3\sqrt3)}{64}\left|\mathbf a\times\mathbf b\right|\\
+&=\frac{3(2+3\sqrt3)}{64}|\mathbf a||\mathbf b|\sin\frac{\pi}{6}
+=\frac{3(2+3\sqrt3)}{64}\lambda\cdot\lambda\cdot\frac12
+=\frac{3(2+3\sqrt3)}{128}\lambda^2\text{ units}^2.
+\end{align*}
+\Q{\textcolor{black!60}{\small[HCI 2025 Prelim P2 Q4]}\par\smallskip\textit{Official solution.}}
+\par\smallskip\noindent\textbf{(a)(i)}\par
+$\mathbf c=-\mathbf a-\mathbf b$.
+\begin{align*}
+\mathbf c\cdot\mathbf c&=(\mathbf a+\mathbf b)\cdot(\mathbf a+\mathbf b)=|\mathbf a|^2+2\mathbf a\cdot\mathbf b+|\mathbf b|^2\\
+1&=1+2\mathbf a\cdot\mathbf b+1\qquad\Rightarrow\qquad\mathbf a\cdot\mathbf b=-\frac12.
+\end{align*}
+\par\smallskip\noindent\textbf{(a)(ii)}\par
+$-\dfrac12=|\mathbf a||\mathbf b|\cos\angle AOB\Rightarrow\cos\angle AOB=-\dfrac12\Rightarrow\angle AOB=120^\circ$.
+\par\smallskip\noindent\textbf{(a)(iii)}\par
+Since $\angle AOB=120^\circ$ and $OA=OB=OC$, the triangles $OAB$, $OAC$ and $OBC$ are congruent and $\angle ACB=\angle ABC=\angle BCA=60^\circ$. Hence triangle $ABC$ is an equilateral triangle.
+\begin{center}\begin{tikzpicture}[scale=0.85]
+\coordinate (A) at (0,0);\coordinate (B) at (4,0);\coordinate (C) at (2,{2*1.732});
+\coordinate (O) at (2,{2*1.732/3});
+\draw[thick] (A)--(B)--(C)--cycle;
+\draw[dashed] (O)--(A) (O)--(B) (O)--(C);
+\foreach \p in {A,B,C,O} \fill (\p) circle (1.6pt);
+\node[below left] at (A){$A$};\node[below right] at (B){$B$};\node[above] at (C){$C$};\node[right] at (O){$O$};
+\node at (2,0.35){$120^\circ$};\node at (2,2.6){$60^\circ$};
+\end{tikzpicture}\end{center}
+\par\smallskip\noindent\textbf{(b)}\par
+Since $\vv{OD}=\mathbf a+\mathbf b=-\mathbf c$ and $OD$, $AB$ are diagonals of the rhombus $OADB$, $OD\perp AB$. Hence $ACBD$ is a kite.
+Official Method 1:
+\begin{align*}
+\text{Area of }ACBD&=2\cdot\tfrac12\left|\vv{AC}\times\vv{DC}\right|
+=\left|(\mathbf c-\mathbf a)\times 2\mathbf c\right|
+=2\left|(-\mathbf b-\mathbf a)\times\mathbf a\right|\\
+&=2\sin120^\circ=\sqrt3.
+\end{align*}
+Method 2: $\text{Area of }ACBD=\dfrac12\cdot DC\cdot AB=\dfrac12\cdot 2\cdot\sqrt3=\sqrt3$.
+\Q{\textcolor{black!60}{\small[SAJC 2025 Prelim P1 Q11]}\par\smallskip\textit{Official solution.}}
+\par\smallskip\noindent\textbf{(i)}\par
+Since $AA'$ is a straight line that passes through $O$, $\vv{OA'}=-\mathbf a$.
+\begin{align*}
+\vv{BA}&=\mathbf a-\mathbf b,\qquad \vv{BA'}=-\mathbf a-\mathbf b\\
+\vv{BA}\cdot\vv{BA'}&=(\mathbf a-\mathbf b)\cdot(-\mathbf a-\mathbf b)
+=-|\mathbf a|^2-\mathbf a\cdot\mathbf b+\mathbf b\cdot\mathbf a+|\mathbf b|^2\\
+&=-|\mathbf a|^2+|\mathbf b|^2=0\quad\text{(since $|\mathbf a|=|\mathbf b|=$ radius)}.
+\end{align*}
+Hence $\vv{BA}\perp\vv{BA'}$, so $\angle ABA'=90^\circ$ (shown).
+\par\smallskip\noindent\textbf{(ii)}\par
+Area of $\Delta OAB=\dfrac12|\mathbf a\times\mathbf b|$. From the diagram, $\dfrac12\cdot OA\cdot h=\dfrac12|\mathbf a\times\mathbf b|$.
+\begin{align*}
+\text{Area of }\Delta ABA'&=\frac12\cdot AA'\cdot h=\frac12\cdot 2\,OA\cdot h
+=\left(\frac12\cdot OA\cdot h\right)\cdot 2
+=|\mathbf a\times\mathbf b|.
+\end{align*}
+Thus $k=1$.
+\Q{\textcolor{black!60}{\small[VJC 2025 Prelim P1 Q3]}\par\smallskip\textit{Official solution.}}
+\par\smallskip\noindent\textbf{(a)}\par
+\begin{align*}
+\text{Area of }\Delta ABD&=\frac12\left|\vv{DB}\times\vv{AB}\right|
+=\frac12\left|\frac{\mu}{\lambda+\mu}\mathbf b\times(\mathbf b-\mathbf a)\right|
+=\frac{\mu}{2(\lambda+\mu)}|\mathbf a\times\mathbf b|.\\
+\text{Area of }\Delta ABC&=\frac12\left|\vv{CA}\times\vv{AB}\right|
+=\frac12\left|\frac13\mathbf a\times(\mathbf b-\mathbf a)\right|
+=\frac16|\mathbf a\times\mathbf b|.
+\end{align*}
+Given area of $\Delta ABD=\frac12$ area of $\Delta ABC$:
+\[\frac{\mu}{2(\lambda+\mu)}|\mathbf a\times\mathbf b|=\frac12\cdot\frac16|\mathbf a\times\mathbf b|
+\quad\Rightarrow\quad\frac{\mu}{2(\lambda+\mu)}=\frac{1}{12}
+\quad\Rightarrow\quad\lambda:\mu=5:1.\]
+\par\smallskip\noindent\textbf{(b)}\par
+\begin{align*}
+\vv{AE}&=\left(\frac14\mathbf a+\frac58\mathbf b\right)-\mathbf a=-\frac34\mathbf a+\frac58\mathbf b,\\
+\vv{AD}&=\frac{5}{6}\mathbf b-\mathbf a=\frac43\left(-\frac34\mathbf a+\frac58\mathbf b\right)=\frac43\vv{AE}.
+\end{align*}
+Since $\vv{AD}=\dfrac43\vv{AE}$ and $A$ is a common point, $A$, $E$ and $D$ are collinear.
+\par\smallskip\noindent\textbf{(c)}\par
+Since $O$ lies on the perpendicular bisector of $AB$, $|\mathbf a|=|\mathbf b|$.
+\begin{align*}
+\text{Length of projection of }\mathbf a\text{ on }\mathbf b
+&=\mathbf a\cdot\hat{\mathbf b}
+=|\mathbf a|\cos\frac{\pi}{4}
+=\frac12|\mathbf b|.\\
+\vv{OF}&=\frac12\mathbf b.
+\end{align*}
+\Q{\textcolor{black!60}{\small[CJC 2024 Prelim P2 Q1]}\par\smallskip\textit{Official solution.}}
+\par\smallskip\noindent\textbf{(a)}\par
+\begin{align*}
+\vv{PQ}&=\cvv{1}{-2}{3}-\cvv{0}{1}{1}=\cvv{1}{-3}{2},\qquad
+\vv{QR}=\cvv{-2}{1}{4}-\cvv{1}{-2}{3}=\cvv{-3}{3}{1}\\
+\text{Length of projection of }\vv{QR}\text{ on }\vv{PQ}
+&=\frac{|\vv{QR}\cdot\vv{PQ}|}{|\vv{PQ}|}
+=\frac{\left|\cvv{-3}{3}{1}\cdot\cvv{1}{-3}{2}\right|}{\sqrt{1+9+4}}
+=\frac{|-3-9+2|}{\sqrt{14}}=\frac{10}{\sqrt{14}}=\frac{5\sqrt{14}}{7}.
+\end{align*}
+\par\smallskip\noindent\textbf{(b)}\par
+\begin{align*}
+|\mathbf a+\lambda\mathbf b|^2&=4|\mathbf a-\lambda\mathbf b|^2\\
+(\mathbf a+\lambda\mathbf b)\cdot(\mathbf a+\lambda\mathbf b)&=4(\mathbf a-\lambda\mathbf b)\cdot(\mathbf a-\lambda\mathbf b)\\
+|\mathbf a|^2+2\lambda\mathbf a\cdot\mathbf b+\lambda^2|\mathbf b|^2&=4\big(|\mathbf a|^2-2\lambda\mathbf a\cdot\mathbf b+\lambda^2|\mathbf b|^2\big)\\
+\end{align*}
+\begin{align*}
+|\mathbf a|^2+2\lambda\mathbf a\cdot\mathbf b+\lambda^2|\mathbf b|^2&=4|\mathbf a|^2-8\lambda\mathbf a\cdot\mathbf b+4\lambda^2|\mathbf b|^2\\
+10\lambda\mathbf a\cdot\mathbf b&=3|\mathbf a|^2+3\lambda^2|\mathbf b|^2\\
+10\lambda\,|\mathbf a||\mathbf b|\cos\theta&=3\lambda^2|\mathbf b|^2+3\lambda^2|\mathbf b|^2\qquad(|\mathbf a|=\lambda|\mathbf b|)\\
+10\lambda\cdot(\lambda|\mathbf b|)\,|\mathbf b|\cos\theta&=6\lambda^2|\mathbf b|^2\\
+\cos\theta&=\frac{3}{5}\quad\text{(shown)}.
+\end{align*}
+\par\vspace{\baselineskip}\begin{center}\textbf{END OF SOLUTIONS}\end{center}\end{document}
