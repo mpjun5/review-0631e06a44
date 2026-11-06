@@ -2,7 +2,7 @@
 \input{preamble_build}
 \input{preamble_local}
 \input{prelim_fonts}
-\usepackage{needspace,longtable,multicol,enumitem,array}
+\usepackage{needspace,longtable,multicol,enumitem,array,booktabs}
 \providecommand{\vv}[1]{\overrightarrow{#1}}\providecommand{\cvv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
 \raggedbottom
 \setlength{\parindent}{0pt}
@@ -11,39 +11,50 @@
 \cfoot{\small\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \newcounter{wq}
-\newcommand{\Q}[1]{\par\needspace{5\baselineskip}\medskip\stepcounter{wq}\noindent\textbf{\thewq}\quad #1\par}
+\newcommand{\Q}[1]{\par\needspace{4\baselineskip}\medskip\stepcounter{wq}\noindent\textbf{\thewq}\quad #1\par}
 \begin{document}
 \thispagestyle{fancy}
-{\LARGE\scshape Vectors I Homework 2: Scalar Product}\par\smallskip
-{Compiled by Maximus Pung Jun}\par\smallskip
-{\small\textcolor{black!60}{Scalar product: properties, angles, perpendicularity, projections, ratios. Q1 True/False from the Basics Worksheet (Scalar Product; statements (e) and (p) omitted). Q2--Q8 are past-paper selections (dot product / ratio only). Total of printed past-paper marks for Q2--Q8: 46.}}\par\medskip
-\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
-\par\smallskip{\setlength{\extrarowheight}{5pt}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
-\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
-(a)&$\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(b)&$\mathbf a\cdot\mathbf a=|\mathbf a|^2$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(c)&$\mathbf i\cdot\mathbf j=0$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(d)&$\mathbf a\cdot\mathbf b$ is a vector.\rule[-8pt]{0pt}{8pt}&\\\hline
-(f)&If $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$, then $\mathbf a\cdot\mathbf b=0$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(g)&$(2\mathbf a)\cdot(3\mathbf b)=6\,\mathbf a\cdot\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(h)&$(\mathbf a\cdot\mathbf b)\mathbf c$ is a vector.\rule[-8pt]{0pt}{8pt}&\\\hline
-(i)&$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$, where $\theta$ is the non-reflex angle between $\mathbf a$ and $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(j)&$\cvv{1}{2}{3}\cdot\cvv{2}{3}{5}=\cvv{2}{6}{15}$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(k)&If $\mathbf a\cdot\mathbf b=0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(l)&$|\mathbf a\cdot\mathbf b|=|\mathbf a||\mathbf b|$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(m)&$\mathbf a\cdot\mathbf b\le|\mathbf a||\mathbf b|$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(n)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b>0$ means that the angle between $\mathbf a$ and $\mathbf b$ is acute.\rule[-8pt]{0pt}{8pt}&\\\hline
-(o)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b<0$ means that the angle between $\mathbf a$ and $\mathbf b$ is obtuse.\rule[-8pt]{0pt}{8pt}&\\\hline
-(q)&$\mathbf a\cdot(\mathbf b\cdot\mathbf c)$ is a scalar.\rule[-8pt]{0pt}{8pt}&\\\hline
-(r)&$(\mathbf a+\mathbf b)\cdot(\mathbf a+\mathbf b)=|\mathbf a|^2+|\mathbf b|^2$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(s)&For non-zero $\mathbf a$ and $\mathbf b$, if $\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|$, then $\mathbf a$ and $\mathbf b$ are parallel.\rule[-8pt]{0pt}{8pt}&\\\hline
-(t)&$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$ also holds if $\theta$ is the reflex angle between $\mathbf a$ and $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(u)&Let $\theta$ be the angle $ABC$. Then $\vv{BA}\cdot\vv{BC}=|\vv{BA}||\vv{BC}|\cos\theta$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(v)&The length of projection of $\mathbf a$ onto $\mathbf b$ is equal to the length of projection of $\mathbf b$ onto $\mathbf a$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(w)&If $|\mathbf a|=|\mathbf b|$, then $(\mathbf a+\mathbf b)\cdot(\mathbf a-\mathbf b)=0$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(x)&$\mathbf a\cdot\mathbf b=\mathbf a\cdot\mathbf c$ means that $\mathbf b=\mathbf c$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(y)&Let $\theta$ be the angle $ABC$. Then $\vv{AB}\cdot\vv{BC}=|\vv{AB}||\vv{BC}|\cos\theta$.\rule[-8pt]{0pt}{8pt}&\\\hline
-(z)&Let $\theta$ be the angle $CBD$. Then $\vv{BD}\cdot\vv{CB}=|\vv{BD}||\vv{CB}|\cos\theta$.\rule[-8pt]{0pt}{8pt}&\\\hline\end{longtable}}
+{\large\scshape Vectors I Homework 2: Scalar Product}\par\vspace{2pt}
+{\footnotesize Compiled by Maximus Pung Jun}\par\vspace{2pt}
+{\footnotesize\textcolor{black!60}{Scalar product: properties, angles, perpendicularity, projections, ratios. Q1 True/False from the Basics Worksheet (Scalar Product; statements (e) and (p) omitted). Q2--Q7 are past-paper selections (dot product / ratio only). Total of printed past-paper marks for Q2--Q7: 42.}}\par\vspace{3pt}
+\stepcounter{wq}\noindent\textbf{\thewq}\quad For the following statements, state whether it is \textbf{true} or \textbf{false}.\par\vspace{2pt}
+\begingroup
+\fontsize{8.5}{10}\selectfont
+\renewcommand{\arraystretch}{0.96}
+\setlength{\tabcolsep}{3pt}
+\setlength{\extrarowheight}{0.5pt}
+% Compact column vectors in this table only (same components; reduces row height)
+\renewcommand{\cvv}[3]{\ensuremath{\bigl(\begin{smallmatrix}#1\\#2\\#3\end{smallmatrix}\bigr)}}
+\noindent\begin{tabular}{|>{\centering\arraybackslash}p{0.72cm}|p{\dimexpr\linewidth-0.72cm-1.15cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.15cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline
+(a)&$\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$.&\\\hline
+(b)&$\mathbf a\cdot\mathbf a=|\mathbf a|^2$.&\\\hline
+(c)&$\mathbf i\cdot\mathbf j=0$.&\\\hline
+(d)&$\mathbf a\cdot\mathbf b$ is a vector.&\\\hline
+(f)&If $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$, then $\mathbf a\cdot\mathbf b=0$.&\\\hline
+(g)&$(2\mathbf a)\cdot(3\mathbf b)=6\,\mathbf a\cdot\mathbf b$.&\\\hline
+(h)&$(\mathbf a\cdot\mathbf b)\mathbf c$ is a vector.&\\\hline
+(i)&$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$, where $\theta$ is the non-reflex angle between $\mathbf a$ and $\mathbf b$.&\\\hline
+(j)&$\cvv{1}{2}{3}\cdot\cvv{2}{3}{5}=\cvv{2}{6}{15}$.&\\\hline
+(k)&If $\mathbf a\cdot\mathbf b=0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.&\\\hline
+(l)&$|\mathbf a\cdot\mathbf b|=|\mathbf a||\mathbf b|$.&\\\hline
+(m)&$\mathbf a\cdot\mathbf b\le|\mathbf a||\mathbf b|$.&\\\hline
+(n)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b>0$ means that the angle between $\mathbf a$ and $\mathbf b$ is acute.&\\\hline
+(o)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b<0$ means that the angle between $\mathbf a$ and $\mathbf b$ is obtuse.&\\\hline
+(q)&$\mathbf a\cdot(\mathbf b\cdot\mathbf c)$ is a scalar.&\\\hline
+(r)&$(\mathbf a+\mathbf b)\cdot(\mathbf a+\mathbf b)=|\mathbf a|^2+|\mathbf b|^2$.&\\\hline
+(s)&For non-zero $\mathbf a$ and $\mathbf b$, if $\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|$, then $\mathbf a$ and $\mathbf b$ are parallel.&\\\hline
+(t)&$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$ also holds if $\theta$ is the reflex angle between $\mathbf a$ and $\mathbf b$.&\\\hline
+(u)&Let $\theta$ be the angle $ABC$. Then $\vv{BA}\cdot\vv{BC}=|\vv{BA}||\vv{BC}|\cos\theta$.&\\\hline
+(v)&The length of projection of $\mathbf a$ onto $\mathbf b$ is equal to the length of projection of $\mathbf b$ onto $\mathbf a$.&\\\hline
+(w)&If $|\mathbf a|=|\mathbf b|$, then $(\mathbf a+\mathbf b)\cdot(\mathbf a-\mathbf b)=0$.&\\\hline
+(x)&$\mathbf a\cdot\mathbf b=\mathbf a\cdot\mathbf c$ means that $\mathbf b=\mathbf c$.&\\\hline
+(y)&Let $\theta$ be the angle $ABC$. Then $\vv{AB}\cdot\vv{BC}=|\vv{AB}||\vv{BC}|\cos\theta$.&\\\hline
+(z)&Let $\theta$ be the angle $CBD$. Then $\vv{BD}\cdot\vv{CB}=|\vv{BD}||\vv{CB}|\cos\theta$.&\\\hline
+\end{tabular}
+\endgroup
+
+\newpage
 \Q{\textcolor{black!60}{\small[EJC 2024 Promo Q5]}\par\smallskip
 $\mathbf a$ and $\mathbf b$ are vectors such that $|\mathbf a|=\sqrt{2}$ and $|\mathbf b|=\sqrt{6}$. The angle between $\mathbf a$ and $\mathbf b$ is $\dfrac{5\pi}{6}$.
 \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
@@ -56,21 +67,6 @@ Relative to the origin $O$, the points $A$ and $B$ have position vectors $\mathb
 \item By considering $(2\mathbf a+\mathbf b)\cdot(2\mathbf a+\mathbf b)$, show that $\mathbf a\cdot\mathbf b=-\dfrac{29}{4}$.\hfill[3]
 \item Give a geometrical meaning of $|\mathbf a\cdot\mathbf b|$.\hfill[1]
 \item The points $P$, $Q$ and $R$ have position vectors $7\mathbf a-5\mathbf b$, $6\mathbf a+5\mathbf b$ and $9\mathbf a+\lambda\mathbf b$ respectively. Given that these three points are collinear, find the value of $\lambda$.\hfill[3]
-\end{enumerate}}
-\Q{\textcolor{black!60}{\small[CJC 2025 Promo Q6(a)]}\par\smallskip
-The diagram shows a unit circle with centre $O$ and diameter $AB$. The point $C$ lies on the circumference of the circle. The position vectors of $A$, $B$ and $C$ are $\mathbf a$, $\mathbf b$ and $\mathbf c$ respectively.
-\begin{center}\begin{tikzpicture}[scale=1.15,font=\small,line join=round]
-\draw[semithick] (0,0) circle (1.6);
-\coordinate (A) at (1.6,0);\coordinate (B) at (-1.6,0);
-\coordinate (C) at ({1.6*cos(125)},{1.6*sin(125)});
-\draw[semithick] (B)--(A);
-\draw[semithick] (B)--(C)--(A);
-\fill (0,0) circle (1.4pt);\fill (A) circle (1.4pt);\fill (B) circle (1.4pt);\fill (C) circle (1.4pt);
-\node[below right] at (A){$A$};\node[below left] at (B){$B$};\node[above] at (C){$C$};
-\node[below=2pt] at (0,0){$O$};
-\end{tikzpicture}\end{center}
-\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
-\item By considering an appropriate scalar product, show that $AC$ and $BC$ are perpendicular.\hfill[4]
 \end{enumerate}}
 \Q{\textcolor{black!60}{\small[CJC 2022 Promo Q9(i),(ii)]}\par\smallskip
 Relative to the origin $O$, the position vectors of points $A$, $B$ and $C$ are $\mathbf a$, $\mathbf b$ and $\mathbf c$ respectively, where $\mathbf b$ is a unit vector. It is given that $\mathbf b$ and $\mathbf b-\mathbf a$ are perpendicular and $C$ lies on $AB$ such that $AC:CB=3:1$.
