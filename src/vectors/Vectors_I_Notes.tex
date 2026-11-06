@@ -1067,35 +1067,104 @@ The position vectors $A$, $B$ and $C$ are $\mathbf a=\mathbf i+2\mathbf j+\mathb
 
 
 
-\needspace{18\baselineskip}
+\clearpage
 \subsection{Summary of Scalar \& Vector Products}
-\begin{center}
-\textbf{Difference between scalar and vector products}\par\medskip
-{\renewcommand{\arraystretch}{1.3}\small
-\begin{tabular}{|p{7.2cm}|p{7.2cm}|}
+\noindent$\mathbf a=a_1\mathbf i+a_2\mathbf j+a_3\mathbf k$,\quad
+$\mathbf b=b_1\mathbf i+b_2\mathbf j+b_3\mathbf k$,\quad
+$\theta=\text{non-reflex }\angle AOB$.
+\par\smallskip
+{\renewcommand{\arraystretch}{1.15}\setlength{\tabcolsep}{3pt}\footnotesize
+\noindent\begin{tabular}{|p{1.55cm}|p{6.85cm}|p{6.85cm}|}
 \hline
-\centering Scalar Product, $\mathbf a\cdot\mathbf b$ & \centering\arraybackslash Vector Product, $\mathbf a\times\mathbf b$\\\hline
-\centering $\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$ gives a scalar & \centering\arraybackslash $\mathbf a\times\mathbf b=|\mathbf a||\mathbf b|\sin\theta\,\hat{\mathbf n}$ gives a vector\\\hline
-\centering Main usage: & \centering\arraybackslash Main usage:\\
-\textbullet\ To find angle between 2 direction vectors (also between 2 lines and between 2 planes to be discussed later)\par
-\textbullet\ To find length and vector of projection
+& \centering\textbf{Scalar Product (Dot)} & \centering\arraybackslash\textbf{Vector Product (Cross)}\\\hline
+\textbf{Definition} &
+$\mathbf a\cdot\mathbf b=a_1b_1+a_2b_2+a_3b_3$ &
+$\mathbf a\times\mathbf b=\cvv{a_2b_3-a_3b_2}{-(a_1b_3-a_3b_1)}{a_1b_2-a_2b_1}$\\\hline
+\textbf{Result} &
+scalar &
+vector, $\perp$ to both $\mathbf a$ and $\mathbf b$\\\hline
+\textbf{Formula} &
+$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$ &
+$|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|\sin\theta$\\\hline
+\textbf{Angle} &
+$\cos\theta=\dfrac{\mathbf a\cdot\mathbf b}{|\mathbf a||\mathbf b|}$\par
+$\mathbf a\cdot\mathbf b>0$ acute, $<0$ obtuse, $=0$ right angle &
+$\sin\theta=\dfrac{|\mathbf a\times\mathbf b|}{|\mathbf a||\mathbf b|}$\par
+{\scriptsize\color{black!55}\textit{note:} this method only finds the basic angle possible, but usually undesirable}\\\hline
+\textbf{Properties} &
+$\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$\par
+$\mathbf a\cdot(\mathbf b+\mathbf c)=\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c$\par
+$\lambda(\mathbf a\cdot\mathbf b)=(\lambda\mathbf a)\cdot\mathbf b=\mathbf a\cdot(\lambda\mathbf b)$\par
+$\mathbf a\cdot\mathbf a=|\mathbf a|^2$ &
+$\mathbf a\times\mathbf b=-\mathbf b\times\mathbf a$\par
+$\mathbf a\times(\mathbf b+\mathbf c)=\mathbf a\times\mathbf b+\mathbf a\times\mathbf c$\par
+$\lambda(\mathbf a\times\mathbf b)=(\lambda\mathbf a)\times\mathbf b=\mathbf a\times(\lambda\mathbf b)$\par
+$\mathbf a\times\mathbf a=\mathbf 0$\\\hline
+\textbf{Test} &
+$\mathbf a\cdot\mathbf b=0\iff\mathbf a\perp\mathbf b$\par
+{\scriptsize\color{black!55}(nonzero $\mathbf a$, $\mathbf b$)} &
+$\mathbf a\times\mathbf b=\mathbf 0\iff\mathbf a\parallel\mathbf b$\par
+{\scriptsize\color{black!55}(nonzero $\mathbf a$, $\mathbf b$)}\\\hline
+\textbf{Applications} &
+Length of projection $=|\mathbf a\cdot\hat{\mathbf b}|$\par
+Projection vector $=(\mathbf a\cdot\hat{\mathbf b})\hat{\mathbf b}$
+\par\smallskip
+\begin{center}\begin{tikzpicture}[scale=0.72,>=Stealth]
+\coordinate (O) at (0,0);\coordinate (B) at (3.2,0);\coordinate (A) at (1.7,1.55);
+\coordinate (F) at (1.7,0);
+\draw[->,thick](O)--(B) node[right]{$\mathbf b$};
+\draw[->,thick,blue!70!black](O)--(A) node[above]{$\mathbf a$};
+\draw[dashed,thick](A)--(F);
+\draw[red!70!black,thick](O)--(F);
+\node[red!70!black,below,font=\scriptsize] at (0.85,0){$|\mathbf a\cdot\hat{\mathbf b}|$};
+\end{tikzpicture}\end{center}
+{\scriptsize $|\mathbf a\cdot\hat{\mathbf b}|=$ length of projection of $\mathbf a$ onto $\mathbf b$}
 &
-\textbullet\ To find a vector perpendicular to 2 given vectors\par
-\textbullet\ To find area of triangle and parallelogram\par
-\textbullet\ To find the perpendicular component of a vector with respect to another vector\\\hline
-\centering For 3-D vectors, & \centering\arraybackslash For 3-D vector,\\
-\centering $\cvv{a_1}{a_2}{a_3}\cdot\cvv{b_1}{b_2}{b_3}=a_1b_1+a_2b_2+a_3b_3$ &
-\centering\arraybackslash $\cvv{a_1}{a_2}{a_3}\times\cvv{b_1}{b_2}{b_3}=\cvv{a_2b_3-a_3b_2}{a_3b_1-a_1b_3}{a_1b_2-a_2b_1}$\\\hline
-\centering $\mathbf a\cdot\mathbf b=0\implies\mathbf a=\mathbf 0,\ \mathbf b=\mathbf 0$ or $\mathbf a\perp\mathbf b$ & \centering\arraybackslash $\mathbf a\times\mathbf b=\mathbf 0\implies\mathbf a=\mathbf 0,\ \mathbf b=\mathbf 0$, or $\mathbf a/\!/\mathbf b$\\\hline
-\centering Commutative: $\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$ & \centering\arraybackslash NOT commutative: $\mathbf a\times\mathbf b\neq\mathbf b\times\mathbf a$\par In fact, $\mathbf a\times\mathbf b=-\mathbf b\times\mathbf a$\\\hline
-\centering Need to know: & \centering\arraybackslash Need to know:\\
-\textbullet\ $\mathbf a\cdot\mathbf a=|\mathbf a|^2$\par
-\textbullet\ If $\mathbf a\perp\mathbf b$, then $\mathbf a\cdot\mathbf b=0$ ($\mathbf a$ and $\mathbf b$ are non-zero vectors)
-&
-\textbullet\ $\mathbf a\times\mathbf a=\mathbf 0$ (applies to all parallel vectors)\par
-\textbullet\ If $\mathbf a$ is parallel to $\mathbf b$, then $\mathbf a\times\mathbf b=\mathbf 0$\par
-\textbullet\ The vector $\mathbf a\times\mathbf b$ is perpendicular to both $\mathbf a$ and $\mathbf b$\\\hline
+Perpendicular distance $=|\mathbf a\times\hat{\mathbf b}|$\par
+Area of $\triangle OAB=\tfrac12|\mathbf a\times\mathbf b|$\par
+Area of parallelogram $=|\mathbf a\times\mathbf b|$
+\par\smallskip
+\begin{minipage}[t]{0.48\linewidth}\centering
+\begin{tikzpicture}[scale=0.55,>=Stealth]
+\coordinate (O) at (0,0);\coordinate (B) at (2.8,0);\coordinate (A) at (1.0,1.7);
+\coordinate (F) at (1.0,0);
+\draw[->,thick](O)--(B) node[right]{$\mathbf b$};
+\draw[->,thick,blue!70!black](O)--(A) node[above left]{$\mathbf a$};
+\draw[dashed,red!70!black,thick](A)--(F);
+\node[font=\scriptsize] at (0.15,0.15){$O$};
+\node[font=\scriptsize] at (A) [right]{$A$};
+\node[red!70!black,right,font=\scriptsize] at (1.05,0.85){$|\mathbf a\times\hat{\mathbf b}|$};
+\end{tikzpicture}
+{\scriptsize perpendicular distance}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\begin{tikzpicture}[scale=0.5,>=Stealth]
+\coordinate (O) at (0,0);\coordinate (A) at (1.6,1.2);\coordinate (B) at (2.4,0);\coordinate (C) at (4.0,1.2);
+\fill[blue!15](O)--(A)--(C)--(B)--cycle;
+\draw[thick](O)--(A)--(C)--(B)--cycle;
+\draw[->,thick,blue!70!black](O)--(A) node[above left,font=\scriptsize]{$\mathbf a$};
+\draw[->,thick](O)--(B) node[below,font=\scriptsize]{$\mathbf b$};
+\end{tikzpicture}
+{\scriptsize area of parallelogram, sides $\mathbf a$, $\mathbf b$ is $|\mathbf a\times\mathbf b|$}
+\par\smallskip
+\begin{tikzpicture}[scale=0.5,>=Stealth]
+\coordinate (O) at (0,0);\coordinate (A) at (1.6,1.2);\coordinate (B) at (2.4,0);\coordinate (C) at (4.0,1.2);
+\fill[blue!15](O)--(A)--(B)--cycle;
+\draw[thick](O)--(A)--(B)--cycle;
+\draw[dashed,thick,black!50](A)--(C)--(B);
+\draw[->,thick,blue!70!black](O)--(A) node[above left,font=\scriptsize]{$\mathbf a$};
+\draw[->,thick](O)--(B) node[below,font=\scriptsize]{$\mathbf b$};
+\node[font=\scriptsize] at (O) [below left]{$O$};
+\end{tikzpicture}
+{\scriptsize $2\times$ area of $\triangle OAB$ is $|\mathbf a\times\mathbf b|$}
+\end{minipage}\\\hline
 \end{tabular}}
-\end{center}
+\par\smallskip
+\noindent\begin{minipage}[t]{0.48\linewidth}
+{\scriptsize\color{black!55}$\mathbf a\cdot\mathbf b\cdot\mathbf c$ meaningless; no cancellation law}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+{\scriptsize\color{black!55}no cancellation law; $(\mathbf a\times\mathbf b)\times\mathbf c$ is a vector, but triple cross products are usually not tested}
+\end{minipage}
 
 \end{document}
