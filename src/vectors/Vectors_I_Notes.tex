@@ -72,9 +72,10 @@ A vector describes a quantity that has both magnitude and direction. Vectors let
 
 \medskip
 
-\noindent\begin{tikzpicture}[x=0.75cm,y=0.75cm]
-\draw[black!15,step=1](-5,-3) grid (13,3);
-\draw[ax](-5,0)--(13.4,0) node[right,font=\scriptsize]{$x$};
+\begin{center}
+\begin{tikzpicture}[x=0.75cm,y=0.75cm]
+\draw[black!15,step=1](-3,-3) grid (6,3);
+\draw[ax](-3,0)--(6.4,0) node[right,font=\scriptsize]{$x$};
 \draw[ax](0,-3)--(0,3.4) node[above,font=\scriptsize]{$y$};
 \node[dot,label=below left:$O$] at (0,0){};
 \draw[comp](0,0)--(2,0)--(2,1);\draw[comp](3,0)--(3,-2);
@@ -85,8 +86,10 @@ A vector describes a quantity that has both magnitude and direction. Vectors let
 \node[dot,red!70!black,label={[red!70!black]right:$(3,-2)$}] at (3,-2){};
 \node[red!70!black,below left=0pt] at (1.4,-0.95){$\mathbf b=\cv{3}{-2}$};
 \end{tikzpicture}
+\end{center}
 
 \medskip
+\setlength{\LTleft}{\fill}\setlength{\LTright}{\fill}
 \begin{center}
 {\renewcommand{\arraystretch}{1}\setlength{\tabcolsep}{5pt}
 \begin{longtable}{|>{\raggedright\arraybackslash}m{2.9cm}|>{\raggedright\arraybackslash}m{5.0cm}|>{\centering\arraybackslash}m{6.6cm}|}
@@ -346,7 +349,8 @@ Find $|2\mathbf i+3\mathbf j-4\mathbf k|$.
 \draw[ax](0,0,0)--(0,0,-4.3);
 \node[dot,label={[L]above left:$O$}] at (0,0,0){};
 \draw[comp](0,0,0)--(2,0,0)--(2,3,0)--(2,3,-4);
-\node[L,below] at (1,0,0){$2$};
+\draw[comp](0,3,0)--(2,3,0);
+\node[L,above] at (1,3,0){$2$};
 \node[L,below right] at (2,1.5,0){$3$};
 \node[L,right] at (2,3,-2){$4$};
 \draw[vA](0,0,0)--(2,3,-4);
@@ -542,17 +546,17 @@ Find $\cvv{1}{2}{3}\cdot\cvv{5}{-1}{3}$.
 Taking reference to the problems in the Exercise Worksheet (Section 7, Scalar Product), we can see that the Scalar Product has properties that are similar to basic algebra multiplication. In general, we have the following properties of the Scalar Product.
 
 \begin{theorem}{Laws of scalar product}
-\[
-\begin{gathered}
-\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a\\
-\text{(Commutative Law of Scalar Product)}\\[8pt]
-\mathbf a\cdot(\mathbf b+\mathbf c)=\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c,\quad(\mathbf b+\mathbf c)\cdot\mathbf a=\mathbf b\cdot\mathbf a+\mathbf c\cdot\mathbf a\\
-\text{(Distributive Law of Scalar Product)}\\[8pt]
-\mathbf a\cdot(\lambda\mathbf b)=\lambda(\mathbf a\cdot\mathbf b)=(\lambda\mathbf a)\cdot\mathbf b\quad\lambda\in\mathbb R\\
-\text{(Associative Law of Scalar Product)}\\[8pt]
-|\mathbf a|^2=\mathbf a\cdot\mathbf a
-\end{gathered}
-\]
+\begin{itemize}
+\item $\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$\\
+{\small\color{black!50}$\mathbf a\cdot\mathbf b=22=\mathbf b\cdot\mathbf a$}
+\item $\mathbf a\cdot(\mathbf b+\mathbf c)=\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c$,\quad $(\mathbf b+\mathbf c)\cdot\mathbf a=\mathbf b\cdot\mathbf a+\mathbf c\cdot\mathbf a$\\
+{\small\color{black!50}$\mathbf a\cdot(\mathbf b+\mathbf c)=13=\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c$}
+\item $\mathbf a\cdot(\lambda\mathbf b)=\lambda(\mathbf a\cdot\mathbf b)=(\lambda\mathbf a)\cdot\mathbf b,\quad\lambda\in\mathbb R$\\
+{\small\color{black!50}$\mathbf a\cdot(2\mathbf b)=44=2(\mathbf a\cdot\mathbf b)=(2\mathbf a)\cdot\mathbf b$}
+\item $|\mathbf a|^2=\mathbf a\cdot\mathbf a$\\
+{\small\color{black!50}$\mathbf a\cdot\mathbf a=14=|\mathbf a|^2$}
+\end{itemize}
+{\small\color{black!50}where $\mathbf a=\cvv{1}{2}{3}$, $\mathbf b=\cvv{-3}{2}{7}$, $\mathbf c=\cvv{4}{-5}{-1}$.}
 \end{theorem}
 
 
