@@ -1,0 +1,139 @@
+\documentclass[a4paper,11pt,oneside]{book}
+\input{preamble_build}
+\input{preamble_local}
+\input{prelim_fonts}
+\usepackage{needspace,longtable,multicol,enumitem,array}
+\providecommand{\vv}[1]{\overrightarrow{#1}}\providecommand{\cvv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+\raggedbottom
+\setlength{\parindent}{0pt}
+
+\fancyhf{}\lhead{\small Vectors I: HW3 Solutions}\rhead{\small Compiled by Maximus Pung Jun}
+\cfoot{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\newcounter{wq}
+\newcommand{\Q}[1]{\par\needspace{5\baselineskip}\medskip\stepcounter{wq}\noindent\textbf{\thewq}\quad #1\par}
+\begin{document}
+\thispagestyle{fancy}
+{\LARGE\scshape Vectors I Homework 3: Vector Product --- Solutions}\par\smallskip
+{Compiled by Maximus Pung Jun}\par\smallskip
+{\small\textcolor{black!60}{Official worked solutions for sourced past-paper questions; True/False answers from the Basics Worksheet.}}\par\medskip
+\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
+\par\smallskip{\setlength{\extrarowheight}{5pt}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
+(a)&$\mathbf a\times\mathbf a=\mathbf 0$.\par\smallskip $\displaystyle |\mathbf a\times\mathbf a|=|\mathbf a|^2\sin0^\circ=0$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(b)&$\mathbf a\times\mathbf a=0$.\par\smallskip $\displaystyle \mathbf a\times\mathbf a=\mathbf 0\neq0\ \text{(left side is the zero vector)}$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(c)&$\mathbf i\times\mathbf j=\mathbf k$.\par\smallskip $\displaystyle \cvv{1}{0}{0}\times\cvv{0}{1}{0}=\cvv{0}{0}{1}$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(d)&$\mathbf a\times\mathbf b=\mathbf b\times\mathbf a$.\par\smallskip $\displaystyle \mathbf i\times\mathbf j=\mathbf k,\ \mathbf j\times\mathbf i=-\mathbf k$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(e)&$\mathbf a\times\mathbf b=-(\mathbf b\times\mathbf a)$.\par\smallskip $\displaystyle \mathbf a\times\mathbf b=-\mathbf b\times\mathbf a$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(f)&$\mathbf a\times\mathbf b$ is a scalar.\par\smallskip $\displaystyle \mathbf i\times\mathbf j=\mathbf k\ \text{(a vector)}$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(g)&$\mathbf k\times\mathbf j=\mathbf i$.\par\smallskip $\displaystyle \mathbf j\times\mathbf k=\mathbf i\ \therefore\ \mathbf k\times\mathbf j=-\mathbf i$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(h)&$\cvv{1}{2}{3}\times\cvv{2}{4}{6}=\mathbf 0$.\par\smallskip $\displaystyle \cvv{2}{4}{6}=2\cvv{1}{2}{3}$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(i)&$\mathbf a\times(\mathbf b+\mathbf c)=\mathbf a\times\mathbf b+\mathbf a\times\mathbf c$.\par\smallskip $\displaystyle \text{Distributive law}$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(j)&$(\lambda\mathbf a)\times\mathbf b=\lambda(\mathbf a\times\mathbf b)$ for all $\lambda\in\mathbb R$.\par\smallskip $\displaystyle (\lambda\mathbf a)\times\mathbf b=\mathbf a\times(\lambda\mathbf b)=\lambda(\mathbf a\times\mathbf b)$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(k)&$\mathbf a\times\mathbf b$ is perpendicular to both $\mathbf a$ and $\mathbf b$.\par\smallskip $\displaystyle (\mathbf a\times\mathbf b)\cdot\mathbf a=0,\ (\mathbf a\times\mathbf b)\cdot\mathbf b=0$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(l)&$(\mathbf a\times\mathbf b)\cdot\mathbf c$ is a scalar.\par\smallskip $\displaystyle (\mathbf a\times\mathbf b)\cdot\mathbf c=\text{vector}\cdot\text{vector}$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(m)&$|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|\sin\theta$, where $\theta$ is the angle between $\mathbf a$ and $\mathbf b$.\par\smallskip $\displaystyle \text{Definition of vector product}$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(n)&$|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|$.\par\smallskip $\displaystyle |\mathbf i\times\mathbf i|=0\neq1$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(o)&If $\mathbf a\times\mathbf b=\mathbf 0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.\par\smallskip $\displaystyle \mathbf i\times2\mathbf i=\mathbf 0,\ \mathbf i\neq\mathbf 0,\ 2\mathbf i\neq\mathbf 0$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(p)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\times\mathbf b=\mathbf 0$ means that $\mathbf a$ is parallel to $\mathbf b$.\par\smallskip $\displaystyle |\mathbf a||\mathbf b|\sin\theta=0\ \therefore\ \theta=0^\circ\ \text{or}\ 180^\circ$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(q)&The area of the parallelogram with adjacent sides $\mathbf a$ and $\mathbf b$ is $|\mathbf a\times\mathbf b|$.\par\smallskip $\displaystyle \text{Area}=|\mathbf a||\mathbf b|\sin\theta=|\mathbf a\times\mathbf b|$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(r)&The area of triangle $OAB$ is $|\vv{OA}\times\vv{OB}|$.\par\smallskip $\displaystyle \text{Area}=\tfrac12|\vv{OA}\times\vv{OB}|$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(s)&$\mathbf a\times(\mathbf b\cdot\mathbf c)$ is a vector.\par\smallskip $\displaystyle \mathbf b\cdot\mathbf c\ \text{is a scalar}\ \therefore\ \text{meaningless}$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(t)&For non-zero $\mathbf a$ and $\mathbf b$, if $|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|$, then $\mathbf a$ is perpendicular to $\mathbf b$.\par\smallskip $\displaystyle \sin\theta=1\ \therefore\ \theta=90^\circ$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(u)&$(\mathbf a\times\mathbf b)\cdot\mathbf c=\mathbf a\cdot(\mathbf b\times\mathbf c)$.\par\smallskip $\displaystyle \text{both}=\det\left(\mathbf a\ \mathbf b\ \mathbf c\right)$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(v)&$|\mathbf a\times\mathbf b|^2+(\mathbf a\cdot\mathbf b)^2=|\mathbf a|^2|\mathbf b|^2$.\par\smallskip $\displaystyle |\mathbf a|^2|\mathbf b|^2(\sin^2\theta+\cos^2\theta)=|\mathbf a|^2|\mathbf b|^2$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
+(w)&$\mathbf a\times\mathbf b=\mathbf a\times\mathbf c$ means that $\mathbf b=\mathbf c$.\par\smallskip $\displaystyle \mathbf i\times\mathbf j=\mathbf k=\mathbf i\times(\mathbf i+\mathbf j),\ \mathbf j\neq\mathbf i+\mathbf j$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(x)&$\mathbf a\times(\mathbf b\times\mathbf c)=(\mathbf a\times\mathbf b)\times\mathbf c$.\par\smallskip $\displaystyle \mathbf i\times(\mathbf i\times\mathbf j)=\mathbf i\times\mathbf k=-\mathbf j,\ (\mathbf i\times\mathbf i)\times\mathbf j=\mathbf 0$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(y)&The shortest distance from $B$ to the line through $A$ parallel to $\mathbf d$ is $|\vv{AB}\times\mathbf d|$.\par\smallskip $\displaystyle \text{distance}=|\vv{AB}\times\hat{\mathbf d}|=\dfrac{|\vv{AB}\times\mathbf d|}{|\mathbf d|}$\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+(z)&If $\mathbf a\times\mathbf b=\mathbf 0$ and $\mathbf a\cdot\mathbf b=0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.\par\smallskip $\displaystyle |\mathbf a|^2|\mathbf b|^2=|\mathbf a\times\mathbf b|^2+(\mathbf a\cdot\mathbf b)^2=0$\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline\end{longtable}}
+\Q{\textcolor{black!60}{\small[ASRJC 2025 Prelim P2 Q1]}\par\smallskip\textit{Official solution.}}
+Since $AM:AB=3:4$, we have $AM:MB=3:1$. By the ratio theorem,
+\[\vv{OM}=\frac{\mathbf a+3\mathbf b}{4}.\]
+\begin{align*}
+\text{Area of }\Delta OAM
+&=\frac12\left|\vv{OA}\times\vv{OM}\right|
+=\frac12\left|\mathbf a\times\frac{\mathbf a+3\mathbf b}{4}\right|
+=\frac18\left|\mathbf a\times\mathbf a+3\mathbf a\times\mathbf b\right|
+=\frac38|\mathbf a\times\mathbf b|\\
+&=\frac38|\mathbf a||\mathbf b|\sin\frac{\pi}{6}
+=\frac38\cdot k\cdot 1\cdot\frac12
+=\frac{3k}{16}\text{ units}^2.
+\end{align*}
+
+\Q{\textcolor{black!60}{\small[EJC 2025 Promo Q3]}\par\smallskip\textit{Official solution.}}
+\par\smallskip\noindent\textbf{(a)}\par
+We can deduce that vectors $\mathbf a$ and $\mathbf b$ are parallel, or either vector $\mathbf a$ or $\mathbf b$ is the zero vector.
+\par\smallskip\noindent\textbf{(b)}\par
+\[\mathbf n=\frac{1}{\sqrt{14}}\cvv{2}{-1}{3}\quad\text{or}\quad\mathbf n=-\frac{1}{\sqrt{14}}\cvv{2}{-1}{3}.\]
+\par\smallskip\noindent\textbf{(c)}\par
+Let $\theta$ be the acute angle between $2\mathbf i-\mathbf j+3\mathbf k$ and the $y$-axis.
+\[\cos\theta=\frac{\left|\cvv{2}{-1}{3}\cdot\cvv{0}{1}{0}\right|}{\sqrt{14}\cdot 1}=\frac{1}{\sqrt{14}}.\]
+
+\Q{\textcolor{black!60}{\small[NYJC 2025 Prelim P1 Q3]}\par\smallskip\textit{Official solution.}}
+\par\smallskip\noindent\textbf{(a)}\par
+$AB^2+BC^2=AC^2\Rightarrow|\vv{AB}|^2+|\vv{BC}|^2=|\vv{AC}|^2$.
+Since $\vv{AB}+\vv{BC}=\vv{AC}$,
+\begin{align*}
+(\vv{AB}+\vv{BC})\cdot(\vv{AB}+\vv{BC})&=\vv{AC}\cdot\vv{AC}\\
+|\vv{AB}|^2+2\vv{AB}\cdot\vv{BC}+|\vv{BC}|^2&=|\vv{AC}|^2\\
+|\vv{AC}|^2+2\vv{AB}\cdot\vv{BC}&=|\vv{AC}|^2\quad\text{(using }AB^2+BC^2=AC^2\text{)}\\
+\vv{AB}\cdot\vv{BC}&=0.
+\end{align*}
+So $\vv{AB}$ is perpendicular to $\vv{BC}$ and hence $\angle ABC=90^\circ$.
+\par\smallskip\noindent\textbf{(b)}\par
+By the ratio theorem, $\mathbf d=(1-\lambda)\mathbf a+\lambda\mathbf c$.
+\begin{align*}
+\text{Area of }\Delta ABD
+&=\frac12\left|\vv{AB}\times\vv{BD}\right|
+=\frac12\left|(\mathbf b-\mathbf a)\times(\mathbf d-\mathbf b)\right|\\
+&=\frac12\left|(\mathbf b-\mathbf a)\times\big((1-\lambda)\mathbf a+\lambda\mathbf c-\mathbf b\big)\right|\\
+&=\frac{\lambda}{2}\left|\mathbf a\times\mathbf b+\mathbf b\times\mathbf c+\mathbf c\times\mathbf a\right|.
+\end{align*}
+Hence $k=\dfrac{\lambda}{2}$.
+
+\Q{\textcolor{black!60}{\small[NJC 2025 Prelim P2 Q3]}\par\smallskip\textit{Official solution.}}
+\par\smallskip\noindent\textbf{(i)}\par
+\[\mathbf p=\cvv{\cos t}{\sin t}{-1},\qquad\mathbf q=\cvv{\cos 2t}{-\sin 2t}{\alpha}.\]
+For $O$, $P$, $Q$ collinear, $\mathbf p\times\mathbf q=\mathbf 0$. Equating the $\mathbf k$-component to $0$:
+\begin{align*}
+-\sin 2t\cos t-\cos 2t\sin t&=0\\
+-\sin 3t&=0\qquad\Rightarrow\qquad t=\frac{\pi}{3}\ \text{or}\ \frac{2\pi}{3}\quad(0<t<\pi).
+\end{align*}
+When $t=\dfrac{\pi}{3}$: $-\big(\alpha\cos\frac{\pi}{3}+\cos\frac{2\pi}{3}\big)=0\Rightarrow\alpha=1$.\\
+When $t=\dfrac{2\pi}{3}$: $-\big(\alpha\cos\frac{2\pi}{3}+\cos\frac{4\pi}{3}\big)=0\Rightarrow\alpha=-1$.\\
+Final answers: $t=\dfrac{\pi}{3}$, $\alpha=1$; \ $t=\dfrac{2\pi}{3}$, $\alpha=-1$.
+\par\smallskip\noindent\textbf{(ii)}\par
+\begin{align*}
+\mathbf p\cdot\mathbf q&=\cos t\cos 2t-\sin t\sin 2t-0.5=\cos 3t-0.5\quad\text{(shown)}.\\
+\text{Length of projection of }\mathbf q\text{ onto }\mathbf p
+&=\frac{|\mathbf p\cdot\mathbf q|}{|\mathbf p|}
+=\frac{|\cos 3t-0.5|}{\sqrt{2}}.
+\end{align*}
+Greatest length when $\cos 3t=-1$:
+\[\frac{|-1-0.5|}{\sqrt{2}}=\frac{1.5}{\sqrt{2}}=\frac{3}{2\sqrt{2}}\quad(=1.06\text{ to 3 s.f.}).\]
+
+\Q{\textcolor{black!60}{\small[CJC 2025 Promo Q6]}\par\smallskip\textit{Official solution.}}
+\par\smallskip\noindent\textbf{(a)}\par
+Since $AB$ is a diameter through $O$, $\mathbf b=-\mathbf a$.
+\begin{align*}
+\vv{AC}&=\mathbf c-\mathbf a,\qquad\vv{BC}=\mathbf c-\mathbf b=\mathbf c+\mathbf a\\
+\vv{AC}\cdot\vv{BC}&=(\mathbf c-\mathbf a)\cdot(\mathbf c+\mathbf a)=|\mathbf c|^2-|\mathbf a|^2=0
+\end{align*}
+(since $|\mathbf c|=|\mathbf a|=$ radius). Hence $AC$ and $BC$ are perpendicular.
+\par\smallskip\noindent\textbf{(b)}\par
+$|\mathbf a\cdot(\mathbf c-\mathbf a)|$ is the length of the projection of $\vv{AC}$ onto $\vv{OA}$.
+\par\smallskip\noindent\textbf{(c)}\par
+By the ratio theorem, $\vv{OM}=\dfrac{\vv{OD}+\vv{OA}}{2}=\dfrac12(\mathbf c+2\mathbf a+\mathbf a)=\dfrac12\mathbf c+\dfrac32\mathbf a$
+(since $\vv{OD}=\mathbf c+2\mathbf a$ with $\mathbf b=-\mathbf a$). Also $\vv{OR}=3\mathbf a$.
+\begin{align*}
+\vv{CM}\times\vv{CR}
+&=\left(\vv{OM}-\mathbf c\right)\times\left(\vv{OR}-\mathbf c\right)
+=\left(\tfrac12\mathbf c+\tfrac32\mathbf a-\mathbf c\right)\times(3\mathbf a-\mathbf c)\\
+&=\left(\tfrac32\mathbf a-\tfrac12\mathbf c\right)\times(3\mathbf a-\mathbf c)
+=\tfrac92(\mathbf a\times\mathbf a)-\tfrac32(\mathbf a\times\mathbf c)-\tfrac32(\mathbf c\times\mathbf a)+\tfrac12(\mathbf c\times\mathbf c)\\
+&=0-\tfrac32\mathbf a\times\mathbf c+\tfrac32\mathbf a\times\mathbf c+0=\mathbf 0.
+\end{align*}
+Hence $\vv{CM}$ and $\vv{CR}$ are parallel. Since $C$ is a common point, $C$, $M$ and $R$ are collinear.
+
+Alternatively: $\vv{CM}=\tfrac32\mathbf a-\tfrac12\mathbf c$ and $\vv{CR}=3\mathbf a-\mathbf c=2\vv{CM}$.
+\par\vspace{\baselineskip}\begin{center}\textbf{END OF SOLUTIONS}\end{center}\end{document}
