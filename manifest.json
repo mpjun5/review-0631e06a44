@@ -261,6 +261,22 @@
           "source": "src/paper-2/h2-mathematics-9758-paper-2-suggested-solutions/Paper2_Suggested_Solutions.tex"
         }
       ]
+    },
+    {
+      "name": "vectors",
+      "slug": "vectors",
+      "docs": [
+        {
+          "title": "Vectors Basics Worksheet",
+          "slug": "vectors-basics-worksheet",
+          "updated": "06 Nov 2026, 10:54 PM SGT",
+          "size_kb": 106,
+          "status": "in progress",
+          "type": "Worksheet",
+          "source": "src/vectors/vectors-basics-worksheet/Vectors_Basics_Worksheet.tex",
+          "deleted": null
+        }
+      ]
     }
   ]
 }
