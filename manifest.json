@@ -183,6 +183,16 @@
           "type": "Worksheet",
           "source": "src/vectors/vectors-basics-worksheet-solutions/Vectors_Basics_Worksheet_Solutions.tex",
           "deleted": null
+        },
+        {
+          "title": "Vectors I HW1 (Introduction to Ratio Theorem)",
+          "slug": "vectors-i-hw1-introduction-to-ratio-theorem",
+          "updated": "06 Nov 2026, 08:55 PM SGT",
+          "size_kb": 78,
+          "source": "src/vectors/vectors-i-hw1-introduction-to-ratio-theorem/Vectors_I_HW1.tex",
+          "type": "Homework",
+          "status": "in progress",
+          "deleted": null
         }
       ]
     },
