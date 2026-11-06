@@ -1,0 +1,100 @@
+\documentclass[a4paper,11pt,oneside]{book}
+\input{preamble_build}
+\input{preamble_local}
+\input{prelim_fonts}
+\usepackage{needspace,longtable,multicol,enumitem,array}
+\providecommand{\vv}[1]{\overrightarrow{#1}}\providecommand{\cvv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+\raggedbottom
+\setlength{\parindent}{0pt}
+
+\fancyhf{}\lhead{\small Vectors I: HW3 (Vector Product)}\rhead{\small Compiled by Maximus Pung Jun}
+\cfoot{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\newcounter{wq}
+\newcommand{\Q}[1]{\par\needspace{5\baselineskip}\medskip\stepcounter{wq}\noindent\textbf{\thewq}\quad #1\par}
+\begin{document}
+\thispagestyle{fancy}
+{\LARGE\scshape Vectors I Homework 3: Vector Product}\par\smallskip
+{Compiled by Maximus Pung Jun}\par\smallskip
+{\small\textcolor{black!60}{Vector product: properties, parallel vectors, areas, collinearity via cross product. Q1 True/False from the Basics Worksheet (Vector Product). Q2--Q6 are full past-paper questions.}}\par\medskip
+\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
+\par\smallskip{\setlength{\extrarowheight}{5pt}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
+(a)&$\mathbf a\times\mathbf a=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(b)&$\mathbf a\times\mathbf a=0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(c)&$\mathbf i\times\mathbf j=\mathbf k$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(d)&$\mathbf a\times\mathbf b=\mathbf b\times\mathbf a$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(e)&$\mathbf a\times\mathbf b=-(\mathbf b\times\mathbf a)$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(f)&$\mathbf a\times\mathbf b$ is a scalar.\rule[-8pt]{0pt}{8pt}&\\\hline
+(g)&$\mathbf k\times\mathbf j=\mathbf i$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(h)&$\cvv{1}{2}{3}\times\cvv{2}{4}{6}=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(i)&$\mathbf a\times(\mathbf b+\mathbf c)=\mathbf a\times\mathbf b+\mathbf a\times\mathbf c$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(j)&$(\lambda\mathbf a)\times\mathbf b=\lambda(\mathbf a\times\mathbf b)$ for all $\lambda\in\mathbb R$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(k)&$\mathbf a\times\mathbf b$ is perpendicular to both $\mathbf a$ and $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(l)&$(\mathbf a\times\mathbf b)\cdot\mathbf c$ is a scalar.\rule[-8pt]{0pt}{8pt}&\\\hline
+(m)&$|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|\sin\theta$, where $\theta$ is the angle between $\mathbf a$ and $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(n)&$|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(o)&If $\mathbf a\times\mathbf b=\mathbf 0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(p)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\times\mathbf b=\mathbf 0$ means that $\mathbf a$ is parallel to $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(q)&The area of the parallelogram with adjacent sides $\mathbf a$ and $\mathbf b$ is $|\mathbf a\times\mathbf b|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(r)&The area of triangle $OAB$ is $|\vv{OA}\times\vv{OB}|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(s)&$\mathbf a\times(\mathbf b\cdot\mathbf c)$ is a vector.\rule[-8pt]{0pt}{8pt}&\\\hline
+(t)&For non-zero $\mathbf a$ and $\mathbf b$, if $|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|$, then $\mathbf a$ is perpendicular to $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(u)&$(\mathbf a\times\mathbf b)\cdot\mathbf c=\mathbf a\cdot(\mathbf b\times\mathbf c)$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(v)&$|\mathbf a\times\mathbf b|^2+(\mathbf a\cdot\mathbf b)^2=|\mathbf a|^2|\mathbf b|^2$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(w)&$\mathbf a\times\mathbf b=\mathbf a\times\mathbf c$ means that $\mathbf b=\mathbf c$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(x)&$\mathbf a\times(\mathbf b\times\mathbf c)=(\mathbf a\times\mathbf b)\times\mathbf c$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(y)&The shortest distance from $B$ to the line through $A$ parallel to $\mathbf d$ is $|\vv{AB}\times\mathbf d|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(z)&If $\mathbf a\times\mathbf b=\mathbf 0$ and $\mathbf a\cdot\mathbf b=0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline\end{longtable}}
+\Q{\textcolor{black!60}{\small[ASRJC 2025 Prelim P2 Q1]}\par\smallskip
+Relative to the origin $O$, the position vectors of two points $A$ and $B$ are $\mathbf a$ and $\mathbf b$ respectively. The length of $\mathbf a$ is $k$ units and $\mathbf b$ is a unit vector. The angle between $\mathbf a$ and $\mathbf b$ is $\dfrac{\pi}{6}$ radians.
+It is given that the point $M$ lies on the line segment $AB$ such that $AM:AB$ is $3:4$. Find the exact area of $\Delta OAM$, giving your answer in terms of $k$.\hfill[4]
+}
+
+\Q{\textcolor{black!60}{\small[EJC 2025 Promo Q3]}\par\smallskip
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
+\item Given that $\mathbf a\times\mathbf b=\mathbf 0$, what can be deduced about the vectors $\mathbf a$ and $\mathbf b$?\hfill[2]
+\item Find a unit vector $\mathbf n$ such that $\mathbf n\times(2\mathbf i-\mathbf j+3\mathbf k)=\mathbf 0$.\hfill[1]
+\item Find the cosine of the acute angle between $2\mathbf i-\mathbf j+3\mathbf k$ and the $y$-axis.\hfill[2]
+\end{enumerate}}
+
+\Q{\textcolor{black!60}{\small[NYJC 2025 Prelim P1 Q3]}\par\smallskip
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
+\item A triangle $ABC$ is such that $AB^2+BC^2=AC^2$. By considering $\vv{AB}+\vv{BC}=\vv{AC}$ and using the fact that $|\mathbf v|^2=\mathbf v\cdot\mathbf v$ for any vector $\mathbf v$, prove that $\angle ABC$ is a right angle.\hfill[4]
+\item In a triangle $ABC$, the point $D$ divides $AC$ in the ratio $\lambda:(1-\lambda)$, where $0<\lambda<1$. Let the position vectors of $A$, $B$, $C$ and $D$ be denoted by $\mathbf a$, $\mathbf b$, $\mathbf c$ and $\mathbf d$ respectively. Show that the area of triangle $ABD$ is given by $k|\mathbf a\times\mathbf b+\mathbf b\times\mathbf c+\mathbf c\times\mathbf a|$, where $k$ is to be determined in terms of $\lambda$.\hfill[4]
+\end{enumerate}}
+
+\Q{\textcolor{black!60}{\small[NJC 2025 Prelim P2 Q3]}\par\smallskip
+With respect to an origin $O$, points $P$ and $Q$ have variable position vectors $\mathbf p$ and $\mathbf q$ respectively, given by
+\[\mathbf p=(\cos t)\mathbf i+(\sin t)\mathbf j-\mathbf k,\qquad
+\mathbf q=(\cos 2t)\mathbf i-(\sin 2t)\mathbf j+\alpha\mathbf k,\]
+where $\alpha$ is a real parameter and $0<t<\pi$.
+\begin{enumerate}[label=\textbf{(\roman*)},leftmargin=2.2em,itemsep=3pt]
+\item By considering the cross product or otherwise, find the exact values of $t$ and $\alpha$ if $O$, $P$ and $Q$ are collinear.\hfill[5]
+\end{enumerate}
+It is given that $\alpha=0.5$.
+\begin{enumerate}[label=\textbf{(\roman*)},leftmargin=2.2em,itemsep=3pt,start=2]
+\item Show that $\mathbf p\cdot\mathbf q=\cos 3t-0.5$. Find the greatest length of projection of $\mathbf q$ onto $\mathbf p$.\hfill[4]
+\end{enumerate}}
+
+\Q{\textcolor{black!60}{\small[CJC 2025 Promo Q6]}\par\smallskip
+The diagram shows a unit circle with centre $O$ and diameter $AB$. The point $C$ lies on the circumference of the circle. The position vectors of $A$, $B$ and $C$ are $\mathbf a$, $\mathbf b$ and $\mathbf c$ respectively.
+\begin{center}\begin{tikzpicture}[scale=1.15,font=\small,line join=round]
+\draw[semithick] (0,0) circle (1.5);
+\coordinate (A) at (1.5,0);\coordinate (B) at (-1.5,0);\coordinate (C) at ({1.5*cos(110)},{1.5*sin(110)});
+\draw[semithick] (B)--(A);\draw[semithick] (A)--(C)--(B);
+\draw[-{Stealth[length=1.6mm]},thick] (0,0)--(0.85,0);\node[below] at (0.5,0){$\mathbf a$};
+\draw[-{Stealth[length=1.6mm]},thick] (0,0)--(-0.85,0);\node[below] at (-0.5,0){$\mathbf b$};
+\draw[-{Stealth[length=1.6mm]},thick] (0,0)--({0.85*cos(110)},{0.85*sin(110)});\node[above left] at ({0.55*cos(110)},{0.55*sin(110)}){$\mathbf c$};
+\fill (0,0) circle (1.5pt);
+\node[right] at (A){$A$};\node[left] at (B){$B$};\node[above] at (C){$C$};\node[below=2pt] at (0,0){$O$};
+\end{tikzpicture}\end{center}
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
+\item By considering an appropriate scalar product, show that $AC$ and $BC$ are perpendicular.\hfill[4]
+\item Give a geometrical interpretation of $|\mathbf a\cdot(\mathbf c-\mathbf a)|$.\hfill[1]
+\end{enumerate}
+The point $D$ is such that $ABCD$ is a parallelogram. The point $M$ is the mid-point of $AD$ and the point $R$ lies on $OA$ produced such that $OA:AR=1:2$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt,start=3]
+\item By considering $\vv{CM}\times\vv{CR}$ or otherwise, show that the points $C$, $M$ and $R$ are collinear.\hfill[3]
+\end{enumerate}}
+\par\vspace{\baselineskip}\begin{center}\textbf{END OF HOMEWORK}\end{center}\end{document}

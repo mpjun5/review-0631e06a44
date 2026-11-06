@@ -223,6 +223,16 @@
           "type": "Solutions",
           "status": "in progress",
           "deleted": null
+        },
+        {
+          "title": "Vectors I HW3 (Vector Product)",
+          "slug": "vectors-i-hw3-vector-product",
+          "updated": "06 Nov 2026, 08:59 PM SGT",
+          "size_kb": 85,
+          "source": "src/vectors/vectors-i-hw3-vector-product/Main.tex",
+          "type": "Homework",
+          "status": "in progress",
+          "deleted": null
         }
       ]
     },
