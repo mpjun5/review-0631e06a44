@@ -2,7 +2,7 @@
 \input{preamble_build}
 \input{preamble_local}
 \input{prelim_fonts}
-\usepackage{needspace,longtable,multicol,enumitem,array,booktabs}
+\usepackage{needspace,longtable,multicol,enumitem,array}
 \providecommand{\vv}[1]{\overrightarrow{#1}}\providecommand{\cvv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
 \raggedbottom
 \setlength{\parindent}{0pt}
@@ -10,22 +10,16 @@
 \fancyhf{}\lhead{\small Vectors I: HW2 (Scalar Product)}\rhead{\small Compiled by Maximus Pung Jun}
 \cfoot{\small\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headsep}{6pt}
 \newcounter{wq}
 \newcommand{\Q}[1]{\par\needspace{4\baselineskip}\medskip\stepcounter{wq}\noindent\textbf{\thewq}\quad #1\par}
 \begin{document}
 \thispagestyle{fancy}
-{\large\scshape Vectors I Homework 2: Scalar Product}\par\vspace{2pt}
-{\footnotesize Compiled by Maximus Pung Jun}\par\vspace{2pt}
-{\footnotesize\textcolor{black!60}{Scalar product: properties, angles, perpendicularity, projections, ratios. Q1 True/False from the Basics Worksheet (Scalar Product; statements (e) and (p) omitted). Q2--Q7 are past-paper selections (dot product / ratio only). Total of printed past-paper marks for Q2--Q7: 42.}}\par\vspace{3pt}
-\stepcounter{wq}\noindent\textbf{\thewq}\quad For the following statements, state whether it is \textbf{true} or \textbf{false}.\par\vspace{2pt}
-\begingroup
-\fontsize{8.5}{10}\selectfont
-\renewcommand{\arraystretch}{0.96}
-\setlength{\tabcolsep}{3pt}
-\setlength{\extrarowheight}{0.5pt}
-% Compact column vectors in this table only (same components; reduces row height)
-\renewcommand{\cvv}[3]{\ensuremath{\bigl(\begin{smallmatrix}#1\\#2\\#3\end{smallmatrix}\bigr)}}
-\noindent\begin{tabular}{|>{\centering\arraybackslash}p{0.72cm}|p{\dimexpr\linewidth-0.72cm-1.15cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.15cm}|}
+{\large\scshape Vectors I Homework 2: Scalar Product}\par\vspace{1pt}
+{\footnotesize Compiled by Maximus Pung Jun}\par\vspace{1pt}
+{\footnotesize\textcolor{black!60}{Scalar product: properties, angles, perpendicularity, projections, ratios. Q1 True/False from the Basics Worksheet (Scalar Product; statements (e) and (p) omitted). Q2--Q7 are past-paper selections (dot product / ratio only).}}\par\vspace{2pt}
+\stepcounter{wq}\noindent\textbf{\thewq}\quad For the following statements, state whether it is \textbf{true} or \textbf{false}.
+\par\vspace{2pt}{\setlength{\extrarowheight}{1.5pt}\renewcommand{\arraystretch}{1.0}\setlength{\tabcolsep}{4pt}\noindent\begin{tabular}{|>{\centering\arraybackslash}p{0.85cm}|p{\dimexpr\linewidth-0.85cm-1.45cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.45cm}|}
 \hline &\textbf{Statement}&\textbf{T/F}\\\hline
 (a)&$\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$.&\\\hline
 (b)&$\mathbf a\cdot\mathbf a=|\mathbf a|^2$.&\\\hline
@@ -51,8 +45,7 @@
 (x)&$\mathbf a\cdot\mathbf b=\mathbf a\cdot\mathbf c$ means that $\mathbf b=\mathbf c$.&\\\hline
 (y)&Let $\theta$ be the angle $ABC$. Then $\vv{AB}\cdot\vv{BC}=|\vv{AB}||\vv{BC}|\cos\theta$.&\\\hline
 (z)&Let $\theta$ be the angle $CBD$. Then $\vv{BD}\cdot\vv{CB}=|\vv{BD}||\vv{CB}|\cos\theta$.&\\\hline
-\end{tabular}
-\endgroup
+\end{tabular}}
 
 \newpage
 \Q{\textcolor{black!60}{\small[EJC 2024 Promo Q5]}\par\smallskip
