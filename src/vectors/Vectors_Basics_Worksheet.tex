@@ -1,11 +1,13 @@
 \documentclass[a4paper,11pt,oneside]{book}
 \input{preamble_build}
 \input{preamble_local}
-\usepackage{needspace,longtable}
+\input{prelim_fonts}% Times New Roman + MathType-style maths, as his HW docs (de-docs/common/prelim_fonts.tex)
+\usepackage{needspace,longtable,multicol,enumitem,array}
+\providecommand{\vv}[1]{\overrightarrow{#1}}\providecommand{\cvv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
 \raggedbottom
 \setlength{\parindent}{0pt}
-\rhead{Vectors I: Basics Worksheet}
-\cfoot{\thepage}
+\fancyhf{}\lhead{\small Vectors I: Basics Worksheet}\rhead{\small Compiled by Maximus Pung Jun}
+\cfoot{\small\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \newcounter{wq}[section]
 \newcommand{\Q}[1]{\par\needspace{5\baselineskip}\medskip\stepcounter{wq}\noindent\textbf{\thewq}\quad #1\par}
@@ -15,10 +17,9 @@
 \thispagestyle{fancy}
 {\LARGE\scshape Vectors I Basics Worksheet: Questions}\par\smallskip
 {Compiled by Maximus Pung Jun}\par\smallskip
-{\small\textcolor{black!60}{Basics of vectors: $\mathbf i$, $\mathbf j$, $\mathbf k$ notation, magnitude, unit vectors, parallel vectors, collinear points and the ratio theorem. Each section has footing questions, one tricky question and a True/False check.}}\par\medskip
+{\small\textcolor{black!60}{Basics of vectors: $\mathbf i$, $\mathbf j$, $\mathbf k$ notation, magnitude, unit vectors, parallel vectors, collinear points, the ratio theorem, the scalar product and the vector product.}}\par\medskip
 \wsec{$\mathbf{i}$, $\mathbf{j}$, $\mathbf{k}$ Notation and Column Vectors}
 \Q{Write $\mathbf a=3\mathbf i-2\mathbf j+5\mathbf k$ as a column vector, and write $\mathbf b=\col{4}{0}{-1}$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
-\vspace{2.6cm}
 \Q{The points $A$ and $B$ have coordinates $(1,2,3)$ and $(4,6,1)$. Find $\overrightarrow{AB}$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
 \begin{center}\begin{tikzpicture}[x={(0.8cm,0cm)},y={(0.4cm,0.32cm)},z={(0cm,0.8cm)},>=Stealth,line cap=round]
 \draw[ax](0,0,0)--(5.8,0,0) node[right]{\scriptsize$x$};
@@ -31,79 +32,71 @@
 \node[dot,label=above:{\scriptsize$A(1,2,3)$}] at (1,2,3){};
 \node[dot,label=right:{\scriptsize$B(4,6,1)$}] at (4,6,1){};
 \end{tikzpicture}\end{center}
-\vspace{2.6cm}
-\Q{\textbf{(Tricky)} Given $\mathbf p=2\mathbf i+\mathbf k$ and $\mathbf q=-\mathbf i+3\mathbf j$, find $\mathbf r$ such that $2\mathbf p-3\mathbf q+\mathbf r=\mathbf 0$. Give $\mathbf r$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
-\vspace{2.6cm}
-\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.} Circle T (True) or F (False) for each statement.\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{12cm}|c|}\hline
- & \textbf{Statement} & \textbf{T/F}\\\hline
-(a) & $3\mathbf i+2\mathbf k=\col{3}{2}{0}$ & T\,/\,F \\[1.2ex]\hline
-(b) & The $\mathbf j$-component of $4\mathbf i-\mathbf j+2\mathbf k$ is $-1$ & T\,/\,F \\[1.2ex]\hline
-(c) & The position vector of $P(1,-2,0)$ is $\mathbf i-2\mathbf j$ & T\,/\,F \\[1.2ex]\hline
-(d) & $\overrightarrow{AB}=\overrightarrow{OA}-\overrightarrow{OB}$ & T\,/\,F \\[1.2ex]\hline
-(e) & $\mathbf i+\mathbf j+\mathbf k=\col{1}{1}{1}$ & T\,/\,F \\[1.2ex]\hline
-\end{tabular}}}\par
-\wsec{Magnitude}
+\Q{Given $\mathbf p=2\mathbf i+\mathbf k$ and $\mathbf q=-\mathbf i+3\mathbf j$, find $\mathbf r$ such that $2\mathbf p-3\mathbf q+\mathbf r=\mathbf 0$. Give $\mathbf r$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
+\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
+\par\smallskip{\setlength{\extrarowheight}{5pt}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
+(a)&$\mathbf i+\mathbf j+\mathbf k=\col{1}{1}{1}$\rule[-8pt]{0pt}{8pt}&\\\hline
+(b)&The $\mathbf j$-component of $4\mathbf i-\mathbf j+2\mathbf k$ is $-1$\rule[-8pt]{0pt}{8pt}&\\\hline
+(c)&The position vector of $P(1,-2,0)$ is $\mathbf i-2\mathbf j$\rule[-8pt]{0pt}{8pt}&\\\hline
+(d)&$3\mathbf i+2\mathbf k=\col{3}{2}{0}$\rule[-8pt]{0pt}{8pt}&\\\hline
+(e)&$\overrightarrow{AB}=\overrightarrow{OA}-\overrightarrow{OB}$\rule[-8pt]{0pt}{8pt}&\\\hline
+\end{longtable}}
+\clearpage\wsec{Magnitude}
 \Q{Find $|2\mathbf i-3\mathbf j+6\mathbf k|$.}
-\vspace{2.6cm}
 \Q{The points $A$ and $B$ have coordinates $(1,2,-1)$ and $(3,-4,2)$. Find the distance $AB$.}
-\vspace{2.6cm}
-\Q{\textbf{(Tricky)} Given $\mathbf a=\col{t}{2}{t-1}$ and $|\mathbf a|=3$, find the possible values of $t$.}
-\vspace{2.6cm}
-\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.} Circle T (True) or F (False) for each statement.\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{12cm}|c|}\hline
- & \textbf{Statement} & \textbf{T/F}\\\hline
-(a) & $|\mathbf i+2\mathbf j-2\mathbf k|=1+2-2=1$ & T\,/\,F \\[1.2ex]\hline
-(b) & $|-\mathbf a|=|\mathbf a|$ for every vector $\mathbf a$ & T\,/\,F \\[1.2ex]\hline
-(c) & $|\mathbf a+\mathbf b|=|\mathbf a|+|\mathbf b|$ for all vectors $\mathbf a$, $\mathbf b$ & T\,/\,F \\[1.2ex]\hline
-(d) & $|3\mathbf a|=3|\mathbf a|$ & T\,/\,F \\[1.2ex]\hline
-(e) & $\left|\col{0}{-5}{0}\right|=-5$ & T\,/\,F \\[1.2ex]\hline
-(f) & $\left|\col{1}{1}{1}\right|=1$ & T\,/\,F \\[1.2ex]\hline
-(g) & $|\mathbf a+\mathbf b|\le|\mathbf a|+|\mathbf b|$ for all vectors $\mathbf a$, $\mathbf b$ & T\,/\,F \\[1.2ex]\hline
-\end{tabular}}}\par
-\wsec{Unit Vectors}
+\Q{Given $\mathbf a=\col{t}{2}{t-1}$ and $|\mathbf a|=3$, find the possible values of $t$.}
+\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
+\par\smallskip{\setlength{\extrarowheight}{5pt}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
+(a)&$|-\mathbf a|=|\mathbf a|$ for every vector $\mathbf a$\rule[-8pt]{0pt}{8pt}&\\\hline
+(b)&$|3\mathbf a|=3|\mathbf a|$\rule[-8pt]{0pt}{8pt}&\\\hline
+(c)&$\left|\col{0}{-5}{0}\right|=-5$\rule[-8pt]{0pt}{8pt}&\\\hline
+(d)&$\left|\col{1}{1}{1}\right|=1$\rule[-8pt]{0pt}{8pt}&\\\hline
+(e)&$|\mathbf i+2\mathbf j-2\mathbf k|=1+2-2=1$\rule[-8pt]{0pt}{8pt}&\\\hline
+(f)&$|\mathbf a+\mathbf b|=|\mathbf a|+|\mathbf b|$ for all vectors $\mathbf a$, $\mathbf b$\rule[-8pt]{0pt}{8pt}&\\\hline
+(g)&$|\mathbf a+\mathbf b|\le|\mathbf a|+|\mathbf b|$ for all vectors $\mathbf a$, $\mathbf b$\rule[-8pt]{0pt}{8pt}&\\\hline
+(h)&For all $\lambda\in\mathbb R$, $|\lambda\mathbf a|=\lambda|\mathbf a|$\rule[-8pt]{0pt}{8pt}&\\\hline
+\end{longtable}}
+\clearpage\wsec{Unit Vectors}
 \Q{Find the unit vector in the direction of $\col{2}{-1}{2}$.}
-\vspace{2.6cm}
 \Q{Find the vector of magnitude $10$ in the direction of $\col{3}{0}{-4}$.}
-\vspace{2.6cm}
-\Q{\textbf{(Tricky)} The points $A$ and $B$ have coordinates $(1,0,2)$ and $(3,-6,5)$. Find the vector of magnitude $14$ in the direction \emph{opposite} to $\overrightarrow{AB}$.}
-\vspace{2.6cm}
-\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.} Circle T (True) or F (False) for each statement.\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{12cm}|c|}\hline
- & \textbf{Statement} & \textbf{T/F}\\\hline
-(a) & $\col{1}{1}{1}$ is a unit vector & T\,/\,F \\[1.2ex]\hline
-(b) & $\dfrac13\col{1}{2}{2}$ is a unit vector & T\,/\,F \\[1.2ex]\hline
-(c) & $\mathbf i+\mathbf j$ is a unit vector & T\,/\,F \\[1.2ex]\hline
-(d) & $|\hat{\mathbf a}|=1$ for every non-zero vector $\mathbf a$ & T\,/\,F \\[1.2ex]\hline
-(e) & $\mathbf a$ and $\hat{\mathbf a}$ are parallel & T\,/\,F \\[1.2ex]\hline
-\end{tabular}}}\par
-\wsec{Parallel Vectors ($\mathbf a=\lambda\mathbf b$)}
+\Q{The points $A$ and $B$ have coordinates $(1,0,2)$ and $(3,-6,5)$. Find the vector of magnitude $14$ in the direction \emph{opposite} to $\overrightarrow{AB}$.}
+\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
+\par\smallskip{\setlength{\extrarowheight}{5pt}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
+(a)&$\col{1}{1}{1}$ is a unit vector\rule[-8pt]{0pt}{8pt}&\\\hline
+(b)&$\dfrac13\col{1}{2}{2}$ is a unit vector\rule[-8pt]{0pt}{8pt}&\\\hline
+(c)&$\mathbf i+\mathbf j$ is a unit vector\rule[-8pt]{0pt}{8pt}&\\\hline
+(d)&$|\hat{\mathbf a}|=1$ for every non-zero vector $\mathbf a$\rule[-8pt]{0pt}{8pt}&\\\hline
+(e)&$\mathbf a$ and $\hat{\mathbf a}$ are parallel\rule[-8pt]{0pt}{8pt}&\\\hline
+\end{longtable}}
+\clearpage\wsec{Parallel Vectors ($\mathbf a=\lambda\mathbf b$)}
 \Q{Show that $\mathbf a=\col{2}{-1}{3}$ and $\mathbf b=\col{-6}{3}{-9}$ are parallel.}
-\vspace{2.6cm}
 \Q{Find $p$ and $q$ such that $\col{4}{p}{-2}$ is parallel to $\col{-2}{3}{q}$.}
-\vspace{2.6cm}
-\Q{\textbf{(Tricky)} Find all vectors of magnitude $6$ that are parallel to $\mathbf a=\col{1}{2}{-2}$.}
-\vspace{2.6cm}
-\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.} Circle T (True) or F (False) for each statement.\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{12cm}|c|}\hline
- & \textbf{Statement} & \textbf{T/F}\\\hline
-(a) & If $\mathbf a\parallel\mathbf b$, then $\mathbf a=\mathbf b$ & T\,/\,F \\[1.2ex]\hline
-(b) & $\col{1}{-2}{3}$ is parallel to $\col{-2}{4}{-6}$ & T\,/\,F \\[1.2ex]\hline
-(c) & $\col{2}{4}{6}$ is parallel to $\col{1}{2}{4}$ & T\,/\,F \\[1.2ex]\hline
-(d) & $\col{3}{0}{-6}$ is parallel to $\col{-1}{0}{2}$ & T\,/\,F \\[1.2ex]\hline
-(e) & If $\mathbf a=-2\mathbf b$, then $\mathbf a$ and $\mathbf b$ are not parallel since they point in opposite directions & T\,/\,F \\[1.2ex]\hline
-\end{tabular}}}\par
-\wsec{Collinear Points}
+\Q{Find all vectors of magnitude $6$ that are parallel to $\mathbf a=\col{1}{2}{-2}$.}
+\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
+\par\smallskip{\setlength{\extrarowheight}{5pt}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
+(a)&If $\mathbf a\parallel\mathbf b$, then $\mathbf a=\mathbf b$\rule[-8pt]{0pt}{8pt}&\\\hline
+(b)&$\col{1}{-2}{3}$ is parallel to $\col{-2}{4}{-6}$\rule[-8pt]{0pt}{8pt}&\\\hline
+(c)&$\col{2}{4}{6}$ is parallel to $\col{1}{2}{4}$\rule[-8pt]{0pt}{8pt}&\\\hline
+(d)&$\col{3}{0}{-6}$ is parallel to $\col{-1}{0}{2}$\rule[-8pt]{0pt}{8pt}&\\\hline
+(e)&If $\mathbf a=-2\mathbf b$, then $\mathbf a$ and $\mathbf b$ are not parallel since they point in opposite directions\rule[-8pt]{0pt}{8pt}&\\\hline
+\end{longtable}}
+\clearpage\wsec{Collinear Points}
 \Q{Show that the points $A(1,2,3)$, $B(3,5,4)$ and $C(7,11,6)$ are collinear.}
-\vspace{2.6cm}
 \Q{For the points in Question 1, find the ratio $AB:BC$.}
-\vspace{2.6cm}
-\Q{\textbf{(Tricky)} The points $P(2,-1,0)$, $Q(4,1,3)$ and $R(a,7,b)$ are collinear. Find $a$ and $b$.}
-\vspace{2.6cm}
-\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.} Circle T (True) or F (False) for each statement.\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{12cm}|c|}\hline
- & \textbf{Statement} & \textbf{T/F}\\\hline
-(a) & If $\overrightarrow{AB}\parallel\overrightarrow{CD}$, then $A$, $B$, $C$ and $D$ are collinear & T\,/\,F \\[1.2ex]\hline
-(b) & If $\overrightarrow{AB}=3\overrightarrow{AC}$, then $A$, $B$ and $C$ are collinear & T\,/\,F \\[1.2ex]\hline
-(c) & $A(0,0,0)$, $B(1,1,1)$ and $C(2,2,3)$ are collinear & T\,/\,F \\[1.2ex]\hline
-(d) & The points with position vectors $\mathbf a$, $2\mathbf a$ and $-\mathbf a$ are collinear ($\mathbf a\neq\mathbf 0$) & T\,/\,F \\[1.2ex]\hline
-\end{tabular}}}\par
-\wsec{Ratio Theorem}
+\Q{The points $P(2,-1,0)$, $Q(4,1,3)$ and $R(a,7,b)$ are collinear. Find $a$ and $b$.}
+\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
+\par\smallskip{\setlength{\extrarowheight}{5pt}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
+(a)&If $\overrightarrow{AB}\parallel\overrightarrow{CD}$, then $A$, $B$, $C$ and $D$ are collinear\rule[-8pt]{0pt}{8pt}&\\\hline
+(b)&If $\overrightarrow{AB}=3\overrightarrow{AC}$, then $A$, $B$ and $C$ are collinear\rule[-8pt]{0pt}{8pt}&\\\hline
+(c)&$A(0,0,0)$, $B(1,1,1)$ and $C(2,2,3)$ are collinear\rule[-8pt]{0pt}{8pt}&\\\hline
+(d)&The points with position vectors $\mathbf a$, $2\mathbf a$ and $-\mathbf a$ are collinear ($\mathbf a\neq\mathbf 0$)\rule[-8pt]{0pt}{8pt}&\\\hline
+\end{longtable}}
+\clearpage\wsec{Ratio Theorem}
 \begin{center}\begin{tikzpicture}[scale=0.85,>=Stealth]
 \coordinate (O) at (0,0);\coordinate (A) at (0.6,2.4);\coordinate (B) at (5.2,1.6);
 \coordinate (C) at ($(A)!0.4!(B)$);
@@ -113,19 +106,175 @@
 \node[dot,label=right:$B$] at (B){};\node[dot,label=below:$C$] at (C){};
 \draw[decorate,decoration={brace,amplitude=4pt,raise=3pt}](A)--(C) node[midway,above=8pt,sloped]{$\lambda$};
 \draw[decorate,decoration={brace,amplitude=4pt,raise=3pt}](C)--(B) node[midway,above=8pt,sloped]{$\mu$};
-\end{tikzpicture}\end{center}\noindent In the True/False table, $C$ lies on $AB$ with $AC:CB=\lambda:\mu$, $\overrightarrow{OA}=\mathbf a$ and $\overrightarrow{OB}=\mathbf b$.
-\Q{The points $A$ and $B$ have position vectors $\col{1}{4}{-2}$ and $\col{7}{-2}{4}$. The point $C$ lies on $AB$ such that $AC:CB=1:2$. Find $\overrightarrow{OC}$.}
-\vspace{2.6cm}
+\end{tikzpicture}\end{center}\noindent In the True/False statements, $C$ lies on $AB$ with $AC:CB=\lambda:\mu$, $\overrightarrow{OA}=\mathbf a$ and $\overrightarrow{OB}=\mathbf b$.
+\Q{Let $\overrightarrow{OA}=\mathbf i+\mathbf j+\mathbf k$ and $\overrightarrow{OB}=\mathbf i+2\mathbf j+3\mathbf k$. Given that $C$ lies on $AB$, find the coordinates of $C$ if\begin{enumerate}\item[(a)] $AC:CB=1:2$,\item[(b)] $3AC=2CB$,\item[(c)] $2AB=5CB$,\item[(d)] Given instead that $C$ lies on $AB$ produced, and $3AC=7BC$.\end{enumerate}}
 \Q{Find the position vector of the midpoint $M$ of $AB$, where $A$ and $B$ have coordinates $(3,-1,5)$ and $(-1,5,1)$.}
-\vspace{2.6cm}
-\Q{\textbf{(Tricky)} The point $A$ has coordinates $(1,2,3)$. The point $C(3,0,7)$ lies on $AB$ such that $AC:CB=2:3$. Find the coordinates of $B$.}
-\vspace{2.6cm}
-\par\needspace{8\baselineskip}\medskip\noindent\textbf{Check Your Understanding.} Circle T (True) or F (False) for each statement.\par\smallskip{\renewcommand{\arraystretch}{1.5}\noindent\makebox[\textwidth][c]{\begin{tabular}{|c|>{\centering\arraybackslash}p{12cm}|c|}\hline
- & \textbf{Statement} & \textbf{T/F}\\\hline
-(a) & $\overrightarrow{OC}=\dfrac{\mu\mathbf a+\lambda\mathbf b}{\lambda+\mu}$ & T\,/\,F \\[1.2ex]\hline
-(b) & $\overrightarrow{OC}=\dfrac{\lambda\mathbf a+\mu\mathbf b}{\lambda+\mu}$ & T\,/\,F \\[1.2ex]\hline
-(c) & If $\lambda:\mu=1:1$, then $\overrightarrow{OC}=\dfrac12(\mathbf a+\mathbf b)$ & T\,/\,F \\[1.2ex]\hline
-(d) & If $\lambda:\mu=1:3$, then $\overrightarrow{OC}=\dfrac{3\mathbf a+\mathbf b}{4}$ & T\,/\,F \\[1.2ex]\hline
-(e) & If $\lambda:\mu=2:1$, then $\overrightarrow{OC}=\dfrac{2\mathbf a+\mathbf b}{3}$ & T\,/\,F \\[1.2ex]\hline
-\end{tabular}}}\par
+\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
+\par\smallskip{\setlength{\extrarowheight}{5pt}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
+(a)&$\overrightarrow{OC}=\dfrac{\mu\mathbf a+\lambda\mathbf b}{\lambda+\mu}$\rule[-8pt]{0pt}{8pt}&\\\hline
+(b)&$\overrightarrow{OC}=\dfrac{\lambda\mathbf a+\mu\mathbf b}{\lambda+\mu}$\rule[-8pt]{0pt}{8pt}&\\\hline
+(c)&If $\lambda:\mu=1:1$, then $\overrightarrow{OC}=\dfrac12(\mathbf a+\mathbf b)$\rule[-8pt]{0pt}{8pt}&\\\hline
+(d)&If $\lambda:\mu=1:3$, then $\overrightarrow{OC}=\dfrac{3\mathbf a+\mathbf b}{4}$\rule[-8pt]{0pt}{8pt}&\\\hline
+(e)&If $\lambda:\mu=2:1$, then $\overrightarrow{OC}=\dfrac{2\mathbf a+\mathbf b}{3}$\rule[-8pt]{0pt}{8pt}&\\\hline
+\end{longtable}}
+\clearpage\wsec{Scalar Product}
+\begingroup\setlist{itemsep=1pt,topsep=2pt,parsep=0pt}\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+\Q{\textbf{Properties of scalar product}\par\smallskip It is given that $\mathbf a=\cvv{1}{2}{3}$, $\mathbf b=\cvv{-3}{2}{7}$, $\mathbf c=\cvv{4}{-5}{-1}$. Find the following\par\smallskip{\setlength{\tabcolsep}{0pt}\noindent\begin{tabular}{@{\hspace{1.2em}}*{4}{p{0.225\linewidth}}}(a)\ $\mathbf a\cdot\mathbf b$ & (b)\ $\mathbf b\cdot\mathbf a$ & (c)\ $\mathbf a\cdot(\mathbf b+\mathbf c)$ & (d)\ $\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c$\\[4pt](e)\ $\mathbf a\cdot(2\mathbf c)$ & (f)\ $(2\mathbf a)\cdot\mathbf c$ & (g)\ $\mathbf a\cdot\mathbf a$ &\end{tabular}}\par}
+\Q{\textbf{Scalar product formula: $\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$}\par\smallskip \begin{enumerate}[label=(\alph*)]
+\item Points $O$, $A$, $B$ are such that $\vv{OA}=\mathbf i+4\mathbf j-3\mathbf k$ and $\vv{OB}=5\mathbf i-\mathbf j$
+\begin{enumerate}[label=(\roman*)]
+\item Find the size of angle $AOB$
+\item Find the size of angle $OAB$.
+\end{enumerate}
+\item It is given that $\mathbf c=\cvv{2}{3}{6}$, $\mathbf d=\cvv{1}{-2}{3}$ and $\mathbf e=\cvv{3}{2}{-2}$. Find the angle between the vectors $\mathbf c$ and
+\begin{enumerate}[label=(\roman*)]
+\item the vector $\mathbf d$
+\item the vector $\mathbf e$
+\item the positive $y$-axis
+\end{enumerate}
+\item It is given that two vectors $\mathbf a$ and $\mathbf b$ satisfy the following relationship:
+\[
+|\mathbf a||\mathbf b|=6.
+\]
+Find the value of $\mathbf a\cdot\mathbf b$ for each of the following scenarios.
+\begin{enumerate}[label=(\roman*)]
+\item The angle between $\mathbf a$ and $\mathbf b$ is $60^\circ$.
+\item The angle between $\mathbf a$ and $\mathbf b$ is $120^\circ$.
+\item Vectors $\mathbf a$ and $\mathbf b$ are perpendicular.
+\end{enumerate}
+\end{enumerate}}
+\Q{\textbf{Perpendicularity of vectors}\par\smallskip \begin{enumerate}[label=(\alph*)]
+\item Referred to the origin $O$, the position vectors of the points $A$ and $B$ are $\mathbf i-\mathbf j+2\mathbf k$ and $2\mathbf i+4\mathbf j+\mathbf k$ respectively. Show that $OA$ is perpendicular to $OB$.
+\item The position vectors $\mathbf a$ and $\mathbf b$ are given by
+\[
+\mathbf a=2p\mathbf i+3p\mathbf j+6p\mathbf k\quad\text{and}\quad\mathbf b=\mathbf i-2\mathbf j+2\mathbf k
+\]
+where $p>0$. It is given that $|\mathbf a|=|\mathbf b|$.
+\begin{enumerate}[label=(\roman*)]
+\item Find the exact value of $p$.
+\item Show that the vectors $(\mathbf a+\mathbf b)$ and $(\mathbf a-\mathbf b)$ are perpendicular.
+\end{enumerate}
+\end{enumerate}}
+\Q{\textbf{Length of projection}\par\smallskip \begin{enumerate}[label=(\alph*)]
+\item Given that $\mathbf a=2\mathbf i+\mathbf j+2\mathbf k$ and $\mathbf b=-\mathbf i+2\mathbf k-\mathbf k$, find the length of projection and the projection vector of
+\begin{enumerate}[label=(\roman*)]
+\item $\mathbf a$ onto $\mathbf b$,
+\item $\mathbf b$ onto $\mathbf a$.
+\end{enumerate}
+\item With reference to the origin O, the points $A$, $B$ and $C$ have position vectors given by
+\[
+\mathbf a=\mathbf i+2\mathbf j-\mathbf k,\ \mathbf b=3\mathbf i+\mathbf k\ \text{and}\ \mathbf c=2\mathbf i+2\mathbf j+3\mathbf k
+\]
+respectively. Find the length of projection of $\vv{BA}$ onto $\vv{BC}$.
+\end{enumerate}}
+\endgroup
+\clearpage
+\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
+\par\smallskip{\setlength{\extrarowheight}{5pt}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
+(a)&$\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(b)&$\mathbf a\cdot\mathbf a=|\mathbf a|^2$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(c)&$\mathbf i\cdot\mathbf j=0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(d)&$\mathbf a\cdot\mathbf b$ is a vector.\rule[-8pt]{0pt}{8pt}&\\\hline
+(e)&$\mathbf i\cdot\mathbf j=\mathbf k$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(f)&If $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$, then $\mathbf a\cdot\mathbf b=0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(g)&$(2\mathbf a)\cdot(3\mathbf b)=6\,\mathbf a\cdot\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(h)&$(\mathbf a\cdot\mathbf b)\mathbf c$ is a vector.\rule[-8pt]{0pt}{8pt}&\\\hline
+(i)&$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$, where $\theta$ is the non-reflex angle between $\mathbf a$ and $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(j)&$\cvv{1}{2}{3}\cdot\cvv{2}{3}{5}=\cvv{2}{6}{15}$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(k)&If $\mathbf a\cdot\mathbf b=0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(l)&$|\mathbf a\cdot\mathbf b|=|\mathbf a||\mathbf b|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(m)&$\mathbf a\cdot\mathbf b\le|\mathbf a||\mathbf b|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(n)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b>0$ means that the angle between $\mathbf a$ and $\mathbf b$ is acute.\rule[-8pt]{0pt}{8pt}&\\\hline
+(o)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b<0$ means that the angle between $\mathbf a$ and $\mathbf b$ is obtuse.\rule[-8pt]{0pt}{8pt}&\\\hline
+(p)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b\ge0$ means that the angle between $\mathbf a$ and $\mathbf b$ is acute.\rule[-8pt]{0pt}{8pt}&\\\hline
+(q)&$\mathbf a\cdot(\mathbf b\cdot\mathbf c)$ is a scalar.\rule[-8pt]{0pt}{8pt}&\\\hline
+(r)&$(\mathbf a+\mathbf b)\cdot(\mathbf a+\mathbf b)=|\mathbf a|^2+|\mathbf b|^2$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(s)&For non-zero $\mathbf a$ and $\mathbf b$, if $\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|$, then $\mathbf a$ and $\mathbf b$ are parallel.\rule[-8pt]{0pt}{8pt}&\\\hline
+(t)&$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$ also holds if $\theta$ is the reflex angle between $\mathbf a$ and $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(u)&Let $\theta$ be the angle $ABC$. Then $\vv{BA}\cdot\vv{BC}=|\vv{BA}||\vv{BC}|\cos\theta$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(v)&The length of projection of $\mathbf a$ onto $\mathbf b$ is equal to the length of projection of $\mathbf b$ onto $\mathbf a$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(w)&If $|\mathbf a|=|\mathbf b|$, then $(\mathbf a+\mathbf b)\cdot(\mathbf a-\mathbf b)=0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(x)&$\mathbf a\cdot\mathbf b=\mathbf a\cdot\mathbf c$ means that $\mathbf b=\mathbf c$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(y)&Let $\theta$ be the angle $ABC$. Then $\vv{AB}\cdot\vv{BC}=|\vv{AB}||\vv{BC}|\cos\theta$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(z)&Let $\theta$ be the angle $CBD$. Then $\vv{BD}\cdot\vv{CB}=|\vv{BD}||\vv{CB}|\cos\theta$.\rule[-8pt]{0pt}{8pt}&\\\hline
+\end{longtable}}
+\clearpage\wsec{Vector Product}
+\begingroup\setlist{itemsep=1pt,topsep=2pt,parsep=0pt}\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+\Q{\textbf{Properties of vector product}\par\smallskip \begin{enumerate}[label=(\alph*)]
+\item Find $\cvv{3}{-1}{4}\times\cvv{5}{7}{1}$
+\item Given that $\mathbf a=\cvv{1}{0}{-1}$, $\mathbf b=\cvv{1}{1}{1}$ and $\mathbf c=\cvv{-1}{1}{-1}$, find
+\par\smallskip{\setlength{\tabcolsep}{0pt}\noindent\begin{tabular}{@{\hspace{1.2em}}*{4}{p{0.225\linewidth}}}(i)\ $\mathbf a\times\mathbf b$; & (ii)\ $\mathbf b\times\mathbf a$; & (iii)\ $\mathbf a\times(\mathbf b+\mathbf c)$; & (iv)\ $\mathbf a\times\mathbf b+\mathbf a\times\mathbf c$;\\[4pt](v)\ $\mathbf a\times(2\mathbf b)$; & (vi)\ $(2\mathbf a)\times\mathbf b$; & (vii)\ $\mathbf a\times\mathbf a$; &\end{tabular}}\par
+\end{enumerate}}
+\Q{\textbf{Parallel vectors}\par\smallskip \begin{enumerate}[label=(\alph*)]
+\item Three non-zero vectors $\mathbf a$, $\mathbf b$ and $\mathbf c$ satisfy $\mathbf a\times3\mathbf b=2\mathbf a\times\mathbf c$. Show that $\mathbf a$ and $3\mathbf b-2\mathbf c$ are parallel.
+\item Find the scalar product and vector product of the following vectors, stating whether they are parallel, perpendicular, or neither.
+\begin{enumerate}[label=(\roman*)]
+\item $\cvv{1}{2}{3}$ and $\cvv{4}{5}{6}$
+\item $\mathbf a=\mathbf i+2\mathbf j-3\mathbf k$, $\mathbf b=3\mathbf i+\mathbf k$
+\item $\cvv{1}{2}{-1}$ and $\cvv{-4}{-8}{4}$
+\end{enumerate}
+\end{enumerate}}
+\Q{\textbf{Vector product formula}\par\smallskip Using the Vector Product, find the acute angles between the following vectors:\par\smallskip{\setlength{\tabcolsep}{0pt}\noindent\begin{tabular}{@{\hspace{1.2em}}*{3}{p{0.300\linewidth}}}(a)\ $\cvv{2}{1}{3}$ and $\cvv{4}{-1}{1}$ & (b)\ $\cvv{-1}{2}{-1}$ and $\cvv{3}{-1}{5}$ & (c)\ $\cvv{4}{3}{5}$ and $\cvv{2}{-5}{1}$\end{tabular}}\par}
+\Q{\textbf{Perpendicular distance}\par\smallskip \begin{enumerate}[label=(\alph*)]
+\item Relative to an origin $O$, two point $A$ and $B$ have position vectors given by $\mathbf a=3\mathbf i-\mathbf j+2\mathbf k$ and $\mathbf b=-2\mathbf i+3\mathbf j+2\mathbf k$. Find the following:
+\begin{enumerate}[label=(\roman*)]
+\item The shortest distance from $A$ to $OB$
+\item The shortest distance from $B$ to $OA$
+\end{enumerate}
+\item Relative to the origin $O$, two points $A$ and $B$ have position vectors given by $\mathbf a=\mathbf i+\mathbf j+\mathbf k$ and $\mathbf b=\mathbf i+2\mathbf j+3\mathbf k$ respectively.
+\begin{enumerate}[label=(\roman*)]
+\item Find the length of projection of $\mathbf b$ onto $\mathbf a$.
+\item Hence, or otherwise, find the shortest distance from $B$ to $OA$.
+\end{enumerate}
+\item Relative to the origin $O$, the points $A$, $B$ and $C$ have position vectors given by $\mathbf a=\mathbf i+2\mathbf j+3\mathbf k$, $\mathbf b=\mathbf i-\mathbf j+\mathbf k$ and $\mathbf c=3\mathbf i-\mathbf j+\mathbf k$. Find the shortest distance from $C$ to the line joining $A$ and $B$.
+\end{enumerate}}
+\Q{\textbf{Areas of triangles \& parallelograms}\par\smallskip \begin{enumerate}[label=(\alph*)]
+\item Relative to the origin $O$, the points $A$ and $B$ have position vectors $\vv{OA}=\cvv{1}{0}{3}$, $\vv{OB}=\cvv{-2}{3}{2}$. Find the area of triangle $OAB$.
+\item Relative to the origin $O$, the points $A$ and $B$ have position vectors $\vv{OA}=\cvv{0}{1}{1}$, $\vv{OB}=\cvv{1}{-2}{2}$. Find the area of triangle $OAB$.
+\item Relative to an origin $O$, the position vectors of the vertices $A$, $B$ and $C$ of a triangle are
+\[
+\mathbf i+\mathbf j-\mathbf k,\ 2\mathbf i+\mathbf k\ \text{and}\ -\mathbf i+2\mathbf j-\mathbf k
+\]
+respectively. By considering the displacement vectors $\vv{AB}$ and $\vv{AC}$, find the exact area of triangle $ABC$.
+\end{enumerate}}
+\endgroup
+\clearpage
+\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
+\par\smallskip{\setlength{\extrarowheight}{5pt}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
+(a)&$\mathbf a\times\mathbf a=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(b)&$\mathbf a\times\mathbf a=0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(c)&$\mathbf i\times\mathbf j=\mathbf k$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(d)&$\mathbf a\times\mathbf b=\mathbf b\times\mathbf a$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(e)&$\mathbf a\times\mathbf b=-(\mathbf b\times\mathbf a)$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(f)&$\mathbf a\times\mathbf b$ is a scalar.\rule[-8pt]{0pt}{8pt}&\\\hline
+(g)&$\mathbf k\times\mathbf j=\mathbf i$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(h)&$\cvv{1}{2}{3}\times\cvv{2}{4}{6}=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(i)&$\mathbf a\times(\mathbf b+\mathbf c)=\mathbf a\times\mathbf b+\mathbf a\times\mathbf c$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(j)&$(\lambda\mathbf a)\times\mathbf b=\lambda(\mathbf a\times\mathbf b)$ for all $\lambda\in\mathbb R$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(k)&$\mathbf a\times\mathbf b$ is perpendicular to both $\mathbf a$ and $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(l)&$(\mathbf a\times\mathbf b)\cdot\mathbf c$ is a scalar.\rule[-8pt]{0pt}{8pt}&\\\hline
+(m)&$|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|\sin\theta$, where $\theta$ is the angle between $\mathbf a$ and $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(n)&$|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(o)&If $\mathbf a\times\mathbf b=\mathbf 0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(p)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\times\mathbf b=\mathbf 0$ means that $\mathbf a$ is parallel to $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(q)&The area of the parallelogram with adjacent sides $\mathbf a$ and $\mathbf b$ is $|\mathbf a\times\mathbf b|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(r)&The area of triangle $OAB$ is $|\vv{OA}\times\vv{OB}|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(s)&$\mathbf a\times(\mathbf b\cdot\mathbf c)$ is a vector.\rule[-8pt]{0pt}{8pt}&\\\hline
+(t)&For non-zero $\mathbf a$ and $\mathbf b$, if $|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|$, then $\mathbf a$ is perpendicular to $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(u)&$(\mathbf a\times\mathbf b)\cdot\mathbf c=\mathbf a\cdot(\mathbf b\times\mathbf c)$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(v)&$|\mathbf a\times\mathbf b|^2+(\mathbf a\cdot\mathbf b)^2=|\mathbf a|^2|\mathbf b|^2$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(w)&$\mathbf a\times\mathbf b=\mathbf a\times\mathbf c$ means that $\mathbf b=\mathbf c$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(x)&$\mathbf a\times(\mathbf b\times\mathbf c)=(\mathbf a\times\mathbf b)\times\mathbf c$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(y)&The shortest distance from $B$ to the line through $A$ parallel to $\mathbf d$ is $|\vv{AB}\times\mathbf d|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(z)&If $\mathbf a\times\mathbf b=\mathbf 0$ and $\mathbf a\cdot\mathbf b=0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+\end{longtable}}
+\clearpage\wsec{Practice Problems}
+\Q{\textcolor{black!60}{\small[RI 2026 Prelim P1 Q4]}\par\smallskip With reference to the origin $O$, three distinct points $A$, $B$ and $C$ are such that $\overrightarrow{OA}=\mathbf a$, $\overrightarrow{OB}=\mathbf b$ and $\overrightarrow{OC}=\mathbf c$. The mid-point of $AC$ is $D$.\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]\item Express $\overrightarrow{OD}$ in terms of $\mathbf a$ and $\mathbf c$.\hfill[1]\item Given that $|\mathbf a|=|\mathbf c|$, $|\mathbf b|\neq0$ and $BD$ is perpendicular to $AC$, show that $OB$ is also perpendicular to $AC$ by using a suitable scalar product.\hfill[3]\item Given further that point $D$ lies on line segment $OB$, $|\mathbf a|=2$, $|\mathbf b|=6$ and $\angle AOC=60^\circ$, find the exact area of quadrilateral $OABC$.\hfill[2]\end{enumerate}}
+\Q{\textcolor{black!60}{\small[YIJC 2026 Prelim P2 Q2]}\par\smallskip \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]\item The non-zero vectors $\mathbf a$, $\mathbf b$ and $\mathbf c$ are such that $\mathbf a\times\mathbf c$ is parallel to $\mathbf a\times\mathbf b$. Show that $\mathbf c=m\mathbf a+n\mathbf b$, where $m$ and $n$ are constants.\hfill[3]\item Given that $\mathbf a$ is a non-zero vector and $\mathbf b$ is a unit vector such that $|\mathbf a\times\mathbf b|=2$ and $|\mathbf a\cdot\mathbf b|=2.5$, show that the acute angle between the vectors $\mathbf a$ and $\mathbf b$ is $\tan^{-1}\left(\dfrac45\right)$ and find the exact value of $|\mathbf a|$.\hfill[4]\end{enumerate}}
+\Q{\textcolor{black!60}{\small[RI 2025 Prelim P1 Q3]}\par\smallskip Relative to the origin $O$, the points $A$ and $C$ have position vectors $\mathbf a$ and $2\mathbf b$ such that \[\mathbf a=5p\mathbf i-2p\mathbf j+4p\mathbf k\ \text{ and }\ \mathbf b=\mathbf i-2\mathbf j+2\mathbf k,\] where $p$ is a positive constant. It is given that $|\mathbf a|=2|\mathbf b|$.\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]\item Find the exact value of $p$.\hfill[2]\item Evaluate $(\mathbf a+2\mathbf b)\cdot(\mathbf a-2\mathbf b)$.\hfill[1]\item Evaluate $\mathbf a\times\mathbf b$ and hence find the area of triangle $OAC$.\hfill[3]\item Use a geometrical reason to explain why $|\mathbf a\times\mathbf b|=\dfrac14\left(|\mathbf a+2\mathbf b|\right)\left(|\mathbf a-2\mathbf b|\right)$.\hfill[2]\end{enumerate}}
+\Q{\textcolor{black!60}{\small[ACJC 2025 Promo Q7]}\par\smallskip Referred to the origin $O$, points $A$, $B$ and $C$ have position vectors $\mathbf a$, $\mathbf b$ and $\mathbf c$ respectively. It is given that $\mathbf a+\mathbf b-\mathbf c$ and $\mathbf a-\mathbf b+\mathbf c$ are parallel.\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]\item Using vector product, show that $\overrightarrow{OA}$ and $\overrightarrow{BC}$ are parallel.\hfill[4]\end{enumerate}It is now given that $\mathbf a$ and $\mathbf b$ are unit vectors, $\overrightarrow{BC}=2\overrightarrow{OA}$ and angle $OBC=60^\circ$.\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt,start=2]\item Using scalar product, show that $\overrightarrow{OB}$ and $\overrightarrow{OC}$ are perpendicular.\hfill[3]\item The point $H$ has position vector $\mathbf h$. Given that $\mathbf h=\mathbf b\times\mathbf c$ and $|\mathbf c|=\sqrt3$, find the exact volume of the pyramid $HOBC$.\hfill[3]\par[The volume of a pyramid is $\frac13\times$ base area $\times$ height.]\end{enumerate}}
+\Q{\textcolor{black!60}{\small[EJC 2025 Prelim P1 Q6]}\par\smallskip There are three distinct points $A$, $B$ and $P$. The point $P$ lies on the circle with centre $O$ and diameter $AB$. Relative to the origin $O$, the position vectors of points $A$ and $P$ are $\mathbf a$ and $\mathbf p$ respectively.\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]\item By expressing $\overrightarrow{AP}$ and $\overrightarrow{BP}$ in terms of $\mathbf a$ and $\mathbf p$, show that $\overrightarrow{AP}.\overrightarrow{BP}=0$.\hfill[3]\end{enumerate}The point $C$ with position vector $\mathbf c$ lies on $AB$ produced such that $AC:AB$ is $\lambda:1$.\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt,start=2]\item Find $\mathbf c$ in terms of $\lambda$ and $\mathbf a$.\hfill[2]\item It is given that $PC$ is a tangent to the circle and that angle $AOP$ is $120^\circ$. Using a suitable scalar product, find the value of $\lambda$.\hfill[4]\end{enumerate}}
 \par\vspace{\baselineskip}\begin{center}\textbf{END OF WORKSHEET}\end{center}\end{document}
