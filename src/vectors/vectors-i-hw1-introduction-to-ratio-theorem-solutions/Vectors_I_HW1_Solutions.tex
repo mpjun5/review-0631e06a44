@@ -17,7 +17,7 @@
 {\Large\textbf{Vectors I - HW1 (Introduction to Ratio Theorem)}}\par
 \textbf{Solutions}\par
 {\small Compiled by Maximus Pung Jun}\par
-{\small Original practice questions. Total: 47 marks. Give exact answers unless otherwise stated.}\par\medskip\hrule\medskip
+{\small Original practice questions. Total: 50 marks. Give exact answers unless otherwise stated.}\par\medskip\hrule\medskip
 \q{1}{5}The vectors $\mathbf a$ and $\mathbf b$ are given by $\mathbf a=2\mathbf i-\mathbf j+3\mathbf k$ and $\mathbf b=-\mathbf i+4\mathbf j$.
 \begin{enumerate}[label=(\alph*)]
 \item Write $\mathbf a$ and $\mathbf b$ as column vectors and find $\mathbf a+2\mathbf b$. \mk{2}
@@ -123,44 +123,63 @@ The front-left corner $O$ is the origin. The positive $\mathbf i$, $\mathbf j$ a
 
 The ridge $PQ$ is parallel to $OD$. The front gable $EFP$ and back gable $HGQ$ are congruent isosceles triangles, with $P$ vertically above the midpoint of $EF$ and $Q$ vertically above the midpoint of $HG$. Each sloping roof face makes an angle $\alpha$ with the horizontal, where $\tan\alpha=\frac23$; the vertical roof rise is $2\,\mathrm m$.
 \begin{center}
-\begin{tikzpicture}[x={(0.95cm,0cm)},y={(0.55cm,0.65cm)},z={(0cm,0.9cm)},scale=0.72,line join=round,line cap=round,>=stealth,every node/.style={font=\small}]
-\coordinate(O)at(0,0,0);\coordinate(B)at(6,0,0);\coordinate(C)at(6,4,0);\coordinate(D)at(0,4,0);
-\coordinate(E)at(0,0,3);\coordinate(F)at(6,0,3);\coordinate(G)at(6,4,3);\coordinate(H)at(0,4,3);
-\coordinate(P)at(3,0,5);\coordinate(Q)at(3,4,5);\coordinate(M)at(3,0,3);
-% Cuboid walls and the two rectangular faces of the solid prism roof.
-\fill[gray!10](O)--(B)--(F)--(E)--cycle;
-\fill[gray!18](B)--(C)--(G)--(F)--cycle;
-\fill[blue!9](E)--(P)--(Q)--(H)--cycle;
-\fill[blue!16](P)--(F)--(G)--(Q)--cycle;
-\fill[blue!4](E)--(F)--(P)--cycle;
-% Hidden cuboid edges.
-\draw[dashed,black!55](O)--(D)--(C);\draw[dashed,black!55](D)--(H);
-\draw[thick](O)--(B)--(C)--(G)--(Q)--(H)--(E)--cycle;
-\draw[thick](E)--(F)--(G)--(H);\draw[thick](B)--(F)--(P)--(E);
+\begin{tikzpicture}[
+  x={(0.92cm,-0.05cm)},
+  y={(-0.40cm,0.26cm)},
+  z={(0cm,0.95cm)},
+  scale=0.78,
+  line join=round, line cap=round, >=stealth,
+  every node/.style={font=\bfseries\small}
+]
+\coordinate(O)at(0,0,0);
+\coordinate(B)at(6,0,0);
+\coordinate(C)at(6,4,0);
+\coordinate(D)at(0,4,0);
+\coordinate(E)at(0,0,3);
+\coordinate(F)at(6,0,3);
+\coordinate(G)at(6,4,3);
+\coordinate(H)at(0,4,3);
+\coordinate(P)at(3,0,5);
+\coordinate(Q)at(3,4,5);
+\coordinate(M)at(3,0,3);
+\draw[dashed,thick](O)--(D)--(C);
+\draw[dashed,thick](D)--(H);
+\draw[thick](O)--(B)--(C)--(G)--(Q)--(P)--(E)--cycle;
+\draw[thick](E)--(F)--(G);
+\draw[thick](H)--(E);
+\draw[thick](B)--(F)--(P);
 \draw[thick](P)--(Q);
-% Roof rise and pitch on the front gable.
-\draw[dashed,black!65](M)--(P)node[pos=0.48,right=2pt,fill=blue!4,inner sep=1pt]{$2\,\mathrm m$};
-\draw ($(M)+(-0.18,0,0)$)--++(0,0,0.18)--++(0.18,0,0);
-\draw (0.72,0,3) arc[start angle=0,end angle=32.28,radius=0.684cm];
-\node at (1.12,0,3.22){$\alpha$};
-% Dimensions, placed outside the solid.
-\draw[thin] (0,0,-0.42)--(6,0,-0.42)node[midway,below]{$6\,\mathrm m$};
-\draw[thin](0,0,-0.28)--(0,0,-0.56);\draw[thin](6,0,-0.28)--(6,0,-0.56);
-\draw[thin](6.5,0,0)--(6.5,4,0)node[midway,below right]{$4\,\mathrm m$};
-\draw[thin](6.36,0,0)--(6.64,0,0);\draw[thin](6.36,4,0)--(6.64,4,0);
-\draw[thin](-0.48,0,0)--(-0.48,0,3)node[midway,left]{$3\,\mathrm m$};
-\draw[thin](-0.34,0,0)--(-0.62,0,0);\draw[thin](-0.34,0,3)--(-0.62,0,3);
-% Positive coordinate directions are along OB, OD and OE.
-\draw[->,black!70](B)--(7.4,0,0)node[right]{$\mathbf i$};
-\draw[->,black!70](D)--(0,5.5,0)node[above right]{$\mathbf j$};
-\draw[->,black!70](E)--(0,0,6.2)node[above]{$\mathbf k$};
-\foreach \n in {O,B,C,D,E,F,G,H,P,Q}{\fill (\n)circle(1.35pt);}
-\node[below left]at(O){$O$};\node[below]at(B){$B$};\node[right]at(C){$C$};\node[below right]at(D){$D$};
-\node[left]at(E){$E$};\node[below right]at(F){$F$};\node[right]at(G){$G$};\node[left]at(H){$H$};
-\node[above left]at(P){$P$};\node[above]at(Q){$Q$};
+\draw[dashed,thick](M)--(P);
+\draw ($(M)+(-0.22,0,0)$)--++(0,0,0.22)--++(0.22,0,0);
+\node[right=1pt] at ($(M)!0.55!(P)$) {$2\,\mathrm{m}$};
+\draw (4.15,0,3) arc[start angle=0, end angle=33.69, radius=0.95cm];
+\node at (4.85,0,3.30) {$\alpha$};
+\draw[thin](0,0,-0.55)--(6,0,-0.55) node[midway,below] {$6\,\mathrm{m}$};
+\draw[thin](0,0,-0.40)--(0,0,-0.70);
+\draw[thin](6,0,-0.40)--(6,0,-0.70);
+\draw[thin](6.55,0,0)--(6.55,4,0) node[midway,below right=-1pt] {$4\,\mathrm{m}$};
+\draw[thin](6.40,0,0)--(6.70,0,0);
+\draw[thin](6.40,4,0)--(6.70,4,0);
+\draw[thin](-0.55,0,0)--(-0.55,0,3) node[midway,left] {$3\,\mathrm{m}$};
+\draw[thin](-0.40,0,0)--(-0.70,0,0);
+\draw[thin](-0.40,0,3)--(-0.70,0,3);
+\draw[->,thick](O)--(1.35,0,0) node[below right=-1pt] {$\mathbf{i}$};
+\draw[->,thick](O)--(0,1.25,0) node[above left=-1pt] {$\mathbf{j}$};
+\draw[->,thick](O)--(0,0,1.35) node[left] {$\mathbf{k}$};
+\foreach \n in {O,B,C,D,E,F,G,H,P,Q} {\fill(\n) circle (1.35pt);}
+\node[below left] at (O) {$O$};
+\node[below] at (B) {$B$};
+\node[below right] at (C) {$C$};
+\node[above left] at (D) {$D$};
+\node[left] at (E) {$E$};
+\node[below right] at (F) {$F$};
+\node[right] at (G) {$G$};
+\node[left] at (H) {$H$};
+\node[above left] at (P) {$P$};
+\node[above] at (Q) {$Q$};
 \end{tikzpicture}\par
 {\small All lengths are in metres. The diagram is not drawn to scale.}
-\end{center}Find the coordinates of all the vertices of the house.
+\end{center}Find the coordinates of all the vertices of the house $(O,B,C,D,\ldots)$.
 \par\medskip\textbf{Solution}\par The positive coordinate directions are along $OB$, $OD$ and $OE$. Hence the four base vertices have $z=0$, the front vertices have $y=0$, and the back vertices have $y=4$.
 
 The walls are $3\,\mathrm m$ high, so $E,F,G,H$ all have $z=3$. The roof is symmetric across the middle of its $6\,\mathrm m$ width, so the ridge has $x=\frac62=3$.
@@ -175,5 +194,59 @@ E&=(0,0,3),& F&=(6,0,3),\\
 G&=(6,4,3),& H&=(0,4,3),\\
 P&=(3,0,5),& Q&=(3,4,5).
 \end{aligned}}\]
+
+\clearpage
+\q{8}{3}The diagram shows a container with a horizontal rectangular base $OABC$, where $OA=16\,\mathrm{cm}$ and $AB=11\,\mathrm{cm}$. The top of the container $DEFG$ is also a horizontal rectangle, where $DE=10\,\mathrm{cm}$ and $EF=5\,\mathrm{cm}$. The four sloping faces (for example $OAED$) of the container, each a trapezium, are inclined at the same angle to the horizontal, and the vertical distance between the base and the top is $6\,\mathrm{cm}$.
+
+The point $O$ is taken as the origin $(0,0,0)$, and perpendicular unit vectors $\mathbf i$, $\mathbf j$, $\mathbf k$ are such that $\mathbf i$ is parallel to $OA$, $\mathbf j$ is parallel to $OC$, and $\mathbf k$ is vertical.
+\begin{center}
+\begin{tikzpicture}[
+  x={(0.48cm,-0.03cm)},
+  y={(0.32cm,0.22cm)},
+  z={(0cm,0.48cm)},
+  line join=round, line cap=round, >=stealth,
+  every node/.style={font=\bfseries\small}
+]
+\coordinate(O)at(0,0,0);
+\coordinate(A)at(16,0,0);
+\coordinate(B)at(16,11,0);
+\coordinate(C)at(0,11,0);
+\coordinate(D)at(3,3,6);
+\coordinate(E)at(13,3,6);
+\coordinate(F)at(13,8,6);
+\coordinate(G)at(3,8,6);
+\draw[dashed,thick](O)--(C)--(B);
+\draw[dashed,thick](C)--(G);
+\draw[thick](O)--(A)--(B);
+\draw[thick](O)--(A)--(E)--(D)--cycle;
+\draw[thick](A)--(B)--(F)--(E)--cycle;
+\draw[thick](D)--(E)--(F)--(G)--cycle;
+\draw[thick](O)--(D);
+\draw[thick](G)--(D);
+\draw[->,thick](O)--(2.8,0,0) node[below] {$\mathbf{i}$};
+\draw[->,thick](O)--(0,2.4,0) node[above right=-1pt] {$\mathbf{j}$};
+\draw[->,thick](O)--(0,0,2.6) node[left] {$\mathbf{k}$};
+\foreach \n in {O,A,B,C,D,E,F,G} {\fill(\n) circle (1.45pt);}
+\node[below left] at (O) {$O$};
+\node[below] at (A) {$A$};
+\node[right] at (B) {$B$};
+\node[left] at (C) {$C$};
+\node[above left] at (D) {$D$};
+\node[above right] at (E) {$E$};
+\node[right] at (F) {$F$};
+\node[above] at (G) {$G$};
+\node[below=2pt] at ($(O)!0.5!(A)$) {$16$};
+\node[below right=-1pt] at ($(A)!0.5!(B)$) {$11$};
+\node[above=1pt] at ($(D)!0.5!(E)$) {$10$};
+\node[right=1pt] at ($(E)!0.5!(F)$) {$5$};
+\end{tikzpicture}\par
+{\small All lengths are in centimetres. The diagram is not drawn to scale.}
+\end{center}Find the coordinates of $D$.
+\par\medskip\textbf{Solution}\par Since the four sloping faces are inclined at the same angle to the horizontal, the top rectangle $DEFG$ is centred above the base rectangle $OABC$.
+
+The horizontal inset from each base edge to the corresponding top edge is
+\[\frac{OA-DE}{2}=\frac{16-10}{2}=3,\qquad \frac{AB-EF}{2}=\frac{11-5}{2}=3.\]
+The top lies $6\,\mathrm{cm}$ above the base, so the $z$-coordinate of every top vertex is $6$. Taking $D$ as the front-left vertex of the top,
+\[\boxed{D=(3,3,6)}.\]
 
 \medskip\begin{center}\textbf{END OF HOMEWORK}\end{center}\end{document}
