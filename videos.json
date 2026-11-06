@@ -8,31 +8,41 @@
           "title": "Differential Equations 4: Contextual Question (Cooling Tea)",
           "slug": "example-11-5-2-tutorial-cooling-tea",
           "updated": "05 Nov 2026, 02:38 PM SGT",
-          "size_mb": 16.2
+          "size_mb": 16.2,
+          "status": "completed",
+          "deleted": null
         },
         {
           "title": "Differential Equations 1: An Introductory Example to Method of Separable Variable",
           "slug": "question-1-tutorial",
           "updated": "04 Nov 2026, 10:45 PM SGT",
-          "size_mb": 8.7
+          "size_mb": 8.7,
+          "status": "completed",
+          "deleted": null
         },
         {
           "title": "Differential Equations 2: Another example of method of separable variable",
           "slug": "question-2-tutorial",
           "updated": "04 Nov 2026, 10:46 PM SGT",
-          "size_mb": 10.8
+          "size_mb": 10.8,
+          "status": "completed",
+          "deleted": null
         },
         {
           "title": "Differential Equations 3: Method of separable variable: the logistic equation",
           "slug": "question-3-tutorial",
           "updated": "05 Nov 2026, 09:45 AM SGT",
-          "size_mb": 22.9
+          "size_mb": 22.9,
+          "status": "completed",
+          "deleted": null
         },
         {
           "title": "Differential Equations 5: Substitution Question review [HCI 2025 Prelim P1 Q3]",
           "slug": "example-11-4-4-tutorial-hci-2025-prelim-p1-q3",
           "updated": "05 Nov 2026, 02:52 PM SGT",
-          "size_mb": 11.1
+          "size_mb": 11.1,
+          "status": "completed",
+          "deleted": null
         }
       ]
     }
