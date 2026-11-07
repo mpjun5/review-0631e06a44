@@ -167,8 +167,8 @@
         {
           "title": "Vectors Basics Worksheet",
           "slug": "vectors-basics-worksheet",
-          "updated": "06 Nov 2026, 10:39 PM SGT",
-          "size_kb": 110,
+          "updated": "07 Nov 2026, 09:59 AM SGT",
+          "size_kb": 106,
           "status": "in progress",
           "type": "Worksheet",
           "source": "src/vectors/vectors-basics-worksheet/Vectors_Basics_Worksheet.tex",
@@ -177,8 +177,8 @@
         {
           "title": "Vectors Basics Worksheet Solutions",
           "slug": "vectors-basics-worksheet-solutions",
-          "updated": "06 Nov 2026, 10:45 PM SGT",
-          "size_kb": 139,
+          "updated": "07 Nov 2026, 09:59 AM SGT",
+          "size_kb": 129,
           "status": "in progress",
           "type": "Worksheet",
           "source": "src/vectors/vectors-basics-worksheet-solutions/Vectors_Basics_Worksheet_Solutions.tex",
@@ -197,7 +197,7 @@
         {
           "title": "Vectors I HW2 (Scalar Product)",
           "slug": "vectors-i-hw2-scalar-product",
-          "updated": "06 Nov 2026, 11:46 PM SGT",
+          "updated": "07 Nov 2026, 09:59 AM SGT",
           "size_kb": 84,
           "source": "src/vectors/vectors-i-hw2-scalar-product/Main.tex",
           "type": "Homework",
@@ -217,8 +217,8 @@
         {
           "title": "Vectors I HW2 (Scalar Product) Solutions",
           "slug": "vectors-i-hw2-scalar-product-solutions",
-          "updated": "06 Nov 2026, 11:51 PM SGT",
-          "size_kb": 98,
+          "updated": "07 Nov 2026, 09:59 AM SGT",
+          "size_kb": 99,
           "source": "src/vectors/vectors-i-hw2-scalar-product-solutions/Main_Solutions.tex",
           "type": "Solutions",
           "status": "in progress",
@@ -227,7 +227,7 @@
         {
           "title": "Vectors I HW3 (Vector Product)",
           "slug": "vectors-i-hw3-vector-product",
-          "updated": "06 Nov 2026, 08:59 PM SGT",
+          "updated": "07 Nov 2026, 09:59 AM SGT",
           "size_kb": 85,
           "source": "src/vectors/vectors-i-hw3-vector-product/Main.tex",
           "type": "Homework",
@@ -237,8 +237,8 @@
         {
           "title": "Vectors I HW3 (Vector Product) Solutions",
           "slug": "vectors-i-hw3-vector-product-solutions",
-          "updated": "06 Nov 2026, 09:05 PM SGT",
-          "size_kb": 93,
+          "updated": "07 Nov 2026, 09:59 AM SGT",
+          "size_kb": 92,
           "source": "src/vectors/vectors-i-hw3-vector-product-solutions/Main_Solutions.tex",
           "type": "Solutions",
           "status": "in progress",
