@@ -1,0 +1,138 @@
+\documentclass[a4paper,11pt,oneside]{book}
+\input{preamble_build}
+\input{preamble_local}
+\input{prelim_fonts}
+\usepackage{needspace,longtable,multicol,enumitem,array}
+\providecommand{\vv}[1]{\overrightarrow{#1}}\providecommand{\cvv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+\raggedbottom
+\setlength{\parindent}{0pt}
+
+\fancyhf{}\lhead{\small Vectors I: HW3 (Vector Product)}\rhead{\small Compiled by Maximus Pung Jun}
+\cfoot{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\newcounter{wq}
+\newcommand{\Q}[1]{\par\needspace{5\baselineskip}\medskip\stepcounter{wq}\noindent\textbf{\thewq}\quad #1\par}
+\begin{document}
+\thispagestyle{fancy}
+{\LARGE\scshape Vectors I Homework 3: Vector Product}\par\smallskip
+{Compiled by Maximus Pung Jun}\par\smallskip
+{\small\textcolor{black!60}{Vector product: properties, parallel vectors, areas, collinearity via cross product. Q1 True/False from the Basics Worksheet (Vector Product). Q2--Q7 are full promotional-examination questions.}}\par\medskip
+\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
+\par\smallskip{\setlength{\extrarowheight}{6pt}\renewcommand{\arraystretch}{1.18}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
+\hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
+(a)&$\mathbf a\times\mathbf a=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(b)&$\mathbf a\times\mathbf a=0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(c)&$\mathbf i\times\mathbf j=\mathbf k$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(d)&$\mathbf a\times\mathbf b=\mathbf b\times\mathbf a$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(e)&$\mathbf a\times\mathbf b=-(\mathbf b\times\mathbf a)$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(f)&$\mathbf a\times\mathbf b$ is a scalar.\rule[-8pt]{0pt}{8pt}&\\\hline
+(g)&$\mathbf k\times\mathbf j=\mathbf i$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(h)&$\cvv{1}{2}{3}\times\cvv{2}{4}{6}=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(i)&$\mathbf a\times(\mathbf b+\mathbf c)=\mathbf a\times\mathbf b+\mathbf a\times\mathbf c$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(j)&$(\lambda\mathbf a)\times\mathbf b=\lambda(\mathbf a\times\mathbf b)$ for all $\lambda\in\mathbb R$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(k)&$\mathbf a\times\mathbf b$ is perpendicular to both $\mathbf a$ and $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(l)&$(\mathbf a\times\mathbf b)\cdot\mathbf c$ is a scalar.\rule[-8pt]{0pt}{8pt}&\\\hline
+(m)&$|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|\sin\theta$, where $\theta$ is the angle between $\mathbf a$ and $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(n)&$|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(o)&If $\mathbf a\times\mathbf b=\mathbf 0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(p)&For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\times\mathbf b=\mathbf 0$ means that $\mathbf a$ is parallel to $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(q)&The area of the parallelogram with adjacent sides $\mathbf a$ and $\mathbf b$ is $|\mathbf a\times\mathbf b|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(r)&The area of triangle $OAB$ is $|\vv{OA}\times\vv{OB}|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(s)&$\mathbf a\times(\mathbf b\cdot\mathbf c)$ is a vector.\rule[-8pt]{0pt}{8pt}&\\\hline
+(t)&For non-zero $\mathbf a$ and $\mathbf b$, if $|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|$, then $\mathbf a$ is perpendicular to $\mathbf b$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(u)&$(\mathbf a\times\mathbf b)\cdot\mathbf c=\mathbf a\cdot(\mathbf b\times\mathbf c)$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(v)&$|\mathbf a\times\mathbf b|^2+(\mathbf a\cdot\mathbf b)^2=|\mathbf a|^2|\mathbf b|^2$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(w)&$\mathbf a\times\mathbf b=\mathbf a\times\mathbf c$ means that $\mathbf b=\mathbf c$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(x)&$\mathbf a\times(\mathbf b\times\mathbf c)=(\mathbf a\times\mathbf b)\times\mathbf c$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(y)&The shortest distance from $B$ to the line through $A$ parallel to $\mathbf d$ is $|\vv{AB}\times\mathbf d|$.\rule[-8pt]{0pt}{8pt}&\\\hline
+(z)&If $\mathbf a\times\mathbf b=\mathbf 0$ and $\mathbf a\cdot\mathbf b=0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.\rule[-8pt]{0pt}{8pt}&\\\hline\end{longtable}}
+\clearpage
+\par\noindent\begin{minipage}{\linewidth}
+% Full selected questions, in owner-selected candidate order: 6,5,2,4,9,12,11.
+\Q{\textcolor{black!60}{\small[JPJC 2024 Promo Q11]}\par\smallskip
+Referred to the origin $O$, points $A$ and $B$ have position vectors $\mathbf a$ and $\mathbf b$ respectively, where $\mathbf a$ and $\mathbf b$ are non-zero and non-parallel vectors. Point $C$ is the midpoint of $OA$ and point $D$ lies on $BC$ such that $BD:DC=2:3$.
+\begin{enumerate}[label=\textbf{(\roman*)},leftmargin=2.2em,itemsep=3pt]
+\item Find the position vectors $\vv{OC}$ and $\vv{OD}$, giving your answers in terms of $\mathbf a$ and $\mathbf b$.\hfill[2]
+\item Find the area of triangle $OCD$ in the form of $k|\mathbf a\times\mathbf b|$, where $k$ is a constant to be found.\hfill[3]
+\item Given that $|\mathbf a|=2$, $|\mathbf b|=\sqrt2$ and angle $AOB$ is $\dfrac\pi4$ radian, using scalar product, show that $CD$ is perpendicular to $OA$.\hfill[3]
+\item Given instead that $\mathbf a$ is a unit vector, give a geometrical interpretation of $|\mathbf a\cdot\mathbf b|$.\hfill[1]
+\end{enumerate}}
+\end{minipage}\par
+\par\noindent\begin{minipage}{\linewidth}
+\Q{\textcolor{black!60}{\small[MI 2024 Promo Q4]}\par\smallskip
+Referred to the origin $O$, the points $A$, $B$ and $C$ have position vectors $\mathbf a$, $\mathbf b$ and $\mathbf c$. $C$ lies on $AB$ such that $AC:AB=1:3$.
+\begin{enumerate}[label=\textbf{(\roman*)},leftmargin=2.2em,itemsep=3pt]
+\item Find $\mathbf c$ in terms of $\mathbf a$ and $\mathbf b$.\hfill[2]
+\item Show that the area of triangle $OAC$ is given by $k|\mathbf a\times\mathbf b|$, where $k$ is a constant to be determined.\hfill[2]
+\end{enumerate}
+It is now given that $\mathbf a$ and $\mathbf b$ are unit vectors.
+\begin{enumerate}[label=\textbf{(\roman*)},leftmargin=2.2em,itemsep=3pt,start=3]
+\item Using the result in part (i), find the value of $(2\mathbf a-\mathbf b)\cdot\mathbf c$.\hfill[3]
+\end{enumerate}}
+\end{minipage}\par
+\par\noindent\begin{minipage}{\linewidth}
+\Q{\textcolor{black!60}{\small[ASRJC 2024 Promo Q5]}\par\smallskip
+In triangle $PQR$, the vectors $\mathbf a$, $\mathbf b$ and $\mathbf c$ represent the vectors $\vv{PQ}$, $\vv{QR}$ and $\vv{PR}$ respectively.
+\begin{center}\begin{tikzpicture}[scale=0.85,font=\small,>=Stealth]
+\coordinate(P)at(0,0);\coordinate(Q)at(5,0);\coordinate(R)at(4.15,2.2);
+\draw[semithick](P)--(Q)--(R)--cycle;
+\draw[->,semithick](P)--(2.7,0);\draw[->,semithick](Q)--(4.57,1.12);\draw[->,semithick](P)--(2.3,1.219);
+\node[below left]at(P){$P$};\node[below right]at(Q){$Q$};\node[above]at(R){$R$};
+\node[below]at(2.6,0){$\mathbf a$};\node[right]at(4.7,1.15){$\mathbf b$};\node[above left]at(2.1,1.1){$\mathbf c$};
+\end{tikzpicture}\end{center}
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
+\item State a geometrical interpretation of $|\mathbf c\times\hat{\mathbf a}|$ and hence show that the area of the triangle $PQR$ can be written as $\dfrac12|\mathbf c\times\mathbf a|$ units$^2$.\hfill[3]
+\item With clear explanations, show that $|\mathbf c\times\mathbf a|=|\mathbf b\times\mathbf a|$ and deduce that
+\[\frac{|\mathbf c|}{\sin\angle PQR}=\frac{|\mathbf b|}{\sin\angle QPR}\quad\text{(Sine Rule).}\]\hfill[2]
+\end{enumerate}}
+\end{minipage}\par
+\par\noindent\begin{minipage}{\linewidth}
+\Q{\textcolor{black!60}{\small[CJC 2024 Promo Q7]}\par\smallskip
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=5pt]
+\item Three non-zero vectors $\mathbf p$, $\mathbf q$ and $\mathbf r$ are such that $3\mathbf p\times\mathbf q=\mathbf r\times\mathbf p$.\par
+Find a linear relationship between $\mathbf p$, $\mathbf q$ and $\mathbf r$.\hfill[3]
+\item Referred to the origin $O$, the points $A$ and $B$ have position vectors $\mathbf a$ and $\mathbf b$.\par
+It is given that $\mathbf a$ and $\mathbf b$ are non-parallel unit vectors.\par
+The point $B$ divides $AC$ in the ratio $1:3$.\par
+The point $D$ lies on $OB$ produced such that $OB:OD=1:m$, where $m\in\mathbb Z$, $m\ge2$.\par
+Given that $\vv{AB}$ is perpendicular to $\vv{CD}$, find the numerical value of $m$.\hfill[4]
+\end{enumerate}}
+\end{minipage}\par
+\par\noindent\begin{minipage}{\linewidth}
+\Q{\textcolor{black!60}{\small[SAJC 2024 Promo Q9]}\par\smallskip
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=5pt]
+\item Relative to the origin $O$, the points $A$ and $B$ have position vectors $\mathbf a$ and $\mathbf b$ respectively, where $\mathbf a$ and $\mathbf b$ are non-parallel. It is given that $|\mathbf a|=9$, $|\mathbf b|=1$ and $|2\mathbf a+\mathbf b|=2\sqrt{74}$.
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+\item By considering $(2\mathbf a+\mathbf b)\cdot(2\mathbf a+\mathbf b)$, show that $\mathbf a\cdot\mathbf b=-\dfrac{29}{4}$.\hfill[3]
+\item Give a geometrical meaning of $|\mathbf a\cdot\mathbf b|$.\hfill[1]
+\item The points $P$, $Q$ and $R$ have position vectors $7\mathbf a-5\mathbf b$, $6\mathbf a+5\mathbf b$ and $9\mathbf a+\lambda\mathbf b$ respectively. Given that these three points are collinear, find the value of $\lambda$.\hfill[3]
+\end{enumerate}
+\item In the triangle $OUV$ where $O$ is the origin, the position vectors of the points $U$ and $V$ are $\mathbf u$ and $\mathbf v$ respectively. The point $W$ is the midpoint of $OU$, and the point $X$ has position vector given by $\dfrac1{16}\mathbf u+\dfrac34\mathbf v$. Show that the area of triangle $UWX$ can be written as $m|\mathbf u\times\mathbf v|$ where $m$ is a constant to be found.\hfill[3]
+\end{enumerate}}
+\end{minipage}\par
+\par\noindent\begin{minipage}{\linewidth}
+\Q{\textcolor{black!60}{\small[CJC 2025 Promo Q6]}\par\smallskip
+The diagram shows a unit circle with centre $O$ and diameter $AB$. The point $C$ lies on the circumference of the circle. The position vectors of $A$, $B$ and $C$ are $\mathbf a$, $\mathbf b$ and $\mathbf c$ respectively.
+\begin{center}\begin{tikzpicture}[scale=.72,font=\small,>=Stealth]
+\coordinate(O)at(0,0);\coordinate(A)at(2,0);\coordinate(B)at(-2,0);\coordinate(C)at(-.9,1.786);
+\draw[semithick](O)circle(2);\draw[semithick](B)--(A)--(C)--cycle;
+\draw[->,semithick](O)--(1.2,0);\draw[->,semithick](O)--(-1.2,0);\draw[->,semithick](O)--(C);
+\node[below]at(O){$O$};\node[right]at(A){$A$};\node[left]at(B){$B$};\node[above]at(C){$C$};
+\node[below]at(1,0){$\mathbf a$};\node[below]at(-1,0){$\mathbf b$};\node[left]at(-.45,.9){$\mathbf c$};
+\end{tikzpicture}\end{center}
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
+\item By considering an appropriate scalar product, show that $AC$ and $BC$ are perpendicular.\hfill[4]
+\item Give a geometrical interpretation of $|\mathbf a\cdot(\mathbf c-\mathbf a)|$.\hfill[1]
+\end{enumerate}
+The point $D$ is such that $ABCD$ is a parallelogram. The point $M$ is the mid-point of $AD$ and the point $R$ lies on $OA$ produced such that $OA:AR=1:2$.
+\begin{center}\begin{tikzpicture}[scale=.64,font=\small]
+\coordinate(O)at(0,0);\coordinate(A)at(2,0);\coordinate(B)at(-2,0);\coordinate(C)at(-.9,1.786);\coordinate(D)at(3.1,1.786);\coordinate(M)at(2.55,.893);\coordinate(R)at(6,0);
+\draw[semithick](O)circle(2);\draw[semithick](B)--(R);\draw[semithick](B)--(C)--(D)--(A)--(C);
+\fill(O)circle(1.6pt);\fill(M)circle(1.6pt);
+\node[below]at(O){$O$};\node[below]at(A){$A$};\node[left]at(B){$B$};\node[above]at(C){$C$};\node[above]at(D){$D$};\node[right]at(M){$M$};\node[below]at(R){$R$};
+\end{tikzpicture}\end{center}
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt,start=3]
+\item By considering $\vv{CM}\times\vv{CR}$ or otherwise, show that the points $C$, $M$ and $R$ are collinear.\hfill[3]
+\end{enumerate}}
+\end{minipage}\par
+\par\vspace{\baselineskip}\begin{center}\textbf{END OF HOMEWORK}\end{center}\end{document}

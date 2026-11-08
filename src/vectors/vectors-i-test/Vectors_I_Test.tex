@@ -1,0 +1,83 @@
+\documentclass[a4paper,11pt,oneside]{book}
+\input{preamble_build}
+\input{preamble_local}
+\input{prelim_fonts}
+\usepackage{needspace,longtable,multicol,enumitem,array}
+\providecommand{\vv}[1]{\overrightarrow{#1}}\providecommand{\cvv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+\raggedbottom
+\setlength{\parindent}{0pt}
+
+\fancyhf{}\lhead{\small Vectors I Test}\rhead{\small Compiled by Maximus Pung Jun}
+\cfoot{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\newcounter{wq}
+\newcommand{\Q}[1]{\par\needspace{5\baselineskip}\medskip\stepcounter{wq}\noindent\textbf{\thewq}\quad #1\par}
+\begin{document}\thispagestyle{fancy}
+{\LARGE\scshape Vectors I Test}\par\smallskip
+{Compiled by Maximus Pung Jun}\par\smallskip
+{\small Full sourced questions. Give exact answers unless otherwise stated.}\par\medskip
+\par\noindent\begin{minipage}{\linewidth}
+\Q{\textcolor{black!60}{\small[DHS 2023 Promo Q5]}\par\smallskip
+With reference to the origin $O$, the points $A$ and $B$ have coordinates $(1,2,0)$ and $(-5,1,0)$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
+\item Find the angle $AOB$.\hfill[3]
+\end{enumerate}
+The vectors $\vv{OA}$ and $\vv{OB}$ are projected along the direction of $\cvv{1}{2}{2}$ and $\cvv{2}{1}{2}$ to form the vectors $\vv{O'A'}$ and $\vv{O'B'}$ respectively.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt,start=2]
+\item Find the vectors $\vv{O'A'}$ and $\vv{O'B'}$.\hfill[3]
+\item Find the exact area of the triangle $O'A'B'$.\hfill[2]
+\end{enumerate}}
+
+\end{minipage}\par
+\par\noindent\begin{minipage}{\linewidth}
+\Q{\textcolor{black!60}{\small[NYJC 2024 Promo Q5]}\par\smallskip
+The position vectors of points $A$, $B$ and $C$, relative to the origin $O$ are $\mathbf a$, $\mathbf b$ and $\mathbf c$ respectively, where
+\[\mathbf a=3\mathbf i+2\mathbf j-\mathbf k,\quad \mathbf b=4\mathbf i-3\mathbf j+2\mathbf k,\quad \mathbf c=3\mathbf i-\mathbf j-\mathbf k.\]
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
+\item Find $\mathbf a\times\mathbf b$ and deduce the exact area of triangle $OAB$.\hfill[3]
+\item Hence, find the volume of the tetrahedron $OABC$.\par
+[The volume of a tetrahedron is $\dfrac13\times\text{base area}\times\text{perpendicular height}$.]\hfill[3]
+\item Find the perpendicular distance from $B$ to line $OA$.\hfill[2]
+\end{enumerate}}
+\end{minipage}\par
+\par\noindent\begin{minipage}{\linewidth}
+\Q{\textcolor{black!60}{\small[MI 2024 Promo Q4]}\par\smallskip
+Referred to the origin $O$, the points $A$, $B$ and $C$ have position vectors $\mathbf a$, $\mathbf b$ and $\mathbf c$. $C$ lies on $AB$ such that $AC:AB=1:3$.
+\begin{enumerate}[label=\textbf{(\roman*)},leftmargin=2.2em,itemsep=3pt]
+\item Find $\mathbf c$ in terms of $\mathbf a$ and $\mathbf b$.\hfill[2]
+\item Show that the area of triangle $OAC$ is given by $k|\mathbf a\times\mathbf b|$, where $k$ is a constant to be determined.\hfill[2]
+\end{enumerate}
+It is now given that $\mathbf a$ and $\mathbf b$ are unit vectors.
+\begin{enumerate}[label=\textbf{(\roman*)},leftmargin=2.2em,itemsep=3pt,start=3]
+\item Using the result in part (i), find the value of $(2\mathbf a-\mathbf b)\cdot\mathbf c$.\hfill[3]
+\end{enumerate}}
+\end{minipage}\par
+\par\noindent\begin{minipage}{\linewidth}
+\Q{\textcolor{black!60}{\small[TMJC 2024 Promo Q6]}\par\smallskip
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=4pt]
+\item The points $A$, $B$ and $C$ have position vectors $\cvv{1}{3}{-7}$, $\cvv{5}{1}{1}$ and $\cvv{-9}{8}{-27}$, with respect to the origin $O$.
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+\item Show that the points $A$, $B$ and $C$ are collinear.\hfill[2]
+\item Find the exact area of the triangle $OAB$.\hfill[3]
+\end{enumerate}
+\item The vectors $\mathbf u$, $\mathbf v$ and $\mathbf w$ are defined such that $|\mathbf u|=1$, $|\mathbf v|=2$ and $|\mathbf w|=3$.
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+\item Suppose that $\mathbf u+\mathbf v=\mathbf w$. With the aid of a diagram, or otherwise, explain why $\mathbf u$ is a unit vector that is parallel to $\mathbf w$.\hfill[2]
+\item Given instead that each of the three vectors is perpendicular to the sum of the other two vectors, find the exact value of $|\mathbf u+\mathbf v+\mathbf w|$.\hfill[4]
+\end{enumerate}\end{enumerate}}
+
+\end{minipage}\par
+\par\noindent\begin{minipage}{\linewidth}
+\Q{\textcolor{black!60}{\small[RI 2025 Prelim P1 Q3]}\par\smallskip
+Relative to the origin $O$, the points $A$ and $C$ have position vectors $\mathbf a$ and $2\mathbf b$ such that
+\[\mathbf a=5p\mathbf i-2p\mathbf j+4p\mathbf k\quad\text{and}\quad\mathbf b=\mathbf i-2\mathbf j+2\mathbf k,\]
+where $p$ is a positive constant. It is given that $|\mathbf a|=2|\mathbf b|$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.2em,itemsep=3pt]
+\item Find the exact value of $p$.\hfill[2]
+\item Evaluate $(\mathbf a+2\mathbf b)\cdot(\mathbf a-2\mathbf b)$.\hfill[1]
+\item Evaluate $\mathbf a\times\mathbf b$ and hence find the area of triangle $OAC$.\hfill[3]
+\item Use a geometrical reason to explain why $|\mathbf a\times\mathbf b|=\dfrac14|\mathbf a+2\mathbf b||\mathbf a-2\mathbf b|$.\hfill[2]
+\end{enumerate}}
+
+\end{minipage}\par
+\par\vspace{\baselineskip}\begin{center}\textbf{END OF TEST}\end{center}\end{document}

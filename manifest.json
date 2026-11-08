@@ -227,9 +227,9 @@
         {
           "title": "Vectors I HW3 (Vector Product)",
           "slug": "vectors-i-hw3-vector-product",
-          "updated": "07 Nov 2026, 09:59 AM SGT",
-          "size_kb": 85,
-          "source": "src/vectors/vectors-i-hw3-vector-product/Main.tex",
+          "updated": "08 Nov 2026, 04:23 PM SGT",
+          "size_kb": 89,
+          "source": "src/vectors/vectors-i-hw3-vector-product/HW3_Questions.tex",
           "type": "Homework",
           "status": "in progress",
           "deleted": null
@@ -237,9 +237,29 @@
         {
           "title": "Vectors I HW3 (Vector Product) Solutions",
           "slug": "vectors-i-hw3-vector-product-solutions",
-          "updated": "07 Nov 2026, 09:59 AM SGT",
-          "size_kb": 92,
-          "source": "src/vectors/vectors-i-hw3-vector-product-solutions/Main_Solutions.tex",
+          "updated": "08 Nov 2026, 04:23 PM SGT",
+          "size_kb": 108,
+          "source": "src/vectors/vectors-i-hw3-vector-product-solutions/HW3_Solutions.tex",
+          "type": "Solutions",
+          "status": "in progress",
+          "deleted": null
+        },
+        {
+          "title": "Vectors I Test",
+          "slug": "vectors-i-test",
+          "updated": "08 Nov 2026, 04:23 PM SGT",
+          "size_kb": 71,
+          "source": "src/vectors/vectors-i-test/Vectors_I_Test.tex",
+          "type": "Test",
+          "status": "in progress",
+          "deleted": null
+        },
+        {
+          "title": "Vectors I Test Solutions",
+          "slug": "vectors-i-test-solutions",
+          "updated": "08 Nov 2026, 04:23 PM SGT",
+          "size_kb": 85,
+          "source": "src/vectors/vectors-i-test-solutions/Vectors_I_Test_Solutions.tex",
           "type": "Solutions",
           "status": "in progress",
           "deleted": null
