@@ -185,9 +185,9 @@
           "deleted": null
         },
         {
-          "title": "Vectors I HW1 (Introduction to Ratio Theorem)",
+          "title": "Vectors I HW1 (Introduction to Vectors in Three Dimensions)",
           "slug": "vectors-i-hw1-introduction-to-ratio-theorem",
-          "updated": "06 Nov 2026, 11:10 PM SGT",
+          "updated": "08 Nov 2026, 04:25 PM SGT",
           "size_kb": 83,
           "source": "src/vectors/vectors-i-hw1-introduction-to-ratio-theorem/Vectors_I_HW1.tex",
           "type": "Homework",
@@ -205,9 +205,9 @@
           "deleted": null
         },
         {
-          "title": "Vectors I HW1 (Introduction to Ratio Theorem) Solutions",
+          "title": "Vectors I HW1 (Introduction to Vectors in Three Dimensions) Solutions",
           "slug": "vectors-i-hw1-introduction-to-ratio-theorem-solutions",
-          "updated": "06 Nov 2026, 11:15 PM SGT",
+          "updated": "08 Nov 2026, 04:25 PM SGT",
           "size_kb": 96,
           "source": "src/vectors/vectors-i-hw1-introduction-to-ratio-theorem-solutions/Vectors_I_HW1_Solutions.tex",
           "type": "Solutions",
