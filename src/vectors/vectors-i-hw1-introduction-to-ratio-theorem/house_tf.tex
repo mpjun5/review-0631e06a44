@@ -1,0 +1,50 @@
+% =====================================================================
+% house_tf.tex: True/False table (standing rules 2026-11-05/06/07):
+%   * a T/F set is a NUMBERED QUESTION (no "Check Your Understanding" heading);
+%   * table: row label (a),(b),... | Statement (left) | T/F column (right);
+%   * row spacing slightly larger than default (extrarowheight 6pt, arraystretch 1.18,
+%     as the Vectors Basics Worksheet after the 2026-11-07 change), font size unchanged;
+%   * question doc: T/F column blank; solutions doc (\tfanswerstrue): bold T or F,
+%     optional short reason under the statement in small grey.
+% Usage:
+%   \begin{tftable}  \tfrow{statement}{T}{optional reason}  ...  \end{tftable}
+% Plain tabular: a question never splits across pages (house rule), so the table is kept whole.
+% =====================================================================
+\RequirePackage{array}
+\makeatletter
+\newif\iftfanswers \tfanswersfalse
+\newcounter{tfrow}
+\newlength{\tf@lab}\setlength{\tf@lab}{0.9cm}
+\newlength{\tf@ans}\setlength{\tf@ans}{1.6cm}
+\newenvironment{tftable}{\setcounter{tfrow}{0}\par\smallskip
+  \setlength{\extrarowheight}{6pt}\renewcommand{\arraystretch}{1.18}%
+  \noindent\begin{tabular}{|>{\centering\arraybackslash}p{\tf@lab}|p{\dimexpr\linewidth-\tf@lab-\tf@ans-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{\tf@ans}|}
+  \hline &\textbf{Statement}&\textbf{T/F}\\\hline}
+ {\end{tabular}\par\smallskip}
+\newcommand{\tfrow}[3]{\stepcounter{tfrow}\textbf{(\alph{tfrow})} & #1%
+  \iftfanswers\if\relax\detokenize{#3}\relax\else\newline{\small\color{black!60}#3}\fi\fi
+  & \iftfanswers\textbf{#2}\fi\\\hline}
+% explicit row label (a set that keeps the Basics Worksheet letters, e.g. (e) omitted)
+\newcommand{\tfrowl}[4]{\textbf{#1} & #2%
+  \iftfanswers\if\relax\detokenize{#4}\relax\else\newline{\small\color{black!60}#4}\fi\fi
+  & \iftfanswers\textbf{#3}\fi\\\hline}
+% \tfcompact: allowed exception (Vectors I HW2/HW3) - compressed rows so the whole set
+% stays on page 1 of the question sheet (extrarowheight 1.5pt, tabcolsep 4pt, 0.85/1.45 cm)
+\newif\iftf@compact
+\newcommand{\tfcompact}{\tf@compacttrue\setlength{\tf@lab}{0.85cm}\setlength{\tf@ans}{1.45cm}}
+\renewenvironment{tftable}{\setcounter{tfrow}{0}\par\smallskip
+  \iftf@compact\setlength{\extrarowheight}{1.5pt}\setlength{\tabcolsep}{4pt}\else\setlength{\extrarowheight}{6pt}\fi
+  \renewcommand{\arraystretch}{1.18}%
+  \noindent\begin{tabular}{|>{\centering\arraybackslash}p{\tf@lab}|p{\dimexpr\linewidth-\tf@lab-\tf@ans-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{\tf@ans}|}
+  \hline &\textbf{Statement}&\textbf{T/F}\\\hline}
+ {\end{tabular}\par\smallskip}
+% tflongtable: same table, may break across pages with the header repeated (solutions
+% copies whose reasons make the set longer than a page). Needs longtable.
+\RequirePackage{longtable}
+\newenvironment{tflongtable}{\setcounter{tfrow}{0}\par\smallskip
+  \setlength{\extrarowheight}{6pt}\renewcommand{\arraystretch}{1.18}%
+  \setlength{\LTleft}{0pt}\setlength{\LTright}{0pt}%
+  \begin{longtable}{|>{\centering\arraybackslash}p{\tf@lab}|p{\dimexpr\linewidth-\tf@lab-\tf@ans-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{\tf@ans}|}
+  \hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead}
+ {\end{longtable}\par}
+\makeatother

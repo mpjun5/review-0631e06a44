@@ -1,0 +1,266 @@
+% Vectors I Homework 2 (Scalar Product): HOUSE FORMAT (house_format/SPEC.md), converted 2026-11-09.
+% Questions, marks, diagrams and solution working copied word for word from HW2_Questions.tex /
+% HW2_Solutions.tex (backups: house_format/backups/pre_phase2_20261109 and *.pre_house.tex).
+% The same file feeds the worked solutions (Main_Solutions.tex).
+\documentclass[a4paper,11pt,oneside]{book}
+\providecommand\housemode{hw}
+\input{house}
+\usepackage{pifont}
+\usetikzlibrary{arrows.meta, calc, positioning, 3d, decorations.pathreplacing, angles, quotes}
+\input{vec_common}\input{vecfig}
+\providecommand{\vv}[1]{\overrightarrow{#1}}\providecommand{\cvv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+\housechapter{Vectors I}
+\ditle{Homework 2 (Scalar Product)}
+\tfcompact% allowed exception: the 24-row True/False set stays on page 1
+
+\defQ{1}{}{%
+For the following statements, state whether it is \textbf{true} or \textbf{false}.
+\begin{tftable}
+\tfrowl{(a)}{$\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$.}{T}{$\displaystyle a_1b_1+a_2b_2+a_3b_3=b_1a_1+b_2a_2+b_3a_3$}
+\tfrowl{(b)}{$\mathbf a\cdot\mathbf a=|\mathbf a|^2$.}{T}{$\displaystyle \mathbf a\cdot\mathbf a=a_1^2+a_2^2+a_3^2=|\mathbf a|^2$}
+\tfrowl{(c)}{$\mathbf i\cdot\mathbf j=0$.}{T}{$\displaystyle 1\cdot0+0\cdot1+0\cdot0=0$}
+\tfrowl{(d)}{$\mathbf a\cdot\mathbf b$ is a vector.}{F}{$\displaystyle \cvv{1}{0}{0}\cdot\cvv{1}{0}{0}=1\ \text{(a scalar)}$}
+\tfrowl{(f)}{If $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$, then $\mathbf a\cdot\mathbf b=0$.}{T}{$\displaystyle \mathbf 0\cdot\mathbf b=0b_1+0b_2+0b_3=0$}
+\tfrowl{(g)}{$(2\mathbf a)\cdot(3\mathbf b)=6\,\mathbf a\cdot\mathbf b$.}{T}{$\displaystyle (2\mathbf a)\cdot(3\mathbf b)=2\cdot3\,(\mathbf a\cdot\mathbf b)$}
+\tfrowl{(h)}{$(\mathbf a\cdot\mathbf b)\mathbf c$ is a vector.}{T}{$\displaystyle (\mathbf a\cdot\mathbf b)\mathbf c=\lambda\mathbf c,\ \lambda=\mathbf a\cdot\mathbf b\in\mathbb R$}
+\tfrowl{(i)}{$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$, where $\theta$ is the non-reflex angle between $\mathbf a$ and $\mathbf b$.}{T}{$\displaystyle \text{Definition of scalar product}$}
+\tfrowl{(j)}{$\cvv{1}{2}{3}\cdot\cvv{2}{3}{5}=\cvv{2}{6}{15}$.}{F}{$\displaystyle \cvv{1}{2}{3}\cdot\cvv{2}{3}{5}=2+6+15=23\ \text{(a scalar)}$}
+\tfrowl{(k)}{If $\mathbf a\cdot\mathbf b=0$, then $\mathbf a=\mathbf 0$ or $\mathbf b=\mathbf 0$.}{F}{$\displaystyle \mathbf i\cdot\mathbf j=0,\ \mathbf i\neq\mathbf 0,\ \mathbf j\neq\mathbf 0$}
+\tfrowl{(l)}{$|\mathbf a\cdot\mathbf b|=|\mathbf a||\mathbf b|$.}{F}{$\displaystyle |\mathbf i\cdot\mathbf j|=0\neq1=|\mathbf i||\mathbf j|$}
+\tfrowl{(m)}{$\mathbf a\cdot\mathbf b\le|\mathbf a||\mathbf b|$.}{T}{$\displaystyle \mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta\le|\mathbf a||\mathbf b|$}
+\tfrowl{(n)}{For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b>0$ means that the angle between $\mathbf a$ and $\mathbf b$ is acute.}{T}{$\displaystyle |\mathbf a||\mathbf b|\cos\theta>0\ \therefore\ \cos\theta>0,\ 0^\circ\le\theta<90^\circ$}
+\tfrowl{(o)}{For non-zero $\mathbf a$ and $\mathbf b$, $\mathbf a\cdot\mathbf b<0$ means that the angle between $\mathbf a$ and $\mathbf b$ is obtuse.}{T}{$\displaystyle \cos\theta<0\ \therefore\ 90^\circ<\theta\le180^\circ$}
+\tfrowl{(q)}{$\mathbf a\cdot(\mathbf b\cdot\mathbf c)$ is a scalar.}{F}{$\displaystyle \mathbf b\cdot\mathbf c\ \text{is a scalar}\ \therefore\ \mathbf a\cdot(\mathbf b\cdot\mathbf c)\ \text{is meaningless}$}
+\tfrowl{(r)}{$(\mathbf a+\mathbf b)\cdot(\mathbf a+\mathbf b)=|\mathbf a|^2+|\mathbf b|^2$.}{F}{$\displaystyle (\mathbf a+\mathbf b)\cdot(\mathbf a+\mathbf b)=|\mathbf a|^2+2\mathbf a\cdot\mathbf b+|\mathbf b|^2;\ \mathbf a=\mathbf b=\mathbf i:\ 4\neq2$}
+\tfrowl{(s)}{For non-zero $\mathbf a$ and $\mathbf b$, if $\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|$, then $\mathbf a$ and $\mathbf b$ are parallel.}{T}{$\displaystyle \cos\theta=1\ \therefore\ \theta=0^\circ$}
+\tfrowl{(t)}{$\mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta$ also holds if $\theta$ is the reflex angle between $\mathbf a$ and $\mathbf b$.}{T}{$\displaystyle \cos(360^\circ-\theta)=\cos\theta$}
+\tfrowl{(u)}{Let $\theta$ be the angle $ABC$. Then $\vv{BA}\cdot\vv{BC}=|\vv{BA}||\vv{BC}|\cos\theta$.}{T}{$\displaystyle \vv{BA},\ \vv{BC}\ \text{both start at}\ B$}
+\tfrowl{(v)}{The length of projection of $\mathbf a$ onto $\mathbf b$ is equal to the length of projection of $\mathbf b$ onto $\mathbf a$.}{F}{$\displaystyle \mathbf a=\mathbf i,\ \mathbf b=2\mathbf i:\ |\mathbf a\cdot\hat{\mathbf b}|=1\neq2=|\mathbf b\cdot\hat{\mathbf a}|$}
+\tfrowl{(w)}{If $|\mathbf a|=|\mathbf b|$, then $(\mathbf a+\mathbf b)\cdot(\mathbf a-\mathbf b)=0$.}{T}{$\displaystyle (\mathbf a+\mathbf b)\cdot(\mathbf a-\mathbf b)=|\mathbf a|^2-|\mathbf b|^2=0$}
+\tfrowl{(x)}{$\mathbf a\cdot\mathbf b=\mathbf a\cdot\mathbf c$ means that $\mathbf b=\mathbf c$.}{F}{$\displaystyle \mathbf a=\mathbf i,\ \mathbf b=\mathbf j,\ \mathbf c=\mathbf k:\ \mathbf a\cdot\mathbf b=0=\mathbf a\cdot\mathbf c,\ \mathbf b\neq\mathbf c$}
+\tfrowl{(y)}{Let $\theta$ be the angle $ABC$. Then $\vv{AB}\cdot\vv{BC}=|\vv{AB}||\vv{BC}|\cos\theta$.}{F}{$\displaystyle \vv{AB}\cdot\vv{BC}=-\vv{BA}\cdot\vv{BC}=-|\vv{AB}||\vv{BC}|\cos\theta$}
+\tfrowl{(z)}{Let $\theta$ be the angle $CBD$. Then $\vv{BD}\cdot\vv{CB}=|\vv{BD}||\vv{CB}|\cos\theta$.}{F}{$\displaystyle \vv{BD}\cdot\vv{CB}=-\vv{BD}\cdot\vv{BC}=-|\vv{BD}||\vv{CB}|\cos\theta$}
+\end{tftable}}
+
+\defQ{2}{EJC 2024 Promo Q5}{%
+$\mathbf a$ and $\mathbf b$ are vectors such that $|\mathbf a|=\sqrt{2}$ and $|\mathbf b|=\sqrt{6}$. The angle between $\mathbf a$ and $\mathbf b$ is $\dfrac{5\pi}{6}$.
+\begin{qparts}
+\pt{(a)} Find the exact length of projection of $\mathbf a$ onto $\mathbf b$.\mk{2}
+\pt{(b)} By considering $(3\mathbf a+2\mathbf b)\cdot(3\mathbf a+2\mathbf b)$, find the exact value of $|3\mathbf a+2\mathbf b|$.\mk{4}
+\end{qparts}}
+
+\defQ{3}{SAJC 2024 Promo Q9(a)}{%
+Relative to the origin $O$, the points $A$ and $B$ have position vectors $\mathbf a$ and $\mathbf b$ respectively, where $\mathbf a$ and $\mathbf b$ are non-parallel. It is given that $|\mathbf a|=9$, $|\mathbf b|=1$ and $|2\mathbf a+\mathbf b|=2\sqrt{74}$.
+\begin{qparts}
+\pt{(i)} By considering $(2\mathbf a+\mathbf b)\cdot(2\mathbf a+\mathbf b)$, show that $\mathbf a\cdot\mathbf b=-\dfrac{29}{4}$.\mk{3}
+\pt{(ii)} Give a geometrical meaning of $|\mathbf a\cdot\mathbf b|$.\mk{1}
+\pt{(iii)} The points $P$, $Q$ and $R$ have position vectors $7\mathbf a-5\mathbf b$, $6\mathbf a+5\mathbf b$ and $9\mathbf a+\lambda\mathbf b$ respectively. Given that these three points are collinear, find the value of $\lambda$.\mk{3}
+\end{qparts}}
+
+\defQ{4}{CJC 2022 Promo Q9(i),(ii)}{%
+Relative to the origin $O$, the position vectors of points $A$, $B$ and $C$ are $\mathbf a$, $\mathbf b$ and $\mathbf c$ respectively, where $\mathbf b$ is a unit vector. It is given that $\mathbf b$ and $\mathbf b-\mathbf a$ are perpendicular and $C$ lies on $AB$ such that $AC:CB=3:1$.
+\begin{qparts}
+\pt{(i)} Show that $|\mathbf a|=\sec\theta$, where $\theta$ is the angle between $\mathbf a$ and $\mathbf b$.\mk{3}
+\end{qparts}
+By expressing $\mathbf c$ in terms of $\mathbf a$ and $\mathbf b$,
+\begin{qparts}
+\pt{(ii)} find the value of $|\mathbf c\cdot\mathbf b|$ and state the geometrical interpretation of $|\mathbf c\cdot\mathbf b|$.\mk{4}
+\end{qparts}}
+
+\defQ{5}{SAJC 2025 Promo Q8(i)}{%
+Relative to the origin $O$, two points $A$ and $B$ have position vectors $\mathbf a$ and $\mathbf b$ respectively. It is given that $|\mathbf a|=2$, $|\mathbf b|=1$ and $|3\mathbf a-2\mathbf b|=\sqrt{37}$.
+\begin{qparts}
+\pt{(i)} By considering the scalar product $(3\mathbf a-2\mathbf b)\cdot(3\mathbf a-2\mathbf b)$, show that $\mathbf a\cdot\mathbf b=\dfrac14$, and give the geometrical meaning of $|\mathbf a\cdot\hat{\mathbf b}|$.\mk{4}
+\end{qparts}}
+
+\defQ{6}{EJC 2025 Prelim P1 Q6}{%
+There are three distinct points $A$, $B$ and $P$. The point $P$ lies on the circle with centre $O$ and diameter $AB$. Relative to the origin $O$, the position vectors of points $A$ and $P$ are $\mathbf a$ and $\mathbf p$ respectively.
+\begin{center}\begin{tikzpicture}[scale=1.1,font=\small,line join=round]
+\draw[semithick] (0,0) circle (1.5);
+\coordinate (A) at (-1.5,0);\coordinate (B) at (1.5,0);
+\coordinate (P) at ({1.5*cos(55)},{1.5*sin(55)});
+\draw[semithick] (A)--(B);
+\draw[semithick] (A)--(P)--(B);
+\draw[semithick] (0,0)--(P);
+\fill (0,0) circle (1.4pt);\fill (A) circle (1.4pt);\fill (B) circle (1.4pt);\fill (P) circle (1.4pt);
+\node[below left] at (A){$A$};\node[below right] at (B){$B$};\node[above right] at (P){$P$};
+\node[below=2pt] at (0,0){$O$};
+\end{tikzpicture}\end{center}
+\begin{qparts}
+\pt{(a)} By expressing $\vv{AP}$ and $\vv{BP}$ in terms of $\mathbf a$ and $\mathbf p$, show that $\vv{AP}\cdot\vv{BP}=0$.\mk{3}
+\end{qparts}
+The point $C$ with position vector $\mathbf c$ lies on $AB$ produced such that $AC:AB$ is $\lambda:1$.
+\begin{qparts}
+\pt{(b)} Find $\mathbf c$ in terms of $\lambda$ and $\mathbf a$.\mk{2}
+\pt{(c)} It is given that $PC$ is a tangent to the circle and that angle $AOP$ is $120^\circ$. Using a suitable scalar product, find the value of $\lambda$.\mk{4}
+\end{qparts}}
+
+\defQ{7}{NJC 2025 Prelim P2 Q3}{%
+With respect to an origin $O$, points $P$ and $Q$ have variable position vectors $\mathbf p$ and $\mathbf q$ respectively, given by
+\[\mathbf p=(\cos t)\,\mathbf i+(\sin t)\,\mathbf j-\mathbf k,\qquad
+\mathbf q=(\cos 2t)\,\mathbf i-(\sin 2t)\,\mathbf j+\alpha\mathbf k,\]
+where $\alpha$ is a real parameter and $0<t<\pi$.
+\begin{qparts}
+\pt{(i)} Find the exact values of $t$ and $\alpha$ if $O$, $P$ and $Q$ are collinear.\mk{5}
+\end{qparts}
+It is given that $\alpha=0.5$.
+\begin{qparts}
+\pt{(ii)} Show that $\mathbf p\cdot\mathbf q=\cos 3t-0.5$. Find the greatest length of projection of $\mathbf q$ onto $\mathbf p$.\mk{4}
+\end{qparts}}
+
+\defS{2}{%
+\pt{(a)}\ricomment{\textit{Worked solution (no official student script located; working matches Vectors I Test Review).}}
+\begin{align*}
+\mathbf a\cdot\mathbf b&=|\mathbf a||\mathbf b|\cos\frac{5\pi}{6}\\
+&=\sqrt{2}\cdot\sqrt{6}\cdot\left(-\frac{\sqrt{3}}{2}\right)=-3\\
+\text{Length of projection of }\mathbf a\text{ onto }\mathbf b
+&=\frac{|\mathbf a\cdot\mathbf b|}{|\mathbf b|}\\
+&=\frac{|-3|}{\sqrt{6}}=\frac{3}{\sqrt{6}}=\frac{\sqrt{6}}{2}.
+\end{align*}
+\pt{(b)}
+\begin{align*}
+(3\mathbf a+2\mathbf b)\cdot(3\mathbf a+2\mathbf b)
+&=9|\mathbf a|^2+12\mathbf a\cdot\mathbf b+4|\mathbf b|^2\\
+&=9(2)+12(-3)+4(6)\\
+&=18-36+24=6\\
+|3\mathbf a+2\mathbf b|&=\sqrt{6}.
+\end{align*}}
+
+\defS{3}{%
+\pt{(i)}\ricomment{\textit{Worked solution (no official student script located).}}
+\begin{align*}
+(2\mathbf a+\mathbf b)\cdot(2\mathbf a+\mathbf b)&=|2\mathbf a+\mathbf b|^2\\
+4|\mathbf a|^2+4\mathbf a\cdot\mathbf b+|\mathbf b|^2&=(2\sqrt{74})^2=296\\
+4(81)+4\mathbf a\cdot\mathbf b+1&=296\\
+325+4\mathbf a\cdot\mathbf b&=296\\
+4\mathbf a\cdot\mathbf b&=-29\\
+\mathbf a\cdot\mathbf b&=-\frac{29}{4}\quad\text{(shown)}.
+\end{align*}
+\pt{(ii)}
+Since $|\mathbf b|=1$, $|\mathbf a\cdot\mathbf b|$ is the length of the projection of $\mathbf a$ onto $\mathbf b$.
+\pt{(iii)}
+\begin{align*}
+\vv{PQ}&=(6\mathbf a+5\mathbf b)-(7\mathbf a-5\mathbf b)=-\mathbf a+10\mathbf b\\
+\vv{PR}&=(9\mathbf a+\lambda\mathbf b)-(7\mathbf a-5\mathbf b)=2\mathbf a+(\lambda+5)\mathbf b.
+\end{align*}
+Since $P$, $Q$, $R$ are collinear and $\mathbf a$, $\mathbf b$ are non-parallel, $\vv{PR}=k\,\vv{PQ}$ for some scalar $k$:
+\begin{align*}
+2\mathbf a+(\lambda+5)\mathbf b&=k(-\mathbf a+10\mathbf b)\\
+2&=-k,\qquad \lambda+5=10k\\
+k&=-2,\qquad \lambda+5=-20\\
+\lambda&=-25.
+\end{align*}}
+
+\defS{4}{%
+\pt{(i)}\ricomment{\textit{Official solution (CJC markers' report).}}
+\begin{align*}
+\mathbf b\cdot(\mathbf b-\mathbf a)&=0\\
+|\mathbf b|^2-\mathbf a\cdot\mathbf b&=0\\
+\mathbf a\cdot\mathbf b&=1\qquad\text{(since $\mathbf b$ is a unit vector)}\\
+|\mathbf a||\mathbf b|\cos\theta&=1\\
+|\mathbf a|\cos\theta&=1\\
+|\mathbf a|&=\sec\theta\quad\text{(shown)}.
+\end{align*}
+\pt{(ii)}
+By the ratio theorem, $\mathbf c=\dfrac14\mathbf a+\dfrac34\mathbf b$.
+\begin{align*}
+\mathbf c\cdot\mathbf b&=\left(\frac14\mathbf a+\frac34\mathbf b\right)\cdot\mathbf b
+=\frac14\mathbf a\cdot\mathbf b+\frac34|\mathbf b|^2
+=\frac14(1)+\frac34=1\\
+|\mathbf c\cdot\mathbf b|&=1.
+\end{align*}
+$|\mathbf c\cdot\mathbf b|$ is the length of the projection of $\mathbf c$ onto $\mathbf b$.}
+
+\defS{5}{%
+\pt{(i)}\ricomment{\textit{Worked solution (no official student script located).}}
+\begin{align*}
+(3\mathbf a-2\mathbf b)\cdot(3\mathbf a-2\mathbf b)&=|3\mathbf a-2\mathbf b|^2\\
+9|\mathbf a|^2-12\mathbf a\cdot\mathbf b+4|\mathbf b|^2&=37\\
+9(4)-12\mathbf a\cdot\mathbf b+4(1)&=37\\
+40-12\mathbf a\cdot\mathbf b&=37\\
+\mathbf a\cdot\mathbf b&=\frac14\quad\text{(shown)}.
+\end{align*}
+$|\mathbf a\cdot\hat{\mathbf b}|$ is the length of the projection of $\mathbf a$ onto $\mathbf b$.}
+
+\defS{6}{%
+\pt{(a)}\ricomment{\textit{Official solution.}}
+\begin{align*}
+\vv{AP}&=\mathbf p-\mathbf a,\qquad \vv{BP}=\mathbf p+\mathbf a
+\quad\text{(since $\vv{OB}=-\mathbf a$)}\\
+\vv{AP}\cdot\vv{BP}&=(\mathbf p-\mathbf a)\cdot(\mathbf p+\mathbf a)
+=|\mathbf p|^2-|\mathbf a|^2=0
+\quad\text{(since $|\mathbf a|=|\mathbf p|=$ radius)}.
+\end{align*}
+\pt{(b)}
+Since $AC:AB=\lambda:1$ and $\vv{AB}=-2\mathbf a$,
+\begin{align*}
+\vv{AC}&=\lambda\,\vv{AB}=-2\lambda\mathbf a\\
+\mathbf c&=\mathbf a+\vv{AC}=(1-2\lambda)\mathbf a.
+\end{align*}
+\pt{(c)}
+Since $PC$ is a tangent, $\vv{OP}\perp\vv{PC}$:
+\begin{align*}
+\mathbf p\cdot\bigl((1-2\lambda)\mathbf a-\mathbf p\bigr)&=0\\
+(1-2\lambda)\,\mathbf p\cdot\mathbf a-|\mathbf p|^2&=0\\
+(1-2\lambda)\,|\mathbf a||\mathbf p|\cos 120^\circ-|\mathbf a|^2&=0\\
+(1-2\lambda)\,|\mathbf a|^2\left(-\frac12\right)-|\mathbf a|^2&=0\\
+-\frac12(1-2\lambda)&=1\\
+1-2\lambda&=-2\\
+\lambda&=\frac32.
+\end{align*}}
+
+\defS{7}{%
+\pt{(i)}\ricomment{\textit{Official solution (Method 2: scalar multiple; no cross product used).}}
+Since $O$, $P$, $Q$ are collinear, $\mathbf q=k\mathbf p$ for some scalar $k$:
+\[\cvv{\cos 2t}{-\sin 2t}{\alpha}=k\cvv{\cos t}{\sin t}{-1}.\]
+From the $\mathbf j$-component:
+\begin{align*}
+-\sin 2t&=k\sin t\\
+-2\cos t\sin t&=k\sin t\\
+\sin t(-2\cos t-k)&=0\\
+\sin t&=0\quad\text{(reject, since $0<t<\pi$)}\\
+\text{or}\quad\cos t&=-\frac{k}{2}.
+\end{align*}
+From the $\mathbf i$-component:
+\begin{align*}
+\cos 2t&=k\cos t\\
+2\cos^2 t-1-k\cos t&=0.
+\end{align*}
+Substitute $\cos t=-\dfrac{k}{2}$:
+\begin{align*}
+2\left(-\frac{k}{2}\right)^2-k\left(-\frac{k}{2}\right)-1&=0\\
+\frac{k^2}{2}+\frac{k^2}{2}-1&=0\\
+k^2&=1\\
+k&=\pm1.
+\end{align*}
+From the $\mathbf k$-component, $\alpha=-k$.
+\begin{align*}
+k=1&\Rightarrow\cos t=-\frac12\Rightarrow t=\frac{2\pi}{3}\ (0<t<\pi),\quad\alpha=-1\\
+k=-1&\Rightarrow\cos t=\frac12\Rightarrow t=\frac{\pi}{3},\quad\alpha=1.
+\end{align*}
+Hence $t=\dfrac{\pi}{3}$, $\alpha=1$ or $t=\dfrac{2\pi}{3}$, $\alpha=-1$.
+\pt{(ii)}
+\begin{align*}
+\mathbf p\cdot\mathbf q
+&=\cos t\cos 2t-\sin t\sin 2t-0.5\\
+&=\cos(2t+t)-0.5\\
+&=\cos 3t-0.5\quad\text{(shown)}.
+\end{align*}
+\begin{align*}
+|\mathbf p|&=\sqrt{\cos^2 t+\sin^2 t+1}=\sqrt{2}\\
+\text{Length of projection of }\mathbf q\text{ onto }\mathbf p
+&=\frac{|\mathbf p\cdot\mathbf q|}{|\mathbf p|}\\
+&=\frac{|\cos 3t-0.5|}{\sqrt{2}}.
+\end{align*}
+The greatest value of $|\cos 3t-0.5|$ on $0<t<\pi$ is $1.5$ (when $\cos 3t=-1$), so
+\[\text{greatest length}=\frac{1.5}{\sqrt{2}}=\frac{3}{2\sqrt{2}}\quad\bigl(=1.06\text{ (3 s.f.)}\bigr).\]}
+
+\ifdefined\diquestionsonly\expandafter\endinput\fi
+\begin{document}
+\dititleblock[Scalar product: properties, angles, perpendicularity, projections, ratios. Q1 True/False from the Basics Worksheet (Scalar Product; statements (e) and (p) omitted). Q2--Q7 are past-paper selections (dot product / ratio only).]
+\putQ{1}
+\clearpage
+\disection{Questions}
+\putQ{2}\putQ{3}\putQ{4}\putQ{5}\putQ{6}\putQ{7}
+\diend[END OF HOMEWORK]
+\end{document}
