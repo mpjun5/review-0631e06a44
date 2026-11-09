@@ -7,13 +7,16 @@
 % plus RI-style question / solution-box layout (item 16, item 79).
 \input{ws_preamble_build}
 \input{ws_preamble_local}
+\input{house_fonts}% [HOUSE 2026-11-09] Times New Roman + TeX Gyre Termes Math
 \newif\ifteacher\teachertrue
 \ifx\conform\ShowSolutionsKey\else\teacherfalse\fi
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{H2 Mathematics 9758 \quad Chapter 10: Definite Integrals}
-\rhead{\ifteacher Solutions\else Questions\fi}
-\cfoot{\thepage}
+% [HOUSE 2026-11-09] chapter header as the Definite Integrals HW sheets (house_format/SPEC.md)
+\lhead{\small Definite Integrals: Examples Worksheet\ifteacher\ Solutions\fi}
+\rhead{\small Compiled by Maximus Pung Jun}
+\cfoot{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
 \newcounter{wsq}
 % \Q{source}: question heading, source cited on the right
 % \Q{section tag}{source}: teacher copy starts each question on a new page;
@@ -21,7 +24,7 @@
 \usepackage{needspace}
 \usetikzlibrary{patterns}
 \newcommand{\Q}[2]{\ifteacher\ifnum\value{wsq}>0 \clearpage\else\par\bigskip\fi\else\ifnum\value{wsq}>0 \par\bigskip\Needspace{12\baselineskip}\noindent\textcolor{black!25}{\rule{\textwidth}{0.4pt}}\par\medskip\fi\fi
-  \stepcounter{wsq}\noindent{\large\bfseries Question \thewsq}\quad{\small\textcolor{teal!50!black}{\textbf{#1}}}\hfill{\small\textcolor{black!60}{[#2]}}\par\smallskip}
+  \stepcounter{wsq}\noindent{\large\bfseries \thewsq}\quad{\small\textcolor{teal!50!black}{\textbf{#1}}}\hfill{\small\textcolor{black!60}{[#2]}}\par\smallskip}% [HOUSE] number only, as \Qhead
 % solution box: filled (teacher) or blank, filling the rest of the page (student)
 \newtcolorbox{solboxT}{enhanced, width=\dimexpr\linewidth-1.5pt\relax, breakable, colback=white, colframe=black!70, boxrule=0.8pt,
   sharp corners, left=3mm, right=3mm, top=2mm, bottom=2mm,
