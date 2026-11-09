@@ -14,7 +14,7 @@
 % Q1 True/False (added 9 Nov 2026): +1 correct, 0 blank, -1 wrong
 \defQ{tf}{}{%
 For each of the following statements, state whether it is \textbf{true} or \textbf{false}.\par\smallskip
-\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\textbf{Each correct answer scores 1 mark.\\ A blank answer scores 0 marks.\\ Each wrong answer scores $-1$ mark.}\par}}\mk{15}
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\textbf{Each correct answer scores 1 mark.\\ A blank answer scores 0 marks.\\ Each wrong answer scores $-1$ mark.}\par}}\mk{10}
 \begin{tftable}
 \tfrow{$(\mathbf a+\mathbf b)\cdot(\mathbf a-\mathbf b)=|\mathbf a|^2-|\mathbf b|^2$.}{T}{$\mathbf a\cdot\mathbf a-\mathbf a\cdot\mathbf b+\mathbf b\cdot\mathbf a-\mathbf b\cdot\mathbf b=|\mathbf a|^2-|\mathbf b|^2$}
 \tfrow{$|\mathbf a+\mathbf b|^2=|\mathbf a|^2+2\,\mathbf a\cdot\mathbf b+|\mathbf b|^2$.}{T}{$(\mathbf a+\mathbf b)\cdot(\mathbf a+\mathbf b)=\mathbf a\cdot\mathbf a+2\,\mathbf a\cdot\mathbf b+\mathbf b\cdot\mathbf b$}
@@ -22,15 +22,10 @@ For each of the following statements, state whether it is \textbf{true} or \text
 \tfrow{$\mathbf a\times\mathbf a=\mathbf a^2$.}{F}{$\mathbf a\times\mathbf a=\mathbf 0\ \text{(zero vector)}$}
 \tfrow{$\mathbf a\times\mathbf b=|\mathbf a||\mathbf b|\sin\theta$, where $\theta$ is the angle between $\mathbf a$ and $\mathbf b$.}{F}{$|\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|\sin\theta;\ \mathbf a\times\mathbf b\ \text{is a vector}$}
 \tfrow{$\mathbf b\times\mathbf a=-\mathbf a\times\mathbf b$.}{T}{$\mathbf j\times\mathbf i=-\mathbf k=-(\mathbf i\times\mathbf j)$}
-\tfrow{$(\mathbf a+\mathbf b)\times(\mathbf a-\mathbf b)=2(\mathbf b\times\mathbf a)$.}{T}{$\mathbf a\times\mathbf a-\mathbf a\times\mathbf b+\mathbf b\times\mathbf a-\mathbf b\times\mathbf b=\mathbf 0+\mathbf b\times\mathbf a+\mathbf b\times\mathbf a-\mathbf 0$}
 \tfrow{$(\mathbf a+\mathbf b)\times(\mathbf a-\mathbf b)=|\mathbf a|^2-|\mathbf b|^2$.}{F}{$(\mathbf a+\mathbf b)\times(\mathbf a-\mathbf b)=2(\mathbf b\times\mathbf a)\ \text{(a vector)}$}
 \tfrow{$\mathbf a\cdot(\mathbf a\times\mathbf b)=0$.}{T}{$\mathbf a\times\mathbf b\perp\mathbf a\ \therefore\ \mathbf a\cdot(\mathbf a\times\mathbf b)=0$}
-\tfrow{$|\mathbf a\times\mathbf b|^2+(\mathbf a\cdot\mathbf b)^2=|\mathbf a|^2|\mathbf b|^2$.}{T}{$|\mathbf a|^2|\mathbf b|^2(\sin^2\theta+\cos^2\theta)=|\mathbf a|^2|\mathbf b|^2$}
 \tfrow{$\mathbf a\cdot\mathbf b=\mathbf b\cdot\mathbf a$ and $\mathbf a\times\mathbf b=\mathbf b\times\mathbf a$.}{F}{$\mathbf b\times\mathbf a=-\mathbf a\times\mathbf b;\ \mathbf i\times\mathbf j=\mathbf k,\ \mathbf j\times\mathbf i=-\mathbf k$}
 \tfrow{For non-zero $\mathbf a$ and $\mathbf b$, if $\mathbf a\cdot\mathbf b=0$, then $\mathbf a$ is perpendicular to $\mathbf b$.}{T}{$|\mathbf a||\mathbf b|\cos\theta=0\ \therefore\ \cos\theta=0,\ \theta=90^\circ$}
-\tfrow{If $\mathbf a=3\mathbf b$, then $\mathbf a\times\mathbf b=\mathbf 0$.}{T}{$3\mathbf b\times\mathbf b=3(\mathbf b\times\mathbf b)=\mathbf 0$}
-\tfrow{For non-zero $\mathbf a$, $|\mathbf a|\,\mathbf a$ is a unit vector.}{F}{$\bigl||\mathbf a|\,\mathbf a\bigr|=|\mathbf a|^2;\ \hat{\mathbf a}=\tfrac{1}{|\mathbf a|}\mathbf a$}
-\tfrow{$\mathbf a\times\mathbf b$ and $\mathbf b\times\mathbf a$ point in the same direction.}{F}{$\mathbf b\times\mathbf a=-(\mathbf a\times\mathbf b)\ \text{(opposite direction)}$}
 \end{tftable}}
 
 \defQ{1}{DHS 2023 Promo Q5}{%
@@ -231,7 +226,7 @@ Hence $|\mathbf a\times\mathbf b|=\dfrac14|\mathbf a+2\mathbf b||\mathbf a-2\mat
 
 \ifdefined\diquestionsonly\expandafter\endinput\fi
 \begin{document}
-\prelimcover{57}{1 hour 45 minutes}{2026}
+\prelimcover{52}{1 hour 30 minutes}{2026}
 \putQ{tf}\putQ{1}\putQ{2}\putQ{3}\putQ{4}\putQ{5}
 \diend[END OF TEST]
 \end{document}

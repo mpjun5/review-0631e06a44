@@ -247,7 +247,7 @@
         {
           "title": "Vectors I: Test",
           "slug": "vectors-i-test",
-          "updated": "09 Nov 2026, 11:16 PM SGT",
+          "updated": "09 Nov 2026, 11:35 PM SGT",
           "size_kb": 119,
           "source": "src/vectors/vectors-i-test/Vectors_I_Test.tex",
           "type": "Test",
@@ -257,8 +257,8 @@
         {
           "title": "Vectors I: Test Solutions",
           "slug": "vectors-i-test-solutions",
-          "updated": "09 Nov 2026, 11:16 PM SGT",
-          "size_kb": 113,
+          "updated": "09 Nov 2026, 11:35 PM SGT",
+          "size_kb": 112,
           "source": "src/vectors/vectors-i-test-solutions/Vectors_I_Test_Solutions.tex",
           "type": "Solutions",
           "status": "in progress",
