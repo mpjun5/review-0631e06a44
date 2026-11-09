@@ -23,7 +23,7 @@
         {
           "title": "DI Examples Worksheet",
           "slug": "di-examples-worksheet",
-          "updated": "09 Nov 2026, 09:55 PM SGT",
+          "updated": "09 Nov 2026, 10:24 PM SGT",
           "size_kb": 91,
           "status": "completed",
           "source": "src/definite-integrals/di-examples-worksheet/DI_examples_worksheet.tex",
@@ -33,7 +33,7 @@
         {
           "title": "DI Examples Worksheet Solutions",
           "slug": "di-examples-worksheet-solutions",
-          "updated": "09 Nov 2026, 09:55 PM SGT",
+          "updated": "09 Nov 2026, 10:24 PM SGT",
           "size_kb": 545,
           "status": "completed",
           "source": "src/definite-integrals/di-examples-worksheet-solutions/DI_examples_worksheet_solutions.tex",
@@ -43,7 +43,7 @@
         {
           "title": "Definite Integrals Test",
           "slug": "definite-integrals-test",
-          "updated": "22 Oct 2026, 10:55 PM SGT",
+          "updated": "09 Nov 2026, 10:24 PM SGT",
           "size_kb": 135,
           "status": "completed",
           "type": "Test",
@@ -53,7 +53,7 @@
         {
           "title": "Definite Integrals Test solutions",
           "slug": "definite-integrals-test-solutions",
-          "updated": "22 Oct 2026, 10:56 PM SGT",
+          "updated": "09 Nov 2026, 10:24 PM SGT",
           "size_kb": 194,
           "status": "completed",
           "type": "Solutions",
@@ -147,7 +147,7 @@
         {
           "title": "Vectors II Notes",
           "slug": "vectors-ii-notes",
-          "updated": "09 Nov 2026, 09:41 PM SGT",
+          "updated": "09 Nov 2026, 10:24 PM SGT",
           "size_kb": 284,
           "status": "in progress",
           "source": "src/vectors/vectors-ii-notes/Vectors_II_Notes.tex",
@@ -187,8 +187,8 @@
         {
           "title": "Vectors I HW1 (Introduction to Vectors in Three Dimensions)",
           "slug": "vectors-i-hw1-introduction-to-ratio-theorem",
-          "updated": "09 Nov 2026, 09:41 PM SGT",
-          "size_kb": 84,
+          "updated": "09 Nov 2026, 10:24 PM SGT",
+          "size_kb": 87,
           "source": "src/vectors/vectors-i-hw1-introduction-to-ratio-theorem/Vectors_I_HW1.tex",
           "type": "Homework",
           "status": "in progress",
@@ -197,8 +197,8 @@
         {
           "title": "Vectors I HW2 (Scalar Product)",
           "slug": "vectors-i-hw2-scalar-product",
-          "updated": "09 Nov 2026, 09:41 PM SGT",
-          "size_kb": 88,
+          "updated": "09 Nov 2026, 10:24 PM SGT",
+          "size_kb": 89,
           "source": "src/vectors/vectors-i-hw2-scalar-product/Main.tex",
           "type": "Homework",
           "status": "in progress",
@@ -207,8 +207,8 @@
         {
           "title": "Vectors I HW1 (Introduction to Vectors in Three Dimensions) Solutions",
           "slug": "vectors-i-hw1-introduction-to-ratio-theorem-solutions",
-          "updated": "09 Nov 2026, 09:41 PM SGT",
-          "size_kb": 117,
+          "updated": "09 Nov 2026, 10:24 PM SGT",
+          "size_kb": 115,
           "source": "src/vectors/vectors-i-hw1-introduction-to-ratio-theorem-solutions/Vectors_I_HW1_Solutions.tex",
           "type": "Solutions",
           "status": "in progress",
@@ -217,7 +217,7 @@
         {
           "title": "Vectors I HW2 (Scalar Product) Solutions",
           "slug": "vectors-i-hw2-scalar-product-solutions",
-          "updated": "09 Nov 2026, 09:41 PM SGT",
+          "updated": "09 Nov 2026, 10:24 PM SGT",
           "size_kb": 126,
           "source": "src/vectors/vectors-i-hw2-scalar-product-solutions/Main_Solutions.tex",
           "type": "Solutions",
@@ -227,8 +227,8 @@
         {
           "title": "Vectors I HW3 (Vector Product)",
           "slug": "vectors-i-hw3-vector-product",
-          "updated": "09 Nov 2026, 09:41 PM SGT",
-          "size_kb": 91,
+          "updated": "09 Nov 2026, 10:24 PM SGT",
+          "size_kb": 93,
           "source": "src/vectors/vectors-i-hw3-vector-product/HW3_Questions.tex",
           "type": "Homework",
           "status": "in progress",
@@ -237,7 +237,7 @@
         {
           "title": "Vectors I HW3 (Vector Product) Solutions",
           "slug": "vectors-i-hw3-vector-product-solutions",
-          "updated": "09 Nov 2026, 09:41 PM SGT",
+          "updated": "09 Nov 2026, 10:24 PM SGT",
           "size_kb": 126,
           "source": "src/vectors/vectors-i-hw3-vector-product-solutions/HW3_Solutions.tex",
           "type": "Solutions",
@@ -247,7 +247,7 @@
         {
           "title": "Vectors I Test",
           "slug": "vectors-i-test",
-          "updated": "09 Nov 2026, 09:41 PM SGT",
+          "updated": "09 Nov 2026, 10:24 PM SGT",
           "size_kb": 115,
           "source": "src/vectors/vectors-i-test/Vectors_I_Test.tex",
           "type": "Test",
@@ -257,7 +257,7 @@
         {
           "title": "Vectors I Test Solutions",
           "slug": "vectors-i-test-solutions",
-          "updated": "09 Nov 2026, 09:41 PM SGT",
+          "updated": "09 Nov 2026, 10:24 PM SGT",
           "size_kb": 107,
           "source": "src/vectors/vectors-i-test-solutions/Vectors_I_Test_Solutions.tex",
           "type": "Solutions",

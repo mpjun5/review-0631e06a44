@@ -47,4 +47,9 @@
   \begin{longtable}{|>{\centering\arraybackslash}p{\tf@lab}|p{\dimexpr\linewidth-\tf@lab-\tf@ans-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{\tf@ans}|}
   \hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead}
  {\end{longtable}\par}
+% \putTFlong{n}: True/False question n (body of \defQ{n}: intro, then tftable) printed with
+% tflongtable, so a long set may run over a page (house_sol redefines it for solutions).
+\newcommand{\putTFlong}[1]{\begingroup\let\tftable\tflongtable\let\endtftable\endtflongtable
+  \stepcounter{diq}\expandafter\xdef\csname diLab@#1\endcsname{\thediq}%
+  \Qhead{\thediq}{\csname diQtag@#1\endcsname}\csname diQbody@#1\endcsname\par\endgroup}
 \makeatother

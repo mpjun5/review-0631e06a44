@@ -4,6 +4,11 @@
 % [HOUSE 2026-11-09] notes in Times New Roman + TeX Gyre Termes Math (house_format/SPEC.md)
 \input{house_fonts}
 \pdfstringdefDisableCommands{\def\cap{∩}\def\cup{∪}\def\perp{⊥}\def\times{×}\def\cdot{·}}
+% [HOUSE 6A, 9 Nov 2026] as the DI notes: "Solution." on its own line; 2.6 pt out-of-syllabus margin line
+% (set here, not in the shared preamble_build.tex, so the Vectors I notes stay in his summary style)
+\renewcommand\solution[1]{\ifx\conform\ShowSolutionsKey
+  \par\noindent\textbf{Solution.}\par\nobreak\vspace{0.5ex}\noindent #1\par\medskip\else\par\vspace{\workspace}\fi}
+\renewcommand{\oosmargin}{\AddToShipoutPictureBG{\put(12mm,0){\color{gray!75}\rule{2.6pt}{\dimexpr\paperheight-14mm\relax}}}}
 \raggedbottom
 \begin{document}
 \setcounter{chapter}{\numexpr\chapnum-1\relax}

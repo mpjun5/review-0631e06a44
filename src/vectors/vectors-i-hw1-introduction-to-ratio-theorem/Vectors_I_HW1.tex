@@ -9,7 +9,7 @@
 \providecommand{\cv}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
 \providecommand{\vv}[1]{\overrightarrow{#1}}
 \housechapter{Vectors I}
-\ditle{Homework 1 (Introduction to Vectors in Three Dimensions)}
+\ditle{Homework 1}% topic moved to the grey note line (rule 1A, 9 Nov 2026)
 \defQ{1}{}{%
 The vectors $\mathbf a$ and $\mathbf b$ are given by $\mathbf a=2\mathbf i-\mathbf j+3\mathbf k$ and $\mathbf b=-\mathbf i+4\mathbf j$.
 \begin{qparts}
@@ -41,9 +41,9 @@ The points $A$ and $B$ have coordinates $(1,-2,2)$ and $(3,1,-4)$ respectively.
 \begin{qparts}
 \pt{(a)} \[\vv{AB}=\cv{3}{1}{-4}-\cv{1}{-2}{2}=\cv{2}{3}{-6},\qquad |\vv{AB}|=\sqrt{4+9+36}=7.\]
 One such unit vector is $\displaystyle\frac17\cv{2}{3}{-6}$. Its negative is also a valid answer.
-\pt{(b)} One such vector is $\displaystyle21\left(\frac17\cv{2}{3}{-6}\right)=\boxed{\cv{6}{9}{-18}}$. Its negative is also a valid answer.
+\pt{(b)} One such vector is $\displaystyle21\left(\frac17\cv{2}{3}{-6}\right)=\cv{6}{9}{-18}$. Its negative is also a valid answer.
 \pt{(c)} \[\vv{AP}=14\left(\frac17\cv{2}{3}{-6}\right)=\cv{4}{6}{-12},\qquad \vv{OP}=\vv{OA}+\vv{AP}=\cv{5}{4}{-10}.\]
-Thus $\boxed{P(5,4,-10)}$. Since $\vv{AP}=2\vv{AB}$, the order is $A,B,P$.
+Thus $P(5,4,-10)$. Since $\vv{AP}=2\vv{AB}$, the order is $A,B,P$.
 \end{qparts}}
 
 \defQ{3}{}{%
@@ -57,10 +57,10 @@ The vectors $\mathbf p=\cv{6}{k}{-3}$ and $\mathbf q=\cv{2}{-4}{m}$ are parallel
 \defS{3}{%
 \begin{qparts}
 \pt{(a)} Since the vectors are parallel, $\mathbf p=h\mathbf q$ for some non-zero real $h$. Comparing first components gives $6=2h$, so $h=3$.
-\[k=3(-4)=-12,\qquad -3=3m\quad\Longrightarrow\quad\boxed{k=-12,\ m=-1}.\]
-\pt{(b)} Since $\mathbf p=3\mathbf q$, they have the same direction and $\boxed{|\mathbf p|:|\mathbf q|=3:1}$.
+\[k=3(-4)=-12,\qquad -3=3m\quad\Longrightarrow\quad k=-12,\ m=-1.\]
+\pt{(b)} Since $\mathbf p=3\mathbf q$, they have the same direction and $|\mathbf p|:|\mathbf q|=3:1$.
 \pt{(c)} $\displaystyle|\mathbf q|=\sqrt{2^2+(-4)^2+(-1)^2}=\sqrt{21}$. Both directions must be included, so all such vectors are
-\[\boxed{\pm\cv{2}{-4}{-1}}.\]
+\[\pm\cv{2}{-4}{-1}.\]
 \end{qparts}}
 
 \defQ{4}{}{%
@@ -73,10 +73,10 @@ The points $A$, $B$ and $C$ have coordinates $(1,2,-1)$, $(3,1,2)$ and $(7,-1,8)
 \defS{4}{%
 \begin{qparts}
 \pt{(a)} \[\vv{AB}=\cv{2}{-1}{3},\qquad \vv{BC}=\cv{4}{-2}{6}=2\vv{AB}.\]
-Thus $\vv{AB}$ and $\vv{BC}$ are parallel and have the common point $B$, so $A,B,C$ are collinear. Taking magnitudes gives $\boxed{AB:BC=1:2}$.
+Thus $\vv{AB}$ and $\vv{BC}$ are parallel and have the common point $B$, so $A,B,C$ are collinear. Taking magnitudes gives $AB:BC=1:2$.
 \pt{(b)} Collinearity gives $\vv{AR}=s\vv{AB}$ for some real $s$, so
 \[\cv{u-1}{-4}{v+1}=s\cv{2}{-1}{3}.\]
-The second components give $s=4$. Hence $u-1=8$ and $v+1=12$, giving $\boxed{u=9,\ v=11}$.
+The second components give $s=4$. Hence $u-1=8$ and $v+1=12$, giving $u=9,\ v=11$.
 \end{qparts}}
 
 \defQ{5}{}{%
@@ -90,11 +90,11 @@ The points $A$ and $B$ have coordinates $(2,-1,3)$ and $(-4,5,0)$ respectively. 
 \defS{5}{%
 \begin{qparts}
 \pt{(a)} By the ratio theorem,
-\[\vv{OM}=\frac{\vv{OA}+2\vv{OB}}3=\frac13\left[\cv{2}{-1}{3}+2\cv{-4}{5}{0}\right]=\boxed{\cv{-2}{3}{1}}.\]
+\[\vv{OM}=\frac{\vv{OA}+2\vv{OB}}3=\frac13\left[\cv{2}{-1}{3}+2\cv{-4}{5}{0}\right]=\cv{-2}{3}{1}.\]
 \pt{(b)} Since $AN=AB+BN$ and $AN:BN=5:2$, $AB:BN=3:2$. Hence $\vv{BN}=\frac23\vv{AB}$, and
-\[\vv{ON}=\vv{OB}+\frac23(\vv{OB}-\vv{OA})=\frac{5\vv{OB}-2\vv{OA}}3=\boxed{\cv{-8}{9}{-2}}.\]
+\[\vv{ON}=\vv{OB}+\frac23(\vv{OB}-\vv{OA})=\frac{5\vv{OB}-2\vv{OA}}3=\cv{-8}{9}{-2}.\]
 \pt{(c)} The order is $A,M,B,N$. Since $MB=\frac13 AB$ and $BN=\frac23 AB$,
-\[\boxed{MB:BN=1:2}.\]
+\[MB:BN=1:2.\]
 \end{qparts}}
 
 \defQ{6}{}{%
@@ -126,11 +126,11 @@ Since $\mathbf a$ and $\mathbf b$ are non-parallel, comparing coefficients gives
 The second equation gives $s=3-3t$. Substituting into the first,
 \[-2+3t=\frac{2t}{3}\quad\Longrightarrow\quad 7t=6\quad\Longrightarrow\quad t=\frac67,\quad s=\frac37.\]
 Consequently,
-\[\boxed{\vv{OP}=\frac47\mathbf a+\frac17\mathbf b}.\]
-\pt{(b)} $\displaystyle\boxed{AP:PY=3:4,\qquad BP:PX=6:1}$.
+\[\vv{OP}=\frac47\mathbf a+\frac17\mathbf b.\]
+\pt{(b)} $\displaystyle AP:PY=3:4,\qquad BP:PX=6:1$.
 \pt{(c)} By the ratio theorem,
 \[\vv{OZ}=\frac{4\mathbf a+\mathbf b}{5},\qquad \vv{OP}=\frac{4\mathbf a+\mathbf b}{7}=\frac57\vv{OZ}.\]
-The two vectors are parallel and have the common point $O$, so $O,P,Z$ are collinear. Since $0<\frac57<1$, $P$ is between $O$ and $Z$; hence $\boxed{OP:PZ=5:2}$.
+The two vectors are parallel and have the common point $O$, so $O,P,Z$ are collinear. Since $0<\frac57<1$, $P$ is between $O$ and $Z$; hence $OP:PZ=5:2$.
 \end{qparts}}
 
 \defQ{7}{}{%
@@ -207,13 +207,13 @@ The walls are $3\,\mathrm m$ high, so $E,F,G,H$ all have $z=3$. The roof is symm
 Writing $h$ for the vertical roof rise,
 \[\tan\alpha=\frac{h}{6/2}=\frac23\quad\Longrightarrow\quad h=2\,\mathrm m.\]
 This agrees with the labelled rise. The ridge is at height $3+2=5\,\mathrm m$. Therefore all ten vertices are
-\[\boxed{\begin{aligned}
+\[\begin{aligned}
 O&=(0,0,0),& B&=(6,0,0),\\
 C&=(6,4,0),& D&=(0,4,0),\\
 E&=(0,0,3),& F&=(6,0,3),\\
 G&=(6,4,3),& H&=(0,4,3),\\
 P&=(3,0,5),& Q&=(3,4,5).
-\end{aligned}}\]}
+\end{aligned}\]}
 
 \defQ{8}{}{%
 The diagram shows a container with a horizontal rectangular base $OABC$, where $OA=16\,\mathrm{cm}$ and $AB=11\,\mathrm{cm}$. The top of the container $DEFG$ is also a horizontal rectangle, where $DE=10\,\mathrm{cm}$ and $EF=5\,\mathrm{cm}$. The four sloping faces (for example $OAED$) of the container, each a trapezium, are inclined at the same angle to the horizontal, and the vertical distance between the base and the top is $6\,\mathrm{cm}$.
@@ -269,12 +269,47 @@ Since the four sloping faces are inclined at the same angle to the horizontal, t
 The horizontal inset from each base edge to the corresponding top edge is
 \[\frac{OA-DE}{2}=\frac{16-10}{2}=3,\qquad \frac{AB-EF}{2}=\frac{11-5}{2}=3.\]
 The top lies $6\,\mathrm{cm}$ above the base, so the $z$-coordinate of every top vertex is $6$. Taking $D$ as the front-left vertex of the top,
-\[\boxed{D=(3,3,6)}.\]}
+\[D=(3,3,6).\]}
 
+% ---- Answers (rule 8A, 9 Nov 2026): copied from the final lines of the worked solutions
+\defA{1}{\begin{aparts}
+\pt{(a)} $\mathbf a=\cv{2}{-1}{3}$, $\mathbf b=\cv{-1}{4}{0}$, $\mathbf a+2\mathbf b=\cv{0}{7}{3}$
+\pt{(b)} $\cv{-7}{14}{-6}$
+\pt{(c)} $\cv{-7}{7}{-9}$
+\end{aparts}}
+\defA{2}{\begin{aparts}
+\pt{(a)} $\dfrac17\cv{2}{3}{-6}$. Its negative is also a valid answer.
+\pt{(b)} $\cv{6}{9}{-18}$. Its negative is also a valid answer.
+\pt{(c)} $P(5,4,-10)$; the order is $A,B,P$.
+\end{aparts}}
+\defA{3}{\begin{aparts}
+\pt{(a)} $k=-12,\ m=-1$
+\pt{(b)} Same direction; $|\mathbf p|:|\mathbf q|=3:1$
+\pt{(c)} $\pm\cv{2}{-4}{-1}$
+\end{aparts}}
+\defA{4}{\begin{aparts}
+\pt{(a)} Shown. $AB:BC=1:2$
+\pt{(b)} $u=9,\ v=11$
+\end{aparts}}
+\defA{5}{\begin{aparts}
+\pt{(a)} $\cv{-2}{3}{1}$
+\pt{(b)} $\cv{-8}{9}{-2}$
+\pt{(c)} The order is $A,M,B,N$; $MB:BN=1:2$
+\end{aparts}}
+\defA{6}{\begin{aparts}
+\pt{(a)} $\vv{OP}=\dfrac47\mathbf a+\dfrac17\mathbf b$
+\pt{(b)} $AP:PY=3:4,\qquad BP:PX=6:1$
+\pt{(c)} Shown. $OP:PZ=5:2$
+\end{aparts}}
+\defA{7}{$O=(0,0,0)$, $B=(6,0,0)$, $C=(6,4,0)$, $D=(0,4,0)$, $E=(0,0,3)$, $F=(6,0,3)$, $G=(6,4,3)$, $H=(0,4,3)$, $P=(3,0,5)$, $Q=(3,4,5)$}
+\defA{8}{$D=(3,3,6)$}
 \ifdefined\diquestionsonly\expandafter\endinput\fi
 \begin{document}
-\dititleblock[Original practice questions. Total: 50 marks. Give exact answers unless otherwise stated.]
+\dititleblock[Introduction to Vectors in Three Dimensions. Original practice questions. Total: 50 marks. Give exact answers unless otherwise stated.]
 \disection{Questions}
 \putQ{1}\putQ{2}\putQ{3}\putQ{4}\putQ{5}\putQ{6}\putQ{7}\putQ{8}
-\diend[END OF HOMEWORK]
+\clearpage
+\disection{Answers}\enlargethispage{4\baselineskip}
+\putA{1}\putA{2}\putA{3}\putA{4}\putA{5}\putA{6}\putA{7}\putA{8}
+\diend
 \end{document}

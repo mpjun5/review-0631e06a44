@@ -67,9 +67,9 @@
 \newcommand{\disection}[1]{\par\bigskip\noindent{\Large\scshape #1}\par\medskip}
 
 % ---- questions --------------------------------------------------------
-% \Qhead{label}{source tag}: question heading, tag in brackets on the right
+% \Qhead{label}{source tag}: question heading; grey [tag] straight after the number, on the left (rule 3B, 9 Nov 2026)
 \newcommand{\Qhead}[2]{\par\needspace{8\baselineskip}\bigskip\noindent
-  {\large\bfseries #1}\hfill\edef\housetgtmp{#2}\ifx\housetgtmp\empty\else{\small\textcolor{black!60}{[#2]}}\fi\par\smallskip}
+  {\large\bfseries #1}\setbox0=\hbox{#2}\ifdim\wd0=0pt\else\enspace{\small\textcolor{black!60}{[#2]}}\fi\par\smallskip}
 % part lists with bold labels as he writes them: \pt{(a)}, \pt{(i)}, \pt{(b) (i)}
 \newenvironment{qparts}[1][2.4em]{\begin{list}{}{\setlength\leftmargin{#1}%
   \setlength\labelwidth{\dimexpr#1-0.5em\relax}\setlength\labelsep{0.5em}%

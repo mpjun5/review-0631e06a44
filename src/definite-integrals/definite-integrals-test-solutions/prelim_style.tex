@@ -45,14 +45,13 @@
 \renewcommand{\mk}[1]{{\unskip\nobreak\hfil\penalty50\hskip1.5em\hbox{}\nobreak\hfill[#1]%
   \parfillskip=0pt\finalhyphendemerits=0\par}}
 
-% ---- questions: bold number at the left margin, text indented; tag bottom right
+% ---- questions: bold number at the left margin, text indented; grey [tag] straight after the number (3B)
 \newsavebox{\pp@qmeas}
 \newcommand{\pp@qlist}[1]{%
   \begin{list}{}{\setlength\leftmargin{2.6em}\setlength\labelwidth{2.1em}\setlength\labelsep{0.5em}%
      \setlength\topsep{0pt}\setlength\itemsep{0pt}\setlength\parsep{0.9ex}%
      \renewcommand\makelabel[1]{\textbf{##1}\hfil}}%
-  \item[\thediq]\@endparpenalty\@M\csname diQbody@#1\endcsname\par\penalty\@M
-  \nobreak\vspace{0.2ex}\nobreak\hfill{\footnotesize[\di@tag{#1}]}\par
+  \item[\thediq]\@endparpenalty\@M\setbox0=\hbox{\di@tag{#1}}\ifdim\wd0=0pt\else{\small\textcolor{black!60}{[\di@tag{#1}]}}\par\nobreak\fi\csname diQbody@#1\endcsname\par\penalty\@M
   \end{list}}
 % a question starts on a new page unless it fits whole on the current one
 % (questions taller than a page may break, but only between parts)
