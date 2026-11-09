@@ -174,7 +174,7 @@
 % \putTFlong{n}: the True/False question n with its answer table allowed to break across
 % pages (the body of \defQ{n} must be: intro text, then \begin{tftable}...\end{tftable});
 % the solutions copy prints it with tflongtable.
-\renewcommand{\putTFlong}[1]{\ri@newq\begingroup\let\tftable\tflongtable\let\endtftable\endtflongtable
+\renewcommand{\putTFlong}[1]{\ri@newq\begingroup\let\tftable\tflongtable\let\endtftable\endtflongtable\gdef\ri@qid{#1}\gdef\ri@cur{}% (so a \mk in the T/F intro works)
   \stepcounter{diq}\expandafter\xdef\csname diLab@#1\endcsname{\thediq}%
   \par\noindent\hbox to 2.6em{\textbf{\thediq}\hfil}\setbox0=\hbox{\di@tag{#1}}\ifdim\wd0=0pt\else{\small\textcolor{black!60}{[\di@tag{#1}]}}\par\noindent\hskip2.6em\fi\ignorespaces\csname diQbody@#1\endcsname\par
   \endgroup\vspace{3ex}}

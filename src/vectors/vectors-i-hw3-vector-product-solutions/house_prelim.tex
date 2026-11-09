@@ -38,7 +38,7 @@
   \rfoot{\ifnum\value{page}<\getpagerefnumber{LastPage}\relax\textbf{[Turn over}\fi}%
   \renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}}
 \fancypagestyle{prelimcover}{\fancyhf{}%
-  \rfoot{\textbf{[Turn over}}%
+  \rfoot{\coverfont\textbf{[Turn over}}%
   \renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}}
 \pagestyle{prelim}
 
@@ -70,38 +70,52 @@
 \makeatother
 
 % ---- cover page --------------------------------------------------------------
+% A-level H2 style cover (9 Nov 2026; reference house_format/ref/alevel_cover_ref.png), no logos/barcodes.
+% \prelimcover{total marks}{duration}{date}; heading block from \housechap; override with
+% \prelimcoverhead (4 lines) and \prelimcoverline (the line under MATHEMATICS).
+\makeatletter
+\providecommand{\prelimcoverhead}{MAXIMUS PUNG JUN\\ H2 Mathematics (9758)\\ \housechap\\ Chapter Test}
+\providecommand{\prelimcoverline}{\prelimsubject\ Test}
+\newcommand{\pp@htwo}{\begin{tikzpicture}[baseline=(b.base)]
+  \node[draw, line width=0.9pt, minimum width=19mm, minimum height=15mm, inner sep=0pt] (b)
+    {\fontsize{38}{38}\selectfont\special{pdf:literal direct 1 Tr 0.7 w}H2\special{pdf:literal direct 0 Tr}};
+  \end{tikzpicture}}
 \newcommand{\prelimcover}[3]{% #1 total marks, #2 duration, #3 date line
 \thispagestyle{prelimcover}%
-{\coverfont\fontsize{10}{12}\selectfont\linespread{1}\selectfont
-\noindent\begin{minipage}[t]{\linewidth}
-  {\bfseries \prelimtitle}\\[0.2ex]
-  {\bfseries Compiled by Maximus Pung Jun}\\[1.6ex]
-  Higher 2
-\end{minipage}\par\vspace{2ex}
-\noindent\rule{\linewidth}{1.2pt}\par\vspace{0.4ex}
-\noindent{\Large\bfseries MATHEMATICS}\hfill{\Large\bfseries 9758}\par\vspace{1.2ex}
-\noindent \prelimsubject\hfill\textbf{#3}\\
-QUESTION PAPER\hfill\textbf{#2}\par\vspace{2.5ex}
-\noindent\begin{tabular}{@{}p{46mm}l@{}}Additional Materials: & Writing paper\\ & List of Formulae and Results (MF27)\end{tabular}\par\vspace{2ex}
-\noindent\rule{\linewidth}{0.6pt}\par\vspace{0.6ex}
-{\bfseries READ THESE INSTRUCTIONS FIRST}\par\vspace{2ex}
-\setlength{\parskip}{0pt}
-Write your name and class on all the work you hand in.\\
-Write in dark blue or black pen.\\
-You may use an HB pencil for any diagrams or graphs.\\
-Do not use staples, paper clips, glue or correction fluid.\par\vspace{2ex}
-Answer \textbf{all} the questions.\\
-Give non-exact numerical answers correct to 3 significant figures, or 1 decimal place in the case of angles in degrees, unless a different level of accuracy is specified in the question.\\
-You are expected to use an approved graphing calculator.\\
-Unsupported answers from a graphing calculator are allowed unless a question specifically states otherwise.\\
-Where unsupported answers from a graphing calculator are \textbf{not} allowed in a question, you are required to present the mathematical steps using mathematical notations and not calculator commands.\\
-You are reminded of the need for clear presentation in your answers.\par\vspace{2ex}
-The number of marks is given in brackets [\ ] at the end of each question or part question.\\
-The total number of marks for this paper is #1.
+{\coverfont\fontsize{11}{13.5}\selectfont\linespread{1}\selectfont\setlength{\parskip}{0pt}%
+\vspace*{4mm}
+\noindent\begin{tabular}{@{}l@{\hspace{5mm}}l@{}}\raisebox{-0.5\height}{\pp@htwo}&
+  \raisebox{-0.5\height}{\begin{minipage}{120mm}\fontsize{12}{14.5}\selectfont\prelimcoverhead\end{minipage}}\end{tabular}\par
+\vspace{9mm}
+\noindent\rule{\linewidth}{0.8pt}\par\vspace{1.2mm}
+\noindent{\fontsize{12}{14.5}\selectfont\bfseries MATHEMATICS\hfill 9758}\par\vspace{1.2mm}
+\noindent\prelimcoverline\hfill\textbf{#3}\par\vspace{1.2mm}
+\setbox0=\hbox{#2}\ifdim\wd0>0pt \noindent\hfill\textbf{#2}\par\fi
+\vspace{3mm}
+\noindent You must answer on writing paper.\par\vspace{3mm}
+\noindent\begin{tabular}{@{}l@{\hspace{2mm}}l@{}}You will need:&Writing paper\\ &List of formulae and results (MF27)\end{tabular}\par
+\vspace{2mm}
+\noindent\rule{\linewidth}{0.8pt}\par\vspace{1.5mm}
+\noindent{\bfseries INSTRUCTIONS}\par\vspace{0.5mm}
+\begin{list}{\textbullet}{\setlength\leftmargin{7mm}\setlength\labelwidth{4mm}\setlength\labelsep{3mm}\setlength\itemsep{0.6mm}\setlength\topsep{0pt}\setlength\parsep{0pt}}
+\item Answer \textbf{all} questions.
+\item Give non-exact numerical answers correct to 3 significant figures, or 1 decimal place for angles in degrees, unless a different level of accuracy is specified in the question.
+\item You should use an approved graphing calculator.
+\item Unsupported answers from a graphing calculator are allowed unless a question specifically states otherwise.
+\item Where unsupported answers from a graphing calculator are \textbf{not} allowed in a question, you must present the mathematical steps using mathematical notations and not calculator commands.
+\item You must show all working clearly.
+\end{list}
+\vspace{6mm}
+\noindent{\bfseries INFORMATION}\par\vspace{0.5mm}
+\begin{list}{\textbullet}{\setlength\leftmargin{7mm}\setlength\labelwidth{4mm}\setlength\labelsep{3mm}\setlength\itemsep{0.6mm}\setlength\topsep{0pt}\setlength\parsep{0pt}}
+\item The total mark for this paper is #1.
+\item The number of marks for each question or part question is shown in brackets [\ ].
+\end{list}
 \vfill
-\noindent\rule{\linewidth}{0.6pt}\par\vspace{0.4ex}
-\centerline{This document consists of \textbf{\pageref{LastPage}} printed pages.}\par\vspace{1ex}
+\noindent\rule{\linewidth}{0.8pt}\par\vspace{1mm}
+\centerline{This document has \textbf{\pageref{LastPage}} pages.}\par\vspace{2mm}
 }\clearpage}
+\makeatother
 
 % ---- solutions header block (page 1 of the worked solutions; same cover style) ----
 \newcommand{\prelimsolhead}[1]{% #1 total marks
