@@ -10,10 +10,6 @@ State $j$ is \key{accessible} from state $i$, denoted by $i\to j$, if
 \[ p_{ij}^{(n)}>0 \quad \text{for some } n\ge 0. \]
 \end{definition}
 
-\begin{note}
-$p_{ij}^{(0)}=\begin{cases}1 & i=j\\ 0 & i\neq j\end{cases}$
-\end{note}
-
 \begin{remark}
 \begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
 \item Accessibility is not a one-step concept: $p_{ij}$ may be zero while $p_{ij}^{(n)}>0$ for some $n>1$.
@@ -32,7 +28,7 @@ Communication is an \hl{equivalence} relation.
 \end{note}
 
 \begin{definition}[Communication Class]
-A \key{communication class} is a \hl{maximal} set $\mathcal{C}\subseteq S$ whose states communicate with one another.
+A \key{communication class} is a maximal set $\mathcal{C}\subseteq S$ whose states communicate with one another.
 \end{definition}
 
 \begin{note}
