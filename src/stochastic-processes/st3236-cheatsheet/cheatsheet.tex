@@ -159,6 +159,10 @@ If $i\longleftrightarrow j$, then
 \[ {\color{csBlue} d(i)=d(j).} \]
 \end{theorem}
 
+\begin{definition}[Aperiodic Chain]
+A Markov chain is \key{aperiodic} if every state is aperiodic, i.e.\ $d(i)=1$ for all $i\in S$.
+\end{definition}
+
 \begin{theorem}
 Let state $i$ have period $d=d(i)\ge 1$.
 \begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
@@ -172,6 +176,16 @@ Let state $i$ have period $d=d(i)\ge 1$.
 \begin{note}
 Some small multiples of $d$ may not be possible return times.
 \end{note}
+
+\begin{definition}[Regularity]
+A \hl{finite-state} Markov chain with transition matrix $\mathbf{P}$ is \key{regular} if there exists an integer $r\ge 1$ such that \key{every entry of $\mathbf{P}^r$ is strictly positive}; that is,
+\[ p_{ij}^{(r)}>0 \qquad \text{for all } i,j\in S. \]
+\end{definition}
+
+\begin{theorem}
+For a finite-state Markov chain,
+\[ {\color{csBlue} \text{regular} \quad\iff\quad \text{irreducible and aperiodic.}} \]
+\end{theorem}
 
 \end{cscolumns}
 \end{document}
