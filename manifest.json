@@ -337,6 +337,16 @@
           "type": "Document",
           "status": "in progress",
           "deleted": null
+        },
+        {
+          "title": "Differential Equations: Workshop Solutions",
+          "slug": "differential-equations-workshop-solutions",
+          "updated": "10 Nov 2026, 10:39 PM SGT",
+          "size_kb": 130,
+          "source": "src/differential-equations/differential-equations-workshop-solutions/Workshop_solutions.tex",
+          "type": "Solutions",
+          "status": "in progress",
+          "deleted": null
         }
       ]
     }

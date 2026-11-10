@@ -1,0 +1,308 @@
+% Differential Equations: Workshop. Worked solutions, copied from each school's own published solution.
+% (equations laid out one per line; wording, steps and the comments column as published)
+\newcommand{\dsh}{\text{------}}
+\newcommand{\mth}[1]{\par\noindent\textbf{\underline{#1}}\par\nobreak}
+%% ===================================================================== 1  MI 2023 Prelim P2 Q1 (official solution)
+\defS{1}{%
+\begin{qparts}
+\pt{(i)} \begin{topalign}
+y &= vx^{2}\quad\dsh(1)\\
+\dd{y}{x} &= v(2x)+\dd{v}{x}\left(x^{2}\right)\\
+\dd{y}{x} &= 2vx+x^{2}\dd{v}{x}\quad\dsh(2)
+\end{topalign}
+Subst (1) and (2) into $x\dd{y}{x}=x^{3}+xy+2y$,
+\begin{topalign}
+x\left(2vx+x^{2}\dd{v}{x}\right) &= x^{3}+x\left(vx^{2}\right)+2\left(vx^{2}\right)\\
+2vx^{2}+x^{3}\dd{v}{x} &= x^{3}+vx^{3}+2vx^{2}\\
+x^{3}\dd{v}{x} &= x^{3}+vx^{3}\\
+\dd{v}{x} &= 1+v\quad\text{(shown)}
+\end{topalign}
+\pt{(ii)} \mth{Method 1}
+\begin{topalign}
+\dd{v}{x} &= 1+v\\
+\int\dfrac{1}{1+v}\,\mathrm{d}v &= \int 1\,\mathrm{d}x\\
+\ln\lvert 1+v\rvert &= x+c\\
+\lvert 1+v\rvert &= \e^{x+c}\\
+1+v &= \pm\e^{x+c}\\
+1+v &= A\e^{x}\quad\text{where } A=\pm\e^{c}\\
+1+\dfrac{y}{x^{2}} &= A\e^{x}
+\end{topalign}
+Subst $y=1$ and $x=1$,
+\begin{topalign}
+1+\dfrac{1}{1^{2}} &= A\e\\
+A &= \dfrac{2}{\e}\\
+1+\dfrac{y}{x^{2}} &= \left(\dfrac{2}{\e}\right)\e^{x}\\
+1+\dfrac{y}{x^{2}} &= 2\e^{x-1}
+\end{topalign}
+\mth{Method 2}
+\begin{topalign}
+\dd{v}{x} &= 1+v\\
+\int\dfrac{1}{1+v}\,\mathrm{d}v &= \int 1\,\mathrm{d}x\\
+\ln\lvert 1+v\rvert &= x+c\\
+\ln\left\lvert 1+\dfrac{y}{x^{2}}\right\rvert &= x+c
+\end{topalign}
+Subst $y=1$ and $x=1$,
+\begin{topalign}
+\ln\left\lvert 1+\dfrac{1}{1^{2}}\right\rvert &= 1+c\\
+\ln 2 &= 1+c\\
+c &= \ln 2-1\\
+\ln\left\lvert 1+\dfrac{y}{x^{2}}\right\rvert &= x+\ln 2-1
+\end{topalign}
+\end{qparts}}
+%% ===================================================================== 2  YIJC 2024 Prelim P1 Q4 (official solution + comments)
+\defS{2}{%
+\begin{qparts}
+\pt{(a)} \ricomment{The original DE contains $\mathrm{d}y/\mathrm{d}x$ so for substitution, we will need to replace all $y$ in the original DE to $w$. The final answer in this question has only $w$ term, $\mathrm{f}(w)$.}
+Let $w=xy$. Differentiating with respect to $x$, we get
+\begin{topalign}
+\dd{w}{x} &= x\dd{y}{x}+y\quad\dsh(1)\\
+x\dd{y}{x} &= xy\left(\ln x+\ln y\right)-y\\
+x\dd{y}{x}+y &= xy\left(\ln xy\right)
+\end{topalign}
+Now, substituting (1) and $w=xy$, we get
+\begin{topalign}
+\dd{w}{x} &= w\left(\ln w\right)
+\end{topalign}
+where $\mathrm{f}(w)=w\ln w$.
+\pt{(b)} \ricomment{To solve this DE, we will have to use variable separable.}
+By (i), we have $\dd{w}{x}=w\ln w$. Then
+\begin{topalign}
+\left(\dfrac{1}{w\ln w}\right)\dd{w}{x} &= 1\\
+\int\dfrac{1}{w\ln w}\,\mathrm{d}w &= \int 1\,\mathrm{d}x\\
+\int\dfrac{\left(\frac{1}{w}\right)}{\ln w}\,\mathrm{d}w &= \int 1\,\mathrm{d}x\\
+\ln\lvert\ln w\rvert &= x+C\\
+\ln w &= \pm\e^{x+C}\\
+w &= \e^{\pm\e^{x+C}}\\
+w &= \e^{A\e^{x}}
+\end{topalign}
+where $A=\pm\e^{C}$. Since $w=xy$, then
+\begin{topalign}
+xy &= \e^{A\e^{x}}\\
+y &= \dfrac{\e^{A\e^{x}}}{x}
+\end{topalign}
+When $x=2$, $y=\dfrac{1}{2}\e^{3}$. Then
+\begin{topalign}
+\dfrac{1}{2}\e^{3} &= \dfrac{\e^{A\e^{2}}}{2}\\
+\e^{3} &= \e^{A\e^{2}}\\
+3 &= A\e^{2}\\
+A &= 3\e^{-2}
+\end{topalign}
+Therefore, $y=\dfrac{\e^{3\e^{x-2}}}{x}$.
+\end{qparts}}
+%% ===================================================================== 3  JPJC 2025 Prelim P2 Q1 (official solution)
+\defS{3}{%
+\begin{qparts}
+\pt{(i)} \begin{topalign}
+\dd{x}{t} &= k(P-x),\ k>0\\
+\int\dfrac{1}{P-x}\,\mathrm{d}x &= \int k\,\mathrm{d}t\\
+-\ln(P-x) &= kt+C\quad\text{since } P>x\\
+\ln(P-x) &= -kt-C\\
+P-x &= \e^{-kt-C}\\
+P-x &= \e^{-C}\bullet\e^{-kt}\\
+P-x &= A\e^{-kt},\quad A=\e^{-C}\\
+x &= P-A\e^{-kt}
+\end{topalign}
+When $t=0$, $x=0\Rightarrow A=P$
+\begin{topalign}
+x &= P-P\e^{-kt}\\
+x &= P\left(1-\e^{-kt}\right)\quad\text{(Shown)}
+\end{topalign}
+\pt{(ii)} When $t=12$, $x=\dfrac{1}{2}P$
+\begin{topalign}
+\dfrac{1}{2}P &= P\left(1-\e^{-12k}\right)\\
+\e^{-12k} &= \dfrac{1}{2}\\
+-12k &= \ln\dfrac{1}{2}=-\ln 2\\
+k &= \dfrac{1}{12}\ln 2\\
+x &= P\left(1-\e^{-\frac{t}{12}\ln 2}\right)
+\end{topalign}
+When $x=0.8P$,
+\begin{topalign}
+0.8P &= P\left(1-\e^{-\frac{t}{12}\ln 2}\right)\\
+\e^{-\frac{t}{12}\ln 2} &= 0.2\\
+-\dfrac{t}{12}\ln 2 &= \ln 0.2\\
+t &= \dfrac{-12\ln 0.2}{\ln 2}\\
+t &= 27.9\approx 28\text{ hours (nearest hour)}
+\end{topalign}
+\pt{(iii)} \par\begin{center}
+\begin{tikzpicture}
+\begin{axis}[dsketch, width=7.4cm, height=5cm, xlabel=$t$, ylabel=$x$, xmin=0, xmax=6.4, ymin=0, ymax=1.3]
+\addplot[hlc, domain=0:6.2] {1-exp(-0.55*x)};
+\draw[asym] (axis cs:0,1) -- (axis cs:6.4,1) node[right] {$x=P$};
+\node[right] at (axis cs:3.4,0.62) {$x=P\left(1-\mathrm{e}^{-kt}\right)$};
+\node[below left] at (axis cs:0,0) {$O$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{qparts}}
+%% ===================================================================== 4  RVHS 2025 Prelim P1 Q13 (official solution)
+\defS{4}{%
+\begin{qparts}
+\pt{(a)} Let $\dd{A}{t}$ and $\dd{B}{t}$ be the rate of roasting of coffee beans and rate of coffee beans sold respectively.
+\begin{topalign}
+\dd{A}{t} &= 10,\quad \dd{B}{t}\propto x^{2}\ \Rightarrow\ \dd{B}{t}=kx^{2}\\
+\dd{x}{t} &= \dd{A}{t}-\dd{B}{t}=10-kx^{2}
+\end{topalign}
+When $x=5$, $\dd{x}{t}=0$:
+\begin{topalign}
+0 &= 10-k(5)^{2}\\
+25k &= 10\\
+k &= \dfrac{2}{5}\\
+\therefore\ \dd{x}{t} &= 10-\dfrac{2}{5}x^{2}
+\end{topalign}
+\begin{topalign}
+\dd{x}{t} &= 10-\dfrac{2}{5}x^{2}\\
+&= -\dfrac{2}{5}\left(x^{2}-25\right)\\
+\int\dfrac{1}{x^{2}-25}\,\mathrm{d}x &= \int-\dfrac{2}{5}\,\mathrm{d}t\\
+\dfrac{1}{2(5)}\ln\left\lvert\dfrac{x-5}{x+5}\right\rvert &= -\dfrac{2}{5}t+c
+\end{topalign}
+\pt{(b)} Let $\dd{C}{t}$ and $\dd{B}{t}$ be the new rate of roasting of coffee beans and rate of coffee beans sold respectively.
+\begin{topalign}
+\dd{C}{t} &= 3x,\quad\dd{B}{t}\propto x^{2}\ \Rightarrow\ \dd{B}{t}=kx^{2}\\
+\dd{x}{t} &= \dd{C}{t}-\dd{B}{t}=3x-kx^{2}
+\end{topalign}
+When $x=6$, $\dd{x}{t}=6$:
+\begin{topalign}
+6 &= 3(6)-k(6)^{2}\\
+6 &= 18-36k\\
+36k &= 12\\
+k &= \dfrac{1}{3}\\
+\therefore\ \dd{x}{t} &= 3x-\dfrac{1}{3}x^{2}
+\end{topalign}
+\pt{(c)} \begin{topalign}
+\dd{x}{t} &= 3x-\dfrac{1}{3}x^{2}\\
+&= \dfrac{1}{3}x(9-x)\\
+\int\dfrac{1}{x(9-x)}\,\mathrm{d}x &= \int\dfrac{1}{3}\,\mathrm{d}t\\
+\int\dfrac{1}{9}\left(\dfrac{1}{x}+\dfrac{1}{9-x}\right)\mathrm{d}x &= \int\dfrac{1}{3}\,\mathrm{d}t\\
+\int\dfrac{1}{x}+\dfrac{1}{9-x}\,\mathrm{d}x &= \int 3\,\mathrm{d}t\\
+\ln\lvert x\rvert-\ln\lvert 9-x\rvert &= 3t+c\\
+\ln\left\lvert\dfrac{x}{9-x}\right\rvert &= 3t+c\\
+\left\lvert\dfrac{x}{9-x}\right\rvert &= \e^{3t+c}\\
+\dfrac{x}{9-x} &= A\e^{3t},\quad\text{where } A=\pm\e^{c}\\
+x &= A\e^{3t}(9-x)\\
+x &= 9A\e^{3t}-xA\e^{3t}\\
+x+xA\e^{3t} &= 9A\e^{3t}\\
+x\left(1+A\e^{3t}\right) &= 9A\e^{3t}\\
+x &= \dfrac{9A\e^{3t}}{1+A\e^{3t}}
+\end{topalign}
+When $t=0$, $x=13.5$:
+\begin{topalign}
+x &= \dfrac{9A\e^{3t}}{1+A\e^{3t}}\\
+13.5 &= \dfrac{9A}{1+A}\\
+13.5(1+A) &= 9A\\
+13.5+13.5A &= 9A\\
+4.5A &= -13.5\\
+A &= -3\\
+x &= \dfrac{9(-3)\e^{3t}}{1-3\e^{3t}}\\
+x &= \dfrac{-27\e^{3t}}{1-3\e^{3t}}\\
+x &= \dfrac{27\e^{3t}}{3\e^{3t}-1}\quad\text{or}\quad x=\dfrac{27}{3-\e^{-3t}}
+\end{topalign}
+As $t\to\infty$, $x=\dfrac{27\e^{3t}}{3\e^{3t}-1}=\dfrac{27}{3-\e^{-3t}}\to 9$
+
+In the long term, the amount of roasted coffee beans remaining in the cafe will stabilise at 9 kg/approaches 9 kg.
+\par\begin{center}
+\begin{tikzpicture}
+\begin{axis}[dsketch, width=7.4cm, height=5.2cm, xlabel={$t$ days}, ylabel={$x$ kg}, xmin=0, xmax=2.6, ymin=0, ymax=16]
+\addplot[hlc, domain=0:2.4] {27*exp(3*x)/(3*exp(3*x)-1)};
+\draw[asym] (axis cs:0,9) -- (axis cs:2.6,9);
+\node[left] at (axis cs:0,13.5) {$13.5$};
+\node[left] at (axis cs:0,9) {$9$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\pt{(d)} There is always roasted coffee beans left in the inventory for selling.
+
+\textbf{OR}
+
+The amount of roasted coffee beans stabilizing at a particular value allows the owner to plan for storage of adequate capacity.
+\end{qparts}}
+%% ===================================================================== 5  DHS 2019 Prelim P1 Q12 (official suggested solution)
+\defS{5}{%
+\begin{qparts}
+\pt{(i)} Amount of $U$ in time $t$
+\begin{topalign}
+&= 40-\dfrac{2}{2+1}w=40-\dfrac{2}{3}w
+\end{topalign}
+Amount of $V$ in time $t$
+\begin{topalign}
+&= 50-\dfrac{1}{3}w
+\end{topalign}
+\begin{topalign}
+\dd{w}{t} &= k_{1}\left(40-\dfrac{2}{3}w\right)\left(50-\dfrac{1}{3}w\right),\quad k_{1}\in\mathbb{R}^{+}\text{ as amt.\ of }w\uparrow\\
+&= k_{1}\left(-\dfrac{2}{3}\right)(w-60)\left(-\dfrac{1}{3}\right)(w-150)\\
+&= k(w-60)(w-150),\quad k=\dfrac{2}{9}k_{1}
+\end{topalign}
+\pt{(ii)} \begin{topalign}
+\dd{w}{t} &= k(w-60)(w-150)\\
+\dfrac{1}{(w-60)(w-150)}\dd{w}{t} &= k\\
+\dfrac{1}{w^{2}-210w+9000}\dd{w}{t} &= k\\
+\dfrac{1}{(w-105)^{2}-45^{2}}\dd{w}{t} &= k
+\end{topalign}
+Integrating w.r.t.\ $t$:
+\begin{topalign}
+\dfrac{1}{2(45)}\ln\left\lvert\dfrac{(w-105)-45}{(w-105)+45}\right\rvert &= kt+C,\quad k\text{ an arbitrary constant}\\
+\left\lvert\dfrac{w-150}{w-60}\right\rvert &= \e^{90C}\e^{90kt}\\
+\dfrac{w-150}{w-60} &= A\e^{90kt},\quad\text{where } A=\pm\e^{90C}
+\end{topalign}
+When $t=0$, $w=0$:
+\begin{topalign}
+\dfrac{-150}{-60} &= A\\
+\therefore\ A &= \dfrac{5}{2}
+\end{topalign}
+When $t=5$, $w=10$:
+\begin{topalign}
+\dfrac{10-150}{10-60} &= \dfrac{5}{2}\e^{90k(5)}\\
+k &= \dfrac{1}{450}\ln\dfrac{28}{25}\\
+\therefore\ \dfrac{w-150}{w-60} &= \dfrac{5}{2}\e^{\left(\frac{1}{5}\ln\frac{28}{25}\right)t}=\dfrac{5}{2}\left(\dfrac{28}{25}\right)^{\frac{t}{5}}
+\end{topalign}
+When $t=20$,
+\begin{topalign}
+\dfrac{w-150}{w-60} &= \dfrac{5}{2}\left(\dfrac{28}{25}\right)^{\frac{20}{5}}=3.93379\\
+w(3.93379-1) &= 60(3.93379)-150\\
+w &= 29.3229=29.32\quad\text{(2 d.p.)}
+\end{topalign}
+\pt{(iii)} \begin{topalign}
+\dfrac{w-150}{w-60} &= \dfrac{5}{2}\left(\dfrac{28}{25}\right)^{\frac{t}{5}}
+\end{topalign}
+As $t\to\infty$, RHS $\to\infty$
+
+i.e.\ $w-60\to 0$
+
+$\therefore\ w\to 60$
+\end{qparts}}
+%% ===================================================================== 6  TMJC 2025 Prelim P2 Q4 (official solution)
+\defS{6}{%
+\begin{qparts}
+\pt{(a)} \begin{topalign}
+\ddtwo{P}{t} &= -0.05\left(\dd{P}{t}\right)^{2}
+\end{topalign}
+Substituting $v=\dd{P}{t}$, we get
+\begin{topalign}
+\dd{v}{t} &= -0.05v^{2}
+\end{topalign}
+Using separable variables,
+\begin{topalign}
+\int\dfrac{1}{v^{2}}\,\mathrm{d}v &= \int-0.05\,\mathrm{d}t\\
+-\dfrac{1}{v} &= -0.05t+c'\quad\text{where } c'\text{ is an arbitrary constant}\\
+v &= \dfrac{1}{0.05t-c'}\\
+&= \dfrac{20}{t+C}
+\end{topalign}
+where $C=-20c'$ is a constant (shown)
+\pt{(b)} \begin{topalign}
+v &= \dfrac{20}{t+C}
+\end{topalign}
+Given $P=0$ and $v=10$ when $t=0$,
+\begin{topalign}
+10 &= \dfrac{20}{C}\ \Rightarrow\ C=2\\
+v &= \dfrac{20}{t+2}\\
+\therefore\ \dd{P}{t} &= \dfrac{20}{t+2}\\
+\therefore\ P &= 20\ln\lvert t+2\rvert+D\quad\text{where } D\text{ is a constant}
+\end{topalign}
+when $t=0$, $P=0$,
+\begin{topalign}
+\therefore\ 0 &= 20\ln\lvert 2\rvert+D\\
+D &= -20\ln 2\\
+P &= 20\ln\lvert t+2\rvert-20\ln 2\\
+&= 20\ln\left(\dfrac{t+2}{2}\right)\quad\text{since } t>0
+\end{topalign}
+\pt{(c)} When $t=30$, $P=20\ln\left(\dfrac{30+2}{2}\right)=55.5$ (3 s.f)
+\end{qparts}}

@@ -1,0 +1,89 @@
+% Differential Equations: Workshop. Questions + answers (single source). Solutions: ws_sol.tex.
+% Six real exam questions, word for word, each with its school's own published solution (see ws_sol.tex).
+\pgfplotsset{hlc/.style={blue!70!black, line width=1.3pt, smooth, samples=120}}
+\newcommand{\ddtwo}[2]{\dfrac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\makeatletter
+\newcommand{\interlude}[1]{\end{qparts}\ifdefined\ri@depth\global\ri@depth=0 \fi #1\begin{qparts}}
+\makeatother
+%% ===================================================================== 1  (substitution, y is the subject)
+\defQ{1}{MI/2023 Prelim/P2/Q1}{%
+\begin{qparts}
+\pt{(i)} It is given that $x\dd{y}{x}=x^{3}+xy+2y$, $x\neq 0$. Using the substitution $y=vx^{2}$, show that the differential equation can be reduced to
+\[\dd{v}{x}=v+1.\] \mk{2}
+\pt{(ii)} Given that $y=1$ when $x=1$, solve the differential equation
+\[x\dd{y}{x}=x^{3}+xy+2y.\] \mk{3}
+\end{qparts}}
+\defA{1}{\begin{aparts}
+\pt{(i)} Shown.
+\pt{(ii)} $1+\dfrac{y}{x^{2}}=2\e^{x-1}$, i.e.\ $y=x^{2}\left(2\e^{x-1}-1\right)$
+\end{aparts}}
+%% ===================================================================== 2  (substitution, w is the subject)
+\defQ{2}{YIJC/2024 Prelim/P1/Q4}{%
+\begin{qparts}
+\pt{(a)} It is given that $x\dd{y}{x}=xy\left(\ln x+\ln y\right)-y$. Using the substitution $w=xy$, show that the differential equation can be transformed to $\dd{w}{x}=\mathrm{f}(w)$, where the function $\mathrm{f}(w)$ is to be found. \mk{3}
+\pt{(b)} Hence, given that $y=\dfrac{1}{2}\e^{3}$ when $x=2$, solve the differential equation $x\dd{y}{x}=xy\left(\ln x+\ln y\right)-y$, to find $y$ in terms of $x$. \mk{5}
+\end{qparts}}
+\defA{2}{\begin{aparts}
+\pt{(a)} $\mathrm{f}(w)=w\ln w$
+\pt{(b)} $y=\dfrac{\e^{3\e^{x-2}}}{x}$
+\end{aparts}}
+%% ===================================================================== 3  (real life: linear in the unknown)
+\defQ{3}{JPJC/2025 Prelim/P2/Q1}{%
+To prepare for the General Election, a political party studies the effectiveness of spreading information on Instantglam, a social media platform, by uploading a particular video. The number of Instantglam users who have viewed the video increases at a rate that is directly proportional to the number of Instantglam users who have yet to view the video. The number of Instantglam users who have viewed the video $t$ hours after the video is uploaded is $x$. The total number of Instantglam users is $P$, assumed to be fixed.
+\begin{qparts}
+\pt{(i)} Write down a differential equation and show that $x=P\left(1-\e^{-kt}\right)$, where $k$ is a positive constant. \mk{4}
+\interlude{It is known that 12 hours after the video is uploaded, half the total number of Instantglam users have viewed the video.}
+\pt{(ii)} Estimate to the nearest hour, the time needed for $80\%$ of the total number of Instantglam users to have viewed the video. \mk{3}
+\pt{(iii)} Sketch the graph of $x$ against $t$. \mk{2}
+\end{qparts}}
+\defA{3}{\begin{aparts}
+\pt{(i)} $\dd{x}{t}=k(P-x)$; shown.
+\pt{(ii)} $27.9\approx 28$ hours
+\pt{(iii)} Increasing curve from $O$, approaching $x=P$ (see solutions).
+\end{aparts}}
+%% ===================================================================== 4  (real life: quadratic in the unknown, two distinct roots)
+\defQ{4}{RVHS/2025 Prelim/P1/Q13}{%
+A cafe roasts its own coffee beans and packages them to be sold. The amount of roasted coffee beans remaining in the cafe at time $t$ days is denoted by $x$ kg. The cafe produces roasted coffee beans at a fixed rate of 10 kg/day, and sells the roasted coffee beans at a rate proportional to $x^{2}$ kg/day.
+\begin{qparts}
+\pt{(a)} Given that there is no change in the amount of roasted coffee beans remaining in the cafe when there is 5 kg of beans remaining, show that $\dd{x}{t}=10-\dfrac{2}{5}x^{2}$. Find the general solution of this differential equation. (You do not have to make $x$ the subject.) \mk{3}
+\interlude{Due to improvement in roasting capabilities of the cafe, it is now able to produce roasted coffee beans at the rate of $3x$ kg/day, and sells the roasted coffee beans at a rate proportional to $x^{2}$ kg/day.}
+\pt{(b)} Given that amount of roasted coffee beans is increasing at the rate of 6 kg/day when the amount of roasted coffee beans remaining in the cafe is 6 kg, write down the modified differential equation relating $\dd{x}{t}$ and $x$. \mk{2}
+\pt{(c)} Given that the initial amount of roasted coffee beans in the cafe is 13.5 kg, solve the differential equation in part (b), expressing $x$ in terms of $t$.
+
+Deduce the amount of roasted coffee beans remaining in the cafe in the long run, and sketch the curve of $x$ against $t$. \mk{6}
+\pt{(d)} Based on the curve in part (c), explain in context why this might be favourable for the cafe owner. \mk{1}
+\end{qparts}}
+\defA{4}{\begin{aparts}
+\pt{(a)} $\dfrac{1}{10}\ln\left\lvert\dfrac{x-5}{x+5}\right\rvert=-\dfrac{2}{5}t+c$
+\pt{(b)} $\dd{x}{t}=3x-\dfrac{1}{3}x^{2}$
+\pt{(c)} $x=\dfrac{27\e^{3t}}{3\e^{3t}-1}$; 9 kg in the long run (sketch in solutions)
+\pt{(d)} There is always roasted coffee left to sell, and the stable amount lets the owner plan storage.
+\end{aparts}}
+%% ===================================================================== 5  (real life: quadratic in the unknown, two distinct roots)
+\defQ{5}{DHS/2019 Prelim/P1/Q12}{%
+In a particular chemical reaction, every 2 grams of $U$ and 1 gram of $V$ are combined and converted to form 3 grams of $W$. Let $u$, $v$ and $w$ denote the mass (in grams) of $U$, $V$ and $W$ respectively present at time $t$ (in minutes). According to the law of mass action, the rate of change of $w$ with respect to $t$ is proportional to the product of $u$ and $v$. Initially, $u=40$, $v=50$ and $w=0$.
+\begin{qparts}
+\pt{(i)} Show that $\dd{w}{t}=k(w-60)(w-150)$, where $k$ is a positive constant. \mk{3}
+\interlude{It is observed that when $t=5$, $w=10$.}
+\pt{(ii)} Find $w$ when $t=20$, giving your answer to two decimal places. \mk{7}
+\pt{(iii)} What happens to $w$ for large values of $t$\,? \mk{2}
+\end{qparts}}
+\defA{5}{\begin{aparts}
+\pt{(i)} Shown.
+\pt{(ii)} $w=29.32$
+\pt{(iii)} $w\to 60$
+\end{aparts}}
+%% ===================================================================== 6  (real life: something unusual, a second-order equation)
+\defQ{6}{TMJC/2025 Prelim/P2/Q4}{%
+A viral trend on social media gains popularity rapidly but eventually slows down due to oversaturation. Let $P$ represent the popularity score of the trend at time $t$ (measured in days), where $0\le t\le 100$. The change in the trend's momentum is modelled by
+\[\ddtwo{P}{t}=-0.05\left(\dd{P}{t}\right)^{2}.\]
+\begin{qparts}
+\pt{(a)} By substituting $v=\dd{P}{t}$, show that $v=\dfrac{20}{t+C}$ where $C$ is a real constant. \mk{3}
+\pt{(b)} Given that $P=0$ and $v=10$ when $t=0$, find the particular solution of $P$ in terms of $t$. \mk{4}
+\pt{(c)} Find the popularity score of the trend when $t=30$. \mk{1}
+\end{qparts}}
+\defA{6}{\begin{aparts}
+\pt{(a)} Shown.
+\pt{(b)} $P=20\ln\left(\dfrac{t+2}{2}\right)$
+\pt{(c)} $55.5$
+\end{aparts}}
