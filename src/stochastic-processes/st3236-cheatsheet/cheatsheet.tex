@@ -212,5 +212,40 @@ The $j$th entry $\pi(j)$ of $\bpi$ can be interpreted as the \key{long-run fract
 This convergence holds with probability 1.
 \end{remark}
 
+\begin{definition}[Positive and Null Recurrence]
+For a recurrent state $j$, let $m_j=\E_j[T_j^+]$, where $T_j^+$ is the first return time to state $j$.
+\begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item \key{Positive} recurrent: $m_j<\infty$.
+\item \key{Null} recurrent: $m_j=\infty$.
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+\begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item Recurrence guarantees a return, but the mean may be infinite. Positive recurrence further guarantees a finite return time.
+\item Positive and null recurrence are class properties.
+\item Every finite irreducible chain is positive recurrent.
+\end{itemize}
+\end{remark}
+
+\begin{definition}[Ergodicity]
+A Markov chain is \key{ergodic} if it is irreducible, \hl{positive recurrent}, and aperiodic.
+\end{definition}
+
+\begin{theorem}[Limiting Distribution]
+An ergodic chain on a finite or countable state space $S$ has a unique limiting distribution $\bpi=(\pi(j))_{j\in S}$. For every initial distribution $\bpi_0$,
+\[ \lim_{n\to\infty}\pi_n(j)=\pi(j)=\frac{1}{m_j}>0, \qquad j\in S. \]
+\begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item The limit is independent of $\bpi_0$.
+\item It satisfies
+\[ \bpi\mathbf{P}=\bpi, \qquad \sum_{j\in S}\pi(j)=1. \]
+\end{itemize}
+\end{theorem}
+\begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item For finite chains, ergodicity is equivalent to regularity.
+\item Irreducible $+$ aperiodic $+$ finite states $\Rightarrow$ limiting dist.
+\item Irreducible $+$ aperiodic $+$ positive recurrent $\Rightarrow$ limiting dist.
+\end{itemize}
+
 \end{cscolumns}
 \end{document}
