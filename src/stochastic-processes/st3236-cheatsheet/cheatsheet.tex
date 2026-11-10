@@ -147,5 +147,31 @@ For a \hl{finite-state} Markov chain:
 \end{itemize}
 \end{theorem}
 
+\begin{definition}[Period]
+For a state $i$, define
+\[ {\color{csBlue} d(i)=\gcd\{n\ge 1: p_{ii}^{(n)}>0\}.} \]
+If the set is empty, use the convention $d(i)=0$.\\
+A state is \key{aperiodic} if $d(i)=1$.
+\end{definition}
+
+\begin{theorem}
+If $i\longleftrightarrow j$, then
+\[ {\color{csBlue} d(i)=d(j).} \]
+\end{theorem}
+
+\begin{theorem}
+Let state $i$ have period $d=d(i)\ge 1$.
+\begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item For every $n\ge 1$,
+\[ d\nmid n \quad\implies\quad p_{ii}^{(n)}=0. \]
+\item There exists an integer $N_i\ge 1$ such that
+\[ {\color{csBlue} p_{ii}^{(kd)}>0 \qquad \text{for every integer } k\ge N_i.} \]
+\end{itemize}
+\end{theorem}
+
+\begin{note}
+Some small multiples of $d$ may not be possible return times.
+\end{note}
+
 \end{cscolumns}
 \end{document}
