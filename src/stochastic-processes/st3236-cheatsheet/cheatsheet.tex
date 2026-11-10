@@ -56,5 +56,54 @@ A communication class $\mathcal{C}$ is \key{closed} if the chain cannot leave it
 Every finite-state Markov chain has at least one closed communicating class.
 \end{theorem}
 
+\begin{definition}[Hitting and First-Return Times]
+For a state $j$, define
+\[ T_j=\inf\{n\ge 0: X_n=j\}. \]
+For a process \key{starting from state $i$}, define the \key{first \emph{return} time}
+\[ T_i^{+}=\inf\{n\ge 1: X_n=i\}. \]
+\end{definition}
+
+\begin{remark}
+\begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item $T_j$: the first time to arrive at state $j$.
+\item $T_i^{+}$: we know that we start from $i$, and we wonder the first return time to $i$.
+\end{itemize}
+\end{remark}
+
+\begin{definition}[First-Return Probability]
+Starting from $i$, the probability that the first return occurs exactly at time $n$ is denoted as
+\[ f_{ii}^{(n)}=P_i(T_i^{+}=n), \qquad n\ge 1. \]
+The probability of ever returning is
+\[ f_{ii}=P_i(T_i^{+}<\infty)=\sum_{n=1}^{\infty} f_{ii}^{(n)}. \]
+\end{definition}
+
+\begin{takeaway}
+Consider state $i$. If the process returns to $i$ almost surely (with prob.\ 1), i.e.\ $f_{ii}=1$, then it will return to $i$ infinitely many times, and the total returning prob.\ $\sum\nolimits_{n=1}^{\infty}p_{ii}^{(n)}$ is infinite. We call $i$ \key{recurrent}. This is a class property.
+\end{takeaway}
+
+\begin{definition}[Recurrence and Transience]
+A state $i$ is \key{recurrent} if
+\[ {\color{csBlue} P_i(T_i^{+}<\infty)=1.} \]
+It is \hl{transient} if
+\[ {\color{csRed} P_i(T_i^{+}<\infty)<1.} \]
+\end{definition}
+
+Define the number of visits to $i$ after time zero:
+\[ N_i=\sum_{n=1}^{\infty}\mathbf{1}\{X_n=i\}. \]
+
+\begin{theorem}[Number of Revisits]
+For every $m\ge 1$,
+\[ {\color{csBlue} P_i(N_i\ge m)=(f_{ii})^m.} \]
+Consequently,
+\[ \begin{cases} N_i=\infty \ \text{a.s.,} & f_{ii}=1,\\ N_i<\infty \ \text{a.s.,} & f_{ii}<1. \end{cases} \]
+\end{theorem}
+
+\[ E_i[N_i]=\begin{cases} \dfrac{f_{ii}}{1-f_{ii}}, & f_{ii}<1,\\[4pt] \infty, & f_{ii}=1. \end{cases} \]
+Hence,
+\[ \begin{aligned}
+{\color{csBlue} i \text{ recurrent}} &\iff N_i=\infty \text{ a.s.} \iff E_i[N_i]=\infty,\\
+{\color{csRed} i \text{ transient}} &\iff N_i<\infty \text{ a.s.} \iff E_i[N_i]=\frac{f_{ii}}{1-f_{ii}}.
+\end{aligned} \]
+
 \end{cscolumns}
 \end{document}

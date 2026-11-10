@@ -6,9 +6,9 @@
 %% ---------- SETTINGS ----------
 \RequirePackage[a4paper,landscape,top=11mm,bottom=7mm,left=6mm,right=6mm,
   headheight=9pt,headsep=3pt,footskip=4mm]{geometry}
-\RequirePackage{mathptmx}                % Times text + math
-\RequirePackage[T1]{fontenc}
 \RequirePackage{amsmath,amssymb,bm,mathtools}
+\RequirePackage{fontspec}                % XeLaTeX: house fonts (Times New Roman + MathType-style maths)
+\input{house_fonts.tex}
 \RequirePackage{xcolor,booktabs,tabularx,array,needspace,fancyhdr,lastpage,multicol}
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{enumitem}
@@ -72,25 +72,29 @@
 \DeclareMathOperator{\Var}{Var}\DeclareMathOperator{\Cov}{Cov}\DeclareMathOperator{\Corr}{Corr}
 
 %% ---------- BOXES ----------
-\tcbset{csbox/.style={enhanced,breakable,arc=1.2pt,boxrule=0.6pt,
+\definecolor{csDefFrame}{HTML}{0F1C6E}
+\definecolor{csDefBack}{HTML}{F4F5FC}
+\definecolor{csThmBack}{HTML}{F5F5F5}
+\tcbset{csbox/.style={enhanced,breakable,arc=2pt,boxrule=0.9pt,
   left=3pt,right=3pt,top=1.5pt,bottom=1.5pt,
   before skip=3pt,after skip=3pt,
   before upper={\setlength{\parskip}{1pt}},
-  fonttitle=\bfseries\small,toptitle=0.5pt,bottomtitle=0.5pt,
-  segmentation style={solid},
-  }}
+  fonttitle=\bfseries\small,coltitle=white,
+  toptitle=0.6pt,bottomtitle=0.6pt,lefttitle=4pt,
+  drop fuzzy shadow={black!35},
+  segmentation style={solid}}}
+\newcommand{\csboxtitle}[2]{#1\if\relax\detokenize{#2}\relax\else.\ #2\fi}
 % Theorem (black box):  \begin{theorem}[Name] ... \end{theorem}
-\newtcolorbox{theorem}[1][]{csbox,colframe=black,colback=white,
-  title={Theorem\if\relax\detokenize{#1}\relax\else\ (#1)\fi.},
-  attach title to upper={\ },
-  coltitle=black,colbacktitle=white,boxed title style={empty},
-  before upper={\setlength{\parskip}{1pt}\textbf{Theorem\if\relax\detokenize{#1}\relax\else\ (#1)\fi.}\par\nopagebreak}}
-% Definition (blue box): \begin{definition}[Name] ... \end{definition}
-\newtcolorbox{definition}[1][]{csbox,colframe=csBlue,colback=csBlueTint,
-  before upper={\setlength{\parskip}{1pt}\textcolor{csBlue}{\textbf{Definition\if\relax\detokenize{#1}\relax\else\ (#1)\fi.}}\par\nopagebreak}}
+\newtcolorbox{theorem}[1][]{csbox,colframe=black,colback=csThmBack,colbacktitle=black,
+  title={\csboxtitle{Theorem}{#1}}}
+% Definition (navy/blue box): \begin{definition}[Name] ... \end{definition}
+\newtcolorbox{definition}[1][]{csbox,colframe=csDefFrame,colback=csDefBack,colbacktitle=csDefFrame,
+  title={\csboxtitle{Definition}{#1}}}
 % Remark / Note: no box, bold lead-in then text inline
 \newenvironment{remark}{\par\vspace{1pt}\noindent\textbf{Remark.}\ }{\par\vspace{1pt}}
 \newenvironment{note}{\par\vspace{1pt}\noindent\textbf{Note.}\ }{\par\vspace{1pt}}
+
+\newenvironment{takeaway}{\par\vspace{1pt}\noindent\textbf{Takeaway.}\ }{\par\vspace{1pt}}
 % Example (micro-feature): thin coloured bar on the left, no box
 \newenvironment{example}[1][]{\par\vspace{1.5pt}\noindent
   \begin{tcolorbox}[blank,borderline west={1.2pt}{0pt}{csGrey},left=4pt,top=0pt,bottom=0pt,
