@@ -105,5 +105,34 @@ Hence,
 {\color{csRed} i \text{ transient}} &\iff N_i<\infty \text{ a.s.} \iff E_i[N_i]=\frac{f_{ii}}{1-f_{ii}}.
 \end{aligned} \]
 
+Define the $n$-step return probability
+\[ p_{ii}^{(n)}=P_i(X_n=i). \]
+
+\begin{theorem}[Return-Probability Criterion]
+\[ \begin{aligned}
+i \text{ is recurrent} &\iff \sum_{n=1}^{\infty}p_{ii}^{(n)}=\infty,\\
+i \text{ is transient} &\iff \sum_{n=1}^{\infty}p_{ii}^{(n)}<\infty.
+\end{aligned} \]
+\end{theorem}
+
+Starting from state $i$,
+\[ \begin{aligned}
+i \text{ recurrent} &\iff P_i(T_i^{+}<\infty)=f_{ii}=1\\
+&\iff P_i(N_i=\infty)=1\\
+&\iff E_i[N_i]=\infty\\
+&\iff \sum_{n=1}^{\infty}p_{ii}^{(n)}=\infty.
+\end{aligned} \]
+
+\begin{remark}
+\begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item $f_{ii}^{(n)}=P_i(T_i^{+}=n)$ counts paths whose \emph{first} return occurs at time $n$.
+\item $p_{ii}^{(n)}=P_i(X_n=i)$ counts all paths that are at $i$ at time $n$, including paths that returned earlier.
+\end{itemize}
+\end{remark}
+
+\begin{note}
+So, $f_{ii}^{(n)}\le p_{ii}^{(n)}$.
+\end{note}
+
 \end{cscolumns}
 \end{document}
