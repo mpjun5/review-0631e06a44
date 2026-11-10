@@ -255,5 +255,14 @@ An ergodic chain on a finite or countable state space $S$ has a unique limiting 
 \item \textbf{Multiple classes.} Combine entering probabilities with within-class behaviour. The starting state can affect the limit.
 \end{itemize}
 
+\begin{cstable}{lCCC}
+ & \textbf{Transient} & \textbf{Null recurrent} & \textbf{Positive recurrent} \\ \midrule
+$\mathbb{P}_i(T_i^+<\infty)$ & $f_{ii}<1$ & $1$ & $1$ \\
+$N_i$ & finite a.s. & $\infty$ a.s. & $\infty$ a.s. \\
+$m_i=\E_i[T_i^+]$ & $\infty$ & $\infty$ & finite \\
+$\E_i[N_i]$ & $f_{ii}/(1-f_{ii})$ & $\infty$ & $\infty$ \\
+Long-run fraction & $0$ & $0$ & $1/m_i>0$
+\end{cstable}
+
 \end{cscolumns}
 \end{document}
