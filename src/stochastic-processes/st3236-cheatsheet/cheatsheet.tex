@@ -1,5 +1,6 @@
 \documentclass[8pt,a4paper,landscape]{extarticle}
 \usepackage{cheatsheet-style}   % all styling lives here
+\newcommand{\bpi}{\symbfit{π}}
 \begin{document}
 \begin{cscolumns}
 %% ======================= CLASSIFICATION OF STATES =======================
@@ -186,6 +187,30 @@ A \hl{finite-state} Markov chain with transition matrix $\mathbf{P}$ is \key{reg
 For a finite-state Markov chain,
 \[ {\color{csBlue} \text{regular} \quad\iff\quad \text{irreducible and aperiodic.}} \]
 \end{theorem}
+
+\begin{theorem}
+Let $\{X_n\}$ be a \key{regular} Markov chain on a finite state space $S$, with transition matrix $\mathbf{P}$. There exists a distribution $\bpi=(\pi(j))_{j\in S}$ such that, for every initial distribution $\bpi_0$,
+\[ \lim_{n\to\infty}\bpi_n=\lim_{n\to\infty}\bpi_0\mathbf{P}^n=\bpi. \]
+\begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item The convergence is entrywise convergence, i.e.\ $\pi_n(j)\to\pi(j)$ for all $j\in S$.
+\item This limit is independent of $\bpi_0$, i.e.\ $p_{ij}^{(n)}\to\pi(j)$ for all $i,j\in S$.
+\item $\bpi$ is unique, and it satisfies
+\[ \bpi\mathbf{P}=\bpi, \qquad \sum_{j\in S}\pi(j)=1, \qquad \pi(j)>0. \]
+\end{itemize}
+\end{theorem}
+
+To calculate the limiting distribution, solve
+\[ \bpi\mathbf{P}=\bpi, \qquad {\color{csBlue}\sum_{j\in S}\pi(j)=1,} \qquad \pi(j)\ge 0. \]
+\begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item Before calculation, \hl{verify the convergence first!}
+\item This is a \key{linear system} in the unknowns $(\pi(j))_{j\in S}$.
+\end{itemize}
+
+\begin{remark}
+The $j$th entry $\pi(j)$ of $\bpi$ can be interpreted as the \key{long-run fraction of time spent in state $j$}:
+\[ \left(\frac{1}{n}\sum_{k=1}^{n}\mathbf{1}_{\{X_k=j\}}\right)_{j\in S}\xrightarrow{\text{a.s.}}\bpi. \]
+This convergence holds with probability 1.
+\end{remark}
 
 \end{cscolumns}
 \end{document}
