@@ -264,5 +264,26 @@ $\E_i[N_i]$ & $f_{ii}/(1-f_{ii})$ & $\infty$ & $\infty$ \\
 Long-run fraction & $0$ & $0$ & $1/m_i>0$
 \end{cstable}
 
+\chapterhead*{Stationary Distributions}
+
+\begin{definition}[Stationary Distribution]
+A probability vector $\bpi=(\pi(j))_{j\in S}$ is a \key{stationary distribution} for $\mathbf{P}$ if ${\color{csBlue}\bpi=\bpi\mathbf{P}}$.
+\end{definition}
+
+\begin{definition}[Global Balance Equations]
+A probability vector $\bpi$ satisfies \textbf{global balance} if, for every $j$,
+\[ {\color{csRed}\underbrace{\pi(j)}_{\text{Leaving prob.}}} = {\color{csBlue}\underbrace{\sum_i \pi(i)p_{ij}}_{\text{Arriving prob.}}}\,. \]
+Equivalently, excluding self-transitions, ${\color{csRed}\pi(j)\sum\nolimits_{k\ne j}p_{jk}} = {\color{csBlue}\sum\nolimits_{i\ne j}\pi(i)p_{ij}}$.
+\end{definition}
+
+\begin{definition}[Detailed Balance Equations]
+A probability vector $\bpi$ satisfies the \key{detailed balance equations} if, for every pair $i,j$,
+\[ {\color{csBlue}\pi(i)p_{ij}=\pi(j)p_{ji}}. \]
+\end{definition}
+
+\begin{note}
+Detailed balance $\Rightarrow$ global balance, but the converse is not true.
+\end{note}
+
 \end{cscolumns}
 \end{document}
