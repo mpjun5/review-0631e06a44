@@ -1,0 +1,53 @@
+\documentclass[8pt,a4paper,landscape]{extarticle}
+\usepackage{cheatsheet-style}   % all styling lives here
+% \renewcommand{\cstitle}{...}  % change header title
+\begin{document}
+\begin{cscolumns}
+%% ======================= PAGE 1 =======================
+\chapterhead{Chapter Title}      % one sample chapter heading
+\topic{Sample topic heading}
+Sample body text with a \key{key term} and an \hl{emphasised phrase}.
+\[ f(x)=\int_{0}^{x} t\,dt = \tfrac12 x^{2} \]
+
+\begin{theorem}[Sample name]
+Sample theorem text.
+\[ \E[X]=\sum_x x\,P(X=x) \]
+\end{theorem}
+
+\begin{definition}[Sample name]
+Sample definition text.
+\[ M_X(t)=\E\!\left[e^{tX}\right] \]
+\end{definition}
+
+\begin{remark} Sample remark text, set inline with a bold lead-in.\end{remark}
+\begin{note} Sample note text, set inline with a bold lead-in.\end{note}
+
+\columnbreak
+\topic{Sample table}
+\begin{cstable}{lCC}
+ & Case A & Case B \\ \midrule
+$\E[Z_n]$ & $m^n$ & $km^n$ \\
+$\Var(Z_n)$ & sample & sample
+\end{cstable}
+
+\begin{example}
+Sample example text.
+\[ \Var(X+Y)=\Var X+\Var Y+2\Cov(X,Y) \]
+\end{example}
+
+\columnbreak
+\topic{Column 3}
+Placeholder: content added chapter by chapter flows through all three columns.
+
+%% ======================= PAGE 2 =======================
+\newpage
+\topic{Page 2, column 1}
+Placeholder text for page 2. Add further chapters here with the chapterhead command.
+\columnbreak
+\topic{Page 2, column 2}
+Placeholder text.
+\columnbreak
+\topic{Page 2, column 3}
+Placeholder text.
+\end{cscolumns}
+\end{document}

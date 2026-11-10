@@ -1,0 +1,111 @@
+%% cheatsheet-style.sty -- framework for the ST3236/MA3238 exam cheatsheet
+%% Edit colours / sizes in the "SETTINGS" block; content goes in cheatsheet.tex.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cheatsheet-style}[2026/11/10 cheatsheet framework]
+
+%% ---------- SETTINGS ----------
+\RequirePackage[a4paper,landscape,top=11mm,bottom=7mm,left=6mm,right=6mm,
+  headheight=9pt,headsep=3pt,footskip=4mm]{geometry}
+\RequirePackage{mathptmx}                % Times text + math
+\RequirePackage[T1]{fontenc}
+\RequirePackage{amsmath,amssymb,bm,mathtools}
+\RequirePackage{xcolor,booktabs,tabularx,array,needspace,fancyhdr,lastpage,multicol}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{enumitem}
+
+\definecolor{csBlue}{HTML}{1F5FBF}      % definition box / key terms
+\definecolor{csBlueTint}{HTML}{EAF2FD}
+\definecolor{csRed}{HTML}{C62828}       % emphasis
+\definecolor{csNavy}{HTML}{16325C}      % topic sub-headings
+\definecolor{csGrey}{HTML}{6B6B6B}
+
+\newcommand{\csBaseSize}{8}             % body font size (pt); lower it if content overflows
+\newcommand{\csBaseSkip}{9.2}           % baseline skip (pt)
+\setlength{\columnsep}{7pt}
+\setlength{\columnseprule}{0.45pt}      % vertical rule between columns
+\renewcommand{\columnseprulecolor}{\color{black!70}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.2pt plus 0.5pt}
+\setlist{nosep,leftmargin=9pt,itemsep=0pt,topsep=0.5pt,parsep=0pt}
+\setlength{\abovedisplayskip}{2pt plus 1pt minus 1pt}
+\setlength{\belowdisplayskip}{2pt plus 1pt minus 1pt}
+\setlength{\abovedisplayshortskip}{1pt}
+\setlength{\belowdisplayshortskip}{1pt}
+
+\AtBeginDocument{\fontsize{\csBaseSize}{\csBaseSkip}\selectfont}
+
+%% ---------- HEADER / FOOTER (course title, page x/2) ----------
+\newcommand{\cstitle}{ST3236 / MA3238 -- Stochastic Processes I}
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[C]{\bfseries\small\cstitle}
+\fancyhead[R]{\footnotesize\color{csGrey}\thepage/\pageref*{LastPage}}
+\fancyhead[L]{\footnotesize\color{csGrey}Cheatsheet}
+\fancyfoot{}
+
+%% ---------- HARD CAP: exactly 2 pages ----------
+\AtEndDocument{\clearpage\ifnum\value{page}>3
+  \PackageError{cheatsheet-style}{Cheatsheet exceeds 2 pages}{Shrink \string\csBaseSize\space or trim content.}\fi}
+
+%% ---------- CHAPTER HEADING ----------
+\newcounter{cschapter}
+% \chapterhead{Title}   -> "Lect N." + title, big white-on-black bar
+% \chapterhead*{Title}  -> no number
+\NewDocumentCommand{\chapterhead}{s m}{%
+  \par\Needspace{6\baselineskip}\vspace{3pt}%
+  \IfBooleanF{#1}{\stepcounter{cschapter}}%
+  \noindent\begin{tcolorbox}[enhanced,boxrule=0pt,arc=0pt,left=3pt,right=3pt,top=1.5pt,bottom=1.5pt,
+      colback=black,colupper=white,borderline south={1.6pt}{0pt}{csBlue},
+      width=\linewidth,before skip=0pt,after skip=2pt]
+    \bfseries\fontsize{12}{13}\selectfont
+    \IfBooleanF{#1}{\textcolor{csBlueTint}{Lect \thecschapter.}\enspace}#2
+  \end{tcolorbox}\nopagebreak}
+
+%% ---------- TOPIC SUB-HEADING (like "MGF", "Joint", "Covariance") ----------
+\newcommand{\topic}[1]{\par\Needspace{3\baselineskip}\vspace{1.5pt}%
+  \noindent{\bfseries\color{csNavy}\footnotesize$\blacksquare$\,\fontsize{9}{10}\selectfont #1}\par\nopagebreak\vspace{0.5pt}}
+
+%% ---------- INLINE HELPERS ----------
+\newcommand{\key}[1]{\textcolor{csBlue}{\textbf{#1}}}   % defined term
+\newcommand{\hl}[1]{\textcolor{csRed}{\textbf{#1}}}     % emphasis
+\newcommand{\E}{\mathbb{E}}
+\DeclareMathOperator{\Var}{Var}\DeclareMathOperator{\Cov}{Cov}\DeclareMathOperator{\Corr}{Corr}
+
+%% ---------- BOXES ----------
+\tcbset{csbox/.style={enhanced,breakable,arc=1.2pt,boxrule=0.6pt,
+  left=3pt,right=3pt,top=1.5pt,bottom=1.5pt,
+  before skip=3pt,after skip=3pt,
+  before upper={\setlength{\parskip}{1pt}},
+  fonttitle=\bfseries\small,toptitle=0.5pt,bottomtitle=0.5pt,
+  segmentation style={solid},
+  }}
+% Theorem (black box):  \begin{theorem}[Name] ... \end{theorem}
+\newtcolorbox{theorem}[1][]{csbox,colframe=black,colback=white,
+  title={Theorem\if\relax\detokenize{#1}\relax\else\ (#1)\fi.},
+  attach title to upper={\ },
+  coltitle=black,colbacktitle=white,boxed title style={empty},
+  before upper={\setlength{\parskip}{1pt}\textbf{Theorem\if\relax\detokenize{#1}\relax\else\ (#1)\fi.}\par\nopagebreak}}
+% Definition (blue box): \begin{definition}[Name] ... \end{definition}
+\newtcolorbox{definition}[1][]{csbox,colframe=csBlue,colback=csBlueTint,
+  before upper={\setlength{\parskip}{1pt}\textcolor{csBlue}{\textbf{Definition\if\relax\detokenize{#1}\relax\else\ (#1)\fi.}}\par\nopagebreak}}
+% Remark / Note: no box, bold lead-in then text inline
+\newenvironment{remark}{\par\vspace{1pt}\noindent\textbf{Remark.}\ }{\par\vspace{1pt}}
+\newenvironment{note}{\par\vspace{1pt}\noindent\textbf{Note.}\ }{\par\vspace{1pt}}
+% Example (micro-feature): thin coloured bar on the left, no box
+\newenvironment{example}[1][]{\par\vspace{1.5pt}\noindent
+  \begin{tcolorbox}[blank,borderline west={1.2pt}{0pt}{csGrey},left=4pt,top=0pt,bottom=0pt,
+     before skip=0pt,after skip=0pt,breakable,before upper={\textbf{Example.}\ #1}]}
+  {\end{tcolorbox}\vspace{1.5pt}}
+
+%% ---------- COMPACT TABLES ----------
+% \begin{cstable}{lCC} ... \end{cstable}; C = centred X column, L = left X column
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newenvironment{cstable}[1]{\par\vspace{1pt}\begingroup\footnotesize
+  \setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.12}%
+  \setlength{\heavyrulewidth}{0.7pt}\setlength{\lightrulewidth}{0.4pt}%
+  \noindent\tabularx{\linewidth}{#1}\toprule}
+  {\\\bottomrule\endtabularx\endgroup\par\vspace{1pt}}
+%% ---------- 3-COLUMN BODY ----------
+\newenvironment{cscolumns}{\begin{multicols*}{3}\raggedcolumns}{\end{multicols*}}
+\endinput
