@@ -323,6 +323,22 @@
           "deleted": null
         }
       ]
+    },
+    {
+      "name": "Differential Equations",
+      "slug": "differential-equations",
+      "docs": [
+        {
+          "title": "Differential Equations: Workshop",
+          "slug": "differential-equations-workshop",
+          "updated": "10 Nov 2026, 10:34 PM SGT",
+          "size_kb": 80,
+          "source": "src/differential-equations/differential-equations-workshop/Workshop.tex",
+          "type": "Document",
+          "status": "in progress",
+          "deleted": null
+        }
+      ]
     }
   ]
 }
