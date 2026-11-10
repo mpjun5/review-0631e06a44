@@ -35,5 +35,26 @@ A \key{communication class} is a maximal set $\mathcal{C}\subseteq S$ whose stat
 Communication classes form a partition of the state space $S$.
 \end{note}
 
+\begin{definition}[Irreducible chains]
+A Markov chain is \key{irreducible} if it has exactly one communication class. Otherwise, it is \key{reducible}.
+\end{definition}
+
+\begin{definition}[Closed Class]
+A communication class $\mathcal{C}$ is \key{closed} if the chain cannot leave it:
+\[ p_{ij}=0 \qquad \text{for every } i\in\mathcal{C} \text{ and } j\notin\mathcal{C}. \]
+\end{definition}
+
+\begin{remark}
+\begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item Once $X_n\in\mathcal{C}$ for any $n$, all future states $X_{n+m}$ remain in $\mathcal{C}$ with probability 1, any $m\ge 0$.
+\item An \key{absorbing state} $i$ satisfies $p_{ii}=1$. Hence $\{i\}$ is a closed class.
+\item A closed class may contain several states and the chain may continue moving inside it.
+\end{itemize}
+\end{remark}
+
+\begin{theorem}
+Every finite-state Markov chain has at least one closed communicating class.
+\end{theorem}
+
 \end{cscolumns}
 \end{document}
