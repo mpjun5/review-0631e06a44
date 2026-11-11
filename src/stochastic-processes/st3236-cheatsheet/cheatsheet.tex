@@ -258,23 +258,23 @@ An ergodic chain on a finite or countable state space $S$ has a unique limiting 
 
 \begin{cstable}{lCCC}
  & \textbf{Transient} & \textbf{Null recurrent} & \textbf{Positive recurrent} \\ \midrule
-$\mathbb{P}_i(T_i^+<\infty)$ & $f_{ii}<1$ & $1$ & $1$ \\
-$N_i$ & finite a.s. & $\infty$ a.s. & $\infty$ a.s. \\
-$m_i=\E_i[T_i^+]$ & $\infty$ & $\infty$ & finite \\
-$\E_i[N_i]$ & $f_{ii}/(1-f_{ii})$ & $\infty$ & $\infty$ \\
+$\mathbb{P}_i(T_i^+<\infty)$ & $f_{ii}<1$ & $1$ & $1$ \\ \midrule
+$N_i$ & finite a.s. & $\infty$ a.s. & $\infty$ a.s. \\ \midrule
+$m_i=\E_i[T_i^+]$ & $\infty$ & $\infty$ & finite \\ \midrule
+$\E_i[N_i]$ & $f_{ii}/(1-f_{ii})$ & $\infty$ & $\infty$ \\ \midrule
 Long-run fraction & $0$ & $0$ & $1/m_i>0$
 \end{cstable}
 
 \topic{Shared Properties Within a Class}
 \begin{cstable}{Lr}
 \textbf{Property} & \textbf{Shared throughout a communicating class?} \\ \midrule
-Recurrent or transient & Yes \\
-Positive recurrent or null recurrent & Yes \\
-Period & Yes \\
-Stationary probability value $\pi(i)$ & Not necessarily \\
-Expected return time $\E_i[T_i^+]$ & Not necessarily \\
-Individual transition probabilities & Not necessarily \\
-Exact hitting times & Not necessarily \\
+Recurrent or transient & Yes \\ \midrule
+Positive recurrent or null recurrent & Yes \\ \midrule
+Period & Yes \\ \midrule
+Stationary probability value $\pi(i)$ & Not necessarily \\ \midrule
+Expected return time $\E_i[T_i^+]$ & Not necessarily \\ \midrule
+Individual transition probabilities & Not necessarily \\ \midrule
+Exact hitting times & Not necessarily \\ \midrule
 Closedness & A property of the whole class
 \end{cstable}
 
@@ -307,15 +307,15 @@ For an \key{irreducible} chain, the existence of a stationary probability distri
 \topic{Condition for Unique Stationary Distribution}
 \begin{cstable}{>{\raggedright\arraybackslash}p{0.27\linewidth}CCC}
 \textbf{Chain structure} & \textbf{Is the stationary distribution $\pi_*$ unique?} & \textbf{Does $\pi_n=\pi_0P^n$ converge?} & \textbf{Is the limit independent of $\pi_0$?} \\ \midrule
-Finite, irreducible, aperiodic & Yes & Yes & Yes \\
-Finite, irreducible, periodic & Yes & Generally no & No single full limit \\
-Finite, reducible, exactly one closed class, aperiodic & Yes & Yes & Yes \\
-Finite, reducible, exactly one closed class, periodic & Yes & Generally no & No single full limit \\
-Finite, reducible, multiple closed classes, all aperiodic & No & Yes & Generally no \\
-Finite, reducible, multiple closed classes, some periodic & No & May fail & Generally no \\
-Countable, irreducible, positive recurrent, aperiodic & Yes & Yes & Yes \\
-Countable, irreducible, positive recurrent, periodic & Yes & Generally no & No single full limit \\
-Countable, irreducible, null recurrent & No stationary probability distribution & No & Not applicable \\
+Finite, irreducible, aperiodic & Yes & Yes & Yes \\ \midrule
+Finite, irreducible, periodic & Yes & Generally no & No single full limit \\ \midrule
+Finite, reducible, exactly one closed class, aperiodic & Yes & Yes & Yes \\ \midrule
+Finite, reducible, exactly one closed class, periodic & Yes & Generally no & No single full limit \\ \midrule
+Finite, reducible, multiple closed classes, all aperiodic & No & Yes & Generally no \\ \midrule
+Finite, reducible, multiple closed classes, some periodic & No & May fail & Generally no \\ \midrule
+Countable, irreducible, positive recurrent, aperiodic & Yes & Yes & Yes \\ \midrule
+Countable, irreducible, positive recurrent, periodic & Yes & Generally no & No single full limit \\ \midrule
+Countable, irreducible, null recurrent & No stationary probability distribution & No & Not applicable \\ \midrule
 Countable, irreducible, transient & No stationary probability distribution & No & Not applicable
 \end{cstable}
 For an ergodic chain---irreducible, positive recurrent, and aperiodic---the limit is independent of the initial distribution $\pi_0$ and equals the unique stationary distribution $\pi_*$. A stationary distribution can still be unique when the chain is periodic; periodicity affects convergence, not uniqueness.
