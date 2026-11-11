@@ -123,13 +123,13 @@
 
 % tcolorbox custom environments
 % Definition ========================================================
-\newtcolorbox[auto counter,number within=subsection]{definition}[2][drop shadow]{%
+\newtcolorbox[auto counter,number within=section]{definition}[2][drop shadow]{%
 enhanced, before skip=5mm, after skip=6mm, % [V3 ADDITION] spacing
 colback=blue!5!white,colframe=blue!50!black,fonttitle=\bfseries,
 title= Definition~\thetcbcounter. #2,#1}
 
 % Theorem ==========================================================
-\newtcolorbox[auto counter,number within=subsection]{theorem}[2][drop shadow]{%
+\newtcolorbox[auto counter,number within=section]{theorem}[2][drop shadow]{%
 enhanced, before skip=5mm, after skip=6mm, % [V3 ADDITION] spacing
 colback=black!5!white,colframe=black,fonttitle=\bfseries,
 title= Theorem~\thetcbcounter. #2,#1}
@@ -193,12 +193,12 @@ drop fuzzy shadow,#1}
 
 
 % [V3 ADDITION] Worked example box ==================================
-% Own counter, numbered within the subsection (Example 13.4.5.1; boxes before the first subsection are x.y.0.n; was within the section until 11 Nov 2026) (was: Example 11.2.1, 11.2.2, ...).
+% Own counter, numbered within the section (Example 13.4.3 = section-level counter, per Maximus 11 Nov 2026; do not use 4-level numbers). Was: Example 11.2.1, 11.2.2, ...
 % For per-subsection numbering (11.2.1.1) change `section' to `subsection'. Blue `question' boxes are kept for thought-provoking questions
 % only; worked examples always use this box. Usage:
 %   \begin{example} ...question text... \end{example}
 %   \solution{...}
-\newtcolorbox[auto counter,number within=subsection]{example}[1][]{%
+\newtcolorbox[auto counter,number within=section]{example}[1][]{%
 enhanced, breakable=false, before skip=5mm, after skip=4mm,
 colback=teal!5!white, colframe=teal!55!black, boxrule=0.8pt,
 left=3mm, right=3mm, top=2mm, bottom=2mm,
