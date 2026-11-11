@@ -1,0 +1,57 @@
+% =====================================================================
+% vec_common.tex: shared by the notes (via notes/preamble_local.tex) and
+% the slides (via slides/slides_local.tex) for the Vectors chapter.
+%
+%   CHAPTER NUMBER: change the 13 below and rebuild. The notes set the
+%   chapter counter from it, and every slide frame title, Example/Quiz
+%   number and box number on the slides uses \chapnum.
+% =====================================================================
+\def\chapnum{13}
+
+% ---- answers -------------------------------------------------------------
+% \ans{key}{value} just prints the value. checks/verify.py reads every
+% \ans in the notes and slides and checks it with sympy.
+\newcommand{\ans}[2]{#2}
+
+% Column vector, the form used in MF27 and in the examples.
+% pmatrix cells are text style, so \dfrac alone still looks small and the
+% rows collide. Force display style in every cell and open the rows up.
+% Each cell gets a strut as tall as its own content plus \colpad above and
+% below, so rows of \dfrac never touch, while integer rows stay compact.
+\newlength{\colpad}\setlength{\colpad}{0.55ex}
+\newcommand{\colcell}[1]{%
+  \setbox0=\hbox{$\displaystyle #1$}%
+  \rule[-\dimexpr\dp0+\colpad\relax]{0pt}{\dimexpr\ht0+\dp0+2\colpad\relax}%
+  \box0}
+\newcommand{\col}[3]{%
+  \begingroup
+  \renewcommand{\arraystretch}{1.35}%
+  \begin{pmatrix}
+    \colcell{#1}\\
+    \colcell{#2}\\
+    \colcell{#3}
+  \end{pmatrix}%
+  \endgroup
+}
+
+% \place{Name}{x}{y}{z} defines a TikZ coordinate. The parentheses are
+% inside the macro, so TikZ sees them only after expansion, and
+% checks/verify.py can read the drawn coordinates back out.
+\newcommand{\place}[4]{\coordinate (#1) at (#2,#3,#4);}
+
+% ---- 3D pictures ----------------------------------------------------------
+% Oblique axes: x to the right and slightly down, y out of the page,
+% z straight up. Use scale to fit the frame.
+\tikzset{
+  threeD/.style={
+    x={(0.78cm,-0.20cm)},
+    y={(0.36cm,0.26cm)},
+    z={(0cm,0.78cm)},
+    line cap=round, line join=round,
+    >=Stealth
+  },
+  varr/.style={->, thick},
+  pt/.style={circle, fill=black, inner sep=1.15pt},
+  plane/.style={fill=blue!12, draw=blue!45!black, thick, fill opacity=0.85},
+  hid/.style={dashed, black!55}
+}
