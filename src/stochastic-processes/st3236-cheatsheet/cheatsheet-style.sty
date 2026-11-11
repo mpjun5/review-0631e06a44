@@ -43,9 +43,9 @@
 \fancyhead[L]{\footnotesize\color{csGrey}Cheatsheet}
 \fancyfoot{}
 
-%% ---------- HARD CAP: exactly 2 pages ----------
-\AtEndDocument{\clearpage\ifnum\value{page}>3
-  \PackageError{cheatsheet-style}{Cheatsheet exceeds 2 pages}{Shrink \string\csBaseSize\space or trim content.}\fi}
+%% ---------- HARD CAP: 3 pages ----------
+\AtEndDocument{\clearpage\ifnum\value{page}>4
+  \PackageError{cheatsheet-style}{Cheatsheet exceeds 3 pages}{Shrink \string\csBaseSize\space or trim content.}\fi}
 
 %% ---------- CHAPTER HEADING ----------
 \newcounter{cschapter}

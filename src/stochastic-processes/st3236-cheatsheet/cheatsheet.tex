@@ -321,4 +321,48 @@ Countable, irreducible, transient & No stationary probability distribution & No 
 For an ergodic chain---irreducible, positive recurrent, and aperiodic---the limit is independent of the initial distribution $\pi_0$ and equals the unique stationary distribution $\pi_*$. A stationary distribution can still be unique when the chain is periodic; periodicity affects convergence, not uniqueness.
 
 \end{cscolumns}
+\newpage
+\begin{cscolumns}
+\chapterhead*{Markov Chain Monte Carlo}
+\begin{definition}[Metropolis--Hastings Construction]
+Given the target $\bpi$ on $S$, construct $\mathbf{P}$ in three steps.
+\begin{enumerate}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item \key{Choose a proposal matrix $\mathbf{Q}$} on $S$: transition probability matrix, irreducible
+\item \key{Specify the acceptance probabilities:}
+\[ \alpha(i,j)=\min\left\{1,\frac{\pi_jq_{ji}}{\pi_iq_{ij}}\right\} \quad (i\ne j,\ q_{ij}>0). \]
+\item \key{Construct the transition prob.\ matrix $\mathbf{P}$:}
+\[ p_{ij}=q_{ij}\alpha(i,j)\quad(j\ne i),\qquad p_{ii}=1-\sum_{j\ne i}p_{ij}. \]
+\end{enumerate}
+This specifies the law of the MC
+\end{definition}
+
+\begin{definition}[Metropolis--Hastings Implementation]
+Choose $X_0\in S$. Given $X_n=i$, generate one step as follows.
+\begin{enumerate}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item Draw a proposal $Y_n$ with $\mathbb{P}(Y_n=j\mid X_n=i)=q_{ij}$.
+\item Independently draw $U_n\sim\mathrm{Uniform}(0,1)$.
+\item Set
+\[ {\color{csBlue}X_{n+1}}=\begin{cases} Y_n, & U_n<\alpha(i,Y_n),\\ i, & U_n\ge\alpha(i,Y_n). \end{cases} \]
+\item Record $X_{n+1}$, and continue.
+\end{enumerate}
+\end{definition}
+\noindent Metropolis-Hastings algorithm:
+\begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item The acceptance probability follows that
+\[ {\color{csBlue}\alpha(i,j)=\min\left\{1,\frac{w_jq_{ji}}{w_iq_{ij}}\right\}}. \]
+No calculation of $C$.
+\item The target must still be normalizable: $Z<\infty$ is required.
+\end{itemize}
+\noindent Now $\bpi$ satisfies the detailed balance equations, so ${\color{csBlue}\bpi\mathbf{P}=\bpi}$.
+\begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
+\item \key{Irreducibility:} One-way proposals are rejected. Check if two-way proposals are sufficient for irreducibility.
+\item \key{Positive recurrence:} follows from irreducibility and the stationary probability distribution $\bpi$ (proof not in class)
+\item \key{Aperiodicity:} Rejection makes $p_{ii}>0$ for one state $i$.
+\end{itemize}
+\begin{theorem}[Guarantee of Convergence]
+Under these conditions, for every $i,j\in S$,
+\[ {\color{csBlue}\mathbb{P}(X_n=j\mid X_0=i)\longrightarrow\pi_j}. \]
+\end{theorem}
+
+\end{cscolumns}
 \end{document}
