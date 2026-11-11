@@ -304,5 +304,21 @@ Detailed balance $\Rightarrow$ global balance, but the converse is not true.
 For an \key{irreducible} chain, the existence of a stationary probability distribution implies \hl{positive recurrence}.
 \end{theorem}
 
+\topic{Condition for Unique Stationary Distribution}
+\begin{cstable}{>{\raggedright\arraybackslash}p{0.27\linewidth}CCC}
+\textbf{Chain structure} & \textbf{Is the stationary distribution $\pi_*$ unique?} & \textbf{Does $\pi_n=\pi_0P^n$ converge?} & \textbf{Is the limit independent of $\pi_0$?} \\ \midrule
+Finite, irreducible, aperiodic & Yes & Yes & Yes \\
+Finite, irreducible, periodic & Yes & Generally no & No single full limit \\
+Finite, reducible, exactly one closed class, aperiodic & Yes & Yes & Yes \\
+Finite, reducible, exactly one closed class, periodic & Yes & Generally no & No single full limit \\
+Finite, reducible, multiple closed classes, all aperiodic & No & Yes & Generally no \\
+Finite, reducible, multiple closed classes, some periodic & No & May fail & Generally no \\
+Countable, irreducible, positive recurrent, aperiodic & Yes & Yes & Yes \\
+Countable, irreducible, positive recurrent, periodic & Yes & Generally no & No single full limit \\
+Countable, irreducible, null recurrent & No stationary probability distribution & No & Not applicable \\
+Countable, irreducible, transient & No stationary probability distribution & No & Not applicable
+\end{cstable}
+For an ergodic chain---irreducible, positive recurrent, and aperiodic---the limit is independent of the initial distribution $\pi_0$ and equals the unique stationary distribution $\pi_*$. A stationary distribution can still be unique when the chain is periodic; periodicity affects convergence, not uniqueness.
+
 \end{cscolumns}
 \end{document}
