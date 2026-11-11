@@ -266,27 +266,17 @@ Long-run fraction & $0$ & $0$ & $1/m_i>0$
 \end{cstable}
 
 \topic{Shared Properties Within a Class}
-\begin{cstable}{>{\raggedright\arraybackslash}p{0.2\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}L}
-\textbf{Property} & \textbf{Shared by all states in the class?} & \textbf{Explanation} \\ \midrule
-Recurrence or transience & Yes & If one state is recurrent, every state in the class is recurrent. Otherwise, they are all transient. \\
-Positive or null recurrence & Yes & All recurrent states in the class are either positive recurrent or null recurrent. \\
-Period & Yes & If one state has period $d$, every communicating state has the same period $d$. \\
-Closedness & Yes, as a class property & A communicating class is either closed or not closed. If one state has a possible transition outside the class, the class is not closed. \\
-Communication structure & Yes & By definition, every pair of states in the class communicates.
+\begin{cstable}{Lr}
+\textbf{Property} & \textbf{Shared throughout a communicating class?} \\ \midrule
+Recurrent or transient & Yes \\
+Positive recurrent or null recurrent & Yes \\
+Period & Yes \\
+Stationary probability value $\pi(i)$ & Not necessarily \\
+Expected return time $\E_i[T_i^+]$ & Not necessarily \\
+Individual transition probabilities & Not necessarily \\
+Exact hitting times & Not necessarily \\
+Closedness & A property of the whole class
 \end{cstable}
-\noindent\textbf{Properties that are not necessarily shared.} The following \textbf{values or detailed behaviors can differ from state to state}:
-\begin{itemize}\setlength\itemsep{0pt}\setlength\topsep{0pt}
-\item The expected first-return time;
-\item The stationary probability $\pi(i)$;
-\item The probability of returning at a particular time $n$;
-\item Whether there is a one-step self-loop;
-\item The exact set of possible return times;
-\item Transition probabilities to individual states;
-\item Expected hitting times to another state.
-\end{itemize}
-\noindent\textbf{Important distinction about period.} The \textbf{period} is shared, but the exact return-time probabilities need not be.
-
-For example, two states may both have period $3$, meaning their possible return times have greatest common divisor $3$. However, one state might be able to return after $3$ steps while another can first return only after $6$ steps. The period is still the same.
 
 \columnbreak
 \chapterhead*{Stationary Distributions}
