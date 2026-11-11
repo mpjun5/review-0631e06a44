@@ -137,8 +137,8 @@
         {
           "title": "Vectors I: Notes",
           "slug": "vectors-i-notes",
-          "updated": "09 Nov 2026, 11:16 PM SGT",
-          "size_kb": 182,
+          "updated": "11 Nov 2026, 10:37 PM SGT",
+          "size_kb": 181,
           "status": "in progress",
           "source": "src/vectors/vectors-i-notes/Vectors_I_Notes.tex",
           "type": "Notes",
@@ -167,7 +167,7 @@
         {
           "title": "Vectors I: Basics Worksheet",
           "slug": "vectors-basics-worksheet",
-          "updated": "09 Nov 2026, 11:16 PM SGT",
+          "updated": "11 Nov 2026, 10:37 PM SGT",
           "size_kb": 106,
           "status": "in progress",
           "type": "Worksheet",
@@ -177,8 +177,8 @@
         {
           "title": "Vectors I: Basics Worksheet Solutions",
           "slug": "vectors-basics-worksheet-solutions",
-          "updated": "09 Nov 2026, 11:16 PM SGT",
-          "size_kb": 158,
+          "updated": "11 Nov 2026, 10:37 PM SGT",
+          "size_kb": 155,
           "status": "in progress",
           "type": "Worksheet",
           "source": "src/vectors/vectors-basics-worksheet-solutions/Vectors_Basics_Worksheet_Solutions.tex",
@@ -187,7 +187,7 @@
         {
           "title": "Vectors I: Homework 1 (Introduction to Vectors in Three Dimensions)",
           "slug": "vectors-i-hw1-introduction-to-ratio-theorem",
-          "updated": "09 Nov 2026, 10:24 PM SGT",
+          "updated": "11 Nov 2026, 10:37 PM SGT",
           "size_kb": 87,
           "source": "src/vectors/vectors-i-hw1-introduction-to-ratio-theorem/Vectors_I_HW1.tex",
           "type": "Homework",
@@ -197,7 +197,7 @@
         {
           "title": "Vectors I: Homework 2 (Scalar Product)",
           "slug": "vectors-i-hw2-scalar-product",
-          "updated": "09 Nov 2026, 11:16 PM SGT",
+          "updated": "11 Nov 2026, 10:37 PM SGT",
           "size_kb": 89,
           "source": "src/vectors/vectors-i-hw2-scalar-product/Main.tex",
           "type": "Homework",
@@ -207,7 +207,7 @@
         {
           "title": "Vectors I: Homework 1 (Introduction to Vectors in Three Dimensions) Solutions",
           "slug": "vectors-i-hw1-introduction-to-ratio-theorem-solutions",
-          "updated": "09 Nov 2026, 11:16 PM SGT",
+          "updated": "11 Nov 2026, 10:37 PM SGT",
           "size_kb": 116,
           "source": "src/vectors/vectors-i-hw1-introduction-to-ratio-theorem-solutions/Vectors_I_HW1_Solutions.tex",
           "type": "Solutions",
@@ -217,8 +217,8 @@
         {
           "title": "Vectors I: Homework 2 (Scalar Product) Solutions",
           "slug": "vectors-i-hw2-scalar-product-solutions",
-          "updated": "09 Nov 2026, 11:16 PM SGT",
-          "size_kb": 126,
+          "updated": "11 Nov 2026, 10:37 PM SGT",
+          "size_kb": 117,
           "source": "src/vectors/vectors-i-hw2-scalar-product-solutions/Main_Solutions.tex",
           "type": "Solutions",
           "status": "in progress",
@@ -227,7 +227,7 @@
         {
           "title": "Vectors I: Homework 3 (Vector Product)",
           "slug": "vectors-i-hw3-vector-product",
-          "updated": "09 Nov 2026, 11:16 PM SGT",
+          "updated": "11 Nov 2026, 10:37 PM SGT",
           "size_kb": 93,
           "source": "src/vectors/vectors-i-hw3-vector-product/HW3_Questions.tex",
           "type": "Homework",
@@ -237,7 +237,7 @@
         {
           "title": "Vectors I: Homework 3 (Vector Product) Solutions",
           "slug": "vectors-i-hw3-vector-product-solutions",
-          "updated": "09 Nov 2026, 11:16 PM SGT",
+          "updated": "11 Nov 2026, 10:37 PM SGT",
           "size_kb": 127,
           "source": "src/vectors/vectors-i-hw3-vector-product-solutions/HW3_Solutions.tex",
           "type": "Solutions",
@@ -247,7 +247,7 @@
         {
           "title": "Vectors I: Test",
           "slug": "vectors-i-test",
-          "updated": "09 Nov 2026, 11:35 PM SGT",
+          "updated": "11 Nov 2026, 10:37 PM SGT",
           "size_kb": 119,
           "source": "src/vectors/vectors-i-test/Vectors_I_Test.tex",
           "type": "Test",
@@ -257,7 +257,7 @@
         {
           "title": "Vectors I: Test Solutions",
           "slug": "vectors-i-test-solutions",
-          "updated": "09 Nov 2026, 11:35 PM SGT",
+          "updated": "11 Nov 2026, 10:37 PM SGT",
           "size_kb": 112,
           "source": "src/vectors/vectors-i-test-solutions/Vectors_I_Test_Solutions.tex",
           "type": "Solutions",
