@@ -20,8 +20,8 @@
 {Compiled by Maximus Pung Jun}\par\smallskip
 {\small\textcolor{black!60}{Basics of vectors: $\mathbf i$, $\mathbf j$, $\mathbf k$ notation, magnitude, unit vectors, parallel vectors, collinear points, the ratio theorem, the scalar product and the vector product. Total: 29 marks (Practice Problems; sections 1--8 are unmarked exercises).}}\par\medskip
 \wsec{$\mathbf{i}$, $\mathbf{j}$, $\mathbf{k}$ Notation and Column Vectors}
-\Q{Write $\mathbf a=3\mathbf i-2\mathbf j+5\mathbf k$ as a column vector, and write $\mathbf b=\col{4}{0}{-1}$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
-\Q{The points $A$ and $B$ have coordinates $(1,2,3)$ and $(4,6,1)$. Find $\overrightarrow{AB}$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
+\Q{Write $\mathbf a=3\mathbf i-2\mathbf j+5\mathbf k$ as a column vector.}
+\Q{The points $A$ and $B$ have coordinates $(1,2,3)$ and $(4,6,1)$. Find $\overrightarrow{AB}$.}
 \begin{center}\begin{tikzpicture}[x={(0.8cm,0cm)},y={(0.4cm,0.32cm)},z={(0cm,0.8cm)},>=Stealth,line cap=round]
 \draw[ax](0,0,0)--(5.8,0,0) node[right]{\scriptsize$x$};
 \draw[ax](0,0,0)--(0,7,0) node[above right]{\scriptsize$y$};
@@ -33,7 +33,7 @@
 \node[dot,label=above:{\scriptsize$A(1,2,3)$}] at (1,2,3){};
 \node[dot,label=right:{\scriptsize$B(4,6,1)$}] at (4,6,1){};
 \end{tikzpicture}\end{center}
-\Q{Given $\mathbf p=2\mathbf i+\mathbf k$ and $\mathbf q=-\mathbf i+3\mathbf j$, find $\mathbf r$ such that $2\mathbf p-3\mathbf q+\mathbf r=\mathbf 0$. Give $\mathbf r$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
+\Q{Given $\mathbf p=2\mathbf i+\mathbf k$ and $\mathbf q=-\mathbf i+3\mathbf j$, find $\mathbf r$ such that $2\mathbf p-3\mathbf q+\mathbf r=\mathbf 0$.}
 \Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
 \par\smallskip{\setlength{\extrarowheight}{6pt}\renewcommand{\arraystretch}{1.18}\begin{longtable}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
 \hline &\textbf{Statement}&\textbf{T/F}\\\hline\endhead
@@ -44,7 +44,7 @@
 \textbf{(e)}&$\overrightarrow{AB}=\overrightarrow{OA}-\overrightarrow{OB}$\rule[-8pt]{0pt}{8pt}&\\\hline
 \end{longtable}}
 \clearpage\wsec{Magnitude}
-\Q{Find $|2\mathbf i-3\mathbf j+6\mathbf k|$.}
+\Q{Find $\left|\col{2}{-3}{6}\right|$.}
 \Q{The points $A$ and $B$ have coordinates $(1,2,-1)$ and $(3,-4,2)$. Find the distance $AB$.}
 \Q{Given $\mathbf a=\col{t}{2}{t-1}$ and $|\mathbf a|=3$, find the possible values of $t$.}
 \Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
@@ -54,7 +54,7 @@
 \textbf{(b)}&$|3\mathbf a|=3|\mathbf a|$\rule[-8pt]{0pt}{8pt}&\\\hline
 \textbf{(c)}&$\left|\col{0}{-5}{0}\right|=-5$\rule[-8pt]{0pt}{8pt}&\\\hline
 \textbf{(d)}&$\left|\col{1}{1}{1}\right|=1$\rule[-8pt]{0pt}{8pt}&\\\hline
-\textbf{(e)}&$|\mathbf i+2\mathbf j-2\mathbf k|=1+2-2=1$\rule[-8pt]{0pt}{8pt}&\\\hline
+\textbf{(e)}&$\left|\col{1}{2}{-2}\right|=1+2-2=1$\rule[-8pt]{0pt}{8pt}&\\\hline
 \textbf{(f)}&$|\mathbf a+\mathbf b|=|\mathbf a|+|\mathbf b|$ for all vectors $\mathbf a$, $\mathbf b$\rule[-8pt]{0pt}{8pt}&\\\hline
 \textbf{(g)}&$|\mathbf a+\mathbf b|\le|\mathbf a|+|\mathbf b|$ for all vectors $\mathbf a$, $\mathbf b$\rule[-8pt]{0pt}{8pt}&\\\hline
 \textbf{(h)}&For all $\lambda\in\mathbb R$, $|\lambda\mathbf a|=\lambda|\mathbf a|$\rule[-8pt]{0pt}{8pt}&\\\hline
