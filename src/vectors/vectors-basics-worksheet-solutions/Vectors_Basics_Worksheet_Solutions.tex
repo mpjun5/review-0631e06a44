@@ -25,9 +25,9 @@
 \risolfront
 {\small\textcolor{black!60}{Basics of vectors: $\mathbf i$, $\mathbf j$, $\mathbf k$ notation, magnitude, unit vectors, parallel vectors, collinear points, the ratio theorem, the scalar product and the vector product. Total: 29 marks (Practice Problems; sections 1--8 are unmarked exercises).}}\par\medskip
 \wsec{$\mathbf{i}$, $\mathbf{j}$, $\mathbf{k}$ Notation and Column Vectors}
-\Q{Write $\mathbf a=3\mathbf i-2\mathbf j+5\mathbf k$ as a column vector, and write $\mathbf b=\col{4}{0}{-1}$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
-\wsol{\wrow{}\begin{align*}\mathbf a&=\col{3}{-2}{5}\\ \mathbf b&=4\mathbf i-\mathbf k\end{align*}}
-\Q{The points $A$ and $B$ have coordinates $(1,2,3)$ and $(4,6,1)$. Find $\overrightarrow{AB}$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
+\Q{Write $\mathbf a=3\mathbf i-2\mathbf j+5\mathbf k$ as a column vector.}
+\wsol{\wrow{}\begin{align*}\mathbf a&=\col{3}{-2}{5}\end{align*}}
+\Q{The points $A$ and $B$ have coordinates $(1,2,3)$ and $(4,6,1)$. Find $\overrightarrow{AB}$.}
 \begin{center}\begin{tikzpicture}[x={(0.8cm,0cm)},y={(0.4cm,0.32cm)},z={(0cm,0.8cm)},>=Stealth,line cap=round]
 \draw[ax](0,0,0)--(5.8,0,0) node[right]{\scriptsize$x$};
 \draw[ax](0,0,0)--(0,7,0) node[above right]{\scriptsize$y$};
@@ -39,9 +39,9 @@
 \node[dot,label=above:{\scriptsize$A(1,2,3)$}] at (1,2,3){};
 \node[dot,label=right:{\scriptsize$B(4,6,1)$}] at (4,6,1){};
 \end{tikzpicture}\end{center}
-\wsol{\wrow{}\begin{align*}\overrightarrow{AB}&=\overrightarrow{OB}-\overrightarrow{OA}\\ &=\col{4}{6}{1}-\col{1}{2}{3}\\ &=\col{3}{4}{-2}\\ &=3\mathbf i+4\mathbf j-2\mathbf k\end{align*}}
-\Q{Given $\mathbf p=2\mathbf i+\mathbf k$ and $\mathbf q=-\mathbf i+3\mathbf j$, find $\mathbf r$ such that $2\mathbf p-3\mathbf q+\mathbf r=\mathbf 0$. Give $\mathbf r$ in terms of $\mathbf i$, $\mathbf j$ and $\mathbf k$.}
-\wsol{\wrow{}\begin{align*}\mathbf p&=\col{2}{0}{1},\quad \mathbf q=\col{-1}{3}{0}\\ \mathbf r&=3\mathbf q-2\mathbf p\\ &=3\col{-1}{3}{0}-2\col{2}{0}{1}\\ &=\col{-3}{9}{0}-\col{4}{0}{2}\\ &=\col{-7}{9}{-2}\\ &=-7\mathbf i+9\mathbf j-2\mathbf k\end{align*}}
+\wsol{\wrow{}\begin{align*}\overrightarrow{AB}&=\overrightarrow{OB}-\overrightarrow{OA}\\ &=\col{4}{6}{1}-\col{1}{2}{3}\\ &=\col{3}{4}{-2}\end{align*}}
+\Q{Given $\mathbf p=2\mathbf i+\mathbf k$ and $\mathbf q=-\mathbf i+3\mathbf j$, find $\mathbf r$ such that $2\mathbf p-3\mathbf q+\mathbf r=\mathbf 0$.}
+\wsol{\wrow{}\begin{align*}\mathbf p&=\col{2}{0}{1},\quad \mathbf q=\col{-1}{3}{0}\\ \mathbf r&=3\mathbf q-2\mathbf p\\ &=3\col{-1}{3}{0}-2\col{2}{0}{1}\\ &=\col{-3}{9}{0}-\col{4}{0}{2}\\ &=\col{-7}{9}{-2}\end{align*}}
 \par\medskip\noindent\begin{minipage}{\linewidth}\Q{For the following statements, state whether it is \textbf{true} or \textbf{false}.}
 \par\smallskip{\setlength{\extrarowheight}{6pt}\renewcommand{\arraystretch}{1.18}\begin{tabular}{|>{\centering\arraybackslash}p{0.9cm}|p{\dimexpr\linewidth-0.9cm-1.6cm-6\tabcolsep-4\arrayrulewidth\relax}|>{\centering\arraybackslash}p{1.6cm}|}
 \hline &\textbf{Statement}&\textbf{T/F}\\\hline
@@ -52,8 +52,8 @@
 \textbf{(e)}&$\overrightarrow{AB}=\overrightarrow{OA}-\overrightarrow{OB}$\newline{\small\color{black!60}\renewcommand{\col}[3]{\left(\begin{smallmatrix}#1\\#2\\#3\end{smallmatrix}\right)}$\overrightarrow{AB}=\overrightarrow{OB}-\overrightarrow{OA}$}\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
 \end{tabular}}\end{minipage}\par
 \clearpage\wsec{Magnitude}
-\Q{Find $|2\mathbf i-3\mathbf j+6\mathbf k|$.}
-\wsol{\wrow{}\begin{align*}|2\mathbf i-3\mathbf j+6\mathbf k|&=\sqrt{2^2+(-3)^2+6^2}\\ &=\sqrt{49}\\ &=7\end{align*}}
+\Q{Find $\left|\col{2}{-3}{6}\right|$.}
+\wsol{\wrow{}\begin{align*}\left|\col{2}{-3}{6}\right|&=\sqrt{2^2+(-3)^2+6^2}\\ &=\sqrt{49}\\ &=7\end{align*}}
 \Q{The points $A$ and $B$ have coordinates $(1,2,-1)$ and $(3,-4,2)$. Find the distance $AB$.}
 \wsol{\wrow{}\begin{align*}\overrightarrow{AB}&=\col{3}{-4}{2}-\col{1}{2}{-1}\\ &=\col{2}{-6}{3}\\ AB=\left|\overrightarrow{AB}\right|&=\sqrt{2^2+(-6)^2+3^2}\\ &=\sqrt{49}\\ &=7\end{align*}}
 \Q{Given $\mathbf a=\col{t}{2}{t-1}$ and $|\mathbf a|=3$, find the possible values of $t$.}
@@ -65,7 +65,7 @@
 \textbf{(b)}&$|3\mathbf a|=3|\mathbf a|$\newline{\small\color{black!60}\renewcommand{\col}[3]{\left(\begin{smallmatrix}#1\\#2\\#3\end{smallmatrix}\right)}$|3\mathbf a|=|3|\,|\mathbf a|=3|\mathbf a|$}\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
 \textbf{(c)}&$\left|\col{0}{-5}{0}\right|=-5$\newline{\small\color{black!60}\renewcommand{\col}[3]{\left(\begin{smallmatrix}#1\\#2\\#3\end{smallmatrix}\right)}$\left|\col{0}{-5}{0}\right|=\sqrt{0^2+(-5)^2+0^2}=5$}\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
 \textbf{(d)}&$\left|\col{1}{1}{1}\right|=1$\newline{\small\color{black!60}\renewcommand{\col}[3]{\left(\begin{smallmatrix}#1\\#2\\#3\end{smallmatrix}\right)}$\left|\col{1}{1}{1}\right|=\sqrt{1^2+1^2+1^2}=\sqrt3\neq1$}\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
-\textbf{(e)}&$|\mathbf i+2\mathbf j-2\mathbf k|=1+2-2=1$\newline{\small\color{black!60}\renewcommand{\col}[3]{\left(\begin{smallmatrix}#1\\#2\\#3\end{smallmatrix}\right)}$|\mathbf i+2\mathbf j-2\mathbf k|=\sqrt{1^2+2^2+(-2)^2}=3$}\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
+\textbf{(e)}&$\left|\col{1}{2}{-2}\right|=1+2-2=1$\newline{\small\color{black!60}\renewcommand{\col}[3]{\left(\begin{smallmatrix}#1\\#2\\#3\end{smallmatrix}\right)}$\left|\col{1}{2}{-2}\right|=\sqrt{1^2+2^2+(-2)^2}=3$}\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
 \textbf{(f)}&$|\mathbf a+\mathbf b|=|\mathbf a|+|\mathbf b|$ for all vectors $\mathbf a$, $\mathbf b$\newline{\small\color{black!60}\renewcommand{\col}[3]{\left(\begin{smallmatrix}#1\\#2\\#3\end{smallmatrix}\right)}$|\mathbf i+\mathbf j|=\sqrt2\neq|\mathbf i|+|\mathbf j|=2$}\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
 \textbf{(g)}&$|\mathbf a+\mathbf b|\le|\mathbf a|+|\mathbf b|$ for all vectors $\mathbf a$, $\mathbf b$\newline{\small\color{black!60}\renewcommand{\col}[3]{\left(\begin{smallmatrix}#1\\#2\\#3\end{smallmatrix}\right)}$\overrightarrow{OA}=\mathbf a,\ \overrightarrow{AB}=\mathbf b,\ \overrightarrow{OB}=\mathbf a+\mathbf b,\ OB\le OA+AB\ (\triangle OAB)$}\rule[-6pt]{0pt}{6pt}&\textbf{T}\\\hline
 \textbf{(h)}&For all $\lambda\in\mathbb R$, $|\lambda\mathbf a|=\lambda|\mathbf a|$\newline{\small\color{black!60}\renewcommand{\col}[3]{\left(\begin{smallmatrix}#1\\#2\\#3\end{smallmatrix}\right)}$\lambda=-1,\ \mathbf a=\mathbf i:\ |-\mathbf i|=1\neq-1;\ |\lambda\mathbf a|=|\lambda||\mathbf a|$}\rule[-6pt]{0pt}{6pt}&\textbf{F}\\\hline
