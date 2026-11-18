@@ -107,24 +107,26 @@ Relative to the origin $O$, the points $A$ and $B$ have non-zero, non-parallel p
 \node[left]at(O){$O$};\node[above]at(A){$A$};\node[right]at(B){$B$};
 \node[left]at(X){$X$};\node[below]at(Y){$Y$};\node[above right]at(P){$P$};
 \end{tikzpicture}\end{center}
+It is given that $AP:PY=\lambda:1-\lambda$ and $XP:PB=\mu:1-\mu$.
 \begin{qparts}
 \pt{(a)} By expressing $\vv{OP}$ in two ways using the ratio theorem, find $\vv{OP}$ in terms of $\mathbf a$ and $\mathbf b$. \mk{6}
 \pt{(b)} Find $AP:PY$ and $BP:PX$. \mk{2}
 \pt{(c)} The point $Z$ divides $AB$ internally with $AZ:ZB=1:4$. Show that $O,P,Z$ are collinear and find $OP:PZ$. \mk{2}
-\end{qparts}}
+\end{qparts}
+\ifdefined\diquestionsonly\enlargethispage{15mm}\fi}
 
 \defS{6}{%
 \begin{qparts}
 \pt{(a)} First, $\vv{OX}=\frac23\mathbf a$ and $\vv{OY}=\frac13\mathbf b$.
-Let $AP:PY=s:(1-s)$ and $BP:PX=t:(1-t)$, where $0<s,t<1$. By the ratio theorem,
+By the ratio theorem,
 \begin{align*}
-\vv{OP}&=(1-s)\vv{OA}+s\vv{OY}=(1-s)\mathbf a+\frac{s}{3}\mathbf b,\\
-\vv{OP}&=(1-t)\vv{OB}+t\vv{OX}=\frac{2t}{3}\mathbf a+(1-t)\mathbf b.
+\vv{OP}&=(1-\lambda)\vv{OA}+\lambda\vv{OY}=(1-\lambda)\mathbf a+\frac{\lambda}{3}\mathbf b,\\
+\vv{OP}&=(1-\mu)\vv{OX}+\mu\vv{OB}=\frac{2(1-\mu)}{3}\mathbf a+\mu\mathbf b.
 \end{align*}
 Since $\mathbf a$ and $\mathbf b$ are non-parallel, comparing coefficients gives
-\[1-s=\frac{2t}{3},\qquad \frac{s}{3}=1-t.\]
-The second equation gives $s=3-3t$. Substituting into the first,
-\[-2+3t=\frac{2t}{3}\quad\Longrightarrow\quad 7t=6\quad\Longrightarrow\quad t=\frac67,\quad s=\frac37.\]
+\[1-\lambda=\frac{2(1-\mu)}{3},\qquad \frac{\lambda}{3}=\mu.\]
+The second equation gives $\lambda=3\mu$. Substituting into the first,
+\[1-3\mu=\frac{2(1-\mu)}{3}\quad\Longrightarrow\quad 7\mu=1\quad\Longrightarrow\quad \mu=\frac17,\quad\lambda=\frac37.\]
 Consequently,
 \[\vv{OP}=\frac47\mathbf a+\frac17\mathbf b.\]
 \pt{(b)} $\displaystyle AP:PY=3:4,\qquad BP:PX=6:1$.
