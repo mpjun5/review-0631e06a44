@@ -1,5 +1,6 @@
 \documentclass[8pt,a4paper,landscape]{extarticle}
 \usepackage{cheatsheet-style}   % all styling lives here
+\usepackage{tikz}
 \newcommand{\Srn}{\left\{\begin{matrix}r\\ n\end{matrix}\right\}}
 \newcommand{\Srk}{\left\{\begin{matrix}r\\ k\end{matrix}\right\}}
 \newcommand{\br}[2]{\left[\begin{matrix}#1\\ #2\end{matrix}\right]}
@@ -198,6 +199,132 @@ The second gives $B=\frac{x}{1-x}A$; substituting into the first and multiplying
 \[ B(x)=\frac{x}{1-x}A(x)=\frac{x}{1-3x-x^2+x^3}. \]
 \end{formula}
 \end{itemize}
+
+%% ======================= CH 5 =======================
+\chapterhead*{Ch 5. Graph Theory}
+
+\begin{definition}[Order and Size]
+\begin{itemize}
+\item \key{Order} $v(G)=|V(G)|$
+\item \key{Size} $e(G)=|E(G)|$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Isomorphism $G\cong H$]
+\begin{itemize}
+\item Exists bijection $f:V(G)\to V(H)$ (relabeling)
+\item $u\sim v$ in $G\iff f(u)\sim f(v)$ in $H$
+\end{itemize}
+\end{definition}
+
+\begin{theorem}
+Isomorphism is an \key{equivalence relation}:
+\begin{itemize}
+\item Reflexivity: $G\cong G$
+\item Symmetry: $G_1\cong G_2\Rightarrow G_2\cong G_1$
+\item Transitivity: $G_1\cong G_2\wedge G_2\cong G_3\Rightarrow G_1\cong G_3$
+\end{itemize}
+\end{theorem}
+
+\begin{definition}[Complement]
+The \key{complement} $\overline{G}$ of a graph $G$ is the graph with
+\begin{itemize}
+\item Same vertex set $V(G)$
+\item Edge set: $\binom{V(G)}{2}\setminus E(G)$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Complete Graph $K_n$]
+All $\binom{n}{2}$ possible edges
+\end{definition}
+
+\topic{Petersen Graph}
+\begin{minipage}[c]{0.58\linewidth}
+\begin{itemize}
+\item 10 vertices, 15 edges
+\item Each vertex has degree 3 (three edges at every vertex)
+\item Many interesting properties
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.38\linewidth}\centering
+\begin{tikzpicture}[scale=0.62,every node/.style={circle,draw,fill=white,inner sep=0pt,minimum size=3.2pt}]
+\foreach \i in {0,...,4}{
+  \node (o\i) at ({90-72*\i}:1.15) {};
+  \node (n\i) at ({90-72*\i}:0.55) {};}
+\foreach \i in {0,...,4}{
+  \pgfmathtruncatemacro{\j}{mod(\i+1,5)}
+  \pgfmathtruncatemacro{\k}{mod(\i+2,5)}
+  \draw (o\i)--(o\j); \draw (n\i)--(n\k); \draw (o\i)--(n\i);}
+\end{tikzpicture}
+\end{minipage}
+
+\begin{definition}[Hypercube Graph $Q^d$]
+\begin{itemize}
+\item Vertices: $\{0,1\}^d$ (binary strings of length $d$)
+\item Edges: between strings differing in exactly one coordinate
+\item $2^d$ vertices, $d\cdot 2^{d-1}$ edges
+\end{itemize}
+\end{definition}
+
+\columnbreak
+\begin{definition}[Subgraphs]
+A graph $H$ is a \key{subgraph} of $G$ if:
+\begin{itemize}
+\item $V(H)\subset V(G)$
+\item $E(H)\subset E(G)$
+\item $E(H)\subset\binom{V(H)}{2}$
+\end{itemize}
+Notation: $H\subset G$ (``$G$ contains $H$'')\\
+\key{Spanning subgraph}: $V(H)=V(G)$\\
+\key{Induced subgraph} $G[S]$ on $S\subset V(G)$:
+\begin{itemize}
+\item Vertex set $S$
+\item All edges from $G$ with both endpoints in $S$
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[Spanning and Induced Subgraphs of $K_n$]
+\begin{itemize}
+\item Number of spanning subgraphs: $2^{\binom{n}{2}}$
+\item Number of induced subgraphs: $2^n$
+\end{itemize}
+\end{theorem}
+
+\topic{Representing Graphs Mathematically}
+Ways to represent a graph:
+\begin{itemize}
+\item Drawing (visualization)
+\item Listing vertices and edges
+\item Matrix representations (linear algebra perspective)
+\end{itemize}
+
+\begin{definition}[Adjacency Matrix]
+For graph $G$ with $V(G)=\{v_1,\cdots,v_n\}$: $A_G=(A_{i,j})$ is $n\times n$ symmetric matrix where:
+\[ A_{i,j}=\begin{cases}1 & \text{if } v_iv_j\in E(G)\\ 0 & \text{otherwise}\end{cases} \]
+\end{definition}
+\begin{theorem}[Properties of $A_G$]
+\begin{itemize}
+\item Symmetric $\Rightarrow$ real eigenvalues
+\item Diagonal entries are 0 (no loops)
+\end{itemize}
+\end{theorem}
+
+\begin{definition}[Incidence Matrix]
+Vertex $v$ is \key{incident} to edge $e$ if $v\in e$. Incidence Matrix $M_G=(M_{i,j})$:
+\begin{itemize}
+\item Rows: vertices $(v_1,\cdots,v_n)$
+\item Columns: edges $(e_1,\cdots,e_m)$
+\item $M_{i,j}=1$ if $v_i$ incident to $e_j$, 0 otherwise
+\end{itemize}
+\end{definition}
+\begin{theorem}[Property of $M_G$]
+Each column has exactly two 1's (each edge incident to two vertices)
+\end{theorem}
+
+\begin{theorem}[Relating the Two Representations]
+For any graph $G$:
+\[ M_GM_G^{T}=\operatorname{diag}(d(v_1),\cdots,d(v_n))+A_G \]
+\end{theorem}
 
 \end{cscolumns}
 \end{document}
