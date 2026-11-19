@@ -889,5 +889,104 @@ Add A-C, B-C, C-D. Skip A-B (creates cycle), Skip B-D.
 Start with A. Add A-C(1), then from A,C add B-C(2), then from A,B,C add C-D(3).
 
 
+
+\topic{Counting Trees: Cayley and Pr\"ufer}
+\begin{theorem}[Cayley, 1889]
+For $n\ge 2$, the number of (labelled) trees on the vertex set $\{1,\dots,n\}$ is ${\color{csBlue}n^{n-2}}$.
+\end{theorem}
+\begin{definition}[Pr\"ufer Code: Encoding a Tree $\to$ Pr\"ufer Sequence]
+Given a labelled tree $T$ on vertices $\{1,2,\dots,n\}$:
+\begin{enumerate}[label=\arabic*.]
+\item Let $P=[\ ]$ (empty sequence)
+\item While $T$ has more than 2 vertices:
+\begin{itemize}
+\item Find the leaf with \textbf{smallest} label
+\item Add its \textbf{neighbour} to $P$
+\item Remove that leaf from $T$
+\end{itemize}
+\item Return $P$ (length $n-2$)
+\end{enumerate}
+\end{definition}
+\noindent\begin{minipage}[c]{0.36\linewidth}\textbf{Example.}\par\centering
+\begin{tikzpicture}[scale=0.62,v/.style={circle,draw,minimum size=10pt,inner sep=0pt,font=\footnotesize}]
+\node[v] (1) at (0,1.1) {1}; \node[v] (2) at (1,1.1) {2}; \node[v] (3) at (2,1.1) {3};
+\node[v] (6) at (-0.3,0.35) {6}; \node[v] (4) at (0.6,-0.1) {4}; \node[v] (5) at (1.6,-0.1) {5};
+\draw (1)--(6); \draw (1)--(4); \draw (2)--(4); \draw (4)--(5); \draw (3)--(5);
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.62\linewidth}
+\textbf{Degrees:} $d(1)=2$, $d(2)=1$, $d(3)=1$, $d(4)=3$, $d(5)=2$, $d(6)=1$.\\
+\textbf{Leaves:} 2, 3, 6.\quad\textbf{Smallest leaf:} 2 (not 6!)
+\end{minipage}\par
+Step 1: Leaves: 2, 3, 6. Smallest is 2, its neighbour is 4. $P=[4]$, remove vertex 2.\\
+Step 2: Leaves: 3, 6. Smallest is 3, its neighbour is 5. $P=[4,5]$, remove vertex 3.\\
+Step 3: Leaves: 5, 6. Smallest is 5, its neighbour is 4. $P=[4,5,4]$, remove vertex 5.\\
+Step 4: Leaves: 4, 6. Smallest is 4, its neighbour is 1. $P=[4,5,4,1]$, remove vertex 4.\\
+Only vertices 1 and 6 remain. Stop.\\
+Final Pr\"ufer code: $[4,5,4,1]$ (length $n-2=4$)
+
+\begin{definition}[Pr\"ufer Decoding: Sequence $\to$ Tree]
+Given a sequence $P$ of length $n-2$ with entries in $\{1,\dots,n\}$:
+\begin{enumerate}[label=\arabic*.]
+\item Let $L=\{1,2,\dots,n\}$ (all vertices)
+\item While $P$ is non-empty:
+\begin{itemize}
+\item Find the smallest element $x$ of $L$ that is not in $P$
+\item Add the edge $x\,p$, where $p$ is the first entry of $P$
+\item Remove $x$ from $L$ and the first entry from $P$
+\end{itemize}
+\item Add the edge joining the two remaining vertices of $L$
+\end{enumerate}
+\end{definition}
+\textbf{Example.} Decode $P=[4,5,4,1]$ for $n=6$:
+\begin{itemize}
+\item $L=\{1,2,3,4,5,6\}$, $P=[4,5,4,1]$: smallest in $L$ not in $P$ is 2 --- edge 24
+\item $L=\{1,3,4,5,6\}$, $P=[5,4,1]$: smallest not in $P$ is 3 --- edge 35
+\item $L=\{1,4,5,6\}$, $P=[4,1]$: smallest not in $P$ is 5 --- edge 54
+\item $L=\{1,4,6\}$, $P=[1]$: smallest not in $P$ is 4 --- edge 41
+\item $L=\{1,6\}$, $P=[\ ]$: edge 16.\quad We recover the tree of the example!
+\end{itemize}
+\begin{theorem}[Lemma]
+Let $T$ be a tree on $\{1,\dots,n\}$, $n\ge 2$, with Pr\"ufer code $P$. Then every vertex $v$ appears in $P$ exactly $d(v)-1$ times. In particular, the leaves of $T$ are exactly the labels that do not appear in $P$.
+\end{theorem}
+\begin{theorem}[Degree Sequence Formula]
+Let $d_1,\dots,d_n\ge 1$ with $\sum_i d_i=2n-2$. The number of trees on $\{1,\dots,n\}$ in which vertex $i$ has degree $d_i$ is
+\[ \frac{(n-2)!}{(d_1-1)!\,(d_2-1)!\cdots(d_n-1)!}. \]
+\end{theorem}
+
+\topic{Kirchhoff's Matrix Tree Theorem}
+\begin{theorem}[Kirchhoff, 1847]
+For any graph $G$, the number $\tau(G)$ of spanning trees of $G$ equals any cofactor of the Laplacian matrix $L(G)$.
+\end{theorem}
+\begin{definition}[Laplacian Matrix]
+For a graph $G=(V,E)$ with $V=\{1,\dots,n\}$, the \key{Laplacian matrix} $L$ is the $n\times n$ matrix with
+\begin{itemize}
+\item $L_{ii}=d(i)$, the degree of vertex $i$;
+\item $L_{ij}=-1$ if $i\ne j$ and $ij\in E$;
+\item $L_{ij}=0$ otherwise.
+\end{itemize}
+That is, $L=D-A$ with $D$ the diagonal matrix of degrees and $A$ the adjacency matrix.
+\end{definition}
+\begin{theorem}[Lemma]
+For any graph $G$, the Laplacian matrix $L$:
+\begin{enumerate}[label=\arabic*.]
+\item is symmetric, with all row sums (and column sums) equal to 0;
+\item is positive semidefinite;
+\item has $\det L=0$; the multiplicity of the eigenvalue 0 is the number of connected components of $G$. In particular $\operatorname{rank}L=n-1$ when $G$ is connected.
+\end{enumerate}
+\end{theorem}
+\textbf{Key fact.} Because all row and column sums are 0, all $n^2$ cofactors of $L$ are equal.
+\begin{definition}[Cofactor]
+Write $L_{(i,j)}$ for the $(n-1)\times(n-1)$ matrix obtained from $L$ by deleting row $i$ and column $j$. The \key{$(i,j)$-cofactor} of $L$ is $(-1)^{i+j}\det L_{(i,j)}$.
+\end{definition}
+\begin{theorem}[Kirchhoff Matrix Tree Theorem]
+For any graph $G$ on $n\ge 2$ vertices and any $i,j$,
+\[ {\color{csBlue}\tau(G)=(-1)^{i+j}\det L_{(i,j)}}. \]
+In particular $\tau(G)=\det L_{(1,1)}$: delete the first row and column and take the determinant.
+\end{theorem}
+\begin{theorem}[Cayley, again]
+The complete graph $K_n$ has $n^{n-2}$ spanning trees.
+\end{theorem}
+
 \end{cscolumns}
 \end{document}
