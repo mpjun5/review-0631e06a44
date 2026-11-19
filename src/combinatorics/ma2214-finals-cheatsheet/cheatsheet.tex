@@ -1,6 +1,19 @@
 \documentclass[8pt,a4paper,landscape]{extarticle}
 \usepackage{cheatsheet-style}   % all styling lives here
 \usepackage{tikz}
+\newcommand{\mstgraph}[1]{%
+\begin{tikzpicture}[scale=1.05,v/.style={circle,draw,minimum size=12pt,inner sep=0pt,font=\footnotesize},
+  w/.style={font=\footnotesize,inner sep=1pt},g/.style={draw=green!60!black,line width=0.9pt},o/.style={draw=black!50},
+  #1]
+\node[v,vA] (A) at (0,0) {A}; \node[v,vB] (B) at (1,0.55) {B};
+\node[v,vC] (C) at (1,-0.55) {C}; \node[v,vD] (D) at (2,0) {D};
+\draw[eAB] (A)--node[w,above left,cAB]{4}(B); \draw[eBD] (B)--node[w,above right,cBD]{6}(D);
+\draw[eAC] (A)--node[w,below left,cAC]{1}(C); \draw[eBC] (B)--node[w,right,cBC]{2}(C);
+\draw[eCD] (C)--node[w,below right,cCD]{3}(D);
+\end{tikzpicture}}
+\tikzset{vA/.style={},vB/.style={},vC/.style={},vD/.style={},eAB/.style={},eBD/.style={},eAC/.style={},eBC/.style={},eCD/.style={},
+  cAB/.style={},cBD/.style={},cAC/.style={},cBC/.style={},cCD/.style={}}
+
 \newcommand{\Srn}{\left\{\begin{matrix}r\\ n\end{matrix}\right\}}
 \newcommand{\Srk}{\left\{\begin{matrix}r\\ k\end{matrix}\right\}}
 \newcommand{\br}[2]{\left[\begin{matrix}#1\\ #2\end{matrix}\right]}
@@ -802,6 +815,79 @@ A \key{DFS tree} is the spanning tree formed by the parent pointers of a depth-f
 \item Every non-tree edge joins a vertex to an ancestor (``back edge'')
 \item Hence: $G$ is acyclic iff DFS finds no back edge
 \end{itemize}
+
+
+\end{cscolumns}
+\newpage
+\begin{cscolumns}
+\topic{Minimum Spanning Trees}
+\begin{definition}[Greedy Approach]
+\textbf{Key Idea.} Build MST incrementally by adding \key{safe edges} - edges that can be included in some MST.
+\end{definition}
+\begin{definition}[Safe Edge]
+Let $A\subseteq E(G)$ be a set of edges contained in some MST (``the MST so far''). An edge $e$ is \key{safe} for $A$ if $A\cup\{e\}$ is still contained in some MST.
+\end{definition}
+\begin{theorem}[Cut Property]
+Let $A$ be a subset of some MST. Let $(S,V-S)$ be a cut ($\emptyset\ne S\ne V$) that respects $A$, i.e.\ no edge of $A$ has one endpoint in $S$ and the other in $V-S$. If $e$ is a minimum-weight edge crossing the cut, then $e$ is safe for $A$.
+\end{theorem}
+\textbf{Key Insight.} A cycle crosses a cut an even number of times. Swap the heavier crossing edge $f$ for the lighter one $e$: still a spanning tree, no heavier.
+\begin{theorem}[Corollary]
+If all edge weights are distinct, the minimum spanning tree is unique.
+\end{theorem}
+
+\topic{Kruskal's Algorithm}
+\begin{formula}
+\begin{enumerate}[label=\arabic*.]
+\item Sort edges by weight: $w(e_1)\le w(e_2)\le\cdots\le w(e_m)$
+\item Initialize $A=\emptyset$
+\item For each edge $e=uv$ in sorted order: if $u$ and $v$ are in different components of $(V,A)$ (equivalently, $A+e$ has no cycle), add $e$ to $A$
+\item Return $A$
+\end{enumerate}
+\centering
+\mstgraph{eAB/.style={o},eBD/.style={o},cAB/.style={black!50},cBD/.style={black!50},
+  eAC/.style={g},eBC/.style={g},eCD/.style={g},cAC/.style={green!60!black},cBC/.style={green!60!black},cCD/.style={green!60!black}}
+\end{formula}
+
+\topic{Prim's Algorithm}
+\begin{formula}
+\begin{enumerate}[label=\arabic*.]
+\item Start with arbitrary vertex $s$, $A=\emptyset$, $S=\{s\}$
+\item While $S\ne V$:
+\begin{itemize}
+\item Find a minimum-weight edge $uv$ with $u\in S$, $v\notin S$
+\item Add $uv$ to $A$, add $v$ to $S$
+\end{itemize}
+\item Return $A$
+\end{enumerate}
+\centering
+\mstgraph{vA/.style={fill=blue!20},vB/.style={fill=blue!20},vC/.style={fill=blue!20},
+  eAB/.style={o},eBD/.style={o},cAB/.style={black!50},cBD/.style={black!50},
+  eAC/.style={g},eBC/.style={g},cAC/.style={green!60!black},cBC/.style={green!60!black},
+  eCD/.style={draw=red,dashed,line width=0.9pt},cCD/.style={red}}\\
+Current cut: $S=\{A,B,C\}$ vs $V-S=\{D\}$
+\end{formula}
+\noindent\textbf{Interpretation:} take the shortest path out of the connected island so far.
+
+\columnbreak
+\topic{Example: MST Construction}
+\begin{center}
+\begin{minipage}[t]{0.48\linewidth}\centering
+\textbf{Original Graph}\\[1pt]
+\mstgraph{}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\textbf{MST (Weight $=6$)}\\[1pt]
+\mstgraph{eAB/.style={draw=none},eBD/.style={draw=none},cAB/.style={opacity=0},cBD/.style={opacity=0},
+  eAC/.style={g},eBC/.style={g},eCD/.style={g},cAC/.style={green!60!black},cBC/.style={green!60!black},cCD/.style={green!60!black}}
+\end{minipage}
+\end{center}
+\textbf{Kruskal's Steps}\\
+Edges in order: A-C(1), B-C(2), C-D(3), A-B(4), B-D(6)\\
+Add A-C, B-C, C-D. Skip A-B (creates cycle), Skip B-D.
+
+\textbf{Prim's Steps}\\
+Start with A. Add A-C(1), then from A,C add B-C(2), then from A,B,C add C-D(3).
+
 
 \end{cscolumns}
 \end{document}
