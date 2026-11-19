@@ -419,5 +419,90 @@ A non-increasing sequence $(d_1,\dots,d_n)$ is graphic iff:
 \end{enumerate}
 \end{theorem}
 
+\topic{Clique Number and Independent Sets}
+\begin{definition}[Clique Number $\omega(G)$]
+\begin{itemize}
+\item A \key{clique} is a complete subgraph (all vertices adjacent)
+\item $\omega(G)$ = number of vertices in a largest clique in $G$ (the \key{clique number})
+\end{itemize}
+\end{definition}
+\begin{definition}[Independent Set]
+\begin{itemize}
+\item A set $S\subset V(G)$ where no two vertices are adjacent
+\item $\alpha(G)$ = size of a largest independent set in $G$ (the \key{independence number})
+\end{itemize}
+\end{definition}
+\begin{theorem}[Key Relationship via Complements]
+\begin{itemize}
+\item A set $S$ is a clique in $G$ iff it is an independent set in the complement $\overline{G}$
+\item $\alpha(\overline{G})=\omega(G)$
+\item $\omega(\overline{G})=\alpha(G)$
+\end{itemize}
+\end{theorem}
+
+\topic{Independence Numbers of Common Graphs}
+\begin{itemize}
+\item $\alpha(K_n)=1$ (complete graph - all vertices adjacent)
+\item $\alpha(C_n)=\lfloor n/2\rfloor$ (cycle graph)
+\item $\alpha(P_n)=\lceil n/2\rceil$ (path graph)
+\item $\alpha(K_{m,n})=\max\{m,n\}$ (complete bipartite)
+\item $\alpha(Q^d)=2^{d-1}$ (hypercube graph)
+\item $\alpha(\text{Petersen})=4$
+\end{itemize}
+
+\begin{definition}[Kneser Graphs $KG(n,k)$]
+\begin{itemize}
+\item Vertices: all $k$-element subsets of $\{1,2,\dots,n\}$
+\item Edges: between disjoint $k$-subsets
+\item Petersen graph $=KG(5,2)$
+\end{itemize}
+\end{definition}
+
+\topic{Proper Coloring and Chromatic Number}
+\begin{definition}[Proper $k$-Coloring]
+\begin{itemize}
+\item A function $c:V(G)\to\{1,\cdots,k\}$
+\item Adjacent vertices get different colors: ${\color{csBlue}uv\in E(G)\Rightarrow c(u)\ne c(v)}$
+\end{itemize}
+\textbf{Equivalent View}
+\begin{itemize}
+\item Partition $V(G)$ into $k$ \key{independent sets} $V_1,\cdots,V_k$
+\item Each $V_i$ contains vertices of color $i$
+\end{itemize}
+\end{definition}
+\begin{definition}[Chromatic Number $\chi(G)$]
+\begin{itemize}
+\item The \key{smallest $k$} such that $G$ has a proper $k$-coloring
+\item $G$ is \key{$k$-colorable} if $\chi(G)\le k$
+\end{itemize}
+\end{definition}
+
+\topic{Lower Bounding the Chromatic Number}
+\begin{theorem}
+For every graph $G$:
+\begin{enumerate}[label=\arabic*.]
+\item $\chi(G)\ge\omega(G)$
+\item $\chi(G)\ge\dfrac{|V(G)|}{\alpha(G)}$
+\end{enumerate}
+\end{theorem}
+These provide two different ways to prove a graph requires many colors. Both are lower bounds, so to show $\chi(G)\ge c$ it suffices that \emph{one} of them gives $\ge c$.
+
+\topic{Upper Bounding Chromatic Number}
+\begin{theorem}[Edge Count]
+Every graph with $m$ edges satisfies:
+\[ \chi(G)\le\frac{1}{2}+\sqrt{2m+\frac{1}{4}} \]
+\end{theorem}
+\begin{theorem}[Greedy]
+For every graph $G$:
+\[ \chi(G)\le\Delta(G)+1 \]
+where $\Delta(G)$ is the maximum vertex degree.
+\end{theorem}
+\textbf{Greedy Coloring Algorithm:}
+\begin{enumerate}[label=\arabic*.]
+\item Fix an ordering of vertices $v_1,v_2,\dots,v_n$
+\item Process vertices in this order
+\item Color each vertex with the smallest available color not used by its already-colored neighbors
+\end{enumerate}
+
 \end{cscolumns}
 \end{document}
