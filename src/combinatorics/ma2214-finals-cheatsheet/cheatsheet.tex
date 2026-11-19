@@ -548,21 +548,6 @@ For any simple graph with adjacency matrix $A$ and integer $k\ge 1$,
 \item Total closed walks of length $k$: $\operatorname{tr}(A^k)$.
 \end{itemize}
 
-\topic{Number of Connected Components and Matrices}
-\begin{definition}[Laplacian Matrix]
-Let $G=(V,E)$ be a simple graph with adjacency matrix $A=(a_{ij})$ and degree matrix
-\[ D=\operatorname{diag}(d(1),d(2),\dots,d(n)). \]
-Define the \key{Laplacian matrix} of $G$ as
-\[ L=D-A. \]
-\end{definition}
-\begin{theorem}
-The number of connected components of $G$ equals the \key{dimension of the null space} of $L$:
-\[ \boxed{\text{Number of connected components of }G=\dim(\ker L)}. \]
-Equivalently, $\operatorname{rank}(L)=n-(\text{number of connected components})$.
-
-In particular, $G$ is connected $\iff\dim(\ker L)=1\iff\operatorname{rank}(L)=n-1$.
-\end{theorem}
-
 \topic{Paths and Trails}
 \begin{definition}[Path, Trail]
 Let $G=(V,E)$ be a simple graph.
@@ -630,6 +615,7 @@ has more than one connected component.
 
 Special case: If $|S|=1$, the single vertex in $S$ is called a \key{cut vertex}.
 \end{definition}
+\columnbreak
 \begin{definition}[Vertex Connectivity]
 The \key{vertex connectivity} (or simply connectivity) of a graph $G$, denoted by $\kappa(G)$, is defined as
 \[ \kappa(G)=\min\{\,|S|:G-S\text{ is disconnected or a single vertex}\,\} \]
@@ -678,10 +664,7 @@ Every graph with minimum degree $\delta(G)\ge 2$ contains a cycle. In particular
 \begin{theorem}[Whitney, 1932]
 Let $G$ have at least 3 vertices. Then $G$ is 2-connected if and only if for any two vertices $u,v$ there is a cycle in $G$ containing both $u$ and $v$.
 \end{theorem}
-\begin{theorem}[Menger, 1927]
-Let $k\ge 1$ and let $G$ have more than $k$ vertices. Then $G$ is $k$-connected if and only if every two vertices $u,v$ are joined by $k$ pairwise internally disjoint $u$--$v$ paths.
-\end{theorem}
-
+\columnbreak
 \topic{$r$-Partite Graphs}
 \begin{definition}[$r$-Partite]
 \begin{itemize}
@@ -697,6 +680,58 @@ A \key{complete $r$-partite graph} has all possible edges between distinct parts
 \begin{theorem}[Proposition]
 A graph $G$ is bipartite if and only if it contains no odd cycles (cycles of odd length).
 \end{theorem}
+
+
+\topic{Eulerian Graphs}
+\begin{definition}[Eulerian Circuit, Eulerian Graph]
+A closed trail (closed walk with no repeated edge) using every edge exactly once is called an \key{Eulerian circuit}.
+\begin{itemize}
+\item A graph containing an Eulerian circuit is called an \key{Eulerian graph}.
+\item If multiple edges are allowed, we call it an \key{Eulerian multigraph}.
+\end{itemize}
+\end{definition}
+\begin{theorem}[Euler's Theorem]
+{\color{csBlue}A connected graph is \textbf{Eulerian} if and only if all its vertices have \textbf{even degrees}.}
+\end{theorem}
+
+\topic{Hamiltonian Graphs}
+\begin{definition}[Hamiltonian]
+A cycle through every vertex is called a \key{Hamiltonian cycle} (a closed walk visiting every vertex exactly once, apart from the return to the start); a \key{Hamiltonian path} is a path through every vertex. A graph with a Hamiltonian cycle is called \key{Hamiltonian}.
+\end{definition}
+\begin{theorem}
+For $n\ge 2$, the hypercube $Q^n$ is Hamiltonian.
+\end{theorem}
+\begin{theorem}
+The Petersen graph $P$ is not Hamiltonian.
+\end{theorem}
+\begin{theorem}[Dirac]
+{\color{csBlue}If $G$ has $n\ge 3$ vertices and $\delta(G)\ge n/2$, then $G$ is \textbf{Hamiltonian}.}
+\end{theorem}
+\begin{theorem}[Corollary]
+If $n$ is even and $\delta(G)\ge n/2$, then $G$ has a \key{perfect matching}: a set of $n/2$ edges covering every vertex exactly once.
+\end{theorem}
+\begin{theorem}[Ore]
+If $G$ has $n\ge 3$ vertices and $d(u)+d(v)\ge n$ for every pair of non-adjacent vertices $u,v$, then $G$ is Hamiltonian.
+\end{theorem}
+
+\columnbreak
+\topic{Depth-First Search Algorithm from a Vertex $s$}
+\begin{formula}
+DFS($u$)
+\begin{enumerate}[label=\arabic*.]
+\item Mark $u$ as visited.
+\item For each neighbour $v$ of $u$: if $v$ is unvisited, set parent$[v]=u$ and call DFS($v$).
+\item Return (backtrack to parent$[u]$).
+\end{enumerate}
+\end{formula}
+Call DFS($s$) with all vertices initially unvisited; it visits exactly the vertices reachable from $s$.
+
+\noindent\textbf{Rule.} While exploring the neighbours $v$ of $u$ in DFS($u$):
+\begin{itemize}
+\item if $v$ is unvisited, recurse;
+\item if $v$ is visited and $v\ne$ parent$[u]$, then $uv$ is a back edge and $v$ is an ancestor of $u$: stop --- a cycle is found, namely the tree path from $v$ down to $u$ followed by the edge $uv$ (read off by following parent pointers from $u$ up to $v$).
+\end{itemize}
+If DFS finishes without this happening, the graph (or the component searched) is acyclic.
 
 \end{cscolumns}
 \end{document}
