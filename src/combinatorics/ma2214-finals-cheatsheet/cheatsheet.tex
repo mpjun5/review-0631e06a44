@@ -505,4 +505,118 @@ where $\Delta(G)$ is the maximum vertex degree.
 \end{enumerate}
 
 \end{cscolumns}
+\newpage
+\begin{cscolumns}
+\topic{Walks and Connectedness}
+\begin{definition}[Walk]
+Let $G=(V,E)$ be a simple graph. A \key{walk} of length $k$ in $G$ is a non-empty alternating sequence
+\[ v_0,e_0,v_1,e_1,\dots,e_{k-1},v_k \]
+consisting of vertices and edges, such that each $e_i=\{v_i,v_{i+1}\}\in E(G)$.
+In a simple graph the edges are determined by the vertices, so we usually omit them and write $v_0v_1\dots v_k$. The case $k=0$ --- a single vertex --- is allowed.
+
+If $v_0=v_k$, the walk is called \key{closed}.
+\end{definition}
+
+\begin{definition}[Connected and Disconnected]
+A graph $G$ is \key{connected} if any two distinct vertices $u,v\in V(G)$ are connected by a walk.
+
+A graph is \key{disconnected} if it is not connected; that is, there exists a pair $u,v$ so that one cannot reach $v$ from $u$ by following edges of a walk.
+
+If $u$ and $v$ are connected by a walk, we say that $u$ and $v$ are connected. This is different from (and weaker than) being adjacent.
+\end{definition}
+
+\begin{theorem}[Lemma]
+Let $G=(V,E)$ be a simple graph. Define a relation $\sim$ on $V(G)$ by:
+\[ u\sim v\iff u\text{ and }v\text{ are connected by a walk in }G. \]
+Then $\sim$ is an \key{equivalence relation}.
+\end{theorem}
+
+\begin{definition}[Connected Component]
+The relation ``$u$ and $v$ are connected'' partitions $V(G)$ into equivalence classes.
+Each equivalence class induces a maximal connected subgraph, called a \key{connected component} of $G$.
+\end{definition}
+
+\topic{Counting Walks Using Matrix Powers}
+\begin{theorem}[Key Fact]
+For any simple graph with adjacency matrix $A$ and integer $k\ge 1$,
+\[ {\color{csBlue}(A^k)_{ij}=\text{number of walks of length }k\text{ from }i\text{ to }j.} \]
+\end{theorem}
+\textbf{Consequences.}
+\begin{itemize}
+\item Reachability: $j$ is reachable from $i$ iff $(A^k)_{ij}>0$ for some $k\ge 0$ (with $A^0=I$).
+\item Closed walks of length $k$ at vertex $i$: $(A^k)_{ii}$.
+\item Total closed walks of length $k$: $\operatorname{tr}(A^k)$.
+\end{itemize}
+
+\topic{Number of Connected Components and Matrices}
+\begin{definition}[Laplacian Matrix]
+Let $G=(V,E)$ be a simple graph with adjacency matrix $A=(a_{ij})$ and degree matrix
+\[ D=\operatorname{diag}(d(1),d(2),\dots,d(n)). \]
+Define the \key{Laplacian matrix} of $G$ as
+\[ L=D-A. \]
+\end{definition}
+\begin{theorem}
+The number of connected components of $G$ equals the \key{dimension of the null space} of $L$:
+\[ \boxed{\text{Number of connected components of }G=\dim(\ker L)}. \]
+Equivalently, $\operatorname{rank}(L)=n-(\text{number of connected components})$.
+
+In particular, $G$ is connected $\iff\dim(\ker L)=1\iff\operatorname{rank}(L)=n-1$.
+\end{theorem}
+
+\topic{Paths and Trails}
+\begin{definition}[Path, Trail]
+Let $G=(V,E)$ be a simple graph.
+
+\key{Path.} A path is a non-empty subgraph $P=(V',E')$ of the form
+\[ V'=\{x_0,\dots,x_k\}\text{ (distinct)},\quad E'=\{x_0x_1,x_1x_2,\dots,x_{k-1}x_k\}. \]
+The \key{length} of a path is its number of edges.
+
+A \key{trail} is a walk with no repeated edges.
+\end{definition}
+\noindent Walks $\supseteq$ trails $\supseteq$ paths.
+
+\begin{theorem}[Lemma]
+Every $u$--$v$ walk in a simple graph contains a $u$--$v$ path.
+\end{theorem}
+
+\topic{Distance in a Graph}
+\begin{definition}[Distance]
+Let $G=(V,E)$ be a simple graph. The \key{distance} between two vertices $x,y\in V(G)$ is
+\[ d_G(x,y)=\text{length of a shortest path connecting }x\text{ and }y. \]
+If no path exists between $x$ and $y$, we set $d_G(x,y)=\infty$. We write $d(x,y)$ when $G$ is clear --- two arguments: distance; one argument $d(v)$: degree.
+\end{definition}
+\textbf{Observation:}
+\begin{itemize}
+\item $d(x,y)=0$ iff $x=y$.
+\item $d(x,y)=1$ iff $x$ and $y$ are adjacent.
+\item $G$ is connected $\iff d(x,y)<\infty$ for all $x,y\in V(G)$ (by the lemma, ``connected by a walk'' = ``connected by a path'').
+\end{itemize}
+
+\begin{theorem}[Distance as a Metric]
+For a connected graph $G$, the distance function $d(x,y)$ defines a \key{metric} on $V(G)$; that is, for all $x,y,z\in V(G)$:
+\begin{enumerate}[label=(\roman*)]
+\item $d(x,y)\ge 0$, and $d(x,y)=0$ iff $x=y$.
+\item $d(x,y)=d(y,x)$.
+\item $d(x,z)\le d(x,y)+d(y,z)$\quad(Triangle inequality).
+\end{enumerate}
+\end{theorem}
+
+\columnbreak
+\topic{Diameter and Examples}
+\begin{definition}[Diameter]
+The \key{diameter} of a connected graph $G$ is
+\[ \operatorname{diam}(G)=\max_{x,y\in V(G)}d(x,y), \]
+the greatest distance between any two vertices.
+\end{definition}
+\textbf{Examples:}
+\begin{itemize}
+\item Complete graph $K_n$: $\operatorname{diam}(K_n)=1$.
+\item Complete bipartite graph $K_{m,n}$ ($m,n\ge 2$): $\operatorname{diam}=2$.
+\item Cycle $C_n$: $\operatorname{diam}=\lfloor n/2\rfloor$.
+\item Path $P_n$ ($n$ vertices): $\operatorname{diam}=n-1$, the distance between the two ends.
+\item Petersen graph: $\operatorname{diam}=2$.
+\item $d$-dimensional hypercube $Q^d$: $\operatorname{diam}=d$. Distance equals the \key{Hamming distance}, e.g.\ $d(0001,1100)=3$.
+\end{itemize}
+
+\end{cscolumns}
 \end{document}
