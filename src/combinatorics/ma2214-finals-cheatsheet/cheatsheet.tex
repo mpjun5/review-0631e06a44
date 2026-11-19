@@ -733,5 +733,75 @@ Call DFS($s$) with all vertices initially unvisited; it visits exactly the verti
 \end{itemize}
 If DFS finishes without this happening, the graph (or the component searched) is acyclic.
 
+
+\topic{Trees}
+\begin{definition}[Forest, Tree]
+An acyclic graph is a graph without any cycles. A \key{forest} is an acyclic graph. A \key{tree} is a connected forest.
+\end{definition}
+\begin{definition}[Leaves]
+The vertices of degree 1 in a tree are called \key{leaves}.
+\end{definition}
+\begin{theorem}[Key Observation]
+If we remove a leaf from a tree with at least two vertices, the remaining graph is still a tree: no cycle is created, and any path between two other vertices never passed through the leaf. This is the engine of most inductive proofs about trees --- together with the fact (next slides) that leaves always exist.
+\end{theorem}
+\begin{theorem}[Characterizations of Trees]
+The following assertions are equivalent:
+\begin{enumerate}[label=\arabic*.]
+\item ${\color{csBlue}T}$ \key{is a tree.}
+\item Any two vertices of $T$ are connected by a \key{unique path} in $T$.
+\item $T$ is \key{minimally edge connected} (connected, but $T-e$ is disconnected for any edge $e\in E(T)$).
+\item $T$ is \key{maximally acyclic} (acyclic but $T+xy$ contains a cycle for any non-adjacent $x,y$).
+\end{enumerate}
+\end{theorem}
+\begin{theorem}[Lemma]
+Every tree with at least two vertices has at least two leaves.
+\end{theorem}
+\begin{theorem}[Proposition]
+The vertices of a tree $T$ can be ordered $v_1,\dots,v_n$ so that for every $i\ge 2$, the vertex $v_i$ has exactly one neighbour in $\{v_1,\dots,v_{i-1}\}$.
+\end{theorem}
+\begin{theorem}[Corollary]
+\begin{enumerate}[label=\arabic*.]
+\item A tree on $n$ vertices has exactly $n-1$ edges.
+\item A connected graph on $n$ vertices is a tree if and only if it has $n-1$ edges.
+\item An acyclic graph on $n$ vertices is a tree if and only if it has $n-1$ edges. More generally, a forest with $c$ components has $n-c$ edges.
+\end{enumerate}
+\end{theorem}
+\begin{definition}[Rooted Tree]
+A \key{rooted tree} is a tree with a fixed vertex called the root. A tree with a fixed root is useful for many applications.
+\end{definition}
+
+\topic{Spanning Trees}
+\begin{definition}[Spanning Tree]
+A \key{spanning tree} of a connected graph $G$ is a subgraph that is a tree and includes all vertices of $G$.
+\end{definition}
+\textbf{Key Properties}
+\begin{itemize}
+\item All vertices of $G$; connected, acyclic
+\item Exactly $|V|-1$ edges
+\item A minimal connected spanning subgraph
+\end{itemize}
+\begin{theorem}
+Every connected graph $G$ has a spanning tree.
+\end{theorem}
+\begin{definition}[BFS Tree]
+A \key{BFS tree} is the spanning tree formed by the parent pointers of a breadth-first search from a root vertex (explore level by level).
+\end{definition}
+\textbf{Properties}
+\begin{itemize}
+\item Tree paths from the root are shortest paths; level $=$ distance
+\item Queue; $O(|V|+|E|)$
+\item Every non-tree edge joins vertices in the same or in adjacent levels (``cross edges'')
+\end{itemize}
+\begin{definition}[DFS Tree]
+A \key{DFS tree} is the spanning tree formed by the parent pointers of a depth-first search from a root vertex (go deep, then backtrack).
+\end{definition}
+\textbf{Properties}
+\begin{itemize}
+\item Tree paths tend to be long
+\item Stack / recursion; $O(|V|+|E|)$
+\item Every non-tree edge joins a vertex to an ancestor (``back edge'')
+\item Hence: $G$ is acyclic iff DFS finds no back edge
+\end{itemize}
+
 \end{cscolumns}
 \end{document}
