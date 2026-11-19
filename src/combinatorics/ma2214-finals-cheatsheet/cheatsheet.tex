@@ -601,22 +601,102 @@ For a connected graph $G$, the distance function $d(x,y)$ defines a \key{metric}
 \end{enumerate}
 \end{theorem}
 
-\columnbreak
 \topic{Diameter and Examples}
 \begin{definition}[Diameter]
 The \key{diameter} of a connected graph $G$ is
 \[ \operatorname{diam}(G)=\max_{x,y\in V(G)}d(x,y), \]
 the greatest distance between any two vertices.
 \end{definition}
-\textbf{Examples:}
+\par\noindent\begin{minipage}{\linewidth}
+\noindent Diameter $\operatorname{diam}(G)=\max_{x,y}d(x,y)$ of a connected graph:
+\begin{cstable}{CCCCCC}
+$K_n$ & $K_{m,n}$, $m,n\ge 2$ & $C_n$ & $P_n$ ($n$ vertices) & Petersen & $Q^d$ \\ \midrule
+$1$ & $2$ & $\lfloor n/2\rfloor$ & $n-1$ & $2$ & $d$
+\end{cstable}
+\end{minipage}
+
+
+\topic{Search Algorithms}
 \begin{itemize}
-\item Complete graph $K_n$: $\operatorname{diam}(K_n)=1$.
-\item Complete bipartite graph $K_{m,n}$ ($m,n\ge 2$): $\operatorname{diam}=2$.
-\item Cycle $C_n$: $\operatorname{diam}=\lfloor n/2\rfloor$.
-\item Path $P_n$ ($n$ vertices): $\operatorname{diam}=n-1$, the distance between the two ends.
-\item Petersen graph: $\operatorname{diam}=2$.
-\item $d$-dimensional hypercube $Q^d$: $\operatorname{diam}=d$. Distance equals the \key{Hamming distance}, e.g.\ $d(0001,1100)=3$.
+\item \key{Breadth-First Search (BFS)}
+\item \key{Depth-First Search (DFS)}
 \end{itemize}
+
+\topic{Separating Sets and Vertex Connectivity}
+\begin{definition}[Separating Set]
+Let $G$ be a connected graph. A \key{separating set} (or \key{vertex cut}) of $G$ is a subset $S\subset V(G)$ such that
+\[ G-S \]
+has more than one connected component.
+
+Special case: If $|S|=1$, the single vertex in $S$ is called a \key{cut vertex}.
+\end{definition}
+\begin{definition}[Vertex Connectivity]
+The \key{vertex connectivity} (or simply connectivity) of a graph $G$, denoted by $\kappa(G)$, is defined as
+\[ \kappa(G)=\min\{\,|S|:G-S\text{ is disconnected or a single vertex}\,\} \]
+(minimum over $S\subseteq V(G)$).
+
+\textbf{Interpretation.}
+\begin{itemize}
+\item $\kappa(G)$ measures how ``strongly connected'' a graph is.
+\item $G$ is called \key{$k$-connected} if $\kappa(G)\ge k$: equivalently, $|V(G)|>k$ and deleting any $k-1$ vertices leaves $G$ connected.
+\end{itemize}
+\end{definition}
+\textbf{Examples.}
+\begin{cstable}{CCCCC}
+$K_n$, $n\ge 2$ & $P_n$, $n\ge 2$ & $C_n$, $n\ge 3$ & $K_{m,n}$ & $Q^d$ \\ \midrule
+$n-1$ & $1$ & $2$ & $\min\{m,n\}$ & $d$
+\end{cstable}
+
+\topic{Cycles}
+\begin{definition}[Cycle]
+A \key{cycle} $C_k$ is a subgraph
+\[ C=(V',E') \]
+such that
+\[ V'=\{x_0,x_1,\dots,x_{k-1}\},\quad E'=\{x_0x_1,x_1x_2,\dots,x_{k-2}x_{k-1},x_{k-1}x_0\} \]
+for some integer $k\ge 3$.
+\begin{itemize}
+\item $C_k$ denotes a cycle of length $k$; a cycle of length $k$ in $G$ is a subgraph isomorphic to $C_k$.
+\end{itemize}
+\end{definition}
+\begin{definition}[Girth and Circumference]
+\key{Length of a cycle}: Number of edges (or equivalently, vertices) it contains.
+\begin{itemize}
+\item The \key{girth} of $G$, denoted $g(G)$, is the minimum length of a cycle contained in $G$.
+\item The \key{circumference} of $G$ is the maximum length of a cycle in $G$.
+\end{itemize}
+\end{definition}
+\begin{definition}[Acyclic Graphs]
+\begin{itemize}
+\item A graph $G$ is \key{acyclic} (or cycle-free) if it contains no cycle as a subgraph.
+\item For such graphs, by convention:
+\[ g(G)=\infty,\qquad \operatorname{circumference}(G)=0. \]
+\end{itemize}
+\end{definition}
+\begin{theorem}[Proposition]
+Every graph with minimum degree $\delta(G)\ge 2$ contains a cycle. In particular, every 2-connected graph contains a cycle.
+\end{theorem}
+\begin{theorem}[Whitney, 1932]
+Let $G$ have at least 3 vertices. Then $G$ is 2-connected if and only if for any two vertices $u,v$ there is a cycle in $G$ containing both $u$ and $v$.
+\end{theorem}
+\begin{theorem}[Menger, 1927]
+Let $k\ge 1$ and let $G$ have more than $k$ vertices. Then $G$ is $k$-connected if and only if every two vertices $u,v$ are joined by $k$ pairwise internally disjoint $u$--$v$ paths.
+\end{theorem}
+
+\topic{$r$-Partite Graphs}
+\begin{definition}[$r$-Partite]
+\begin{itemize}
+\item A graph $G$ is called \key{$r$-partite} if its vertex set can be partitioned into $r$ disjoint parts
+\[ V(G)=V_1\cup V_2\cup\cdots\cup V_r, \]
+such that no two vertices within the same part are adjacent.
+\item Equivalently, $G$ is \key{$r$-colorable}.
+\end{itemize}
+\end{definition}
+\begin{definition}[Complete $r$-Partite Graph]
+A \key{complete $r$-partite graph} has all possible edges between distinct parts.
+\end{definition}
+\begin{theorem}[Proposition]
+A graph $G$ is bipartite if and only if it contains no odd cycles (cycles of odd length).
+\end{theorem}
 
 \end{cscolumns}
 \end{document}
