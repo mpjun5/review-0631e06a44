@@ -1,0 +1,203 @@
+\documentclass[8pt,a4paper,landscape]{extarticle}
+\usepackage{cheatsheet-style}   % all styling lives here
+\newcommand{\Srn}{\left\{\begin{matrix}r\\ n\end{matrix}\right\}}
+\newcommand{\Srk}{\left\{\begin{matrix}r\\ k\end{matrix}\right\}}
+\newcommand{\br}[2]{\left[\begin{matrix}#1\\ #2\end{matrix}\right]}
+\newcommand{\bc}[2]{\left\{\begin{matrix}#1\\ #2\end{matrix}\right\}}
+\newcommand{\Zge}{\mathbb{Z}_{\ge 0}}
+\begin{document}
+\begin{cscolumns}
+%% ======================= CH 1 =======================
+\chapterhead*{Ch 1. Basic Counting Principles}
+
+\topic{Pascal}
+\begin{theorem}[Pascal's Identity]
+\[ \binom{n}{r}=\binom{n-1}{r-1}+\binom{n-1}{r} \]
+\end{theorem}
+
+\topic{Euler's $\phi$-function}
+Let $n\in\mathbb{N}$, and let
+\[ n=p_1^{m_1}p_2^{m_2}\cdots p_k^{m_k} \]
+be its prime factorization as stated in the fundamental theorem of arithmetic, with $p_1,\dots,p_k$ distinct primes.
+\begin{theorem}[Euler]
+\[ \phi(n)=n\left(1-\frac{1}{p_1}\right)\left(1-\frac{1}{p_2}\right)\cdots\left(1-\frac{1}{p_k}\right) \]
+\[ =n\prod_{i=1}^{k}\left(1-\frac{1}{p_i}\right). \]
+\end{theorem}
+
+%% ======================= CH 2 =======================
+\chapterhead*{Ch 2. The Twelvefold Way}
+
+\topic{Rota's Twelvefold Way}
+\begin{formula}
+\begin{cstable}{>{\raggedright\arraybackslash}p{0.25\linewidth}CCC}
+\textbf{Objects / Boxes} & \textbf{No Restriction} & \textbf{Injective} & \textbf{Surjective} \\ \midrule
+Obj.\ Dist., Box.\ Dist. & $n^r$ & $P^n_r$ & $n!\Srn$ \\ \midrule
+Obj.\ Dist., Box.\ Iden. & $\displaystyle\sum_{k=0}^{n}\Srk$ & $\begin{cases}1 & r\le n\\ 0 & r>n\end{cases}$ & $\Srn$ \\ \midrule
+Obj.\ Iden., Box.\ Dist. & $\dbinom{r+n-1}{r}$ & $\dbinom{n}{r}$ & $\dbinom{r-1}{n-1}$ \\ \midrule
+Obj.\ Iden., Box.\ Iden. & $\displaystyle\sum_{k=0}^{n}p(r,k)$ & $\begin{cases}1 & r\le n\\ 0 & r>n\end{cases}$ & $p(r,n)$
+\end{cstable}
+\end{formula}
+Here $P^n_r=\frac{n!}{(n-r)!}$ is the number of $r$-permutations of an $n$-set (Chapter 1); $\Srn$, also written $S(r,n)$, is the Stirling number of the second kind; and $p(r,n)$ is the number of partitions of $r$ identical objects into exactly $n$ identical boxes.
+
+\topic{Stirling Numbers of the Second Kind}
+The Stirling number of the second kind, denoted by $S(r,n)$ or $\Srn$, is the number of ways to partition a set of $r$ distinct objects into $n$ nonempty, unlabelled subsets.
+
+The Stirling numbers of the second kind satisfy the following conditions:
+\begin{formula}
+\begin{enumerate}[label=\arabic*.]
+\item $S(0,0)=1$, $S(r,0)=0$ for $r>0$, and $S(0,n)=0$ for $n>0$;
+\item $S(r,n)=nS(r-1,n)+S(r-1,n-1)$ for $r,n\ge 1$.
+\end{enumerate}
+\end{formula}
+Unlike the binomial coefficients, the Stirling numbers have no product formula. There is, however, an explicit formula as an alternating sum, which comes from the principle of inclusion and exclusion.
+\begin{formula}
+For all $r,n\ge 0$,
+\[ S(r,n)=\frac{1}{n!}\sum_{j=0}^{n}(-1)^{n-j}\binom{n}{j}j^r. \]
+\end{formula}
+\begin{formula}
+\[ \br{n+1}{k}=n\br{n}{k}+\br{n}{k-1},\quad \bc{n+1}{k}=k\bc{n}{k}+\bc{n}{k-1}. \]
+\end{formula}
+
+\topic{Partitions of an Integer}
+A partition of a positive integer $r$ is a way of writing $r$ as a sum of positive integers, where the order of the summands does not matter. Each summand is called a part. We denote the number of partitions of $r$ by $p(r)$, and the number of partitions of $r$ into exactly $n$ parts by $p(r,n)$.
+
+The numbers $p(r,n)$ satisfy the following conditions:
+\begin{formula}
+\begin{enumerate}[label=\arabic*.]
+\item $p(0,0)=1$, $p(r,0)=0$ for $r>0$, and $p(0,n)=0$ for $n>0$;
+\item $p(r,n)=p(r-1,n-1)+p(r-n,n)$ for $r,n\ge 1$.
+\end{enumerate}
+\end{formula}
+\begin{formula}
+The number of partitions of $r$ into $n$ parts is the same as the number of partitions of $r$ into parts with maximum size $n$.
+\end{formula}
+
+%% ======================= CH 3 =======================
+\chapterhead*{Ch 3. Binomial Theorem and Generating Functions}
+
+\topic{Generating Functions}
+Given an infinite sequence of numbers $a_0,a_1,a_2,\dots$, we associate with it the (formal) power series
+\begin{formula}
+\[ F(x)=a_0+a_1x+a_2x^2+\cdots=\sum_{n=0}^{\infty}a_nx^n. \]
+\end{formula}
+$F(x)$ is called the \key{generating function} of the sequence $a_0,a_1,\dots$. We write $[x^r]F(x)$ for the coefficient of $x^r$ in $F(x)$, so that $a_r=[x^r]F(x)$.
+\begin{definition}[3 Common Generating Functions]
+\[ 1:\quad A(x)=\sum_{n=0}^{\infty}x^n=\frac{1}{1-x}; \]
+\[ n:\quad A(x)=\sum_{n=0}^{\infty}nx^n=\frac{x}{(1-x)^2}; \]
+\[ r^n:\quad A(x)=\frac{1}{1-rx}. \]
+\end{definition}
+
+\topic{Product Interpretation}
+For $i=1,\dots,m$ let $A^{(i)}\subseteq\Zge$ and define its characteristic generating function
+\[ F^{(i)}(x)=\sum_{k\in A^{(i)}}x^k. \]
+Let $F(x)=F^{(1)}(x)F^{(2)}(x)\cdots F^{(m)}(x)$. Then the coefficient $c_r$ of $x^r$ in $F(x)$ counts the solutions of
+\begin{theorem}[Product Interpretation]
+\[ x_1+x_2+\cdots+x_m=r,\quad x_i\in A^{(i)}. \]
+\end{theorem}
+The number of solutions of $x_1+2x_2+5x_5=10$ with $x_1,x_2,x_5\in\Zge$, where $x_1,x_2,x_5$ are the numbers of coins of each kind. By the weighted construction,
+\begin{formula}
+\[ F(x)=(1+x+x^2+\cdots)(1+x^2+x^4+\cdots)(1+x^5+x^{10}+\cdots) \]
+\[ =\frac{1}{(1-x)(1-x^2)(1-x^5)}. \]
+\end{formula}
+We read off $[x^{10}]F(x)$ by hand, choosing the power from the last factor first and using (AP) over the three cases.
+
+\topic{The Encoding Dictionary}
+By the product interpretation, if the $i$-th variable is allowed to take values in $A^{(i)}\subseteq\Zge$, then its factor is $\sum\nolimits_{k\in A^{(i)}}x^k$. The constraints that occur most often, and their factors, are:
+\begin{formula}
+\begin{cstable}{LCC}
+\textbf{constraint on $x_i$} & \textbf{factor} & \textbf{closed form} \\ \midrule
+no constraint & $1+x+x^2+\cdots$ & $\frac{1}{1-x}$ \\ \midrule
+$x_i\ge a$ & $x^a+x^{a+1}+\cdots$ & $\frac{x^a}{1-x}$ \\ \midrule
+$x_i\le b$ & $1+x+\cdots+x^b$ & $\frac{1-x^{b+1}}{1-x}$ \\ \midrule
+$a\le x_i\le b$ & $x^a+\cdots+x^b$ & $\frac{x^a-x^{b+1}}{1-x}$ \\ \midrule
+$x_i$ even & $1+x^2+x^4+\cdots$ & $\frac{1}{1-x^2}$ \\ \midrule
+$x_i$ a multiple of $k$ & $1+x^k+x^{2k}+\cdots$ & $\frac{1}{1-x^k}$
+\end{cstable}
+\end{formula}
+Multiply the factors; the answer is a coefficient of the product.
+
+\topic{Partition Generating Function}
+\begin{theorem}[Partition Generating Function]
+\[ \sum_{r=0}^{\infty}p(r)x^r=\prod_{k=1}^{\infty}(1+x^k+x^{2k}+\cdots)=\prod_{k=1}^{\infty}\frac{1}{1-x^k}. \]
+\end{theorem}
+
+\topic{Exponential Generating Functions}
+The exponential generating function (EGF) for the sequence of numbers $(a_r)$ is the power series
+\begin{formula}
+\[ a_0+a_1\frac{x}{1!}+a_2\frac{x^2}{2!}+a_3\frac{x^3}{3!}+\cdots+a_r\frac{x^r}{r!}+\cdots \]
+\[ =\sum_{r=0}^{\infty}a_r\frac{x^r}{r!}. \]
+\end{formula}
+Thus $a_r=r!\,c_r$, where $c_r$ is the $r$-th coefficient of the power series.
+
+\topic{The EGF Dictionary}
+Let $a_r$ denote the number of $r$-permutations of the multiset
+\[ \{n_1\cdot b_1,\ n_2\cdot b_2,\ \dots,\ n_k\cdot b_k\}. \]
+Then the exponential generating function for $(a_r)$ is
+\begin{formula}
+\[ \left(1+\frac{x}{1!}+\cdots+\frac{x^{n_1}}{n_1!}\right)\left(1+\frac{x}{1!}+\cdots+\frac{x^{n_2}}{n_2!}\right) \]
+\[ \cdots\left(1+\frac{x}{1!}+\cdots+\frac{x^{n_k}}{n_k!}\right), \]
+\end{formula}
+one factor per type $b_j$, and $a_r$ is the coefficient of $\frac{x^r}{r!}$ in the expansion of the product.
+\begin{formula}
+\begin{cstable}{>{\raggedright\arraybackslash}p{0.34\linewidth}C}
+\textbf{type $b_j$ may appear} & \textbf{factor} \\ \midrule
+any number of times & $1+\frac{x}{1!}+\frac{x^2}{2!}+\cdots=e^x$ \\ \midrule
+at most $n$ times & $1+\frac{x}{1!}+\cdots+\frac{x^n}{n!}$ \\ \midrule
+at least once & $e^x-1$ \\ \midrule
+an even number of times & $1+\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots=\frac{e^x+e^{-x}}{2}$ \\ \midrule
+an odd number of times & $\frac{x}{1!}+\frac{x^3}{3!}+\cdots=\frac{e^x-e^{-x}}{2}$
+\end{cstable}
+\end{formula}
+
+%% ======================= CH 4 =======================
+\chapterhead*{Ch 4. Recurrence Relations}
+
+\begin{itemize}
+\item \key{General method to solve linear recurrence relations.} The general solution is
+\begin{formula}
+\[ g(n)=g_0(n)+h(n). \]
+\end{formula}
+\textbf{Finding a particular solution: what to try.} The following table summarises the trial forms for $g_0(n)$. Here $P_k$ and $Q_k$ denote polynomials of degree $k$; the coefficients of $Q_k$ and the constant $C$ are the unknowns. The third column applies when the base $a$ of the exponential (for a polynomial $f$, take $a=1$) is a characteristic root of multiplicity $m$: the trial form must then be multiplied by $n^m$.
+\begin{formula}
+\begin{cstable}{CCC}
+\textbf{$f(n)$} & \textbf{trial $g_0(n)$} & \textbf{if $a$ is a root of multiplicity $m$} \\ \midrule
+$P_k(n)$ (here $a=1$) & $Q_k(n)$ & $n^mQ_k(n)$ \\ \midrule
+$ca^n$ & $Ca^n$ & $Cn^ma^n$ \\ \midrule
+$P_k(n)a^n$ & $Q_k(n)a^n$ & $n^mQ_k(n)a^n$ \\ \midrule
+$f_1(n)+f_2(n)$ & $g_{0,1}(n)+g_{0,2}(n)$ & (superposition)
+\end{cstable}
+\end{formula}
+
+\item \key{Solving linear recurrences using generating functions.} To solve a linear recurrence relation using generating functions:
+\begin{enumerate}[label=\arabic*.]
+\item Multiply the recurrence by $x^n$ and sum over all $n$ for which it holds. Express each sum in terms of $A(x)$: this gives a linear equation for $A(x)$ (the initial conditions enter here).
+\item Solve the linear equation for $A(x)$; it will be a rational function.
+\item Extract the coefficient of $x^n$: factor the denominator, use partial fractions, and expand each piece as a power series.
+\end{enumerate}
+Useful bookkeeping: for the sequence $(a_n)$ with OGF $A(x)$,
+\begin{formula}
+\[ \sum_{n\ge 1}a_{n-1}x^n=xA(x),\quad \sum_{n\ge 2}a_{n-2}x^n=x^2A(x), \]
+\[ \sum_{n\ge k}a_nx^n=A(x)-a_0-a_1x-\cdots-a_{k-1}x^{k-1}. \]
+\end{formula}
+
+\item \key{System of recurrence relations.}
+
+\textbf{Method 1:} eliminate $b_n$ to get a single recurrence.
+
+\textbf{Method 2:} generating functions turn the system into linear equations.
+
+Let $A(x)=\sum\nolimits_{n=0}^{\infty}a_nx^n$ and $B(x)=\sum\nolimits_{n=0}^{\infty}b_nx^n$ (with $a_0=1$, $b_0=0$). Multiply each recurrence by $x^n$ and sum over $n\ge 1$:
+\begin{formula}
+\[ a_n=b_n+a_{n-1}+b_{n-1}+a_{n-2}\Rightarrow A-1=B+xA+xB+x^2A, \]
+\[ b_n=a_{n-1}+b_{n-1}\Rightarrow B=xA+xB. \]
+\end{formula}
+The second gives $B=\frac{x}{1-x}A$; substituting into the first and multiplying by $1-x$,
+\begin{formula}
+\[ [(1-x-x^2)(1-x)-x(1+x)]A=1-x, \]
+\[ A(x)=\frac{1-x}{1-3x-x^2+x^3}, \]
+\[ B(x)=\frac{x}{1-x}A(x)=\frac{x}{1-3x-x^2+x^3}. \]
+\end{formula}
+\end{itemize}
+
+\end{cscolumns}
+\end{document}
