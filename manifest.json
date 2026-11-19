@@ -349,6 +349,21 @@
           "deleted": null
         }
       ]
+    },
+    {
+      "name": "Combinatorics",
+      "slug": "combinatorics",
+      "docs": [
+        {
+          "title": "MA2214 Midterm Cheatsheet",
+          "slug": "ma2214-midterm-cheatsheet",
+          "updated": "19 Nov 2026, 08:55 AM SGT",
+          "size_kb": 290,
+          "type": "Document",
+          "status": "in progress",
+          "deleted": null
+        }
+      ]
     }
   ]
 }
