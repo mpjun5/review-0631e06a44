@@ -327,4 +327,97 @@ For any graph $G$:
 \end{theorem}
 
 \end{cscolumns}
+\newpage
+\begin{cscolumns}
+\topic{Neighborhoods and Vertex Degrees}
+\begin{definition}[Neighborhood and Degree]
+For a graph $G=(V,E)$
+\begin{itemize}
+\item \key{Neighborhood} $N(v)$: all vertices $u$ adjacent to $v$ (that is, $u\sim v$)
+\item \key{Degree} $d(v)=|N(v)|$: number of edges at $v$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Degree Sequence]
+List of all vertex degrees
+\begin{itemize}
+\item Often sorted: $d_1\ge d_2\ge\cdots\ge d_n$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Special Degrees]
+\begin{itemize}
+\item Minimum degree $\delta(G)$: smallest degree
+\item Maximum degree $\Delta(G)$: largest degree
+\item \key{$k$-regular}: all vertices have degree $k$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Average Degree]
+\[ \bar{d}(G)=\frac{1}{|V(G)|}\sum_{v\in V(G)}d(v) \]
+\end{definition}
+
+\topic{Handshaking Lemma}
+\begin{theorem}[Handshaking Lemma]
+For any graph $G$:
+\[ {\color{csBlue}\sum_{v\in V(G)}d(v)=2e(G)} \]
+\end{theorem}
+\begin{theorem}[Corollary]
+Average degree: $\displaystyle\bar{d}(G)=\frac{2e(G)}{v(G)}$
+\end{theorem}
+\begin{theorem}[Corollary]
+In any graph, the number of odd-degree vertices is even.
+\end{theorem}
+
+\topic{Bipartite Graphs}
+\begin{definition}[Bipartite]
+$G=(V,E)$ is \key{bipartite} if $V$ can be split as $V=A\cup B$ with $A\cap B=\emptyset$ such that every edge has one endpoint in $A$ and the other in $B$ (no edges within $A$, none within $B$). $(A,B)$ is called a \key{bipartition}.
+\end{definition}
+\begin{definition}[Complete Bipartite $K_{m,n}$]
+\begin{itemize}
+\item Two partitions
+\item All cross edges
+\item $m+n$ vertices, $m\cdot n$ edges
+\end{itemize}
+\end{definition}
+\begin{theorem}
+For $k\ge 1$, a $k$-regular bipartite graph with bipartition $(A,B)$ has $|A|=|B|$.
+\end{theorem}
+
+\columnbreak
+\topic{Graphic Sequences}
+\begin{definition}[Graphic]
+A sequence is \key{graphic} if it's the degree sequence of some graph.
+\end{definition}
+\textbf{Necessary Conditions:}
+\begin{itemize}
+\item $\sum d_i$ is even (Handshaking Lemma)
+\item $0\le d_i\le n-1$ for all $i$
+\end{itemize}
+\hl{But Not Sufficient!}
+
+\begin{theorem}[Havel--Hakimi]
+Let $(d_1,\dots,d_n)$ be non-increasing with $n\ge 2$ and $d_1\ge 1$. This sequence is graphic iff the sequence of $n-1$ numbers
+\[ (d_2-1,d_3-1,\dots,d_{d_1+1}-1,d_{d_1+2},\dots,d_n) \]
+is graphic (after reordering). (Remove the largest degree, and subtract 1 from the next $d_1$ largest.)
+
+\textbf{Algorithm:}
+\begin{enumerate}[label=\arabic*.]
+\item Sort degrees non-increasing
+\item Remove largest degree $d_1$
+\item Subtract 1 from next $d_1$ degrees
+\item Repeat until the sequence is all zeros (graphic) or a negative entry appears, or $d_1$ exceeds the number of remaining entries (not graphic)
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Erd\H{o}s--Gallai]
+A non-increasing sequence $(d_1,\dots,d_n)$ is graphic iff:
+\begin{enumerate}[label=\arabic*.]
+\item $\sum d_i$ is even
+\item For all $k\in\{1,\dots,n\}$:
+\[ \sum_{i=1}^{k}d_i\le k(k-1)+\sum_{i=k+1}^{n}\min\{d_i,k\} \]
+\end{enumerate}
+\end{theorem}
+
+\end{cscolumns}
 \end{document}
