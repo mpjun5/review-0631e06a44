@@ -988,5 +988,73 @@ In particular $\tau(G)=\det L_{(1,1)}$: delete the first row and column and take
 The complete graph $K_n$ has $n^{n-2}$ spanning trees.
 \end{theorem}
 
+
+\end{cscolumns}
+\newpage
+\begin{cscolumns}
+\topic{Directed Graphs}
+\begin{definition}[Directed Graph]
+A \key{directed graph}, or \key{digraph}, $D=(V,E)$ consists of a vertex set $V=V(D)$ and a set $E=E(D)\subseteq V\times V$ of arcs (directed edges), which are ordered pairs $(u,v)$ with $u\ne v$. We write $u\to v$ for the arc $(u,v)$, and call $v$ a \key{successor} (out-neighbour) of $u$ and $u$ a \key{predecessor} (in-neighbour) of $v$.
+\begin{itemize}
+\item The \key{underlying graph} of $D$: forget the directions (an opposite pair $u\to v$, $v\to u$ becomes one edge).
+\item An \key{oriented graph} is a digraph with no opposite pair: a graph with each edge given one direction. If the underlying graph is complete it is a \key{tournament}.
+\end{itemize}
+\end{definition}
+\begin{definition}[In- and Out-Degrees]
+\begin{itemize}
+\item Out-neighbourhood: $N^+(v)=\{u\in V:v\to u\}$, \key{out-degree} $d^+(v)=|N^+(v)|$;
+\item In-neighbourhood: $N^-(v)=\{u\in V:u\to v\}$, \key{in-degree} $d^-(v)=|N^-(v)|$.
+\end{itemize}
+A vertex with $d^-(v)=0$ is a \key{source}; a vertex with $d^+(v)=0$ is a \key{sink}.
+\end{definition}
+\begin{theorem}[Directed Handshaking Lemma]
+For any digraph $D=(V,E)$,
+\[ {\color{csBlue}\sum_{v\in V}d^+(v)=\sum_{v\in V}d^-(v)=|E|.} \]
+\end{theorem}
+\begin{definition}[Adjacency Matrix of a Digraph]
+For a digraph $D$ on $V=\{1,\dots,n\}$, the \key{adjacency matrix} $A=A(D)$ is the $n\times n$ matrix with $A_{ij}=1$ if $i\to j$ and $A_{ij}=0$ otherwise.
+\begin{itemize}
+\item $A$ is in general not symmetric; $A^T$ is the adjacency matrix of the reverse digraph $D^{\mathrm{rev}}$ (all arcs reversed). Row sums are out-degrees, column sums are in-degrees.
+\end{itemize}
+\end{definition}
+
+\topic{Walks, Paths, Cycles and Reachability}
+\begin{definition}[Directed Walks, Paths, Cycles]
+\begin{itemize}
+\item A \key{directed walk} is a sequence $v_0,v_1,\dots,v_k$ of vertices with $v_{i-1}\to v_i$ for every $i$; its length is $k$.
+\item A \key{directed path} is a directed walk with no repeated vertex.
+\item A \key{directed cycle} is a directed walk $v_0,\dots,v_k=v_0$, $k\ge 2$, with $v_0,\dots,v_{k-1}$ distinct ($u\to v\to u$ is a directed cycle of length 2).
+\end{itemize}
+\end{definition}
+\begin{definition}[Reachability]
+$u$ \key{reaches} $v$ (written $u\rightsquigarrow v$) if there is a directed walk, equivalently a directed path (shortcut repeated vertices), from $u$ to $v$. Every vertex reaches itself.
+\begin{itemize}
+\item $D$ is \key{strongly connected} if every vertex reaches every other vertex.
+\item $D$ is \key{weakly connected} if its underlying graph is connected.
+\end{itemize}
+\end{definition}
+
+\topic{Topological Orderings and DAGs}
+\begin{definition}[Topological Ordering]
+A \key{topological ordering} of a digraph $D$ is a linear ordering $v_1,v_2,\dots,v_n$ of all its vertices such that for every arc $v_i\to v_j$ we have ${\color{csBlue}i<j}$ (every arc points ``forward'').
+\end{definition}
+\begin{definition}[Directed Acyclic Graph]
+A digraph with no directed cycle is a \key{directed acyclic graph (DAG)}.
+\end{definition}
+\begin{theorem}[Lemma]
+Every DAG with at least one vertex has a source (a vertex of in-degree 0) and a sink (a vertex of out-degree 0).
+\end{theorem}
+\begin{theorem}
+A digraph $D$ has a topological ordering if and only if $D$ is a DAG.
+\end{theorem}
+\begin{formula}
+\textbf{Kahn's algorithm (1962)}
+\begin{enumerate}[label=\arabic*.]
+\item Compute all in-degrees $d^-(v)$. Put all vertices with $d^-(v)=0$ into a queue $Q$.
+\item While $Q$ is non-empty: remove a vertex $v$ from $Q$, output it, and for every arc $v\to w$ decrease $d^-(w)$ by 1; if $d^-(w)$ becomes 0, put $w$ into $Q$.
+\item If all $n$ vertices were output, the output is a topological ordering; otherwise $D$ has a directed cycle.
+\end{enumerate}
+\end{formula}
+
 \end{cscolumns}
 \end{document}
