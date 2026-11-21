@@ -1047,15 +1047,9 @@ Every DAG with at least one vertex has a source (a vertex of in-degree 0) and a 
 \begin{theorem}
 A digraph $D$ has a topological ordering if and only if $D$ is a DAG.
 \end{theorem}
-\begin{formula}
-\textbf{Kahn's algorithm (1962)}
-\begin{enumerate}[label=\arabic*.]
-\item Compute all in-degrees $d^-(v)$. Put all vertices with $d^-(v)=0$ into a queue $Q$.
-\item While $Q$ is non-empty: remove a vertex $v$ from $Q$, output it, and for every arc $v\to w$ decrease $d^-(w)$ by 1; if $d^-(w)$ becomes 0, put $w$ into $Q$.
-\item If all $n$ vertices were output, the output is a topological ordering; otherwise $D$ has a directed cycle.
-\end{enumerate}
-\end{formula}
-\noindent\textbf{Intuition:} Look at source vertices and add them continuously into the topo ordering. Decrease in-degree of all affected nodes. If all vertices are added then it is a DAG, otherwise there is a cycle.
+\begin{definition}[Arborescences]
+An \key{out-arborescence} (rooted directed tree) with root $r$ is a digraph $T$ whose underlying graph is a tree and whose arcs all point away from $r$: $d^-(r)=0$ and $d^-(v)=1$ for every other vertex $v$. Equivalently, every vertex is reachable from $r$ by exactly one directed path. Reversing all arcs gives an \key{in-arborescence}. A \key{spanning arborescence} of $D$ is a sub-digraph that is an arborescence on all of $V(D)$.
+\end{definition}
 
 \end{cscolumns}
 \end{document}
