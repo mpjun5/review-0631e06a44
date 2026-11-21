@@ -1051,5 +1051,25 @@ A digraph $D$ has a topological ordering if and only if $D$ is a DAG.
 An \key{out-arborescence} (rooted directed tree) with root $r$ is a digraph $T$ whose underlying graph is a tree and whose arcs all point away from $r$: $d^-(r)=0$ and $d^-(v)=1$ for every other vertex $v$. Equivalently, every vertex is reachable from $r$ by exactly one directed path. Reversing all arcs gives an \key{in-arborescence}. A \key{spanning arborescence} of $D$ is a sub-digraph that is an arborescence on all of $V(D)$.
 \end{definition}
 
+
+\topic{Strongly Connected Components}
+\begin{definition}[Mutually Reachable]
+Vertices $u,v$ of a digraph $D$ are \key{mutually reachable}, $u\leftrightsquigarrow v$, if $u\rightsquigarrow v$ and $v\rightsquigarrow u$. (same as communicates)
+\end{definition}
+\begin{theorem}[Lemma]
+$\leftrightsquigarrow$ is an equivalence relation on $V(D)$.
+\end{theorem}
+\begin{definition}[Strongly Connected Components]
+The equivalence classes of $\leftrightsquigarrow$ are the \key{strongly connected components (SCCs)} (communication class) of $D$. Equivalently, an SCC is a maximal set of vertices that are pairwise mutually reachable. $D$ is strongly connected iff it has exactly one SCC.
+\end{definition}
+\begin{definition}[Condensation]
+The \key{condensation} $D^*$ of $D$ is the digraph whose vertices are the SCCs of $D$, with an arc $C\to C'$ ($C\ne C'$) whenever some arc of $D$ goes from a vertex of $C$ to a vertex of $C'$.
+\end{definition}
+\noindent\textbf{Intuition:} make each vertex collapse into a single corresponding communication class.
+\begin{theorem}
+The condensation $D^*$ is a DAG.
+\end{theorem}
+\noindent\textbf{Consequences.} There is a source SCC (transient class) (no arcs enter it) and a sink SCC (recurrent class) (no arcs leave it). ``Every digraph is a DAG whose vertices have been blown up into strongly connected pieces.''
+
 \end{cscolumns}
 \end{document}
