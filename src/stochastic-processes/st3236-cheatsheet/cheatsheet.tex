@@ -432,5 +432,100 @@ Both accepted flows become $\min\{\pi_i q_{ij},\pi_j q_{ji}\}$.
 \item \key{Not required:} definitions, formulas and calculations of diagnostic quantities such as autocorrelation, effective sample size and standard errors.
 \end{itemize}
 
+\chapterhead*{Poisson Process}
+
+\begin{itemize}
+\item \key{Independent increments:} counts in disjoint time intervals are independent.
+\item \key{Constant rate:} the count distribution depends on the length of the interval, not its starting time.
+\begin{itemize}
+\item Denote \key{$\lambda>0$} be the arrival rate per unit time
+\item In a short interval of length $h$,
+\[ \mathbb{P}(\text{one arrival})\approx\lambda h, \qquad \mathbb{P}(\text{no arrival})\approx 1-\lambda h. \]
+\item When $h$ is very small, two or more arrivals are much less likely than one arrival: events arrive individually, not in batches.
+\end{itemize}
+\item \key{Rare} refers to a short interval. Over a longer interval, many events may occur.
+\end{itemize}
+
+\begin{definition}[Poisson Process]
+A Poisson process of \key{rate $\lambda>0$} starts at $N(0)=0$, has \key{independent increments on disjoint intervals}, and satisfies
+\[ {\color{csBlue}N(s+t)-N(s)\sim\mathrm{Poisson}(\lambda t),\qquad s\ge 0,\ t>0.} \]
+\end{definition}
+
+\begin{itemize}
+\item In particular, the number of arrivals in $(0,t]$ has probabilities
+\[ \mathbb{P}(N(t)=k)=e^{-\lambda t}\frac{(\lambda t)^k}{k!},\qquad k=0,1,\ldots. \]
+\item \key{Rate $\times$ time} is the expected count: $\mathbb{E}[N(t)]=\lambda t, \qquad \mathrm{Var}(N(t))=\lambda t.$
+\item The short-interval picture motivates this continuous-time model. The Poisson formula gives its exact count probabilities.
+\end{itemize}
+
+\begin{definition}[Waiting and Sojourn Times]
+Let $N(t)$ be a Poisson process with rate $\lambda$.
+\begin{itemize}
+\item $W_n$: the time of the $n$th arrival, or the waiting time from 0 until that arrival. Set $W_0=0$.
+\item $S_n=W_n-W_{n-1}$, $n\ge1$: the time between successive arrivals, called an \key{\mbox{interarrival time}} or \key{\mbox{sojourn time}}.
+\end{itemize}
+\end{definition}
+
+\columnbreak
+\noindent\textbf{Distribution of $W_1$:}
+\begin{itemize}
+\item The first arrival has occurred by time $t$ exactly when the count is at least one: ${\color{csBlue}\{W_1\le t\}=\{N(t)\ge1\}}$.
+\item Therefore, for $t\ge0$,
+\begin{align*}
+\mathbb{P}(W_1\le t)
+&= \mathbb{P}(N(t)\ge1)\\
+&= 1-\mathbb{P}(N(t)=0)\\
+&= 1-e^{-\lambda t}.
+\end{align*}
+\item Differentiating the CDF gives the density $f_{W_1}(t)=\lambda e^{-\lambda t},\qquad t>0.$
+\item Hence ${\color{csBlue}W_1=S_1\sim\mathrm{Exp}(\lambda)}$, with \key{rate} $\lambda$ and scale $1/\lambda$.
+\end{itemize}
+
+\begin{itemize}
+\item For $n\ge1$, the $n$th arrival has occurred by time $t$ if and only if \key{at least $n$ events} have occurred: ${\color{csBlue}\{W_n\le t\}=\{N(t)\ge n\}}$.
+\item Thus, for $t\ge0$,
+\[ \mathbb{P}(W_n\le t)=1-e^{-\lambda t}\sum_{k=0}^{n-1}\frac{(\lambda t)^k}{k!}. \]
+\end{itemize}
+
+\begin{theorem}[Waiting-Time Distribution]
+The distribution of $W_n$ follows that
+\[ f_{W_n}(t)=\frac{\lambda^n t^{n-1}e^{-\lambda t}}{(n-1)!},\qquad t>0. \]
+$W_n\sim\mathrm{Gamma}(n,\lambda)$; in particular, $W_1\sim\mathrm{Exp}(\lambda)$.
+\end{theorem}
+\begin{itemize}
+\item $\mathbb{E}[W_n]=n/\lambda$, $\mathrm{Var}(W_n)=n/\lambda^2$.
+\end{itemize}
+
+\begin{theorem}[Memorylessness Property]
+For $X\sim\mathrm{Exp}(\lambda)$ and $s,t\ge0$,
+\[ \mathbb{P}(X>s+t\mid X>s)=\frac{e^{-\lambda(s+t)}}{e^{-\lambda s}}={\color{csBlue}e^{-\lambda t}}=\mathbb{P}(X>t). \]
+\end{theorem}
+
+\begin{theorem}[Sojourn Times are Independent and Exponential]
+The interarrival times $S_1,S_2,\ldots$ are independent and each has density
+\[ f_{S_n}(t)=\lambda e^{-\lambda t},\qquad t>0,\quad n\ge1. \]
+Each has mean $1/\lambda$.
+\end{theorem}
+\begin{itemize}
+\item After the $n$th arrival, the next gap $S_{n+1}$ is independent of the previous gaps $S_1,\ldots,S_n$ and again has distribution $\mathrm{Exp}(\lambda)$.
+\item In this sense, the process \key{starts afresh at each arrival time} $W_n$.
+\end{itemize}
+
+\begin{theorem}[One Arrival]
+$W_1\mid N(t)=1\sim\mathrm{Uniform}(0,t).$ For $0\le u\le t$,
+\[ \mathbb{P}(W_1\le u\mid N(t)=1)=\frac{u}{t}. \]
+\end{theorem}
+
+\columnbreak
+\begin{theorem}[Uniform Order Statistics]
+Given $N(t)=n\ge1$, $(W_1,\ldots,W_n)$ has the distribution of $n$ independent $\mathrm{Uniform}(0,t)$ observations sorted in increasing order.
+\end{theorem}
+\begin{itemize}
+\item For $0<w_1<\cdots<w_n<t$, include \key{no further event} before $t$ in the joint density:
+\[ f_{W_1,\ldots,W_n\mid N(t)=n}=\frac{\lambda^n e^{-\lambda w_n}e^{-\lambda(t-w_n)}}{e^{-\lambda t}(\lambda t)^n/n!}=\frac{n!}{t^n}. \]
+\item This is the density of the sorted uniform sample; it integrates to 1 over a region of volume $t^n/n!$.
+\item The \key{unsorted} locations are i.i.d.\ uniform. The ordered arrival times are \mbox{\hl{not independent}}.
+\end{itemize}
+
 \end{cscolumns}
 \end{document}
