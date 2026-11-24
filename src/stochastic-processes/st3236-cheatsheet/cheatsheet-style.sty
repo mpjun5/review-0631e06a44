@@ -90,6 +90,9 @@
 % Definition (navy/blue box): \begin{definition}[Name] ... \end{definition}
 \newtcolorbox{definition}[1][]{csbox,colframe=csDefFrame,colback=csDefBack,colbacktitle=csDefFrame,
   title={\csboxtitle{Definition}{#1}}}
+% Algorithm (same navy design as definition): \begin{algorithm}[Name] ... \end{algorithm}
+\newtcolorbox{algorithm}[1][]{csbox,colframe=csDefFrame,colback=csDefBack,colbacktitle=csDefFrame,
+  title={\csboxtitle{Algorithm}{#1}}}
 % Remark / Note: no box, bold lead-in then text inline
 \newenvironment{remark}{\par\vspace{1pt}\noindent\textbf{Remark.}\ }{\par\vspace{1pt}}
 \newenvironment{note}{\par\vspace{1pt}\noindent\textbf{Note.}\ }{\par\vspace{1pt}}

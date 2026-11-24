@@ -364,5 +364,73 @@ Under these conditions, for every $i,j\in S$,
 \[ {\color{csBlue}\mathbb{P}(X_n=j\mid X_0=i)\longrightarrow\pi_j}. \]
 \end{theorem}
 
+\columnbreak
+\topic{Continuous Targets}
+
+\begin{definition}[Generalization]
+Consider the sampling problem that $X_1, X_2, \cdots, X_n \sim \pi(x),\quad x\in S,$ where $S$ is a continuous set. $S\subseteq\mathbb{R}$.
+\begin{itemize}
+\item Unnormalized density: we may only know the core function $w(x)$
+\[ {\color{csBlue}\pi(x)=Cw(x)}, \qquad C=\left[\int_S w(t)\,dt\right]^{-1}. \]
+\end{itemize}
+\end{definition}
+
+\begin{itemize}
+\item \key{Transition probabilities:} a \key{conditional density} replaces the matrix:
+\[ p_{ij}\Rightarrow f(y|x)=f(X_{n+1}=y\mid X_n=x) \]
+\item \key{Next-step distribution:} $\pi_{n+1}(y)=\int_{x\in S}\pi_n(x)f(y|x)\,dx$
+
+  Stationary distribution: if $\pi_n=\pi$, then $\pi_{n+1}=\pi$
+\item \key{Irreducibility:} from every $x\in S$, every region $A\subset S$ with $\pi(A)>0$ can be reached.
+\item \key{Positive recurrence:} return probability to a set $A$ is 1, where $\pi(A)>0$.
+\item \key{Limiting dist.} can be guaranteed
+\end{itemize}
+
+\begin{definition}[Metropolis--Hastings Construction]
+\begin{enumerate}
+\item Proposal
+\begin{itemize}
+\item Propose conditional density \key{$q(\cdot|x)$, for any $x\in S$}.
+\item $q$ is on $S$, and irreducible
+\end{itemize}
+\item Acceptance probability, which trims the probability flow
+\begin{itemize}
+\item Let
+\[ {\color{csBlue}\alpha(x,y)=\dfrac{\min\{w(x)q(y|x),\, w(y)q(x|y)\}}{w(x)q(y|x)}=\min\left\{1,\dfrac{w(y)q(x|y)}{w(x)q(y|x)}\right\}} \]
+\end{itemize}
+\item Transition probability so that the detailed balance equations hold
+\begin{itemize}
+\item The transition kernel follows that ${\color{csBlue}p(y|x)=q(y|x)\alpha(x,y)}$. and there is a point mass at $x$, $\mathrm{Prob}(x|x)=1-\int_S q(y|x)\alpha(x,y)\,dy$.
+\end{itemize}
+\item Implementation
+\end{enumerate}
+\end{definition}
+
+\begin{algorithm}[Implementation]
+Choose a core function $w$, a proposal density $q$, and $X_0\in S$. At iteration $n$, given $X_n=x$:
+\begin{enumerate}
+\item Draw a candidate $Y$ with density $q(\cdot\mid x)$.
+\item Evaluate the acceptance probability
+\[ {\color{csBlue}\alpha(x,Y)=\min\left\{1,\dfrac{w(Y)q(x\mid Y)}{w(x)q(Y\mid x)}\right\}}. \]
+The constant $C$ in $\pi=Cw$ cancels.
+\item Draw $U\sim\mathrm{Unif}(0,1)$ independently of the proposal. Set
+\[ X_{n+1}=\begin{cases} Y, & U\le\alpha(x,Y),\\ x, & U>\alpha(x,Y). \end{cases} \]
+\item Record $X_{n+1}$, including repetitions, and continue.
+\end{enumerate}
+For a symmetric proposal, $q(y\mid x)=q(x\mid y)$, so $\alpha(x,y)=\min\{1, w(y)/w(x)\}$.
+\end{algorithm}
+
+\columnbreak
+\topic{Takeaways}
+\begin{itemize}
+\item \key{Metropolis-Hastings construction (three steps):} choose a proposal $Q$, specify acceptance probabilities $\alpha$, then construct $P$.
+\item \key{Acceptance probability calculation and its reason:}
+\[ \alpha(i,j)=\min\left\{1,\dfrac{\pi_j q_{ji}}{\pi_i q_{ij}}\right\}=\min\left\{1,\dfrac{w_j q_{ji}}{w_i q_{ij}}\right\}. \]
+Both accepted flows become $\min\{\pi_i q_{ij},\pi_j q_{ji}\}$.
+\item \key{Proposal choice:} Balance substantial moves with reasonable acceptance and samples.
+\item \key{Warm-up:} remove the warm-up stage
+\item \key{Not required:} definitions, formulas and calculations of diagnostic quantities such as autocorrelation, effective sample size and standard errors.
+\end{itemize}
+
 \end{cscolumns}
 \end{document}
