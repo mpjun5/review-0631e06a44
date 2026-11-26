@@ -527,5 +527,15 @@ Given $N(t)=n\ge1$, $(W_1,\ldots,W_n)$ has the distribution of $n$ independent $
 \item The \key{unsorted} locations are i.i.d.\ uniform. The ordered arrival times are \mbox{\hl{not independent}}.
 \end{itemize}
 
+\columnbreak
+\begin{theorem}[Law of Total Expectation]
+\[ {\color{csBlue}\E[X]=\E[\E[X\mid Y]]} \]
+\[ \E[X]=\sum_y \E[X\mid Y=y]\,\mathbb{P}(Y=y). \]
+\end{theorem}
+
+\begin{theorem}[Law of Total Variance]
+\[ {\color{csBlue}\Var(X)=\E[\Var(X\mid Y)]+\Var(\E[X\mid Y])} \]
+\end{theorem}
+
 \end{cscolumns}
 \end{document}
