@@ -537,5 +537,15 @@ Given $N(t)=n\ge1$, $(W_1,\ldots,W_n)$ has the distribution of $n$ independent $
 \[ {\color{csBlue}\Var(X)=\E[\Var(X\mid Y)]+\Var(\E[X\mid Y])} \]
 \end{theorem}
 
+\topic{Common Distributions}
+\begin{cstable}{>{\raggedright\arraybackslash}p{0.22\linewidth} >{\centering\arraybackslash}p{0.30\linewidth} c c c}
+\textbf{Distribution} & \textbf{PMF/PDF} & \textbf{Support} & $\E[X]$ & $\Var(X)$ \\ \midrule
+\key{Poisson}($\lambda$) & $\dfrac{\lambda^k e^{-\lambda}}{k!}$ & $k=0,1,2,\ldots$ & $\lambda$ & $\lambda$ \\ \midrule
+\key{Exponential}($\lambda$) & $\lambda e^{-\lambda x}$ & $x\ge 0$ & $1/\lambda$ & $1/\lambda^2$ \\ \midrule
+\key{Geometric}($p$) & $(1-p)^{k-1}p$ & $k=1,2,\ldots$ & $1/p$ & $(1-p)/p^2$ \\ \midrule
+\key{Gamma}($\alpha,\lambda$) & $\dfrac{\lambda^\alpha\, x^{\alpha-1}e^{-\lambda x}}{\Gamma(\alpha)}$ & $x>0$ & $\alpha/\lambda$ & $\alpha/\lambda^2$ \\ \midrule
+\key{Beta}($\alpha,\beta$) & $\dfrac{x^{\alpha-1}(1-x)^{\beta-1}}{\mathrm{B}(\alpha,\beta)}$ & $0<x<1$ & $\dfrac{\alpha}{\alpha+\beta}$ & $\dfrac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$
+\end{cstable}
+
 \end{cscolumns}
 \end{document}
